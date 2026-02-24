@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sokoban", "Sokoban.csproj", "{8F410D3E-558D-4941-A5D2-07523DB87297}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sokoban", "Sokoban.csproj", "{5974C251-125E-4BEC-88A7-F6E66242578B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8F410D3E-558D-4941-A5D2-07523DB87297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F410D3E-558D-4941-A5D2-07523DB87297}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F410D3E-558D-4941-A5D2-07523DB87297}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{8F410D3E-558D-4941-A5D2-07523DB87297}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{8F410D3E-558D-4941-A5D2-07523DB87297}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{8F410D3E-558D-4941-A5D2-07523DB87297}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{5974C251-125E-4BEC-88A7-F6E66242578B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5974C251-125E-4BEC-88A7-F6E66242578B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5974C251-125E-4BEC-88A7-F6E66242578B}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{5974C251-125E-4BEC-88A7-F6E66242578B}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{5974C251-125E-4BEC-88A7-F6E66242578B}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{5974C251-125E-4BEC-88A7-F6E66242578B}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
