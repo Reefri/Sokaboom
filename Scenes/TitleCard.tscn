@@ -1,0 +1,187 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw85b1nive3ah"]
+
+[ext_resource type="Script" path="res://Scripts/TitleCard.cs" id="1_fsxv4"]
+[ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="1_md1yj"]
+[ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_qhq3v"]
+
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("so", "letterK", "letterA", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "explosion")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fsxv4")
+so = NodePath("Title/So")
+letterK = NodePath("Title/K")
+letterA = NodePath("Title/A")
+boum = NodePath("Title/BOUM")
+letterB = NodePath("Title/BOUM/B")
+letterO = NodePath("Title/BOUM/O")
+letterU = NodePath("Title/BOUM/U")
+letterM = NodePath("Title/BOUM/M")
+exclamationMark = NodePath("Title/!")
+explosion = NodePath("Sprite2D")
+
+[node name="Font" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.476484, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(779, 104)
+rotation = 0.10472
+scale = Vector2(0.96, 1)
+skew = 0.404916
+texture = ExtResource("1_md1yj")
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 205.0
+grow_horizontal = 2
+theme = ExtResource("2_qhq3v")
+
+[node name="So" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -326.0
+offset_top = 18.0
+offset_right = -210.0
+offset_bottom = 155.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+text = "So"
+
+[node name="K" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.0
+offset_top = 5.0
+offset_right = -127.0
+offset_bottom = 176.0
+grow_horizontal = 2
+rotation = 0.0436332
+theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 125
+text = "K"
+
+[node name="A" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.0
+offset_top = -5.0
+offset_right = -53.0
+offset_bottom = 166.0
+grow_horizontal = 2
+rotation = -0.0698132
+theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 125
+text = "A
+"
+
+[node name="BOUM" type="Control" parent="Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 30.0
+offset_right = 418.0
+offset_bottom = 235.0
+grow_horizontal = 2
+rotation = 0.10472
+pivot_offset = Vector2(229, 102)
+
+[node name="B" type="Label" parent="Title/BOUM"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -238.5
+offset_top = -18.0
+offset_right = -139.5
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "B"
+
+[node name="O" type="Label" parent="Title/BOUM"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -149.0
+offset_top = -18.0
+offset_right = -31.0
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "O
+"
+
+[node name="U" type="Label" parent="Title/BOUM"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = -18.0
+offset_right = 68.0
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "U
+"
+
+[node name="M" type="Label" parent="Title/BOUM"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 54.0
+offset_top = -18.0
+offset_right = 192.0
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "M
+"
+
+[node name="!" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 386.0
+offset_top = -40.0
+offset_right = 427.0
+offset_bottom = 165.0
+grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "!"
