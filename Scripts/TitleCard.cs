@@ -26,8 +26,8 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private Vector2 finalPositionOfSo;
 
-        bool animationStart = false;
-        bool animationWantToStop = false;
+        private bool animationIsRunning = false;
+        private bool animationWantToStop = false;
 
         Tween tween;
 
@@ -60,7 +60,7 @@ namespace Com.IsartDigital.Sokoban.UI
 
         public override void _Input(InputEvent pEvent)
         {
-            if (pEvent is InputEventMouseButton lMouseEvent && lMouseEvent.Pressed && lMouseEvent.ButtonIndex == MouseButton.Left )
+            if (animationIsRunning && !animationWantToStop && pEvent is InputEventMouseButton lMouseEvent && lMouseEvent.Pressed && lMouseEvent.ButtonIndex == MouseButton.Left)
             {
                 animationWantToStop = true;
                 FinishAnimation();
@@ -71,7 +71,7 @@ namespace Com.IsartDigital.Sokoban.UI
         private void StartTimer()
         {
             timer.Start();
-            animationStart = true;
+            animationIsRunning = true;
         }
 
         private void MoreO()
@@ -118,10 +118,16 @@ namespace Com.IsartDigital.Sokoban.UI
             tween.TweenProperty(boum, TweenProp.SCALE, boum.Scale, 1f).From(Vector2.Zero).SetDelay(1.5f);
             tween.TweenProperty(boum, TweenProp.ROTATION, boum.Rotation, 1f).From(-boum.Rotation).SetDelay(1.5f);
 
-            tween.TweenProperty(exclamationMark, TweenProp.VISIBLE, true, 0f).SetDelay(2.5f);
-            tween.TweenProperty(exclamationMark, TweenProp.POSITION, exclamationMark.Position, 2f).From(new Vector2(exclamationMark.Position.X, -265)).SetDelay(2.5f);
+            tween.Finished += AnimationIsFinish;
+        }
 
-            //animationStart = false;
+        private void AnimationIsFinish()
+        {
+            animationIsRunning = false;
+
+            Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.Out).SetParallel();
+            lTween.TweenProperty(exclamationMark, TweenProp.VISIBLE, true, 0f).SetDelay(0.2f);
+            lTween.TweenProperty(exclamationMark, TweenProp.POSITION, exclamationMark.Position, 2f).From(new Vector2(exclamationMark.Position.X, -265)).SetDelay(0.2f);
         }
 
         private void FinishAnimation()
@@ -138,11 +144,9 @@ namespace Com.IsartDigital.Sokoban.UI
             letterA.Visible = true;
             explosion.Visible = true;
             boum.Visible = true;
-            exclamationMark.Visible = true;
 
             letterK.Position = new Vector2(369, 5);
             letterA.Position = new Vector2(440, -5);
-            exclamationMark.Position = new Vector2(962, -40);
 
             explosion.Scale = new Vector2(0.96f,1);
             boum.Scale = new Vector2(1, 1);
@@ -152,14 +156,15 @@ namespace Com.IsartDigital.Sokoban.UI
 
             boum.Rotation = Mathf.DegToRad(6);
 
-            //animationWantToStop = false;
+            animationWantToStop = false;
+            AnimationIsFinish();
         }
-        
+
         /*
         protected override void Dispose(bool pDisposing)
 		{
 
 		}
         */
-	}
+    }
 }
