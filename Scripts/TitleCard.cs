@@ -29,14 +29,14 @@ namespace Com.IsartDigital.Sokoban.UI
         private bool animationIsRunning = false;
         private bool animationWantToStop = false;
 
-        Tween tween;
+        private Tween tween;
 
         public override void _Ready()
 		{
             lScreenSize = GetWindow().Size;
             finalPositionOfSo = so.Position;
 
-            so.Position = new Vector2(518, 18);
+            so.Position = new Vector2(lScreenSize.X / 2, 18);
 
             timer.WaitTime = 0.05f;
             timer.Timeout += MoreO;
@@ -145,10 +145,10 @@ namespace Com.IsartDigital.Sokoban.UI
             explosion.Visible = true;
             boum.Visible = true;
 
-            letterK.Position = new Vector2(369, 5);
-            letterA.Position = new Vector2(440, -5);
+            letterK.Position = new Vector2(325, 5);
+            letterA.Position = new Vector2(390, -5);
 
-            explosion.Scale = new Vector2(0.96f,1);
+            explosion.Scale = new Vector2(0.85f, 0.85f);
             boum.Scale = new Vector2(1, 1);
 
             explosion.Rotation = Mathf.DegToRad(6);
