@@ -8,17 +8,17 @@ using System.Net.Http.Headers;
 
 namespace Com.IsartDigital.Sokoban
 {
-    public partial class Bomb : Node2D
+    public partial class Bomb
     {
         private Vector2I explosionOriginPos = new Vector2I(0, 0);
 
         private List<Vector2I> explosionTilesPos = new List<Vector2I>
         {
-            new Vector2I(1, 0),
-            new Vector2I(2, 0),
-            new Vector2I(0, -1),
-            new Vector2I(0, -2),
-            new Vector2I(0, -3),
+            //new Vector2I(1, 0),
+            //new Vector2I(2, 0),
+            //new Vector2I(0, -1),
+            //new Vector2I(0, -2),
+            //new Vector2I(0, -3),
         };
 
         private List<List<int>> explosionMatrix = new List<List<int>> { };
@@ -30,15 +30,14 @@ namespace Com.IsartDigital.Sokoban
         private int maxY = 0;
 
         private Vector2I gridSize = new Vector2I(0, 0);
-        public override void _Ready()
+        
+
+        public Bomb()
         {
             Explosion();
-        }
 
-        public override void _Process(double pDelta)
-        {
-            float lDelta = (float)pDelta;
         }
+       
 
         private void Explosion()
         {
@@ -46,7 +45,7 @@ namespace Com.IsartDigital.Sokoban
             GetGridSize();
             CreateExplosionMatrice();
             PutExplosionInMatrix();
-            PrintListOfList(explosionMatrix);
+            //PrintListOfList(explosionMatrix);
         }
         private void CreateExplosionMatrice()
         {
@@ -82,7 +81,7 @@ namespace Com.IsartDigital.Sokoban
         {
             gridSize = new Vector2I(1, 1) - new Vector2I(minX, minY) + new Vector2I(maxX, maxY);
 
-            GD.Print("The minimum size of the grid is " + gridSize);
+            //GD.Print("The minimum size of the grid is " + gridSize);
         }
 
         private void GetMinMax(List<Vector2I> pList)
@@ -96,7 +95,7 @@ namespace Com.IsartDigital.Sokoban
                 if (lPos.Y > maxY) maxY = lPos.Y;
             }
 
-            GD.Print("\nmin x : " + minX, "\nmax x : " + maxX, "\nmin y : " + minY, "\nmax y : " + maxY);
+            //GD.Print("\nmin x : " + minX, "\nmax x : " + maxX, "\nmin y : " + minY, "\nmax y : " + maxY);
 
         }
 
@@ -112,9 +111,6 @@ namespace Com.IsartDigital.Sokoban
                 GD.Print(lRes);
             }
         }
-        protected override void Dispose(bool pDisposing)
-        {
-
-        }
+        
     }
 }
