@@ -17,6 +17,7 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Label letterU;
         [Export] private Label letterM;
         [Export] private Label exclamationMark;
+        [Export] TextEdit truc;
 
         [Export] private Sprite2D explosion;
 
@@ -29,6 +30,9 @@ namespace Com.IsartDigital.Sokoban.UI
         private bool animationIsRunning = false;
         private bool animationWantToStop = false;
 
+        private Vector2 posInitK;
+        private Vector2 posInitA;
+
         private Tween tween;
 
         public override void _Ready()
@@ -37,6 +41,8 @@ namespace Com.IsartDigital.Sokoban.UI
             finalPositionOfSo = so.Position;
 
             so.Position = new Vector2(lScreenSize.X / 2, 18);
+            posInitK = letterK.Position;
+            posInitA = letterA.Position;
 
             timer.WaitTime = 0.05f;
             timer.Timeout += MoreO;
@@ -55,6 +61,7 @@ namespace Com.IsartDigital.Sokoban.UI
 		{
 			float lDelta = (float)pDelta;
 
+            
 		}
         */
 
@@ -145,8 +152,8 @@ namespace Com.IsartDigital.Sokoban.UI
             explosion.Visible = true;
             boum.Visible = true;
 
-            letterK.Position = new Vector2(325, 5);
-            letterA.Position = new Vector2(390, -5);
+            letterK.Position = posInitK;
+            letterA.Position = posInitA;
 
             explosion.Scale = new Vector2(0.85f, 0.85f);
             boum.Scale = new Vector2(1, 1);
