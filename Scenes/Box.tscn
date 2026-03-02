@@ -1,0 +1,234 @@
+[gd_scene load_steps=13 format=3 uid="uid://fhrtfardgp4a"]
+
+[ext_resource type="Script" path="res://Scripts/Box.cs" id="1_ooh2e"]
+[ext_resource type="Texture2D" path="res://Assets/crate_42.png" id="2_s6k5j"]
+
+[sub_resource type="Gradient" id="Gradient_skvxv"]
+offsets = PackedFloat32Array(0, 0.491803, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.385493, 0.385492, 0.385492, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6kipk"]
+gradient = SubResource("Gradient_skvxv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vsudg"]
+particle_flag_disable_z = true
+angular_velocity_max = 360.0
+radial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_6kipk")
+
+[sub_resource type="Gradient" id="Gradient_8uxyp"]
+colors = PackedColorArray(0.825266, 0.295528, 1.92523e-07, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vgupy"]
+gradient = SubResource("Gradient_8uxyp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tqrct"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 0.95
+initial_velocity_min = 47.28
+initial_velocity_max = 109.59
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_vgupy")
+
+[sub_resource type="Animation" id="Animation_ncckr"]
+resource_name = "goLeft"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(3.13834, 0.297302, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(50, 0), Vector2(100, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/moveDust:amount_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/animComplete:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.25, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.353553, 0.353553, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ctvge"]
+resource_name = "goRight"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(3.13834, 0.297302, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(50, 0), Vector2(100, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/moveDust:amount_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/animComplete:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.25, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.353553, 0.353553, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_oee0s"]
+resource_name = "goUp"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(3.13834, 0.297302, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/moveDust:amount_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/animComplete:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.25, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.353553, 0.353553, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cnm"]
+_data = {
+"goLeft": SubResource("Animation_ncckr"),
+"goRight": SubResource("Animation_ctvge"),
+"goUp": SubResource("Animation_oee0s")
+}
+
+[node name="Box" type="Node2D" node_paths=PackedStringArray("anim", "moveDust")]
+position = Vector2(512, 290)
+script = ExtResource("1_ooh2e")
+anim = NodePath("AnimationPlayer")
+moveDust = NodePath("Sprite2D/moveDust")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s6k5j")
+offset = Vector2(0, -32)
+
+[node name="moveDust" type="GPUParticles2D" parent="Sprite2D"]
+show_behind_parent = true
+position = Vector2(0, -32)
+emitting = false
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_vsudg")
+one_shot = true
+preprocess = 0.5
+
+[node name="animComplete" type="GPUParticles2D" parent="Sprite2D"]
+show_behind_parent = true
+position = Vector2(0.492324, -9.00568)
+emitting = false
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_tqrct")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b2cnm")
+}
