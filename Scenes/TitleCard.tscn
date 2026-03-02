@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="1_md1yj"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_qhq3v"]
 
-[node name="TitleCard" type="Control" node_paths=PackedStringArray("so", "letterK", "letterA", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "truc", "explosion")]
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,17 +12,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fsxv4")
+title = NodePath("Title")
 so = NodePath("Title/So")
 letterK = NodePath("Title/K")
 letterA = NodePath("Title/A")
+explosion = NodePath("Title/BOUM !/Sprite2D")
 boum = NodePath("Title/BOUM !/BOUM")
 letterB = NodePath("Title/BOUM !/BOUM/B")
 letterO = NodePath("Title/BOUM !/BOUM/O")
 letterU = NodePath("Title/BOUM !/BOUM/U")
 letterM = NodePath("Title/BOUM !/BOUM/M")
 exclamationMark = NodePath("Title/BOUM !/!")
-truc = NodePath("")
-explosion = NodePath("Title/BOUM !/Sprite2D")
 
 [node name="Font" type="ColorRect" parent="."]
 layout_mode = 1

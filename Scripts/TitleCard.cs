@@ -8,39 +8,35 @@ namespace Com.IsartDigital.Sokoban.UI
 {
 	public partial class TitleCard : Control
 	{
+        [Export] private Control title;
         [Export] private Label so;
         [Export] private Label letterK;
         [Export] private Label letterA;
+        [Export] private Sprite2D explosion;
         [Export] private Control boum;
         [Export] private Label letterB;
         [Export] private Label letterO;
         [Export] private Label letterU;
         [Export] private Label letterM;
         [Export] private Label exclamationMark;
-        [Export] TextEdit truc;
-
-        [Export] private Sprite2D explosion;
 
         private Timer timer = new Timer();
 
-        private Vector2 lScreenSize;
-
         private Vector2 finalPositionOfSo;
-
-        private bool animationIsRunning = false;
-        private bool animationWantToStop = false;
 
         private Vector2 posInitK;
         private Vector2 posInitA;
+
+        private bool animationIsRunning = false;
+        private bool animationWantToStop = false;
 
         private Tween tween;
 
         public override void _Ready()
 		{
-            lScreenSize = GetWindow().Size;
             finalPositionOfSo = so.Position;
 
-            so.Position = new Vector2(lScreenSize.X / 2, 18);
+            so.Position = new Vector2(title.Size.X / 2, 18);
             posInitK = letterK.Position;
             posInitA = letterA.Position;
 
@@ -83,7 +79,7 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void MoreO()
         {
-            while (so.Size.X < lScreenSize.X - 200)
+            while (so.Size.X < title.Size.X - 200)
             {
                 so.Text += "o";
                 return;
