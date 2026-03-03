@@ -35,7 +35,6 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-			GridManager.GetInstance().ChangeLevel(0);
 
 		}
 
@@ -67,12 +66,18 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-		public void PrintList<T>(List<T> pList)
+		public void PrintList<T>(List<T> pList, char pSeparator =';')
 		{
+			if (pList.Count == 0)
+			{
+				GD.Print("Liste de type " + typeof(List<T>) + " est vide.");
+				return;
+			}
+
             string lRes = "";
             foreach (T lCell in pList)
             {
-                lRes += lCell.ToString();
+                lRes += lCell.ToString() + pSeparator;
             }
             GD.Print(lRes);
         }

@@ -12,14 +12,7 @@ namespace Com.IsartDigital.Sokoban
     {
         private Vector2I explosionOriginPos = new Vector2I(0, 0);
 
-        private List<Vector2I> explosionTilesPos = new List<Vector2I>
-        {
-            //new Vector2I(1, 0),
-            //new Vector2I(2, 0),
-            //new Vector2I(0, -1),
-            //new Vector2I(0, -2),
-            //new Vector2I(0, -3),
-        };
+        
 
         private List<List<int>> explosionMatrix = new List<List<int>> { };
 
@@ -32,21 +25,21 @@ namespace Com.IsartDigital.Sokoban
         private Vector2I gridSize = new Vector2I(0, 0);
         
 
-        public Bomb()
+        public Bomb(List<Vector2I> lExplosionTilesPos)
         {
-            Explosion();
-
+            GetMinMax(lExplosionTilesPos);
+            GetGridSize();
+            CreateExplosionMatrice();
+            PutExplosionInMatrix(lExplosionTilesPos);
         }
        
 
         private void Explosion()
         {
-            GetMinMax(explosionTilesPos);
-            GetGridSize();
-            CreateExplosionMatrice();
-            PutExplosionInMatrix();
+
             //PrintListOfList(explosionMatrix);
         }
+
         private void CreateExplosionMatrice()
         {
             for (int i = 0; i < gridSize.Y; i++)
@@ -62,19 +55,21 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-        private void PutExplosionInMatrix()
+        private void PutExplosionInMatrix(List<Vector2I> pExplosionTilePos)
         {
             Vector2I lOriginPos = new Vector2I(Mathf.Abs(minX), Mathf.Abs(minY));
             //GD.Print(lOriginPos);
 
             //GD.Print(explosionMatrice[lOriginPos.X][lOriginPos.Y]);
 
-            explosionMatrix[lOriginPos.Y][lOriginPos.X] = 2;
 
-            foreach (Vector2I lPos in explosionTilesPos)
+            foreach (Vector2I lPos in pExplosionTilePos)
             {
                 explosionMatrix[lOriginPos.Y + lPos.Y][lOriginPos.X + lPos.X] = 1;
             }
+
+            explosionMatrix[lOriginPos.Y][lOriginPos.X] = 2;
+
         }
 
         private void GetGridSize()
@@ -99,18 +94,22 @@ namespace Com.IsartDigital.Sokoban
 
         }
 
-        public void PrintListOfList<T>(List<List<T>> pListOfList)
+
+        public override string ToString()
         {
-            foreach (List<T> lRow in pListOfList)
+            string lRes = "";
+
+            foreach (List<int> lRow in explosionMatrix)
             {
-                string lRes = "\n";
-                foreach (T lCell in lRow)
+                string lRowRes = "";
+                foreach (int lCell in lRow)
                 {
-                    lRes += lCell.ToString() + " ";
+                    lRowRes += lCell + ",";
                 }
-                GD.Print(lRes);
+                lRes += lRowRes + "\n";
             }
+
+            return lRes;
         }
-        
     }
 }

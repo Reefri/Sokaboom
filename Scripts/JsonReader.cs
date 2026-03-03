@@ -28,6 +28,8 @@ namespace Com.IsartDigital.Sokoban
 
             List<T> lItems = JsonSerializer.Deserialize<List<T>>(lJsonString, lOptions);
 
+            lFile.Close();
+
             return lItems;
         }
     }

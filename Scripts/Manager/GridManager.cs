@@ -40,46 +40,15 @@ namespace Com.IsartDigital.Sokoban
 		public void ChangeLevel(int pIndex)
 		{
 			currentLevel = GetLevel(pIndex);
-
-
-
-			GD.Print(currentLevel);
 		}
 
-		public Level GetLevel(int pIndex)
+		private Level GetLevel(int pIndex)
 		{
 			Level lLevel =	JsonReader.ReadJson<Level>(JSON_PATH)[pIndex];
+
 
 			return lLevel;
 		}
 
-
-
-
-		//public bool IsWin()
-		//{
-
-		//	foreach ((int,int) lPosition in targetList)
-		//	{
-		//		if (levelGrid[lPosition.Item2][lPosition.Item1] != ObjectChar.BOX) return false;
-		//	}
-
-		//	int lCountBoxes = 0;
-
-		//	foreach (List<char> lRow in levelGrid)
-		//	{
-		//		foreach (char lElement in lRow)
-		//		{
-		//			if (lElement == ObjectChar.BOX)
-		//			{
-		//				lCountBoxes++;
-		//			}
-		//		}
-		//	}
-
-		//	return lCountBoxes == targetList.Count;
-
-		//}
-
-    }
+	}
 }
