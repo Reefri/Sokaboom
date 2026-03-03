@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Text.Json;
 
 // Author : Ethan Masse
 
@@ -32,9 +34,14 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			base._Ready();
+
+			GridManager.GetInstance().ChangeLevel(0);
+
 		}
 
-		public override void _Process(double pDelta)
+
+
+        public override void _Process(double pDelta)
 		{
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
@@ -45,5 +52,29 @@ namespace Com.IsartDigital.Sokoban
 			instance = null;
 			base.Dispose(pDisposing);
 		}
-	}
+
+
+        public void PrintListOfList<T>(List<List<T>> pListOfList)
+        {
+            foreach (List<T> lRow in pListOfList)
+            {
+                string lRes = "";
+                foreach (T lCell in lRow)
+                {
+                    lRes += lCell.ToString();
+                }
+                GD.Print(lRes);
+            }
+        }
+
+		public void PrintList<T>(List<T> pList)
+		{
+            string lRes = "";
+            foreach (T lCell in pList)
+            {
+                lRes += lCell.ToString();
+            }
+            GD.Print(lRes);
+        }
+    }
 }
