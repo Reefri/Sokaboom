@@ -4,33 +4,14 @@ using System.Globalization;
 
 // Author : Ethan Masse
 
-namespace Com.IsartDigital.Sokoban.UI
+namespace Com.IsartDigital.Sokoban.UI.Password
 {
 	public partial class TextEditPassword : LineEdit
 	{
-		/*
-		public override void _Ready()
-		{
-
-		}
-
-		public override void _Process(double pDelta)
-		{
-			float lDelta = (float)pDelta;
-
-		}
-		*/
-		private void OnPressed()
+		private void SecretOnPressed()
 		{
 			if (Secret) Secret = false;
 			else Secret = true;
 		}
-
-		/*
-        protected override void Dispose(bool pDisposing)
-		{
-
-		}
-		*/
 	}
 }
