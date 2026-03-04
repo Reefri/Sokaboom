@@ -32,10 +32,14 @@ offset_bottom = 90.0
 theme_override_font_sizes/font_size = 50
 text = "UNLOCK"
 
-[node name="allButtons" type="Node2D" parent="."]
-position = Vector2(20, 0)
+[node name="allButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_right = 20.0
 
 [node name="tutorial" type="Button" parent="allButtons"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
