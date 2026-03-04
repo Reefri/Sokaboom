@@ -35,8 +35,12 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
+            GridManager.GetInstance().ChangeLevel(0);
 
-		}
+            Bomb bomb = GridManager.GetInstance().currentLevel.bombs[0];
+
+			bomb.Explode(new Vector2I(2	, 2));
+        }
 
 
 

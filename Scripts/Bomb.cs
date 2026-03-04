@@ -1,3 +1,4 @@
+using Com.IsartDigital.ProjectName;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -33,12 +34,6 @@ namespace Com.IsartDigital.Sokoban
             PutExplosionInMatrix(lExplosionTilesPos);
         }
        
-
-        private void Explosion()
-        {
-
-            //PrintListOfList(explosionMatrix);
-        }
 
         private void CreateExplosionMatrice()
         {
@@ -92,6 +87,12 @@ namespace Com.IsartDigital.Sokoban
 
             //GD.Print("\nmin x : " + minX, "\nmax x : " + maxX, "\nmin y : " + minY, "\nmax y : " + maxY);
 
+        }
+
+        public void Explode(Vector2I pPosition)
+        {
+            BombPattern.Create(explosionMatrix,pPosition);
+            GD.Print(this);
         }
 
 

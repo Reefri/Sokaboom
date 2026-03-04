@@ -42,12 +42,13 @@ namespace Com.IsartDigital.Sokoban
         private List<List<List<int>>> bombExplosionTilesPos;
         public List<List<List<int>>> BombExplosionTilesPos
         { 
-            private get 
+            get 
             {
                 return bombExplosionTilesPos; 
             }
             set
             {
+
                 if (!isJSONParse)
                 {
                     GD.Print("Ce champs et à présent en privé !");
@@ -57,6 +58,7 @@ namespace Com.IsartDigital.Sokoban
                 isJSONParse = false;
 
                 bombExplosionTilesPos = value;
+
 
                 bombs = new List<Bomb>();
 

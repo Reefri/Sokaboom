@@ -12,7 +12,7 @@ namespace Com.IsartDigital.Sokoban
 	{
 		static private GridManager instance;
 
-		private Level currentLevel;
+		public Level currentLevel;
 
 		private const string JSON_PATH = "res://Json/Levels.json";
 
