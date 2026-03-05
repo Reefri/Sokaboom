@@ -1,18 +1,24 @@
-{
-	"Reefri" :
-		{
-			"password" : "mdp",
-			"score" :
-				[
-					0,
-					1,
-					3	
-				],
-			"bestPar" :
-				[
-					5,
-					10,
-					0
-				]
-		}
-}
+[
+	{
+		"id" : "Reefri",
+		"password" : 193499110,
+		"score" :
+			[
+				0,
+				1,
+				3	
+			],
+		"bestPar" :
+			[
+				5,
+				10,
+				0
+			],
+		"lockedLevels" :
+			[
+				true,
+				false,
+				false
+			]
+	}
+]

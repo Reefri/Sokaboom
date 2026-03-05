@@ -14,7 +14,7 @@ namespace Com.IsartDigital.Sokoban
 
 		private Level currentLevel;
 
-		private const string JSON_PATH = "res://Json/Levels.json";
+		private const string JSON_PATH = "Levels.json";
 
 		public int levelIndex = 0;
 
@@ -44,8 +44,7 @@ namespace Com.IsartDigital.Sokoban
 
 		private Level GetLevel(int pIndex)
 		{
-			Level lLevel =	JsonReader.ReadJson<Level>(JSON_PATH)[pIndex];
-
+			Level lLevel =	JsonReaderWriter.ReadJsonToList<Level>(JSON_PATH)[pIndex];
 
 			return lLevel;
 		}

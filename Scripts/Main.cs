@@ -35,8 +35,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-
-		}
+        }
 
 
 
