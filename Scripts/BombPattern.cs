@@ -21,6 +21,16 @@ namespace Com.IsartDigital.Sokoban {
 
         public override void _Ready()
 		{
+            //print these in main _Ready for debug
+            #region toTestPattern
+			//GridManager.GetInstance().ChangeLevel(0);
+
+            //Bomb bomb = GridManager.GetInstance().currentLevel.bombs[0];
+
+            //bomb.Explode(new Vector2I(3, 3));
+			#endregion
+
+
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
                 for (int j = 0; j < explosionMatrix[i].Count; j++)
@@ -43,16 +53,7 @@ namespace Com.IsartDigital.Sokoban {
 			{
 				for (int j = 0; j < explosionMatrix[i].Count; j++)
 				{
-					//if (explosionMatrix[i][j] == 2)
-					//{
-					//	originPos = new Vector2I(j, i);
 
-     //                   Node2D lPattern = (Node2D)toPlaceOnExplosion.Instantiate();
-					//	lPattern.Position = Position;
-					//	lPattern.Modulate = new Color(1, 0, 0);
-     //                   AddChild(lPattern);
-
-     //               }
 					if (explosionMatrix[i][j] == 1)
 					{
 
@@ -80,7 +81,7 @@ namespace Com.IsartDigital.Sokoban {
 		{
 			BombPattern bombPattern = new BombPattern();
 			bombPattern.explosionMatrix = pExplosionMatrix;
-			bombPattern.Position = pPosition * TILE_LENGTH;
+			bombPattern.Position = (pPosition * TILE_LENGTH)/2;
 
 			Main.GetInstance().AddChild(bombPattern);
 
