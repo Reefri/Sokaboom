@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8a4ecwgtperg"]
 
 [ext_resource type="Texture2D" uid="uid://baqqdfk122ne0" path="res://Assets/UI/eye/oeil(1).png" id="1_avoev"]
-[ext_resource type="Script" path="res://Scripts/Login.cs" id="1_b5yqg"]
-[ext_resource type="Script" path="res://Scripts/SecretButton.cs" id="3_jl43w"]
+[ext_resource type="Script" path="res://Scripts/UI/LoginUI.cs" id="1_b5yqg"]
+[ext_resource type="Script" path="res://Scripts/UI/SecretButton.cs" id="3_jl43w"]
 [ext_resource type="Texture2D" uid="uid://b5ifgvo56jcyi" path="res://Assets/UI/eye/oeil.png" id="4_xtyfr"]
 
 [node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation")]

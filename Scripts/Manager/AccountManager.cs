@@ -19,6 +19,14 @@ namespace Com.IsartDigital.Sokoban
 
 		public Account currentAccount;
 
+		public enum TestConnexionResult
+		{
+			Valid,
+			NotFound,
+			Incorrect
+		}
+		
+
         private AccountManager():base() 
 		{
 			if (instance != null)
@@ -38,7 +46,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-        public bool TestConnexion(string pId,string pPassWord)
+        public TestConnexionResult TestConnexion(string pId,string pPassWord)
 		{
             List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
 
@@ -49,22 +57,19 @@ namespace Com.IsartDigital.Sokoban
 				if (lAccountList[lIndex].Password == GD.Hash(pPassWord))
 				{
 					currentAccount = lAccountList[lIndex];
-					GD.Print("Connexion réussie !");
-					return true;
+					return TestConnexionResult.Valid;
 				}
 				else
 				{
-					GD.Print("Mot de passe incorrecte !");
-					return false;
+					return TestConnexionResult.Incorrect;
 				}
 			}
 				
 
-			GD.Print("Aucun compte n'a été trouvé avec le le pseudo :" +  pId);
-			return false;
+			return TestConnexionResult.NotFound;
 		}
 
-		public void Register(string pId, string pPassWord)
+		public bool Register(string pId, string pPassWord)
 		{
             List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
 
@@ -73,8 +78,7 @@ namespace Com.IsartDigital.Sokoban
 
             if (lIndex >= 0)
             {
-                GD.Print("Un compte existe déjà avec ce pseudo.");
-                return;
+                return false;
             }
 
 			lAccountList.Add(Account.Create(pId,GD.Hash(pPassWord)));
@@ -82,6 +86,7 @@ namespace Com.IsartDigital.Sokoban
 			
 			JsonReaderWriter.WirteListToJson(JSONFILE_PATH, lAccountList);
 
+			return true;
         }
 
 
