@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace Com.IsartDigital.Sokoban
 {
-    public partial class player : Area2D
+    public partial class Player : Area2D
     {
-        static private player instance;
+        static private Player instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/player.tscn");
 
         //public List<List<char>> exempleList = new List<List<char>>();
@@ -20,20 +20,20 @@ namespace Com.IsartDigital.Sokoban
         private Vector2 right = Vector2.Right * DISTANCE_RANGE;
         private static Vector2 lastPosition;
 
-        private player() : base()
+        private Player() : base()
         {
             if (instance != null)
             {
                 QueueFree();
-                GD.Print(nameof(player) + " Instance already exist, destroying the last added.");
+                GD.Print(nameof(Player) + " Instance already exist, destroying the last added.");
                 return;
             }
             instance = this;
         }
 
-        static public player GetInstance()
+        static public Player GetInstance()
         {
-            if (instance == null) instance = (player)factory.Instantiate();
+            if (instance == null) instance = (Player)factory.Instantiate();
             return instance;
         }
 

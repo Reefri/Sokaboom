@@ -33,7 +33,11 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Ready()
 		{
+			GridManager.GetInstance().ChangeLevel(0);
+			GD.Print(GridManager.GetInstance().CurrentLevel);
 			base._Ready();
+
+
 
         }
 

@@ -2,14 +2,12 @@
 
 namespace Com.IsartDigital.Sokoban
 {
-    public static class ObjectChar
+    public enum ObjectChar
     {
-
-        public const char BOX = '$';
-        public const char PLAYER = '@';
-        public const char TARGET = '.';
-        public const char EMPTY = ' ';
-
-
+        BOX = '$',
+        WALL = '#',
+        PLAYER = '@',
+        TARGET = '.',
+        EMPTY = ' '
     }
 }
