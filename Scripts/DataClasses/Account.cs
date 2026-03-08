@@ -1,0 +1,73 @@
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
+
+// Author : Ethan Masse
+
+namespace Com.IsartDigital.Sokoban 
+{
+	public partial class Account
+	{
+
+		public string Id 
+		{ get; set; }
+		public int Password { get; set; }
+		public List<int> Score { get; set; }
+		public List<int> BestPar { get; set; }
+		public List<bool> LockedLevels { get; set; }
+
+		public const string SCORE_STRING = "score";
+        public const string PAR_STRING = "par";
+        public const string LOCKEDLEVELS_STRING = "lockedLevels";
+
+
+		public override string ToString()
+		{
+			string lRes = "Informations sur le joueur : \n";
+			lRes += "Pseudo : " + Id + "\n";
+			lRes += "Mdp : " + Password + "\n";
+
+			string lTempRes = "";
+			for (int i = 0; i < Score.Count; i++)
+			{
+				lTempRes += Score[i] + ", ";
+			}
+
+			lRes += "Scores : " + lTempRes + "\n";
+
+			lTempRes = "";
+			for (int i = 0; i < BestPar.Count; i++)
+			{
+				lTempRes += BestPar[i] + ", ";
+			}
+
+			lRes += "Par : " + lTempRes + "\n";
+
+
+			lTempRes = "";
+			for (int i = 0; i < LockedLevels.Count; i++)
+			{
+				lTempRes += LockedLevels[i] + ", ";
+			}
+
+			lRes += "Niveaux vérouiller : " + lTempRes + "\n";
+
+
+			return lRes;
+		}
+
+		public static Account Create(string pId,int pPassword)
+		{
+			Account lNewAccount = new Account();
+			lNewAccount.Id = pId;
+			lNewAccount.Password = pPassword;
+			lNewAccount.Score = new List<int> ();
+            lNewAccount.BestPar = new List<int>();
+            lNewAccount.LockedLevels = new List<bool>();
+
+			return lNewAccount;
+        }
+
+
+    }
+}
