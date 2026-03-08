@@ -12,6 +12,11 @@ namespace Com.IsartDigital.Sokoban
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Player.tscn");
 
         private const float ANIM_TIME = 0.15f;
+        private string PLAYER_ACTION_RIGHT = "right";
+        private string PLAYER_ACTION_LEFT = "left";
+        private string PLAYER_ACTION_UP = "up";
+        private string PLAYER_ACTION_DOWN = "down";
+
 
         public static Vector2I up = (Vector2I)Vector2.Up * States.DISTANCE_RANGE;
         public static Vector2I down = (Vector2I)Vector2.Down * States.DISTANCE_RANGE;
@@ -19,7 +24,7 @@ namespace Com.IsartDigital.Sokoban
         public static Vector2I right = (Vector2I)Vector2.Right * States.DISTANCE_RANGE;
 
         private static Vector2 lastPosition;
-        private static Vector2I lastDirection;
+        public static Vector2I lastDirection;
 
         private List<Vector2> historicPositions = new List<Vector2>();
         private Timer timer = new Timer();
@@ -62,9 +67,9 @@ namespace Com.IsartDigital.Sokoban
 
             if (Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector) == null) return false;
 
-            else if ((bool)(Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData("Interactible")))
+            else if ((bool)(Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData(Map.GetInstance().INTERACTABLE)))
             {
-                if ((bool)(Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData("Container")))
+                if ((bool)(Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData(Map.GetInstance().CONTAINER)))
                 {
                     return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
                 }
@@ -81,7 +86,10 @@ namespace Com.IsartDigital.Sokoban
             lastPosition = GlobalPosition;
             historicPositions.Add(lastPosition);
 
-            if (Input.IsActionJustPressed("right") && !CheckTheMove((Vector2I)Vector2.Right) )
+            if (Box.animPlaying) return;
+
+
+            if (Input.IsActionJustPressed(PLAYER_ACTION_RIGHT) && !CheckTheMove((Vector2I)Vector2.Right) )
             {
                 if (Box.animPlaying)
                 {
@@ -93,7 +101,7 @@ namespace Com.IsartDigital.Sokoban
                 historicPositions.Add(lastPosition);
             }
 
-            else if (Input.IsActionJustPressed("left")&& !CheckTheMove((Vector2I)Vector2.Left) )
+            else if (Input.IsActionJustPressed(PLAYER_ACTION_LEFT)&& !CheckTheMove((Vector2I)Vector2.Left) )
             {
                 if (Box.animPlaying)
                 {
@@ -104,7 +112,7 @@ namespace Com.IsartDigital.Sokoban
                 Position += left;
                 historicPositions.Add(lastPosition);
             }
-            else if (Input.IsActionJustPressed("up") && !CheckTheMove((Vector2I)Vector2.Up))
+            else if (Input.IsActionJustPressed(PLAYER_ACTION_UP) && !CheckTheMove((Vector2I)Vector2.Up))
             {
                 if (Box.animPlaying)
                 {
@@ -115,7 +123,7 @@ namespace Com.IsartDigital.Sokoban
                 Position += up;
                 historicPositions.Add(lastPosition);
             }
-            else if (Input.IsActionJustPressed("down") && !CheckTheMove((Vector2I)Vector2.Down) )
+            else if (Input.IsActionJustPressed(PLAYER_ACTION_DOWN) && !CheckTheMove((Vector2I)Vector2.Down) )
             {
                 if (Box.animPlaying)
                 {

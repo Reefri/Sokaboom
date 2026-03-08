@@ -19,45 +19,47 @@ namespace Com.IsartDigital.Sokoban
 		private const string GO_RIGHT_ANIM = "goRight";
 		private const string GO_LEFT_ANIM = "goLeft";
 
+		private const int ZERO = 0;
+		private const int ONE = 1;
+
 		public static bool animPlaying = false;
 		private static string animToPlay;
-		private static Vector2 movingTheBox = new Vector2(64,64);
+		private static Vector2 movingTheBox = new Vector2(States.DISTANCE_RANGE,States.DISTANCE_RANGE);
 		public override void _Ready()
 		{
 
 			animPlaying = true;
-			GD.Print("Playing");
             anim.Play(animToPlay);
             moveDust.Emitting = true;
             anim.AnimationFinished += EndOfAnimation;
         }
 
-        private void EndOfAnimation(StringName animName)
+        private void EndOfAnimation(StringName pAnimName)
         {
+            Map.GetInstance().SetCell( ONE, (Vector2I)Position/States.DISTANCE_RANGE+ Player.lastDirection/States.DISTANCE_RANGE, ZERO, new Vector2I(ONE, ZERO) );
             animPlaying = false;
             QueueFree();
         }
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
 		{
-			if (Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection) == null)
+			if (Map.GetInstance().GetCellTileData( ONE, pCellPosition + pDirection) == null )
 			{
-                Map.GetInstance().SetCell(1, pCellPosition, 0, new Vector2I(0, 0));
+                Map.GetInstance().SetCell( ONE, pCellPosition, ZERO, new Vector2I(ZERO, ZERO) );
                 Create(pCellPosition , pDirection);
-                Map.GetInstance().SetCell(1, pCellPosition + pDirection, 0, new Vector2I(6, 0));
+                //Map.GetInstance().SetCell(1, pCellPosition + pDirection, 0, new Vector2I(1, 0));
                 return false;
 			}
 
-
-			else if ((bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Container") ||
-				(bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Wall"))
+			
+			else if ( (bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Container") ||
+				(bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Wall") )
 			{
 				return true;
 			}
 			else
 			{
-                Map.GetInstance().SetCell(1, pCellPosition, 0, new Vector2I(0, 0));
-                Map.GetInstance().SetCell(1, pCellPosition + pDirection, 0, new Vector2I(6, 0));
+                Map.GetInstance().SetCell(1, pCellPosition, ZERO, new Vector2I(ZERO, ZERO));
                 Create(pCellPosition, pDirection);
                 return false;
 			}

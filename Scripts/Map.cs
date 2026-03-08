@@ -13,12 +13,15 @@ namespace Com.IsartDigital.Sokoban
         private AStarGrid2D aStarGrid = new AStarGrid2D();
         public Array<Vector2I> cells ;
 
+		public string CONTAINER = "Container";
+		public string WALL = "Wall";
+		public string INTERACTABLE = "Interactable";
+
         private Map():base() 
 		{
 			if (instance != null)
 			{
 				QueueFree();
-				GD.Print(nameof(Map) + " Instance already exist, destroying the last added.");
 				return;
 			}
 			instance = this;	
