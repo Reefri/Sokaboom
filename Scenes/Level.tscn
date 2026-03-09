@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://d1pcf61fmfmtm" path="res://Ressources/TopDown.tres" id="1_e6ljl"]
 
-[node name="TileMap" type="TileMap"]
+[node name="Level" type="TileMap"]
 y_sort_enabled = true
 tile_set = ExtResource("1_e6ljl")
 format = 2

@@ -53,7 +53,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Ready()
 		{
-			GridManager.GetInstance().ChangeLevel(0);
+			GridManager.GetInstance().ChangeLevel(1);
 			currentLevel = GridManager.GetInstance().CurrentLevel;
 			
 			CreateLevel();
@@ -78,7 +78,6 @@ namespace Com.IsartDigital.Sokoban
 
 			Vector2I lPlayerPosition = new Vector2I(0,0);
 
-			bool isGroundLayer;
 
 			for (int i=0; i < currentLevel.Map.Count; i++)
 			{
