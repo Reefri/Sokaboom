@@ -128,14 +128,14 @@ namespace Com.IsartDigital.Sokoban
             {
                 for (int j = 0; j < Map[i].Length; j++)
                 {
-                    if (Map[i][j] == ObjectChar.TARGET)
+                    if (Map[i][j] == (int)ObjectChar.TARGET)
                     {
                         targetsPos.Add(new Vector2I(i, j));
                     }
 
                     if (Map[i][j] >= '0' && Map[i][j] <= '9')
                     {
-                        int lIndex = (int)(Map[i][j] - '0');
+                        int lIndex = Map[i][j] - '0';
 
                         while (bombsPos.Count < lIndex+1)
                         {
