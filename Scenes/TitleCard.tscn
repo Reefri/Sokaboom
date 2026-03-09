@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw85b1nive3ah"]
 
-[ext_resource type="Script" path="res://Scripts/TitleCard.cs" id="1_fsxv4"]
+[ext_resource type="Script" path="res://Scripts/UI/TitleCard.cs" id="1_fsxv4"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="1_md1yj"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_qhq3v"]
 

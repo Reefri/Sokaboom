@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvruhy2dpei86"]
 
-[ext_resource type="Script" path="res://Scripts/LevelSelect.cs" id="1_8o5eu"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelSelect.cs" id="1_8o5eu"]
 
 [node name="LevelSelect" type="CanvasLayer" node_paths=PackedStringArray("backButton", "unlockButton", "allButtons")]
 script = ExtResource("1_8o5eu")
@@ -32,10 +32,14 @@ offset_bottom = 90.0
 theme_override_font_sizes/font_size = 50
 text = "UNLOCK"
 
-[node name="allButtons" type="Node2D" parent="."]
-position = Vector2(20, 0)
+[node name="allButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_right = 20.0
 
 [node name="tutorial" type="Button" parent="allButtons"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -48,6 +52,7 @@ theme_override_font_sizes/font_size = 25
 text = "Tutorial"
 
 [node name="level1" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 120.0
 offset_top = 175.0
 offset_right = 243.0
@@ -57,6 +62,7 @@ disabled = true
 text = "Level 1"
 
 [node name="level2" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 370.0
 offset_top = 175.0
 offset_right = 493.0
@@ -66,6 +72,7 @@ disabled = true
 text = "Level 2"
 
 [node name="level3" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 620.0
 offset_top = 175.0
 offset_right = 743.0
@@ -75,6 +82,7 @@ disabled = true
 text = "Level 3"
 
 [node name="level4" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 870.0
 offset_top = 175.0
 offset_right = 993.0
@@ -84,6 +92,7 @@ disabled = true
 text = "Level 4"
 
 [node name="level5" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 120.0
 offset_top = 325.0
 offset_right = 243.0
@@ -93,6 +102,7 @@ disabled = true
 text = "Level 5"
 
 [node name="level6" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 370.0
 offset_top = 325.0
 offset_right = 493.0
@@ -102,6 +112,7 @@ disabled = true
 text = "Level 6"
 
 [node name="level7" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 620.0
 offset_top = 325.0
 offset_right = 743.0
@@ -111,6 +122,7 @@ disabled = true
 text = "Level 7"
 
 [node name="level8" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 870.0
 offset_top = 325.0
 offset_right = 993.0
@@ -120,6 +132,7 @@ disabled = true
 text = "Level 8"
 
 [node name="level9" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 120.0
 offset_top = 475.0
 offset_right = 243.0
@@ -129,6 +142,7 @@ disabled = true
 text = "Level 9"
 
 [node name="level10" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 370.0
 offset_top = 475.0
 offset_right = 493.0
@@ -138,6 +152,7 @@ disabled = true
 text = "Level 10"
 
 [node name="level11" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 620.0
 offset_top = 475.0
 offset_right = 743.0
@@ -147,6 +162,7 @@ disabled = true
 text = "Level 11"
 
 [node name="level12" type="Button" parent="allButtons"]
+layout_mode = 0
 offset_left = 870.0
 offset_top = 475.0
 offset_right = 993.0

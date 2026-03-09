@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8a4ecwgtperg"]
+[gd_scene load_steps=5 format=3 uid="uid://b8a4ecwgtperg"]
 
-[ext_resource type="Script" path="res://Scripts/TextEditPassword.cs" id="1_784yv"]
 [ext_resource type="Texture2D" uid="uid://baqqdfk122ne0" path="res://Assets/UI/eye/oeil(1).png" id="1_avoev"]
-[ext_resource type="Script" path="res://Scripts/Login.cs" id="1_b5yqg"]
+[ext_resource type="Script" path="res://Scripts/UI/LoginUI.cs" id="1_b5yqg"]
+[ext_resource type="Script" path="res://Scripts/UI/SecretButton.cs" id="3_jl43w"]
+[ext_resource type="Texture2D" uid="uid://b5ifgvo56jcyi" path="res://Assets/UI/eye/oeil.png" id="4_xtyfr"]
 
-[node name="Login" type="Control" node_paths=PackedStringArray("menuInscription", "menuLogin", "pseudoLogin", "passwordLogin", "pseudoInscription", "passwordInscription")]
+[node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,12 +13,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b5yqg")
-menuInscription = NodePath("Font/Inscription")
-menuLogin = NodePath("Font/Login")
-pseudoLogin = NodePath("Font/Login/FontLogin/LineEditPseudo")
-passwordLogin = NodePath("Font/Login/FontLogin/LineEditPassWord")
-pseudoInscription = NodePath("Font/Inscription/FontInscription/LineEditPseudo")
-passwordInscription = NodePath("Font/Inscription/FontInscription/LineEditPassWord")
+font = NodePath("Font/Login_Inscription/Font")
+title = NodePath("Font/Login_Inscription/Font/Title")
+pseudo = NodePath("Font/Login_Inscription/Font/LinePseudo")
+password = NodePath("Font/Login_Inscription/Font/LinePassWord")
+confirmPassword = NodePath("Font/Login_Inscription/Font/LineConfirm")
+buttonSwitch = NodePath("Font/Login_Inscription/Font/Swtich")
+buttonValidation = NodePath("Font/Login_Inscription/Font/connexion_inscription")
 
 [node name="Font" type="ColorRect" parent="."]
 layout_mode = 1
@@ -34,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0923971, 0.0923971, 0.0923971, 1)
 
-[node name="Login" type="Control" parent="Font"]
+[node name="Login_Inscription" type="Control" parent="Font"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FontLogin" type="ColorRect" parent="Font/Login"]
+[node name="Font" type="ColorRect" parent="Font/Login_Inscription"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0.396078, 1)
 
-[node name="Login" type="Label" parent="Font/Login/FontLogin"]
+[node name="Title" type="Label" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -66,7 +68,7 @@ grow_horizontal = 2
 text = "Login :"
 horizontal_alignment = 1
 
-[node name="LineEditPseudo" type="LineEdit" parent="Font/Login/FontLogin"]
+[node name="LinePseudo" type="LineEdit" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -80,7 +82,7 @@ placeholder_text = "Pseudo"
 alignment = 1
 caret_blink = true
 
-[node name="LineEditPassWord" type="LineEdit" parent="Font/Login/FontLogin"]
+[node name="LinePassWord" type="LineEdit" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -95,9 +97,45 @@ alignment = 1
 caret_blink = true
 secret = true
 secret_character = "*"
-script = ExtResource("1_784yv")
 
-[node name="connexion" type="Button" parent="Font/Login/FontLogin"]
+[node name="Button Secret" type="Button" parent="Font/Login_Inscription/Font/LinePassWord"]
+layout_mode = 1
+offset_left = 201.0
+offset_top = -4.0
+offset_right = 721.0
+offset_bottom = 516.0
+scale = Vector2(0.07, 0.07)
+icon = ExtResource("1_avoev")
+flat = true
+script = ExtResource("3_jl43w")
+
+[node name="LineConfirm" type="LineEdit" parent="Font/Login_Inscription/Font"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 124.0
+offset_right = 100.0
+offset_bottom = 155.0
+grow_horizontal = 2
+placeholder_text = "Confirm Password"
+alignment = 1
+secret = true
+secret_character = "*"
+
+[node name="Button Secret" type="Button" parent="Font/Login_Inscription/Font/LineConfirm"]
+layout_mode = 1
+offset_left = 201.0
+offset_top = -4.0
+offset_right = 721.0
+offset_bottom = 516.0
+scale = Vector2(0.07, 0.07)
+icon = ExtResource("4_xtyfr")
+flat = true
+script = ExtResource("3_jl43w")
+
+[node name="connexion_inscription" type="Button" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -105,14 +143,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -150.0
-offset_top = -100.0
+offset_top = -90.0
 offset_right = 150.0
-offset_bottom = -25.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Connecte toi"
 
-[node name="inscription" type="Button" parent="Font/Login/FontLogin"]
+[node name="Swtich" type="Button" parent="Font/Login_Inscription/Font"]
+self_modulate = Color(0, 0.85098, 0.972549, 1)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -120,123 +159,8 @@ anchor_bottom = 1.0
 offset_top = -22.0
 offset_right = 60.0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 1, 0.972549, 1)
 theme_override_font_sizes/font_size = 10
 text = "Inscription"
 flat = true
 
-[node name="Button" type="Button" parent="Font/Login/FontLogin"]
-layout_mode = 0
-offset_left = 354.0
-offset_top = 83.0
-offset_right = 874.0
-offset_bottom = 603.0
-scale = Vector2(0.07, 0.07)
-icon = ExtResource("1_avoev")
-flat = true
-
-[node name="Inscription" type="Control" parent="Font"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FontInscription" type="ColorRect" parent="Font/Inscription"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -125.0
-offset_right = 250.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 1, 0.972549, 1)
-
-[node name="Login" type="Label" parent="Font/Inscription/FontInscription"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Inscription :"
-horizontal_alignment = 1
-
-[node name="LineEditPseudo" type="LineEdit" parent="Font/Inscription/FontInscription"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 46.0
-offset_right = 100.0
-offset_bottom = 77.0
-grow_horizontal = 2
-placeholder_text = "Pseudo"
-alignment = 1
-caret_blink = true
-
-[node name="LineEditPassWord" type="LineEdit" parent="Font/Inscription/FontInscription"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 85.0
-offset_right = 100.0
-offset_bottom = 116.0
-grow_horizontal = 2
-placeholder_text = "PassWord"
-alignment = 1
-caret_blink = true
-secret = true
-secret_character = "*"
-script = ExtResource("1_784yv")
-
-[node name="inscription" type="Button" parent="Font/Inscription/FontInscription"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = -25.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Inscription"
-
-[node name="return" type="Button" parent="Font/Inscription/FontInscription"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -22.0
-offset_right = 60.0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0.396078, 1)
-theme_override_font_sizes/font_size = 10
-text = "Je suis déja inscrit"
-flat = true
-
-[node name="Button" type="Button" parent="Font/Inscription/FontInscription"]
-layout_mode = 0
-offset_left = 354.0
-offset_top = 83.0
-offset_right = 874.0
-offset_bottom = 603.0
-scale = Vector2(0.07, 0.07)
-icon = ExtResource("1_avoev")
-flat = true
-
-[connection signal="pressed" from="Font/Login/FontLogin/inscription" to="." method="InscriptionOnPressed"]
-[connection signal="pressed" from="Font/Login/FontLogin/Button" to="Font/Login/FontLogin/LineEditPassWord" method="OnPressed"]
-[connection signal="pressed" from="Font/Inscription/FontInscription/return" to="." method="LoginOnPressed"]
-[connection signal="pressed" from="Font/Inscription/FontInscription/Button" to="Font/Inscription/FontInscription/LineEditPassWord" method="OnPressed"]
+[connection signal="pressed" from="Font/Login_Inscription/Font/Swtich" to="." method="SwitchOnPressed"]
