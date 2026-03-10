@@ -32,8 +32,6 @@ namespace Com.IsartDigital.Sokoban.UI
         private const string PASSWORD_CONFIRM = "Enregistrement réussi !";
         private const string INCORECT_PASSWORD = "Votre mot de passe est incorrecte.";
 
-        private const string TITLE_SCREEN_PATH = "res://Scenes/TitleCard.tscn";
-
         private bool isLogin = true;
 
         public override void _Ready()
@@ -120,7 +118,6 @@ namespace Com.IsartDigital.Sokoban.UI
                 case AccountManager.TestConnexionResult.Valid:
                     statut.Text = "Connexion réussi ! Bienvenue " + pseudo.Text;
                     statut.SelfModulate = green;
-
                     GoToTitle();
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
@@ -132,7 +129,7 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void GoToTitle()
         {
-            GetTree().ChangeSceneToFile(TITLE_SCREEN_PATH);
+            GetTree().ChangeSceneToFile(UIManager.TITLE_SCREEN_PATH);
         }
 	}
 }

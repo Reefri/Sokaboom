@@ -10,9 +10,6 @@ namespace Com.IsartDigital.Sokoban
 		static private HelpMenu instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/HelpMenu.tscn");
 
-        private const string TITLE_SCREEN_PATH = "res://Scenes/TitleCard.tscn";
-        private const string LEVEL_SELECT_PATH = "res://Scenes/LevelSelect.tscn";
-
         public bool comeToMenu = true;
 
 		private HelpMenu():base() 
@@ -35,8 +32,6 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			base._Ready();
-
-			GD.Print(comeToMenu);
 		}
 
 		public override void _Process(double pDelta)
@@ -47,11 +42,16 @@ namespace Com.IsartDigital.Sokoban
 
 		private void ReturnPressed()
 		{
-			if (comeToMenu) GetTree().ChangeSceneToFile(TITLE_SCREEN_PATH);
-			else GD.Print("Va au Niveau Tuto"); //truc pour aller au niveau tuto
+			if (comeToMenu) GoToTitle();
+            else GD.Print("Va au Niveau Tuto"); //truc pour aller au niveau tuto
         }
 
-		protected override void Dispose(bool pDisposing)
+        private void GoToTitle()
+        {
+            GetTree().ChangeSceneToFile(UIManager.TITLE_SCREEN_PATH);
+        }
+
+        protected override void Dispose(bool pDisposing)
 		{
 			instance = null;
 			base.Dispose(pDisposing);
