@@ -81,9 +81,9 @@ namespace Com.IsartDigital.Sokoban {
 		{
 			BombPattern bombPattern = new BombPattern();
 			bombPattern.explosionMatrix = pExplosionMatrix;
-			bombPattern.Position = (pPosition * TILE_LENGTH)/2;
+			bombPattern.Position = (Vector2.One * TILE_LENGTH/2 + pPosition * TILE_LENGTH)/2;
 
-			Main.GetInstance().AddChild(bombPattern);
+			Main.GetInstance().CallDeferred("add_child", bombPattern);
 
 		}
 	}

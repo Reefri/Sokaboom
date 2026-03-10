@@ -28,7 +28,10 @@ namespace Com.IsartDigital.Sokoban
 
         private List<Vector2> historicPositions = new List<Vector2>();
         private Timer timer = new Timer();
-        
+
+        public bool holdingBomb = false;
+        public Bomb bombInHand;
+
         private Player() : base()
         {
             if (instance != null)
@@ -135,9 +138,23 @@ namespace Com.IsartDigital.Sokoban
                 Position += down;
             }
 
+            if (Input.IsKeyPressed(Key.A) && bombInHand != null)
+            {
+                ExplodeBombInHand();
+                bombInHand = null;
+            }
+
         }
 
-
+        private void ExplodeBombInHand()
+        {
+            if (bombInHand == null) return;
+            //else bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE - (Vector2I)Vector2.One * States.DISTANCE_RANGE/2);
+            else
+            {
+                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE);
+            }
+        }
         protected override void Dispose(bool pDisposing)
         {
             instance = null;
