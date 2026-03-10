@@ -14,6 +14,7 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private LineEdit confirmPassword;
         [Export] private Button buttonSwitch;
         [Export] private Button buttonValidation;
+        [Export] private Label statut;
 
         private const string TEXT_SWITCH_INSCRIPTION = "Already Register";
         private const string TEXT_VALIDATION_INSCRIPTION = "Register You";
@@ -22,6 +23,14 @@ namespace Com.IsartDigital.Sokoban.UI
         private const string TEXT_SWITCH_LOGIN = "Inscription";
         private const string TEXT_VALIDATION_LOGIN = "Connect You";
         private const string TEXT_TITLE_LOGIN = "Login :";
+
+        private Color green = new Color(0, 1, 0);
+        private Color yellow = new Color(1, 1, 0);
+        private Color red = new Color(1, 0, 0);
+
+        private const string PASSWORD_NOT_CONFIRM = "Le mot de passe ne correspond pas à la confirmation.";
+        private const string PASSWORD_CONFIRM = "Enregistrement réussi !";
+        private const string INCORECT_PASSWORD = "Votre mot de passe est incorrecte.";
 
         private bool isLogin = true;
 
@@ -87,13 +96,20 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             if (password.Text != confirmPassword.Text)
             {
-                GD.Print("Le mot de passe ne correspond pas à la confirmation.");
+                statut.Text = PASSWORD_NOT_CONFIRM;
+                statut.SelfModulate = yellow;
                 return;
             }
 
             if (AccountManager.GetInstance().Register(pseudo.Text,password.Text))
             {
-                GD.Print("Enregistrement réussi !");
+                statut.Text = PASSWORD_CONFIRM;
+                statut.SelfModulate = green;
+            }
+            else
+            {
+                statut.Text = "Le pseudo : " + pseudo.Text + " existe déjà, changé de pseudo ou connectez-vous !";
+                statut.SelfModulate = yellow;
             }
         }
 
@@ -102,14 +118,16 @@ namespace Com.IsartDigital.Sokoban.UI
             switch (AccountManager.GetInstance().TestConnexion(pseudo.Text,password.Text))
             {
                 case AccountManager.TestConnexionResult.Incorrect:
-                    GD.Print("Votre mot de passe est incorrecte.");
+                    statut.Text = INCORECT_PASSWORD;
+                    statut.SelfModulate = red;
                     break;
                 case AccountManager.TestConnexionResult.Valid:
-                    GD.Print("Connexion réussi ! Bienvenue "+pseudo.Text);
+                    statut.Text = "Connexion réussi ! Bienvenue " +pseudo.Text;
+                    statut.SelfModulate = green;
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
-                    GD.Print("Aucun compte n'a été trouvé avec le pseudo : "+pseudo.Text+". Si vous n'avez pas encore de compte, créez s'en un !");
-
+                    statut.Text = "Aucun compte n'a été trouvé avec le pseudo : " + pseudo.Text + " Si vous n'avez pas encore de compte, créez s'en un !";
+                    statut.SelfModulate = red;
                     break;
             }
         }

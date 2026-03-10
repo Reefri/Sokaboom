@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/SecretButton.cs" id="3_jl43w"]
 [ext_resource type="Texture2D" uid="uid://b5ifgvo56jcyi" path="res://Assets/UI/eye/oeil.png" id="4_xtyfr"]
 
-[node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation")]
+[node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation", "statut")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ password = NodePath("Font/Login_Inscription/Font/LinePassWord")
 confirmPassword = NodePath("Font/Login_Inscription/Font/LineConfirm")
 buttonSwitch = NodePath("Font/Login_Inscription/Font/Swtich")
 buttonValidation = NodePath("Font/Login_Inscription/Font/connexion_inscription")
+statut = NodePath("Font/Statut")
 
 [node name="Font" type="ColorRect" parent="."]
 layout_mode = 1
@@ -28,10 +29,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -262.5
-offset_top = -137.5
-offset_right = 262.5
-offset_bottom = 137.5
+offset_left = -275.0
+offset_top = -150.0
+offset_right = 275.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0923971, 0.0923971, 0.0923971, 1)
@@ -162,5 +163,19 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 10
 text = "Inscription"
 flat = true
+
+[node name="Statut" type="Label" parent="Font"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_right = 275.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Font/Login_Inscription/Font/Swtich" to="." method="SwitchOnPressed"]
