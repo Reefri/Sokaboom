@@ -5,8 +5,8 @@ using System;
 
 namespace Com.IsartDigital.Sokoban.UI 
 {
-	public partial class LoginUI : Control
-	{
+    public partial class LoginUI : Control
+    {
         [Export] private ColorRect font;
         [Export] private Label title;
         [Export] private LineEdit pseudo;
@@ -32,10 +32,12 @@ namespace Com.IsartDigital.Sokoban.UI
         private const string PASSWORD_CONFIRM = "Enregistrement réussi !";
         private const string INCORECT_PASSWORD = "Votre mot de passe est incorrecte.";
 
+        private const string TITLE_SCREEN_PATH = "res://Scenes/TitleCard.tscn";
+
         private bool isLogin = true;
 
         public override void _Ready()
-		{
+        {
             confirmPassword.Visible = false;
 
             buttonValidation.ButtonDown += OnValidationPressed;
@@ -58,7 +60,7 @@ namespace Com.IsartDigital.Sokoban.UI
                 confirmPassword.Visible = true;
                 confirmPassword.Text = null;
             }
-            else 
+            else
             {
                 isLogin = true;
 
@@ -71,7 +73,7 @@ namespace Com.IsartDigital.Sokoban.UI
                 title.Text = TEXT_TITLE_LOGIN;
 
                 confirmPassword.Visible = false;
-                
+
             }
 
             pseudo.Text = null;
@@ -82,14 +84,8 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void OnValidationPressed()
         {
-            if (isLogin)
-            {
-                Login();
-            }
-            else
-            {
-                Register();
-            }
+            if (isLogin) Login();
+            else Register();
         }
 
         private void Register()
@@ -101,7 +97,7 @@ namespace Com.IsartDigital.Sokoban.UI
                 return;
             }
 
-            if (AccountManager.GetInstance().Register(pseudo.Text,password.Text))
+            if (AccountManager.GetInstance().Register(pseudo.Text, password.Text))
             {
                 statut.Text = PASSWORD_CONFIRM;
                 statut.SelfModulate = green;
@@ -115,21 +111,28 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void Login()
         {
-            switch (AccountManager.GetInstance().TestConnexion(pseudo.Text,password.Text))
+            switch (AccountManager.GetInstance().TestConnexion(pseudo.Text, password.Text))
             {
                 case AccountManager.TestConnexionResult.Incorrect:
                     statut.Text = INCORECT_PASSWORD;
                     statut.SelfModulate = red;
                     break;
                 case AccountManager.TestConnexionResult.Valid:
-                    statut.Text = "Connexion réussi ! Bienvenue " +pseudo.Text;
+                    statut.Text = "Connexion réussi ! Bienvenue " + pseudo.Text;
                     statut.SelfModulate = green;
+
+                    GoToTitle();
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
                     statut.Text = "Aucun compte n'a été trouvé avec le pseudo : " + pseudo.Text + " Si vous n'avez pas encore de compte, créez s'en un !";
                     statut.SelfModulate = red;
                     break;
             }
+        }
+
+        private void GoToTitle()
+        {
+            GetTree().ChangeSceneToFile(TITLE_SCREEN_PATH);
         }
 	}
 }
