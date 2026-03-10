@@ -5,12 +5,15 @@ using System;
 
 namespace Com.IsartDigital.Sokoban 
 {
-	public partial class HelpMenu : Node
+	public partial class HelpMenu : Control
 	{
 		static private HelpMenu instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/HelpMenu.tscn");
 
-		public bool comeToMenu = true;
+        private const string TITLE_SCREEN_PATH = "res://Scenes/TitleCard.tscn";
+        private const string LEVEL_SELECT_PATH = "res://Scenes/LevelSelect.tscn";
+
+        public bool comeToMenu = true;
 
 		private HelpMenu():base() 
 		{
@@ -41,6 +44,12 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 		}
+
+		private void ReturnPressed()
+		{
+			if (comeToMenu) GetTree().ChangeSceneToFile(TITLE_SCREEN_PATH);
+			else GD.Print("Va au Niveau Tuto"); //truc pour aller au niveau tuto
+        }
 
 		protected override void Dispose(bool pDisposing)
 		{
