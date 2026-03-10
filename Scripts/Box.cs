@@ -19,8 +19,6 @@ namespace Com.IsartDigital.Sokoban
 		private const string GO_RIGHT_ANIM = "goRight";
 		private const string GO_LEFT_ANIM = "goLeft";
 
-		private const int ZERO = 0;
-		private const int ONE = 1;
 
 		public static bool animPlaying = false;
 		private static string animToPlay;
@@ -36,30 +34,33 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndOfAnimation(StringName pAnimName)
         {
-            Map.GetInstance().SetCell( ONE, (Vector2I)Position/States.DISTANCE_RANGE+ Player.lastDirection/States.DISTANCE_RANGE, ZERO, new Vector2I(ONE, ZERO) );
+            GameManager.GetInstance().tileMap.SetCell( 1, ((Vector2I)Position + Player.lastDirection)/States.DISTANCE_RANGE, 0, Vector2I.Right );
             animPlaying = false;
+
+            GameManager.GetInstance().ScreenshotGame();
+
             QueueFree();
         }
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
 		{
-			if (Map.GetInstance().GetCellTileData( ONE, pCellPosition + pDirection) == null )
+			if (GameManager.GetInstance().tileMap.GetCellTileData( 1, pCellPosition + pDirection) == null )
 			{
-                Map.GetInstance().SetCell( ONE, pCellPosition, ZERO, new Vector2I(ZERO, ZERO) );
+                GameManager.GetInstance().tileMap.SetCell( 1, pCellPosition, 0, Vector2I.Zero );
                 Create(pCellPosition , pDirection);
                 //Map.GetInstance().SetCell(1, pCellPosition + pDirection, 0, new Vector2I(1, 0));
                 return false;
 			}
 
 			
-			else if ( (bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Container") ||
-				(bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Wall") )
+			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Container") ||
+				(bool)GameManager.GetInstance().tileMap.GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Wall") )
 			{
 				return true;
 			}
 			else
 			{
-                Map.GetInstance().SetCell(1, pCellPosition, ZERO, new Vector2I(ZERO, ZERO));
+                GameManager.GetInstance().tileMap.SetCell(1, pCellPosition, 0, Vector2I.Zero);
                 Create(pCellPosition, pDirection);
                 return false;
 			}
@@ -69,8 +70,8 @@ namespace Com.IsartDigital.Sokoban
 		{
 			Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
-            lBox.Position =  Player.GetInstance().Position + pDirection * movingTheBox;
-			Map.GetInstance().AddChild(lBox);
+            lBox.Position =  (pPosition + Vector2.One/2) * (int)(States.DISTANCE_RANGE);
+			GameManager.GetInstance().tileMap.AddChild(lBox);
 			return lBox;
 
 		}
