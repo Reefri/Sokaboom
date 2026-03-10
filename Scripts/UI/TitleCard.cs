@@ -20,6 +20,8 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Label letterM;
         [Export] private Label exclamationMark;
 
+        private const string LEVEL_SELECT_PATH = "res://Scenes/LevelSelect.tscn";
+
         private Timer timer = new Timer();
 
         private Vector2 finalPositionOfSo;
@@ -161,6 +163,11 @@ namespace Com.IsartDigital.Sokoban.UI
 
             animationWantToStop = false;
             AnimationIsFinish();
+        }
+
+        private void PlayPressed()
+        {
+            GetTree().ChangeSceneToFile(LEVEL_SELECT_PATH);
         }
 
         /*

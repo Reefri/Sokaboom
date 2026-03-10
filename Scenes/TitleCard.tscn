@@ -261,3 +261,5 @@ offset_right = 152.0
 offset_bottom = -10.0
 grow_vertical = 0
 text = "ID_TRANSLATION"
+
+[connection signal="pressed" from="Play" to="." method="PlayPressed"]
