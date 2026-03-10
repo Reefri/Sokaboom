@@ -8,6 +8,8 @@ namespace Com.IsartDigital.Sokoban.UI
 {
 	public partial class TitleCard : Control
 	{
+        private const string HELP_PATH = "res://Scenes/HelpMenu.tscn";
+
         [Export] private Control title;
         [Export] private Label so;
         [Export] private Label letterK;
@@ -168,6 +170,12 @@ namespace Com.IsartDigital.Sokoban.UI
         private void PlayPressed()
         {
             GetTree().ChangeSceneToFile(LEVEL_SELECT_PATH);
+        }
+
+        private void HelpPressed()
+        {
+            GetTree().ChangeSceneToFile(HELP_PATH);
+            HelpMenu.GetInstance().comeToMenu = true;
         }
 
         /*
