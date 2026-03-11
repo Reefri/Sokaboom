@@ -165,12 +165,12 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void PlayPressed()
         {
-            GetTree().ChangeSceneToFile(UIManager.LEVEL_SELECT_PATH);
+            UIManager.GetInstance().GoToLevelSelect();
         }
 
         private void HelpPressed()
         {
-            GetTree().ChangeSceneToFile(UIManager.HELP_PATH);
+            UIManager.GetInstance().GoToHelp();
             HelpMenu.GetInstance().comeToMenu = true;
         }
 

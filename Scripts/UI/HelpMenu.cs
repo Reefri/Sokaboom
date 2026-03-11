@@ -42,13 +42,8 @@ namespace Com.IsartDigital.Sokoban
 
 		private void ReturnPressed()
 		{
-			if (comeToMenu) GoToTitle();
+			if (comeToMenu) UIManager.GetInstance().GoToTitle();
             else GD.Print("Va au Niveau Tuto"); //truc pour aller au niveau tuto
-        }
-
-        private void GoToTitle()
-        {
-            GetTree().ChangeSceneToFile(UIManager.TITLE_SCREEN_PATH);
         }
 
         protected override void Dispose(bool pDisposing)

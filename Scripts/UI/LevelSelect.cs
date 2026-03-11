@@ -38,7 +38,7 @@ namespace Com.IsartDigital.UI {
             base._Ready();
             int i = 0;
 
-            backButton.Pressed += GoToTitle;
+            backButton.Pressed += UIManager.GetInstance().GoToTitle;
             unlockButton.Pressed += Unlock;
 
             foreach (Button lButtons in allButtons.GetChildren())
@@ -63,14 +63,10 @@ namespace Com.IsartDigital.UI {
 				lButton.Disabled = false;
 			}
         }
-        private void GoToTitle()
-        {
-            GetTree().ChangeSceneToFile(UIManager.TITLE_SCREEN_PATH);
-        }
 
         private void GoToHelp()
         {
-            GetTree().ChangeSceneToFile(UIManager.HELP_PATH);
+            UIManager.GetInstance().GoToHelp();
             HelpMenu.GetInstance().comeToMenu = false;
         }
 

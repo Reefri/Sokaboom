@@ -118,18 +118,13 @@ namespace Com.IsartDigital.Sokoban.UI
                 case AccountManager.TestConnexionResult.Valid:
                     statut.Text = "Connexion réussi ! Bienvenue " + pseudo.Text;
                     statut.SelfModulate = green;
-                    GoToTitle();
+                    UIManager.GetInstance().GoToTitle();
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
                     statut.Text = "Aucun compte n'a été trouvé avec le pseudo : " + pseudo.Text + " Si vous n'avez pas encore de compte, créez s'en un !";
                     statut.SelfModulate = red;
                     break;
             }
-        }
-
-        private void GoToTitle()
-        {
-            GetTree().ChangeSceneToFile(UIManager.TITLE_SCREEN_PATH);
         }
 	}
 }
