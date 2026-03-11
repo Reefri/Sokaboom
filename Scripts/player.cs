@@ -91,46 +91,98 @@ namespace Com.IsartDigital.Sokoban
 
             if (Box.animPlaying) return;
 
-
-            if (Input.IsActionJustPressed(PLAYER_ACTION_RIGHT) && !CheckTheMove((Vector2I)Vector2.Right) )
+            if (Input.IsActionJustPressed(PLAYER_ACTION_RIGHT))
             {
+                lastDirection = right;
+
+                if (CheckTheMove((Vector2I)Vector2.Right)) //if you are against a wall, or 2 consecutive boxes
+                {
+                    if (bombInHand != null)
+                    {
+                        ExplodeBombInHand();
+                        bombInHand = null;
+                    }
+                    return;
+                }
+
+                
                 if (Box.animPlaying)
                 {
-                    lastDirection = right;
+                    
                     timer.Start();
                     return;
                 }
-                Position += right;
+                    Position += right;
                 historicPositions.Add(lastPosition);
             }
+           
 
-            else if (Input.IsActionJustPressed(PLAYER_ACTION_LEFT)&& !CheckTheMove((Vector2I)Vector2.Left) )
+            if (Input.IsActionJustPressed(PLAYER_ACTION_LEFT))
             {
+                lastDirection = left;
+
+                if (CheckTheMove((Vector2I)Vector2.Left))
+                {
+                    if (bombInHand != null)
+                    {
+                        ExplodeBombInHand();
+                        bombInHand = null;
+                    }
+                    return;
+                }
+
+
                 if (Box.animPlaying)
                 {
-                    lastDirection = left;
+
                     timer.Start();
                     return;
                 }
                 Position += left;
                 historicPositions.Add(lastPosition);
             }
-            else if (Input.IsActionJustPressed(PLAYER_ACTION_UP) && !CheckTheMove((Vector2I)Vector2.Up))
+            if (Input.IsActionJustPressed(PLAYER_ACTION_UP))
             {
+                lastDirection = up;
+
+                if (CheckTheMove((Vector2I)Vector2.Up))
+                {
+                    if (bombInHand != null)
+                    {
+                        ExplodeBombInHand();
+                        bombInHand = null;
+                    }
+                    return;
+                }
+
+
                 if (Box.animPlaying)
                 {
-                    lastDirection = up;
+
                     timer.Start();
                     return;
                 }
                 Position += up;
                 historicPositions.Add(lastPosition);
             }
-            else if (Input.IsActionJustPressed(PLAYER_ACTION_DOWN) && !CheckTheMove((Vector2I)Vector2.Down) )
+            if (Input.IsActionJustPressed(PLAYER_ACTION_DOWN))
             {
+                lastDirection = down;
+
+                if (CheckTheMove((Vector2I)Vector2.Down))
+                {
+                    if (bombInHand != null)
+                    {
+                        ExplodeBombInHand();
+                        bombInHand = null;
+                    }
+                    return;
+                }
+
+
                 if (Box.animPlaying)
                 {
-                    lastDirection = down;
+
                     timer.Start();
                     return;
                 }
@@ -138,11 +190,7 @@ namespace Com.IsartDigital.Sokoban
                 Position += down;
             }
 
-            if (Input.IsKeyPressed(Key.A) && bombInHand != null)
-            {
-                ExplodeBombInHand();
-                bombInHand = null;
-            }
+            
 
         }
 
@@ -151,9 +199,13 @@ namespace Com.IsartDigital.Sokoban
             if (bombInHand == null) return;
             //else bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE - (Vector2I)Vector2.One * States.DISTANCE_RANGE/2);
             else
+
             {
-                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE);
+                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection/States.DISTANCE_RANGE);
             }
+
+            //pour faire exploser les tiles, les remplacer par une tile de sol (AtlasCoords : 11, 6)
+            //Map.GetInstance().SetCell(0, gridCoords, atlasCoord)
         }
         protected override void Dispose(bool pDisposing)
         {

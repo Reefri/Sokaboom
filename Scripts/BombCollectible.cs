@@ -11,9 +11,9 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private int bombPatternIndex = 0;
 
 		private Bomb bomb;
-		public override void _Ready()
+        public override void _Ready()
 		{
-            AreaEntered += BombCollectible_AreaEntered;
+			AreaEntered += BombCollectible_AreaEntered;
 	
 			
 			Position = Vector2.One * States.DISTANCE_RANGE/2 + positionOnGrid * States.DISTANCE_RANGE;
@@ -39,14 +39,14 @@ namespace Com.IsartDigital.Sokoban
 
         private void BombCollectible_AreaEntered(Area2D pArea)
         {
-			if(pArea == Player.GetInstance())
+			if(pArea == Player.GetInstance() && Player.GetInstance().bombInHand == null)
 			{
 				GD.Print(" Player Picks up the bomb with this pattern : \n" + bomb);
 
 				Player.GetInstance().bombInHand = bomb;
 				Player.GetInstance().holdingBomb = true;
 
-                //bomb.Explode(positionOnGrid);
+                QueueFree();
 			}
         }
 
