@@ -9,6 +9,8 @@ namespace Com.IsartDigital.Sokoban
 {
     public partial class GameManager : Node2D
     {
+        [Export] Label par;
+
         static private GameManager instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");
 
@@ -17,7 +19,10 @@ namespace Com.IsartDigital.Sokoban
         private Level currentLevel;
 
         private List<LevelScreenShot> gameScreenshot = new List<LevelScreenShot>();
-        private int currentPositionInTime = -1;
+        private HistoricHeap heap;
+        private HistoricHeap currentPosition;
+
+        private int currentPositionInTime = 0;
 
         private List<Vector2I> neighborsCoor = new List<Vector2I>
         {
@@ -70,14 +75,11 @@ namespace Com.IsartDigital.Sokoban
 
             if (Input.IsActionJustPressed("TimeMinus"))
             {
-                MoveInTime(-1);
+                MoveBackInTime();
             }
             if (Input.IsActionJustPressed("TimePlus"))
             {
-                foreach (LevelScreenShot lLevel in gameScreenshot)
-                {
-                    GD.Print(lLevel.tileMap);
-                }
+                //MoveBackInTime(1);
 
             }
         }
@@ -121,16 +123,19 @@ namespace Com.IsartDigital.Sokoban
                 }
             }
 
-            //tileMap = lLevel;
             FillGroundTiles(lPlayerPosition);
 
             AddChild(Player.GetInstance());
             AddChild(tileMap);
 
+          
 
             Player.GetInstance().GoTo(lPlayerPosition);
 
-            ScreenshotGame();
+
+            heap = GetScreenShotGame();
+            currentPosition = heap;
+
 
         }
 
@@ -149,49 +154,43 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-        public void ScreenshotGame()
+        public void SaveScreenshotGame()
         {
             GD.Print("Say cheese !");
 
-            int lHistoriqueLenght = gameScreenshot.Count;
+            currentPosition.nextValue = GetScreenShotGame();
+            currentPosition.nextValue.previousValue = currentPosition;
+            currentPosition = currentPosition.nextValue;
 
-            for (int i = currentPositionInTime+1; i<lHistoriqueLenght; i++) 
-            {
-                gameScreenshot.RemoveAt(currentPositionInTime);
-            }
-            
-            gameScreenshot.Add(LevelScreenShot.DEFAULT);
-            currentPositionInTime++;
-
-            gameScreenshot[currentPositionInTime] = new LevelScreenShot((Map)tileMap.Duplicate(), Player.GetInstance().GetPositionToVector2I());
         }
 
- 
-        public void MoveInTime(int i)
+        public HistoricHeap GetScreenShotGame()
         {
-            if (currentPositionInTime + i >= gameScreenshot.Count || currentPositionInTime + i < 0)
+            return new HistoricHeap(new LevelScreenShot((Map)tileMap.Duplicate(), Player.GetInstance().GetPositionToVector2I()));
+        }
+
+        public void MoveBackInTime()
+        {
+            if (currentPosition.previousValue == null)
             {
-                GD.Print("Can't go " + i + " steps."+ currentPositionInTime + i + " : " + gameScreenshot.Count);
+                GD.Print("Can't go back in time.");
+                return;
             }
-            else
-            {
-                currentPositionInTime += i;
-                ChargeCurrentTimeLevel();
-            }
+
+            GD.Print("back in time");
+
+            currentPosition = currentPosition.previousValue;
+            ChargeCurrentTimeLevel();
         }
 
         private void ChargeCurrentTimeLevel()
         {
-            GD.Print("Charger la position " + currentPositionInTime);
-
-
-            LevelScreenShot lLevelScreenShot = gameScreenshot[currentPositionInTime];
+            LevelScreenShot lLevelScreenShot = currentPosition.value;
+            Player.GetInstance().GoTo(lLevelScreenShot.playerPosition);
 
             RemoveChild(tileMap);
             tileMap = lLevelScreenShot.tileMap;
             AddChild(tileMap);
-
-            Player.GetInstance().GoTo(lLevelScreenShot.playerPosition);
         }
 
     }

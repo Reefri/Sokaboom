@@ -25,7 +25,7 @@ namespace Com.IsartDigital.Sokoban
 		private static Vector2 movingTheBox = new Vector2(States.DISTANCE_RANGE,States.DISTANCE_RANGE);
 		public override void _Ready()
 		{
-
+			GD.Print("Addchild box");
 			animPlaying = true;
             anim.Play(animToPlay);
             moveDust.Emitting = true;
@@ -37,9 +37,12 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().tileMap.SetCell( 1, ((Vector2I)Position + Player.lastDirection)/States.DISTANCE_RANGE, 0, Vector2I.Right );
             animPlaying = false;
 
-            GameManager.GetInstance().ScreenshotGame();
+            GetParent().RemoveChild(this);
 
             QueueFree();
+			
+            GameManager.GetInstance().SaveScreenshotGame();
+
         }
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
@@ -68,6 +71,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public static Box Create(Vector2I pPosition, Vector2I pDirection)
 		{
+			GD.Print("Creating the box");
 			Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
             lBox.Position =  (pPosition + Vector2.One/2) * (int)(States.DISTANCE_RANGE);

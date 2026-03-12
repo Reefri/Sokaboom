@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl27n3huysagp"]
+[gd_scene load_steps=3 format=3 uid="uid://bl27n3huysagp"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/GameManager.cs" id="1_1plec"]
 
-[node name="GameManager" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_a7anc"]
+font_size = 146
+
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("par")]
 script = ExtResource("1_1plec")
+par = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 857.0
+offset_top = 434.0
+offset_right = 1131.0
+offset_bottom = 634.0
+text = "aze"
+label_settings = SubResource("LabelSettings_a7anc")
