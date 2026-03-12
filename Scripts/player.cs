@@ -82,11 +82,9 @@ namespace Com.IsartDigital.Sokoban
                 {
                     return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
                 }
-                // Ligne liée au bombes, à ramasser au besoin
                 else return true;
             }
             else return false;
-            //return (bool)Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData("Wall");
         } 
 
         public Vector2I GetPositionToVector2I()
