@@ -8,29 +8,22 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class Map : TileMap
 	{
-		static private Map instance;
-		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Map.tscn");
+		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Level.tscn");
         private AStarGrid2D aStarGrid = new AStarGrid2D();
         public Array<Vector2I> cells ;
 
-		public string CONTAINER = "Container";
-		public string WALL = "Wall";
-		public string INTERACTABLE = "Interactable";
+		public const string CONTAINER = "Container";
+		public const string WALL = "Wall";
+		public const string INTERACTABLE = "Interactable";
 
-        private Map():base() 
-		{
-			if (instance != null)
-			{
-				QueueFree();
-				return;
-			}
-			instance = this;	
-		}
+		private static int mapCounter = 0;
 
-		static public Map GetInstance()
+		private int myInt;
+
+		public Map()
 		{
-			if (instance == null) instance = (Map)factory.Instantiate();
-			return instance;
+			myInt = mapCounter;
+			mapCounter++;
 		}
 
 		public override void _Ready()
@@ -39,16 +32,12 @@ namespace Com.IsartDigital.Sokoban
 			cells = GetUsedCells(1);
         }
 
-		public override void _Process(double pDelta)
-		{
-			base._Process(pDelta);
-			float lDelta = (float)pDelta;
-		}
 
-		protected override void Dispose(bool pDisposing)
-		{
-			instance = null;
-			base.Dispose(pDisposing);
-		}
+        public override string ToString()
+        {
+			
+            return myInt.ToString();
+        }
+
 	}
 }

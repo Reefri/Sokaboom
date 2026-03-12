@@ -12,10 +12,10 @@ namespace Com.IsartDigital.Sokoban
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Player.tscn");
 
         private const float ANIM_TIME = 0.15f;
-        private string PLAYER_ACTION_RIGHT = "right";
-        private string PLAYER_ACTION_LEFT = "left";
-        private string PLAYER_ACTION_UP = "up";
-        private string PLAYER_ACTION_DOWN = "down";
+        private const string PLAYER_ACTION_RIGHT = "right";
+        private const string PLAYER_ACTION_LEFT = "left";
+        private const string PLAYER_ACTION_UP = "up";
+        private const string PLAYER_ACTION_DOWN = "down";
 
 
         public static Vector2I up = (Vector2I)Vector2.Up * States.DISTANCE_RANGE;
@@ -23,12 +23,21 @@ namespace Com.IsartDigital.Sokoban
         public static Vector2I left = (Vector2I)Vector2.Left * States.DISTANCE_RANGE;
         public static Vector2I right = (Vector2I)Vector2.Right * States.DISTANCE_RANGE;
 
-        private static Vector2 lastPosition;
+
+
         public static Vector2I lastDirection;
 
         private List<Vector2> historicPositions = new List<Vector2>();
         private Timer timer = new Timer();
         
+        private Dictionary<string,Vector2I> nameOfVector = new Dictionary<string, Vector2I>
+        {
+            { PLAYER_ACTION_RIGHT , Vector2I.Right },
+            { PLAYER_ACTION_LEFT , Vector2I.Left },
+            { PLAYER_ACTION_UP , Vector2I.Up },
+            { PLAYER_ACTION_DOWN , Vector2I.Down },
+        };
+
         private Player() : base()
         {
             if (instance != null)
@@ -46,10 +55,12 @@ namespace Com.IsartDigital.Sokoban
             return instance;
         }
 
+        
+
         public override void _Ready()
         {
-            lastPosition = GlobalPosition;
             timer.WaitTime = ANIM_TIME;
+            timer.OneShot = true;
             Player.GetInstance().AddChild(timer);
             timer.Timeout += AnimFinishedMove;
         }
@@ -57,19 +68,17 @@ namespace Com.IsartDigital.Sokoban
         private void AnimFinishedMove()
         {
             Position += lastDirection;
-            historicPositions.Add(lastPosition);
-            timer.Stop();
         }
 
         private bool CheckTheMove(Vector2I pDirectionVector)
         {
-            Vector2I lUnitaryPos = new Vector2I((int)Position.X/States.DISTANCE_RANGE, (int)Position.Y/States.DISTANCE_RANGE);
+            Vector2I lUnitaryPos = GetPositionToVector2I();
 
-            if (Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector) == null) return false;
+            if (GameManager.GetInstance().tileMap.GetCellTileData(1, lUnitaryPos + pDirectionVector) == null) return false;
 
-            else if ((bool)(Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData(Map.GetInstance().INTERACTABLE)))
+            else if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData(Map.INTERACTABLE)))
             {
-                if ((bool)(Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData(Map.GetInstance().CONTAINER)))
+                if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData(Map.CONTAINER)))
                 {
                     return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
                 }
@@ -80,61 +89,42 @@ namespace Com.IsartDigital.Sokoban
             //return (bool)Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData("Wall");
         } 
 
+        public Vector2I GetPositionToVector2I()
+        {
+            return new Vector2I((int)Position.X / States.DISTANCE_RANGE, (int)Position.Y / States.DISTANCE_RANGE);
+        }
+
 
         public override void _Input(InputEvent pEvent)
         {
-            lastPosition = GlobalPosition;
-            historicPositions.Add(lastPosition);
-
             if (Box.animPlaying) return;
 
 
-            if (Input.IsActionJustPressed(PLAYER_ACTION_RIGHT) && !CheckTheMove((Vector2I)Vector2.Right) )
+            foreach (string lActionName in nameOfVector.Keys)
             {
-                if (Box.animPlaying)
+                if (Input.IsActionJustPressed(lActionName) && !CheckTheMove(nameOfVector[lActionName]))
                 {
-                    lastDirection = right;
-                    timer.Start();
-                    return;
+                    if (Box.animPlaying)
+                    {
+                        lastDirection = nameOfVector[lActionName] * States.DISTANCE_RANGE;
+                        timer.Start();
+
+                    }
+                    else
+                    {
+                        Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
+                        GameManager.GetInstance().ScreenshotGame();
+                    }
+
                 }
-                Position += right;
-                historicPositions.Add(lastPosition);
             }
 
-            else if (Input.IsActionJustPressed(PLAYER_ACTION_LEFT)&& !CheckTheMove((Vector2I)Vector2.Left) )
-            {
-                if (Box.animPlaying)
-                {
-                    lastDirection = left;
-                    timer.Start();
-                    return;
-                }
-                Position += left;
-                historicPositions.Add(lastPosition);
-            }
-            else if (Input.IsActionJustPressed(PLAYER_ACTION_UP) && !CheckTheMove((Vector2I)Vector2.Up))
-            {
-                if (Box.animPlaying)
-                {
-                    lastDirection = up;
-                    timer.Start();
-                    return;
-                }
-                Position += up;
-                historicPositions.Add(lastPosition);
-            }
-            else if (Input.IsActionJustPressed(PLAYER_ACTION_DOWN) && !CheckTheMove((Vector2I)Vector2.Down) )
-            {
-                if (Box.animPlaying)
-                {
-                    lastDirection = down;
-                    timer.Start();
-                    return;
-                }
-                historicPositions.Add(lastPosition);
-                Position += down;
-            }
 
+        }
+
+        public void GoTo(Vector2I pPosition)
+        {
+            Position = (pPosition+Vector2.One/2)*States.DISTANCE_RANGE;
         }
 
 
