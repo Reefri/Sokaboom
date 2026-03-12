@@ -12,10 +12,10 @@ namespace Com.IsartDigital.Sokoban
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Player.tscn");
 
         private const float ANIM_TIME = 0.15f;
-        private string PLAYER_ACTION_RIGHT = "right";
-        private string PLAYER_ACTION_LEFT = "left";
-        private string PLAYER_ACTION_UP = "up";
-        private string PLAYER_ACTION_DOWN = "down";
+        private const string PLAYER_ACTION_RIGHT = "right";
+        private const string PLAYER_ACTION_LEFT = "left";
+        private const string PLAYER_ACTION_UP = "up";
+        private const string PLAYER_ACTION_DOWN = "down";
 
 
         public static Vector2I up = (Vector2I)Vector2.Up * States.DISTANCE_RANGE;
@@ -73,11 +73,9 @@ namespace Com.IsartDigital.Sokoban
                 {
                     return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
                 }
-                // Ligne liée au bombes, à ramasser au besoin
                 else return true;
             }
             else return false;
-            //return (bool)Map.GetInstance().GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData("Wall");
         } 
 
 
