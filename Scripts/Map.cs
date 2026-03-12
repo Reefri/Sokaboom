@@ -81,7 +81,6 @@ namespace Com.IsartDigital.Sokoban
                     
 						else if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER)))
 						{
-							//CreatePathFinding(new Vector2I((int)Player.GetInstance().Position.X / States.DISTANCE_RANGE, (int)Player.GetInstance().Position.Y / States.DISTANCE_RANGE), destination);
 							GD.Print("Can't Do");
 							return;
 						}
