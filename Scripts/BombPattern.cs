@@ -7,29 +7,22 @@ using System.Collections.Generic;
 namespace Com.IsartDigital.Sokoban {
 	public partial class BombPattern : Node2D
 	{
+        [Export] private float timeUntilFade = 1;
+		private float time = 0;
+
 		private const string TO_PLACE_ON_EXPLOSION_PATH = "res://Scenes/ToPlaceOnExplosions.tscn";
         private static PackedScene toPlaceOnExplosion = GD.Load<PackedScene>(TO_PLACE_ON_EXPLOSION_PATH);
 
         private const string BOMB_PATTERN_PATH = "res://Scenes/BombPattern.tscn";
         private static PackedScene pattern = GD.Load<PackedScene>(BOMB_PATTERN_PATH);
 
-		private const int TILE_LENGTH = 64;
-
 		private Vector2I originPos;
+        protected Vector2I posInGrid;
 
 		public List<List<int>> explosionMatrix;
 
         public override void _Ready()
 		{
-            //print these in main _Ready for debug
-            #region toTestPattern
-			//GridManager.GetInstance().ChangeLevel(0);
-
-            //Bomb bomb = GridManager.GetInstance().currentLevel.bombs[0];
-
-            //bomb.Explode(new Vector2I(3, 3));
-			#endregion
-
 
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
@@ -48,7 +41,6 @@ namespace Com.IsartDigital.Sokoban {
                 }
             }
 
-
             for (int i = 0; i < explosionMatrix.Count; i++)
 			{
 				for (int j = 0; j < explosionMatrix[i].Count; j++)
@@ -58,18 +50,43 @@ namespace Com.IsartDigital.Sokoban {
 					{
 
                         Node2D lPattern = (Node2D)toPlaceOnExplosion.Instantiate();
-                        lPattern.Position = Position + (new Vector2(j, i) - originPos) * TILE_LENGTH;
+                        lPattern.Position = Position + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
                         AddChild(lPattern);
                     }
                 }
 			}
-			
-		}
 
-		public override void _Process(double pDelta)
+            Map.GetInstance().SetCell(1, posInGrid, -1, new Vector2I(0, 0));
+
+            for (int i = 0; i < explosionMatrix.Count; i++)
+            {
+                for (int j = 0; j < explosionMatrix[i].Count; j++)
+                {
+                    if (explosionMatrix[i][j] == 1)
+                    {
+                        if (Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos) != null
+                            && (bool)Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
+                        {
+                            //GD.Print(Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"));
+                                //GD.Print("exploded an interactable");
+                                Map.GetInstance().SetCell(1, posInGrid + new Vector2I(j, i) - originPos, -1, new Vector2I(0, 0));
+                        }
+                    }
+                    //GD.Print(originPos);
+                }
+            }
+
+        }
+
+        public override void _Process(double pDelta)
 		{
 			float lDelta = (float)pDelta;
 
+            time += lDelta;
+            if(time >= timeUntilFade)
+            {
+                QueueFree();
+            }
 		}
 
 		protected override void Dispose(bool pDisposing)
@@ -79,11 +96,13 @@ namespace Com.IsartDigital.Sokoban {
 
 		public static void Create(List<List<int>> pExplosionMatrix,Vector2I pPosition)
 		{
-			BombPattern bombPattern = new BombPattern();
-			bombPattern.explosionMatrix = pExplosionMatrix;
-			bombPattern.Position = (Vector2.One * TILE_LENGTH/2 + pPosition * TILE_LENGTH)/2;
+			BombPattern lBombPattern = new BombPattern();
 
-			Main.GetInstance().CallDeferred("add_child", bombPattern);
+			lBombPattern.explosionMatrix = pExplosionMatrix;
+			lBombPattern.Position = (Vector2.One * States.DISTANCE_RANGE/2 + pPosition * States.DISTANCE_RANGE)/2;
+            lBombPattern.posInGrid = pPosition;
+
+			Main.GetInstance().CallDeferred("add_child", lBombPattern);
 
 		}
 	}

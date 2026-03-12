@@ -82,7 +82,7 @@ namespace Com.IsartDigital.Sokoban
         public void Explode(Vector2I pPosition)
         {
             BombPattern.Create(explosionMatrix,pPosition);
-            GD.Print(this);
+            //GD.Print(this);
         }
 
 

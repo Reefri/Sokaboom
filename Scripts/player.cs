@@ -197,11 +197,12 @@ namespace Com.IsartDigital.Sokoban
         private void ExplodeBombInHand()
         {
             if (bombInHand == null) return;
-            //else bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE - (Vector2I)Vector2.One * States.DISTANCE_RANGE/2);
             else
 
             {
                 bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection/States.DISTANCE_RANGE);
+
+                
             }
 
             //pour faire exploser les tiles, les remplacer par une tile de sol (AtlasCoords : 11, 6)
