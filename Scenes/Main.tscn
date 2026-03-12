@@ -8,8 +8,6 @@
 script = ExtResource("1_4l0qp")
 
 [node name="TileMap" parent="." instance=ExtResource("2_4wdyx")]
-beginning = Vector2i(3, 0)
-destination = Vector2i(10, 5)
 
 [node name="Player" parent="." instance=ExtResource("3_8pi6s")]
 position = Vector2(226, 94)
