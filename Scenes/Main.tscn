@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_4l0qp"]
 [ext_resource type="PackedScene" uid="uid://c5n1c3bedrl8x" path="res://Scenes/Map.tscn" id="2_4wdyx"]
-[ext_resource type="PackedScene" uid="uid://b2ihj0g7imno5" path="res://Scenes/player.tscn" id="3_8pi6s"]
+[ext_resource type="PackedScene" uid="uid://b2ihj0g7imno5" path="res://Scenes/Player.tscn" id="3_8pi6s"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4l0qp")
 
 [node name="TileMap" parent="." instance=ExtResource("2_4wdyx")]
+beginning = Vector2i(3, 0)
+destination = Vector2i(10, 5)
 
 [node name="Player" parent="." instance=ExtResource("3_8pi6s")]
 position = Vector2(226, 94)

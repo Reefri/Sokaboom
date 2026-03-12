@@ -19,17 +19,24 @@ namespace Com.IsartDigital.Sokoban
 		private const string GO_RIGHT_ANIM = "goRight";
 		private const string GO_LEFT_ANIM = "goLeft";
 
+		private const string UP_PARTICLES = "upParticles";
+		private const string DOWN_PARTICLES = "downParticles";
+		private const string LEFT_PARTICLES = "leftParticles";
+		private const string RIGHT_PARTICLES = "rightParticles";
+
 		private const int ZERO = 0;
 		private const int ONE = 1;
 
 		public static bool animPlaying = false;
 		private static string animToPlay;
+		private static string ParticlesToEmit;
 		private static Vector2 movingTheBox = new Vector2(States.DISTANCE_RANGE,States.DISTANCE_RANGE);
 		public override void _Ready()
 		{
 
 			animPlaying = true;
             anim.Play(animToPlay);
+			anim.Play(ParticlesToEmit);
             moveDust.Emitting = true;
             anim.AnimationFinished += EndOfAnimation;
         }
@@ -52,8 +59,8 @@ namespace Com.IsartDigital.Sokoban
 			}
 
 			
-			else if ( (bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Container") ||
-				(bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Wall") )
+			else if ( (bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData(Map.GetInstance().CONTAINER) ||
+				(bool)Map.GetInstance().GetCellTileData(1, pCellPosition + pDirection).GetCustomData(Map.GetInstance().WALL) )
 			{
 				return true;
 			}
@@ -69,7 +76,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 			Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
-            lBox.Position =  Player.GetInstance().Position + pDirection * movingTheBox;
+            lBox.GlobalPosition =  Player.GetInstance().GlobalPosition + pDirection * movingTheBox;
 			Map.GetInstance().AddChild(lBox);
 			return lBox;
 
