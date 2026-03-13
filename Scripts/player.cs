@@ -43,6 +43,10 @@ namespace Com.IsartDigital.Sokoban
             { PLAYER_ACTION_DOWN , Vector2I.Down },
         };
 
+
+        public bool holdingBomb = false;
+        public Bomb bombInHand;
+
         private Player() : base()
         {
             if (instance != null)
@@ -124,32 +128,124 @@ namespace Com.IsartDigital.Sokoban
         {
             if (Box.animPlaying) return;
 
-
-            foreach (string lActionName in nameOfVector.Keys)
+            if (Input.IsActionJustPressed(PLAYER_ACTION_RIGHT))
             {
-                if (Input.IsActionJustPressed(lActionName) && !CheckTheMove(nameOfVector[lActionName]))
+                lastDirection = right;
+
+                if (CheckTheMove((Vector2I)Vector2.Right)) //if you are against a wall, or 2 consecutive boxes
                 {
-                    if (Box.animPlaying)
+                    if (bombInHand != null)
                     {
-                        lastDirection = nameOfVector[lActionName] * States.DISTANCE_RANGE;
-                        timer.Start();
-
+                        ExplodeBombInHand();
+                        bombInHand = null;
                     }
-                    else
-                    {
-                        Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
-                        GameManager.GetInstance().ScreenshotGame();
-                    }
-
+                    return;
                 }
+
+                
+                if (Box.animPlaying)
+                {
+                    
+                    timer.Start();
+                    return;
+                }
+                    Position += right;
+                historicPositions.Add(lastPosition);
             }
-        }
+           
+
+            if (Input.IsActionJustPressed(PLAYER_ACTION_LEFT))
+            {
+                lastDirection = left;
+
+                if (CheckTheMove((Vector2I)Vector2.Left))
+                {
+                    if (bombInHand != null)
+                    {
+                        ExplodeBombInHand();
+                        bombInHand = null;
+                    }
+                    return;
+                }
+
+
+                if (Box.animPlaying)
+                {
+
+                    timer.Start();
+                    return;
+                }
+                Position += left;
+                historicPositions.Add(lastPosition);
+            }
+            if (Input.IsActionJustPressed(PLAYER_ACTION_UP))
+            {
+                lastDirection = up;
+
+                if (CheckTheMove((Vector2I)Vector2.Up))
+                {
+                    if (bombInHand != null)
+                    {
+                        ExplodeBombInHand();
+                        bombInHand = null;
+                    }
+                    return;
+                }
+
+
+                if (Box.animPlaying)
+                {
+
+                    timer.Start();
+                    return;
+                }
+                Position += up;
+                historicPositions.Add(lastPosition);
+            }
+            if (Input.IsActionJustPressed(PLAYER_ACTION_DOWN))
+            {
+                lastDirection = down;
+
+                if (CheckTheMove((Vector2I)Vector2.Down))
+                {
+                    if (bombInHand != null)
+                    {
+                        ExplodeBombInHand();
+                        bombInHand = null;
+                    }
+                    return;
+                }
+
+
+                if (Box.animPlaying)
+                {
+
+                    timer.Start();
+                    return;
+                }
+                historicPositions.Add(lastPosition);
+                Position += down;
+            }
 
         public void GoTo(Vector2I pPosition)
         {
             Position = (pPosition+Vector2.One/2)*States.DISTANCE_RANGE;
         }
 
+        private void ExplodeBombInHand()
+        {
+            if (bombInHand == null) return;
+            else
+
+            {
+                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection/States.DISTANCE_RANGE);
+
+                
+            }
+
+            //pour faire exploser les tiles, les remplacer par une tile de sol (AtlasCoords : 11, 6)
+            //Map.GetInstance().SetCell(0, gridCoords, atlasCoord)
+        }
         protected override void Dispose(bool pDisposing)
         {
             instance = null;
