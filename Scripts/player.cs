@@ -26,7 +26,6 @@ namespace Com.IsartDigital.Sokoban
         public static Vector2I lastDirection;
         private static Vector2I pathPosition;
 
-        private List<Vector2> historicPositions = new List<Vector2>();
         private Timer timer = new Timer();
         public Timer pathFindingTimer = new Timer();
 

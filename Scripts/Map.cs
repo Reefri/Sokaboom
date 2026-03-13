@@ -94,8 +94,9 @@ namespace Com.IsartDigital.Sokoban
 
 		private void CreatePathFinding(Vector2I pBeginning, Vector2I pDestination)
 		{
-            List<Vector2I> lPlayersPath = new List<Vector2I>();
+            SysDict.List<Vector2I> lPlayersPath = new SysDict.List<Vector2I>();
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
+			GD.Print("Bahaha");
             foreach (Vector2I cellOnPath in lPath)
             {
 				Player.GetInstance().path.Add(cellOnPath);
