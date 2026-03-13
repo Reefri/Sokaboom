@@ -169,7 +169,7 @@ namespace Com.IsartDigital.Sokoban
             else
 
             {
-                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection/States.DISTANCE_RANGE);
+                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection/States.DISTANCE_RANGE, lastDirection);
 
                 
             }

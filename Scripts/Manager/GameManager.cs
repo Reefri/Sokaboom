@@ -102,15 +102,9 @@ namespace Com.IsartDigital.Sokoban
 
         private void PlacingBombs()
         {
-            foreach (Vector2I lPosition in currentPosition.value.bombsPos)
+            for(int i = 0; i < currentPosition.value.bombsPos.Count; i++)
             {
-                GD.Print(lPosition);
-
-                BombCollectible lBomb = (BombCollectible)bombCollectible.Instantiate();
-                lBomb.positionOnGrid = lPosition;
-                lBomb.bombPatternIndex = currentPosition.value.bombsPos.IndexOf(lPosition);
-                lBomb.ZIndex = 1;
-                AddChild(lBomb);
+                BombCollectible.Create(currentPosition.value.bombs[i], currentPosition.value.bombsPos[i]);
             }
         }
 

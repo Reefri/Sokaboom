@@ -109,12 +109,51 @@ namespace Com.IsartDigital.Sokoban {
 
 		}
 
-		public static void Create(List<List<int>> pExplosionMatrix,Vector2I pPosition)
+        private void RotateMatrix(BombPattern pBombPattern, List<List<int>> pExplosionMatrix, Vector2I pRotationVector)
+        {
+            if (pRotationVector/ States.DISTANCE_RANGE == Vector2I.Up)
+            {
+                pBombPattern.explosionMatrix = pExplosionMatrix;
+            }
+
+            else if (pRotationVector / States.DISTANCE_RANGE == Vector2I.Down)
+            {
+                foreach(List<int> pRow in pExplosionMatrix)
+                {
+                    pRow.Reverse();
+                }
+                pExplosionMatrix.Reverse();
+
+                pBombPattern.explosionMatrix = pExplosionMatrix;
+            }
+
+            else if (pRotationVector / States.DISTANCE_RANGE == Vector2I.Right)
+            {
+                //TO DO
+                //Rotate pExplosionMatrix to the right
+
+
+                pBombPattern.explosionMatrix = pExplosionMatrix;
+            }
+
+            else if (pRotationVector / States.DISTANCE_RANGE == Vector2I.Left)
+            {
+                //TO DO
+                //Rotate pExplosionMatrix to the left
+
+
+                pBombPattern.explosionMatrix = pExplosionMatrix;
+            }
+        }
+
+		public static void Create(List<List<int>> pExplosionMatrix,Vector2I pPosition, Vector2I pRotationVector)
 		{
 			BombPattern lBombPattern = new BombPattern();
 
-			lBombPattern.explosionMatrix = pExplosionMatrix;
-			lBombPattern.Position = (Vector2.One * States.DISTANCE_RANGE/2 + pPosition * States.DISTANCE_RANGE)/2;
+            lBombPattern.RotateMatrix(lBombPattern, pExplosionMatrix, pRotationVector);
+
+            lBombPattern.explosionMatrix = pExplosionMatrix;
+            lBombPattern.Position = (Vector2.One * States.DISTANCE_RANGE/2 + pPosition * States.DISTANCE_RANGE)/2;
             lBombPattern.posInGrid = pPosition;
 
 			Main.GetInstance().CallDeferred("add_child", lBombPattern);
