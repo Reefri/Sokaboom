@@ -75,7 +75,7 @@ namespace Com.IsartDigital.Sokoban
 
 					if (lCellClicked.DistanceTo(cell ) < 1)
 					{
-						if ((bool)(GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
+						if ((GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
 						{
                             GD.Print(cell);
 							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
@@ -94,7 +94,7 @@ namespace Com.IsartDigital.Sokoban
 
 		private void CreatePathFinding(Vector2I pBeginning, Vector2I pDestination)
 		{
-            List<Vector2I> lPlayersPath = new List<Vector2I>();
+            SysDict.List<Vector2I> lPlayersPath = new SysDict.List<Vector2I>();
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
             foreach (Vector2I cellOnPath in lPath)
             {
