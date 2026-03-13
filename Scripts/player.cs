@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // Author : Cayot Daniel
 
@@ -12,6 +13,7 @@ namespace Com.IsartDigital.Sokoban
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Player.tscn");
 
         private const float ANIM_TIME = 0.15f;
+        private const float PATH_FINDING_TIME = 0.1f;
         private const string PLAYER_ACTION_RIGHT = "right";
         private const string PLAYER_ACTION_LEFT = "left";
         private const string PLAYER_ACTION_UP = "up";
@@ -24,12 +26,15 @@ namespace Com.IsartDigital.Sokoban
         public static Vector2I right = (Vector2I)Vector2.Right * States.DISTANCE_RANGE;
 
 
+        public List<Vector2I> path = new List<Vector2I>();
 
         public static Vector2I lastDirection;
+        private static Vector2I pathPosition;
 
         private List<Vector2> historicPositions = new List<Vector2>();
         private Timer timer = new Timer();
-        
+        public Timer pathFindingTimer = new Timer();
+
         private Dictionary<string,Vector2I> nameOfVector = new Dictionary<string, Vector2I>
         {
             { PLAYER_ACTION_RIGHT , Vector2I.Right },
@@ -60,9 +65,31 @@ namespace Com.IsartDigital.Sokoban
         public override void _Ready()
         {
             timer.WaitTime = ANIM_TIME;
+            pathFindingTimer.WaitTime = PATH_FINDING_TIME;
             timer.OneShot = true;
             Player.GetInstance().AddChild(timer);
+
             timer.Timeout += AnimFinishedMove;
+            pathFindingTimer.Timeout += MovingOnPath;
+            AddChild(pathFindingTimer);
+        }
+
+        public override void _Process(double delta)
+        {
+            if (path.Count != 0 && pathFindingTimer.TimeLeft == 0)
+            {
+                pathFindingTimer.Start();
+            }
+            else return;
+
+        }
+
+        private void MovingOnPath()
+        {
+            GoTo(path[0]);
+            GD.Print(path.Count);
+            path.Remove(path[0]);
+            pathFindingTimer.Stop();
         }
 
         private void AnimFinishedMove()
@@ -116,15 +143,12 @@ namespace Com.IsartDigital.Sokoban
 
                 }
             }
-
-
         }
 
         public void GoTo(Vector2I pPosition)
         {
             Position = (pPosition+Vector2.One/2)*States.DISTANCE_RANGE;
         }
-
 
         protected override void Dispose(bool pDisposing)
         {

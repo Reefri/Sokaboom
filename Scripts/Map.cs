@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 // Author : Cayot Daniel
@@ -14,12 +15,11 @@ namespace Com.IsartDigital.Sokoban
         public Array<Vector2I> cells ;
 		private Array<Vector2I> groundCells ;
 
-		[Export] private Vector2I beginning;
-		[Export] private Vector2I destination;
 
-		public string CONTAINER = "Container";
-		public string WALL = "Wall";
-		public string INTERACTABLE = "Interactable";
+		public static string CONTAINER = "Container";
+		public static string WALL = "Wall";
+		public static string INTERACTABLE = "Interactable";
+		private const string PATH_FINDING_INPUT = "leftClick";
 
 		private static int mapCounter = 0;
 
@@ -39,7 +39,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 			aStarGrid.Region = new Rect2I(-1,-1,50,50);
-			aStarGrid.CellSize = new Vector2I(64, 64);
+			aStarGrid.CellSize = new Vector2I(States.DISTANCE_RANGE, States.DISTANCE_RANGE);
 			aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
 			aStarGrid.Update();
 
@@ -57,9 +57,9 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 
-			if (Input.IsActionJustPressed("leftClick"))
+			if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
 			{
-				Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/64, (int)GetGlobalMousePosition().Y/64);
+				Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
 				foreach(Vector2I cell in groundCells)
 				{
 
@@ -85,12 +85,13 @@ namespace Com.IsartDigital.Sokoban
 
 		private void CreatePathFinding(Vector2I pBeginning, Vector2I pDestination)
 		{
-			//aStarGrid.GetIdPath(pBeginning, pDestination);
+            List<Vector2I> lPlayersPath = new List<Vector2I>();
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
             foreach (Vector2I cellOnPath in lPath)
             {
-                SetCell(1, cellOnPath, 0, new Vector2I(4, 0));
+				Player.GetInstance().path.Add(cellOnPath);
             }
+			//Player.GetInstance().MovingOnPath(lPlayersPath);
         }
 
 	}
