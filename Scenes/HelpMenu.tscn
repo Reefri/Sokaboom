@@ -11,11 +11,32 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7tb35")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 442.0
-offset_top = 438.0
-offset_right = 792.0
-offset_bottom = 601.0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32045, 3.06834e-07, 1.20327e-07, 1)
 
-[connection signal="pressed" from="Button" to="." method="ReturnPressed"]
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "ID_NEXT"
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="ReturnPressed"]
