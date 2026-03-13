@@ -142,17 +142,17 @@ namespace Com.IsartDigital.Sokoban
                     return;
                 }
 
-                
+
                 if (Box.animPlaying)
                 {
-                    
+
                     timer.Start();
                     return;
                 }
-                    Position += right;
-                historicPositions.Add(lastPosition);
+                Position += right;
+
             }
-           
+
 
             if (Input.IsActionJustPressed(PLAYER_ACTION_LEFT))
             {
@@ -176,7 +176,7 @@ namespace Com.IsartDigital.Sokoban
                     return;
                 }
                 Position += left;
-                historicPositions.Add(lastPosition);
+
             }
             if (Input.IsActionJustPressed(PLAYER_ACTION_UP))
             {
@@ -200,7 +200,7 @@ namespace Com.IsartDigital.Sokoban
                     return;
                 }
                 Position += up;
-                historicPositions.Add(lastPosition);
+
             }
             if (Input.IsActionJustPressed(PLAYER_ACTION_DOWN))
             {
@@ -223,9 +223,9 @@ namespace Com.IsartDigital.Sokoban
                     timer.Start();
                     return;
                 }
-                historicPositions.Add(lastPosition);
                 Position += down;
             }
+        }
 
         public void GoTo(Vector2I pPosition)
         {

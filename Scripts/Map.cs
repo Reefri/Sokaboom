@@ -68,13 +68,12 @@ namespace Com.IsartDigital.Sokoban
 						if ((bool)(GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
 						{
                             GD.Print(cell);
-							CreatePathFinding((Vector2I)Player.GetInstance().Position/64, cell);
+							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
                             return;
                         }
                     
 						else if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER)))
 						{
-							GD.Print("Can't Do");
 							return;
 						}
 					}
