@@ -37,9 +37,10 @@ namespace Com.IsartDigital.Sokoban
 			//GD.Print(GridManager.GetInstance().CurrentLevel);
 			base._Ready();
 
+			//Bomb bomb = GridManager.GetInstance().CurrentLevel.bombs[0];
+			//bomb.Explode(new Vector2I(3, 3));
 
-
-        }
+		}
 
 
 

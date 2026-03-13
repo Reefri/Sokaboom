@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://0o6ll15fwr2m"]
+
+[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="1_aheke"]
+
+[sub_resource type="Gradient" id="Gradient_fyvn8"]
+offsets = PackedFloat32Array(0, 0.533101, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_22866"]
+gradient = SubResource("Gradient_fyvn8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rf1ko"]
+particle_flag_disable_z = true
+radial_velocity_min = 32.0
+radial_velocity_max = 32.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_22866")
+
+[node name="ToPlaceOnExplosions" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.499)
+texture = ExtResource("1_aheke")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_rf1ko")
+explosiveness = 1.0

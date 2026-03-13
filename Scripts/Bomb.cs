@@ -34,12 +34,6 @@ namespace Com.IsartDigital.Sokoban
         }
        
 
-        private void Explosion()
-        {
-
-            //PrintListOfList(explosionMatrix);
-        }
-
         private void CreateExplosionMatrice()
         {
             for (int i = 0; i < gridSize.Y; i++)
@@ -58,10 +52,6 @@ namespace Com.IsartDigital.Sokoban
         private void PutExplosionInMatrix(List<Vector2I> pExplosionTilePos)
         {
             Vector2I lOriginPos = new Vector2I(Mathf.Abs(minX), Mathf.Abs(minY));
-            //GD.Print(lOriginPos);
-
-            //GD.Print(explosionMatrice[lOriginPos.X][lOriginPos.Y]);
-
 
             foreach (Vector2I lPos in pExplosionTilePos)
             {
@@ -75,8 +65,6 @@ namespace Com.IsartDigital.Sokoban
         private void GetGridSize()
         {
             gridSize = new Vector2I(1, 1) - new Vector2I(minX, minY) + new Vector2I(maxX, maxY);
-
-            //GD.Print("The minimum size of the grid is " + gridSize);
         }
 
         private void GetMinMax(List<Vector2I> pList)
@@ -89,9 +77,12 @@ namespace Com.IsartDigital.Sokoban
                 if (lPos.Y < minY) minY = lPos.Y;
                 if (lPos.Y > maxY) maxY = lPos.Y;
             }
+        }
 
-            //GD.Print("\nmin x : " + minX, "\nmax x : " + maxX, "\nmin y : " + minY, "\nmax y : " + maxY);
-
+        public void Explode(Vector2I pPosition)
+        {
+            BombPattern.Create(explosionMatrix,pPosition);
+            //GD.Print(this);
         }
 
 
