@@ -163,6 +163,17 @@ namespace Com.IsartDigital.Sokoban.UI
             AnimationIsFinish();
         }
 
+        private void PlayPressed()
+        {
+            UIManager.GetInstance().GoToLevelSelect();
+        }
+
+        private void HelpPressed()
+        {
+            UIManager.GetInstance().GoToHelp();
+            HelpMenu.GetInstance().comeToMenu = true;
+        }
+
         /*
         protected override void Dispose(bool pDisposing)
 		{

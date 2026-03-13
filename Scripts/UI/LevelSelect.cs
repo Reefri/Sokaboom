@@ -9,9 +9,7 @@ namespace Com.IsartDigital.UI {
 	
 	public partial class LevelSelect : CanvasLayer
 	{
-		private const string TITLE_SCREEN_PATH = "res://Scenes/TitleCard.tscn";
-
-		[Export] private Button backButton;
+        [Export] private Button backButton;
 		[Export] private Button unlockButton;
 
 		[Export] private Control allButtons;
@@ -40,7 +38,7 @@ namespace Com.IsartDigital.UI {
             base._Ready();
             int i = 0;
 
-            backButton.Pressed += BackToTitle;
+            backButton.Pressed += UIManager.GetInstance().GoToTitle;
             unlockButton.Pressed += Unlock;
 
             foreach (Button lButtons in allButtons.GetChildren())
@@ -54,6 +52,7 @@ namespace Com.IsartDigital.UI {
         private void GoToLevel(int pIndex)
         {
 			GD.Print(pIndex);
+            if (pIndex == 0) GoToHelp();
             //GridManager.GetInstance().ChangeLevel(pIndex);
         }
 
@@ -65,9 +64,10 @@ namespace Com.IsartDigital.UI {
 			}
         }
 
-        private void BackToTitle()
+        private void GoToHelp()
         {
-			GetTree().ChangeSceneToFile(TITLE_SCREEN_PATH);
+            UIManager.GetInstance().GoToHelp();
+            HelpMenu.GetInstance().comeToMenu = false;
         }
 
         public override void _Process(double pDelta)
