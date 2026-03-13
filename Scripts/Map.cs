@@ -20,6 +20,7 @@ namespace Com.IsartDigital.Sokoban
 		public const string WALL = "Wall";
 		public const string INTERACTABLE = "Interactable";
 		public const string TARGET = "Target";
+		
 
 
 
@@ -66,7 +67,41 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 
+			if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
+			{
+				Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
+				foreach(Vector2I cell in groundCells)
+				{
+
+					if (lCellClicked.DistanceTo(cell ) < 1)
+					{
+						if ((bool)(GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
+						{
+                            GD.Print(cell);
+							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
+                            return;
+                        }
+                    
+						else if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER)))
+						{
+							return;
+						}
+					}
+
+				}
+			}
 		}
 
+		private void CreatePathFinding(Vector2I pBeginning, Vector2I pDestination)
+		{
+            List<Vector2I> lPlayersPath = new List<Vector2I>();
+            Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
+            foreach (Vector2I cellOnPath in lPath)
+            {
+				Player.GetInstance().path.Add(cellOnPath);
+            }
+			//Player.GetInstance().MovingOnPath(lPlayersPath);
+        }
+	
 	}
 }
