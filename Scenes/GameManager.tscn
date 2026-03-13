@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" path="res://Scripts/Manager/GameManager.cs" id="1_1plec"]
 
-[node name="GameManager" type="Node2D" node_paths=PackedStringArray("par")]
+[node name="GameManager" type="Node2D"]
 script = ExtResource("1_1plec")
-par = NodePath("")

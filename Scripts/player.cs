@@ -65,7 +65,7 @@ namespace Com.IsartDigital.Sokoban
             timer.WaitTime = ANIM_TIME;
             pathFindingTimer.WaitTime = PATH_FINDING_TIME;
             timer.OneShot = true;
-            Player.GetInstance().AddChild(timer);
+            AddChild(timer);
 
             timer.Timeout += AnimFinishedMove;
             pathFindingTimer.Timeout += MovingOnPath;
@@ -138,6 +138,7 @@ namespace Com.IsartDigital.Sokoban
                             ExplodeBombInHand();
                             bombInHand = null;
                         }
+                        return;
                     }
 
 

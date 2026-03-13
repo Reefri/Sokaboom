@@ -75,7 +75,7 @@ namespace Com.IsartDigital.Sokoban
 
 					if (lCellClicked.DistanceTo(cell ) < 1)
 					{
-						if ((bool)(GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
+						if ((GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
 						{
                             GD.Print(cell);
 							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
