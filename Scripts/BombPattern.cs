@@ -69,6 +69,13 @@ namespace Com.IsartDigital.Sokoban {
                         {
                             //GD.Print(Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"));
                                 //GD.Print("exploded an interactable");
+
+                            if((bool)Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
+                            {
+                                GD.Print("GameOver");
+                                //Put Game Over screen here
+                            }
+                            else
                                 Map.GetInstance().SetCell(1, posInGrid + new Vector2I(j, i) - originPos, -1, new Vector2I(0, 0));
                         }
                     }
