@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
-using System.Collections.Generic;
+using SysDict = System.Collections.Generic;
 using System.IO;
 
 // Author : Cayot Daniel
@@ -23,7 +23,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-        public static Dictionary<string, ObjectChar> interactableToObjectChar = new Dictionary<string, ObjectChar>
+        public static SysDict.Dictionary<string, ObjectChar> interactableToObjectChar = new SysDict.Dictionary<string, ObjectChar>
 		{
 			{ CONTAINER,ObjectChar.BOX},
 			{ WALL,ObjectChar.WALL},
@@ -66,7 +66,7 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 
-    
+		}
 
 	}
 }

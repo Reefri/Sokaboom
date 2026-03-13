@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/SecretButton.cs" id="3_jl43w"]
 [ext_resource type="Texture2D" uid="uid://b5ifgvo56jcyi" path="res://Assets/UI/eye/oeil.png" id="4_xtyfr"]
 
-[node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation", "statut")]
+[node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,6 @@ password = NodePath("Font/Login_Inscription/Font/LinePassWord")
 confirmPassword = NodePath("Font/Login_Inscription/Font/LineConfirm")
 buttonSwitch = NodePath("Font/Login_Inscription/Font/Swtich")
 buttonValidation = NodePath("Font/Login_Inscription/Font/connexion_inscription")
-statut = NodePath("Font/Statut")
 
 [node name="Font" type="ColorRect" parent="."]
 layout_mode = 1

@@ -20,11 +20,6 @@ namespace Com.IsartDigital.Sokoban
         private const string PLAYER_ACTION_DOWN = "down";
 
 
-        public static Vector2I up = (Vector2I)Vector2.Up * States.DISTANCE_RANGE;
-        public static Vector2I down = (Vector2I)Vector2.Down * States.DISTANCE_RANGE;
-        public static Vector2I left = (Vector2I)Vector2.Left * States.DISTANCE_RANGE;
-        public static Vector2I right = (Vector2I)Vector2.Right * States.DISTANCE_RANGE;
-
 
         public List<Vector2I> path = new List<Vector2I>();
 
@@ -130,107 +125,37 @@ namespace Com.IsartDigital.Sokoban
         {
             if (Box.animPlaying) { return; }
 
-            if (Input.IsActionJustPressed(PLAYER_ACTION_RIGHT))
+            foreach (string lActionName in nameOfVector.Keys)
             {
-                lastDirection = right;
 
-                if (CheckTheMove(Vector2I.Right)) //if you are against a wall, or 2 consecutive boxes
+                if (Input.IsActionJustPressed(lActionName))
                 {
-                    if (bombInHand != null)
+                    lastDirection = nameOfVector[lActionName] * States.DISTANCE_RANGE;
+
+                    if (CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
                     {
-                        ExplodeBombInHand();
-                        bombInHand = null;
+                        if (bombInHand != null)
+                        {
+                            ExplodeBombInHand();
+                            bombInHand = null;
+                        }
                     }
-                
 
-                }
 
-                
-                if (Box.animPlaying)
-                {
-                    timer.Start();
-                    return;
-                }
-                else
-                {
-                	Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
-                    GameManager.GetInstance().SaveScreenshotGame();
+                    if (Box.animPlaying)
+                    {
+                        timer.Start();
+                        return;
+                    }
+                    else
+                    {
+                        Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
+                        GameManager.GetInstance().SaveScreenshotGame();
+                    }
                 }
             }
            
-
-            if (Input.IsActionJustPressed(PLAYER_ACTION_LEFT))
-            {
-                lastDirection = left;
-
-                if (CheckTheMove((Vector2I)Vector2.Left))
-                {
-                    if (bombInHand != null)
-                    {
-                        ExplodeBombInHand();
-                        bombInHand = null;
-                    }
-                    return;
-                }
-
-
-                if (Box.animPlaying)
-                {
-
-                    timer.Start();
-                    return;
-                }
-                Position += left;
-                historicPositions.Add(lastPosition);
-            }
-            if (Input.IsActionJustPressed(PLAYER_ACTION_UP))
-            {
-                lastDirection = up;
-
-                if (CheckTheMove((Vector2I)Vector2.Up))
-                {
-                    if (bombInHand != null)
-                    {
-                        ExplodeBombInHand();
-                        bombInHand = null;
-                    }
-                    return;
-                }
-
-
-                if (Box.animPlaying)
-                {
-
-                    timer.Start();
-                    return;
-                }
-                Position += up;
-                historicPositions.Add(lastPosition);
-            }
-            if (Input.IsActionJustPressed(PLAYER_ACTION_DOWN))
-            {
-                lastDirection = down;
-
-                if (CheckTheMove((Vector2I)Vector2.Down))
-                {
-                    if (bombInHand != null)
-                    {
-                        ExplodeBombInHand();
-                        bombInHand = null;
-                    }
-                    return;
-                }
-
-
-                if (Box.animPlaying)
-                {
-
-                    timer.Start();
-                    return;
-                }
-                historicPositions.Add(lastPosition);
-                Position += down;
-            }
+        }
 
         public void GoTo(Vector2I pPosition)
         {
