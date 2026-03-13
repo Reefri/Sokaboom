@@ -8,11 +8,11 @@ namespace Com.IsartDigital.Sokoban
 	public partial class HistoricHeap
 	{
 
-		public LevelScreenShot value;
+		public Level value;
 		public HistoricHeap nextValue = null;
 		public HistoricHeap previousValue = null;
 
-		public HistoricHeap(LevelScreenShot pValue) 
+		public HistoricHeap(Level pValue) 
 		{
 			value = pValue;
 		}

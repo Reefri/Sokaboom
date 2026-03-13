@@ -14,15 +14,12 @@ namespace Com.IsartDigital.Sokoban
         static private GameManager instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");
 
-        private PackedScene levelFactory = GD.Load<PackedScene>("res://Scenes/Level.tscn");
 
         private Level currentLevel;
 
         private List<LevelScreenShot> gameScreenshot = new List<LevelScreenShot>();
-        private HistoricHeap heap;
         private HistoricHeap currentPosition;
 
-        private int currentPositionInTime = 0;
 
         private List<Vector2I> neighborsCoor = new List<Vector2I>
         {
@@ -32,7 +29,7 @@ namespace Com.IsartDigital.Sokoban
             Vector2I.Down,
         };
 
-        private Dictionary<ObjectChar, Vector2I> objectPositionOnTileSet = new Dictionary<ObjectChar, Vector2I>
+        public Dictionary<ObjectChar, Vector2I> objectPositionOnTileSet = new Dictionary<ObjectChar, Vector2I>
         {
             { ObjectChar.BOX , new Vector2I(6,0) },
             { ObjectChar.WALL , new Vector2I(7,7) },
@@ -63,8 +60,18 @@ namespace Com.IsartDigital.Sokoban
         {
             GridManager.GetInstance().ChangeLevel(1);
             currentLevel = GridManager.GetInstance().CurrentLevel;
+            currentPosition = new HistoricHeap(currentLevel);
 
-            CreateLevel();
+            tileMap = Map.Create();
+
+            AddChild(tileMap);
+
+            AddChild(Player.GetInstance());
+
+
+            ChargeMapFromCurrentLevel();
+
+
         }
 
 
@@ -79,7 +86,7 @@ namespace Com.IsartDigital.Sokoban
             }
             if (Input.IsActionJustPressed("TimePlus"))
             {
-                //MoveBackInTime(1);
+                MoveForwardInTime();
 
             }
         }
@@ -90,52 +97,42 @@ namespace Com.IsartDigital.Sokoban
             base.Dispose(pDisposing);
         }
 
-        private void CreateLevel()
+        private void ChargeMapFromCurrentLevel()
         {
-            tileMap = (Map)levelFactory.Instantiate();
-
-            Vector2I lPlayerPosition = new Vector2I(0, 0);
+            tileMap.Clear();
 
 
-            for (int i = 0; i < currentLevel.Map.Count; i++)
+            for (int i = 0; i < currentPosition.value.Size.Y; i++)
             {
-                for (int j = 0; j < currentLevel.Map[0].Length; j++)
+                for (int j = 0; j < currentPosition.value.Size.X; j++)
                 {
 
-                    switch (currentLevel.Map[i][j])
+                    switch (currentPosition.value.Map[i][j])
                     {
                         case (char)ObjectChar.EMPTY:
                             continue;
 
-                        case (char)ObjectChar.PLAYER:
-                            lPlayerPosition = new Vector2I(j, i);
-                            continue;
 
                         case (char)ObjectChar.WALL:
                             tileMap.SetCell(0, new Vector2I(j, i), 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
                             break;
                     }
 
+
                     tileMap.SetCell(1, new Vector2I(j, i), 0,
-                            objectPositionOnTileSet[(ObjectChar)currentLevel.Map[i][j]]
+                            objectPositionOnTileSet[(ObjectChar)currentPosition.value.Map[i][j]]
                             );
 
                 }
             }
 
-            FillGroundTiles(lPlayerPosition);
+            Vector2I lPlayerPosition = currentPosition.value.playerPosition;
 
-            AddChild(Player.GetInstance());
-            AddChild(tileMap);
 
-          
-
+         
             Player.GetInstance().GoTo(lPlayerPosition);
 
-
-            heap = GetScreenShotGame();
-            currentPosition = heap;
-
+            FillGroundTiles(lPlayerPosition);
 
         }
 
@@ -153,20 +150,66 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
+        private Level SaveMapAsLevel()
+        {
+            List<string> lRes = new List<string>();
+            string lRow;
+
+            for (int i = 0; i < currentPosition.value.Size.Y; i++)
+            {
+                lRow = "";
+                for (int j = 0; j < currentPosition.value.Size.X; j++)
+                {
+
+                    if(tileMap.GetCellTileData(1, new Vector2I(j, i))==null)
+                    {
+                        lRow += (char)ObjectChar.EMPTY;
+                        continue;
+                    }
+
+
+                    if ((bool)tileMap.GetCellTileData(1, new Vector2I(j, i)).GetCustomData(Map.PLAY_OBJECT))
+                    {
+                        foreach (string lKey in Map.interactableToObjectChar.Keys)
+                        {
+                            if ((bool)tileMap.GetCellTileData(1, new Vector2I(j, i)).GetCustomData(lKey))
+                            {
+                                lRow += (char)Map.interactableToObjectChar[lKey];
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        lRow += (char)ObjectChar.EMPTY;
+
+                        GD.Print("Unknow cell custom data. Please fill missing data in the Map class : " + new Vector2I(j, i));
+                    }
+
+                }
+                lRes.Add(lRow);
+
+            }
+
+            Level lNewLevel = currentPosition.value.Duplicate();
+
+            lNewLevel.UpdateMap(lRes);
+            lNewLevel.playerPosition = Player.GetInstance().GetPositionToVector2I();
+
+            return lNewLevel;
+        }
+
 
         public void SaveScreenshotGame()
         {
-            GD.Print("Say cheese !");
-
-            currentPosition.nextValue = GetScreenShotGame();
+            currentPosition.nextValue = GetScreenshotGame();
             currentPosition.nextValue.previousValue = currentPosition;
             currentPosition = currentPosition.nextValue;
-
         }
 
-        public HistoricHeap GetScreenShotGame()
+        public HistoricHeap GetScreenshotGame()
         {
-            return new HistoricHeap(new LevelScreenShot((Map)tileMap.Duplicate(), Player.GetInstance().GetPositionToVector2I()));
+            return new HistoricHeap(SaveMapAsLevel());
         }
 
         public void MoveBackInTime()
@@ -177,21 +220,19 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
-            GD.Print("back in time");
-
             currentPosition = currentPosition.previousValue;
-            ChargeCurrentTimeLevel();
+            ChargeMapFromCurrentLevel();
         }
-
-        private void ChargeCurrentTimeLevel()
+        public void MoveForwardInTime()
         {
-            LevelScreenShot lLevelScreenShot = currentPosition.value;
-            Player.GetInstance().GoTo(lLevelScreenShot.playerPosition);
+            if (currentPosition.nextValue == null)
+            {
+                GD.Print("Can't go forward in time.");
+                return;
+            }
 
-            RemoveChild(tileMap);
-            tileMap = lLevelScreenShot.tileMap;
-            AddChild(tileMap);
+            currentPosition = currentPosition.nextValue;
+            ChargeMapFromCurrentLevel();
         }
-
     }
 }

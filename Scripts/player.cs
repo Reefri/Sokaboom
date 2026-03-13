@@ -72,6 +72,8 @@ namespace Com.IsartDigital.Sokoban
 
         private bool CheckTheMove(Vector2I pDirectionVector)
         {
+            
+
             Vector2I lUnitaryPos = GetPositionToVector2I();
 
             if (GameManager.GetInstance().tileMap.GetCellTileData(1, lUnitaryPos + pDirectionVector) == null) return false;
@@ -97,7 +99,7 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Input(InputEvent pEvent)
         {
-            if (Box.animPlaying) return;
+            if (Box.animPlaying) { return; }
 
 
             foreach (string lActionName in nameOfVector.Keys)

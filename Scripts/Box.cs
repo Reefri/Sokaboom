@@ -34,7 +34,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndOfAnimation(StringName pAnimName)
         {
-            GameManager.GetInstance().tileMap.SetCell( 1, ((Vector2I)Position + Player.lastDirection)/States.DISTANCE_RANGE, 0, Vector2I.Right );
+            GameManager.GetInstance().tileMap.SetCell( 1, ((Vector2I)Position + Player.lastDirection)/States.DISTANCE_RANGE, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
             animPlaying = false;
 
             GetParent().RemoveChild(this);
@@ -49,9 +49,8 @@ namespace Com.IsartDigital.Sokoban
 		{
 			if (GameManager.GetInstance().tileMap.GetCellTileData( 1, pCellPosition + pDirection) == null )
 			{
-                GameManager.GetInstance().tileMap.SetCell( 1, pCellPosition, 0, Vector2I.Zero );
+                GameManager.GetInstance().tileMap.SetCell( 1, pCellPosition, -1);
                 Create(pCellPosition , pDirection);
-                //Map.GetInstance().SetCell(1, pCellPosition + pDirection, 0, new Vector2I(1, 0));
                 return false;
 			}
 
@@ -63,7 +62,7 @@ namespace Com.IsartDigital.Sokoban
 			}
 			else
 			{
-                GameManager.GetInstance().tileMap.SetCell(1, pCellPosition, 0, Vector2I.Zero);
+                GameManager.GetInstance().tileMap.SetCell(1, pCellPosition, -1);
                 Create(pCellPosition, pDirection);
                 return false;
 			}
