@@ -14,6 +14,8 @@ namespace Com.IsartDigital.Sokoban
         static private GameManager instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");
 
+        private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/BombCollectible.tscn");
+
 
         private Level currentLevel;
 
@@ -35,6 +37,7 @@ namespace Com.IsartDigital.Sokoban
             { ObjectChar.WALL , new Vector2I(7,7) },
             { ObjectChar.TARGET , new Vector2I(1,3) },
             { ObjectChar.EMPTY , new Vector2I(11,6) },
+            { ObjectChar.BORDER, new Vector2I(9,0) },
         };
 
         public Map tileMap;
@@ -71,7 +74,7 @@ namespace Com.IsartDigital.Sokoban
 
             ChargeMapFromCurrentLevel();
 
-
+            PlacingBombs();
         }
 
 
@@ -95,6 +98,20 @@ namespace Com.IsartDigital.Sokoban
         {
             instance = null;
             base.Dispose(pDisposing);
+        }
+
+        private void PlacingBombs()
+        {
+            foreach (Vector2I lPosition in currentPosition.value.bombsPos)
+            {
+                GD.Print(lPosition);
+
+                BombCollectible lBomb = (BombCollectible)bombCollectible.Instantiate();
+                lBomb.positionOnGrid = lPosition;
+                lBomb.bombPatternIndex = currentPosition.value.bombsPos.IndexOf(lPosition);
+                lBomb.ZIndex = 1;
+                AddChild(lBomb);
+            }
         }
 
         private void ChargeMapFromCurrentLevel()
@@ -129,7 +146,7 @@ namespace Com.IsartDigital.Sokoban
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
 
 
-         
+
             Player.GetInstance().GoTo(lPlayerPosition);
 
             FillGroundTiles(lPlayerPosition);
@@ -161,7 +178,7 @@ namespace Com.IsartDigital.Sokoban
                 for (int j = 0; j < currentPosition.value.Size.X; j++)
                 {
 
-                    if(tileMap.GetCellTileData(1, new Vector2I(j, i))==null)
+                    if (tileMap.GetCellTileData(1, new Vector2I(j, i)) == null)
                     {
                         lRow += (char)ObjectChar.EMPTY;
                         continue;

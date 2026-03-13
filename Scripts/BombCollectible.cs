@@ -6,9 +6,9 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class BombCollectible : Area2D
 	{
-		[Export] private Vector2I positionOnGrid = Vector2I.Zero;
+		[Export] public Vector2I positionOnGrid = Vector2I.Zero;
 
-		[Export] private int bombPatternIndex = 0;
+		[Export] public int bombPatternIndex = 0;
 
 		private Bomb bomb;
         public override void _Ready()

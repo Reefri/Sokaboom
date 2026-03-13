@@ -56,7 +56,15 @@ namespace Com.IsartDigital.Sokoban {
                 }
 			}
 
-            GameManager.GetInstance().tileMap.SetCell(1, posInGrid, -1, new Vector2I(0, 0));
+            if (!(bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid).GetCustomData("Border"))
+            {
+                GameManager.GetInstance().tileMap.SetCell(1, posInGrid, -1, Vector2I.Zero);
+            }
+            else
+            {
+                GD.Print("GameOver");
+                //put Game Over Screen here
+            }
 
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
@@ -68,9 +76,9 @@ namespace Com.IsartDigital.Sokoban {
                             && (bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
                         {
                             //GD.Print(Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"));
-                                //GD.Print("exploded an interactable");
+                            //GD.Print("exploded an interactable");
 
-                            if((bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
+                            if ((bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
                             {
                                 GD.Print("GameOver");
                                 //Put Game Over screen here
