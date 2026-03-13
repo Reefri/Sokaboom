@@ -48,7 +48,6 @@ namespace Com.IsartDigital.Sokoban
 			{
                 GameManager.GetInstance().tileMap.SetCell( 1, pCellPosition, 0, Vector2I.Zero );
                 Create(pCellPosition , pDirection);
-                //Map.GetInstance().SetCell(1, pCellPosition + pDirection, 0, new Vector2I(1, 0));
                 return false;
 			}
 
