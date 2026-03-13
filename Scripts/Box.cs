@@ -25,7 +25,6 @@ namespace Com.IsartDigital.Sokoban
 		private static Vector2 movingTheBox = new Vector2(States.DISTANCE_RANGE,States.DISTANCE_RANGE);
 		public override void _Ready()
 		{
-			GD.Print("Addchild box");
 			animPlaying = true;
             anim.Play(animToPlay);
             moveDust.Emitting = true;
@@ -70,10 +69,9 @@ namespace Com.IsartDigital.Sokoban
 
 		public static Box Create(Vector2I pPosition, Vector2I pDirection)
 		{
-			GD.Print("Creating the box");
 			Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
-            lBox.Position =  (pPosition + Vector2.One/2) * (int)(States.DISTANCE_RANGE);
+            lBox.Position =  (pPosition + Vector2.One/2) * (States.DISTANCE_RANGE);
 			GameManager.GetInstance().tileMap.AddChild(lBox);
 			return lBox;
 
@@ -81,11 +79,10 @@ namespace Com.IsartDigital.Sokoban
 
 		public static void BoxAnimation(Vector2I pDirection)
 		{
-			if(pDirection * States.DISTANCE_RANGE == Player.up) animToPlay = GO_UP_ANIM;
-
-            else if (pDirection * States.DISTANCE_RANGE == Player.down) animToPlay = GO_DOWN_ANIM;
-			else if(pDirection * States.DISTANCE_RANGE == Player.right) animToPlay = GO_RIGHT_ANIM;
-            else if (pDirection * States.DISTANCE_RANGE == Player.left) animToPlay = GO_LEFT_ANIM;
+			if(pDirection == Vector2I.Up) animToPlay = GO_UP_ANIM;
+            else if (pDirection == Vector2I.Down) animToPlay = GO_DOWN_ANIM;
+			else if(pDirection == Vector2I.Right) animToPlay = GO_RIGHT_ANIM;
+            else if (pDirection == Vector2I.Left) animToPlay = GO_LEFT_ANIM;
         }
 
 		public override void _Process(double delta)

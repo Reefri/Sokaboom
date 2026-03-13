@@ -56,7 +56,7 @@ namespace Com.IsartDigital.Sokoban {
                 }
 			}
 
-            Map.GetInstance().SetCell(1, posInGrid, -1, new Vector2I(0, 0));
+            GameManager.GetInstance().tileMap.SetCell(1, posInGrid, -1, new Vector2I(0, 0));
 
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
@@ -64,19 +64,19 @@ namespace Com.IsartDigital.Sokoban {
                 {
                     if (explosionMatrix[i][j] == 1)
                     {
-                        if (Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos) != null
-                            && (bool)Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
+                        if (GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos) != null
+                            && (bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
                         {
                             //GD.Print(Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"));
                                 //GD.Print("exploded an interactable");
 
-                            if((bool)Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
+                            if((bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
                             {
                                 GD.Print("GameOver");
                                 //Put Game Over screen here
                             }
                             else
-                                Map.GetInstance().SetCell(1, posInGrid + new Vector2I(j, i) - originPos, -1, new Vector2I(0, 0));
+                                GameManager.GetInstance().tileMap.SetCell(1, posInGrid + new Vector2I(j, i) - originPos, -1, new Vector2I(0, 0));
                         }
                     }
                     //GD.Print(originPos);
