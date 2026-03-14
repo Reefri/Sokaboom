@@ -33,13 +33,14 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Ready()
 		{
-			GridManager.GetInstance().ChangeLevel(0);
-			GD.Print(GridManager.GetInstance().CurrentLevel);
+			//GridManager.GetInstance().ChangeLevel(0);
+			//GD.Print(GridManager.GetInstance().CurrentLevel);
 			base._Ready();
 
+			//Bomb bomb = GridManager.GetInstance().CurrentLevel.bombs[0];
+			//bomb.Explode(new Vector2I(3, 3));
 
-
-        }
+		}
 
 
 
@@ -69,7 +70,7 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-		public void PrintList<T>(List<T> pList, char pSeparator =';')
+		public void PrintList<T>(List<T> pList, char pSeparator = ';', bool pDoLigneBreak = false)
 		{
 			if (pList.Count == 0)
 			{
@@ -80,7 +81,7 @@ namespace Com.IsartDigital.Sokoban
             string lRes = "";
             foreach (T lCell in pList)
             {
-                lRes += lCell.ToString() + pSeparator;
+                lRes += lCell.ToString() + pSeparator + (pDoLigneBreak?"\n":"");
             }
             GD.Print(lRes);
         }

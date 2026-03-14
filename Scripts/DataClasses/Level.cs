@@ -9,6 +9,8 @@ namespace Com.IsartDigital.Sokoban
 	{
         /*
          * Seuls les champs :
+         *  -Size;
+         *  -playerPosition;
          *  -targetsPos;
          *  -Map;
          *  -bombs;
@@ -23,6 +25,9 @@ namespace Com.IsartDigital.Sokoban
 
         private bool isJSONParse = true;
 
+        public Vector2I Size { get; private set; }
+        public Vector2I playerPosition;
+
 		public int Par { get; set; }
 
         private List<string> map;
@@ -32,7 +37,9 @@ namespace Com.IsartDigital.Sokoban
             set 
             {
                 map = value;
-                FillTargetPosAndBombPos();
+                Size = new Vector2I(map[0].Length, map.Count);
+
+                FillTargetPlayerAndBombPos();
             } 
         }
 
@@ -94,6 +101,24 @@ namespace Com.IsartDigital.Sokoban
         public List<Vector2I> bombsPos;
 
 
+        public Level Duplicate()
+        {
+            Level lNewLevel = new Level();
+            lNewLevel.Size = Size;
+            lNewLevel.map = map;
+            lNewLevel.bombs = bombs;
+            lNewLevel.bombsPos = bombsPos;
+            lNewLevel.targetsPos = targetsPos;
+
+            return lNewLevel;
+        }
+
+        public Level UpdateMap(List<string> pMap)
+        {
+            map = pMap;
+            return this;
+        }
+
         public override string ToString()
         {
             string lString = "Information sur le niveau : \n";
@@ -118,7 +143,7 @@ namespace Com.IsartDigital.Sokoban
 
         }
 
-        private void FillTargetPosAndBombPos()
+        private void FillTargetPlayerAndBombPos()
         {
 
             bombsPos = new List<Vector2I>();
@@ -128,9 +153,14 @@ namespace Com.IsartDigital.Sokoban
             {
                 for (int j = 0; j < Map[i].Length; j++)
                 {
+                    if (Map[i][j] == (int)ObjectChar.PLAYER)
+                    {
+                        playerPosition = new Vector2I(j, i);
+                        Map[i] = Map[i].Substr(0, j) + " " + Map[i].Substr(j + 1, Map[i].Length);
+                    }
                     if (Map[i][j] == (int)ObjectChar.TARGET)
                     {
-                        targetsPos.Add(new Vector2I(i, j));
+                        targetsPos.Add(new Vector2I(j, i));
                     }
 
                     if (Map[i][j] >= '0' && Map[i][j] <= '9')
@@ -141,7 +171,7 @@ namespace Com.IsartDigital.Sokoban
                         {
                             bombsPos.Add(new Vector2I(0, 0));
                         }
-                        bombsPos[lIndex] = new Vector2I(i, j);
+                        bombsPos[lIndex] = new Vector2I(j, i);
                         Map[i] = Map[i].Substr(0,j) + " " + Map[i].Substr(j+1, Map[i].Length);
                     }
                 }
