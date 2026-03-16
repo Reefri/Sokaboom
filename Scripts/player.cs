@@ -151,7 +151,7 @@ namespace Com.IsartDigital.Sokoban
                     else
                     {
                         Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
-                        GameManager.GetInstance().SaveScreenshotGame();
+                        GameManager.GetInstance().UpdateAfterAction();
                     }
                 }
             }

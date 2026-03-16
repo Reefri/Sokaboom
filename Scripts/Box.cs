@@ -40,7 +40,7 @@ namespace Com.IsartDigital.Sokoban
 
             QueueFree();
 			
-            GameManager.GetInstance().SaveScreenshotGame();
+            GameManager.GetInstance().UpdateAfterAction();
 
         }
 

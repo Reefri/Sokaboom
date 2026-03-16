@@ -9,6 +9,8 @@ namespace Com.IsartDigital.Sokoban
 	{
         /*
          * Seuls les champs :
+         *  -Size;
+         *  -playerPosition;
          *  -targetsPos;
          *  -Map;
          *  -bombs;

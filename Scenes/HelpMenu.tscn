@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ph7dviekoboq"]
+[gd_scene load_steps=6 format=3 uid="uid://ph7dviekoboq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HelpMenu.cs" id="1_7tb35"]
+[ext_resource type="Texture2D" uid="uid://docrkk0i2wtmh" path="res://Assets/UI/input/keyboard_z_outline.png" id="2_rk2ex"]
+[ext_resource type="Texture2D" uid="uid://byvn3omul1vc4" path="res://Assets/UI/input/keyboard_s_outline.png" id="3_5oxau"]
+[ext_resource type="Texture2D" uid="uid://bhebduxscgjmf" path="res://Assets/UI/input/keyboard_q_outline.png" id="4_0ke8v"]
+[ext_resource type="Texture2D" uid="uid://dcc0jwtfo4niq" path="res://Assets/UI/input/keyboard_d_outline.png" id="5_5sf0s"]
 
 [node name="HelpMenu" type="Control"]
 layout_mode = 3
@@ -10,12 +14,112 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7tb35")
+metadata/_edit_lock_ = true
 
-[node name="Button" type="Button" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32045, 3.06834e-07, 1.20327e-07, 1)
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "ID_NEXT"
+
+[node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 442.0
-offset_top = 438.0
-offset_right = 792.0
-offset_bottom = 601.0
+offset_left = 25.0
+offset_right = 122.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "Clavier :"
 
-[connection signal="pressed" from="Button" to="." method="ReturnPressed"]
+[node name="Input" type="Control" parent="ColorRect/Label"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = 15.0
+offset_right = 231.0
+offset_bottom = 123.0
+grow_vertical = 0
+
+[node name="InputZ" type="Sprite2D" parent="ColorRect/Label/Input"]
+position = Vector2(128, 30)
+texture = ExtResource("2_rk2ex")
+
+[node name="InputS" type="Sprite2D" parent="ColorRect/Label/Input"]
+position = Vector2(128, 78)
+texture = ExtResource("3_5oxau")
+
+[node name="InputQ" type="Sprite2D" parent="ColorRect/Label/Input"]
+position = Vector2(80, 78)
+texture = ExtResource("4_0ke8v")
+
+[node name="InputD" type="Sprite2D" parent="ColorRect/Label/Input"]
+position = Vector2(176, 78)
+texture = ExtResource("5_5sf0s")
+
+[node name="Label" type="Label" parent="ColorRect/Label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.227
+anchor_top = 1.0
+anchor_right = 2.227
+anchor_bottom = 1.0
+offset_left = -0.0189972
+offset_right = 887.981
+offset_bottom = 139.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 14
+text = "Le personnage se dirige sur la case dans la direction de la touche pressée.
+► Si la case est vide, le personnage s'y déplace
+► Si une caisse est sur la case, la caisse est poussé sur la case suivante dans la direction du personnage
+     et le personnage se déplace sur la case voulue.
+► Si une caisse bloquée ou un mur est sur la case, le personnage ne se déplace pas
+► Si une caisse bloquée ou un mur est sur la case et que le joueur a une bombe, le personnage pose la bombe sur la case et explose"
+
+[node name="Label2" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.309
+anchor_bottom = 0.309
+offset_left = 25.0
+offset_top = -0.23201
+offset_right = 355.0
+offset_bottom = 22.768
+theme_override_font_sizes/font_size = 25
+text = "Comportement au clic/touch uniquement :"
+
+[node name="Label" type="Label" parent="ColorRect/Label2"]
+layout_mode = 1
+offset_top = 50.0
+offset_right = 1067.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 19
+text = "► Click/tap sur une case vide :
+     Le personnage se dirige vers la case séléctionné puis s'arrête.
+► Click/tap sur une case contenant une caisse :
+     Le personnage se déplace jusqu'à l'une des case à côté de la caisse,
+     puis pousse la caisse sur la case suivante dans la direction du personnage.
+► Clikc/tap sur une case contenant une caisse bloquée ou un mur :
+     Le personnage se déplace jusqu'à l'une des case à côté puis s'arrête.
+► Clikc/tap sur une case contenant une caisse bloquée ou un mur et que le joueur a une bombe :
+     Le personnage se déplace jusqu'à l'une des case à côté puis s'arrête avant de poser la bombe sur la case et explose."
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="ReturnPressed"]
