@@ -29,7 +29,6 @@ namespace Com.IsartDigital.Sokoban
             { 
                 currentPar = value; 
                 // Ici un appel à UIManager.GetInstance().UpdateHud();
-                GD.Print(currentPar);
             }
         }
             
