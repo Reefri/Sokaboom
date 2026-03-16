@@ -14,6 +14,8 @@ namespace Com.IsartDigital.UI {
 
 		[Export] private Control allButtons;
 
+        private bool buttonlock = true;
+
         static private LevelSelect instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/LevelSelect.tscn");
         private LevelSelect() : base()
@@ -58,10 +60,13 @@ namespace Com.IsartDigital.UI {
 
         private void Unlock()
         {
-			foreach(Button lButton in allButtons.GetChildren())
+            if (buttonlock) buttonlock = false;
+            else buttonlock = true;
+
+            foreach (Button lButton in allButtons.GetChildren())
 			{
-				lButton.Disabled = false;
-			}
+				if (lButton.GetIndex() > 0) lButton.Disabled = buttonlock;
+            }
         }
 
         private void GoToHelp()
