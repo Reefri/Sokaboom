@@ -18,7 +18,7 @@ namespace Com.IsartDigital.Sokoban
         private const string PLAYER_ACTION_LEFT = "left";
         private const string PLAYER_ACTION_UP = "up";
         private const string PLAYER_ACTION_DOWN = "down";
-
+         
 
 
         public List<Vector2I> path = new List<Vector2I>();
