@@ -40,6 +40,7 @@ namespace Com.IsartDigital.Sokoban
 		public void ChangeLevel(int pIndex)
 		{
 			CurrentLevel = GetLevel(pIndex);
+			GameManager.GetInstance().CurrentPar = 0;
 		}
 
 		private Level GetLevel(int pIndex)

@@ -21,6 +21,19 @@ namespace Com.IsartDigital.Sokoban
         private HistoricHeap currentPosition;
 
 
+        private int currentPar = 0;
+        public int CurrentPar
+        {
+            get { return currentPar;  }
+            set 
+            { 
+                currentPar = value; 
+                // Ici un appel à UIManager.GetInstance().UpdateHud();
+                GD.Print(currentPar);
+            }
+        }
+            
+
         private List<Vector2I> neighborsCoor = new List<Vector2I>
         {
             Vector2I.Right,
@@ -200,6 +213,13 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
+        public void UpdateAfterAction()
+        {
+            CurrentPar++;
+            SaveScreenshotGame();
+        }
+
+
         public void SaveScreenshotGame()
         {
             currentPosition.nextValue = GetScreenshotGame();
@@ -220,6 +240,9 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
+
+            CurrentPar--;
+
             currentPosition = currentPosition.previousValue;
             ChargeMapFromCurrentLevel();
         }
@@ -231,8 +254,11 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
+            CurrentPar++;
+
             currentPosition = currentPosition.nextValue;
             ChargeMapFromCurrentLevel();
         }
+
     }
 }
