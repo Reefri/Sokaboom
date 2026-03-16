@@ -23,7 +23,7 @@ namespace Com.IsartDigital.Sokoban
 
         public List<Vector2I> path = new List<Vector2I>();
 
-        public static Vector2I lastDirection;
+        public Vector2I lastDirection;
         private static Vector2I pathPosition;
 
         private List<Vector2> historicPositions = new List<Vector2>();
@@ -93,7 +93,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void AnimFinishedMove()
         {
-            Position += lastDirection;
+            Position += lastDirection*States.DISTANCE_RANGE;
         }
 
         private bool CheckTheMove(Vector2I pDirectionVector)
@@ -130,7 +130,7 @@ namespace Com.IsartDigital.Sokoban
 
                 if (Input.IsActionJustPressed(lActionName))
                 {
-                    lastDirection = nameOfVector[lActionName] * States.DISTANCE_RANGE;
+                    lastDirection = nameOfVector[lActionName];
 
                     if (CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
                     {
@@ -169,7 +169,7 @@ namespace Com.IsartDigital.Sokoban
             else
 
             {
-                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection/States.DISTANCE_RANGE, lastDirection);
+                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection, lastDirection);
 
                 
             }

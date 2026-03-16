@@ -33,7 +33,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndOfAnimation(StringName pAnimName)
         {
-            GameManager.GetInstance().tileMap.SetCell( 1, ((Vector2I)Position + Player.lastDirection)/States.DISTANCE_RANGE, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
+            GameManager.GetInstance().tileMap.SetCell( 1, (Vector2I)(Position/States.DISTANCE_RANGE) + Player.GetInstance().lastDirection, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
             animPlaying = false;
 
             GetParent().RemoveChild(this);

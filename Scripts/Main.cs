@@ -57,17 +57,21 @@ namespace Com.IsartDigital.Sokoban
 		}
 
 
-        public void PrintListOfList<T>(List<List<T>> pListOfList)
+        public void PrintListOfList<T>(List<List<T>> pListOfList, char pSeparator = ';', bool pDoLigneBreak=true)
         {
+			string lRes = "";
+			string lTempRes;
+
             foreach (List<T> lRow in pListOfList)
             {
-                string lRes = "";
+                lTempRes = "";
                 foreach (T lCell in lRow)
                 {
-                    lRes += lCell.ToString();
+                    lRes += lCell.ToString()+pSeparator;
                 }
-                GD.Print(lRes);
+				lRes += lTempRes + (pDoLigneBreak?"\n":"");
             }
+			GD.Print(lRes);
         }
 
 		public void PrintList<T>(List<T> pList, char pSeparator = ';', bool pDoLigneBreak = false)

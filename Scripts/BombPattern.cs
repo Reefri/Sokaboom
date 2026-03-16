@@ -1,13 +1,14 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 // Author : Ethan Frenard
 
 namespace Com.IsartDigital.Sokoban {
 	public partial class BombPattern : Node2D
 	{
-        [Export] private float timeUntilFade = 1;
+        [Export] private float timeUntilFade = 10;
 		private float time = 0;
 
 		private const string TO_PLACE_ON_EXPLOSION_PATH = "res://Scenes/ToPlaceOnExplosions.tscn";
@@ -58,7 +59,7 @@ namespace Com.IsartDigital.Sokoban {
 
             if (!(bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid).GetCustomData("Border"))
             {
-                GameManager.GetInstance().tileMap.SetCell(1, posInGrid, -1, Vector2I.Zero);
+                GameManager.GetInstance().tileMap.EraseCell(1, posInGrid);
             }
             else
             {
@@ -111,12 +112,14 @@ namespace Com.IsartDigital.Sokoban {
 
         private void RotateMatrix(BombPattern pBombPattern, List<List<int>> pExplosionMatrix, Vector2I pRotationVector)
         {
-            if (pRotationVector/ States.DISTANCE_RANGE == Vector2I.Up)
+            if (pRotationVector == Vector2I.Up)
             {
                 pBombPattern.explosionMatrix = pExplosionMatrix;
+
+                return;
             }
 
-            else if (pRotationVector / States.DISTANCE_RANGE == Vector2I.Down)
+            else if (pRotationVector == Vector2I.Down)
             {
                 foreach(List<int> pRow in pExplosionMatrix)
                 {
@@ -125,24 +128,62 @@ namespace Com.IsartDigital.Sokoban {
                 pExplosionMatrix.Reverse();
 
                 pBombPattern.explosionMatrix = pExplosionMatrix;
+
+                return;
             }
 
-            else if (pRotationVector / States.DISTANCE_RANGE == Vector2I.Right)
+            else if (pRotationVector == Vector2I.Right)
             {
                 //TO DO
                 //Rotate pExplosionMatrix to the right
 
+                pExplosionMatrix.Reverse();
+                List<List<int>> lRotatedMatrix = new List<List<int>>();
 
-                pBombPattern.explosionMatrix = pExplosionMatrix;
+                for (int i = 0; i < pExplosionMatrix[0].Count; i++)
+                {
+                    List<int> lCollumn = new List<int>();
+                    for (int j = 0; j < pExplosionMatrix.Count; j++)
+                    {
+                        lCollumn.Add(pExplosionMatrix[j][i]);
+
+                    }
+                    lRotatedMatrix.Add(lCollumn);
+
+                }
+
+                pBombPattern.explosionMatrix = lRotatedMatrix;
+
+                return;
             }
 
-            else if (pRotationVector / States.DISTANCE_RANGE == Vector2I.Left)
+            else if (pRotationVector == Vector2I.Left)
             {
-                //TO DO
                 //Rotate pExplosionMatrix to the left
 
+                foreach (List<int> pRow in pExplosionMatrix)
+                {
+                    pRow.Reverse();
+                }
 
-                pBombPattern.explosionMatrix = pExplosionMatrix;
+                List<List<int>> lRotatedMatrix = new List<List<int>>();
+
+
+                for (int i = 0; i < pExplosionMatrix[0].Count; i++)
+                {
+                    List<int> lCollumn = new List<int>();
+                    for (int j = 0; j < pExplosionMatrix.Count; j++)
+                    {
+                        lCollumn.Add(pExplosionMatrix[j][i]);
+
+                    }
+                    lRotatedMatrix.Add(lCollumn);
+
+                }
+
+                pBombPattern.explosionMatrix = lRotatedMatrix;
+
+                return;
             }
         }
 
@@ -152,12 +193,13 @@ namespace Com.IsartDigital.Sokoban {
 
             lBombPattern.RotateMatrix(lBombPattern, pExplosionMatrix, pRotationVector);
 
-            lBombPattern.explosionMatrix = pExplosionMatrix;
+            //lBombPattern.explosionMatrix = pExplosionMatrix;
             lBombPattern.Position = (Vector2.One * States.DISTANCE_RANGE/2 + pPosition * States.DISTANCE_RANGE)/2;
             lBombPattern.posInGrid = pPosition;
 
 			Main.GetInstance().CallDeferred("add_child", lBombPattern);
 
+            Main.GetInstance().PrintListOfList(lBombPattern.explosionMatrix,',');
 		}
 	}
 }
