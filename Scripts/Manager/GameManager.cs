@@ -82,6 +82,7 @@ namespace Com.IsartDigital.Sokoban
 
             if (Input.IsActionJustPressed("TimeMinus"))
             {
+                if (Box.animPlaying) { return; }
                 MoveBackInTime();
             }
             if (Input.IsActionJustPressed("TimePlus"))
@@ -133,7 +134,7 @@ namespace Com.IsartDigital.Sokoban
             Player.GetInstance().GoTo(lPlayerPosition);
 
             FillGroundTiles(lPlayerPosition);
-
+            tileMap.UpdateTheMap();
         }
 
         private void FillGroundTiles(Vector2I pStartCoor)
@@ -205,6 +206,7 @@ namespace Com.IsartDigital.Sokoban
             currentPosition.nextValue = GetScreenshotGame();
             currentPosition.nextValue.previousValue = currentPosition;
             currentPosition = currentPosition.nextValue;
+            tileMap.UpdateTheMap();
         }
 
         public HistoricHeap GetScreenshotGame()
@@ -219,7 +221,6 @@ namespace Com.IsartDigital.Sokoban
                 GD.Print("Can't go back in time.");
                 return;
             }
-
             currentPosition = currentPosition.previousValue;
             ChargeMapFromCurrentLevel();
         }

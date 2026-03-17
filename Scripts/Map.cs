@@ -41,26 +41,26 @@ namespace Com.IsartDigital.Sokoban
 			return (Map)factory.Instantiate();
 		}
 
-		public override void _Ready()
+
+
+
+		public void UpdateTheMap()
 		{
-			base._Ready();
-			cells = GetUsedCells(1);
-			groundCells = GetUsedCells(0);
+			aStarGrid = new AStarGrid2D();
+            aStarGrid.Region = new Rect2I(-1, -1, 50, 50);
+            aStarGrid.CellSize = new Vector2I(States.DISTANCE_RANGE, States.DISTANCE_RANGE);
+            aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
+            aStarGrid.Update();
 
 
-			aStarGrid.Region = new Rect2I(-1,-1,50,50);
-			aStarGrid.CellSize = new Vector2I(States.DISTANCE_RANGE, States.DISTANCE_RANGE);
-			aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
-			aStarGrid.Update();
-
-
-			foreach(Vector2I cell in cells)
-			{
-				if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1,cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
-			}
-
-
+            cells = GetUsedCells(1);
+            groundCells = GetUsedCells(0);
+            foreach (Vector2I cell in cells)
+            {
+                if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
+            }
         }
+
 
 		public override void _Process(double pDelta)
 		{
@@ -69,20 +69,21 @@ namespace Com.IsartDigital.Sokoban
 
 			if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
 			{
+				GD.Print(groundCells.Count);
 				Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
-				foreach(Vector2I cell in groundCells)
+				foreach(Vector2I lCell in groundCells)
 				{
-
-					if (lCellClicked.DistanceTo(cell ) < 1)
+					
+					if (lCellClicked.DistanceTo(lCell ) < 1)
 					{
-						if ((GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
+						if ((GetCellTileData(1, lCell) == null || !(bool)(GetCellTileData(1, lCell).GetCustomData(INTERACTABLE))))
 						{
-                            GD.Print(cell);
-							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
+                            GD.Print(lCell);
+							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, lCell);
                             return;
                         }
                     
-						else if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER)))
+						else if ((bool)(GetCellTileData(1, lCell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, lCell).GetCustomData(CONTAINER)))
 						{
 							return;
 						}

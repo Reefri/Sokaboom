@@ -12,6 +12,10 @@ namespace Com.IsartDigital.Sokoban
         static private Player instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Player.tscn");
 
+        [Export] private AnimationPlayer animPlayer;
+        [Export] public AnimatedSprite2D animatedSprite;
+        [Export] private Sprite2D sprite;
+
         private const float ANIM_TIME = 0.15f;
         private const float PATH_FINDING_TIME = 0.1f;
         private const string PLAYER_ACTION_RIGHT = "right";
@@ -19,14 +23,21 @@ namespace Com.IsartDigital.Sokoban
         private const string PLAYER_ACTION_UP = "up";
         private const string PLAYER_ACTION_DOWN = "down";
 
+        
+        private const string PLAYER_MOVING_UP = "movingUp";
+        private const string PLAYER_MOVING_DOWN = "movingDown";
+        private const string PLAYER_MOVING_LEFT = "movingLeft";
+        private const string PLAYER_MOVING_RIGHT = "movingRight";
+        private const string ANIM_PLAYER = "Anim";
+
 
 
         public List<Vector2I> path = new List<Vector2I>();
 
-        public static Vector2I lastDirection;
+        public Vector2I lastDirection;
+        public Vector2I lastPosition;
         private static Vector2I pathPosition;
 
-        private Timer timer = new Timer();
         public Timer pathFindingTimer = new Timer();
 
         private Dictionary<string,Vector2I> nameOfVector = new Dictionary<string, Vector2I>
@@ -35,6 +46,14 @@ namespace Com.IsartDigital.Sokoban
             { PLAYER_ACTION_LEFT , Vector2I.Left },
             { PLAYER_ACTION_UP , Vector2I.Up },
             { PLAYER_ACTION_DOWN , Vector2I.Down },
+        };
+
+        private Dictionary<Vector2I, string> nameOfAnimation = new Dictionary<Vector2I, string>
+        {
+            { Vector2I.Up , PLAYER_MOVING_UP },
+            { Vector2I.Down , PLAYER_MOVING_DOWN },
+            { Vector2I.Right , PLAYER_MOVING_RIGHT },
+            { Vector2I.Left , PLAYER_MOVING_LEFT },
         };
 
 
@@ -62,21 +81,27 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
         {
-            timer.WaitTime = ANIM_TIME;
             pathFindingTimer.WaitTime = PATH_FINDING_TIME;
-            timer.OneShot = true;
-            AddChild(timer);
 
-            timer.Timeout += AnimFinishedMove;
             pathFindingTimer.Timeout += MovingOnPath;
             AddChild(pathFindingTimer);
         }
 
-        public override void _Process(double delta)
+        public override void _Process(double pDelta)
         {
             if (path.Count != 0 && pathFindingTimer.TimeLeft == 0)
             {
                 pathFindingTimer.Start();
+            }
+            else if (!animPlayer.IsPlaying() && GlobalPosition != animatedSprite.Position && animatedSprite.Visible && !Box.animPlaying)
+            {
+                sprite.Visible = true;
+                animatedSprite.Visible = false;
+                GD.Print("Done");
+                GlobalPosition = animatedSprite.GlobalPosition;
+                GameManager.GetInstance().SaveScreenshotGame();
+
+                //Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
             }
             else return;
 
@@ -85,19 +110,16 @@ namespace Com.IsartDigital.Sokoban
         private void MovingOnPath()
         {
             GoTo(path[0]);
-            GD.Print(path.Count);
             path.Remove(path[0]);
+            GD.Print("b");
+
+            GameManager.GetInstance().SaveScreenshotGame();
             pathFindingTimer.Stop();
         }
 
-        private void AnimFinishedMove()
-        {
-            Position += lastDirection;
-        }
 
         private bool CheckTheMove(Vector2I pDirectionVector)
         {
-            
 
             Vector2I lUnitaryPos = GetPositionToVector2I();
 
@@ -122,7 +144,7 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Input(InputEvent pEvent)
         {
-            if (Box.animPlaying) { return; }
+            if (Box.animPlaying || animatedSprite.Visible || animPlayer.IsPlaying()) { return; }
 
             foreach (string lActionName in nameOfVector.Keys)
             {
@@ -144,13 +166,13 @@ namespace Com.IsartDigital.Sokoban
 
                     if (Box.animPlaying)
                     {
-                        timer.Start();
+                        AnimThePlayer();
                         return;
                     }
                     else
                     {
-                        Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
-                        GameManager.GetInstance().SaveScreenshotGame();
+                        AnimThePlayer();
+
                     }
                 }
             }
@@ -162,6 +184,26 @@ namespace Com.IsartDigital.Sokoban
             Position = (pPosition+Vector2.One/2)*States.DISTANCE_RANGE;
         }
 
+        private void AnimThePlayer()
+        {
+
+            sprite.Visible = false;
+            animatedSprite.Visible = true;
+
+
+            foreach (Vector2I lVector in nameOfAnimation.Keys)
+            {
+                if (lVector * States.DISTANCE_RANGE == lastDirection)
+                {
+                    animPlayer.Play(nameOfAnimation[lVector]);
+                    animatedSprite.Play(nameOfAnimation[lVector] + ANIM_PLAYER);
+                }
+            }
+
+
+
+        }
+
         private void ExplodeBombInHand()
         {
             if (bombInHand == null) return;
@@ -170,7 +212,6 @@ namespace Com.IsartDigital.Sokoban
             {
                 bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection/States.DISTANCE_RANGE);
 
-                
             }
 
             //pour faire exploser les tiles, les remplacer par une tile de sol (AtlasCoords : 11, 6)

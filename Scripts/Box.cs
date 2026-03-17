@@ -19,10 +19,9 @@ namespace Com.IsartDigital.Sokoban
 		private const string GO_RIGHT_ANIM = "goRight";
 		private const string GO_LEFT_ANIM = "goLeft";
 
-
 		public static bool animPlaying = false;
+		public static bool timeToDestroyTheBox = false;
 		private static string animToPlay;
-		private static Vector2 movingTheBox = new Vector2(States.DISTANCE_RANGE,States.DISTANCE_RANGE);
 		public override void _Ready()
 		{
 			animPlaying = true;
@@ -33,15 +32,11 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndOfAnimation(StringName pAnimName)
         {
-            GameManager.GetInstance().tileMap.SetCell( 1, ((Vector2I)Position + Player.lastDirection)/States.DISTANCE_RANGE, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
+			GameManager.GetInstance().tileMap.SetCell(1, ((Vector2I)Position + Player.GetInstance().lastDirection) / States.DISTANCE_RANGE, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
             animPlaying = false;
-
+			timeToDestroyTheBox = false;
             GetParent().RemoveChild(this);
-
             QueueFree();
-			
-            GameManager.GetInstance().SaveScreenshotGame();
-
         }
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
@@ -50,12 +45,13 @@ namespace Com.IsartDigital.Sokoban
 			{
                 GameManager.GetInstance().tileMap.SetCell( 1, pCellPosition, -1);
                 Create(pCellPosition , pDirection);
+
                 return false;
 			}
 
 			
-			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Container") ||
-				(bool)GameManager.GetInstance().tileMap.GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Wall") )
+			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData(1, pCellPosition + pDirection).GetCustomData(Map.CONTAINER) ||
+				(bool)GameManager.GetInstance().tileMap.GetCellTileData(1, pCellPosition + pDirection).GetCustomData(Map.WALL) )
 			{
 				return true;
 			}
@@ -87,8 +83,9 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Process(double delta)
 		{
-			if(anim.IsPlaying()) animPlaying = true;
+			if (anim.IsPlaying()) animPlaying = true;
 			else { animPlaying = false; }
+
 
 		}
 	}
