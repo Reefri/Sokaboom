@@ -136,7 +136,7 @@ namespace Com.IsartDigital.Sokoban
                             continue;
 
 
-                        case (char)ObjectChar.WALL:
+                        case (char)ObjectChar.BORDER:
                             tileMap.SetCell(0, new Vector2I(j, i), 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
                             break;
                     }
