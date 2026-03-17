@@ -124,6 +124,8 @@ namespace Com.IsartDigital.Sokoban
         {
             tileMap.Clear();
 
+            GD.Print(currentPosition.value);
+
 
             for (int i = 0; i < currentPosition.value.Size.Y; i++)
             {
@@ -135,18 +137,22 @@ namespace Com.IsartDigital.Sokoban
                         case (char)ObjectChar.EMPTY:
                             continue;
 
-
-                        case (char)ObjectChar.WALL:
-                            tileMap.SetCell(0, new Vector2I(j, i), 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
+                        case (char)ObjectChar.BORDER:
+                            tileMap.SetCell((int)Map.LevelLayer.Ground, new Vector2I(j, i), 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
                             break;
                     }
 
 
-                    tileMap.SetCell(1, new Vector2I(j, i), 0,
+                    tileMap.SetCell((int)Map.LevelLayer.Playground, new Vector2I(j, i), 0,
                             objectPositionOnTileSet[(ObjectChar)currentPosition.value.Map[i][j]]
                             );
 
                 }
+            }
+
+            foreach (Vector2I lTargetPos in currentPosition.value.targetsPos)
+            {
+                tileMap.SetCell((int)Map.LevelLayer.Target, lTargetPos, 0, objectPositionOnTileSet[ObjectChar.TARGET]);
             }
 
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
@@ -161,11 +167,11 @@ namespace Com.IsartDigital.Sokoban
 
         private void FillGroundTiles(Vector2I pStartCoor)
         {
-            tileMap.SetCell(0, pStartCoor, 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
+            tileMap.SetCell((int)Map.LevelLayer.Ground, pStartCoor, 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
 
             foreach (Vector2I lNeighbor in neighborsCoor)
             {
-                if (tileMap.GetCellAtlasCoords(0, pStartCoor + lNeighbor) != objectPositionOnTileSet[ObjectChar.EMPTY])
+                if (tileMap.GetCellAtlasCoords((int)Map.LevelLayer.Ground, pStartCoor + lNeighbor) != objectPositionOnTileSet[ObjectChar.EMPTY])
                 {
                     FillGroundTiles(pStartCoor + lNeighbor);
                 }
@@ -184,18 +190,18 @@ namespace Com.IsartDigital.Sokoban
                 for (int j = 0; j < currentPosition.value.Size.X; j++)
                 {
 
-                    if (tileMap.GetCellTileData(1, new Vector2I(j, i)) == null)
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null)
                     {
                         lRow += (char)ObjectChar.EMPTY;
                         continue;
                     }
 
 
-                    if ((bool)tileMap.GetCellTileData(1, new Vector2I(j, i)).GetCustomData(Map.PLAY_OBJECT))
+                    if ((bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.PLAY_OBJECT))
                     {
                         foreach (string lKey in Map.interactableToObjectChar.Keys)
                         {
-                            if ((bool)tileMap.GetCellTileData(1, new Vector2I(j, i)).GetCustomData(lKey))
+                            if ((bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(lKey))
                             {
                                 lRow += (char)Map.interactableToObjectChar[lKey];
                                 break;

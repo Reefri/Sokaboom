@@ -86,7 +86,6 @@ namespace Com.IsartDigital.Sokoban
         private void MovingOnPath()
         {
             GoTo(path[0]);
-            GD.Print(path.Count);
             path.Remove(path[0]);
             pathFindingTimer.Stop();
         }
@@ -102,11 +101,11 @@ namespace Com.IsartDigital.Sokoban
 
             Vector2I lUnitaryPos = GetPositionToVector2I();
 
-            if (GameManager.GetInstance().tileMap.GetCellTileData(1, lUnitaryPos + pDirectionVector) == null) return false;
+            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector) == null) return false;
 
-            else if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData(Map.INTERACTABLE)))
+            else if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.INTERACTABLE)))
             {
-                if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData(1, lUnitaryPos + pDirectionVector).GetCustomData(Map.CONTAINER)))
+                if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.CONTAINER)))
                 {
                     return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
                 }

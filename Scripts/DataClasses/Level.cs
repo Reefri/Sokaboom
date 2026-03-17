@@ -161,6 +161,7 @@ namespace Com.IsartDigital.Sokoban
                     if (Map[i][j] == (int)ObjectChar.TARGET)
                     {
                         targetsPos.Add(new Vector2I(j, i));
+                        Map[i] = Map[i].Substr(0, j) + " " + Map[i].Substr(j + 1, Map[i].Length);
                     }
 
                     if (Map[i][j] >= '0' && Map[i][j] <= '9')

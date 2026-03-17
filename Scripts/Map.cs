@@ -22,7 +22,12 @@ namespace Com.IsartDigital.Sokoban
 		public const string TARGET = "Target";
 		public const string BORDER = "Border";
 		
-
+		public enum LevelLayer
+		{
+			Ground = 0,
+			Target = 1,
+			Playground = 2,
+		};
 
 
         public static SysDict.Dictionary<string, ObjectChar> interactableToObjectChar = new SysDict.Dictionary<string, ObjectChar>
@@ -46,8 +51,8 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			base._Ready();
-			cells = GetUsedCells(1);
-			groundCells = GetUsedCells(0);
+			cells = GetUsedCells((int)LevelLayer.Playground);
+			groundCells = GetUsedCells((int)LevelLayer.Ground);
 
 
 			aStarGrid.Region = new Rect2I(-1,-1,50,50);
@@ -58,7 +63,9 @@ namespace Com.IsartDigital.Sokoban
 
 			foreach(Vector2I cell in cells)
 			{
-				if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1,cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
+				if ((bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(WALL)) || 
+					(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(CONTAINER))) 
+					aStarGrid.SetPointSolid(cell);
 			}
 
 
@@ -77,14 +84,15 @@ namespace Com.IsartDigital.Sokoban
 
 					if (lCellClicked.DistanceTo(cell ) < 1)
 					{
-						if ((GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
+						if ((GetCellTileData((int)LevelLayer.Playground, cell) == null || 
+							!(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(INTERACTABLE))))
 						{
-                            GD.Print(cell);
 							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
                             return;
                         }
                     
-						else if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER)))
+						else if ((bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(WALL)) || 
+							(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(CONTAINER)))
 						{
 							return;
 						}

@@ -21,7 +21,6 @@ namespace Com.IsartDigital.Sokoban
         {
 			if(pArea == Player.GetInstance() && Player.GetInstance().bombInHand == null)
 			{			
-				GD.Print(" Player Picks up the bomb with this pattern : \n" + bomb);
 
 				Player.GetInstance().bombInHand = bomb;
 				Player.GetInstance().holdingBomb = true;

@@ -33,7 +33,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndOfAnimation(StringName pAnimName)
         {
-            GameManager.GetInstance().tileMap.SetCell( 1, (Vector2I)(Position/States.DISTANCE_RANGE) + Player.GetInstance().lastDirection, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
+            GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, (Vector2I)(Position/States.DISTANCE_RANGE) + Player.GetInstance().lastDirection, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
             animPlaying = false;
 
             GetParent().RemoveChild(this);
@@ -46,22 +46,22 @@ namespace Com.IsartDigital.Sokoban
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
 		{
-			if (GameManager.GetInstance().tileMap.GetCellTileData( 1, pCellPosition + pDirection) == null )
+			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null )
 			{
-                GameManager.GetInstance().tileMap.SetCell( 1, pCellPosition, -1);
+                GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, pCellPosition, -1);
                 Create(pCellPosition , pDirection);
                 return false;
 			}
 
 			
-			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Container") ||
-				(bool)GameManager.GetInstance().tileMap.GetCellTileData(1, pCellPosition + pDirection).GetCustomData("Wall") )
+			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData("Container") ||
+				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData("Wall") )
 			{
 				return true;
 			}
 			else
 			{
-                GameManager.GetInstance().tileMap.SetCell(1, pCellPosition, -1);
+                GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, pCellPosition, -1);
                 Create(pCellPosition, pDirection);
                 return false;
 			}
