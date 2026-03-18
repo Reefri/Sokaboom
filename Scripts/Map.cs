@@ -20,6 +20,7 @@ namespace Com.IsartDigital.Sokoban
 		public const string WALL = "Wall";
 		public const string INTERACTABLE = "Interactable";
 		public const string TARGET = "Target";
+		public const string BORDER = "Border";
 		
 
 
@@ -29,6 +30,7 @@ namespace Com.IsartDigital.Sokoban
 			{ CONTAINER,ObjectChar.BOX},
 			{ WALL,ObjectChar.WALL},
 			{ TARGET,ObjectChar.TARGET},
+			{ BORDER,ObjectChar.BORDER},
 		};
 
         private const string PATH_FINDING_INPUT = "leftClick";

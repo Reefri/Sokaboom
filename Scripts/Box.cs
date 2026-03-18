@@ -37,6 +37,9 @@ namespace Com.IsartDigital.Sokoban
 			timeToDestroyTheBox = false;
             GetParent().RemoveChild(this);
             QueueFree();
+			
+            GameManager.GetInstance().UpdateAfterAction();
+
         }
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)

@@ -170,6 +170,10 @@ _data = {
 size = Vector2(35, 49)
 
 [node name="Player" type="Area2D" node_paths=PackedStringArray("animPlayer", "animatedSprite", "sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8mmc"]
+size = Vector2(30, 42)
+
+[node name="Player" type="Area2D"]
 script = ExtResource("1_uliwh")
 animPlayer = NodePath("AnimationPlayer")
 animatedSprite = NodePath("AnimatedSprite2D")
@@ -192,3 +196,6 @@ texture = ExtResource("2_40mse")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_pnj5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y8mmc")

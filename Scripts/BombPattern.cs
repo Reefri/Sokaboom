@@ -1,13 +1,14 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 // Author : Ethan Frenard
 
 namespace Com.IsartDigital.Sokoban {
 	public partial class BombPattern : Node2D
 	{
-        [Export] private float timeUntilFade = 1;
+        [Export] private float timeUntilFade = 10;
 		private float time = 0;
 
 		private const string TO_PLACE_ON_EXPLOSION_PATH = "res://Scenes/ToPlaceOnExplosions.tscn";
@@ -56,7 +57,15 @@ namespace Com.IsartDigital.Sokoban {
                 }
 			}
 
-            GameManager.GetInstance().tileMap.SetCell(1, posInGrid, -1, new Vector2I(0, 0));
+            if (!(bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid).GetCustomData("Border"))
+            {
+                GameManager.GetInstance().tileMap.EraseCell(1, posInGrid);
+            }
+            else
+            {
+                GD.Print("GameOver");
+                //put Game Over Screen here
+            }
 
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
@@ -68,9 +77,9 @@ namespace Com.IsartDigital.Sokoban {
                             && (bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
                         {
                             //GD.Print(Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"));
-                                //GD.Print("exploded an interactable");
+                            //GD.Print("exploded an interactable");
 
-                            if((bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
+                            if ((bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
                             {
                                 GD.Print("GameOver");
                                 //Put Game Over screen here
@@ -101,16 +110,96 @@ namespace Com.IsartDigital.Sokoban {
 
 		}
 
-		public static void Create(List<List<int>> pExplosionMatrix,Vector2I pPosition)
+        private void RotateMatrix(BombPattern pBombPattern, List<List<int>> pExplosionMatrix, Vector2I pRotationVector)
+        {
+            if (pRotationVector == Vector2I.Up)
+            {
+                pBombPattern.explosionMatrix = pExplosionMatrix;
+
+                return;
+            }
+
+            else if (pRotationVector == Vector2I.Down)
+            {
+                foreach(List<int> pRow in pExplosionMatrix)
+                {
+                    pRow.Reverse();
+                }
+                pExplosionMatrix.Reverse();
+
+                pBombPattern.explosionMatrix = pExplosionMatrix;
+
+                return;
+            }
+
+            else if (pRotationVector == Vector2I.Right)
+            {
+                //TO DO
+                //Rotate pExplosionMatrix to the right
+
+                pExplosionMatrix.Reverse();
+                List<List<int>> lRotatedMatrix = new List<List<int>>();
+
+                for (int i = 0; i < pExplosionMatrix[0].Count; i++)
+                {
+                    List<int> lCollumn = new List<int>();
+                    for (int j = 0; j < pExplosionMatrix.Count; j++)
+                    {
+                        lCollumn.Add(pExplosionMatrix[j][i]);
+
+                    }
+                    lRotatedMatrix.Add(lCollumn);
+
+                }
+
+                pBombPattern.explosionMatrix = lRotatedMatrix;
+
+                return;
+            }
+
+            else if (pRotationVector == Vector2I.Left)
+            {
+                //Rotate pExplosionMatrix to the left
+
+                foreach (List<int> pRow in pExplosionMatrix)
+                {
+                    pRow.Reverse();
+                }
+
+                List<List<int>> lRotatedMatrix = new List<List<int>>();
+
+
+                for (int i = 0; i < pExplosionMatrix[0].Count; i++)
+                {
+                    List<int> lCollumn = new List<int>();
+                    for (int j = 0; j < pExplosionMatrix.Count; j++)
+                    {
+                        lCollumn.Add(pExplosionMatrix[j][i]);
+
+                    }
+                    lRotatedMatrix.Add(lCollumn);
+
+                }
+
+                pBombPattern.explosionMatrix = lRotatedMatrix;
+
+                return;
+            }
+        }
+
+		public static void Create(List<List<int>> pExplosionMatrix,Vector2I pPosition, Vector2I pRotationVector)
 		{
 			BombPattern lBombPattern = new BombPattern();
 
-			lBombPattern.explosionMatrix = pExplosionMatrix;
-			lBombPattern.Position = (Vector2.One * States.DISTANCE_RANGE/2 + pPosition * States.DISTANCE_RANGE)/2;
+            lBombPattern.RotateMatrix(lBombPattern, pExplosionMatrix, pRotationVector);
+
+            //lBombPattern.explosionMatrix = pExplosionMatrix;
+            lBombPattern.Position = (Vector2.One * States.DISTANCE_RANGE/2 + pPosition * States.DISTANCE_RANGE)/2;
             lBombPattern.posInGrid = pPosition;
 
 			Main.GetInstance().CallDeferred("add_child", lBombPattern);
 
+            Main.GetInstance().PrintListOfList(lBombPattern.explosionMatrix,',');
 		}
 	}
 }

@@ -79,9 +79,9 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-        public void Explode(Vector2I pPosition)
+        public void Explode(Vector2I pPosition, Vector2I pRotationVector)
         {
-            BombPattern.Create(explosionMatrix,pPosition);
+            BombPattern.Create(explosionMatrix,pPosition, pRotationVector);
             //GD.Print(this);
         }
 

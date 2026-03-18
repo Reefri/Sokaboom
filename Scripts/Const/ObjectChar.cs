@@ -8,6 +8,7 @@ namespace Com.IsartDigital.Sokoban
         WALL = '#',
         PLAYER = '@',
         TARGET = '.',
-        EMPTY = ' '
+        EMPTY = ' ',
+        BORDER = '='
     }
 }
