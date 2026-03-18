@@ -33,7 +33,7 @@ namespace Com.IsartDigital.Sokoban
 		private void ReturnPressed()
 		{
 			if (comeToMenu) UIManager.GetInstance().GoToTitle();
-            else GridManager.GetInstance().ChangeLevel(0);
+            else UIManager.GetInstance().GoToLevel(0);
         }
 
         protected override void Dispose(bool pDisposing)
