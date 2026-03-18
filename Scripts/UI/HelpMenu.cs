@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection;
 
 // Author : Ethan Masse
 
@@ -29,21 +30,10 @@ namespace Com.IsartDigital.Sokoban
 			return instance;
 		}
 
-		public override void _Ready()
-		{
-			base._Ready();
-		}
-
-		public override void _Process(double pDelta)
-		{
-			base._Process(pDelta);
-			float lDelta = (float)pDelta;
-		}
-
 		private void ReturnPressed()
 		{
 			if (comeToMenu) UIManager.GetInstance().GoToTitle();
-            else GD.Print("Va au Niveau Tuto"); //truc pour aller au niveau tuto
+            else GridManager.GetInstance().ChangeLevel(0);
         }
 
         protected override void Dispose(bool pDisposing)

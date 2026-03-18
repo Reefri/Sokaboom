@@ -94,7 +94,6 @@ namespace Com.IsartDigital.Sokoban.UI
                 statut.SelfModulate = yellow;
                 return;
             }
-
             if (AccountManager.GetInstance().Register(pseudo.Text, password.Text))
             {
                 statut.Text = PASSWORD_CONFIRM;
