@@ -15,6 +15,8 @@ namespace Com.IsartDigital.Sokoban
         private Node uiHelp = GD.Load<PackedScene>("res://Scenes/HelpMenu.tscn").Instantiate();
         private Node uiLevelSelect = GD.Load<PackedScene>("res://Scenes/LevelSelect.tscn").Instantiate();
 
+		public int levelIndex;
+
         private UIManager():base() 
 		{
 			if (instance != null)
@@ -55,6 +57,13 @@ namespace Com.IsartDigital.Sokoban
         {
             RemoveChild(GetChild(0));
             AddChild(uiLevelSelect);
+        }
+
+		public void GoToLevel(int pIndex)
+		{
+            RemoveChild(GetChild(0));
+            levelIndex = pIndex;
+			Main.GetInstance().AddChild(GameManager.GetInstance());
         }
 
         protected override void Dispose(bool pDisposing)

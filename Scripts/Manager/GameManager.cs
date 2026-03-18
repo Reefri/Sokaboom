@@ -73,16 +73,14 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
         {
-            GridManager.GetInstance().ChangeLevel(1);
+            GridManager.GetInstance().ChangeLevel(UIManager.GetInstance().levelIndex);
             currentLevel = GridManager.GetInstance().CurrentLevel;
             currentPosition = new HistoricHeap(currentLevel);
 
             tileMap = Map.Create();
 
             AddChild(tileMap);
-
             AddChild(Player.GetInstance());
-
 
             ChargeMapFromCurrentLevel();
 

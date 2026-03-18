@@ -12,9 +12,10 @@ namespace Com.IsartDigital.Sokoban
 		static private Main instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Main.tscn");
 
+		[Export] private bool testOnlyGameFeature = true;
+		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
 
-
-		private Main():base() 
+        private Main():base() 
 		{
 			if (instance != null)
 			{
@@ -40,7 +41,13 @@ namespace Com.IsartDigital.Sokoban
 			//Bomb bomb = GridManager.GetInstance().CurrentLevel.bombs[0];
 			//bomb.Explode(new Vector2I(3, 3));
 
-		}
+			if (testOnlyGameFeature)
+			{
+                UIManager.GetInstance().levelIndex = levelAtTest;
+                AddChild(GameManager.GetInstance());
+                RemoveChild(UIManager.GetInstance());
+            }
+        }
 
 
 

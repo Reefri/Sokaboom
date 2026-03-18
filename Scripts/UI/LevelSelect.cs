@@ -54,7 +54,7 @@ namespace Com.IsartDigital.UI {
         private void GoToLevel(int pIndex)
         {
             if (pIndex == 0) GoToHelp();
-            else GridManager.GetInstance().ChangeLevel(pIndex);
+            else UIManager.GetInstance().GoToLevel(pIndex);
         }
 
         private void Unlock()
