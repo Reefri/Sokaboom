@@ -57,7 +57,7 @@ namespace Com.IsartDigital.Sokoban {
                 }
 			}
 
-            if (!(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid).GetCustomData("Border"))
+            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid)!=null && !(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid).GetCustomData("Border"))
             {
                 GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, posInGrid);
             }
@@ -109,11 +109,13 @@ namespace Com.IsartDigital.Sokoban {
 
         private void RotateMatrix(BombPattern pBombPattern, List<List<int>> pExplosionMatrix, Vector2I pRotationVector)
         {
+
+            GD.Print("ha : " + pRotationVector);
+
             if (pRotationVector == Vector2I.Up)
             {
                 pBombPattern.explosionMatrix = pExplosionMatrix;
 
-                return;
             }
 
             else if (pRotationVector == Vector2I.Down)
@@ -126,7 +128,6 @@ namespace Com.IsartDigital.Sokoban {
 
                 pBombPattern.explosionMatrix = pExplosionMatrix;
 
-                return;
             }
 
             else if (pRotationVector == Vector2I.Right)
@@ -151,7 +152,6 @@ namespace Com.IsartDigital.Sokoban {
 
                 pBombPattern.explosionMatrix = lRotatedMatrix;
 
-                return;
             }
 
             else if (pRotationVector == Vector2I.Left)
@@ -180,7 +180,6 @@ namespace Com.IsartDigital.Sokoban {
 
                 pBombPattern.explosionMatrix = lRotatedMatrix;
 
-                return;
             }
         }
 
@@ -190,7 +189,8 @@ namespace Com.IsartDigital.Sokoban {
 
             lBombPattern.RotateMatrix(lBombPattern, pExplosionMatrix, pRotationVector);
 
-            lBombPattern.Position = (Vector2.One * States.DISTANCE_RANGE/2 + pPosition * States.DISTANCE_RANGE)/2;
+            //lBombPattern.explosionMatrix = pExplosionMatrix;
+            lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2;
             lBombPattern.posInGrid = pPosition;
 
 			Main.GetInstance().CallDeferred("add_child", lBombPattern);

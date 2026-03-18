@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 // Author : Cayot Daniel
 
@@ -12,6 +11,10 @@ namespace Com.IsartDigital.Sokoban
         static private Player instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Player.tscn");
 
+        [Export] private AnimationPlayer animPlayer;
+        [Export] public AnimatedSprite2D animatedSprite;
+        [Export] private Sprite2D sprite;
+
         private const float ANIM_TIME = 0.15f;
         private const float PATH_FINDING_TIME = 0.1f;
         private const string PLAYER_ACTION_RIGHT = "right";
@@ -20,22 +23,36 @@ namespace Com.IsartDigital.Sokoban
         private const string PLAYER_ACTION_DOWN = "down";
 
 
+        private const string PLAYER_MOVING_UP = "movingUp";
+        private const string PLAYER_MOVING_DOWN = "movingDown";
+        private const string PLAYER_MOVING_LEFT = "movingLeft";
+        private const string PLAYER_MOVING_RIGHT = "movingRight";
+        private const string ANIM_PLAYER = "Anim";
+
+
 
         public List<Vector2I> path = new List<Vector2I>();
 
         public Vector2I lastDirection;
+        public Vector2I lastPosition;
         private static Vector2I pathPosition;
 
-        private List<Vector2> historicPositions = new List<Vector2>();
-        private Timer timer = new Timer();
         public Timer pathFindingTimer = new Timer();
 
-        private Dictionary<string,Vector2I> nameOfVector = new Dictionary<string, Vector2I>
+        private Dictionary<string, Vector2I> nameOfVector = new Dictionary<string, Vector2I>
         {
             { PLAYER_ACTION_RIGHT , Vector2I.Right },
             { PLAYER_ACTION_LEFT , Vector2I.Left },
             { PLAYER_ACTION_UP , Vector2I.Up },
             { PLAYER_ACTION_DOWN , Vector2I.Down },
+        };
+
+        private Dictionary<Vector2I, string> nameOfAnimation = new Dictionary<Vector2I, string>
+        {
+            { Vector2I.Up , PLAYER_MOVING_UP },
+            { Vector2I.Down , PLAYER_MOVING_DOWN },
+            { Vector2I.Right , PLAYER_MOVING_RIGHT },
+            { Vector2I.Left , PLAYER_MOVING_LEFT },
         };
 
 
@@ -59,25 +76,31 @@ namespace Com.IsartDigital.Sokoban
             return instance;
         }
 
-        
+
 
         public override void _Ready()
         {
-            timer.WaitTime = ANIM_TIME;
             pathFindingTimer.WaitTime = PATH_FINDING_TIME;
-            timer.OneShot = true;
-            AddChild(timer);
 
-            timer.Timeout += AnimFinishedMove;
             pathFindingTimer.Timeout += MovingOnPath;
             AddChild(pathFindingTimer);
         }
 
-        public override void _Process(double delta)
+        public override void _Process(double pDelta)
         {
             if (path.Count != 0 && pathFindingTimer.TimeLeft == 0)
             {
                 pathFindingTimer.Start();
+            }
+            else if (!animPlayer.IsPlaying() && GlobalPosition != animatedSprite.Position && animatedSprite.Visible && !Box.animPlaying)
+            {
+                sprite.Visible = true;
+                animatedSprite.Visible = false;
+                GD.Print("Done");
+                GlobalPosition = animatedSprite.GlobalPosition;
+                GameManager.GetInstance().SaveScreenshotGame();
+
+                //Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
             }
             else return;
         }
@@ -86,13 +109,12 @@ namespace Com.IsartDigital.Sokoban
         {
             GoTo(path[0]);
             path.Remove(path[0]);
+            GD.Print("b");
+
+            GameManager.GetInstance().SaveScreenshotGame();
             pathFindingTimer.Stop();
         }
 
-        private void AnimFinishedMove()
-        {
-            Position += lastDirection*States.DISTANCE_RANGE;
-        }
 
         private bool CheckTheMove(Vector2I pDirectionVector)
         {
@@ -109,7 +131,7 @@ namespace Com.IsartDigital.Sokoban
                 else return true;
             }
             else return false;
-        } 
+        }
 
         public Vector2I GetPositionToVector2I()
         {
@@ -119,7 +141,7 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Input(InputEvent pEvent)
         {
-            if (Box.animPlaying) { return; }
+            if (Box.animPlaying || animatedSprite.Visible || animPlayer.IsPlaying()) { return; }
 
             foreach (string lActionName in nameOfVector.Keys)
             {
@@ -141,22 +163,42 @@ namespace Com.IsartDigital.Sokoban
 
                     if (Box.animPlaying)
                     {
-                        timer.Start();
+                        AnimThePlayer();
                         return;
                     }
                     else
                     {
-                        Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
-                        GameManager.GetInstance().UpdateAfterAction();
+                        AnimThePlayer();
+
                     }
                 }
             }
-           
+
         }
 
         public void GoTo(Vector2I pPosition)
         {
-            Position = (pPosition+Vector2.One/2)*States.DISTANCE_RANGE;
+            Position = (pPosition + Vector2.One / 2) * States.DISTANCE_RANGE;
+        }
+
+        private void AnimThePlayer()
+        {
+
+            sprite.Visible = false;
+            animatedSprite.Visible = true;
+
+
+            foreach (Vector2I lVector in nameOfAnimation.Keys)
+            {
+                if (lVector == lastDirection)
+                {
+                    animPlayer.Play(nameOfAnimation[lVector]);
+                    animatedSprite.Play(nameOfAnimation[lVector] + ANIM_PLAYER);
+                }
+            }
+
+
+
         }
 
         private void ExplodeBombInHand()
@@ -165,9 +207,8 @@ namespace Com.IsartDigital.Sokoban
             else
 
             {
-                bombInHand.Explode((Vector2I)Position/ States.DISTANCE_RANGE +lastDirection, lastDirection);
+                bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
 
-                
             }
 
             //pour faire exploser les tiles, les remplacer par une tile de sol (AtlasCoords : 11, 6)

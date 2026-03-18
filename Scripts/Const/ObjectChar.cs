@@ -9,6 +9,6 @@ namespace Com.IsartDigital.Sokoban
         PLAYER = '@',
         TARGET = '.',
         EMPTY = ' ',
-        BORDER = '='
+        BORDER = '=',
     }
 }
