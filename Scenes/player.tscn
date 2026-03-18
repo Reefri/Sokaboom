@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://damd4cgjs6b0k"]
+[gd_scene load_steps=6 format=3 uid="uid://damd4cgjs6b0k"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_uliwh"]
 [ext_resource type="Texture2D" uid="uid://cxs8qynk7bxqu" path="res://Assets/Player.png" id="2_40mse"]
+[ext_resource type="Texture2D" uid="uid://b0uegn82jtv0g" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_23.png" id="3_lyhvu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yhy0t"]
 animations = [{
@@ -40,3 +41,6 @@ sprite_frames = SubResource("SpriteFrames_yhy0t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y8mmc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_lyhvu")
