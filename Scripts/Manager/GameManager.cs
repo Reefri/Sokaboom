@@ -139,8 +139,11 @@ namespace Com.IsartDigital.Sokoban
                             break;
                     }
 
+
                     tileMap.SetCell((int)Map.LevelLayer.Playground, new Vector2I(j, i), 0,
-                            objectPositionOnTileSet[(ObjectChar)currentPosition.value.Map[i][j]]);
+                            objectPositionOnTileSet[(ObjectChar)currentPosition.value.Map[i][j]]
+                            );
+
                 }
             }
 
