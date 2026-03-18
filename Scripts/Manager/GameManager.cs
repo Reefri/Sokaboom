@@ -9,6 +9,7 @@ namespace Com.IsartDigital.Sokoban
 {
     public partial class GameManager : Node2D
     {
+        [Export] public Node2D bombCollectibleContainer;
 
         static private GameManager instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");
@@ -19,7 +20,7 @@ namespace Com.IsartDigital.Sokoban
         private Level currentLevel;
 
         private List<LevelScreenShot> gameScreenshot = new List<LevelScreenShot>();
-        private HistoricHeap currentPosition;
+        public HistoricHeap currentPosition;
 
 
         private int currentPar = 0;
@@ -85,7 +86,6 @@ namespace Com.IsartDigital.Sokoban
 
             ChargeMapFromCurrentLevel();
 
-            PlacingBombs();
         }
 
 
@@ -111,13 +111,8 @@ namespace Com.IsartDigital.Sokoban
             base.Dispose(pDisposing);
         }
 
-        private void PlacingBombs()
-        {
-            for(int i = 0; i < currentPosition.value.bombsPos.Count; i++)
-            {
-                BombCollectible.Create(currentPosition.value.bombs[i], currentPosition.value.bombsPos[i]);
-            }
-        }
+           
+        
 
         private void ChargeMapFromCurrentLevel()
         {
@@ -151,14 +146,25 @@ namespace Com.IsartDigital.Sokoban
                 tileMap.SetCell((int)Map.LevelLayer.Target, lTargetPos, 0, objectPositionOnTileSet[ObjectChar.TARGET]);
             }
 
+
+
+            foreach (Node2D lBombCollectible in bombCollectibleContainer.GetChildren())
+            {
+                lBombCollectible.QueueFree();
+            }
+
+            foreach(int lIndex in currentPosition.value.indexOfAvalaibleBombs)
+            {
+                BombCollectible.Create(currentPosition.value.bombs[lIndex], currentPosition.value.bombsPos[lIndex]);
+            }
+
+
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
 
-
-
             Player.GetInstance().GoTo(lPlayerPosition);
+            Player.GetInstance().GiveBombToPlayer(currentPosition.value.currentBomb);
 
             FillGroundTiles(lPlayerPosition);
-
         }
 
         private void FillGroundTiles(Vector2I pStartCoor)
@@ -174,6 +180,10 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
+        public void RemoveBombAtIndex(int lIndex)
+        {
+            currentPosition.value.indexOfAvalaibleBombs.Remove(lIndex);
+        }
 
         private Level SaveMapAsLevel()
         {
@@ -224,9 +234,17 @@ namespace Com.IsartDigital.Sokoban
             return lNewLevel;
         }
 
+        public void SaveBombs()
+        {
+            if (currentPosition.previousValue == null) return;
+
+            currentPosition.previousValue.value.bombsPos = currentPosition.value.bombsPos;
+            currentPosition.previousValue.value.bombs = currentPosition.value.bombs;
+        }
 
         public void UpdateAfterAction()
         {
+
             CurrentPar++;
             SaveScreenshotGame();
             if (CheckWin())
@@ -263,6 +281,7 @@ namespace Com.IsartDigital.Sokoban
             currentPosition = currentPosition.previousValue;
             ChargeMapFromCurrentLevel();
         }
+
         public void MoveForwardInTime()
         {
             if (currentPosition.nextValue == null)
@@ -308,9 +327,7 @@ namespace Com.IsartDigital.Sokoban
                 }
             }
 
-
             return true;
-
         }
 
 

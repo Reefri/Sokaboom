@@ -57,6 +57,16 @@ namespace Com.IsartDigital.Sokoban
 		}
 
 
+		public List<T> DuplicateList<T>(List<T> pList)
+		{
+			List<T> lList = new List<T>();
+			foreach (T lElement in pList)
+			{
+				lList.Add(lElement);
+			}
+			return lList;
+		}
+
         public void PrintListOfList<T>(List<List<T>> pListOfList, char pSeparator = ';', bool pDoLigneBreak=true)
         {
 			string lRes = "";

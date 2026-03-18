@@ -61,16 +61,6 @@ namespace Com.IsartDigital.Sokoban
 			aStarGrid.CellSize = new Vector2I(States.DISTANCE_RANGE, States.DISTANCE_RANGE);
 			aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
 			aStarGrid.Update();
-
-
-			foreach(Vector2I cell in cells)
-			{
-				if ((bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(WALL)) || 
-					(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(CONTAINER))) 
-					aStarGrid.SetPointSolid(cell);
-			}
-
-
         }
 
 		public override void _Process(double pDelta)

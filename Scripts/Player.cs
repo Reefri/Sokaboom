@@ -56,7 +56,6 @@ namespace Com.IsartDigital.Sokoban
         };
 
 
-        public bool holdingBomb = false;
         public Bomb bombInHand;
 
         private Player() : base()
@@ -76,6 +75,11 @@ namespace Com.IsartDigital.Sokoban
             return instance;
         }
 
+        public void GiveBombToPlayer(Bomb pBomb)
+        {
+            bombInHand = pBomb;
+            GameManager.GetInstance().currentPosition.value.currentBomb = pBomb;
+        }
 
 
         public override void _Ready()
@@ -155,7 +159,6 @@ namespace Com.IsartDigital.Sokoban
                         if (bombInHand != null)
                         {
                             ExplodeBombInHand();
-                            bombInHand = null;
                         }
                         return;
                     }
@@ -196,20 +199,17 @@ namespace Com.IsartDigital.Sokoban
                     animatedSprite.Play(nameOfAnimation[lVector] + ANIM_PLAYER);
                 }
             }
-
-
-
         }
 
         private void ExplodeBombInHand()
         {
             if (bombInHand == null) return;
-            else
 
-            {
-                bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
+            bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
+            GameManager.GetInstance().UpdateAfterAction();
 
-            }
+            GiveBombToPlayer(null);
+
 
             //pour faire exploser les tiles, les remplacer par une tile de sol (AtlasCoords : 11, 6)
             //Map.GetInstance().SetCell(0, gridCoords, atlasCoord)
