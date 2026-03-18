@@ -124,9 +124,6 @@ namespace Com.IsartDigital.Sokoban
         {
             tileMap.Clear();
 
-            GD.Print(currentPosition.value);
-
-
             for (int i = 0; i < currentPosition.value.Size.Y; i++)
             {
                 for (int j = 0; j < currentPosition.value.Size.X; j++)
@@ -142,11 +139,8 @@ namespace Com.IsartDigital.Sokoban
                             break;
                     }
 
-
                     tileMap.SetCell((int)Map.LevelLayer.Playground, new Vector2I(j, i), 0,
-                            objectPositionOnTileSet[(ObjectChar)currentPosition.value.Map[i][j]]
-                            );
-
+                            objectPositionOnTileSet[(ObjectChar)currentPosition.value.Map[i][j]]);
                 }
             }
 
@@ -232,6 +226,7 @@ namespace Com.IsartDigital.Sokoban
         public void UpdateAfterAction()
         {
             CurrentPar++;
+            CheckWin();
             SaveScreenshotGame();
         }
 
@@ -274,6 +269,11 @@ namespace Com.IsartDigital.Sokoban
 
             currentPosition = currentPosition.nextValue;
             ChargeMapFromCurrentLevel();
+        }
+
+        private void CheckWin()
+        {
+
         }
 
     }

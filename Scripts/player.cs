@@ -80,7 +80,6 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTimer.Start();
             }
             else return;
-
         }
 
         private void MovingOnPath()
@@ -97,8 +96,6 @@ namespace Com.IsartDigital.Sokoban
 
         private bool CheckTheMove(Vector2I pDirectionVector)
         {
-            
-
             Vector2I lUnitaryPos = GetPositionToVector2I();
 
             if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector) == null) return false;
