@@ -3,6 +3,7 @@ using Godot.Collections;
 using System;
 using SysDict = System.Collections.Generic;
 using System.IO;
+using System.Data;
 
 // Author : Cayot Daniel
 
@@ -55,13 +56,6 @@ namespace Com.IsartDigital.Sokoban
 			aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
 			aStarGrid.Update();
 
-
-			foreach(Vector2I cell in cells)
-			{
-				if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1,cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
-			}
-
-
         }
 
 		public override void _Process(double pDelta)
@@ -71,15 +65,17 @@ namespace Com.IsartDigital.Sokoban
 
 			if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
 			{
-				Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
+				UpdateAndClearPath();
+                Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
 				foreach(Vector2I cell in groundCells)
 				{
-
-					if (lCellClicked.DistanceTo(cell ) < 1)
+                    GD.Print("Yahouu");
+                    if (lCellClicked.DistanceTo(cell ) < 1)
 					{
+
 						if ((GetCellTileData(1, cell) == null || !(bool)(GetCellTileData(1, cell).GetCustomData(INTERACTABLE))))
 						{
-                            GD.Print(cell);
+
 							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
                             return;
                         }
@@ -93,6 +89,17 @@ namespace Com.IsartDigital.Sokoban
 				}
 			}
 		}
+
+
+		private void UpdateAndClearPath()
+		{
+            groundCells = GetUsedCells(0);
+            cells = GetUsedCells(1);
+            foreach (Vector2I cell in cells)
+            {
+                if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
+            }
+        }
 
 		private void CreatePathFinding(Vector2I pBeginning, Vector2I pDestination)
 		{
