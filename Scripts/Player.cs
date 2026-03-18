@@ -150,7 +150,7 @@ namespace Com.IsartDigital.Sokoban
 
                 if (Input.IsActionJustPressed(lActionName))
                 {
-                    lastDirection = nameOfVector[lActionName] * States.DISTANCE_RANGE;
+                    lastDirection = nameOfVector[lActionName];
 
                     if (CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
                     {
@@ -192,7 +192,7 @@ namespace Com.IsartDigital.Sokoban
 
             foreach (Vector2I lVector in nameOfAnimation.Keys)
             {
-                if (lVector * States.DISTANCE_RANGE == lastDirection)
+                if (lVector == lastDirection)
                 {
                     animPlayer.Play(nameOfAnimation[lVector]);
                     animatedSprite.Play(nameOfAnimation[lVector] + ANIM_PLAYER);
@@ -209,7 +209,7 @@ namespace Com.IsartDigital.Sokoban
             else
 
             {
-                bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection / States.DISTANCE_RANGE, lastDirection);
+                bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
 
             }
 
