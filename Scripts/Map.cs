@@ -21,6 +21,7 @@ namespace Com.IsartDigital.Sokoban
 		public const string INTERACTABLE = "Interactable";
 		public const string TARGET = "Target";
 		public const string BORDER = "Border";
+		public const string GROUND = "Ground";
 		
 		public enum LevelLayer
 		{

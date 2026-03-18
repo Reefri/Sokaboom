@@ -57,7 +57,8 @@ namespace Com.IsartDigital.Sokoban {
                 }
 			}
 
-            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid)!=null && !(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid).GetCustomData("Border"))
+            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid)!=null && 
+                !(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid).GetCustomData("Border"))
             {
                 GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, posInGrid);
             }
@@ -73,8 +74,8 @@ namespace Com.IsartDigital.Sokoban {
                 {
                     if (explosionMatrix[i][j] == 1)
                     {
-                        if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos) != null
-                            && (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
+                        if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos) != null && 
+                            (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
                         {
                            
                             if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))

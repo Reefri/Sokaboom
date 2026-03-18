@@ -40,8 +40,7 @@ namespace Com.IsartDigital.Sokoban
 
             QueueFree();
 			
-            GameManager.GetInstance().UpdateAfterAction();
-
+            
         }
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)

@@ -9,7 +9,6 @@ namespace Com.IsartDigital.Sokoban
 {
     public partial class GameManager : Node2D
     {
-        [Export] Label par;
 
         static private GameManager instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");
@@ -168,7 +167,7 @@ namespace Com.IsartDigital.Sokoban
 
             foreach (Vector2I lNeighbor in neighborsCoor)
             {
-                if (tileMap.GetCellAtlasCoords((int)Map.LevelLayer.Ground, pStartCoor + lNeighbor) != objectPositionOnTileSet[ObjectChar.EMPTY])
+                if (tileMap.GetCellTileData((int)Map.LevelLayer.Ground, pStartCoor + lNeighbor) == null)
                 {
                     FillGroundTiles(pStartCoor + lNeighbor);
                 }
@@ -229,8 +228,12 @@ namespace Com.IsartDigital.Sokoban
         public void UpdateAfterAction()
         {
             CurrentPar++;
-            CheckWin();
             SaveScreenshotGame();
+            if (CheckWin())
+            {
+                GD.Print("You won !");
+            }
+
         }
 
 
@@ -274,10 +277,43 @@ namespace Com.IsartDigital.Sokoban
             ChargeMapFromCurrentLevel();
         }
 
-        private void CheckWin()
+        private bool CheckWin()
         {
 
+            for (int i = 0; i < currentLevel.Size.Y; i++)
+            {
+                for (int j = 0; j < currentLevel.Size.X; j++)
+                { 
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground,new Vector2I(j,i))!=null && 
+                  (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
+                    {
+                        if (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) == null || 
+                     !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) != null &&
+                  (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
+                    {
+                        if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null ||
+                     !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
+                        {
+                            return false;
+                        }
+                    }
+
+
+                }
+            }
+
+
+            return true;
+
         }
+
+
 
     }
 }

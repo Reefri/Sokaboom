@@ -96,9 +96,9 @@ namespace Com.IsartDigital.Sokoban
             {
                 sprite.Visible = true;
                 animatedSprite.Visible = false;
-                GD.Print("Done");
                 GlobalPosition = animatedSprite.GlobalPosition;
-                GameManager.GetInstance().SaveScreenshotGame();
+                GameManager.GetInstance().UpdateAfterAction();
+
 
                 //Position += nameOfVector[lActionName] * States.DISTANCE_RANGE;
             }
@@ -111,7 +111,7 @@ namespace Com.IsartDigital.Sokoban
             path.Remove(path[0]);
             GD.Print("b");
 
-            GameManager.GetInstance().SaveScreenshotGame();
+            GameManager.GetInstance().UpdateAfterAction();
             pathFindingTimer.Stop();
         }
 
