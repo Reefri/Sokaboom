@@ -95,7 +95,7 @@ namespace Com.IsartDigital.Sokoban
             base._Process(pDelta);
             float lDelta = (float)pDelta;
 
-            if (Input.IsActionJustPressed("TimeMinus"))
+            if (Input.IsActionJustPressed("TimeMinus") && !Box.animPlaying)
             {
                 MoveBackInTime();
             }
