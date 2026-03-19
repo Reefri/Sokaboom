@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfgi5xxs0ck1j"]
+
+[ext_resource type="Script" path="res://Scripts/UI/PrevisualisationBomb.cs" id="1_ib7cb"]
+
+[node name="PrevisualisationBomb" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_ib7cb")

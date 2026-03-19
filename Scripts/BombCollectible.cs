@@ -11,10 +11,15 @@ namespace Com.IsartDigital.Sokoban
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
-		private Bomb bomb;
+        public static Vector2 sizeBomb;
+
+        public Bomb bomb;
         public override void _Ready()
 		{
 			AreaEntered += BombCollectibleAreaEntered;
+
+            Sprite2D lSpriteBomb = (Sprite2D)GetChild(1);
+			sizeBomb = lSpriteBomb.Texture.GetSize();
         }
 
         private void BombCollectibleAreaEntered(Area2D pArea)
