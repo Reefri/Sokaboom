@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 namespace Com.IsartDigital.Sokoban {
 	public partial class BombPattern : Node2D
 	{
-        [Export] private float timeUntilFade = 10;
+        [Export] private float timeUntilFade = 0.2f;
 		private float time = 0;
 
 		private const string TO_PLACE_ON_EXPLOSION_PATH = "res://Scenes/ToPlaceOnExplosions.tscn";
@@ -57,41 +57,36 @@ namespace Com.IsartDigital.Sokoban {
                 }
 			}
 
-            if (!(bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid).GetCustomData("Border"))
-            {
-                GameManager.GetInstance().tileMap.EraseCell(1, posInGrid);
-            }
-            else
-            {
-                GD.Print("GameOver");
-                //put Game Over Screen here
-            }
-
+           
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
                 for (int j = 0; j < explosionMatrix[i].Count; j++)
                 {
-                    if (explosionMatrix[i][j] == 1)
+                    if (explosionMatrix[i][j] != 0)
                     {
-                        if (GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos) != null
-                            && (bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
+                        if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos) != null && 
+                            (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
                         {
-                            //GD.Print(Map.GetInstance().GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"));
-                            //GD.Print("exploded an interactable");
-
-                            if ((bool)GameManager.GetInstance().tileMap.GetCellTileData(1, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
+                           
+                            if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
                             {
                                 GD.Print("GameOver");
                                 //Put Game Over screen here
                             }
                             else
-                                GameManager.GetInstance().tileMap.SetCell(1, posInGrid + new Vector2I(j, i) - originPos, -1, new Vector2I(0, 0));
+                                GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos, -1);
+                        }
+
+                        if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos) != null)
+                        {
+                            GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos, -1);
+                            GD.Print("tu viens de détruire une cible !");
                         }
                     }
-                    //GD.Print(originPos);
                 }
             }
 
+            GameManager.GetInstance().UpdateCurrentPosition();
         }
 
         public override void _Process(double pDelta)
@@ -112,11 +107,11 @@ namespace Com.IsartDigital.Sokoban {
 
         private void RotateMatrix(BombPattern pBombPattern, List<List<int>> pExplosionMatrix, Vector2I pRotationVector)
         {
+
             if (pRotationVector == Vector2I.Up)
             {
                 pBombPattern.explosionMatrix = pExplosionMatrix;
 
-                return;
             }
 
             else if (pRotationVector == Vector2I.Down)
@@ -129,7 +124,6 @@ namespace Com.IsartDigital.Sokoban {
 
                 pBombPattern.explosionMatrix = pExplosionMatrix;
 
-                return;
             }
 
             else if (pRotationVector == Vector2I.Right)
@@ -154,7 +148,6 @@ namespace Com.IsartDigital.Sokoban {
 
                 pBombPattern.explosionMatrix = lRotatedMatrix;
 
-                return;
             }
 
             else if (pRotationVector == Vector2I.Left)
@@ -183,7 +176,6 @@ namespace Com.IsartDigital.Sokoban {
 
                 pBombPattern.explosionMatrix = lRotatedMatrix;
 
-                return;
             }
         }
 
@@ -191,15 +183,14 @@ namespace Com.IsartDigital.Sokoban {
 		{
 			BombPattern lBombPattern = new BombPattern();
 
-            lBombPattern.RotateMatrix(lBombPattern, pExplosionMatrix, pRotationVector);
+            lBombPattern.RotateMatrix(lBombPattern, Main.GetInstance().DuplicateListOfList(pExplosionMatrix), pRotationVector);
 
             //lBombPattern.explosionMatrix = pExplosionMatrix;
-            lBombPattern.Position = (Vector2.One * States.DISTANCE_RANGE/2 + pPosition * States.DISTANCE_RANGE)/2;
+            lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2;
             lBombPattern.posInGrid = pPosition;
 
 			Main.GetInstance().CallDeferred("add_child", lBombPattern);
 
-            Main.GetInstance().PrintListOfList(lBombPattern.explosionMatrix,',');
 		}
 	}
 }

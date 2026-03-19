@@ -3,6 +3,7 @@ using Godot.Collections;
 using System;
 using SysDict = System.Collections.Generic;
 using System.IO;
+using System.Data;
 
 // Author : Cayot Daniel
 
@@ -21,8 +22,14 @@ namespace Com.IsartDigital.Sokoban
 		public const string INTERACTABLE = "Interactable";
 		public const string TARGET = "Target";
 		public const string BORDER = "Border";
+		public const string GROUND = "Ground";
 		
-
+		public enum LevelLayer
+		{
+			Ground = 0,
+			Target = 1,
+			Playground = 2,
+		};
 
 
         public static SysDict.Dictionary<string, ObjectChar> interactableToObjectChar = new SysDict.Dictionary<string, ObjectChar>
@@ -43,26 +50,18 @@ namespace Com.IsartDigital.Sokoban
 			return (Map)factory.Instantiate();
 		}
 
-
-
-
-		public void UpdateTheMap()
+		public override void _Ready()
 		{
-			aStarGrid = new AStarGrid2D();
-            aStarGrid.Region = new Rect2I(-1, -1, 50, 50);
-            aStarGrid.CellSize = new Vector2I(States.DISTANCE_RANGE, States.DISTANCE_RANGE);
-            aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
-            aStarGrid.Update();
+			base._Ready();
+			cells = GetUsedCells((int)LevelLayer.Playground);
+			groundCells = GetUsedCells((int)LevelLayer.Ground);
 
 
-            cells = GetUsedCells(1);
-            groundCells = GetUsedCells(0);
-            foreach (Vector2I cell in cells)
-            {
-                if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
-            }
+			aStarGrid.Region = new Rect2I(-1,-1,50,50);
+			aStarGrid.CellSize = new Vector2I(States.DISTANCE_RANGE, States.DISTANCE_RANGE);
+			aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
+			aStarGrid.Update();
         }
-
 
 		public override void _Process(double pDelta)
 		{
@@ -71,21 +70,22 @@ namespace Com.IsartDigital.Sokoban
 
 			if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
 			{
-				GD.Print(groundCells.Count);
-				Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
-				foreach(Vector2I lCell in groundCells)
+				UpdateAndClearPath();
+                Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
+				foreach(Vector2I cell in groundCells)
 				{
-					
-					if (lCellClicked.DistanceTo(lCell ) < 1)
+                    GD.Print("Yahouu");
+                    if (lCellClicked.DistanceTo(cell ) < 1)
 					{
-						if ((GetCellTileData(1, lCell) == null || !(bool)(GetCellTileData(1, lCell).GetCustomData(INTERACTABLE))))
+						if ((GetCellTileData((int)LevelLayer.Playground, cell) == null || 
+							!(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(INTERACTABLE))))
 						{
-                            GD.Print(lCell);
-							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, lCell);
+							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
                             return;
                         }
                     
-						else if ((bool)(GetCellTileData(1, lCell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, lCell).GetCustomData(CONTAINER)))
+						else if ((bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(WALL)) || 
+							(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(CONTAINER)))
 						{
 							return;
 						}
@@ -95,11 +95,21 @@ namespace Com.IsartDigital.Sokoban
 			}
 		}
 
+
+		private void UpdateAndClearPath()
+		{
+            groundCells = GetUsedCells(0);
+            cells = GetUsedCells(1);
+            foreach (Vector2I cell in cells)
+            {
+                if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
+            }
+        }
+
 		private void CreatePathFinding(Vector2I pBeginning, Vector2I pDestination)
 		{
             SysDict.List<Vector2I> lPlayersPath = new SysDict.List<Vector2I>();
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
-			GD.Print("Bahaha");
             foreach (Vector2I cellOnPath in lPath)
             {
 				Player.GetInstance().path.Add(cellOnPath);

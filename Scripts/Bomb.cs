@@ -13,7 +13,6 @@ namespace Com.IsartDigital.Sokoban
         private Vector2I explosionOriginPos = new Vector2I(0, 0);
 
         
-
         private List<List<int>> explosionMatrix = new List<List<int>> { };
 
         private int minX = 0;
@@ -21,6 +20,8 @@ namespace Com.IsartDigital.Sokoban
 
         private int minY = 0;
         private int maxY = 0;
+
+        public int indexInLevel;
 
         private Vector2I gridSize = new Vector2I(0, 0);
         
@@ -64,7 +65,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void GetGridSize()
         {
-            gridSize = new Vector2I(1, 1) - new Vector2I(minX, minY) + new Vector2I(maxX, maxY);
+            gridSize = Vector2I.One - new Vector2I(minX, minY) + new Vector2I(maxX, maxY);
         }
 
         private void GetMinMax(List<Vector2I> pList)

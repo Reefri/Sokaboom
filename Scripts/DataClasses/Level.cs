@@ -89,9 +89,16 @@ namespace Com.IsartDigital.Sokoban
                     Main.GetInstance().PrintList(bombs);
                     GD.Print("Liste des positions de bombes : ");
                     Main.GetInstance().PrintList(bombsPos);
+                    return;
                 }
 
+                
 
+                for (int i = 0; i < bombs.Count; i++)
+                {
+                    bombs[i].indexInLevel = i;
+                    indexOfAvalaibleBombs.Add(i);
+                }
 
             }
         }
@@ -99,6 +106,10 @@ namespace Com.IsartDigital.Sokoban
         public List<Bomb> bombs;
 
         public List<Vector2I> bombsPos;
+
+        public List<int> indexOfAvalaibleBombs = new List<int>();
+
+        public Bomb currentBomb;
 
 
         public Level Duplicate()
@@ -109,6 +120,8 @@ namespace Com.IsartDigital.Sokoban
             lNewLevel.bombs = bombs;
             lNewLevel.bombsPos = bombsPos;
             lNewLevel.targetsPos = targetsPos;
+            lNewLevel.currentBomb = currentBomb;
+            lNewLevel.indexOfAvalaibleBombs = Main.GetInstance().DuplicateList(indexOfAvalaibleBombs);
 
             return lNewLevel;
         }
@@ -161,6 +174,7 @@ namespace Com.IsartDigital.Sokoban
                     if (Map[i][j] == (int)ObjectChar.TARGET)
                     {
                         targetsPos.Add(new Vector2I(j, i));
+                        Map[i] = Map[i].Substr(0, j) + " " + Map[i].Substr(j + 1, Map[i].Length);
                     }
 
                     if (Map[i][j] >= '0' && Map[i][j] <= '9')

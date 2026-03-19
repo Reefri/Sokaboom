@@ -14,17 +14,16 @@ namespace Com.IsartDigital.Sokoban
 		private Bomb bomb;
         public override void _Ready()
 		{
-			AreaEntered += BombCollectible_AreaEntered;
+			AreaEntered += BombCollectibleAreaEntered;
         }
 
-        private void BombCollectible_AreaEntered(Area2D pArea)
+        private void BombCollectibleAreaEntered(Area2D pArea)
         {
 			if(pArea == Player.GetInstance() && Player.GetInstance().bombInHand == null)
-			{			
-				GD.Print(" Player Picks up the bomb with this pattern : \n" + bomb);
+			{
+				GameManager.GetInstance().RemoveBombAtIndex(bomb.indexInLevel);
 
-				Player.GetInstance().bombInHand = bomb;
-				Player.GetInstance().holdingBomb = true;
+				Player.GetInstance().GiveBombToPlayer(bomb);
 
                 QueueFree();
 			}
@@ -43,7 +42,7 @@ namespace Com.IsartDigital.Sokoban
 			lBombCollectible.ZIndex = 1;
 
 			lBombCollectible.bomb = pBomb;
-			GameManager.GetInstance().AddChild(lBombCollectible);
+			GameManager.GetInstance().bombCollectibleContainer.AddChild(lBombCollectible);
 		}
 		protected override void Dispose(bool pDisposing)
 		{

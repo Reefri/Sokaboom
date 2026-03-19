@@ -52,15 +52,6 @@ namespace Com.IsartDigital.Sokoban.UI
             explosion.Visible = false;
         }
 
-        /*
-		public override void _Process(double pDelta)
-		{
-			float lDelta = (float)pDelta;
-
-            
-		}
-        */
-
         public override void _Input(InputEvent pEvent)
         {
             if (animationIsRunning && !animationWantToStop && pEvent is InputEventMouseButton lMouseEvent && lMouseEvent.Pressed && lMouseEvent.ButtonIndex == MouseButton.Left)
@@ -173,12 +164,5 @@ namespace Com.IsartDigital.Sokoban.UI
             UIManager.GetInstance().GoToHelp();
             HelpMenu.GetInstance().comeToMenu = true;
         }
-
-        /*
-        protected override void Dispose(bool pDisposing)
-		{
-
-		}
-        */
     }
 }

@@ -9,7 +9,7 @@ namespace Com.IsartDigital.Sokoban
 {
     public partial class GameManager : Node2D
     {
-        [Export] Label par;
+        [Export] public Node2D bombCollectibleContainer;
 
         static private GameManager instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");
@@ -20,7 +20,7 @@ namespace Com.IsartDigital.Sokoban
         private Level currentLevel;
 
         private List<LevelScreenShot> gameScreenshot = new List<LevelScreenShot>();
-        private HistoricHeap currentPosition;
+        public HistoricHeap currentPosition;
 
 
         private int currentPar = 0;
@@ -73,20 +73,17 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
         {
-            GridManager.GetInstance().ChangeLevel(1);
+            GridManager.GetInstance().ChangeLevel(UIManager.GetInstance().levelIndex);
             currentLevel = GridManager.GetInstance().CurrentLevel;
             currentPosition = new HistoricHeap(currentLevel);
 
             tileMap = Map.Create();
 
             AddChild(tileMap);
-
             AddChild(Player.GetInstance());
-
 
             ChargeMapFromCurrentLevel();
 
-            PlacingBombs();
         }
 
 
@@ -95,9 +92,8 @@ namespace Com.IsartDigital.Sokoban
             base._Process(pDelta);
             float lDelta = (float)pDelta;
 
-            if (Input.IsActionJustPressed("TimeMinus"))
+            if (Input.IsActionJustPressed("TimeMinus") && !Box.animPlaying)
             {
-                if (Box.animPlaying) { return; }
                 MoveBackInTime();
             }
             if (Input.IsActionJustPressed("TimePlus"))
@@ -113,18 +109,12 @@ namespace Com.IsartDigital.Sokoban
             base.Dispose(pDisposing);
         }
 
-        private void PlacingBombs()
-        {
-            for(int i = 0; i < currentPosition.value.bombsPos.Count; i++)
-            {
-                BombCollectible.Create(currentPosition.value.bombs[i], currentPosition.value.bombsPos[i]);
-            }
-        }
+           
+        
 
         private void ChargeMapFromCurrentLevel()
         {
             tileMap.Clear();
-
 
             for (int i = 0; i < currentPosition.value.Size.Y; i++)
             {
@@ -136,43 +126,62 @@ namespace Com.IsartDigital.Sokoban
                         case (char)ObjectChar.EMPTY:
                             continue;
 
-
-                        case (char)ObjectChar.WALL:
-                            tileMap.SetCell(0, new Vector2I(j, i), 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
+                        case (char)ObjectChar.BORDER:
+                            tileMap.SetCell((int)Map.LevelLayer.Ground, new Vector2I(j, i), 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
                             break;
                     }
 
 
-                    tileMap.SetCell(1, new Vector2I(j, i), 0,
+                    tileMap.SetCell((int)Map.LevelLayer.Playground, new Vector2I(j, i), 0,
                             objectPositionOnTileSet[(ObjectChar)currentPosition.value.Map[i][j]]
                             );
 
                 }
             }
 
+            foreach (Vector2I lTargetPos in currentPosition.value.targetsPos)
+            {
+                tileMap.SetCell((int)Map.LevelLayer.Target, lTargetPos, 0, objectPositionOnTileSet[ObjectChar.TARGET]);
+            }
+
+
+
+            foreach (Node2D lBombCollectible in bombCollectibleContainer.GetChildren())
+            {
+                lBombCollectible.QueueFree();
+            }
+
+            foreach(int lIndex in currentPosition.value.indexOfAvalaibleBombs)
+            {
+                BombCollectible.Create(currentPosition.value.bombs[lIndex], currentPosition.value.bombsPos[lIndex]);
+            }
+
+
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
 
-
-
             Player.GetInstance().GoTo(lPlayerPosition);
+            Player.GetInstance().GiveBombToPlayer(currentPosition.value.currentBomb);
 
             FillGroundTiles(lPlayerPosition);
-            tileMap.UpdateTheMap();
         }
 
         private void FillGroundTiles(Vector2I pStartCoor)
         {
-            tileMap.SetCell(0, pStartCoor, 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
+            tileMap.SetCell((int)Map.LevelLayer.Ground, pStartCoor, 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
 
             foreach (Vector2I lNeighbor in neighborsCoor)
             {
-                if (tileMap.GetCellAtlasCoords(0, pStartCoor + lNeighbor) != objectPositionOnTileSet[ObjectChar.EMPTY])
+                if (tileMap.GetCellTileData((int)Map.LevelLayer.Ground, pStartCoor + lNeighbor) == null)
                 {
                     FillGroundTiles(pStartCoor + lNeighbor);
                 }
             }
         }
 
+        public void RemoveBombAtIndex(int lIndex)
+        {
+            currentPosition.value.indexOfAvalaibleBombs.Remove(lIndex);
+        }
 
         private Level SaveMapAsLevel()
         {
@@ -185,18 +194,18 @@ namespace Com.IsartDigital.Sokoban
                 for (int j = 0; j < currentPosition.value.Size.X; j++)
                 {
 
-                    if (tileMap.GetCellTileData(1, new Vector2I(j, i)) == null)
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null)
                     {
                         lRow += (char)ObjectChar.EMPTY;
                         continue;
                     }
 
 
-                    if ((bool)tileMap.GetCellTileData(1, new Vector2I(j, i)).GetCustomData(Map.PLAY_OBJECT))
+                    if ((bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.PLAY_OBJECT))
                     {
                         foreach (string lKey in Map.interactableToObjectChar.Keys)
                         {
-                            if ((bool)tileMap.GetCellTileData(1, new Vector2I(j, i)).GetCustomData(lKey))
+                            if ((bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(lKey))
                             {
                                 lRow += (char)Map.interactableToObjectChar[lKey];
                                 break;
@@ -223,11 +232,30 @@ namespace Com.IsartDigital.Sokoban
             return lNewLevel;
         }
 
+        public void SaveBombs()
+        {
+            if (currentPosition.previousValue == null) return;
+
+            currentPosition.previousValue.value.bombsPos = currentPosition.value.bombsPos;
+            currentPosition.previousValue.value.bombs = currentPosition.value.bombs;
+        }
 
         public void UpdateAfterAction()
         {
+
             CurrentPar++;
             SaveScreenshotGame();
+            if (CheckWin())
+            {
+                GD.Print("You won !");
+            }
+
+        }
+
+
+        public void UpdateCurrentPosition()
+        {
+            currentPosition.value = GetScreenshotGame().value;
         }
 
 
@@ -236,7 +264,6 @@ namespace Com.IsartDigital.Sokoban
             currentPosition.nextValue = GetScreenshotGame();
             currentPosition.nextValue.previousValue = currentPosition;
             currentPosition = currentPosition.nextValue;
-            tileMap.UpdateTheMap();
         }
 
         public HistoricHeap GetScreenshotGame()
@@ -258,6 +285,7 @@ namespace Com.IsartDigital.Sokoban
             currentPosition = currentPosition.previousValue;
             ChargeMapFromCurrentLevel();
         }
+
         public void MoveForwardInTime()
         {
             if (currentPosition.nextValue == null)
@@ -271,6 +299,42 @@ namespace Com.IsartDigital.Sokoban
             currentPosition = currentPosition.nextValue;
             ChargeMapFromCurrentLevel();
         }
+
+        private bool CheckWin()
+        {
+
+            for (int i = 0; i < currentLevel.Size.Y; i++)
+            {
+                for (int j = 0; j < currentLevel.Size.X; j++)
+                { 
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground,new Vector2I(j,i))!=null && 
+                  (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
+                    {
+                        if (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) == null || 
+                     !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) != null &&
+                  (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
+                    {
+                        if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null ||
+                     !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
+                        {
+                            return false;
+                        }
+                    }
+
+
+                }
+            }
+
+            return true;
+        }
+
+
 
     }
 }

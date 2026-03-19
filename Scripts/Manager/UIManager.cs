@@ -10,15 +10,12 @@ namespace Com.IsartDigital.Sokoban
 		static private UIManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/UIManager.tscn");
 
-        public const string LOGIN_PATH = "res://Scenes/Login.tscn";
-        public const string TITLE_SCREEN_PATH = "res://Scenes/TitleCard.tscn";
-        public const string HELP_PATH = "res://Scenes/HelpMenu.tscn";
-        public const string LEVEL_SELECT_PATH = "res://Scenes/LevelSelect.tscn";
+        private Node uiLogin = GD.Load<PackedScene>("res://Scenes/Login.tscn").Instantiate();
+        private Node uiTitle = GD.Load<PackedScene>("res://Scenes/TitleCard.tscn").Instantiate();
+        private Node uiHelp = GD.Load<PackedScene>("res://Scenes/HelpMenu.tscn").Instantiate();
+        private Node uiLevelSelect = GD.Load<PackedScene>("res://Scenes/LevelSelect.tscn").Instantiate();
 
-        public Node uiLogin = GD.Load<PackedScene>(LOGIN_PATH).Instantiate();
-        public Node uiTitle = GD.Load<PackedScene>(TITLE_SCREEN_PATH).Instantiate();
-        public Node uiHelp = GD.Load<PackedScene>(HELP_PATH).Instantiate();
-        public Node uiLevelSelect = GD.Load<PackedScene>(LEVEL_SELECT_PATH).Instantiate();
+		public int levelIndex;
 
         private UIManager():base() 
 		{
@@ -44,12 +41,6 @@ namespace Com.IsartDigital.Sokoban
 			AddChild(uiLogin);
         }
 
-		public override void _Process(double pDelta)
-		{
-			base._Process(pDelta);
-			float lDelta = (float)pDelta;
-
-        }
         public void GoToTitle()
         {
 			RemoveChild(GetChild(0));
@@ -66,6 +57,13 @@ namespace Com.IsartDigital.Sokoban
         {
             RemoveChild(GetChild(0));
             AddChild(uiLevelSelect);
+        }
+
+		public void GoToLevel(int pIndex)
+		{
+            RemoveChild(GetChild(0));
+            levelIndex = pIndex;
+			Main.GetInstance().AddChild(GameManager.GetInstance());
         }
 
         protected override void Dispose(bool pDisposing)
