@@ -65,7 +65,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void GetGridSize()
         {
-            gridSize = new Vector2I(1, 1) - new Vector2I(minX, minY) + new Vector2I(maxX, maxY);
+            gridSize = Vector2I.One - new Vector2I(minX, minY) + new Vector2I(maxX, maxY);
         }
 
         private void GetMinMax(List<Vector2I> pList)

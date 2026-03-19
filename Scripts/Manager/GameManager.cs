@@ -253,6 +253,12 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
+        public void UpdateCurrentPosition()
+        {
+            currentPosition.value = GetScreenshotGame().value;
+        }
+
+
         public void SaveScreenshotGame()
         {
             currentPosition.nextValue = GetScreenshotGame();

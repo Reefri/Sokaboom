@@ -86,7 +86,7 @@ namespace Com.IsartDigital.Sokoban {
                 }
             }
 
-
+            GameManager.GetInstance().UpdateCurrentPosition();
         }
 
         public override void _Process(double pDelta)
@@ -183,7 +183,7 @@ namespace Com.IsartDigital.Sokoban {
 		{
 			BombPattern lBombPattern = new BombPattern();
 
-            lBombPattern.RotateMatrix(lBombPattern, pExplosionMatrix, pRotationVector);
+            lBombPattern.RotateMatrix(lBombPattern, Main.GetInstance().DuplicateListOfList(pExplosionMatrix), pRotationVector);
 
             //lBombPattern.explosionMatrix = pExplosionMatrix;
             lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2;
