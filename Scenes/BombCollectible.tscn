@@ -10,18 +10,7 @@ size = Vector2(60, 58)
 z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_omedn")
-bombNumberShown = NodePath("bombIndex")
-
-[node name="bombIndex" type="Label" parent="."]
-z_index = 1
-offset_left = -20.0
-offset_top = -45.0
-offset_right = 20.0
-offset_bottom = -10.0
-theme_override_font_sizes/font_size = 25
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+bombNumberShown = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w1ets")
