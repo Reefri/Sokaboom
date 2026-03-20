@@ -5,7 +5,6 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4l0qp")
-levelAtTest = 3
 
 [node name="UiManager" parent="." instance=ExtResource("3_70v4f")]
 anchors_preset = 0
