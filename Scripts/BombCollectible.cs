@@ -6,15 +6,19 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class BombCollectible : Area2D
 	{
+		[Export] private Label bombNumberShown;
+		private static int bombIndex;
 
 		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/BombCollectible.tscn";
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
-		private Bomb bomb;
+		public Bomb bomb;
         public override void _Ready()
 		{
 			AreaEntered += BombCollectibleAreaEntered;
+
+			bombNumberShown.Text = bombIndex.ToString();
         }
 
         private void BombCollectibleAreaEntered(Area2D pArea)
@@ -35,11 +39,13 @@ namespace Com.IsartDigital.Sokoban
 
 		}
 
-		public static void Create(Bomb pBomb, Vector2I pPosition)
+		public static void Create(Bomb pBomb, Vector2I pPosition, int pIndex)
 		{
 			BombCollectible lBombCollectible = (BombCollectible)bombCollectible.Instantiate();
 			lBombCollectible.Position = (Vector2.One / 2 + pPosition) * States.DISTANCE_RANGE;
 			lBombCollectible.ZIndex = 1;
+
+			bombIndex = pIndex;
 
 			lBombCollectible.bomb = pBomb;
 			GameManager.GetInstance().bombCollectibleContainer.AddChild(lBombCollectible);

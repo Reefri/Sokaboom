@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://0o6ll15fwr2m"]
+[gd_scene load_steps=7 format=3 uid="uid://0o6ll15fwr2m"]
 
 [ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="1_aheke"]
+[ext_resource type="Script" path="res://Scripts/ToPlaceOnExplosion.cs" id="1_cg1r1"]
 
 [sub_resource type="Gradient" id="Gradient_fyvn8"]
 offsets = PackedFloat32Array(0, 0.533101, 1)
@@ -16,7 +17,11 @@ radial_velocity_max = 32.0
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_22866")
 
-[node name="ToPlaceOnExplosions" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v35m6"]
+size = Vector2(36, 34)
+
+[node name="ToPlaceOnExplosions" type="Area2D"]
+script = ExtResource("1_cg1r1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.499)
@@ -26,3 +31,6 @@ texture = ExtResource("1_aheke")
 amount = 250
 process_material = SubResource("ParticleProcessMaterial_rf1ko")
 explosiveness = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v35m6")

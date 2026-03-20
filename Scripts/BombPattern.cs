@@ -33,7 +33,7 @@ namespace Com.IsartDigital.Sokoban {
                     {
                         originPos = new Vector2I(j, i);
 
-                        Node2D lPattern = (Node2D)toPlaceOnExplosion.Instantiate();
+                        Area2D lPattern = (Area2D)toPlaceOnExplosion.Instantiate();
                         lPattern.Position = Position;
                         lPattern.Modulate = new Color(1, 0, 0);
                         AddChild(lPattern);
@@ -50,9 +50,12 @@ namespace Com.IsartDigital.Sokoban {
 					if (explosionMatrix[i][j] == 1)
 					{
 
-                        Node2D lPattern = (Node2D)toPlaceOnExplosion.Instantiate();
+                        Area2D lPattern = (Area2D)toPlaceOnExplosion.Instantiate();
                         lPattern.Position = Position + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
+                        //positions differentes de celles de la grille ??
                         AddChild(lPattern);
+
+
                     }
                 }
 			}
@@ -74,7 +77,7 @@ namespace Com.IsartDigital.Sokoban {
                                 //Put Game Over screen here
                             }
                             else
-                                GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos, -1);
+                                GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
                         }
 
                         if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos) != null)
@@ -105,6 +108,11 @@ namespace Com.IsartDigital.Sokoban {
 
 		}
 
+        private void ChainReaction(Node2D pExplosion)
+        {
+            
+        }
+
         private void RotateMatrix(BombPattern pBombPattern, List<List<int>> pExplosionMatrix, Vector2I pRotationVector)
         {
 
@@ -128,9 +136,6 @@ namespace Com.IsartDigital.Sokoban {
 
             else if (pRotationVector == Vector2I.Right)
             {
-                //TO DO
-                //Rotate pExplosionMatrix to the right
-
                 pExplosionMatrix.Reverse();
                 List<List<int>> lRotatedMatrix = new List<List<int>>();
 
@@ -152,7 +157,6 @@ namespace Com.IsartDigital.Sokoban {
 
             else if (pRotationVector == Vector2I.Left)
             {
-                //Rotate pExplosionMatrix to the left
 
                 foreach (List<int> pRow in pExplosionMatrix)
                 {
@@ -185,8 +189,7 @@ namespace Com.IsartDigital.Sokoban {
 
             lBombPattern.RotateMatrix(lBombPattern, pExplosionMatrix, pRotationVector);
 
-            //lBombPattern.explosionMatrix = pExplosionMatrix;
-            lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2;
+            lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2; // pourquoi distance/2 ??
             lBombPattern.posInGrid = pPosition;
 
 			Main.GetInstance().CallDeferred("add_child", lBombPattern);
