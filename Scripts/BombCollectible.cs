@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 // Author : Ethan FRENARD
 
@@ -11,15 +12,22 @@ namespace Com.IsartDigital.Sokoban
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
-        public static Vector2 sizeBomb;
-
         public Bomb bomb;
+
+        private Timer timerBeforePrevisualisation = new Timer();
+        private int timeBeforeVisualisation = 1;
+
         public override void _Ready()
 		{
 			AreaEntered += BombCollectibleAreaEntered;
 
-            Sprite2D lSpriteBomb = (Sprite2D)GetChild(1);
-			sizeBomb = lSpriteBomb.Texture.GetSize();
+            MouseEntered += InBomb;
+            MouseExited += OutBomb;
+
+            timerBeforePrevisualisation.WaitTime = timeBeforeVisualisation;
+            timerBeforePrevisualisation.Timeout += () => PrevisualisationBomb.CreateInstance(bomb.explosionMatrix);
+            timerBeforePrevisualisation.OneShot = true;
+            AddChild(timerBeforePrevisualisation);
         }
 
         private void BombCollectibleAreaEntered(Area2D pArea)
@@ -37,10 +45,19 @@ namespace Com.IsartDigital.Sokoban
         public override void _Process(double pDelta)
 		{
 			float lDelta = (float)pDelta;
+        }
 
-		}
+        private void InBomb()
+        {
+            timerBeforePrevisualisation.Start();
+        }
+        private void OutBomb()
+        {
+            if (!timerBeforePrevisualisation.IsStopped()) timerBeforePrevisualisation.Stop();
+            if (PrevisualisationBomb.instance != null) PrevisualisationBomb.GetInstance().QueueFree();
+        }
 
-		public static void Create(Bomb pBomb, Vector2I pPosition, int pIndex)
+        public static void Create(Bomb pBomb, Vector2I pPosition, int pIndex)
 		{
 			BombCollectible lBombCollectible = (BombCollectible)bombCollectible.Instantiate();
 			lBombCollectible.Position = (Vector2.One / 2 + pPosition) * States.DISTANCE_RANGE;
@@ -51,7 +68,7 @@ namespace Com.IsartDigital.Sokoban
 		}
 		protected override void Dispose(bool pDisposing)
 		{
-
-		}
+            if (PrevisualisationBomb.instance != null) PrevisualisationBomb.GetInstance().QueueFree();
+        }
 	}
 }

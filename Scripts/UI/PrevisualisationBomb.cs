@@ -11,9 +11,10 @@ namespace Com.IsartDigital.Sokoban
 		static public PrevisualisationBomb instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/previsualisation_bomb.tscn");
 
-        public static void CreateInstance()
+        public static void CreateInstance(List<List<int>> pExplosionMatrix)
         {
             PrevisualisationBomb lPrevisualisationBomb = (PrevisualisationBomb)factory.Instantiate();
+            lPrevisualisationBomb.explosionMatrix = pExplosionMatrix;
             Main.GetInstance().AddChild(lPrevisualisationBomb); //UIManager.GetInstance().AddChild(lPrevisualisationBomb);
         }
 
@@ -44,8 +45,6 @@ namespace Com.IsartDigital.Sokoban
 			base._Ready();
 
             GlobalPosition = new Vector2(1152, 324) / 2; //à redesigner plus tard
-
-            explosionMatrix = Main.GetInstance().explosionMatrix;
 
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
