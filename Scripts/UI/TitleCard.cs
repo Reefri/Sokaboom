@@ -162,7 +162,7 @@ namespace Com.IsartDigital.Sokoban.UI
         private void HelpPressed()
         {
             UIManager.GetInstance().GoToHelp();
-            HelpMenu.GetInstance().comeToMenu = true;
+            UIManager.GetInstance().comeToMenu = true;
         }
     }
 }

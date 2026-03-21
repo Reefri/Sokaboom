@@ -153,7 +153,7 @@ namespace Com.IsartDigital.Sokoban
 
             foreach(int lIndex in currentPosition.value.indexOfAvalaibleBombs)
             {
-                BombCollectible.Create(currentPosition.value.bombs[lIndex], currentPosition.value.bombsPos[lIndex]);
+                BombCollectible.Create(currentPosition.value.bombs[lIndex], currentPosition.value.bombsPos[lIndex], lIndex);
             }
 
 
@@ -250,6 +250,12 @@ namespace Com.IsartDigital.Sokoban
                 GD.Print("You won !");
             }
 
+        }
+
+
+        public void UpdateCurrentPosition()
+        {
+            currentPosition.value = GetScreenshotGame().value;
         }
 
 

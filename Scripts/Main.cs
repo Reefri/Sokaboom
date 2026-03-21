@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Text.Json;
 
 // Author : Ethan Masse
@@ -14,6 +15,10 @@ namespace Com.IsartDigital.Sokoban
 
 		[Export] private bool testOnlyGameFeature = true;
 		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
+
+		private Timer timerBeforePrevisualisation = new Timer();
+		private int timeBeforeVisualisation = 1;
+		public List<List<int>> explosionMatrix;
 
         private Main():base() 
 		{
@@ -47,6 +52,11 @@ namespace Com.IsartDigital.Sokoban
                 AddChild(GameManager.GetInstance());
                 RemoveChild(UIManager.GetInstance());
             }
+
+			timerBeforePrevisualisation.WaitTime = timeBeforeVisualisation;
+			timerBeforePrevisualisation.Timeout += () => PrevisualisationBomb.CreateInstance();
+			timerBeforePrevisualisation.OneShot = true;
+			AddChild(timerBeforePrevisualisation);
         }
 
 
@@ -55,12 +65,41 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
-		}
+
+			if (InBomb() && timerBeforePrevisualisation.IsStopped() && PrevisualisationBomb.instance == null)
+			{
+				timerBeforePrevisualisation.Start();
+			}
+			else if (!InBomb()) 
+			{
+                timerBeforePrevisualisation.Stop();
+				if (PrevisualisationBomb.instance != null) PrevisualisationBomb.GetInstance().QueueFree();
+            }
+        }
 
 		protected override void Dispose(bool pDisposing)
 		{
 			instance = null;
 			base.Dispose(pDisposing);
+		}
+
+		private bool InBomb()
+		{
+            foreach (BombCollectible lBomb in GameManager.GetInstance().bombCollectibleContainer.GetChildren())
+            {
+				if (GetGlobalMousePosition().X >= lBomb.GlobalPosition.X - BombCollectible.sizeBomb.X / 2 &&
+					GetGlobalMousePosition().X <= lBomb.GlobalPosition.X + BombCollectible.sizeBomb.X / 2 &&
+					GetGlobalMousePosition().Y >= lBomb.GlobalPosition.Y - BombCollectible.sizeBomb.Y / 2 &&
+					GetGlobalMousePosition().Y <= lBomb.GlobalPosition.Y + BombCollectible.sizeBomb.Y / 2) 
+				{
+					explosionMatrix = lBomb.bomb.explosionMatrix;
+                    return true;
+                }	
+            }
+			{
+				explosionMatrix = null;
+                return false;
+            }
 		}
 
 
@@ -70,6 +109,16 @@ namespace Com.IsartDigital.Sokoban
 			foreach (T lElement in pList)
 			{
 				lList.Add(lElement);
+			}
+			return lList;
+		}
+
+		public List<List<T>> DuplicateListOfList<T>(List<List<T>> pListOfList)
+		{
+			List<List<T>> lList = new List<List<T>>();
+			foreach (List<T> lElement in pListOfList)
+			{
+				lList.Add(DuplicateList(lElement));
 			}
 			return lList;
 		}

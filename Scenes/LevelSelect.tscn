@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/LevelSelect.cs" id="1_8o5eu"]
 
-[node name="LevelSelect" type="CanvasLayer" node_paths=PackedStringArray("backButton", "unlockButton", "allButtons")]
+[node name="LevelSelect" type="CanvasLayer" node_paths=PackedStringArray("allButtons")]
 script = ExtResource("1_8o5eu")
-backButton = NodePath("back")
-unlockButton = NodePath("unlock")
 allButtons = NodePath("allButtons")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -170,3 +168,6 @@ offset_bottom = 581.0
 theme_override_font_sizes/font_size = 25
 disabled = true
 text = "Level 12"
+
+[connection signal="pressed" from="back" to="." method="BackPressed"]
+[connection signal="pressed" from="unlock" to="." method="UnlockPressed"]

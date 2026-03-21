@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ets"]
 size = Vector2(60, 58)
 
-[node name="BombCollectible" type="Area2D"]
+[node name="BombCollectible" type="Area2D" node_paths=PackedStringArray("bombNumberShown")]
 z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_omedn")
+bombNumberShown = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w1ets")

@@ -15,7 +15,9 @@ namespace Com.IsartDigital.Sokoban
         private Node uiHelp = GD.Load<PackedScene>("res://Scenes/HelpMenu.tscn").Instantiate();
         private Node uiLevelSelect = GD.Load<PackedScene>("res://Scenes/LevelSelect.tscn").Instantiate();
 
-		public int levelIndex;
+        [Export] private bool noLogin = true;
+        public int levelIndex;
+        public bool comeToMenu = true;
 
         private UIManager():base() 
 		{
@@ -38,7 +40,8 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-			AddChild(uiLogin);
+			if (!noLogin) AddChild(uiLogin);
+			else AddChild(uiTitle);
         }
 
         public void GoToTitle()
