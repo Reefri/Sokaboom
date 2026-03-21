@@ -17,6 +17,8 @@ namespace Com.IsartDigital.Sokoban
 
 		public int levelIndex;
 
+        public bool comeToMenu = true;
+
         private UIManager():base() 
 		{
 			if (instance != null)

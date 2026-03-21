@@ -71,7 +71,7 @@ namespace Com.IsartDigital.UI {
         private void GoToHelp()
         {
             UIManager.GetInstance().GoToHelp();
-            HelpMenu.GetInstance().comeToMenu = false;
+            UIManager.GetInstance().comeToMenu = false;
         }
 
         public override void _Process(double pDelta)
