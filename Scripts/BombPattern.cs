@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 
 // Author : Ethan Frenard
 
@@ -24,7 +25,6 @@ namespace Com.IsartDigital.Sokoban {
 
         public override void _Ready()
 		{
-
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
                 for (int j = 0; j < explosionMatrix[i].Count; j++)
@@ -32,12 +32,7 @@ namespace Com.IsartDigital.Sokoban {
                     if (explosionMatrix[i][j] == 2)
                     {
                         originPos = new Vector2I(j, i);
-
-                        Area2D lPattern = (Area2D)toPlaceOnExplosion.Instantiate();
-                        lPattern.Position = Position;
-                        lPattern.Modulate = new Color(1, 0, 0);
-                        AddChild(lPattern);
-
+                        AddChild(ToPlaceOnExplosion.Create(GlobalPosition, new Color(1, 0, 0)));
                     }
                 }
             }
@@ -49,17 +44,13 @@ namespace Com.IsartDigital.Sokoban {
 
 					if (explosionMatrix[i][j] == 1)
 					{
+                        Vector2 lPosition = GlobalPosition + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
+                        AddChild(ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1)));
 
-                        Area2D lPattern = (Area2D)toPlaceOnExplosion.Instantiate();
-                        lPattern.Position = Position + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
                         //positions differentes de celles de la grille ??
-                        AddChild(lPattern);
-
-
                     }
                 }
 			}
-
            
             for (int i = 0; i < explosionMatrix.Count; i++)
             {

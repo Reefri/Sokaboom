@@ -20,8 +20,9 @@ color_ramp = SubResource("GradientTexture1D_22866")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v35m6"]
 size = Vector2(36, 34)
 
-[node name="ToPlaceOnExplosions" type="Area2D"]
+[node name="ToPlaceOnExplosions" type="Area2D" node_paths=PackedStringArray("collisionShape")]
 script = ExtResource("1_cg1r1")
+collisionShape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.499)

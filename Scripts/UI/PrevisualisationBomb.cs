@@ -54,12 +54,7 @@ namespace Com.IsartDigital.Sokoban
                     if (explosionMatrix[i][j] == 2)
                     {
                         originPos = new Vector2I(j, i);
-
-                        Node2D lPattern = (Node2D)toPlaceOnExplosion.Instantiate();
-                        lPattern.Position = Position;
-                        lPattern.Modulate = new Color(1, 0, 0);
-                        AddChild(lPattern);
-
+                        AddChild(ToPlaceOnExplosion.Create(GlobalPosition, new Color(1, 0, 0), true));
                     }
                 }
             }
@@ -71,15 +66,12 @@ namespace Com.IsartDigital.Sokoban
 
                     if (explosionMatrix[i][j] == 1)
                     {
-
-                        Node2D lPattern = (Node2D)toPlaceOnExplosion.Instantiate();
-                        lPattern.Position = Position + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
-                        AddChild(lPattern);
+                        Vector2 lPosition = GlobalPosition + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
+                        AddChild(ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), true));
                     }
                 }
             }
         }
-        
 
 		protected override void Dispose(bool pDisposing)
 		{
