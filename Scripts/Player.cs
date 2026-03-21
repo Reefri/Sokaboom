@@ -113,7 +113,6 @@ namespace Com.IsartDigital.Sokoban
         {
             GoTo(path[0]);
             path.Remove(path[0]);
-            GD.Print("b");
 
             GameManager.GetInstance().UpdateAfterAction();
             pathFindingTimer.Stop();

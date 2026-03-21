@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bt2uu00rpwkjf" path="res://Assets/FireWork/Head.png" id="4_syp3e"]
 [ext_resource type="Texture2D" uid="uid://0a0o51fq3xim" path="res://Assets/particules/FireWorkPart1.png" id="5_pij2o"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1y2b"]
-shader = ExtResource("2_eoo77")
-shader_parameter/RotationSpeed = -4.0
-
 [sub_resource type="Gradient" id="Gradient_qmh2m"]
 offsets = PackedFloat32Array(0.275758, 0.439394, 0.666667, 0.912121, 1)
 colors = PackedColorArray(0.968627, 1, 1, 1, 0.966667, 1, 0, 1, 0.916978, 0.948598, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
@@ -27,6 +23,10 @@ orbit_velocity_min = -1.119
 orbit_velocity_max = 1.13
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_p7me6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1y2b"]
+shader = ExtResource("2_eoo77")
+shader_parameter/RotationSpeed = -4.0
 
 [sub_resource type="Gradient" id="Gradient_kldbd"]
 interpolation_mode = 2
@@ -149,6 +149,15 @@ texture_filter = 1
 rotation = 1.5708
 scale = Vector2(0.1, 0.1)
 
+[node name="Sparkles" type="GPUParticles2D" parent="Renderer"]
+position = Vector2(0, 120)
+rotation = -1.5708
+scale = Vector2(10, 10)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_boyhq")
+lifetime = 0.3
+trail_lifetime = 0.5
+
 [node name="Body" type="Sprite2D" parent="Renderer"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_s1y2b")
@@ -160,15 +169,6 @@ position = Vector2(-2.62268e-06, -60)
 scale = Vector2(5.995, 5.34)
 texture = ExtResource("4_syp3e")
 
-[node name="Sparkles" type="GPUParticles2D" parent="Renderer"]
-position = Vector2(20, 130)
-rotation = -1.5708
-scale = Vector2(10, 10)
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_boyhq")
-lifetime = 0.3
-trail_lifetime = 0.5
-
 [node name="ExplosionContainer" type="Node2D" parent="."]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ExplosionContainer"]
@@ -178,7 +178,7 @@ amount_ratio = 0.2393
 process_material = SubResource("ParticleProcessMaterial_ri6ai")
 texture = ExtResource("5_pij2o")
 lifetime = 4.0
-speed_scale = 1.63
+speed_scale = 2.58
 explosiveness = 1.0
 randomness = 1.0
 trail_enabled = true
@@ -193,7 +193,7 @@ amount_ratio = 0.626
 process_material = SubResource("ParticleProcessMaterial_ngnqm")
 texture = ExtResource("5_pij2o")
 lifetime = 4.0
-speed_scale = 1.83
+speed_scale = 2.78
 explosiveness = 1.0
 trail_enabled = true
 trail_lifetime = 1.72
@@ -205,7 +205,7 @@ emitting = false
 amount = 1000
 process_material = SubResource("ParticleProcessMaterial_6fmu2")
 lifetime = 4.0
-speed_scale = 1.61
+speed_scale = 2.56
 explosiveness = 1.0
 trail_lifetime = 1.72
 trail_sections = 14

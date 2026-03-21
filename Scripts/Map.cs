@@ -74,7 +74,6 @@ namespace Com.IsartDigital.Sokoban
                 Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
 				foreach(Vector2I cell in groundCells)
 				{
-                    GD.Print("Yahouu");
                     if (lCellClicked.DistanceTo(cell ) < 1)
 					{
 						if ((GetCellTileData((int)LevelLayer.Playground, cell) == null || 

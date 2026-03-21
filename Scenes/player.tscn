@@ -177,6 +177,7 @@ sprite = NodePath("Sprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(0, 64)
 sprite_frames = SubResource("SpriteFrames_yhy0t")
 animation = &"movingUpAnim"
 

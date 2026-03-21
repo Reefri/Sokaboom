@@ -8,6 +8,12 @@ namespace Com.IsartDigital.Sokoban
 	{
 		private static PackedScene factory = (PackedScene)GD.Load("res://Scenes/Juiciness/Firework.tscn");
 
+		private const string EXPLOSIONCONTAINER_NODE_PATH = "ExplosionContainer";
+
+		private const int MIN_FIREWORK_NUMBER = 4;
+		private const int MAX_FIREWORK_NUMBER = 6;
+
+
 		private float pullTowardCenter = 1f;
 
 		private bool disableProcess = false;
@@ -26,7 +32,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Ready()
 		{
-			foreach (GpuParticles2D lGPUPart in GetNode("ExplosionContainer").GetChildren())
+			foreach (GpuParticles2D lGPUPart in GetNode(EXPLOSIONCONTAINER_NODE_PATH).GetChildren())
 			{
 				lGPUPart.OneShot = true;
 			}
@@ -82,7 +88,7 @@ namespace Com.IsartDigital.Sokoban
 
             ((Node2D)GetNode("Renderer")).Visible = false;
 
-			Node2D lExplosionContainer = (Node2D)GetNode("ExplosionContainer");
+			Node2D lExplosionContainer = (Node2D)GetNode(EXPLOSIONCONTAINER_NODE_PATH);
 
 
             int lExplosionIndex = GD.RandRange(0, lExplosionContainer.GetChildCount()-1);
@@ -97,9 +103,9 @@ namespace Com.IsartDigital.Sokoban
 
 			
 			lExplosionPart.Emitting = true;
-			//lExplosionPart.Finished += QueueFree;
+			lExplosionPart.Finished += QueueFree;
 
-        }
+		}
 
 
 		public static FireWork Create(Vector2 pPosition)
@@ -110,14 +116,16 @@ namespace Com.IsartDigital.Sokoban
             return lNewFireWork;
 		}
 
-        public static void CreateMult(Vector2 pPosition,Node2D pParent, int pNumber)
+        public static void CreateMult(Vector2 pPosition,Node2D pParent)
         {
 			FireWork lCurrentFirework;
-			for (int i = 0; i < pNumber; i++)
+			int lRandNumberOfFirework = GD.RandRange(MIN_FIREWORK_NUMBER, MAX_FIREWORK_NUMBER); //GERE ICI
+
+			for (int i = 0; i < lRandNumberOfFirework; i++)
 			{
 				lCurrentFirework = Create(pPosition);
 
-				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3*(pNumber/2-i)/pNumber);
+				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3*(lRandNumberOfFirework / 2-i)/ lRandNumberOfFirework);
 
                 pParent.AddChild(lCurrentFirework);
 			}

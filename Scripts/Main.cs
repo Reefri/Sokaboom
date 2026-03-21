@@ -73,7 +73,7 @@ namespace Com.IsartDigital.Sokoban
 			else if (!InBomb()) 
 			{
                 timerBeforePrevisualisation.Stop();
-				if (PrevisualisationBomb.instance != null) PrevisualisationBomb.GetInstance().QueueFree();
+				PrevisualisationBomb.GetInstance().QueueFree();
             }
         }
 
