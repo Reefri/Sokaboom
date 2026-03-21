@@ -39,8 +39,6 @@ namespace Com.IsartDigital.Sokoban
             GetParent().RemoveChild(this);
 
             QueueFree();
-			
-            
         }
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
