@@ -64,22 +64,34 @@ namespace Com.IsartDigital.Sokoban {
                 {
                     if (explosionMatrix[i][j] != 0)
                     {
-                        if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos) != null && 
-                            (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Interactable"))
+
+                        TileMap lTileMap = GameManager.GetInstance().tileMap;
+
+                        TileData lCurrentTileData = lTileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
+
+                        if ( lCurrentTileData != null && 
+                            (bool)lCurrentTileData.GetCustomData(Map.INTERACTABLE))
                         {
-                           
-                            if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos).GetCustomData("Border"))
+
+                            if ((bool)lCurrentTileData.GetCustomData(Map.BORDER))
                             {
                                 GD.Print("GameOver");
                                 //Put Game Over screen here
                             }
                             else
-                                GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos, -1);
+                            {
+                                if ((bool)lCurrentTileData.GetCustomData(Map.CONTAINER))
+                                {
+                                    FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos+Vector2.One/2) *States.DISTANCE_RANGE,GameManager.GetInstance(),6);
+                                }
+
+                                lTileMap.SetCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos, -1);
+                            }
                         }
 
-                        if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos) != null)
+                        if (lTileMap.GetCellTileData((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos) != null)
                         {
-                            GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos, -1);
+                            lTileMap.SetCell((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos, -1);
                             GD.Print("tu viens de détruire une cible !");
                         }
                     }

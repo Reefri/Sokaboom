@@ -7,3 +7,5 @@ script = ExtResource("1_1plec")
 bombCollectibleContainer = NodePath("BombCollectibleContainer")
 
 [node name="BombCollectibleContainer" type="Node2D" parent="."]
+
+[node name="FireworkContainer" type="Node2D" parent="."]
