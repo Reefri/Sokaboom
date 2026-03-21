@@ -68,7 +68,7 @@ namespace Com.IsartDigital.Sokoban
 		}
 		protected override void Dispose(bool pDisposing)
 		{
-            if (PrevisualisationBomb.instance != null) PrevisualisationBomb.GetInstance().QueueFree();
+            if (PrevisualisationBomb.instance != null && PrevisualisationBomb.GetInstance().explosionMatrix == bomb.explosionMatrix) PrevisualisationBomb.GetInstance().QueueFree();
         }
 	}
 }
