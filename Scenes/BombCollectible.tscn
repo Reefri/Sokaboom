@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/BombCollectible.cs" id="1_omedn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ets"]
-size = Vector2(60, 58)
+size = Vector2(64, 64)
 
 [node name="BombCollectible" type="Area2D"]
 z_index = -1
@@ -16,3 +16,10 @@ shape = SubResource("RectangleShape2D_w1ets")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_2xusr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -30.0
+offset_right = 65.0
+offset_bottom = 34.0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)

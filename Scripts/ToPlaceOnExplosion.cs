@@ -29,11 +29,16 @@ namespace Com.IsartDigital.Sokoban {
         {
 			if(pArea is BombCollectible)
 			{
+                
+                
 				BombCollectible lBombCollec = (BombCollectible)pArea;
 				lBombCollec.bomb.Explode((Vector2I)lBombCollec.Position / States.DISTANCE_RANGE	, Vector2I.Up);
 				lBombCollec.QueueFree();
-				GD.Print(lBombCollec.bomb);
-			}
+
+				GameManager.GetInstance().RemoveBomb(lBombCollec.bomb);
+                GD.Print("ha");
+                GameManager.GetInstance().UpdateCurrentPosition();
+            }
         }
 
         public override void _Process(double pDelta)

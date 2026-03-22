@@ -17,12 +17,16 @@ namespace Com.IsartDigital.Sokoban
         private Timer timerBeforePrevisualisation = new Timer();
         private int timeBeforeVisualisation = 1;
 
+
         public override void _Ready()
 		{
 			AreaEntered += BombCollectibleAreaEntered;
 
+
+            InputPickable = true;
             MouseEntered += InBomb;
             MouseExited += OutBomb;
+            
 
             timerBeforePrevisualisation.WaitTime = timeBeforeVisualisation;
             timerBeforePrevisualisation.Timeout += () => PrevisualisationBomb.CreateInstance(bomb.explosionMatrix);
@@ -53,6 +57,7 @@ namespace Com.IsartDigital.Sokoban
         }
         private void OutBomb()
         {
+
             if (!timerBeforePrevisualisation.IsStopped()) timerBeforePrevisualisation.Stop();
             if (PrevisualisationBomb.instance != null) PrevisualisationBomb.GetInstance().QueueFree();
         }

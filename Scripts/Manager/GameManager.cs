@@ -92,7 +92,7 @@ namespace Com.IsartDigital.Sokoban
             base._Process(pDelta);
             float lDelta = (float)pDelta;
 
-            if (Input.IsActionJustPressed("TimeMinus") && !Box.animPlaying)
+            if (Input.IsActionJustPressed("TimeMinus"))
             {
                 MoveBackInTime();
             }
@@ -178,6 +178,11 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
+        public void RemoveBomb(Bomb pBomb)
+        {
+            RemoveBombAtIndex(currentPosition.value.bombs.IndexOf(pBomb));
+        }
+
         public void RemoveBombAtIndex(int lIndex)
         {
             currentPosition.value.indexOfAvalaibleBombs.Remove(lIndex);
@@ -255,6 +260,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void UpdateCurrentPosition()
         {
+            GD.Print("did a lil update");
             currentPosition.value = GetScreenshotGame().value;
         }
 

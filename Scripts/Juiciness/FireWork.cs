@@ -119,7 +119,7 @@ namespace Com.IsartDigital.Sokoban
         public static void CreateMult(Vector2 pPosition,Node2D pParent)
         {
 			FireWork lCurrentFirework;
-			int lRandNumberOfFirework = GD.RandRange(MIN_FIREWORK_NUMBER, MAX_FIREWORK_NUMBER); //GERE ICI
+			int lRandNumberOfFirework = GD.RandRange(MIN_FIREWORK_NUMBER, MAX_FIREWORK_NUMBER);
 
 			for (int i = 0; i < lRandNumberOfFirework; i++)
 			{
