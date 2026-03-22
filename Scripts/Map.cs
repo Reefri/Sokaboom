@@ -4,6 +4,7 @@ using System;
 using SysDict = System.Collections.Generic;
 using System.IO;
 using System.Data;
+using System.Collections.Generic;
 
 // Author : Cayot Daniel
 
@@ -23,7 +24,10 @@ namespace Com.IsartDigital.Sokoban
 		public const string TARGET = "Target";
 		public const string BORDER = "Border";
 		public const string GROUND = "Ground";
-		
+
+
+		public static Vector2I boxOrContainerClickedOn;
+		public static Vector2I lastDirectionBeforePushing;
 		public enum LevelLayer
 		{
 			Ground = 0,
@@ -42,7 +46,6 @@ namespace Com.IsartDigital.Sokoban
 
         private const string PATH_FINDING_INPUT = "leftClick";
 
-        private static int mapCounter = 0;
 
 
         public static Map Create()
@@ -61,6 +64,7 @@ namespace Com.IsartDigital.Sokoban
 			aStarGrid.CellSize = new Vector2I(States.DISTANCE_RANGE, States.DISTANCE_RANGE);
 			aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
 			aStarGrid.Update();
+
         }
 
 		public override void _Process(double pDelta)
@@ -68,28 +72,47 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 
-			if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
+            if (Player.GetInstance().hasBoxToPush || Box.animPlaying )
 			{
-				UpdateAndClearPath();
-                Vector2 lCellClicked =  new Vector2I((int)GetGlobalMousePosition().X/States.DISTANCE_RANGE, (int)GetGlobalMousePosition().Y/States.DISTANCE_RANGE);
-				foreach(Vector2I cell in groundCells)
+                return;
+            }
+				
+            else if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
+			{
+                if (Player.GetInstance().path.Count != 0) Player.GetInstance().path.Clear();
+
+                UpdateAndClearPath();
+
+                Vector2 lCellClicked =  new Vector2I((int)(GetGlobalMousePosition().X/States.DISTANCE_RANGE), (int)(GetGlobalMousePosition().Y/States.DISTANCE_RANGE));
+				foreach(Vector2I lCell in groundCells)
 				{
-                    GD.Print("Yahouu");
-                    if (lCellClicked.DistanceTo(cell ) < 1)
+                    if (lCellClicked.DistanceTo(lCell ) < 1)
 					{
-						if ((GetCellTileData((int)LevelLayer.Playground, cell) == null || 
-							!(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(INTERACTABLE))))
+						if(lCell == Player.GetInstance().GetPositionToVector2I()) { return; }
+
+						if ((GetCellTileData((int)LevelLayer.Playground, lCell) == null || 
+							!(bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(INTERACTABLE))))
 						{
-							CreatePathFinding((Vector2I)Player.GetInstance().Position/States.DISTANCE_RANGE, cell);
-                            return;
+                            CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lCell);
+							return;
                         }
                     
-						else if ((bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(WALL)) || 
-							(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(CONTAINER)))
+						else if ((bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(WALL)))
 						{
-							return;
+							boxOrContainerClickedOn = lCell;
+							CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lCell);
+							
+                            ContainerOrBoxChosen(WALL, lCell);
 						}
-					}
+
+                        else if ((bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(CONTAINER)))
+						{
+                            boxOrContainerClickedOn = lCell;
+							ContainerOrBoxChosen(CONTAINER, lCell);
+						}
+
+
+                    }
 
 				}
 			}
@@ -99,23 +122,88 @@ namespace Com.IsartDigital.Sokoban
 		private void UpdateAndClearPath()
 		{
             groundCells = GetUsedCells(0);
-            cells = GetUsedCells(1);
+            cells = GetUsedCells(2);
+            Player.GetInstance().path.Clear();
+            aStarGrid.Update();
+
             foreach (Vector2I cell in cells)
-            {
-                if ((bool)(GetCellTileData(1, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(1, cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
-            }
-        }
+			{
+				if ((bool)(GetCellTileData(2, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(2, cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
+			}
+		}
+
+
+		private void ContainerOrBoxChosen(string pWallOrContainer, Vector2I pCell)
+		{
+			List<Vector2I> lAlternativeCells = new List<Vector2I>();
+			List<float> lDistanceBetweenCells = new List<float>();
+
+			int indexOfClosestCell;
+
+			foreach (Vector2I lVector in Player.GetInstance().nameOfAnimation.Keys)
+			{
+				Vector2I lPossibleCell = pCell + lVector;
+
+				if ((GetCellTileData((int)LevelLayer.Playground, lPossibleCell) == null))
+				{
+					float lClosestCell = Player.GetInstance().Position.DistanceTo(lPossibleCell * States.DISTANCE_RANGE);
+
+					lAlternativeCells.Add(lPossibleCell);
+					lDistanceBetweenCells.Add(lClosestCell);
+				}
+			}
+
+			float lTheClosestCell = lDistanceBetweenCells[0];
+			indexOfClosestCell = 0;
+
+			for (int i = lDistanceBetweenCells.Count - 1; i > 0; i--)
+			{
+				if (lDistanceBetweenCells[0] > lDistanceBetweenCells[i])
+				{
+					lTheClosestCell = lDistanceBetweenCells[i];
+					indexOfClosestCell = i;
+				}
+
+			}
+			if (pWallOrContainer == CONTAINER) { Player.GetInstance().hasBoxToPush = true; }
+
+            CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lAlternativeCells[indexOfClosestCell]);
+		}
+
+
 
 		private void CreatePathFinding(Vector2I pBeginning, Vector2I pDestination)
 		{
-            SysDict.List<Vector2I> lPlayersPath = new SysDict.List<Vector2I>();
+
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
-            foreach (Vector2I cellOnPath in lPath)
+
+
+            if ((pBeginning == pDestination && Player.GetInstance().hasBoxToPush) || (Player.GetInstance().hasBoxToPush && lPath.Count == 0))
             {
-				Player.GetInstance().path.Add(cellOnPath);
+
+                Player.GetInstance().lastDirection = boxOrContainerClickedOn - pBeginning;
+
+				if (!Box.CanBoxBePushed(boxOrContainerClickedOn - Player.GetInstance().GetPositionToVector2I(), boxOrContainerClickedOn))
+                {
+                    Player.GetInstance().AnimThePlayer(Player.GetInstance().lastDirection);
+
+                }
+
+				Player.GetInstance().hasBoxToPush = false;
+				return;
             }
-			//Player.GetInstance().MovingOnPath(lPlayersPath);
-        }
+
+            if (lPath.Count == 0) return;
+
+
+
+			foreach (Vector2I cellOnPath in lPath)
+			{
+				Player.GetInstance().path.Add(cellOnPath);
+			}
+
+			lastDirectionBeforePushing = pDestination - boxOrContainerClickedOn;
+		}
 	
 	}
 }

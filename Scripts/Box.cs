@@ -22,7 +22,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public static bool animPlaying = false;
 		private static string animToPlay;
-		private static Vector2 movingTheBox = new Vector2(States.DISTANCE_RANGE,States.DISTANCE_RANGE);
+
 		public override void _Ready()
 		{
 			animPlaying = true;
@@ -33,7 +33,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndOfAnimation(StringName pAnimName)
         {
-            GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, (Vector2I)(Position/States.DISTANCE_RANGE) + Player.GetInstance().lastDirection, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
+			GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, (Vector2I)(Position / States.DISTANCE_RANGE) + Player.GetInstance().lastDirection, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
             animPlaying = false;
 
             GetParent().RemoveChild(this);
@@ -47,20 +47,21 @@ namespace Com.IsartDigital.Sokoban
 		{
 			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null )
 			{
-                GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, pCellPosition, -1);
+				GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pCellPosition);
+
                 Create(pCellPosition , pDirection);
                 return false;
 			}
 
 			
-			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData("Container") ||
-				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData("Wall") )
+			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.CONTAINER) ||
+				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.WALL) )
 			{
 				return true;
 			}
 			else
 			{
-                GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, pCellPosition, -1);
+                GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pCellPosition);
                 Create(pCellPosition, pDirection);
                 return false;
 			}
@@ -70,7 +71,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 			Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
-            lBox.Position =  (pPosition + Vector2.One/2) * (States.DISTANCE_RANGE);
+            lBox.GlobalPosition = (pPosition + Vector2.One/2) * (States.DISTANCE_RANGE);
 			GameManager.GetInstance().tileMap.AddChild(lBox);
 			return lBox;
 
