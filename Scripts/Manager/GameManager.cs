@@ -260,7 +260,6 @@ namespace Com.IsartDigital.Sokoban
 
         public void UpdateCurrentPosition()
         {
-            GD.Print("did a lil update");
             currentPosition.value = GetScreenshotGame().value;
         }
 
