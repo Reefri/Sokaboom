@@ -15,7 +15,7 @@ namespace Com.IsartDigital.Sokoban
         {
             PrevisualisationBomb lPrevisualisationBomb = (PrevisualisationBomb)factory.Instantiate();
             lPrevisualisationBomb.explosionMatrix = pExplosionMatrix;
-            Main.GetInstance().AddChild(lPrevisualisationBomb); //UIManager.GetInstance().AddChild(lPrevisualisationBomb);
+            UIManager.GetInstance().AddChild(lPrevisualisationBomb);
         }
 
         private PrevisualisationBomb():base() 
