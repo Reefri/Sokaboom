@@ -128,7 +128,7 @@ namespace Com.IsartDigital.Sokoban
 
             foreach (Vector2I cell in cells)
 			{
-				if ((bool)(GetCellTileData(2, cell).GetCustomData(WALL)) || (bool)(GetCellTileData(2, cell).GetCustomData(CONTAINER))) aStarGrid.SetPointSolid(cell);
+				if ((bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(WALL)) || (bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(CONTAINER))|| (bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(BORDER))) aStarGrid.SetPointSolid(cell);
 			}
 		}
 
