@@ -168,3 +168,6 @@ offset_bottom = 581.0
 theme_override_font_sizes/font_size = 25
 disabled = true
 text = "Level 12"
+
+[connection signal="pressed" from="back" to="." method="BackPressed"]
+[connection signal="pressed" from="unlock" to="." method="UnlockPressed"]

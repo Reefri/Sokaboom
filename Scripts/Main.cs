@@ -49,20 +49,11 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-
-
-        public override void _Process(double pDelta)
-		{
-			base._Process(pDelta);
-			float lDelta = (float)pDelta;
-		}
-
 		protected override void Dispose(bool pDisposing)
 		{
 			instance = null;
 			base.Dispose(pDisposing);
 		}
-
 
 		public List<T> DuplicateList<T>(List<T> pList)
 		{
