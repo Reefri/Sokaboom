@@ -1,3 +1,5 @@
+using Com.IsartDigital.Sokoban.UI;
+using Com.IsartDigital.UI;
 using Godot;
 using System;
 
@@ -10,10 +12,11 @@ namespace Com.IsartDigital.Sokoban
 		static private UIManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/UIManager.tscn");
 
-        private Node uiLogin = GD.Load<PackedScene>("res://Scenes/Login.tscn").Instantiate();
-        private Node uiTitle = GD.Load<PackedScene>("res://Scenes/TitleCard.tscn").Instantiate();
-        private Node uiHelp = GD.Load<PackedScene>("res://Scenes/HelpMenu.tscn").Instantiate();
-        private Node uiLevelSelect = GD.Load<PackedScene>("res://Scenes/LevelSelect.tscn").Instantiate();
+        private LoginUI uiLogin = (LoginUI)GD.Load<PackedScene>("res://Scenes/Login.tscn").Instantiate();
+        private TitleCard uiTitle = (TitleCard)GD.Load<PackedScene>("res://Scenes/TitleCard.tscn").Instantiate();
+        private HelpMenu uiHelp = (HelpMenu)GD.Load<PackedScene>("res://Scenes/HelpMenu.tscn").Instantiate();
+        private LevelSelect uiLevelSelect = (LevelSelect)GD.Load<PackedScene>("res://Scenes/LevelSelect.tscn").Instantiate();
+        public HUD uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/HUD.tscn").Instantiate();
 
         [Export] private bool noLogin = true;
         public int levelIndex;
@@ -44,6 +47,11 @@ namespace Com.IsartDigital.Sokoban
 			else AddChild(uiTitle);
         }
 
+		public void UpdateHud()
+		{
+			uiHUD.steps.Text = "Steps : " + GameManager.GetInstance().CurrentPar;
+        }
+
         public void GoToTitle()
         {
 			RemoveChild(GetChild(0));
@@ -67,6 +75,7 @@ namespace Com.IsartDigital.Sokoban
             RemoveChild(GetChild(0));
             levelIndex = pIndex;
 			Main.GetInstance().AddChild(GameManager.GetInstance());
+            AddChild(uiHUD);
         }
 
         protected override void Dispose(bool pDisposing)

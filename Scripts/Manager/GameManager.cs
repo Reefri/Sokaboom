@@ -17,7 +17,7 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/BombCollectible.tscn");
 
 
-        private Level currentLevel;
+        public Level currentLevel;
 
         private List<LevelScreenShot> gameScreenshot = new List<LevelScreenShot>();
         public HistoricHeap currentPosition;
@@ -30,7 +30,7 @@ namespace Com.IsartDigital.Sokoban
             set 
             { 
                 currentPar = value; 
-                // Ici un appel à UIManager.GetInstance().UpdateHud();
+                UIManager.GetInstance().UpdateHud();
             }
         }
             

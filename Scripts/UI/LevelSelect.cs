@@ -13,6 +13,8 @@ namespace Com.IsartDigital.UI {
 
         private bool buttonlock = true;
 
+        private int numberOfLevel = 3; //petite sécurité à enlever plus tard
+
         public override void _Ready()
 		{
             base._Ready();
@@ -44,7 +46,8 @@ namespace Com.IsartDigital.UI {
 
             foreach (Button lButton in allButtons.GetChildren())
 			{
-				if (lButton.GetIndex() > 0) lButton.Disabled = buttonlock;
+                if (lButton.GetIndex() > numberOfLevel) lButton.Disabled = true; //faire en sorte que personne n'essaye d'aller dans les niveau pas créé)
+                else if (lButton.GetIndex() > 0) lButton.Disabled = buttonlock;
             }
         }
 

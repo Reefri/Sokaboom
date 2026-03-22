@@ -1,0 +1,94 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbudevm1ma507"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_4wc2e"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "par", "steps")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4wc2e")
+buttonUndo = NodePath("Undo")
+buttonRedo = NodePath("Redo")
+par = NodePath("Par")
+steps = NodePath("Steps")
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 100.0
+grow_horizontal = 0
+text = "ID_QUIT"
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "ID_RETRY"
+
+[node name="Redo" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -210.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "ID_REDO"
+
+[node name="Undo" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -320.0
+offset_bottom = -220.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "ID_UNDO"
+
+[node name="Par" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 110.0
+offset_bottom = 145.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "Par :"
+
+[node name="Steps" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 155.0
+offset_bottom = 297.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Steps :"
+
+[connection signal="pressed" from="Quit" to="." method="QuitPressed"]
