@@ -29,13 +29,11 @@ namespace Com.IsartDigital.Sokoban
             UIManager.GetInstance().GoToLevelSelect();
             GameManager.GetInstance().QueueFree();
 			QueueFree();
-
-            UIManager.GetInstance().uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/HUD.tscn").Instantiate();
         }
 
         protected override void Dispose(bool pDisposing)
 		{
-
-		}
+            UIManager.GetInstance().uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/HUD.tscn").Instantiate();
+        }
 	}
 }
