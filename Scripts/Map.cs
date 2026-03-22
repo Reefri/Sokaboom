@@ -153,8 +153,11 @@ namespace Com.IsartDigital.Sokoban
 				}
 			}
 
-			float lTheClosestCell = lDistanceBetweenCells[0];
+            if (lAlternativeCells.Count == 0) { return; }
+
+            float lTheClosestCell = lDistanceBetweenCells[0];
 			indexOfClosestCell = 0;
+
 
 			for (int i = lDistanceBetweenCells.Count - 1; i > 0; i--)
 			{
