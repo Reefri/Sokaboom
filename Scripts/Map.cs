@@ -178,7 +178,7 @@ namespace Com.IsartDigital.Sokoban
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
 
 
-            if ((pBeginning == pDestination && Player.GetInstance().hasBoxToPush) || (Player.GetInstance().hasBoxToPush && lPath.Count == 0))
+            if (Player.GetInstance().hasBoxToPush&& (pBeginning == pDestination || lPath.Count == 0))
             {
 
                 Player.GetInstance().lastDirection = boxOrContainerClickedOn - pBeginning;
