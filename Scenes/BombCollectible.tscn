@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/BombCollectible.cs" id="1_omedn"]
 [ext_resource type="Shader" uid="uid://wxygcdpv5iwa" path="res://Ressources/Shaders/Hover.tres" id="2_6oh1q"]
-[ext_resource type="Shader" uid="uid://cq00hwahtg514" path="res://Ressources/Shaders/BombShadow.tres" id="3_3aaj6"]
+[ext_resource type="Shader" uid="uid://c73hvhdcnyj3v" path="res://Ressources/Shaders/BombShadow.tres" id="3_a6vn2"]
 [ext_resource type="Texture2D" uid="uid://bk4chsa2etmt1" path="res://Assets/Bomb/Collectible/body.png" id="3_hnfuj"]
 [ext_resource type="Texture2D" uid="uid://je34t1rmuwnc" path="res://Assets/Bomb/Collectible/firework.png" id="4_1pkld"]
 [ext_resource type="Texture2D" uid="uid://ch2pts2c7mev4" path="res://Assets/Bomb/Collectible/Shadow.png" id="4_8821p"]
@@ -13,7 +13,7 @@ shader = ExtResource("2_6oh1q")
 shader_parameter/chromaEffect = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ee4c"]
-shader = ExtResource("3_3aaj6")
+shader = ExtResource("3_a6vn2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5smlg"]
 shader = ExtResource("2_6oh1q")
