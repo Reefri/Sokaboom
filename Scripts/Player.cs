@@ -150,20 +150,20 @@ namespace Com.IsartDigital.Sokoban
         {
             Vector2I lUnitaryPos = GetPositionToVector2I();
 
-            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector) == null) return false;
+            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector) == null) return true;
 
             else if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.INTERACTABLE)))
             {
-               
                 if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.CONTAINER)))
                 {
-
                     return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
                 }
-                else return true;
+                else return false;
             }
-            else return false;
+            else return true;
         }
+
+
 
         public Vector2I GetPositionToVector2I()
         {
@@ -182,24 +182,36 @@ namespace Com.IsartDigital.Sokoban
                 {
                     lastDirection = nameOfVector[lActionName];
 
-                    if (CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
+                    if (!CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
                     {
                         if (bombInHand != null)
                         {
                             ExplodeBombInHand();
+                            return;
                         }
-                        return;
+
+                        else
+                        {
+                            return;
+                        }
                     }
 
 
-                    if (Box.animPlaying)
-                    {
-                        AnimThePlayer(lastDirection);
-                        return;
-                    }
                     else
                     {
-                        AnimThePlayer(lastDirection);
+                        if (Box.hasABoxToCheck)
+                        {
+                            Box.Create(GetPositionToVector2I() + lastDirection, lastDirection);
+                            AnimThePlayer(lastDirection);
+                            Box.hasABoxToCheck = false;
+                            return;
+                        }
+
+                        else
+                        {
+                            AnimThePlayer(lastDirection);
+                        }
+
 
                     }
                 }
