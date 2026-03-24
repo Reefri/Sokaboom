@@ -91,4 +91,11 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Steps :"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "ID_NOM"
+
 [connection signal="pressed" from="Quit" to="." method="QuitPressed"]
+[connection signal="pressed" from="Retry" to="." method="RetryPressed"]

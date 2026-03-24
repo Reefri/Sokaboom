@@ -117,7 +117,7 @@ namespace Com.IsartDigital.Sokoban
            
         
 
-        private void ChargeMapFromCurrentLevel()
+        public void ChargeMapFromCurrentLevel()
         {
             tileMap.Clear();
 
