@@ -21,6 +21,8 @@ namespace Com.IsartDigital.Sokoban
         private Vector2 rightCornerOfCollectible = new Vector2(25, -25);
         private float previsualisationScale = 0.3f;
         private float downFactor = 10;
+        private float sideFactor = 0;
+        private bool OriginOnTop;
         public override void _Ready()
 		{
 
@@ -32,8 +34,21 @@ namespace Com.IsartDigital.Sokoban
                     {
                         previsualisationOriginPos = new Vector2I(j, i);
 
-                        AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor
-                            , new Color(1, 0, 0), true, previsualisationScale));
+                        if(j == 0)
+                        {
+                            sideFactor = (bomb.explosionMatrix[0].Count - 1) * 10;
+                            GD.Print(sideFactor);
+                        }
+
+                        if (i == 0)
+                        {
+                            downFactor = 0;
+                            AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + (Vector2.Left * sideFactor), new Color(1, 0, 0), true, previsualisationScale));
+                        }
+                        else
+                            AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor
+                                + (Vector2.Left * sideFactor)
+                                , new Color(1, 0, 0), true, previsualisationScale));
                     }
                 }
             }
@@ -46,6 +61,7 @@ namespace Com.IsartDigital.Sokoban
                     if (bomb.explosionMatrix[i][j] == 1)
                     {
                         Vector2 lPosition = rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor 
+                            + (Vector2.Left * sideFactor)
                             + (new Vector2(j, i) - previsualisationOriginPos) * States.DISTANCE_RANGE * previsualisationScale;
                         
                         AddChild(ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), true, previsualisationScale));

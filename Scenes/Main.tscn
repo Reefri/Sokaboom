@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8t1by23fiuf1"]
+[gd_scene load_steps=4 format=3 uid="uid://b8t1by23fiuf1"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_4l0qp"]
 [ext_resource type="PackedScene" uid="uid://ql7xil2wq2gx" path="res://Scenes/UIManager.tscn" id="3_70v4f"]
+[ext_resource type="PackedScene" uid="uid://c8dncnnjh8avc" path="res://Scenes/CameraManager.tscn" id="3_bh5vp"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4l0qp")
+testOnlyGameFeature = false
 levelAtTest = 2
 
 [node name="UiManager" parent="." instance=ExtResource("3_70v4f")]
@@ -16,3 +18,5 @@ offset_bottom = 648.0
 grow_horizontal = 1
 grow_vertical = 1
 mouse_filter = 2
+
+[node name="CameraManager" parent="." instance=ExtResource("3_bh5vp")]
