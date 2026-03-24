@@ -7,8 +7,8 @@ using Com.IsartDigital.Sokoban;
 
 namespace Com.IsartDigital.UI {
 	
-	public partial class LevelSelect : CanvasLayer
-	{
+	public partial class LevelSelect : Control
+    {
 		[Export] private Control allButtons;
 
         private bool buttonlock = true;

@@ -31,6 +31,13 @@ namespace Com.IsartDigital.Sokoban
 			QueueFree();
         }
 
+        private void RetryPressed()
+        {
+            GameManager.GetInstance().currentPosition = new HistoricHeap(GameManager.GetInstance().currentLevel);
+            GameManager.GetInstance().ChargeMapFromCurrentLevel();
+            GameManager.GetInstance().CurrentPar = 0;
+        }
+
         protected override void Dispose(bool pDisposing)
 		{
             UIManager.GetInstance().uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/HUD.tscn").Instantiate();
