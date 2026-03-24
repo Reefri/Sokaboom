@@ -22,6 +22,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public static bool animPlaying = false;
 		private static string animToPlay;
+		public static bool hasABoxToCheck = false;
 
 		public override void _Ready()
 		{
@@ -43,25 +44,28 @@ namespace Com.IsartDigital.Sokoban
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
 		{
-			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null )
+			hasABoxToCheck = false;
+			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null)
 			{
 				GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pCellPosition);
-
-                Create(pCellPosition , pDirection);
-                return false;
+				hasABoxToCheck = true;
+                return true;
 			}
 
 			
 			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.CONTAINER) ||
-				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.WALL) )
+				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.WALL)
+                || (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.BORDER))
 			{
-				return true;
+				return false;
 			}
+
 			else
 			{
                 GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pCellPosition);
-                Create(pCellPosition, pDirection);
-                return false;
+				//A box will be instantiated in this situation
+				hasABoxToCheck = true;
+                return true;
 			}
 		}
 

@@ -37,7 +37,6 @@ namespace Com.IsartDigital.Sokoban {
 				lBombCollec.QueueFree();
 
 				GameManager.GetInstance().RemoveBomb(lBombCollec.bomb);
-                GD.Print("ha");
                 GameManager.GetInstance().UpdateCurrentPosition();
             }
         }
