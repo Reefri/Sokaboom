@@ -84,7 +84,7 @@ namespace Com.IsartDigital.Sokoban
 			lAccountList.Add(Account.Create(pId,GD.Hash(pPassWord)));
 
 			
-			JsonReaderWriter.WirteListToJson(JSONFILE_PATH, lAccountList);
+			JsonReaderWriter.WriteListToJson(JSONFILE_PATH, lAccountList);
 
 			return true;
         }

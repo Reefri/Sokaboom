@@ -30,6 +30,10 @@ namespace Com.IsartDigital.Sokoban
 
 		public int Par { get; set; }
 
+
+        public string Author { get; set; }
+        public string Title { get; set; }
+
         private List<string> map;
 		public List<string> Map 
         {
@@ -110,6 +114,7 @@ namespace Com.IsartDigital.Sokoban
         public List<int> indexOfAvalaibleBombs = new List<int>();
 
         public Bomb currentBomb;
+
 
 
         public Level Duplicate()

@@ -168,7 +168,8 @@ namespace Com.IsartDigital.Sokoban
 				}
 
 			}
-			if (pWallOrContainer == CONTAINER) { Player.GetInstance().hasBoxToPush = true; }
+
+			Player.GetInstance().hasBoxToPush = (pWallOrContainer == CONTAINER);
 
             CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lAlternativeCells[indexOfClosestCell]);
 		}

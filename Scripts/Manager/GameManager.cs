@@ -75,6 +75,11 @@ namespace Com.IsartDigital.Sokoban
         {
             GridManager.GetInstance().ChangeLevel(UIManager.GetInstance().levelIndex);
             currentLevel = GridManager.GetInstance().CurrentLevel;
+
+            UIManager.GetInstance().uiHUD.ResetHUD();
+
+            GD.Print(currentLevel.Title + " : " + currentLevel.Author);
+
             currentPosition = new HistoricHeap(currentLevel);
 
             tileMap = Map.Create();

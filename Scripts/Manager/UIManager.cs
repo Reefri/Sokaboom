@@ -73,6 +73,7 @@ namespace Com.IsartDigital.Sokoban
 		public void GoToLevel(int pIndex)
 		{
             RemoveChild(GetChild(0));
+			
             levelIndex = pIndex;
 			Main.GetInstance().AddChild(GameManager.GetInstance());
             AddChild(uiHUD);

@@ -16,10 +16,17 @@ namespace Com.IsartDigital.Sokoban
 			buttonUndo.Pressed += GameManager.GetInstance().MoveBackInTime;
             buttonRedo.Pressed += GameManager.GetInstance().MoveForwardInTime;
 
-			par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
+			ResetHUD();
         }
 
-		public override void _Process(double pDelta)
+		public void ResetHUD()
+		{
+            par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
+
+        }
+
+
+        public override void _Process(double pDelta)
 		{
 			float lDelta = (float)pDelta;
         }
@@ -28,12 +35,8 @@ namespace Com.IsartDigital.Sokoban
 		{
             UIManager.GetInstance().GoToLevelSelect();
             GameManager.GetInstance().QueueFree();
-			QueueFree();
         }
 
-        protected override void Dispose(bool pDisposing)
-		{
-            UIManager.GetInstance().uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/HUD.tscn").Instantiate();
-        }
+        
 	}
 }
