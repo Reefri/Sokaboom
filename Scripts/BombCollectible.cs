@@ -12,26 +12,54 @@ namespace Com.IsartDigital.Sokoban
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
+        private PrevisualisationBomb previsualisationBomb = (PrevisualisationBomb)GD.Load<PackedScene>("res://Scenes/previsualisation_bomb.tscn").Instantiate();
+
         public Bomb bomb;
 
-        private Timer timerBeforePrevisualisation = new Timer();
-        private int timeBeforeVisualisation = 1;
-
+        private Vector2 previsualisationOriginPos;
+        private Vector2 rightCornerOfCollectible = new Vector2(25, -25);
+        private float previsualisationScale = 0.3f;
+        private float downFactor = 10;
 
         public override void _Ready()
 		{
-			AreaEntered += BombCollectibleAreaEntered;
+            previsualisationBomb.explosionMatrix = bomb.explosionMatrix;
+
+            for (int i = 0; i < bomb.explosionMatrix.Count; i++)
+            {
+                for (int j = 0; j < bomb.explosionMatrix[i].Count; j++)
+                {
+                    if (bomb.explosionMatrix[i][j] == 2)
+                    {
+                        previsualisationOriginPos = new Vector2I(j, i);
+
+                        AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor
+                            , new Color(1, 0, 0), true, previsualisationScale));
+                    }
+                }
+            }
+
+            for (int i = 0; i < bomb.explosionMatrix.Count; i++)
+            {
+                for (int j = 0; j < bomb.explosionMatrix[i].Count; j++)
+                {
+
+                    if (bomb.explosionMatrix[i][j] == 1)
+                    {
+                        Vector2 lPosition = rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor 
+                            + (new Vector2(j, i) - previsualisationOriginPos) * States.DISTANCE_RANGE * previsualisationScale;
+                        
+                        AddChild(ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), true, previsualisationScale));
+                    }
+                }
+            }
+
+            AreaEntered += BombCollectibleAreaEntered;
 
 
             InputPickable = true;
             MouseEntered += InBomb;
             MouseExited += OutBomb;
-            
-
-            timerBeforePrevisualisation.WaitTime = timeBeforeVisualisation;
-            timerBeforePrevisualisation.Timeout += () => PrevisualisationBomb.CreateInstance(bomb.explosionMatrix);
-            timerBeforePrevisualisation.OneShot = true;
-            AddChild(timerBeforePrevisualisation);
         }
 
         private void BombCollectibleAreaEntered(Area2D pArea)
@@ -53,13 +81,11 @@ namespace Com.IsartDigital.Sokoban
 
         private void InBomb()
         {
-            timerBeforePrevisualisation.Start();
+            UIManager.GetInstance().AddChild(previsualisationBomb);
         }
         private void OutBomb()
         {
-
-            if (!timerBeforePrevisualisation.IsStopped()) timerBeforePrevisualisation.Stop();
-            if (PrevisualisationBomb.instance != null) PrevisualisationBomb.GetInstance().QueueFree();
+            UIManager.GetInstance().RemoveChild(previsualisationBomb);
         }
 
         public static void Create(Bomb pBomb, Vector2I pPosition, int pIndex)
@@ -73,7 +99,7 @@ namespace Com.IsartDigital.Sokoban
 		}
 		protected override void Dispose(bool pDisposing)
 		{
-            if (PrevisualisationBomb.instance != null && PrevisualisationBomb.GetInstance().explosionMatrix == bomb.explosionMatrix) PrevisualisationBomb.GetInstance().QueueFree();
+            previsualisationBomb.QueueFree();
         }
 	}
 }

@@ -11,12 +11,13 @@ namespace Com.IsartDigital.Sokoban {
 
         [Export] private CollisionShape2D collisionShape;
 
-        public static ToPlaceOnExplosion Create(Vector2 pPosition, Color pColor, bool pBool = false)
+        public static ToPlaceOnExplosion Create(Vector2 pPosition, Color pColor, bool pBool = false, float pScale = 1)
         {
             ToPlaceOnExplosion lPattern = (ToPlaceOnExplosion)factory.Instantiate();
             lPattern.GlobalPosition = pPosition;
             lPattern.Modulate = pColor;
 			lPattern.collisionShape.Disabled = pBool;
+			lPattern.Scale = new Vector2(pScale, pScale);
 			return lPattern;
         }
         
