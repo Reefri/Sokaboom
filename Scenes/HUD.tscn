@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_4wc2e"]
 
-[node name="Name_<Label#20042548853495>" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "par", "steps")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "par", "steps", "name", "number")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,8 @@ buttonUndo = NodePath("Undo")
 buttonRedo = NodePath("Redo")
 par = NodePath("Par")
 steps = NodePath("Steps")
+name = NodePath("Name")
+number = NodePath("Name/Number")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 1
