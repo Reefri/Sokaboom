@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://c73hvhdcnyj3v"]
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://cq00hwahtg514"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_gamip"]
 default_input_values = [0, 0.0, 1, -1.0]
