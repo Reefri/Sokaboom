@@ -78,7 +78,6 @@ namespace Com.IsartDigital.Sokoban
 
             UIManager.GetInstance().uiHUD.ResetHUD();
 
-            GD.Print(currentLevel.Title + " : " + currentLevel.Author);
 
             currentPosition = new HistoricHeap(currentLevel);
 
