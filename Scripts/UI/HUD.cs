@@ -10,6 +10,8 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private Button buttonRedo;
         [Export] private Label par;
         [Export] public Label steps;
+        [Export] private Label name;
+        [Export] public Label number;
 
         public override void _Ready()
 		{
@@ -22,7 +24,7 @@ namespace Com.IsartDigital.Sokoban
 		public void ResetHUD()
 		{
             par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
-
+            name.Text = GameManager.GetInstance().currentLevel.Title + " Created by : " + GameManager.GetInstance().currentLevel.Author;
         }
 
 

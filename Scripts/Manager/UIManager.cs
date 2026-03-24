@@ -78,6 +78,10 @@ namespace Com.IsartDigital.Sokoban
 			Main.GetInstance().AddChild(GameManager.GetInstance());
             AddChild(uiHUD);
 
+			uiHUD.number.Text = "level ";
+            if (pIndex == 0) uiHUD.number.Text += "tuto";
+			else uiHUD.number.Text += pIndex;
+
             CameraManager.GetInstance().CenterCameraOnCurrentLevel();
         }
 
