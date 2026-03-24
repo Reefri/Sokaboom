@@ -32,7 +32,6 @@ namespace Com.IsartDigital.UI {
         {
             if (pIndex == 0) GoToHelp();
             else UIManager.GetInstance().GoToLevel(pIndex);
-            CameraManager.GetInstance().CenterCameraOnCurrentLevel();
         }
 
         private void BackPressed()

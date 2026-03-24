@@ -1,11 +1,11 @@
 using Godot;
 using System;
 
-// Author : Ethan Masse
+// Author : Ethan Frenard
 
 namespace Com.IsartDigital.Sokoban 
 {
-	public partial class CameraManager : Control
+	public partial class CameraManager : Node2D
 	{
 		static private CameraManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/CameraManager.tscn");
@@ -45,8 +45,6 @@ namespace Com.IsartDigital.Sokoban
 		{
 			if (GameManager.GetInstance().currentLevel != null)
 			{
-                GD.Print(GameManager.GetInstance().currentLevel.Size);
-
 				camera.GlobalPosition = GameManager.GetInstance().currentLevel.Size * States.DISTANCE_RANGE/2;
             }
 				

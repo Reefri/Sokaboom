@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8t1by23fiuf1"]
+[gd_scene load_steps=4 format=3 uid="uid://b8t1by23fiuf1"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_4l0qp"]
 [ext_resource type="PackedScene" uid="uid://ql7xil2wq2gx" path="res://Scenes/UIManager.tscn" id="3_70v4f"]
+[ext_resource type="PackedScene" uid="uid://ch5qxtjmo6hf1" path="res://Scenes/CameraManager.tscn" id="3_wl630"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4l0qp")
@@ -9,6 +10,7 @@ testOnlyGameFeature = false
 levelAtTest = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [node name="UiManager" parent="CanvasLayer" instance=ExtResource("3_70v4f")]
+
+[node name="CameraManager" parent="." instance=ExtResource("3_wl630")]

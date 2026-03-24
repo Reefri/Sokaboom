@@ -37,7 +37,6 @@ namespace Com.IsartDigital.Sokoban
                         if(j == 0)
                         {
                             sideFactor = (bomb.explosionMatrix[0].Count - 1) * 10;
-                            GD.Print(sideFactor);
                         }
 
                         if (i == 0)

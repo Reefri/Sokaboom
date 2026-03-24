@@ -1,14 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8dncnnjh8avc"]
+[gd_scene load_steps=2 format=3 uid="uid://ch5qxtjmo6hf1"]
 
 [ext_resource type="Script" path="res://Scripts/CameraManager.cs" id="1_rua5u"]
 
-[node name="CameraManager" type="Control" node_paths=PackedStringArray("camera")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CameraManager" type="Node2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_rua5u")
 camera = NodePath("Camera2D")
 
