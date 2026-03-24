@@ -2,9 +2,22 @@
 
 [ext_resource type="Script" path="res://Scripts/CameraManager.cs" id="1_rua5u"]
 
-[node name="CameraManager" type="Node2D" node_paths=PackedStringArray("camera")]
+[node name="CameraManager" type="Node2D" node_paths=PackedStringArray("camera", "moveCameraTimer", "moveBackToStartTimer", "waitTimer")]
 script = ExtResource("1_rua5u")
 camera = NodePath("Camera2D")
+moveCameraTimer = NodePath("moveCameraTimer")
+moveBackToStartTimer = NodePath("moveBackToStart")
+waitTimer = NodePath("waitTimer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+
+[node name="moveCameraTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="moveBackToStart" type="Timer" parent="."]
+one_shot = true
+
+[node name="waitTimer" type="Timer" parent="."]
+one_shot = true

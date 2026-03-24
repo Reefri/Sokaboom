@@ -1,5 +1,7 @@
+using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System;
+using static Godot.CameraFeed;
 
 // Author : Ethan Frenard
 
@@ -11,6 +13,13 @@ namespace Com.IsartDigital.Sokoban
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/CameraManager.tscn");
 
 		[Export] public Camera2D camera;
+		[Export] private Timer moveCameraTimer;
+		[Export] private Timer moveBackToStartTimer;
+		[Export] private Timer waitTimer;
+
+		private Vector2 startPosition;
+
+		private bool isMoving = false;
 
 		private CameraManager():base() 
 		{
@@ -32,25 +41,74 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			base._Ready();
-			
+
+            moveCameraTimer.Timeout += WaitAtEndPos;
+            moveBackToStartTimer.Timeout += StopMoving;
+            waitTimer.Timeout += moveBackCameraToStart;
 		}
 
-		public override void _Process(double pDelta)
+        private void WaitAtEndPos()
+        {
+            waitTimer.Start();
+        }
+
+        private void StopMoving()
+        {
+            isMoving = false ;
+        }
+
+        private void moveBackCameraToStart()
+        {
+			moveBackToStartTimer.Start();
+
+            Tween lTween = CreateTween()
+                .SetTrans(Tween.TransitionType.Sine)
+                .SetEase(Tween.EaseType.InOut);
+            lTween.TweenProperty(camera, TweenProp.GLOBAL_POSITION, startPosition, (double)moveBackToStartTimer.WaitTime);
+        }
+
+        public override void _Process(double pDelta)
 		{
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
-		}
 
-		public void CenterCameraOnCurrentLevel()
-		{
-			if (GameManager.GetInstance().currentLevel != null)
+			if (Input.IsActionJustPressed("leftClick"))
 			{
-				camera.GlobalPosition = GameManager.GetInstance().currentLevel.Size * States.DISTANCE_RANGE/2;
-            }
-				
+				MoveCameraFromAToB(camera.GlobalPosition, GetGlobalMousePosition());
+			}
 		}
 
-		protected override void Dispose(bool pDisposing)
+		
+
+		public void MoveCameraFromAToB(Vector2 pStartPosition, Vector2 pEndPosition, float pTime = 1)
+		{
+			
+
+			if (!isMoving && GameManager.GetInstance().currentLevel != null)
+			{
+				isMoving = true;
+
+                startPosition = pStartPosition;
+
+                moveCameraTimer.WaitTime = pTime;
+				moveCameraTimer.Start();
+
+				Tween lTween = CreateTween()
+				.SetTrans(Tween.TransitionType.Sine)
+				.SetEase(Tween.EaseType.InOut);
+				lTween.TweenProperty(camera, TweenProp.GLOBAL_POSITION, pEndPosition, (double)pTime);
+			}
+		}
+
+        public void CenterCameraOnCurrentLevel()
+        {
+            if (GameManager.GetInstance().currentLevel != null)
+            {
+                camera.GlobalPosition = GameManager.GetInstance().currentLevel.Size * States.DISTANCE_RANGE / 2;
+            }
+
+        }
+        protected override void Dispose(bool pDisposing)
 		{
 			instance = null;
 			base.Dispose(pDisposing);
