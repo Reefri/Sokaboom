@@ -12,3 +12,4 @@ levelAtTest = 2
 follow_viewport_enabled = true
 
 [node name="UiManager" parent="CanvasLayer" instance=ExtResource("3_70v4f")]
+mouse_filter = 2
