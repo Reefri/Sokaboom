@@ -17,10 +17,43 @@ namespace Com.IsartDigital.Sokoban
         private Timer timerBeforePrevisualisation = new Timer();
         private int timeBeforeVisualisation = 1;
 
-
+        private Vector2 previsualisationOriginPos;
+        private Vector2 rightCornerOfCollectible = new Vector2(25, -25);
+        private float previsualisationScale = 0.3f;
+        private float downFactor = 10;
         public override void _Ready()
 		{
-			AreaEntered += BombCollectibleAreaEntered;
+
+            for (int i = 0; i < bomb.explosionMatrix.Count; i++)
+            {
+                for (int j = 0; j < bomb.explosionMatrix[i].Count; j++)
+                {
+                    if (bomb.explosionMatrix[i][j] == 2)
+                    {
+                        previsualisationOriginPos = new Vector2I(j, i);
+
+                        AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor
+                            , new Color(1, 0, 0), true, previsualisationScale));
+                    }
+                }
+            }
+
+            for (int i = 0; i < bomb.explosionMatrix.Count; i++)
+            {
+                for (int j = 0; j < bomb.explosionMatrix[i].Count; j++)
+                {
+
+                    if (bomb.explosionMatrix[i][j] == 1)
+                    {
+                        Vector2 lPosition = rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor 
+                            + (new Vector2(j, i) - previsualisationOriginPos) * States.DISTANCE_RANGE * previsualisationScale;
+                        
+                        AddChild(ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), true, previsualisationScale));
+                    }
+                }
+            }
+
+            AreaEntered += BombCollectibleAreaEntered;
 
 
             InputPickable = true;
