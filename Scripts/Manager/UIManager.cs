@@ -77,6 +77,8 @@ namespace Com.IsartDigital.Sokoban
             levelIndex = pIndex;
 			Main.GetInstance().AddChild(GameManager.GetInstance());
             AddChild(uiHUD);
+
+            CameraManager.GetInstance().CenterCameraOnCurrentLevel();
         }
 
         protected override void Dispose(bool pDisposing)
