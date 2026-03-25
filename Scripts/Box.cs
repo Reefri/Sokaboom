@@ -12,7 +12,7 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private AnimationPlayer anim;
 		[Export] private GpuParticles2D moveDust;
 
-		private static PackedScene packedBox = (PackedScene)ResourceLoader.Load("res://Scenes/Box.tscn");
+		private static PackedScene packedBox = (PackedScene)ResourceLoader.Load("res://Scenes/Gameplay/Box.tscn");
 
 		private const string GO_UP_ANIM = "goUp";
 		private const string GO_DOWN_ANIM = "goDown";

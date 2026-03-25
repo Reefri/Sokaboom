@@ -8,11 +8,11 @@ namespace Com.IsartDigital.Sokoban
 	public partial class BombCollectible : Area2D
 	{
 
-		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/BombCollectible.tscn";
+		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
-        private PrevisualisationBomb previsualisationBomb = (PrevisualisationBomb)GD.Load<PackedScene>("res://Scenes/previsualisation_bomb.tscn").Instantiate();
+        private PrevisualisationBomb previsualisationBomb = (PrevisualisationBomb)GD.Load<PackedScene>("res://Scenes/UI/previsualisation_bomb.tscn").Instantiate();
 
         public Bomb bomb;
 

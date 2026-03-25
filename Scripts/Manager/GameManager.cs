@@ -12,9 +12,9 @@ namespace Com.IsartDigital.Sokoban
         [Export] public Node2D bombCollectibleContainer;
 
         static private GameManager instance;
-        static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");
+        static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/GameManager.tscn");
 
-        private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/BombCollectible.tscn");
+        private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
 
 
         public Level currentLevel;

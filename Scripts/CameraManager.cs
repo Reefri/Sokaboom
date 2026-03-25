@@ -10,7 +10,7 @@ namespace Com.IsartDigital.Sokoban
 	public partial class CameraManager : Node2D
 	{
 		static private CameraManager instance;
-		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/CameraManager.tscn");
+		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/CameraManager.tscn");
 
 		[Export] public Camera2D camera;
 		[Export] private Timer moveCameraTimer;
