@@ -10,13 +10,13 @@ namespace Com.IsartDigital.Sokoban
 	public partial class UIManager : Control
 	{
 		static private UIManager instance;
-		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/UIManager.tscn");
+		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/UIManager.tscn");
 
-        private LoginUI uiLogin = (LoginUI)GD.Load<PackedScene>("res://Scenes/Login.tscn").Instantiate();
-        private TitleCard uiTitle = (TitleCard)GD.Load<PackedScene>("res://Scenes/TitleCard.tscn").Instantiate();
-        private HelpMenu uiHelp = (HelpMenu)GD.Load<PackedScene>("res://Scenes/HelpMenu.tscn").Instantiate();
-        private LevelSelect uiLevelSelect = (LevelSelect)GD.Load<PackedScene>("res://Scenes/LevelSelect.tscn").Instantiate();
-        public HUD uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/HUD.tscn").Instantiate();
+        private LoginUI uiLogin = (LoginUI)GD.Load<PackedScene>("res://Scenes/UI/Login.tscn").Instantiate();
+        private TitleCard uiTitle = (TitleCard)GD.Load<PackedScene>("res://Scenes/UI/TitleCard.tscn").Instantiate();
+        private HelpMenu uiHelp = (HelpMenu)GD.Load<PackedScene>("res://Scenes/UI/HelpMenu.tscn").Instantiate();
+        private LevelSelect uiLevelSelect = (LevelSelect)GD.Load<PackedScene>("res://Scenes/UI/LevelSelect.tscn").Instantiate();
+        public HUD uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/UI/HUD.tscn").Instantiate();
 
         [Export] private bool noLogin = true;
         public int levelIndex;

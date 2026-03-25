@@ -1,30 +1,30 @@
 [gd_scene load_steps=14 format=3 uid="uid://c0eui805x13ck"]
 
-[ext_resource type="Script" path="res://Scripts/BombCollectible.cs" id="1_omedn"]
-[ext_resource type="Shader" uid="uid://wxygcdpv5iwa" path="res://Ressources/Shaders/Hover.tres" id="2_6oh1q"]
-[ext_resource type="Shader" path="res://Ressources/Shaders/BombShadow.tres" id="3_a6vn2"]
-[ext_resource type="Texture2D" uid="uid://bk4chsa2etmt1" path="res://Assets/Bomb/Collectible/body.png" id="3_hnfuj"]
-[ext_resource type="Texture2D" uid="uid://je34t1rmuwnc" path="res://Assets/Bomb/Collectible/firework.png" id="4_1pkld"]
-[ext_resource type="Texture2D" uid="uid://ch2pts2c7mev4" path="res://Assets/Bomb/Collectible/Shadow.png" id="4_8821p"]
-[ext_resource type="Texture2D" uid="uid://d0f4tam8xmdht" path="res://Assets/Bomb/Collectible/String.png" id="5_48gdy"]
+[ext_resource type="Script" path="res://Scripts/BombCollectible.cs" id="1_73o2a"]
+[ext_resource type="Shader" uid="uid://wxygcdpv5iwa" path="res://Ressources/Shaders/Hover.tres" id="2_4oihl"]
+[ext_resource type="Shader" uid="uid://c73hvhdcnyj3v" path="res://Ressources/Shaders/BombShadow.tres" id="3_8d1uu"]
+[ext_resource type="Texture2D" uid="uid://ch2pts2c7mev4" path="res://Assets/Bomb/Collectible/Shadow.png" id="4_f70lw"]
+[ext_resource type="Texture2D" uid="uid://bk4chsa2etmt1" path="res://Assets/Bomb/Collectible/body.png" id="5_wchup"]
+[ext_resource type="Texture2D" uid="uid://je34t1rmuwnc" path="res://Assets/Bomb/Collectible/firework.png" id="6_175f3"]
+[ext_resource type="Texture2D" uid="uid://d0f4tam8xmdht" path="res://Assets/Bomb/Collectible/String.png" id="7_gwcda"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_melce"]
-shader = ExtResource("2_6oh1q")
+shader = ExtResource("2_4oihl")
 shader_parameter/chromaEffect = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ee4c"]
-shader = ExtResource("3_a6vn2")
+shader = ExtResource("3_8d1uu")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5smlg"]
-shader = ExtResource("2_6oh1q")
+shader = ExtResource("2_4oihl")
 shader_parameter/chromaEffect = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfpet"]
-shader = ExtResource("2_6oh1q")
+shader = ExtResource("2_4oihl")
 shader_parameter/chromaEffect = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dm70i"]
-shader = ExtResource("2_6oh1q")
+shader = ExtResource("2_4oihl")
 shader_parameter/chromaEffect = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ets"]
@@ -33,7 +33,7 @@ size = Vector2(64, 64)
 [node name="BombCollectible" type="Area2D"]
 z_index = -1
 y_sort_enabled = true
-script = ExtResource("1_omedn")
+script = ExtResource("1_73o2a")
 
 [node name="Renderer" type="Node2D" parent="."]
 texture_filter = 1
@@ -41,19 +41,19 @@ material = SubResource("ShaderMaterial_melce")
 
 [node name="Sprite2D" type="Sprite2D" parent="Renderer"]
 material = SubResource("ShaderMaterial_8ee4c")
-texture = ExtResource("4_8821p")
+texture = ExtResource("4_f70lw")
 
 [node name="sprite" type="Sprite2D" parent="Renderer"]
 material = SubResource("ShaderMaterial_5smlg")
-texture = ExtResource("3_hnfuj")
+texture = ExtResource("5_wchup")
 
 [node name="sprite2" type="Sprite2D" parent="Renderer"]
 material = SubResource("ShaderMaterial_wfpet")
-texture = ExtResource("4_1pkld")
+texture = ExtResource("6_175f3")
 
 [node name="sprite3" type="Sprite2D" parent="Renderer"]
 material = SubResource("ShaderMaterial_dm70i")
-texture = ExtResource("5_48gdy")
+texture = ExtResource("7_gwcda")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

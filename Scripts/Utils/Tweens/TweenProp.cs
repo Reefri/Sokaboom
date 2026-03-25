@@ -2,6 +2,7 @@
 {
     public static class TweenProp
     {
+        public const string GLOBAL_POSITION = "global_position";
         public const string POSITION = "position";
         public const string POSITION_Y = "position:y";
 
