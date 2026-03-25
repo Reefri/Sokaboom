@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbudevm1ma507"]
 
-[ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_4wc2e"]
+[ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "par", "steps")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "par", "steps", "name", "number")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,11 +10,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_4wc2e")
+script = ExtResource("1_h8l0x")
 buttonUndo = NodePath("Undo")
 buttonRedo = NodePath("Redo")
 par = NodePath("Par")
 steps = NodePath("Steps")
+name = NodePath("Name")
+number = NodePath("Name/Number")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 1
@@ -91,11 +93,22 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Steps :"
 
-[node name="Label" type="Label" parent="."]
+[node name="Name" type="Label" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "ID_NOM"
+theme_override_font_sizes/font_size = 25
+text = "ID_NAME"
+
+[node name="Number" type="Label" parent="Name"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 60.0
+offset_bottom = 23.0
+grow_vertical = 0
+text = "ID_NUM"
 
 [connection signal="pressed" from="Quit" to="." method="QuitPressed"]
 [connection signal="pressed" from="Retry" to="." method="RetryPressed"]

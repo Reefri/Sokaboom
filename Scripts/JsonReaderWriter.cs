@@ -41,7 +41,7 @@ namespace Com.IsartDigital.Sokoban
             return lItems;
         }
 
-        public static void WirteListToJson<T>(string pPath, List<T> pObjectList)
+        public static void WriteListToJson<T>(string pPath, List<T> pObjectList)
         {
 
             using Godot.FileAccess lFile = Godot.FileAccess.Open(JSONFOLDER_PATH + pPath, Godot.FileAccess.ModeFlags.Write);

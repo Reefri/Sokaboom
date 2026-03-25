@@ -10,16 +10,25 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private Button buttonRedo;
         [Export] private Label par;
         [Export] public Label steps;
+        [Export] private Label name;
+        [Export] public Label number;
 
         public override void _Ready()
 		{
 			buttonUndo.Pressed += GameManager.GetInstance().MoveBackInTime;
             buttonRedo.Pressed += GameManager.GetInstance().MoveForwardInTime;
 
-			par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
+			ResetHUD();
         }
 
-		public override void _Process(double pDelta)
+		public void ResetHUD()
+		{
+            par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
+            name.Text = GameManager.GetInstance().currentLevel.Title + " Created by : " + GameManager.GetInstance().currentLevel.Author;
+        }
+
+
+        public override void _Process(double pDelta)
 		{
 			float lDelta = (float)pDelta;
         }
@@ -28,7 +37,6 @@ namespace Com.IsartDigital.Sokoban
 		{
             UIManager.GetInstance().GoToLevelSelect();
             GameManager.GetInstance().QueueFree();
-			QueueFree();
         }
 
         private void RetryPressed()

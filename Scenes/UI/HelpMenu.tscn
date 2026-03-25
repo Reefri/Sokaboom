@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ph7dviekoboq"]
 
-[ext_resource type="Script" path="res://Scripts/UI/HelpMenu.cs" id="1_7tb35"]
-[ext_resource type="Texture2D" uid="uid://docrkk0i2wtmh" path="res://Assets/UI/input/keyboard_z_outline.png" id="2_rk2ex"]
-[ext_resource type="Texture2D" uid="uid://byvn3omul1vc4" path="res://Assets/UI/input/keyboard_s_outline.png" id="3_5oxau"]
-[ext_resource type="Texture2D" uid="uid://bhebduxscgjmf" path="res://Assets/UI/input/keyboard_q_outline.png" id="4_0ke8v"]
-[ext_resource type="Texture2D" uid="uid://dcc0jwtfo4niq" path="res://Assets/UI/input/keyboard_d_outline.png" id="5_5sf0s"]
+[ext_resource type="Script" path="res://Scripts/UI/HelpMenu.cs" id="1_ohxmj"]
+[ext_resource type="Texture2D" uid="uid://docrkk0i2wtmh" path="res://Assets/UI/input/keyboard_z_outline.png" id="2_u1evf"]
+[ext_resource type="Texture2D" uid="uid://byvn3omul1vc4" path="res://Assets/UI/input/keyboard_s_outline.png" id="3_qhadq"]
+[ext_resource type="Texture2D" uid="uid://bhebduxscgjmf" path="res://Assets/UI/input/keyboard_q_outline.png" id="4_s4tun"]
+[ext_resource type="Texture2D" uid="uid://dcc0jwtfo4niq" path="res://Assets/UI/input/keyboard_d_outline.png" id="5_k8df5"]
 
 [node name="HelpMenu" type="Control"]
 layout_mode = 3
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7tb35")
+script = ExtResource("1_ohxmj")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -61,19 +61,19 @@ grow_vertical = 0
 
 [node name="InputZ" type="Sprite2D" parent="ColorRect/Label/Input"]
 position = Vector2(128, 30)
-texture = ExtResource("2_rk2ex")
+texture = ExtResource("2_u1evf")
 
 [node name="InputS" type="Sprite2D" parent="ColorRect/Label/Input"]
 position = Vector2(128, 78)
-texture = ExtResource("3_5oxau")
+texture = ExtResource("3_qhadq")
 
 [node name="InputQ" type="Sprite2D" parent="ColorRect/Label/Input"]
 position = Vector2(80, 78)
-texture = ExtResource("4_0ke8v")
+texture = ExtResource("4_s4tun")
 
 [node name="InputD" type="Sprite2D" parent="ColorRect/Label/Input"]
 position = Vector2(176, 78)
-texture = ExtResource("5_5sf0s")
+texture = ExtResource("5_k8df5")
 
 [node name="Label" type="Label" parent="ColorRect/Label"]
 layout_mode = 1

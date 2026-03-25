@@ -9,7 +9,7 @@ namespace Com.IsartDigital.Sokoban
     public partial class Player : Area2D
     {
         static private Player instance;
-        static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Player.tscn");
+        static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Gameplay/player.tscn");
 
         [Export] public AnimationPlayer animPlayer;
         [Export] public AnimatedSprite2D animatedSprite;
