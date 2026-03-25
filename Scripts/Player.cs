@@ -117,13 +117,16 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTimer.Stop();
                 path.Clear();
 
+                if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
+
+                if ((GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrContainerClickedOn) == null)) return;
 
                 if (hasBoxToPush)
                 {
                     hasBoxToPush = false;
                     Box.hasABoxToCheck = false;
 
-                    if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
+                    
                     lastDirection = Map.boxOrContainerClickedOn - GetPositionToVector2I();
 
 
@@ -134,6 +137,14 @@ namespace Com.IsartDigital.Sokoban
                     }
 
                     Map.boxOrContainerClickedOn = Vector2I.Zero;
+                }
+
+
+                else if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrContainerClickedOn).GetCustomData(Map.WALL)
+                    && bombInHand != null)
+                {
+                    lastDirection = Map.boxOrContainerClickedOn - GetPositionToVector2I();
+                    ExplodeBombInHand();
                 }
                 return;
             }

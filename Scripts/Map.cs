@@ -82,6 +82,7 @@ namespace Com.IsartDigital.Sokoban
                 if (Player.GetInstance().path.Count != 0) Player.GetInstance().path.Clear();
 
                 UpdateAndClearPath();
+				boxOrContainerClickedOn = Vector2I.Zero;
 
                 Vector2 lCellClicked =  new Vector2I((int)(GetGlobalMousePosition().X/States.DISTANCE_RANGE), (int)(GetGlobalMousePosition().Y/States.DISTANCE_RANGE));
 				foreach(Vector2I lCell in groundCells)
@@ -110,8 +111,6 @@ namespace Com.IsartDigital.Sokoban
                             boxOrContainerClickedOn = lCell;
 							ContainerOrBoxChosen(CONTAINER, lCell);
 						}
-
-
                     }
 
 				}
@@ -156,7 +155,6 @@ namespace Com.IsartDigital.Sokoban
 
 					lAlternativeCells.Add(lPossibleCell);
 					lDistanceBetweenCells.Add(lClosestCell);
-
 				}
 			}
 
@@ -175,10 +173,9 @@ namespace Com.IsartDigital.Sokoban
 				}
 
 			}
-			if (pWallOrContainer == CONTAINER ) { Player.GetInstance().hasBoxToPush = true; }
 
-			Player.GetInstance().hasBoxToPush = (pWallOrContainer == CONTAINER);
-
+				Player.GetInstance().hasBoxToPush = (pWallOrContainer == CONTAINER);
+				
             CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lAlternativeCells[indexOfClosestCell]);
 		}
 
