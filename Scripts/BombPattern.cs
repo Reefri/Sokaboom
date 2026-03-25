@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 namespace Com.IsartDigital.Sokoban {
 	public partial class BombPattern : Node2D
 	{
-        [Export] private float timeUntilFade = 0.2f;
+        private float timeUntilFade = 1.5f;
 		private float time = 0;
 
         private float borderScreenShakePower = 25;
@@ -78,7 +78,10 @@ namespace Com.IsartDigital.Sokoban {
                             if ((bool)lCurrentTileData.GetCustomData(Map.BORDER))
                             {
                                 GD.Print("GameOver");
-                                //Put Game Over screen here
+
+                                Vector2 lPosition = GlobalPosition + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
+                                JuicinessManager.GetInstance().ExplodeAllBorders(lPosition);
+                                Player.GetInstance().canInput = false;
                                 CameraManager.GetInstance().ShakeScreen(borderScreenShakePower, borderScreenShakeTime);
                             }
                             else

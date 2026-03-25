@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqq2hggkdkm6n"]
+
+[sub_resource type="Gradient" id="Gradient_yjxyc"]
+offsets = PackedFloat32Array(0, 0.247387, 0.620209, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.458824, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1fgvt"]
+gradient = SubResource("Gradient_yjxyc")
+
+[sub_resource type="Curve" id="Curve_yc73o"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.72619, 0.458647), 0.0, 0.0, 0, 0, Vector2(1, 0.116541), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_roo8y"]
+curve = SubResource("Curve_yc73o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_laomo"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = 360.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 17.54
+initial_velocity_max = 17.54
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.5
+orbit_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+scale_over_velocity_curve = SubResource("CurveTexture_roo8y")
+color_ramp = SubResource("GradientTexture1D_1fgvt")
+
+[node name="BorderExplosion" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_laomo")
+lifetime = 4.5
+explosiveness = 1.0
+local_coords = true
+trail_enabled = true
+trail_lifetime = 2.0
+trail_section_subdivisions = 20

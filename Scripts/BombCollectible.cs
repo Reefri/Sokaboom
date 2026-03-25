@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-// Author : Ethan FRENARD
+// Author : Ethan Frenard
 
 namespace Com.IsartDigital.Sokoban 
 {
@@ -42,10 +42,10 @@ namespace Com.IsartDigital.Sokoban
                         if (i == 0)
                         {
                             downFactor = 0;
-                            AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + (Vector2.Left * sideFactor), new Color(1, 0, 0), true, previsualisationScale));
+                            AddChild(BombCollectiblePattern.Create(rightCornerOfCollectible + (Vector2.Left * sideFactor), new Color(1, 0, 0), true, previsualisationScale));
                         }
                         else
-                            AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor
+                            AddChild(BombCollectiblePattern.Create(rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor
                                 + (Vector2.Left * sideFactor)
                                 , new Color(1, 0, 0), true, previsualisationScale));
                     }
@@ -63,7 +63,7 @@ namespace Com.IsartDigital.Sokoban
                             + (Vector2.Left * sideFactor)
                             + (new Vector2(j, i) - previsualisationOriginPos) * States.DISTANCE_RANGE * previsualisationScale;
                         
-                        AddChild(ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), true, previsualisationScale));
+                        AddChild(BombCollectiblePattern.Create(lPosition, new Color(1, 1, 1), true, previsualisationScale));
                     }
                 }
             }

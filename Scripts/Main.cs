@@ -15,8 +15,6 @@ namespace Com.IsartDigital.Sokoban
 
 		[Export] private bool testOnlyGameFeature = true;
 		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
-
-		[Export] public Shaker shaker;
         private Main():base() 
 		{
 			if (instance != null)

@@ -11,6 +11,8 @@ namespace Com.IsartDigital.Sokoban {
 
         [Export] private CollisionShape2D collisionShape;
 
+		[Export] private GpuParticles2D particles;
+
         public static ToPlaceOnExplosion Create(Vector2 pPosition, Color pColor, bool pBool = false, float pScale = 1)
         {
             ToPlaceOnExplosion lPattern = (ToPlaceOnExplosion)factory.Instantiate();
@@ -24,6 +26,9 @@ namespace Com.IsartDigital.Sokoban {
 		public override void _Ready()
 		{
             AreaEntered += CheckForChainReaction;
+
+			particles.Emitting = true;
+			particles.Finished += QueueFree;
 		}
 
         private void CheckForChainReaction(Area2D pArea)

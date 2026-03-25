@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2v0xde71ivf4"]
+
+[ext_resource type="Script" path="res://Scripts/Manager/JuicinessManager.cs" id="1_uriho"]
+
+[node name="JuicinessManager" type="Node2D"]
+script = ExtResource("1_uriho")

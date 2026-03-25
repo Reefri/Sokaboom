@@ -285,6 +285,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void MoveBackInTime()
         {
+            Player.GetInstance().canInput = true;
+
             if (currentPosition.previousValue == null)
             {
                 GD.Print("Can't go back in time.");
