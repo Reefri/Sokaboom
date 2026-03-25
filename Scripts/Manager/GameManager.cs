@@ -259,7 +259,7 @@ namespace Com.IsartDigital.Sokoban
             SaveScreenshotGame();
             if (CheckWin())
             {
-                GD.Print("You won !");
+                UIManager.GetInstance().GoToWin();
             }
 
         }
