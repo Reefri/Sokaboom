@@ -117,31 +117,36 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTimer.Stop();
                 path.Clear();
 
+
                 if (hasBoxToPush)
                 {
+                    hasBoxToPush = false;
+                    Box.hasABoxToCheck = false;
 
                     if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
+                    lastDirection = Map.boxOrContainerClickedOn - GetPositionToVector2I();
 
-                    hasBoxToPush = false;
-                    if (CheckTheMove(lastDirection)) return;
-                    AnimThePlayer(lastDirection);
+
+                    if (Box.CanBoxBePushed(lastDirection, Map.boxOrContainerClickedOn))
+                    {
+                        AnimThePlayer(lastDirection);
+                        Box.Create(Map.boxOrContainerClickedOn, lastDirection);
+                    }
 
                     Map.boxOrContainerClickedOn = Vector2I.Zero;
                 }
-
                 return;
             }
+            else
+            {
+                animatedSprite.GlobalPosition = GlobalPosition;
 
+                lastDirection = (path[0] - GetPositionToVector2I());
 
+                AnimThePlayer(lastDirection);
 
-            animatedSprite.GlobalPosition = GlobalPosition;
-
-
-            lastDirection = (path[0] - GetPositionToVector2I());
-
-            AnimThePlayer(lastDirection);
-
-            path.RemoveAt(0);
+                path.RemoveAt(0);
+            }
 
         }
 
@@ -181,6 +186,7 @@ namespace Com.IsartDigital.Sokoban
                 if (Input.IsActionJustPressed(lActionName))
                 {
                     lastDirection = nameOfVector[lActionName];
+                    Box.hasABoxToCheck = false;
 
                     if (!CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
                     {
