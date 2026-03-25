@@ -28,10 +28,12 @@ height = 10
 fill_from = Vector2(0.465812, 0)
 fill_to = Vector2(0.559829, 1)
 
-[node name="BorderExplosion" type="Node2D"]
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_1eji6")
 texture = SubResource("GradientTexture2D_2dgyg")
+one_shot = true
 explosiveness = 1.0
+
+[node name="BorderExplosion" type="Node2D" parent="."]

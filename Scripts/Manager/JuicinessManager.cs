@@ -42,8 +42,10 @@ namespace Com.IsartDigital.Sokoban
 
 		public void ExplodeAllBorders(Vector2 pBorderOriginPos)
 		{
-			Node2D lExplosion = (Node2D)borderExplosion.Instantiate();
+			GpuParticles2D lExplosion = (GpuParticles2D)borderExplosion.Instantiate();
 			lExplosion.Position = pBorderOriginPos;
+			lExplosion.Emitting = true;
+			lExplosion.Finished += QueueFree;
 			GameManager.GetInstance().AddChild(lExplosion);
 		}
 

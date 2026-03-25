@@ -80,9 +80,11 @@ namespace Com.IsartDigital.Sokoban {
                                 GD.Print("GameOver");
 
                                 Vector2 lPosition = GlobalPosition + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
-                                JuicinessManager.GetInstance().ExplodeAllBorders(lPosition);
+                                JuicinessManager.GetInstance().ExplodeAllBorders(lPosition + GlobalPosition);
                                 Player.GetInstance().canInput = false;
                                 CameraManager.GetInstance().ShakeScreen(borderScreenShakePower, borderScreenShakeTime);
+
+                                return;
                             }
                             else
                             {
