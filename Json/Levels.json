@@ -96,6 +96,30 @@
 	
 	{
 	"par": 24,
+	"author" : "DeepSeek Gramatikoff",
+	"title" : "Sans murs",
+	"map": 
+	[
+		"===========",
+		"=         =",
+		"=   #  .  =",
+		"=   # $   =",
+		"=   @     =",
+		"=   # 0   =",
+		"=   ###   =",
+		"=     1 $ =",
+		"=         =",
+		"==========="
+	],
+	"bombExplosionTilesPos" :
+		[
+			[[1,0],[-1,0],[0,1],[0,-1]],
+			[[0,1],[0,2]]
+		]
+	},
+	
+	{
+	"par": 24,
 	"author" : "GRAMATIKOFF Sacha",
 	"title" : "Sans murs",
 	"map": 
