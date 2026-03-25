@@ -12,6 +12,12 @@ namespace Com.IsartDigital.Sokoban {
         [Export] private float timeUntilFade = 0.2f;
 		private float time = 0;
 
+        private float borderScreenShakePower = 25;
+        private float borderScreenShakeTime = 2;
+
+        private float explosionScreenShakePower = 15;
+        private float explosionScreenShakeTime = 0.25f;
+
 		private const string TO_PLACE_ON_EXPLOSION_PATH = "res://Scenes/ToPlaceOnExplosions.tscn";
         private static PackedScene toPlaceOnExplosion = GD.Load<PackedScene>(TO_PLACE_ON_EXPLOSION_PATH);
 
@@ -25,7 +31,8 @@ namespace Com.IsartDigital.Sokoban {
 
         public override void _Ready()
 		{
-            GD.Print(explosionMatrix);
+
+
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
                 for (int j = 0; j < explosionMatrix[i].Count; j++)
@@ -72,9 +79,12 @@ namespace Com.IsartDigital.Sokoban {
                             {
                                 GD.Print("GameOver");
                                 //Put Game Over screen here
+                                CameraManager.GetInstance().ShakeScreen(borderScreenShakePower, borderScreenShakeTime);
                             }
                             else
                             {
+                                CameraManager.GetInstance().ShakeScreen(explosionScreenShakePower, explosionScreenShakeTime);
+
                                 if ((bool)lCurrentTileData.GetCustomData(Map.CONTAINER))
                                 {
                                     FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos+Vector2.One/2) *States.DISTANCE_RANGE,GameManager.GetInstance());

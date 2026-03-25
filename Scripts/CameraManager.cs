@@ -16,6 +16,9 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private Timer moveCameraTimer;
 		[Export] private Timer moveBackToStartTimer;
 		[Export] private Timer waitTimer;
+		[Export] private Timer heldInputTime;
+
+		private const string MOVE_CAM_INPUT = "leftClick";
 
 		private Vector2 startPosition;
 
@@ -45,7 +48,17 @@ namespace Com.IsartDigital.Sokoban
             moveCameraTimer.Timeout += WaitAtEndPos;
             moveBackToStartTimer.Timeout += StopMoving;
             waitTimer.Timeout += moveBackCameraToStart;
+            heldInputTime.Timeout += IsInputHeld;
 		}
+
+        private void IsInputHeld()
+        {
+            if (Input.IsActionPressed(MOVE_CAM_INPUT) && GameManager.GetInstance().currentLevel != null)
+			{
+                MoveCameraFromAToB(camera.GlobalPosition, GetGlobalMousePosition());
+            }
+                
+        }
 
         private void WaitAtEndPos()
         {
@@ -72,17 +85,31 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 
-			if (Input.IsActionJustPressed("leftClick"))
-			{
-				MoveCameraFromAToB(camera.GlobalPosition, GetGlobalMousePosition());
-			}
+			CheckHeldInput(MOVE_CAM_INPUT);
 		}
 
+		public void ShakeScreen(float pScreenShakePower = 5, float pScreenShakeTime = 2f)
+		{
+			
+			GameManager.GetInstance().shaker.duration = pScreenShakeTime;
+            GameManager.GetInstance().shaker.amplitude = new Vector2(pScreenShakePower, pScreenShakePower);
+            GameManager.GetInstance().shaker.Start();
+		}
+		private void CheckHeldInput(string pInputName)
+		{
+			if (Input.IsActionJustPressed(pInputName) && GameManager.GetInstance().currentLevel != null && heldInputTime.IsStopped())
+			{
+                heldInputTime.Start();
+            }
+			else if (Input.IsActionJustReleased(pInputName))
+			{
+				heldInputTime.Stop();
+			}
+        }
 		
 
 		public void MoveCameraFromAToB(Vector2 pStartPosition, Vector2 pEndPosition, float pTime = 1)
 		{
-			
 
 			if (!isMoving && GameManager.GetInstance().currentLevel != null)
 			{
