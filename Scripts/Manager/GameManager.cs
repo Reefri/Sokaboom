@@ -1,3 +1,4 @@
+using Com.IsartDigital.Utils.Effects;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace Com.IsartDigital.Sokoban
     public partial class GameManager : Node2D
     {
         [Export] public Node2D bombCollectibleContainer;
+
+        [Export] public Shaker shaker;
 
         static private GameManager instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");

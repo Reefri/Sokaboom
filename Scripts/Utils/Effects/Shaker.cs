@@ -13,8 +13,8 @@ namespace Com.IsartDigital.Utils.Effects
         
         [ExportGroup("General")]
         
-        [Export] private float duration = 2f;
-        [Export] private Vector2 amplitude = Vector2.One * 5f;
+        [Export] public float duration = 2f;
+        [Export] public Vector2 amplitude = Vector2.One * 5f;
         [Export(PropertyHint.Range, "0,1,or_greater")] private float step = 0.048f;
         [Export(PropertyHint.Range,"0,30,radians_as_degrees")] private float noise = 15f;
         [Export] private bool inverseControlNodes = false;
