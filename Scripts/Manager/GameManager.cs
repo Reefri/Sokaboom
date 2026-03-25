@@ -169,7 +169,7 @@ namespace Com.IsartDigital.Sokoban
             Player.GetInstance().GoTo(lPlayerPosition);
             Player.GetInstance().GiveBombToPlayer(currentPosition.value.currentBomb);
 
-            //FillGroundTiles(lPlayerPosition);
+            FillGroundTiles(lPlayerPosition);
         }
 
         private void FillGroundTiles(Vector2I pStartCoor)
