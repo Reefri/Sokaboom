@@ -85,10 +85,7 @@ namespace Com.IsartDigital.Sokoban
             if (pIndex == 0) uiHUD.number.Text += "tuto";
 			else uiHUD.number.Text += pIndex;
 
-			int lLevelIndex = pIndex;
-			levelIndex = lLevelIndex;
-
-        CameraManager.GetInstance().CenterCameraOnCurrentLevel();
+            CameraManager.GetInstance().CenterCameraOnCurrentLevel();
         }
 
 		public void GoToWin()
@@ -98,6 +95,7 @@ namespace Com.IsartDigital.Sokoban
 
             
             AddChild(uiWin);
+            foreach (AnimatedSprite2D lStars in uiWin.stars.GetChildren()) lStars.Frame = 0;
             uiWin.CalculScoreLevel();
         }
 

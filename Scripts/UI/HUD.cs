@@ -25,12 +25,6 @@ namespace Com.IsartDigital.Sokoban
             name.Text = GameManager.GetInstance().currentLevel.Title + " Created by : " + GameManager.GetInstance().currentLevel.Author;
         }
 
-
-        public override void _Process(double pDelta)
-		{
-			float lDelta = (float)pDelta;
-        }
-
 		private void QuitPressed()
 		{
             UIManager.GetInstance().GoToLevelSelect();
