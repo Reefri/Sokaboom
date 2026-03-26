@@ -259,8 +259,7 @@ namespace Com.IsartDigital.Sokoban
             SaveScreenshotGame();
             if (CheckWin())
             {
-                GD.Print("You won !");
-                return;
+                UIManager.GetInstance().GoToWin();
             }
 
 

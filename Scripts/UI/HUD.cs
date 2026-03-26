@@ -17,8 +17,6 @@ namespace Com.IsartDigital.Sokoban
 		{
 			buttonUndo.Pressed += GameManager.GetInstance().MoveBackInTime;
             buttonRedo.Pressed += GameManager.GetInstance().MoveForwardInTime;
-
-			ResetHUD();
         }
 
 		public void ResetHUD()
@@ -44,11 +42,6 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().currentPosition = new HistoricHeap(GameManager.GetInstance().currentLevel);
             GameManager.GetInstance().ChargeMapFromCurrentLevel();
             GameManager.GetInstance().CurrentPar = 0;
-        }
-
-        protected override void Dispose(bool pDisposing)
-		{
-            UIManager.GetInstance().uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/HUD.tscn").Instantiate();
         }
 	}
 }
