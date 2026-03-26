@@ -7,7 +7,7 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class Win : Control
 	{
-		[Export] private Label stars;
+		[Export] public Control stars;
 
         [Export] private Label scoreText;
 		private int score;
@@ -24,28 +24,30 @@ namespace Com.IsartDigital.Sokoban
 
 		public void CalculScoreLevel()
 		{
-            score = (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
-			stars.Text = "";
-
             if (GameManager.GetInstance().currentLevel.Par >= GameManager.GetInstance().CurrentPar) 
 			{
-                score = 5000 + score * 2;
+                score = 5000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 100;
 				numberStars = 3;
             }
             else if (GameManager.GetInstance().currentLevel.Par * 1.5f >= GameManager.GetInstance().CurrentPar)
 			{
-                score += 2000;
+                score = 2000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
 				numberStars = 2;
             }
 			else 
 			{
-                score += 1000;
+                score = 1000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
 				numberStars = 1;
             }
 
-			for (int i = 0; i < numberStars; i++) stars.Text += "*";
-
-			if (score < 0) score = 0;
+			
+            for (int i = 0; i <= numberStars - 1; i++)
+			{
+				AnimatedSprite2D lStars = (AnimatedSprite2D)stars.GetChild(i);
+				lStars.Frame = 1;
+            }
+			
+            if (score < 0) score = 0;
 
 			scoreText.Text = "Score : " + score;
 			UIManager.GetInstance().finalScore += score;
