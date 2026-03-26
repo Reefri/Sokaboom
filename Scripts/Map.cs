@@ -151,7 +151,7 @@ namespace Com.IsartDigital.Sokoban
 					aStarGrid.GetIdPath(Player.GetInstance().GetPositionToVector2I(), lPossibleCell).Count != 0)
 				{
 
-					float lClosestCell = Player.GetInstance().Position.DistanceTo(lPossibleCell * States.DISTANCE_RANGE);
+					float lClosestCell = Player.GetInstance().GlobalPosition.DistanceTo(lPossibleCell * States.DISTANCE_RANGE);
 
 					lAlternativeCells.Add(lPossibleCell);
 					lDistanceBetweenCells.Add(lClosestCell);
@@ -186,21 +186,20 @@ namespace Com.IsartDigital.Sokoban
 
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
 
-
-            if (Player.GetInstance().hasBoxToPush && (pBeginning == pDestination || lPath.Count == 0))
+            //pBeginning == pDestination || * lPath.Count == 0 || 
+            if (Player.GetInstance().hasBoxToPush &&
+				(Player.GetInstance().GlobalPosition.DistanceTo(boxOrContainerClickedOn * States.DISTANCE_RANGE) <= States.DISTANCE_RANGE))
             {
-                Player.GetInstance().animatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
+
+                //Player.GetInstance().animatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
                 Player.GetInstance().lastDirection = boxOrContainerClickedOn - pBeginning;
 
-				if (Box.CanBoxBePushed(Player.GetInstance().lastDirection, boxOrContainerClickedOn))
-                {
-                    Player.GetInstance().AnimThePlayer(Player.GetInstance().lastDirection);
-					Box.Create(boxOrContainerClickedOn, Player.GetInstance().lastDirection);
-					Box.hasABoxToCheck = false;
-				}
+				Player.GetInstance().AdjacentToBox();
 
-				Player.GetInstance().hasBoxToPush = false;
-				return;
+                Player.GetInstance().hasBoxToPush = false;
+                return;
+                
+
             }
 
             if (lPath.Count == 0) return;
@@ -212,7 +211,6 @@ namespace Com.IsartDigital.Sokoban
 				Player.GetInstance().path.Add(cellOnPath);
 			}
 
-			lastDirectionBeforePushing = pDestination - boxOrContainerClickedOn;
 		}
 	
 	}

@@ -107,7 +107,6 @@ namespace Com.IsartDigital.Sokoban
         {
             if (path.Count != 0 && pathFindingTime == FIRST_TIME_PATH)
             {
-                GD.Print("Hello there");
                 pathFindingTime = CASUAL_TIME_PATH;
                 pathFindingTimer.Start();
             }
@@ -118,7 +117,8 @@ namespace Com.IsartDigital.Sokoban
         private void MovingOnPath()
         {
             pathFindingTimer.WaitTime = pathFindingTime;
-            if (path.Count == 0) { 
+            if (path.Count == 0) 
+            { 
 
                 pathFindingTimer.Stop();
                 pathFindingTime = FIRST_TIME_PATH;
@@ -130,7 +130,7 @@ namespace Com.IsartDigital.Sokoban
 
                 if ((GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrContainerClickedOn) == null)) return;
 
-                if (hasBoxToPush)
+                else if (hasBoxToPush)
                 {
                     hasBoxToPush = false;
                     Box.hasABoxToCheck = false;
@@ -141,11 +141,16 @@ namespace Com.IsartDigital.Sokoban
 
                     if (Box.CanBoxBePushed(lastDirection, Map.boxOrContainerClickedOn))
                     {
+                        GD.Print(" Not pushing an adjacent box");
                         AnimThePlayer(lastDirection);
                         Box.Create(Map.boxOrContainerClickedOn, lastDirection);
                     }
+                    else
+                    {
+                        ExplodeBombInHand();
+                    }
 
-                    Map.boxOrContainerClickedOn = Vector2I.Zero;
+
                 }
 
 
@@ -197,6 +202,22 @@ namespace Com.IsartDigital.Sokoban
             return new Vector2I((int)(Position.X / States.DISTANCE_RANGE), (int)(Position.Y / States.DISTANCE_RANGE));
         }
 
+        public void AdjacentToBox()
+        {
+            if (Box.CanBoxBePushed(lastDirection, Map.boxOrContainerClickedOn))
+            {
+                AnimThePlayer(lastDirection);
+                Box.Create(Map.boxOrContainerClickedOn, lastDirection);
+                Box.hasABoxToCheck = false;
+            }
+
+            else 
+            {
+                ExplodeBombInHand();
+            }
+        }
+
+
 
         public override void _Input(InputEvent pEvent)
         {
@@ -212,16 +233,9 @@ namespace Com.IsartDigital.Sokoban
 
                     if (!CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
                     {
-                        if (bombInHand != null)
-                        {
-                            ExplodeBombInHand();
-                            return;
-                        }
 
-                        else
-                        {
-                            return;
-                        }
+                        ExplodeBombInHand();
+
                     }
 
 
