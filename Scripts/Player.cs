@@ -15,7 +15,10 @@ namespace Com.IsartDigital.Sokoban
         [Export] public AnimatedSprite2D animatedSprite;
         [Export] private Sprite2D sprite;
 
-        private const float PATH_FINDING_TIME = 0.2f;
+        private float pathFindingTime = 0.01f;
+        private const float FIRST_TIME_PATH = 0.01f;
+        private const float CASUAL_TIME_PATH = 0.2f;
+
         private const string PLAYER_ACTION_RIGHT = "right";
         private const string PLAYER_ACTION_LEFT = "left";
         private const string PLAYER_ACTION_UP = "up";
@@ -33,7 +36,6 @@ namespace Com.IsartDigital.Sokoban
         public List<Vector2I> path = new List<Vector2I>();
 
         public Vector2I lastDirection;
-        public Vector2I lastPosition;
         public bool hasBoxToPush;
 
         public Timer pathFindingTimer = new Timer();
@@ -83,7 +85,7 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
         {
-            pathFindingTimer.WaitTime = PATH_FINDING_TIME;
+            pathFindingTimer.WaitTime = pathFindingTime;
 
             pathFindingTimer.Timeout += MovingOnPath;
             AddChild(pathFindingTimer);
@@ -96,25 +98,32 @@ namespace Com.IsartDigital.Sokoban
         {
             sprite.Visible = true;
             animatedSprite.Visible = false;
-            GlobalPosition = animatedSprite.GlobalPosition;
-            GameManager.GetInstance().UpdateAfterAction();
 
-            
+            GlobalPosition = animatedSprite.GlobalPosition;
+            GameManager.GetInstance().UpdateAfterAction(); 
         }
 
         public override void _Process(double pDelta)
         {
-            if (path.Count != 0 && pathFindingTimer.TimeLeft == 0)
+            if (path.Count != 0 && pathFindingTime == FIRST_TIME_PATH)
             {
+                GD.Print("Hello there");
+                pathFindingTime = CASUAL_TIME_PATH;
                 pathFindingTimer.Start();
             }
+
 
         }
 
         private void MovingOnPath()
         {
+            pathFindingTimer.WaitTime = pathFindingTime;
             if (path.Count == 0) { 
+
                 pathFindingTimer.Stop();
+                pathFindingTime = FIRST_TIME_PATH;
+                pathFindingTimer.WaitTime= pathFindingTime;
+
                 path.Clear();
 
                 if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
@@ -157,7 +166,9 @@ namespace Com.IsartDigital.Sokoban
                 AnimThePlayer(lastDirection);
 
                 path.RemoveAt(0);
+                pathFindingTimer.Start();
             }
+
 
         }
 

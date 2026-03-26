@@ -31,8 +31,6 @@ namespace Com.IsartDigital.Sokoban {
 
         public override void _Ready()
 		{
-
-
             for (int i = 0; i < explosionMatrix.Count; i++)
             {
                 for (int j = 0; j < explosionMatrix[i].Count; j++)
