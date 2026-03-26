@@ -298,6 +298,8 @@ namespace Com.IsartDigital.Sokoban
         private void ExplodeBombInHand()
         {
 
+            if (bombInHand == null) return;
+
             bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
 
             GameManager.GetInstance().UpdateAfterAction();

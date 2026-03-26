@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqs67w8nc54ro"]
+[gd_scene load_steps=3 format=3 uid="uid://b078nli7whk52"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
 [ext_resource type="SpriteFrames" uid="uid://d2kb1erim2tp8" path="res://Assets/Stars/Star.tres" id="2_0i242"]
