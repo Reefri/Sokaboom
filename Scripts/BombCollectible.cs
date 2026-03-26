@@ -35,7 +35,7 @@ namespace Com.IsartDigital.Sokoban
 
             lNode.Scale = Vector2.One * 0.3f;
             renderer.AddChild(lNode);
-            lNode.GlobalPosition = GlobalPosition + rightCornerOfCollectible;
+            lNode.GlobalPosition = renderer.GlobalPosition + rightCornerOfCollectible;
 
 
 

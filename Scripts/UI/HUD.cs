@@ -13,10 +13,12 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Label name;
         [Export] public Label number;
 
+
         public override void _Ready()
 		{
-			buttonUndo.Pressed += GameManager.GetInstance().MoveBackInTime;
-            buttonRedo.Pressed += GameManager.GetInstance().MoveForwardInTime;
+
+            buttonUndo.Pressed += () => GameManager.GetInstance().MoveBackInTime();
+            buttonRedo.Pressed += () => GameManager.GetInstance().MoveForwardInTime();
         }
 
 		public void ResetHUD()

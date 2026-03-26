@@ -12,25 +12,24 @@ namespace Com.IsartDigital.Sokoban
 		private float speed = 1.5f;
 
 
-		private Tween hoverTween;
+        private Vector2 basePosition;
 
-		public override void _Ready()
-		{
+        public override void _Ready()
+        {
+            base._Ready();
 
-			hoverTween = CreateTween()
-				.SetTrans(Tween.TransitionType.Sine)
-				.SetEase(Tween.EaseType.InOut)
-				.SetLoops();
+            basePosition = Position + Vector2.Up*amplitude;
 
+            Position = basePosition + Vector2.Up * amplitude * Mathf.Sin(JuicinessManager.GetInstance().GlobalTime);
+        }
 
-			hoverTween.TweenProperty(this, TweenProp.POSITION, Vector2.Up   * amplitude, speed).AsRelative();
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
 
-			hoverTween.SetEase(Tween.EaseType.InOut);
+            Position = basePosition + Vector2.Up*amplitude*Mathf.Sin(JuicinessManager.GetInstance().GlobalTime);
 
-			hoverTween.TweenProperty(this, TweenProp.POSITION, Vector2.Down * amplitude, speed).AsRelative() ;
-
-
-		}
+        }
 
 
 	}

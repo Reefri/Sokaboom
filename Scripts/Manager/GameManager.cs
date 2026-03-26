@@ -262,8 +262,6 @@ namespace Com.IsartDigital.Sokoban
                 UIManager.GetInstance().GoToWin();
             }
 
-
-
         }
 
 
