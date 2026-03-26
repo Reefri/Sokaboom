@@ -11,12 +11,12 @@ namespace Com.IsartDigital.Sokoban {
 
         [Export] private CollisionShape2D collisionShape;
 
-        public static ToPlaceOnExplosion Create(Vector2 pPosition, Color pColor, bool pBool = false, float pScale = 1)
+        public static ToPlaceOnExplosion Create(Vector2 pPosition, Color pColor, bool pDoesExplose = false, float pScale = 1)
         {
             ToPlaceOnExplosion lPattern = (ToPlaceOnExplosion)factory.Instantiate();
             lPattern.GlobalPosition = pPosition;
             lPattern.Modulate = pColor;
-			lPattern.collisionShape.Disabled = pBool;
+			lPattern.collisionShape.Disabled = !pDoesExplose;
 			lPattern.Scale = new Vector2(pScale, pScale);
 			return lPattern;
         }
@@ -28,9 +28,9 @@ namespace Com.IsartDigital.Sokoban {
 
         private void CheckForChainReaction(Area2D pArea)
         {
-			if(pArea is BombCollectible)
+
+            if (pArea is BombCollectible)
 			{
-                
                 
 				BombCollectible lBombCollec = (BombCollectible)pArea;
 				lBombCollec.bomb.Explode((Vector2I)lBombCollec.Position / States.DISTANCE_RANGE	, Vector2I.Up);

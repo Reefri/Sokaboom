@@ -173,60 +173,6 @@ uniform sampler2D tex_frg_2;
 
 
 
-void vertex() {
-// Input:4
-	vec2 n_out4p0 = VERTEX;
-
-
-// Input:2
-	float n_out2p0 = TIME;
-
-
-// FloatConstant:12
-	float n_out12p0 = 1.500000;
-
-
-// FloatOp:13
-	float n_out13p0 = n_out2p0 * n_out12p0;
-
-
-// FloatFunc:6
-	float n_out6p0 = sin(n_out13p0);
-
-
-// FloatOp:7
-	float n_in7p1 = 1.00000;
-	float n_out7p0 = n_out6p0 + n_in7p1;
-
-
-// FloatOp:8
-	float n_in8p1 = 2.00000;
-	float n_out8p0 = n_out7p0 / n_in8p1;
-
-
-// FloatConstant:11
-	float n_out11p0 = 25.000000;
-
-
-// FloatOp:9
-	float n_out9p0 = n_out8p0 * n_out11p0;
-
-
-// VectorCompose:10
-	float n_in10p0 = 0.00000;
-	vec2 n_out10p0 = vec2(n_in10p0, n_out9p0);
-
-
-// VectorOp:5
-	vec2 n_out5p0 = n_out4p0 - n_out10p0;
-
-
-// Output:0
-	VERTEX = n_out5p0;
-
-
-}
-
 void fragment() {
 // BooleanParameter:31
 	bool n_out31p0 = chromaEffect;
@@ -418,6 +364,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-316.223, -195.975)
 mode = 1
 flags/light_only = false
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_ys5rd")
@@ -442,7 +389,7 @@ nodes/vertex/12/node = SubResource("VisualShaderNodeFloatConstant_8lstk")
 nodes/vertex/12/position = Vector2(-1020, 720)
 nodes/vertex/13/node = SubResource("VisualShaderNodeFloatOp_7tht2")
 nodes/vertex/13/position = Vector2(-820, 640)
-nodes/vertex/connections = PackedInt32Array(4, 0, 5, 0, 5, 0, 0, 0, 6, 0, 7, 0, 7, 0, 8, 0, 8, 0, 9, 0, 10, 0, 5, 1, 9, 0, 10, 1, 11, 0, 9, 1, 12, 0, 13, 1, 2, 0, 13, 0, 13, 0, 6, 0)
+nodes/vertex/connections = PackedInt32Array(4, 0, 5, 0, 6, 0, 7, 0, 7, 0, 8, 0, 8, 0, 9, 0, 10, 0, 5, 1, 9, 0, 10, 1, 11, 0, 9, 1, 12, 0, 13, 1, 2, 0, 13, 0, 13, 0, 6, 0)
 nodes/fragment/0/position = Vector2(2280, -20)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_mbk5g")
 nodes/fragment/2/position = Vector2(501.104, -170.113)

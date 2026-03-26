@@ -15,6 +15,8 @@ namespace Com.IsartDigital.Sokoban
         [Export] public AnimatedSprite2D animatedSprite;
         [Export] private Sprite2D sprite;
 
+        [Export] private Node2D bombPrevisualisationContainer;
+
         private const float PATH_FINDING_TIME = 0.2f;
         private const string PLAYER_ACTION_RIGHT = "right";
         private const string PLAYER_ACTION_LEFT = "left";
@@ -78,6 +80,7 @@ namespace Com.IsartDigital.Sokoban
         {
             bombInHand = pBomb;
             GameManager.GetInstance().currentPosition.value.currentBomb = pBomb;
+            CreatePrevisualisation();
         }
 
 
@@ -92,14 +95,14 @@ namespace Com.IsartDigital.Sokoban
             animPlayer.AnimationFinished += ReplaceThePlayer;
         }
 
-        private void ReplaceThePlayer(StringName animName)
+        private void ReplaceThePlayer(StringName pAnimName)
         {
             sprite.Visible = true;
             animatedSprite.Visible = false;
             GlobalPosition = animatedSprite.GlobalPosition;
             GameManager.GetInstance().UpdateAfterAction();
 
-            
+            CreatePrevisualisation();
         }
 
         public override void _Process(double pDelta)
@@ -265,13 +268,13 @@ namespace Com.IsartDigital.Sokoban
 
         private void ExplodeBombInHand()
         {
-            if (bombInHand == null) return;
 
             bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
 
             GameManager.GetInstance().UpdateAfterAction();
 
             GiveBombToPlayer(null);
+
 
 
             //pour faire exploser les tiles, les remplacer par une tile de sol (AtlasCoords : 11, 6)
@@ -281,6 +284,31 @@ namespace Com.IsartDigital.Sokoban
         {
             instance = null;
             base.Dispose(pDisposing);
+        }
+
+
+        public void CreatePrevisualisation()
+        {
+            foreach (Node2D lChild in bombPrevisualisationContainer.GetChildren())
+            {
+                lChild.QueueFree();
+            }
+
+            bombPrevisualisationContainer.Position = Vector2.Zero;
+
+            if (bombInHand == null) return;
+
+
+
+            foreach (Vector2I lDirection in nameOfAnimation.Keys)
+            {
+                if (!CheckTheMove(lDirection))
+                {
+                    new BombPatterne(bombPrevisualisationContainer,false, Main.GetInstance().RotateMatrix(bombInHand.explosionMatrix, lDirection), false,lDirection*States.DISTANCE_RANGE);
+
+                }
+            }
+
         }
     }
 }

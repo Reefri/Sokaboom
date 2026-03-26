@@ -7,12 +7,13 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class BombCollectible : Area2D
 	{
+        [Export] Node2D renderer;
 
 		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
-        private PrevisualisationBomb previsualisationBomb = (PrevisualisationBomb)GD.Load<PackedScene>("res://Scenes/UI/previsualisation_bomb.tscn").Instantiate();
+        private PrevisualisationBomb previsualisationBomb = (PrevisualisationBomb)GD.Load<PackedScene>("res://Scenes/UI/PrevisualisationBomb.tscn").Instantiate();
 
         public Bomb bomb;
 
@@ -24,49 +25,19 @@ namespace Com.IsartDigital.Sokoban
         private bool OriginOnTop;
         public override void _Ready()
 		{
+
+
             previsualisationBomb.explosionMatrix = bomb.explosionMatrix;
 
-            for (int i = 0; i < bomb.explosionMatrix.Count; i++)
-            {
-                for (int j = 0; j < bomb.explosionMatrix[i].Count; j++)
-                {
-                    if (bomb.explosionMatrix[i][j] == 2)
-                    {
-                        previsualisationOriginPos = new Vector2I(j, i);
+            Node2D lNode = new Node2D();
 
-                        if(j == 0)
-                        {
-                            sideFactor = (bomb.explosionMatrix[0].Count - 1) * 10;
-                        }
+            previsualisationOriginPos = (new BombPatterne(lNode, false, bomb.explosionMatrix)).originePos;
 
-                        if (i == 0)
-                        {
-                            downFactor = 0;
-                            AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + (Vector2.Left * sideFactor), new Color(1, 0, 0), true, previsualisationScale));
-                        }
-                        else
-                            AddChild(ToPlaceOnExplosion.Create(rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor
-                                + (Vector2.Left * sideFactor)
-                                , new Color(1, 0, 0), true, previsualisationScale));
-                    }
-                }
-            }
+            lNode.Scale = Vector2.One * 0.3f;
+            renderer.AddChild(lNode);
+            lNode.GlobalPosition = GlobalPosition + rightCornerOfCollectible;
 
-            for (int i = 0; i < bomb.explosionMatrix.Count; i++)
-            {
-                for (int j = 0; j < bomb.explosionMatrix[i].Count; j++)
-                {
 
-                    if (bomb.explosionMatrix[i][j] == 1)
-                    {
-                        Vector2 lPosition = rightCornerOfCollectible + Vector2.Down * bomb.explosionMatrix.Count * downFactor 
-                            + (Vector2.Left * sideFactor)
-                            + (new Vector2(j, i) - previsualisationOriginPos) * States.DISTANCE_RANGE * previsualisationScale;
-                        
-                        AddChild(ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), true, previsualisationScale));
-                    }
-                }
-            }
 
             AreaEntered += BombCollectibleAreaEntered;
 
