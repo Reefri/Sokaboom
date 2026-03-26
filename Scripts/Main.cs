@@ -113,7 +113,7 @@ namespace Com.IsartDigital.Sokoban
         public List<List<int>> RotateMatrix(List<List<int>> pMatrix, Vector2I pDirection)
         {
 
-            List<List<int>> lDuplicatedMatrix = DuplicateList(pMatrix);
+            List<List<int>> lDuplicatedMatrix = DuplicateListOfList(pMatrix);
 
             if (pDirection == Vector2I.Up)
             {

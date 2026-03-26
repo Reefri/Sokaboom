@@ -104,7 +104,7 @@ namespace Com.IsartDigital.Sokoban {
             lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2; // pourquoi distance/2 ??
             lBombPattern.posInGrid = pPosition;
 
-			Main.GetInstance().CallDeferred("add_child", lBombPattern);
+			GameManager.GetInstance().CallDeferred("add_child", lBombPattern);
 
 		}
 	}
