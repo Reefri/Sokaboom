@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0eui805x13ck"]
+[gd_scene load_steps=14 format=3 uid="uid://c0eui805x13ck"]
 
 [ext_resource type="Script" path="res://Scripts/BombCollectible.cs" id="1_73o2a"]
 [ext_resource type="Shader" uid="uid://wxygcdpv5iwa" path="res://Ressources/Shaders/Hover.tres" id="2_4oihl"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/HoverEffect.cs" id="3_4pr4v"]
-[ext_resource type="Shader" uid="uid://dogpsix47cvgu" path="res://Ressources/Shaders/BombShadow.tres" id="3_8d1uu"]
+[ext_resource type="Material" uid="uid://ccjud020y5jbl" path="res://Ressources/Shaders/Materials/BombShadowShader.tres" id="3_er312"]
 [ext_resource type="Texture2D" uid="uid://ch2pts2c7mev4" path="res://Assets/Bomb/Collectible/Shadow.png" id="4_f70lw"]
 [ext_resource type="Texture2D" uid="uid://bk4chsa2etmt1" path="res://Assets/Bomb/Collectible/body.png" id="5_wchup"]
 [ext_resource type="Texture2D" uid="uid://je34t1rmuwnc" path="res://Assets/Bomb/Collectible/firework.png" id="6_175f3"]
@@ -12,9 +12,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_melce"]
 shader = ExtResource("2_4oihl")
 shader_parameter/chromaEffect = null
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ee4c"]
-shader = ExtResource("3_8d1uu")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5smlg"]
 shader = ExtResource("2_4oihl")
@@ -42,7 +39,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_melce")
 
 [node name="Shadow" type="Sprite2D" parent="Renderer"]
-material = SubResource("ShaderMaterial_8ee4c")
+material = ExtResource("3_er312")
 texture = ExtResource("4_f70lw")
 
 [node name="Hover" type="Node2D" parent="Renderer"]

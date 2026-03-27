@@ -10,8 +10,14 @@ namespace Com.IsartDigital.Sokoban
 		static private JuicinessManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/JuicinessManager.tscn");
 
+		private Material bombShadow = (GD.Load<Material>("res://Ressources/Shaders/Materials/BombShadowShader.tres"));
+		private const string bombShadowSpeedParameter = "speed";
 
-		public float GlobalTime { private set; get; } = 0;
+
+        private float hoverAmplitude = 20;
+        private float hoverSpeed = 0.1f;
+
+        public float GlobalTime { private set; get; } = 0;
 
 		private JuicinessManager():base() 
 		{
@@ -33,6 +39,12 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			base._Ready();
+
+			HoverEffect.amplitude = hoverAmplitude;
+			HoverEffect.speed = hoverSpeed;
+
+			((ShaderMaterial)bombShadow).SetShaderParameter(bombShadowSpeedParameter, hoverSpeed);
+
 		}
 
 		public override void _Process(double pDelta)

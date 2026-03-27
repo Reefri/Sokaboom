@@ -8,8 +8,8 @@ namespace Com.IsartDigital.Sokoban
 	public partial class HoverEffect : Node2D
 	{
 
-		private float amplitude = 25;
-		private float speed = 1.5f;
+		public static float amplitude = 20;
+		public static float speed = 0.1f;
 
 
         private Vector2 basePosition;
@@ -20,17 +20,22 @@ namespace Com.IsartDigital.Sokoban
 
             basePosition = Position + Vector2.Up*amplitude;
 
-            Position = basePosition + Vector2.Up * amplitude * Mathf.Sin(JuicinessManager.GetInstance().GlobalTime);
+            GetPosition();
         }
 
-        public override void _Process(double delta)
+        public override void _Process(double pDelta)
         {
-            base._Process(delta);
 
-            Position = basePosition + Vector2.Up*amplitude*Mathf.Sin(JuicinessManager.GetInstance().GlobalTime);
+
+            GetPosition();
+        }
+
+        private void GetPosition()
+        {
+            Position = basePosition + Vector2.Up * amplitude * Mathf.Sin(JuicinessManager.GetInstance().GlobalTime * Mathf.Tau * speed);
 
         }
 
 
-	}
+    }
 }
