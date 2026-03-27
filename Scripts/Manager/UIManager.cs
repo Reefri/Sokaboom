@@ -47,7 +47,11 @@ namespace Com.IsartDigital.Sokoban
 			base._Ready();
 
 			if (!noLogin) AddChild(uiLogin);
-			else AddChild(uiTitle);
+			else
+			{
+				AccountManager.GetInstance().TestConnexion("Guest", "");
+				AddChild(uiTitle);
+			}
         }
 
 		public void UpdateHud()
@@ -76,7 +80,7 @@ namespace Com.IsartDigital.Sokoban
 		public void GoToLevel(int pIndex)
 		{
 
-			if (pIndex > uiLevelSelect.numberOfLevel) { GoToLevelSelect(); return; }
+			if (pIndex > GridManager.GetInstance().numberOfLevel) { GoToLevelSelect(); return; }
 
 
             RemoveChild(GetChild(0));

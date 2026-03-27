@@ -13,19 +13,21 @@ namespace Com.IsartDigital.UI {
 
         private bool buttonlock = true;
 
-        public int numberOfLevel = 0; //petite sécurité à enlever plus tard
-
+        
         public override void _Ready()
 		{
             base._Ready();
 
-            numberOfLevel = JsonReaderWriter.ReadJsonToList<Level>(GridManager.JSON_PATH).Count -1;
 
             int i = 0;
 
             foreach (Button lButtons in allButtons.GetChildren())
 			{
                 int lLevelID = i;
+
+                if (GridManager.GetInstance().numberOfLevel == i) break;
+
+                lButtons.Disabled = !AccountManager.GetInstance().currentAccount.LockedLevels[i];
                 lButtons.Pressed += () => GoToLevel(lLevelID);
                 i++;
             }
@@ -44,13 +46,12 @@ namespace Com.IsartDigital.UI {
 
         private void UnlockPressed()
         {
-            if (buttonlock) buttonlock = false;
-            else buttonlock = true;
+            buttonlock = !buttonlock;
 
             foreach (Button lButton in allButtons.GetChildren())
 			{
-                if (lButton.GetIndex() > numberOfLevel) lButton.Disabled = true; //faire en sorte que personne n'essaye d'aller dans les niveau pas créé)
-                else if (lButton.GetIndex() > 0) lButton.Disabled = buttonlock;
+                if (lButton.GetIndex() > GridManager.GetInstance().numberOfLevel) lButton.Disabled = true; //faire en sorte que personne n'essaye d'aller dans les niveau pas créé)
+                else if (lButton.GetIndex() > 0) lButton.Disabled = AccountManager.GetInstance().currentAccount.LockedLevels[lButton.GetIndex()];
             }
         }
 

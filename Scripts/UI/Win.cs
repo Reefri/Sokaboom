@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 using static System.Formats.Asn1.AsnWriter;
 
 // Author : Ethan Masse
@@ -40,6 +41,7 @@ namespace Com.IsartDigital.Sokoban
 				numberStars = 1;
             }
 
+
 			
             for (int i = 0; i <= numberStars - 1; i++)
 			{
@@ -50,9 +52,18 @@ namespace Com.IsartDigital.Sokoban
             if (score < 0) score = 0;
 
 			scoreText.Text = "Score : " + score;
-			UIManager.GetInstance().finalScore += score;
 
-			GD.Print(UIManager.GetInstance().finalScore);
+			AccountManager.GetInstance().NewWin(score, GameManager.GetInstance().CurrentPar);
+
+
+			List<Account> lAccounts = AccountManager.GetInstance().GetTopPlayers(10);
+
+			foreach (Account account in lAccounts)
+			{
+				GD.Print(account.Id ," : ", account.FinalScore());
+			}
+
+
         }
 
 		protected override void Dispose(bool pDisposing)

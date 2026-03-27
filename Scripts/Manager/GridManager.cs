@@ -8,7 +8,17 @@ namespace Com.IsartDigital.Sokoban
 	{
 		static private GridManager instance;
 
-		public Level CurrentLevel
+
+
+        public int numberOfLevel = JsonReaderWriter.ReadJsonToList<Level>(JSON_PATH).Count;
+
+        public Level CurrentLevel
+		{
+			get;
+			private set;
+		}
+
+		public int CurrentLevelIndex
 		{
 			get;
 			private set;
@@ -40,6 +50,7 @@ namespace Com.IsartDigital.Sokoban
 		public void ChangeLevel(int pIndex)
 		{
 			CurrentLevel = GetLevel(pIndex);
+			CurrentLevelIndex = pIndex;
 			GameManager.GetInstance().CurrentPar = 0;
 		}
 

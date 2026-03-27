@@ -1,10 +1,12 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using GodotDict = Godot.Collections.Dictionary;
-using System.Text.Json;
 using System.IO;
-
+using System.Security.Cryptography;
+using System.Text.Json;
+using static System.Formats.Asn1.AsnWriter;
+using GodotDict = Godot.Collections.Dictionary;
+using System.Linq;
 
 
 // Author : Sacha Gramatikoff
@@ -57,6 +59,7 @@ namespace Com.IsartDigital.Sokoban
 				if (lAccountList[lIndex].Password == GD.Hash(pPassWord))
 				{
 					currentAccount = lAccountList[lIndex];
+					currentAccount.Update();
 					return TestConnexionResult.Valid;
 				}
 				else
@@ -68,6 +71,7 @@ namespace Com.IsartDigital.Sokoban
 
 			return TestConnexionResult.NotFound;
 		}
+
 
 		public bool Register(string pId, string pPassWord)
 		{
@@ -90,8 +94,56 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
+		public void UpdateAccount()
+		{
+
+            List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
+
+            int lIndex = lAccountList.FindIndex(lPredicate => lPredicate.Id == currentAccount.Id);
+
+
+            if (lIndex < 0)
+            {
+
+				GD.Print("Joueur courrant non trouvé ? Quelque chose s'est vraiment très mal passé...");
+                return ;
+            }
+
+			lAccountList[lIndex] = currentAccount;
+
+
+            JsonReaderWriter.WriteListToJson(JSONFILE_PATH, lAccountList);
+        }
+
 		
+
+		public void NewWin(int pScore, int pPar)
+		{
+
+            currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] = pScore;
+            currentAccount.BestPar[GridManager.GetInstance().CurrentLevelIndex] = pPar;
+            currentAccount.LockedLevels[
+				Mathf.Clamp(GridManager.GetInstance().CurrentLevelIndex + 1,0,GridManager.GetInstance().numberOfLevel-1)
+				] = true;
+
+            UpdateAccount();
+        }
 	
 
-	}
+		public List<Account> GetTopPlayers(int pNumberOfPlayer)
+		{
+
+            List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
+
+
+			
+
+			return lAccountList.OrderByDescending(o => o.FinalScore()).Take(pNumberOfPlayer).ToList();
+
+
+
+        }
+
+
+    }
 }

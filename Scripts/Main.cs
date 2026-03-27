@@ -16,6 +16,9 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private bool testOnlyGameFeature = true;
 		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
 
+
+
+
         private Main():base() 
 		{
 			if (instance != null)
