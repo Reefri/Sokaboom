@@ -142,7 +142,7 @@ namespace Com.IsartDigital.Sokoban
 
 			
 
-			return lAccountList.OrderByDescending(o => o.FinalScore()).Take(pNumberOfPlayer).ToList();
+			return lAccountList.OrderByDescending(lAccount => lAccount.FinalScore()).Take(pNumberOfPlayer).ToList();
 
 
 
