@@ -13,7 +13,7 @@ namespace Com.IsartDigital.Sokoban
 		static private Main instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Main.tscn");
 
-		[Export] private bool testOnlyGameFeature = true;
+		[Export] public bool testOnlyGameFeature = true;
 		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
 
         private Main():base() 

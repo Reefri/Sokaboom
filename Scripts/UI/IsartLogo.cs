@@ -42,7 +42,9 @@ namespace Com.IsartDigital.Sokoban
         
         public override void _Ready()
         {
-            Visible = true;
+            if(!Main.GetInstance().testOnlyGameFeature)
+                Visible = true;
+            else QueueFree();
 
             Tween lTween = fade.CreateTween();
 
@@ -67,8 +69,6 @@ namespace Com.IsartDigital.Sokoban
             if (time >= tweenDuration * 2 + 0.25f || Input.IsActionJustReleased("leftClick"))
             {
                 QueueFree();
-                TitleCard lTitleCard = (TitleCard) UIManager.GetInstance().GetChild(1);
-                lTitleCard.canAnimStart = true;
                 
             }
         }

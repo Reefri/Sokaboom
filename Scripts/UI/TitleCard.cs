@@ -32,7 +32,7 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private Tween tween;
 
-        public bool canAnimStart = false;
+        //public bool canAnimStart = false;
 
         public override void _Ready()
 		{
@@ -66,11 +66,8 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void StartTimer()
         {
-            if (canAnimStart)
-            {
                 timer.Start();
                 animationIsRunning = true;
-            }
         }
 
         private void MoreO()
@@ -168,18 +165,6 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             UIManager.GetInstance().GoToHelp();
             UIManager.GetInstance().comeToMenu = true;
-        }
-
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-
-            if (canAnimStart)
-            {
-                animationIsRunning = true;
-                timer.Start();
-                canAnimStart = false;
-            }
         }
     }
 }
