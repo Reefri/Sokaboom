@@ -25,6 +25,7 @@ namespace Com.IsartDigital.Sokoban
 		public const string BORDER = "Border";
 		public const string GROUND = "Ground";
 
+
 		public static Vector2I boxOrContainerClickedOn;
 		public static Vector2I lastDirectionBeforePushing;
 		public enum LevelLayer
@@ -194,7 +195,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
-			Cross.Create((pDestination + Vector2I.One/2) * States.DISTANCE_RANGE, GameManager.GetInstance());
+			//Cross.Create((pDestination + Vector2I.One/2) * States.DISTANCE_RANGE, GameManager.GetInstance());
 
             if (Player.GetInstance().hasBoxToPush && (boxOrContainerClickedOn - pBeginning).LengthSquared() <= 1)
             {

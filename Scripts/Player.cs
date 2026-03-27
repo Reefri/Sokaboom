@@ -34,6 +34,7 @@ namespace Com.IsartDigital.Sokoban
         private const string PLAYER_MOVING_LEFT = "movingLeft";
         private const string PLAYER_MOVING_RIGHT = "movingRight";
         private const string ANIM_PLAYER = "Anim";
+        public const string ANIM_BLOCKED = "blocked";
 
         public List<Vector2I> path = new List<Vector2I>();
 
