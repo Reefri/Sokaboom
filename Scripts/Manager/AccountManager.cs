@@ -52,7 +52,7 @@ namespace Com.IsartDigital.Sokoban
 		{
             List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
 
-			int lIndex = lAccountList.FindIndex(lPredicate =>  lPredicate.Id == pId);
+			int lIndex = lAccountList.FindIndex(lAccount =>  lAccount.Id == pId);
 
 			if (lIndex >= 0)
 			{
@@ -106,6 +106,7 @@ namespace Com.IsartDigital.Sokoban
             {
 
 				GD.Print("Joueur courrant non trouvé ? Quelque chose s'est vraiment très mal passé...");
+				GD.Print("Connexion au compte Guest : " + (TestConnexion("Guest","") == TestConnexionResult.Valid));
                 return ;
             }
 
