@@ -111,6 +111,7 @@ size = Vector2(30, 42)
 
 [sub_resource type="Animation" id="Animation_u4bgl"]
 resource_name = "blocked"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
