@@ -12,6 +12,7 @@ testOnlyGameFeature = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UiManager" parent="CanvasLayer" instance=ExtResource("3_70v4f")]
+noLogin = false
 
 [node name="CameraManager" parent="." instance=ExtResource("3_wl630")]
 

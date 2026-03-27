@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace Com.IsartDigital.Sokoban 
 {
-	public partial class BombPatterne
+	public partial class BombPattern
 	{
 
 
         public Vector2I originePos;
 
 
-        public BombPatterne(Node2D pParent, bool pDoesExplose, List<List<int>> pExplosionMatrix, bool pUseParentPosition = true, Vector2? pOffSet = null) 
+        public BombPattern(Node2D pParent, bool pDoesExplose, List<List<int>> pExplosionMatrix, bool pUseParentPosition = true, Vector2? pOffSet = null) 
 		{
 
             originePos = Vector2I.Zero;

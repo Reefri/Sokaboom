@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 // Author : Ethan Frenard
 
 namespace Com.IsartDigital.Sokoban {
-	public partial class BombPattern : Node2D
+	public partial class BombExplosion : Node2D
 	{
         [Export] private float timeUntilFade = 0.2f;
 		private float time = 0;
@@ -33,7 +33,7 @@ namespace Com.IsartDigital.Sokoban {
 		{
 
 
-            originPos = (new BombPatterne(this, true, explosionMatrix)).originePos;
+            originPos = (new BombPattern(this, true, explosionMatrix)).originePos;
 
 
 
@@ -95,7 +95,7 @@ namespace Com.IsartDigital.Sokoban {
 
 		public static void Create(List<List<int>> pExplosionMatrix,Vector2I pPosition, Vector2I pRotationVector)
 		{
-			BombPattern lBombPattern = new BombPattern();
+			BombExplosion lBombPattern = new BombExplosion();
 
             lBombPattern.explosionMatrix = Main.GetInstance().RotateMatrix(pExplosionMatrix,pRotationVector);
 
