@@ -24,7 +24,6 @@ namespace Com.IsartDigital.Sokoban
 		public const string TARGET = "Target";
 		public const string BORDER = "Border";
 		public const string GROUND = "Ground";
-		private const string ANIM_BLOCKED = "blocked";
 
 		public static Vector2I boxOrContainerClickedOn;
 		public static Vector2I lastDirectionBeforePushing;
@@ -101,7 +100,7 @@ namespace Com.IsartDigital.Sokoban
 						else if ((bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(WALL)))
 						{
 							boxOrContainerClickedOn = lCell;
-							//CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lCell);
+
 							
                             ContainerOrBoxChosen(WALL, lCell);
 							return;
@@ -164,7 +163,7 @@ namespace Com.IsartDigital.Sokoban
             {
                 if (Player.GetInstance().bombInHand == null || boxOrContainerClickedOn == Vector2I.Zero)
                 {
-                    Player.GetInstance().animPlayer.Play(ANIM_BLOCKED);
+                    Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
                     return;
                 }
                 return; 
@@ -195,6 +194,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
+			Cross.Create((pDestination + Vector2I.One/2) * States.DISTANCE_RANGE, GameManager.GetInstance());
 
             if (Player.GetInstance().hasBoxToPush && (boxOrContainerClickedOn - pBeginning).LengthSquared() <= 1)
             {
@@ -215,7 +215,7 @@ namespace Com.IsartDigital.Sokoban
 			{
 				if (Player.GetInstance().bombInHand == null || boxOrContainerClickedOn == Vector2I.Zero)
 				{
-					Player.GetInstance().animPlayer.Play(ANIM_BLOCKED);
+					Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
 					return;
 				}
 				else
