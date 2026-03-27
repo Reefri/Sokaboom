@@ -16,6 +16,8 @@ namespace Com.IsartDigital.Sokoban
 		[Export] public bool testOnlyGameFeature = true;
 		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
 
+        [Export] public bool noLogin = true;
+
         private Main():base() 
 		{
 			if (instance != null)
@@ -42,12 +44,7 @@ namespace Com.IsartDigital.Sokoban
 			//Bomb bomb = GridManager.GetInstance().CurrentLevel.bombs[0];
 			//bomb.Explode(new Vector2I(3, 3));
 
-			if (testOnlyGameFeature)
-			{
-                UIManager.GetInstance().levelIndex = levelAtTest;
-                AddChild(GameManager.GetInstance());
-                RemoveChild(UIManager.GetInstance());
-            }
+			if (testOnlyGameFeature) UIManager.GetInstance().GoToLevel(levelAtTest);
         }
 
 		protected override void Dispose(bool pDisposing)

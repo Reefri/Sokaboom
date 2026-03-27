@@ -15,8 +15,7 @@ namespace Com.IsartDigital.Sokoban
 		private void ChangeSecret()
 		{
 			LineEdit lPassword = (LineEdit)GetParent();
-            if (lPassword.Secret) lPassword.Secret = false;
-            else lPassword.Secret = true;
+            lPassword.Secret = !lPassword.Secret;
         }
 	}
 }

@@ -32,8 +32,6 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private Tween tween;
 
-        //public bool canAnimStart = false;
-
         public override void _Ready()
 		{
             finalPositionOfSo = so.Position;
@@ -66,8 +64,8 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void StartTimer()
         {
-                timer.Start();
-                animationIsRunning = true;
+            timer.Start();
+            animationIsRunning = true;
         }
 
         private void MoreO()

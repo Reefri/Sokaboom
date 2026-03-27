@@ -51,8 +51,6 @@ namespace Com.IsartDigital.Sokoban
 
 			scoreText.Text = "Score : " + score;
 			UIManager.GetInstance().finalScore += score;
-
-			GD.Print(UIManager.GetInstance().finalScore);
         }
 
 		protected override void Dispose(bool pDisposing)
