@@ -58,11 +58,7 @@ namespace Com.IsartDigital.Sokoban
 
 			List<Account> lAccounts = AccountManager.GetInstance().GetTopPlayers(10);
 
-			foreach (Account account in lAccounts)
-			{
-				GD.Print(account.Id ," : ", account.FinalScore());
-			}
-
+			//Pour Ethan Masse : t'as dans lAccounts toutes les informations que tu veux
 
         }
 
