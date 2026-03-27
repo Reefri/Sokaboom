@@ -303,7 +303,12 @@ namespace Com.IsartDigital.Sokoban
         private void ExplodeBombInHand()
         {
 
-            if (bombInHand == null) return;
+            if (bombInHand == null)
+            {
+                animPlayer.Play(ANIM_BLOCKED);
+                animatedSprite.GlobalPosition = GlobalPosition;
+                return;
+            }
 
             bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
 
