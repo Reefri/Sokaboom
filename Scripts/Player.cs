@@ -141,10 +141,11 @@ namespace Com.IsartDigital.Sokoban
 
                     if (Box.CanBoxBePushed(lastDirection, Map.boxOrContainerClickedOn))
                     {
-                        GD.Print(" Not pushing an adjacent box");
+
                         AnimThePlayer(lastDirection);
                         Box.Create(Map.boxOrContainerClickedOn, lastDirection);
                     }
+
                     else
                     {
                         ExplodeBombInHand();
