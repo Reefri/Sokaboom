@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-// Author : Ethan Masse
+// Author : Ethan Frenard
 
 namespace Com.IsartDigital.Sokoban 
 {
@@ -10,6 +10,7 @@ namespace Com.IsartDigital.Sokoban
 		static private JuicinessManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/JuicinessManager.tscn");
 
+		private PackedScene borderExplosion = GD.Load<PackedScene>("res://Scenes/Juiciness/BorderExplosion.tscn");
 		private Material bombShadow = (GD.Load<Material>("res://Ressources/Shaders/Materials/BombShadowShader.tres"));
 		private const string bombShadowSpeedParameter = "speed";
 
@@ -53,6 +54,15 @@ namespace Com.IsartDigital.Sokoban
 			float lDelta = (float)pDelta;
 
 			GlobalTime += lDelta;
+		}
+
+		public void ExplodeAllBorders(Vector2 pBorderOriginPos)
+		{
+			GpuParticles2D lExplosion = (GpuParticles2D)borderExplosion.Instantiate();
+			lExplosion.Position = pBorderOriginPos;
+			lExplosion.Emitting = true;
+			lExplosion.Finished += QueueFree;
+			GameManager.GetInstance().AddChild(lExplosion);
 		}
 
 		protected override void Dispose(bool pDisposing)

@@ -13,7 +13,7 @@ namespace Com.IsartDigital.UI {
 
         private bool buttonlock = true;
 
-        public int numberOfLevel = 0; //petite sécurité à enlever plus tard
+        public int numberOfLevel = 0; //petite sécurité à enlever quand onaura tous les niveaux
 
         public override void _Ready()
 		{
@@ -44,8 +44,7 @@ namespace Com.IsartDigital.UI {
 
         private void UnlockPressed()
         {
-            if (buttonlock) buttonlock = false;
-            else buttonlock = true;
+            buttonlock = ! buttonlock;
 
             foreach (Button lButton in allButtons.GetChildren())
 			{

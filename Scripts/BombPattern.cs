@@ -12,7 +12,7 @@ namespace Com.IsartDigital.Sokoban
         public Vector2I originePos;
 
 
-        public BombPattern(Node2D pParent, bool pDoesExplose, List<List<int>> pExplosionMatrix, bool pUseParentPosition = true, Vector2? pOffSet = null) 
+        public BombPattern(Node2D pParent, bool pDoesExplose, List<List<int>> pExplosionMatrix, bool pUseParentPosition = true, Vector2? pOffSet = null, bool pIsCollectiblePattern = false) 
 		{
 
             originePos = Vector2I.Zero;
@@ -23,8 +23,17 @@ namespace Com.IsartDigital.Sokoban
                 {
                     if (pExplosionMatrix[i][j] == 2)
                     {
-                        originePos = new Vector2I(j, i);
-                        pParent.CallDeferred("add_child",ToPlaceOnExplosion.Create((pUseParentPosition?pParent.GlobalPosition:Vector2.Zero) + (pOffSet??Vector2.Zero), new Color(1, 0, 0), pDoesExplose));
+                        if (!pIsCollectiblePattern)
+                        {
+                            originePos = new Vector2I(j, i);
+                            pParent.CallDeferred("add_child", ToPlaceOnExplosion.Create((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1, 0, 0), pDoesExplose));
+                        }
+                        else
+                        {
+                            originePos = new Vector2I(j, i);
+                            pParent.CallDeferred("add_child", BombCollectiblePattern.Create((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1, 0, 0), pDoesExplose));
+
+                        }
                     }
                 }
             }
@@ -36,8 +45,18 @@ namespace Com.IsartDigital.Sokoban
 
                     if (pExplosionMatrix[i][j] == 1)
                     {
-                        Vector2 lPosition = (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE;
-                        pParent.CallDeferred("add_child",ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), pDoesExplose));
+                        if (!pIsCollectiblePattern)
+                        {
+
+                            Vector2 lPosition = (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE;
+                            pParent.CallDeferred("add_child", ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), pDoesExplose));
+                        }
+                        else
+                        {
+                            Vector2 lPosition = (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE;
+                            pParent.CallDeferred("add_child", BombCollectiblePattern.Create(lPosition, new Color(1, 1, 1), pDoesExplose));
+                        
+                        }
                     }
                 }
             }

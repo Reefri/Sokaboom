@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 // Author : Ethan Masse
 
@@ -45,8 +46,6 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             if (isLogin)
             {
-                isLogin = false;
-
                 font.Color = new Color(0, 0.85f, 0.97f);
                 buttonSwitch.SelfModulate = new Color(0, 0, 0.39f);
 
@@ -60,8 +59,6 @@ namespace Com.IsartDigital.Sokoban.UI
             }
             else
             {
-                isLogin = true;
-
                 font.Color = new Color(0, 0, 0.39f);
                 buttonSwitch.SelfModulate = new Color(0, 0.85f, 0.97f);
 
@@ -73,6 +70,8 @@ namespace Com.IsartDigital.Sokoban.UI
                 confirmPassword.Visible = false;
 
             }
+
+            isLogin = !isLogin;
 
             pseudo.Text = null;
             password.Text = null;
