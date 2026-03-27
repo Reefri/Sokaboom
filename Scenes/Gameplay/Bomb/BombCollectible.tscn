@@ -32,7 +32,7 @@ size = Vector2(64, 64)
 z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_73o2a")
-renderer = NodePath("Renderer/Hover")
+renderer = NodePath("Renderer")
 
 [node name="Renderer" type="Node2D" parent="."]
 texture_filter = 1
