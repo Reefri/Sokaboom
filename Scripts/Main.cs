@@ -15,6 +15,7 @@ namespace Com.IsartDigital.Sokoban
 
 		[Export] private bool testOnlyGameFeature = true;
 		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
+
         private Main():base() 
 		{
 			if (instance != null)
@@ -107,5 +108,86 @@ namespace Com.IsartDigital.Sokoban
             }
             GD.Print(lRes);
         }
+
+
+        public List<List<int>> RotateMatrix(List<List<int>> pMatrix, Vector2I pDirection)
+        {
+
+            List<List<int>> lDuplicatedMatrix = DuplicateListOfList(pMatrix);
+
+            if (pDirection == Vector2I.Up)
+            {
+                return lDuplicatedMatrix;
+
+            }
+
+            else if (pDirection == Vector2I.Down)
+            {
+                foreach (List<int> pRow in lDuplicatedMatrix)
+                {
+                    pRow.Reverse();
+                }
+                lDuplicatedMatrix.Reverse();
+
+                return lDuplicatedMatrix;
+            }
+
+
+            else if (pDirection == Vector2I.Right)
+            {
+                lDuplicatedMatrix.Reverse();
+
+                List<List<int>> lResMatrix = new List<List<int>>();
+
+                for (int i = 0; i < pMatrix[0].Count; i++)
+                {
+                    List<int> lCollumn = new List<int>();
+                    for (int j = 0; j < lDuplicatedMatrix.Count; j++)
+                    {
+                        lCollumn.Add(lDuplicatedMatrix[j][i]);
+
+                    }
+                    lResMatrix.Add(lCollumn);
+
+                }
+
+                return lResMatrix;
+
+            }
+
+            else if (pDirection == Vector2I.Left)
+            {
+
+                foreach (List<int> pRow in lDuplicatedMatrix)
+                {
+                    pRow.Reverse();
+                }
+
+                List<List<int>> lResMatrix = new List<List<int>>();
+
+
+                for (int i = 0; i < lDuplicatedMatrix[0].Count; i++)
+                {
+                    List<int> lCollumn = new List<int>();
+                    for (int j = 0; j < lDuplicatedMatrix.Count; j++)
+                    {
+                        lCollumn.Add(lDuplicatedMatrix[j][i]);
+
+                    }
+                    lResMatrix.Add(lCollumn);
+
+                }
+
+                return lResMatrix;
+
+            }
+
+            GD.Print("ha");
+
+            return lDuplicatedMatrix;
+
+        }
+
+
     }
 }

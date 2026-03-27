@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccg44x80d5k3e"]
 
-[ext_resource type="Script" path="res://Scripts/BombPattern.cs" id="1_mnai8"]
+[ext_resource type="Script" path="res://Scripts/BombExplosion.cs" id="1_mnai8"]
 
 [node name="BombPattern" type="Node2D"]
 script = ExtResource("1_mnai8")

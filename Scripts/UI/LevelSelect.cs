@@ -13,11 +13,14 @@ namespace Com.IsartDigital.UI {
 
         private bool buttonlock = true;
 
-        private int numberOfLevel = 3; //petite sécurité à enlever plus tard
+        public int numberOfLevel = 0; //petite sécurité à enlever plus tard
 
         public override void _Ready()
 		{
             base._Ready();
+
+            numberOfLevel = JsonReaderWriter.ReadJsonToList<Level>(GridManager.JSON_PATH).Count -1;
+
             int i = 0;
 
             foreach (Button lButtons in allButtons.GetChildren())

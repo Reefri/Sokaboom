@@ -14,7 +14,7 @@ namespace Com.IsartDigital.Sokoban
 			private set;
 		}
 
-		private const string JSON_PATH = "Levels.json";
+		public const string JSON_PATH = "Levels.json";
 
 		public int levelIndex = 0;
 

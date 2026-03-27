@@ -11,6 +11,14 @@ namespace Com.IsartDigital.Sokoban
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/JuicinessManager.tscn");
 
 		private PackedScene borderExplosion = GD.Load<PackedScene>("res://Scenes/Juiciness/BorderExplosion.tscn");
+		private Material bombShadow = (GD.Load<Material>("res://Ressources/Shaders/Materials/BombShadowShader.tres"));
+		private const string bombShadowSpeedParameter = "speed";
+
+
+        private float hoverAmplitude = 20;
+        private float hoverSpeed = 0.1f;
+
+        public float GlobalTime { private set; get; } = 0;
 
 		private JuicinessManager():base() 
 		{
@@ -32,12 +40,20 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			base._Ready();
+
+			HoverEffect.amplitude = hoverAmplitude;
+			HoverEffect.speed = hoverSpeed;
+
+			((ShaderMaterial)bombShadow).SetShaderParameter(bombShadowSpeedParameter, hoverSpeed);
+
 		}
 
 		public override void _Process(double pDelta)
 		{
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
+
+			GlobalTime += lDelta;
 		}
 
 		public void ExplodeAllBorders(Vector2 pBorderOriginPos)

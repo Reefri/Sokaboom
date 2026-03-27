@@ -14,3 +14,5 @@ shaker = NodePath("Shaker")
 
 [node name="Shaker" parent="." node_paths=PackedStringArray("_targets") instance=ExtResource("2_6hcpe")]
 _targets = [NodePath("..")]
+duration_ = 0.0
+_transition = 5
