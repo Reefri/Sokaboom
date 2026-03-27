@@ -268,6 +268,7 @@ namespace Com.IsartDigital.Sokoban
         public void UpdateCurrentPosition()
         {
             currentPosition.value = GetScreenshotGame().value;
+
         }
 
 
@@ -296,6 +297,7 @@ namespace Com.IsartDigital.Sokoban
 
             currentPosition = currentPosition.previousValue;
             ChargeMapFromCurrentLevel();
+
         }
 
         public void MoveForwardInTime()
@@ -310,6 +312,7 @@ namespace Com.IsartDigital.Sokoban
 
             currentPosition = currentPosition.nextValue;
             ChargeMapFromCurrentLevel();
+
         }
 
         private bool CheckWin()

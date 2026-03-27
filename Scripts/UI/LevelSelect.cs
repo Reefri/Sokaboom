@@ -13,7 +13,7 @@ namespace Com.IsartDigital.UI {
 
         private bool buttonlock = true;
 
-        private int numberOfLevel = 0; //petite sécurité à enlever plus tard
+        public int numberOfLevel = 0; //petite sécurité à enlever plus tard
 
         public override void _Ready()
 		{

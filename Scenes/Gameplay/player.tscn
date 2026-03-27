@@ -197,11 +197,12 @@ _data = {
 "movingUp": SubResource("Animation_gi0gj")
 }
 
-[node name="Player" type="Area2D" node_paths=PackedStringArray("animPlayer", "animatedSprite", "sprite")]
+[node name="Player2" type="Area2D" node_paths=PackedStringArray("animPlayer", "animatedSprite", "sprite", "bombPrevisualisationContainer")]
 script = ExtResource("1_26mxs")
 animPlayer = NodePath("AnimationPlayer")
 animatedSprite = NodePath("AnimatedSprite2D")
 sprite = NodePath("Sprite2D")
+bombPrevisualisationContainer = NodePath("BombPreviContainer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -220,3 +221,5 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="."]
 skew = 0.0174533
 texture = ExtResource("3_w8jsy")
+
+[node name="BombPreviContainer" type="Node2D" parent="."]
