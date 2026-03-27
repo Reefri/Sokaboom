@@ -31,7 +31,7 @@ namespace Com.IsartDigital.Sokoban
 
             Node2D lNode = new Node2D();
 
-            previsualisationOriginPos = (new BombPatterne(lNode, false, bomb.explosionMatrix)).originePos;
+            previsualisationOriginPos = (new BombPattern(lNode, false, bomb.explosionMatrix, default, default, true)).originePos;
 
             lNode.Scale = Vector2.One * 0.3f;
             renderer.AddChild(lNode);

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ql7xil2wq2gx"]
+[gd_scene load_steps=3 format=3 uid="uid://ql7xil2wq2gx"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/UIManager.cs" id="1_dclrg"]
+[ext_resource type="PackedScene" uid="uid://d13ypbegopc8c" path="res://Scenes/UI/IsartLogo.tscn" id="2_4hy63"]
 
 [node name="UiManager" type="Control"]
 layout_mode = 3
@@ -11,3 +12,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_dclrg")
+
+[node name="IsartLogo" parent="." instance=ExtResource("2_4hy63")]
