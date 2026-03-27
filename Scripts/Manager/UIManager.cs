@@ -12,6 +12,7 @@ namespace Com.IsartDigital.Sokoban
 		static private UIManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/UIManager.tscn");
 
+        private IsartLogo uiScreenSplash = (IsartLogo)GD.Load<PackedScene>("res://Scenes/UI/IsartLogo.tscn").Instantiate();
         private LoginUI uiLogin = (LoginUI)GD.Load<PackedScene>("res://Scenes/UI/Login.tscn").Instantiate();
         private TitleCard uiTitle = (TitleCard)GD.Load<PackedScene>("res://Scenes/UI/TitleCard.tscn").Instantiate();
         private HelpMenu uiHelp = (HelpMenu)GD.Load<PackedScene>("res://Scenes/UI/HelpMenu.tscn").Instantiate();
@@ -46,17 +47,25 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-			if (!noLogin) AddChild(uiLogin);
-			else
-			{
-				AccountManager.GetInstance().TestConnexion("Guest", "");
-				AddChild(uiTitle);
-			}
+			AddChild(uiScreenSplash);
+        	//A mettre dans le splash I guess ?
+        	//if (!noLogin) AddChild(uiLogin);
+			//else
+			//{
+			//	AccountManager.GetInstance().TestConnexion("Guest", "");
+			//	AddChild(uiTitle);
+			//}
         }
 
 		public void UpdateHud()
 		{
 			uiHUD.steps.Text = "Steps : " + GameManager.GetInstance().CurrentPar;
+        }
+
+        public void GoToLogin()
+        {
+            RemoveChild(GetChild(0));
+            AddChild(uiLogin);
         }
 
         public void GoToTitle()
@@ -79,13 +88,9 @@ namespace Com.IsartDigital.Sokoban
 
 		public void GoToLevel(int pIndex)
 		{
-
-			if (pIndex > GridManager.GetInstance().numberOfLevel) { GoToLevelSelect(); return; }
-
+			if (pIndex > uiLevelSelect.numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
 
             RemoveChild(GetChild(0));
-
-			
 
 			levelIndex = pIndex;
 			Main.GetInstance().AddChild(GameManager.GetInstance());
@@ -102,7 +107,6 @@ namespace Com.IsartDigital.Sokoban
 		{
             RemoveChild(GetChild(0));
 			GameManager.GetInstance().QueueFree();
-
             
             AddChild(uiWin);
             foreach (AnimatedSprite2D lStars in uiWin.stars.GetChildren()) lStars.Frame = 0;

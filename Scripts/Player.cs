@@ -35,12 +35,12 @@ namespace Com.IsartDigital.Sokoban
         private const string PLAYER_MOVING_RIGHT = "movingRight";
         private const string ANIM_PLAYER = "Anim";
 
-
-
         public List<Vector2I> path = new List<Vector2I>();
 
         public Vector2I lastDirection;
         public bool hasBoxToPush;
+
+        public bool canInput = true;
 
         public Timer pathFindingTimer = new Timer();
 
@@ -229,8 +229,10 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Input(InputEvent pEvent)
         {
+            if (!canInput) return;
+            
 
-            if (Box.animPlaying || animPlayer.IsPlaying() || path.Count != 0  || hasBoxToPush) { return; }
+            if (Box.animPlaying || animPlayer.IsPlaying() || path.Count != 0 || hasBoxToPush) { return; }
 
             foreach (string lActionName in nameOfVector.Keys)
             {
@@ -266,6 +268,7 @@ namespace Com.IsartDigital.Sokoban
                     }
                 }
             }
+            
 
         }
 
