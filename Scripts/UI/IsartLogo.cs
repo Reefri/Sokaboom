@@ -44,9 +44,13 @@ namespace Com.IsartDigital.Sokoban
             if (time >= tweenDuration * 2 + 0.25f || Input.IsActionJustReleased("leftClick"))
             {
                 if (!Main.GetInstance().noLogin) UIManager.GetInstance().GoToLogin();
-                else UIManager.GetInstance().GoToTitle();
+                else
+                {
+                    AccountManager.GetInstance().TestConnexion("Guest", "");
+                    UIManager.GetInstance().GoToTitle();
+                }
 
-                QueueFree();
+              
             }
         }
     }

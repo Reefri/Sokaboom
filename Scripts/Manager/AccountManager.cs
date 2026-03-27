@@ -120,8 +120,12 @@ namespace Com.IsartDigital.Sokoban
 		public void NewWin(int pScore, int pPar)
 		{
 
-            currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] = pScore;
-            currentAccount.BestPar[GridManager.GetInstance().CurrentLevelIndex] = pPar;
+			if (currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] < pScore)
+			{
+				currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] = pScore;
+				currentAccount.BestPar[GridManager.GetInstance().CurrentLevelIndex] = pPar;
+			}
+
             currentAccount.LockedLevels[
 				Mathf.Clamp(GridManager.GetInstance().CurrentLevelIndex + 1,0,GridManager.GetInstance().numberOfLevel-1)
 				] = true;

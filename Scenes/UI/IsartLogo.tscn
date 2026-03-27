@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bucgyg5xbc2fg"]
+[gd_scene load_steps=4 format=3 uid="uid://swsgrdvosc8p"]
 
 [ext_resource type="Script" path="res://Scripts/UI/IsartLogo.cs" id="1_mj8ah"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/SceneTransition.tscn" id="2_v5ypg"]

@@ -48,13 +48,7 @@ namespace Com.IsartDigital.Sokoban
 			base._Ready();
 
 			AddChild(uiScreenSplash);
-        	//A mettre dans le splash I guess ?
-        	//if (!noLogin) AddChild(uiLogin);
-			//else
-			//{
-			//	AccountManager.GetInstance().TestConnexion("Guest", "");
-			//	AddChild(uiTitle);
-			//}
+        	
         }
 
 		public void UpdateHud()
@@ -88,7 +82,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public void GoToLevel(int pIndex)
 		{
-			if (pIndex > uiLevelSelect.numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
+			if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
 
             RemoveChild(GetChild(0));
 
