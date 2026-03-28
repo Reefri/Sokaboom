@@ -279,13 +279,19 @@ namespace Com.IsartDigital.Sokoban
 
             CurrentPar++;
             SaveScreenshotGame();
+
+            CheckAndDoWin();
+
+        }
+
+
+        public void CheckAndDoWin()
+        {
             if (CheckWin())
             {
                 UIManager.GetInstance().GoToWin();
             }
-
         }
-
 
         public void UpdateCurrentPosition()
         {
