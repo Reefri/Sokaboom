@@ -18,6 +18,7 @@ namespace Com.IsartDigital.UI {
 		{
             base._Ready();
 
+            GD.Print("a");
 
             int i = 0;
 
@@ -32,7 +33,20 @@ namespace Com.IsartDigital.UI {
                 lButtons.Pressed += () => GoToLevel(lLevelID);
                 i++;
             }
+
+            TreeEntered += UpdateLevelSelect;
         }
+
+        
+        private void UpdateLevelSelect()
+        {
+            foreach (Button lButton in allButtons.GetChildren())
+            {
+                if (lButton.GetIndex() >= GridManager.GetInstance().numberOfLevel) lButton.Disabled = true; //faire en sorte que personne n'essaye d'aller dans les niveau pas créé)
+                else if (lButton.GetIndex() != 0) lButton.Disabled = buttonlock && !AccountManager.GetInstance().currentAccount.LockedLevels[lButton.GetIndex()];
+            }
+        }
+
 
         private void GoToLevel(int pIndex)
         {
@@ -49,11 +63,7 @@ namespace Com.IsartDigital.UI {
         {
             buttonlock = !buttonlock;
 
-            foreach (Button lButton in allButtons.GetChildren())
-			{
-                if (lButton.GetIndex() >= GridManager.GetInstance().numberOfLevel) lButton.Disabled = true; //faire en sorte que personne n'essaye d'aller dans les niveau pas créé)
-                else if (lButton.GetIndex() != 0) lButton.Disabled = AccountManager.GetInstance().currentAccount.LockedLevels[lButton.GetIndex()];
-            }
+            UpdateLevelSelect();
         }
 
         private void GoToHelp()
