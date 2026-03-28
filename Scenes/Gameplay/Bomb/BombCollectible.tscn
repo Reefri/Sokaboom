@@ -28,11 +28,11 @@ shader_parameter/chromaEffect = null
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ets"]
 size = Vector2(64, 64)
 
-[node name="BombCollectible" type="Area2D" node_paths=PackedStringArray("renderer")]
+[node name="BombCollectible" type="Area2D" node_paths=PackedStringArray("hoverRenderer")]
 z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_73o2a")
-renderer = NodePath("Renderer")
+hoverRenderer = NodePath("Renderer/Hover")
 
 [node name="Renderer" type="Node2D" parent="."]
 texture_filter = 1

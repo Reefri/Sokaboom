@@ -27,6 +27,7 @@ namespace Com.IsartDigital.UI {
 
                 if (GridManager.GetInstance().numberOfLevel == i) break;
 
+
                 lButtons.Disabled = !AccountManager.GetInstance().currentAccount.LockedLevels[i];
                 lButtons.Pressed += () => GoToLevel(lLevelID);
                 i++;
@@ -50,8 +51,8 @@ namespace Com.IsartDigital.UI {
 
             foreach (Button lButton in allButtons.GetChildren())
 			{
-                if (lButton.GetIndex() > GridManager.GetInstance().numberOfLevel) lButton.Disabled = true; //faire en sorte que personne n'essaye d'aller dans les niveau pas créé)
-                else if (lButton.GetIndex() > 0) lButton.Disabled = AccountManager.GetInstance().currentAccount.LockedLevels[lButton.GetIndex()];
+                if (lButton.GetIndex() >= GridManager.GetInstance().numberOfLevel) lButton.Disabled = true; //faire en sorte que personne n'essaye d'aller dans les niveau pas créé)
+                else if (lButton.GetIndex() != 0) lButton.Disabled = AccountManager.GetInstance().currentAccount.LockedLevels[lButton.GetIndex()];
             }
         }
 

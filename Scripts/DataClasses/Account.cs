@@ -1,3 +1,4 @@
+using Godot;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -72,16 +73,20 @@ namespace Com.IsartDigital.Sokoban
 
 		public void Update()
 		{
-			if (LockedLevels.Count != GridManager.GetInstance().numberOfLevel)
+
+            if (LockedLevels.Count != GridManager.GetInstance().numberOfLevel)
 			{
                 Score = new List<int>(new int[GridManager.GetInstance().numberOfLevel]);
                 BestPar = new List<int>(new int[GridManager.GetInstance().numberOfLevel]);
                 LockedLevels = new List<bool>(new bool[GridManager.GetInstance().numberOfLevel]);
                 LockedLevels[0] = true;
-            }
-		}
+                AccountManager.GetInstance().UpdateAccount();
 
-		public float FinalScore()
+            }
+
+        }
+
+        public float FinalScore()
 		{
 			return Score.Sum();
 		}

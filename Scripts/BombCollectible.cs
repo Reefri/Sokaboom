@@ -7,7 +7,7 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class BombCollectible : Area2D
 	{
-        [Export] Node2D renderer;
+        [Export] Node2D hoverRenderer;
 
 		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
@@ -34,8 +34,8 @@ namespace Com.IsartDigital.Sokoban
             previsualisationOriginPos = (new BombPattern(lNode, false, bomb.explosionMatrix, default, default, true)).originePos;
 
             lNode.Scale = Vector2.One * 0.3f;
-            renderer.AddChild(lNode);
-            lNode.GlobalPosition = renderer.GlobalPosition + rightCornerOfCollectible;
+            hoverRenderer.AddChild(lNode);
+            lNode.GlobalPosition = hoverRenderer.GlobalPosition + rightCornerOfCollectible;
 
 
 
