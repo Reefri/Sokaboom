@@ -18,8 +18,6 @@ namespace Com.IsartDigital.UI {
 		{
             base._Ready();
 
-            GD.Print("a");
-
             int i = 0;
 
             foreach (Button lButtons in allButtons.GetChildren())
