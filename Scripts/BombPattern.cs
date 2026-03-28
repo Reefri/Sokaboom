@@ -1,202 +1,70 @@
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
 
-// Author : Ethan Frenard
+// Author : Sacha Gramatikoff
 
-namespace Com.IsartDigital.Sokoban {
-	public partial class BombPattern : Node2D
+namespace Com.IsartDigital.Sokoban 
+{
+	public partial class BombPattern
 	{
-        [Export] private float timeUntilFade = 0.2f;
-		private float time = 0;
 
-		private const string TO_PLACE_ON_EXPLOSION_PATH = "res://Scenes/ToPlaceOnExplosions.tscn";
-        private static PackedScene toPlaceOnExplosion = GD.Load<PackedScene>(TO_PLACE_ON_EXPLOSION_PATH);
 
-        private const string BOMB_PATTERN_PATH = "res://Scenes/BombPattern.tscn";
-        private static PackedScene pattern = GD.Load<PackedScene>(BOMB_PATTERN_PATH);
+        public Vector2I originePos;
 
-		private Vector2I originPos;
-        protected Vector2I posInGrid;
 
-		public List<List<int>> explosionMatrix;
-
-        public override void _Ready()
+        public BombPattern(Node2D pParent, bool pDoesExplose, List<List<int>> pExplosionMatrix, bool pUseParentPosition = true, Vector2? pOffSet = null, bool pIsCollectiblePattern = false) 
 		{
-            for (int i = 0; i < explosionMatrix.Count; i++)
+
+            originePos = Vector2I.Zero;
+
+            for (int i = 0; i < pExplosionMatrix.Count; i++)
             {
-                for (int j = 0; j < explosionMatrix[i].Count; j++)
+                for (int j = 0; j < pExplosionMatrix[i].Count; j++)
                 {
-                    if (explosionMatrix[i][j] == 2)
+                    if (pExplosionMatrix[i][j] == 2)
                     {
-                        originPos = new Vector2I(j, i);
-                        AddChild(ToPlaceOnExplosion.Create(GlobalPosition, new Color(1, 0, 0)));
-                    }
-                }
-            }
-
-            for (int i = 0; i < explosionMatrix.Count; i++)
-			{
-				for (int j = 0; j < explosionMatrix[i].Count; j++)
-				{
-
-					if (explosionMatrix[i][j] == 1)
-					{
-                        Vector2 lPosition = GlobalPosition + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
-                        AddChild(ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1)));
-
-                        //positions differentes de celles de la grille ??
-                    }
-                }
-			}
-           
-            for (int i = 0; i < explosionMatrix.Count; i++)
-            {
-                for (int j = 0; j < explosionMatrix[i].Count; j++)
-                {
-                    if (explosionMatrix[i][j] != 0)
-                    {
-
-                        TileMap lTileMap = GameManager.GetInstance().tileMap;
-
-                        TileData lCurrentTileData = lTileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
-
-                        if ( lCurrentTileData != null && 
-                            (bool)lCurrentTileData.GetCustomData(Map.INTERACTABLE))
+                        if (!pIsCollectiblePattern)
                         {
-
-                            if ((bool)lCurrentTileData.GetCustomData(Map.BORDER))
-                            {
-                                GD.Print("GameOver");
-                                //Put Game Over screen here
-                            }
-                            else
-                            {
-                                if ((bool)lCurrentTileData.GetCustomData(Map.CONTAINER))
-                                {
-                                    FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos+Vector2.One/2) *States.DISTANCE_RANGE,GameManager.GetInstance());
-                                }
-								GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
-                            }
-                                
+                            originePos = new Vector2I(j, i);
+                            pParent.CallDeferred("add_child", ToPlaceOnExplosion.Create((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1, 0, 0), pDoesExplose));
                         }
-
-                        if (lTileMap.GetCellTileData((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos) != null)
+                        else
                         {
-                            lTileMap.SetCell((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos, -1);
-                            GD.Print("tu viens de détruire une cible !");
+                            originePos = new Vector2I(j, i);
+                            pParent.CallDeferred("add_child", BombCollectiblePattern.Create((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1, 0, 0), pDoesExplose));
+
                         }
                     }
                 }
             }
 
-            GameManager.GetInstance().UpdateCurrentPosition();
-        }
-
-        public override void _Process(double pDelta)
-		{
-			float lDelta = (float)pDelta;
-
-            time += lDelta;
-            if(time >= timeUntilFade)
+            for (int i = 0; i < pExplosionMatrix.Count; i++)
             {
-                QueueFree();
-            }
-		}
-
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
-
-        private void ChainReaction(Node2D pExplosion)
-        {
-            
-        }
-
-        private void RotateMatrix(BombPattern pBombPattern, List<List<int>> pExplosionMatrix, Vector2I pRotationVector)
-        {
-
-            if (pRotationVector == Vector2I.Up)
-            {
-                pBombPattern.explosionMatrix = pExplosionMatrix;
-
-            }
-
-            else if (pRotationVector == Vector2I.Down)
-            {
-                foreach(List<int> pRow in pExplosionMatrix)
+                for (int j = 0; j < pExplosionMatrix[i].Count; j++)
                 {
-                    pRow.Reverse();
-                }
-                pExplosionMatrix.Reverse();
 
-                pBombPattern.explosionMatrix = pExplosionMatrix;
-
-            }
-
-            else if (pRotationVector == Vector2I.Right)
-            {
-                pExplosionMatrix.Reverse();
-                List<List<int>> lRotatedMatrix = new List<List<int>>();
-
-                for (int i = 0; i < pExplosionMatrix[0].Count; i++)
-                {
-                    List<int> lCollumn = new List<int>();
-                    for (int j = 0; j < pExplosionMatrix.Count; j++)
+                    if (pExplosionMatrix[i][j] == 1)
                     {
-                        lCollumn.Add(pExplosionMatrix[j][i]);
+                        if (!pIsCollectiblePattern)
+                        {
 
+                            Vector2 lPosition = (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE;
+                            pParent.CallDeferred("add_child", ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), pDoesExplose));
+                        }
+                        else
+                        {
+                            Vector2 lPosition = (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE;
+                            pParent.CallDeferred("add_child", BombCollectiblePattern.Create(lPosition, new Color(1, 1, 1), pDoesExplose));
+                        
+                        }
                     }
-                    lRotatedMatrix.Add(lCollumn);
-
                 }
-
-                pBombPattern.explosionMatrix = lRotatedMatrix;
-
-            }
-
-            else if (pRotationVector == Vector2I.Left)
-            {
-
-                foreach (List<int> pRow in pExplosionMatrix)
-                {
-                    pRow.Reverse();
-                }
-
-                List<List<int>> lRotatedMatrix = new List<List<int>>();
-
-
-                for (int i = 0; i < pExplosionMatrix[0].Count; i++)
-                {
-                    List<int> lCollumn = new List<int>();
-                    for (int j = 0; j < pExplosionMatrix.Count; j++)
-                    {
-                        lCollumn.Add(pExplosionMatrix[j][i]);
-
-                    }
-                    lRotatedMatrix.Add(lCollumn);
-
-                }
-
-                pBombPattern.explosionMatrix = lRotatedMatrix;
-
             }
         }
 
-		public static void Create(List<List<int>> pExplosionMatrix,Vector2I pPosition, Vector2I pRotationVector)
-		{
-			BombPattern lBombPattern = new BombPattern();
+        
 
-            lBombPattern.RotateMatrix(lBombPattern, Main.GetInstance().DuplicateListOfList(pExplosionMatrix), pRotationVector);
 
-            lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2; // pourquoi distance/2 ??
-            lBombPattern.posInGrid = pPosition;
 
-			Main.GetInstance().CallDeferred("add_child", lBombPattern);
-
-		}
 	}
 }

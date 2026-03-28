@@ -1,7 +1,9 @@
+using Com.IsartDigital.Utils.Effects;
 using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 // Author : Sacha Gramatikoff
 
@@ -11,10 +13,12 @@ namespace Com.IsartDigital.Sokoban
     {
         [Export] public Node2D bombCollectibleContainer;
 
-        static private GameManager instance;
-        static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/GameManager.tscn");
+        [Export] public Shaker shaker;
 
-        private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/BombCollectible.tscn");
+        static private GameManager instance;
+        static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/GameManager.tscn");
+
+        private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
 
 
         public Level currentLevel;
@@ -75,6 +79,10 @@ namespace Com.IsartDigital.Sokoban
         {
             GridManager.GetInstance().ChangeLevel(UIManager.GetInstance().levelIndex);
             currentLevel = GridManager.GetInstance().CurrentLevel;
+
+            UIManager.GetInstance().uiHUD.ResetHUD();
+
+
             currentPosition = new HistoricHeap(currentLevel);
 
             tileMap = Map.Create();
@@ -112,7 +120,7 @@ namespace Com.IsartDigital.Sokoban
            
         
 
-        private void ChargeMapFromCurrentLevel()
+        public void ChargeMapFromCurrentLevel()
         {
             tileMap.Clear();
 
@@ -252,7 +260,7 @@ namespace Com.IsartDigital.Sokoban
             SaveScreenshotGame();
             if (CheckWin())
             {
-                GD.Print("You won !");
+                UIManager.GetInstance().GoToWin();
             }
 
         }
@@ -261,6 +269,7 @@ namespace Com.IsartDigital.Sokoban
         public void UpdateCurrentPosition()
         {
             currentPosition.value = GetScreenshotGame().value;
+
         }
 
 
@@ -278,6 +287,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void MoveBackInTime()
         {
+            Player.GetInstance().canInput = true;
+
             if (currentPosition.previousValue == null)
             {
                 GD.Print("Can't go back in time.");
@@ -289,6 +300,7 @@ namespace Com.IsartDigital.Sokoban
 
             currentPosition = currentPosition.previousValue;
             ChargeMapFromCurrentLevel();
+
         }
 
         public void MoveForwardInTime()
@@ -303,6 +315,7 @@ namespace Com.IsartDigital.Sokoban
 
             currentPosition = currentPosition.nextValue;
             ChargeMapFromCurrentLevel();
+
         }
 
         private bool CheckWin()

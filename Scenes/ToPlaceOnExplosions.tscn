@@ -1,37 +1,69 @@
-[gd_scene load_steps=7 format=3 uid="uid://0o6ll15fwr2m"]
+[gd_scene load_steps=10 format=3 uid="uid://0o6ll15fwr2m"]
 
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="1_aheke"]
 [ext_resource type="Script" path="res://Scripts/ToPlaceOnExplosion.cs" id="1_cg1r1"]
 
-[sub_resource type="Gradient" id="Gradient_fyvn8"]
-offsets = PackedFloat32Array(0, 0.533101, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_r6owl"]
+offsets = PackedFloat32Array(0, 0.247387, 0.620209, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.458824, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_22866"]
-gradient = SubResource("Gradient_fyvn8")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lmqsp"]
+gradient = SubResource("Gradient_r6owl")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rf1ko"]
+[sub_resource type="Curve" id="Curve_ejvs1"]
+_data = [Vector2(0, 0.975564), 0.0, 0.0, 0, 0, Vector2(0.755952, 0.812657), -1.64211, -1.64211, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d6tf5"]
+curve = SubResource("Curve_ejvs1")
+
+[sub_resource type="Curve" id="Curve_uocvk"]
+max_value = 3.0
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(0.00892857, 3), 0.0, 0.0, 0, 0, Vector2(0.157738, 3), 0.0, 0.0, 0, 0, Vector2(0.699405, 3), 0.0, 0.0, 0, 0, Vector2(0.785714, 3), 0.0, 0.0, 0, 0, Vector2(1, 3), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_o1xml"]
+curve = SubResource("Curve_uocvk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x5ops"]
+lifetime_randomness = 0.5
 particle_flag_disable_z = true
-radial_velocity_min = 32.0
-radial_velocity_max = 32.0
+angle_min = 360.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 7.01
+initial_velocity_max = 54.38
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = -0.532
+orbit_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_22866")
+linear_accel_min = -44.21
+linear_accel_max = -24.21
+radial_accel_min = 33.68
+radial_accel_max = 61.05
+scale_curve = SubResource("CurveTexture_d6tf5")
+scale_over_velocity_curve = SubResource("CurveTexture_o1xml")
+color_ramp = SubResource("GradientTexture1D_lmqsp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v35m6"]
 size = Vector2(36, 34)
 
-[node name="ToPlaceOnExplosions" type="Area2D" node_paths=PackedStringArray("collisionShape")]
+[node name="ToPlaceOnExplosions" type="Area2D" node_paths=PackedStringArray("collisionShape", "particles")]
 script = ExtResource("1_cg1r1")
 collisionShape = NodePath("CollisionShape2D")
+particles = NodePath("particles")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.499)
-texture = ExtResource("1_aheke")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 250
-process_material = SubResource("ParticleProcessMaterial_rf1ko")
+[node name="particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 500
+amount_ratio = 0.2233
+process_material = SubResource("ParticleProcessMaterial_x5ops")
+lifetime = 1.5
+one_shot = true
 explosiveness = 1.0
+local_coords = true
+trail_lifetime = 1.0
+trail_section_subdivisions = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v35m6")

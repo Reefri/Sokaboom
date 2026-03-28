@@ -1,3 +1,4 @@
+using Com.IsartDigital.Utils.Effects;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,10 @@ namespace Com.IsartDigital.Sokoban
 		static private Main instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Main.tscn");
 
-		[Export] private bool testOnlyGameFeature = true;
+		[Export] public bool testOnlyGameFeature = true;
 		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
+
+        [Export] public bool noLogin = true;
 
         private Main():base() 
 		{
@@ -41,12 +44,7 @@ namespace Com.IsartDigital.Sokoban
 			//Bomb bomb = GridManager.GetInstance().CurrentLevel.bombs[0];
 			//bomb.Explode(new Vector2I(3, 3));
 
-			if (testOnlyGameFeature)
-			{
-                UIManager.GetInstance().levelIndex = levelAtTest;
-                AddChild(GameManager.GetInstance());
-                RemoveChild(UIManager.GetInstance());
-            }
+			if (testOnlyGameFeature) UIManager.GetInstance().GoToLevel(levelAtTest);
         }
 
 		protected override void Dispose(bool pDisposing)
@@ -107,5 +105,86 @@ namespace Com.IsartDigital.Sokoban
             }
             GD.Print(lRes);
         }
+
+
+        public List<List<int>> RotateMatrix(List<List<int>> pMatrix, Vector2I pDirection)
+        {
+
+            List<List<int>> lDuplicatedMatrix = DuplicateListOfList(pMatrix);
+
+            if (pDirection == Vector2I.Up)
+            {
+                return lDuplicatedMatrix;
+
+            }
+
+            else if (pDirection == Vector2I.Down)
+            {
+                foreach (List<int> pRow in lDuplicatedMatrix)
+                {
+                    pRow.Reverse();
+                }
+                lDuplicatedMatrix.Reverse();
+
+                return lDuplicatedMatrix;
+            }
+
+
+            else if (pDirection == Vector2I.Right)
+            {
+                lDuplicatedMatrix.Reverse();
+
+                List<List<int>> lResMatrix = new List<List<int>>();
+
+                for (int i = 0; i < pMatrix[0].Count; i++)
+                {
+                    List<int> lCollumn = new List<int>();
+                    for (int j = 0; j < lDuplicatedMatrix.Count; j++)
+                    {
+                        lCollumn.Add(lDuplicatedMatrix[j][i]);
+
+                    }
+                    lResMatrix.Add(lCollumn);
+
+                }
+
+                return lResMatrix;
+
+            }
+
+            else if (pDirection == Vector2I.Left)
+            {
+
+                foreach (List<int> pRow in lDuplicatedMatrix)
+                {
+                    pRow.Reverse();
+                }
+
+                List<List<int>> lResMatrix = new List<List<int>>();
+
+
+                for (int i = 0; i < lDuplicatedMatrix[0].Count; i++)
+                {
+                    List<int> lCollumn = new List<int>();
+                    for (int j = 0; j < lDuplicatedMatrix.Count; j++)
+                    {
+                        lCollumn.Add(lDuplicatedMatrix[j][i]);
+
+                    }
+                    lResMatrix.Add(lCollumn);
+
+                }
+
+                return lResMatrix;
+
+            }
+
+            GD.Print("ha");
+
+            return lDuplicatedMatrix;
+
+        }
+
+
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://damd4cgjs6b0k"]
+[gd_scene load_steps=22 format=3 uid="uid://cfsfocpt14opv"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_26mxs"]
 [ext_resource type="Texture2D" uid="uid://cxs8qynk7bxqu" path="res://Assets/Player.png" id="2_mv7ro"]
@@ -189,7 +189,7 @@ sprite = NodePath("Sprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yhy0t")
-animation = &"Idle"
+animation = &"movingDownAnim"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y8mmc")

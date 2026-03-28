@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8t1by23fiuf1"]
+[gd_scene load_steps=5 format=3 uid="uid://b8t1by23fiuf1"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_4l0qp"]
-[ext_resource type="PackedScene" uid="uid://ql7xil2wq2gx" path="res://Scenes/UIManager.tscn" id="3_70v4f"]
+[ext_resource type="PackedScene" uid="uid://ql7xil2wq2gx" path="res://Scenes/Manager/UIManager.tscn" id="3_70v4f"]
+[ext_resource type="PackedScene" uid="uid://ch5qxtjmo6hf1" path="res://Scenes/Manager/CameraManager.tscn" id="3_wl630"]
+[ext_resource type="PackedScene" uid="uid://ckb0d6582p3ei" path="res://Scenes/Manager/JuicinessManager.tscn" id="4_ajjv2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4l0qp")
 testOnlyGameFeature = false
+levelAtTest = 4
 
-[node name="UiManager" parent="." instance=ExtResource("3_70v4f")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 1
-grow_vertical = 1
-mouse_filter = 2
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UiManager" parent="CanvasLayer" instance=ExtResource("3_70v4f")]
+
+[node name="CameraManager" parent="." instance=ExtResource("3_wl630")]
+
+[node name="JuicinessManger" parent="." instance=ExtResource("4_ajjv2")]

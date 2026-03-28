@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl27n3huysagp"]
+
+[ext_resource type="Script" path="res://Scripts/Manager/GameManager.cs" id="1_1plec"]
+[ext_resource type="PackedScene" uid="uid://didk87ft1qbgu" path="res://Scripts/Utils/Effects/shaker.tscn" id="2_6hcpe"]
+
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("bombCollectibleContainer", "shaker")]
+script = ExtResource("1_1plec")
+bombCollectibleContainer = NodePath("BombCollectibleContainer")
+shaker = NodePath("Shaker")
+
+[node name="BombCollectibleContainer" type="Node2D" parent="."]
+
+[node name="FireworkContainer" type="Node2D" parent="."]
+
+[node name="Shaker" parent="." node_paths=PackedStringArray("_targets") instance=ExtResource("2_6hcpe")]
+_targets = [NodePath("..")]
+duration_ = 0.0
+_transition = 5

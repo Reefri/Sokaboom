@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://d2kb1erim2tp8"]
+
+[ext_resource type="Texture2D" uid="uid://bpduhlew7eg6s" path="res://Assets/Stars/Star vide.png" id="1_gnh56"]
+[ext_resource type="Texture2D" uid="uid://cmayr4j2w68ws" path="res://Assets/Stars/Star.png" id="2_5tlda"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gnh56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5tlda")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]

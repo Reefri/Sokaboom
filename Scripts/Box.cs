@@ -12,7 +12,7 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private AnimationPlayer anim;
 		[Export] private GpuParticles2D moveDust;
 
-		private static PackedScene packedBox = (PackedScene)ResourceLoader.Load("res://Scenes/Box.tscn");
+		private static PackedScene packedBox = (PackedScene)ResourceLoader.Load("res://Scenes/Gameplay/Box.tscn");
 
 		private const string GO_UP_ANIM = "goUp";
 		private const string GO_DOWN_ANIM = "goDown";
@@ -22,6 +22,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public static bool animPlaying = false;
 		private static string animToPlay;
+		public static bool hasABoxToCheck = false;
 
 		public override void _Ready()
 		{
@@ -43,31 +44,35 @@ namespace Com.IsartDigital.Sokoban
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
 		{
-			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null )
+			hasABoxToCheck = false;
+			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null)
 			{
-				GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pCellPosition);
-
-                Create(pCellPosition , pDirection);
-                return false;
+				//Not the origin of the ghost box problem
+				hasABoxToCheck = true;
+                return true;
 			}
 
 			
 			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.CONTAINER) ||
-				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.WALL) )
+				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.WALL)
+                || (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.BORDER))
 			{
-				return true;
+				return false;
 			}
+
 			else
 			{
                 GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pCellPosition);
-                Create(pCellPosition, pDirection);
-                return false;
+				//A box will be instantiated in this situation
+				hasABoxToCheck = true;
+                return true;
 			}
 		}
 
 		public static Box Create(Vector2I pPosition, Vector2I pDirection)
 		{
-			Box lBox = (Box)packedBox.Instantiate();
+            GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pPosition);
+            Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
             lBox.GlobalPosition = (pPosition + Vector2.One/2) * (States.DISTANCE_RANGE);
 			GameManager.GetInstance().tileMap.AddChild(lBox);

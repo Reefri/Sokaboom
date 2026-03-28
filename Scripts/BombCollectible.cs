@@ -1,37 +1,50 @@
 using Godot;
 using System.Collections.Generic;
 
-// Author : Ethan FRENARD
+// Author : Ethan Frenard
 
 namespace Com.IsartDigital.Sokoban 
 {
 	public partial class BombCollectible : Area2D
 	{
+        [Export] Node2D hoverRenderer;
 
-		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/BombCollectible.tscn";
+		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
+        private PrevisualisationBomb previsualisationBomb = (PrevisualisationBomb)GD.Load<PackedScene>("res://Scenes/UI/PrevisualisationBomb.tscn").Instantiate();
+
         public Bomb bomb;
 
-        private Timer timerBeforePrevisualisation = new Timer();
-        private int timeBeforeVisualisation = 1;
-
-
+        private Vector2 previsualisationOriginPos;
+        private Vector2 rightCornerOfCollectible = new Vector2(25, -25);
+        private float previsualisationScale = 0.3f;
+        private float downFactor = 10;
+        private float sideFactor = 0;
+        private bool OriginOnTop;
         public override void _Ready()
 		{
-			AreaEntered += BombCollectibleAreaEntered;
+
+
+            previsualisationBomb.explosionMatrix = bomb.explosionMatrix;
+
+            Node2D lNode = new Node2D();
+
+            previsualisationOriginPos = (new BombPattern(lNode, false, bomb.explosionMatrix, default, default, true)).originePos;
+
+            lNode.Scale = Vector2.One * 0.3f;
+            hoverRenderer.AddChild(lNode);
+            lNode.GlobalPosition = hoverRenderer.GlobalPosition + rightCornerOfCollectible;
+
+
+
+            AreaEntered += BombCollectibleAreaEntered;
 
 
             InputPickable = true;
             MouseEntered += InBomb;
             MouseExited += OutBomb;
-            
-
-            timerBeforePrevisualisation.WaitTime = timeBeforeVisualisation;
-            timerBeforePrevisualisation.Timeout += () => PrevisualisationBomb.CreateInstance(bomb.explosionMatrix);
-            timerBeforePrevisualisation.OneShot = true;
-            AddChild(timerBeforePrevisualisation);
         }
 
         private void BombCollectibleAreaEntered(Area2D pArea)
@@ -53,13 +66,11 @@ namespace Com.IsartDigital.Sokoban
 
         private void InBomb()
         {
-            timerBeforePrevisualisation.Start();
+            UIManager.GetInstance().AddChild(previsualisationBomb);
         }
         private void OutBomb()
         {
-
-            if (!timerBeforePrevisualisation.IsStopped()) timerBeforePrevisualisation.Stop();
-            if (PrevisualisationBomb.instance != null) PrevisualisationBomb.GetInstance().QueueFree();
+            UIManager.GetInstance().RemoveChild(previsualisationBomb);
         }
 
         public static void Create(Bomb pBomb, Vector2I pPosition, int pIndex)
@@ -73,7 +84,7 @@ namespace Com.IsartDigital.Sokoban
 		}
 		protected override void Dispose(bool pDisposing)
 		{
-            if (PrevisualisationBomb.instance != null && PrevisualisationBomb.GetInstance().explosionMatrix == bomb.explosionMatrix) PrevisualisationBomb.GetInstance().QueueFree();
+            previsualisationBomb.QueueFree();
         }
 	}
 }

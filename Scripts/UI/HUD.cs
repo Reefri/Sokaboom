@@ -10,30 +10,35 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private Button buttonRedo;
         [Export] private Label par;
         [Export] public Label steps;
+        [Export] private Label name;
+        [Export] public Label number;
+
 
         public override void _Ready()
 		{
-			buttonUndo.Pressed += GameManager.GetInstance().MoveBackInTime;
-            buttonRedo.Pressed += GameManager.GetInstance().MoveForwardInTime;
 
-			par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
+            buttonUndo.Pressed += () => GameManager.GetInstance().MoveBackInTime();
+            buttonRedo.Pressed += () => GameManager.GetInstance().MoveForwardInTime();
         }
 
-		public override void _Process(double pDelta)
+		public void ResetHUD()
 		{
-			float lDelta = (float)pDelta;
+            par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
+            name.Text = GameManager.GetInstance().currentLevel.Title + " Created by : " + GameManager.GetInstance().currentLevel.Author;
         }
 
 		private void QuitPressed()
 		{
             UIManager.GetInstance().GoToLevelSelect();
             GameManager.GetInstance().QueueFree();
-			QueueFree();
         }
 
-        protected override void Dispose(bool pDisposing)
-		{
-            UIManager.GetInstance().uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/HUD.tscn").Instantiate();
+        private void RetryPressed()
+        {
+            Player.GetInstance().canInput = true;
+            GameManager.GetInstance().currentPosition = new HistoricHeap(GameManager.GetInstance().currentLevel);
+            GameManager.GetInstance().ChargeMapFromCurrentLevel();
+            GameManager.GetInstance().CurrentPar = 0;
         }
 	}
 }
