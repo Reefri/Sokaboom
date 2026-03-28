@@ -57,6 +57,15 @@ namespace Com.IsartDigital.Sokoban
 		{
 
 
+            hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
+
+            hoverRenderer.AddChild(showPatern);
+
+            showPatern.Scale = Vector2.One * 0.3f;
+            showPatern.GlobalPosition = hoverRenderer.GlobalPosition + rightCornerOfCollectible;
+
+
+
             AreaEntered += (Area2D lArea) => BombCollectibleAreaEntered(lArea);
 
 
@@ -67,29 +76,6 @@ namespace Com.IsartDigital.Sokoban
 
         }
 
-        public void AddTo(Node pParent)
-        {
-            pParent.AddChild(this);
-
-
-
-            //hoverRenderer.AddChild(showPatern);
-            hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
-
-            hoverRenderer.AddChild(showPatern);
-
-            showPatern.Scale = Vector2.One * 0.3f;
-            showPatern.GlobalPosition = hoverRenderer.GlobalPosition + rightCornerOfCollectible;
-            GD.Print("hover ? : " + showPatern.GetParent().Name);
-
-
-        }
-
-
-        private void OnTreeExited()
-        {
-            GD.Print("pourquoi tu t'es supprimé ?");
-        }
 
         private void BombCollectibleAreaEntered(Area2D pArea)
         {
@@ -145,12 +131,6 @@ namespace Com.IsartDigital.Sokoban
 
             ((ShaderMaterial)lBombCollectible.body.Material).SetShaderParameter("MainColor", lBombCollectible.mainColor);
             ((ShaderMaterial)lBombCollectible.body.Material).SetShaderParameter("SecondaryColor", lBombCollectible.secondaryColor);
-
-
-
-
-
-        
 
 
 
