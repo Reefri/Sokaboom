@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bk4chsa2etmt1" path="res://Assets/Bomb/Collectible/body.png" id="5_wchup"]
 [ext_resource type="Texture2D" uid="uid://je34t1rmuwnc" path="res://Assets/Bomb/Collectible/firework.png" id="6_175f3"]
 [ext_resource type="Texture2D" uid="uid://d0f4tam8xmdht" path="res://Assets/Bomb/Collectible/String.png" id="7_gwcda"]
-[ext_resource type="Shader" uid="uid://do3fq4hi5o4ev" path="res://Ressources/Shaders/BombCollectibleShader.tres" id="9_yesas"]
+[ext_resource type="Shader" uid="uid://dv42r4fvancle" path="res://Ressources/Shaders/BombCollectibleShader.tres" id="9_yesas"]
 [ext_resource type="Texture2D" uid="uid://lqdojj6a4fff" path="res://Assets/Bomb/Collectible/fireworkBody/diamond.png" id="10_v2pbm"]
 [ext_resource type="Texture2D" uid="uid://dgn2y3tjukwns" path="res://Assets/Bomb/Collectible/fireworkHead.png" id="11_46150"]
 
@@ -42,7 +42,7 @@ size = Vector2(64, 64)
 z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_73o2a")
-hoverRenderer = NodePath("Renderer/Hover")
+hoverRenderer = NodePath("Renderer")
 head = NodePath("Renderer/Hover/Head")
 body = NodePath("Renderer/Hover/Body")
 
