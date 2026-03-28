@@ -345,6 +345,7 @@ namespace Com.IsartDigital.Sokoban
             {
                 if (!CheckTheMove(lDirection))
                 {
+
                     new BombPattern(bombPrevisualisationContainer,false, Main.GetInstance().RotateMatrix(bombInHand.explosionMatrix, lDirection), false,lDirection*States.DISTANCE_RANGE);
 
                 }

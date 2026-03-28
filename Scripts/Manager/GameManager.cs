@@ -21,6 +21,8 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
 
 
+        private List<BombCollectible> levelBombCollectibles = new List<BombCollectible>();
+
         public Level currentLevel;
 
         private List<LevelScreenShot> gameScreenshot = new List<LevelScreenShot>();
@@ -90,6 +92,13 @@ namespace Com.IsartDigital.Sokoban
             AddChild(tileMap);
             AddChild(Player.GetInstance());
 
+
+            for (int i =0; i < currentLevel.bombs.Count; i++)
+            {
+                levelBombCollectibles.Add(BombCollectible.Create(currentLevel.bombs[i], currentLevel.bombsPos[i]));
+            }
+
+
             ChargeMapFromCurrentLevel();
 
         }
@@ -153,16 +162,28 @@ namespace Com.IsartDigital.Sokoban
             }
 
 
+            Node2D lNewNode = new Node2D();
 
-            foreach (Node2D lBombCollectible in bombCollectibleContainer.GetChildren())
+
+
+         
+
+            foreach (int i in currentPosition.value.indexOfAvalaibleBombs)
             {
-                lBombCollectible.QueueFree();
+
+
+                lNewNode.AddChild(levelBombCollectibles[i].Duplicate());
+
             }
 
-            foreach(int lIndex in currentPosition.value.indexOfAvalaibleBombs)
-            {
-                BombCollectible.Create(currentPosition.value.bombs[lIndex], currentPosition.value.bombsPos[lIndex], lIndex);
-            }
+
+
+            AddChild(lNewNode);
+
+            bombCollectibleContainer.QueueFree();
+
+            bombCollectibleContainer = lNewNode;
+
 
 
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
@@ -186,10 +207,10 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-        public void RemoveBomb(Bomb pBomb)
-        {
-            RemoveBombAtIndex(currentPosition.value.bombs.IndexOf(pBomb));
-        }
+        //public void RemoveBomb(Bomb pBomb)
+        //{
+        //    RemoveBombAtIndex(currentPosition.value.bombs.IndexOf(pBomb));
+        //}
 
         public void RemoveBombAtIndex(int lIndex)
         {
@@ -245,13 +266,13 @@ namespace Com.IsartDigital.Sokoban
             return lNewLevel;
         }
 
-        public void SaveBombs()
-        {
-            if (currentPosition.previousValue == null) return;
+        //public void SaveBombs()
+        //{
+        //    if (currentPosition.previousValue == null) return;
 
-            currentPosition.previousValue.value.bombsPos = currentPosition.value.bombsPos;
-            currentPosition.previousValue.value.bombs = currentPosition.value.bombs;
-        }
+        //    currentPosition.previousValue.value.bombsPos = currentPosition.value.bombsPos;
+        //    currentPosition.previousValue.value.bombs = currentPosition.value.bombs;
+        //}
 
         public void UpdateAfterAction()
         {

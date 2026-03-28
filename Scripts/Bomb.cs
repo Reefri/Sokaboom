@@ -82,6 +82,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void Explode(Vector2I pPosition, Vector2I pRotationVector)
         {
+
+
             BombExplosion.Create(explosionMatrix,pPosition, pRotationVector);
         }
 
@@ -101,6 +103,24 @@ namespace Com.IsartDigital.Sokoban
             }
 
             return lRes;
+        }
+
+
+        public Bomb Duplicate()
+        {
+            Bomb lNewBomb = new Bomb(new List<Vector2I>());
+
+            lNewBomb.explosionMatrix = explosionMatrix;
+            lNewBomb.explosionOriginPos = explosionOriginPos;
+            lNewBomb.maxX = maxX;
+            lNewBomb.maxX = maxX;
+            lNewBomb.minY = minY;
+            lNewBomb.maxY = maxY;
+
+            lNewBomb.indexInLevel = indexInLevel;
+            lNewBomb.gridSize = gridSize;
+
+            return lNewBomb;
         }
     }
 }

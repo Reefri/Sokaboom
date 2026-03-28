@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cljs55kik7c07"]
+[gd_scene load_steps=25 format=3 uid="uid://b6b04gqai5u3o"]
 
 [ext_resource type="Script" path="res://Scripts/Juiciness/FireWork.cs" id="1_dlo8p"]
 [ext_resource type="Shader" uid="uid://by1dgxsmp6xvb" path="res://Ressources/Shaders/RotationFirework.tres" id="2_eoo77"]
