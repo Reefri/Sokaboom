@@ -172,7 +172,7 @@ namespace Com.IsartDigital.Sokoban
             {
 
 
-                lNewNode.AddChild(levelBombCollectibles[i].Duplicate());
+                levelBombCollectibles[i].Duplicate().AddTo(lNewNode);
 
             }
 

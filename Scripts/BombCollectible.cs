@@ -15,6 +15,8 @@ namespace Com.IsartDigital.Sokoban
 
         private PrevisualisationBomb previsualisationBomb = (PrevisualisationBomb)GD.Load<PackedScene>("res://Scenes/UI/PrevisualisationBomb.tscn").Instantiate();
 
+        private Node2D showPatern;
+
         public Bomb bomb;
 
         private Vector2 previsualisationOriginPos;
@@ -62,6 +64,31 @@ namespace Com.IsartDigital.Sokoban
             MouseExited += OutBomb;
 
 
+
+        }
+
+        public void AddTo(Node pParent)
+        {
+            pParent.AddChild(this);
+
+
+
+            //hoverRenderer.AddChild(showPatern);
+            hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
+
+            hoverRenderer.AddChild(showPatern);
+
+            showPatern.Scale = Vector2.One * 0.3f;
+            showPatern.GlobalPosition = hoverRenderer.GlobalPosition + rightCornerOfCollectible;
+            GD.Print("hover ? : " + showPatern.GetParent().Name);
+
+
+        }
+
+
+        private void OnTreeExited()
+        {
+            GD.Print("pourquoi tu t'es supprimé ?");
         }
 
         private void BombCollectibleAreaEntered(Area2D pArea)
@@ -123,16 +150,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-            Node2D lNode = new Node2D();
-
-
-            lBombCollectible.previsualisationOriginPos = (new BombPattern(lNode, false, lBombCollectible.bomb.explosionMatrix, default, default, true)).originePos;
-
-            lNode.Scale = Vector2.One * 0.3f;
-            lBombCollectible.hoverRenderer.AddChild(lNode);
-            lNode.GlobalPosition = lBombCollectible.hoverRenderer.GlobalPosition + lBombCollectible.rightCornerOfCollectible;
-
-
+        
 
 
 
@@ -145,6 +163,12 @@ namespace Com.IsartDigital.Sokoban
             BombCollectible lBombCollectible = (BombCollectible)base.Duplicate();
 
             lBombCollectible.bomb = bomb.Duplicate() ;
+
+
+            lBombCollectible.showPatern = new Node2D();
+
+            lBombCollectible.previsualisationOriginPos = (new BombPattern(lBombCollectible.showPatern, false, lBombCollectible.bomb.explosionMatrix, default, default, true)).originePos;
+
 
             return lBombCollectible;
         }
