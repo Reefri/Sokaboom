@@ -12,13 +12,15 @@ namespace Com.IsartDigital.Sokoban
 		static private UIManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/UIManager.tscn");
 
-        private IsartLogo uiScreenSplash = (IsartLogo)GD.Load<PackedScene>("res://Scenes/UI/IsartLogo.tscn").Instantiate();
-        private LoginUI uiLogin = (LoginUI)GD.Load<PackedScene>("res://Scenes/UI/Login.tscn").Instantiate();
-        private TitleCard uiTitle = (TitleCard)GD.Load<PackedScene>("res://Scenes/UI/TitleCard.tscn").Instantiate();
-        private HelpMenu uiHelp = (HelpMenu)GD.Load<PackedScene>("res://Scenes/UI/HelpMenu.tscn").Instantiate();
-        private LevelSelect uiLevelSelect = (LevelSelect)GD.Load<PackedScene>("res://Scenes/UI/LevelSelect.tscn").Instantiate();
-        public HUD uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/UI/HUD.tscn").Instantiate();
-        private Win uiWin = (Win)GD.Load<PackedScene>("res://Scenes/UI/Win.tscn").Instantiate();
+        private PackedScene uiScreenSplash = GD.Load<PackedScene>("res://Scenes/UI/IsartLogo.tscn");
+        private PackedScene uiLogin = GD.Load<PackedScene>("res://Scenes/UI/Login.tscn");
+        private PackedScene uiTitle = GD.Load<PackedScene>("res://Scenes/UI/TitleCard.tscn");
+        private PackedScene uiHelp = GD.Load<PackedScene>("res://Scenes/UI/HelpMenu.tscn");
+        private PackedScene uiLevelSelect = GD.Load<PackedScene>("res://Scenes/UI/LevelSelect.tscn");
+        private PackedScene uiHUD = GD.Load<PackedScene>("res://Scenes/UI/HUD.tscn");
+        private PackedScene uiWin = GD.Load<PackedScene>("res://Scenes/UI/Win.tscn");
+
+        public HUD instanceHud;
 
         [Export] private bool noLogin = true;
         public int levelIndex;
@@ -47,37 +49,37 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-			AddChild(uiScreenSplash);
+			AddChild(uiScreenSplash.Instantiate());
         	
         }
 
-		public void UpdateHud()
-		{
-			uiHUD.steps.Text = "Steps : " + GameManager.GetInstance().CurrentPar;
+        public void UpdateHud()
+        {
+            if (GameManager.GetInstance().CurrentPar != 0) instanceHud.steps.Text = "Steps : " + GameManager.GetInstance().CurrentPar;
         }
 
         public void GoToLogin()
         {
             RemoveChild(GetChild(0));
-            AddChild(uiLogin);
+            AddChild(uiLogin.Instantiate());
         }
 
         public void GoToTitle()
         {
 			RemoveChild(GetChild(0));
-            AddChild(uiTitle);
+            AddChild(uiTitle.Instantiate());
         }
 
         public void GoToHelp()
         {
             RemoveChild(GetChild(0));
-            AddChild(uiHelp);
+            AddChild(uiHelp.Instantiate());
         }
 
         public void GoToLevelSelect()
         {
             RemoveChild(GetChild(0));
-            AddChild(uiLevelSelect);
+            AddChild(uiLevelSelect.Instantiate());
         }
 
 		public void GoToLevel(int pIndex)
@@ -88,11 +90,12 @@ namespace Com.IsartDigital.Sokoban
 
 			levelIndex = pIndex;
 			Main.GetInstance().AddChild(GameManager.GetInstance());
-            AddChild(uiHUD);
 
-			uiHUD.number.Text = "level ";
-            if (pIndex == 0) uiHUD.number.Text += "tuto";
-			else uiHUD.number.Text += pIndex;
+            AddChild(uiHUD.Instantiate());
+
+            instanceHud.number.Text = "level ";
+            if (pIndex == 0) instanceHud.number.Text += "tuto";
+			else instanceHud.number.Text += pIndex;
 
             CameraManager.GetInstance().CenterCameraOnCurrentLevel();
         }
@@ -101,10 +104,11 @@ namespace Com.IsartDigital.Sokoban
 		{
             RemoveChild(GetChild(0));
 			GameManager.GetInstance().QueueFree();
-            
-            AddChild(uiWin);
-            foreach (AnimatedSprite2D lStars in uiWin.stars.GetChildren()) lStars.Frame = 0;
-            uiWin.CalculScoreLevel();
+
+            Win lWin = (Win)uiWin.Instantiate();
+            AddChild(lWin);
+            foreach (AnimatedSprite2D lStars in lWin.stars.GetChildren()) lStars.Frame = 0;
+            lWin.CalculScoreLevel();
         }
 
         protected override void Dispose(bool pDisposing)

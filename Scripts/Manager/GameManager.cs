@@ -35,7 +35,7 @@ namespace Com.IsartDigital.Sokoban
             get { return currentPar;  }
             set 
             { 
-                currentPar = value; 
+                currentPar = value;
                 UIManager.GetInstance().UpdateHud();
             }
         }
@@ -81,8 +81,6 @@ namespace Com.IsartDigital.Sokoban
         {
             GridManager.GetInstance().ChangeLevel(UIManager.GetInstance().levelIndex);
             currentLevel = GridManager.GetInstance().CurrentLevel;
-
-            UIManager.GetInstance().uiHUD.ResetHUD();
 
 
             currentPosition = new HistoricHeap(currentLevel);

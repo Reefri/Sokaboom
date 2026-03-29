@@ -28,7 +28,7 @@ offset_top = 12.0
 offset_right = 207.0
 offset_bottom = 89.0
 theme_override_font_sizes/font_size = 50
-text = "BACK"
+text = "ID_BACK"
 
 [node name="unlock" type="Button" parent="."]
 layout_mode = 0

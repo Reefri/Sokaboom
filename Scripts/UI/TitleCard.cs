@@ -164,5 +164,10 @@ namespace Com.IsartDigital.Sokoban.UI
             UIManager.GetInstance().GoToHelp();
             UIManager.GetInstance().comeToMenu = true;
         }
+
+        public void Langage()
+        {
+            TranslationServer.SetLocale(TranslationServer.GetLocale() == "en" ? "fr" : "en");
+        }
     }
 }

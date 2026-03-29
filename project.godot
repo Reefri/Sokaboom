@@ -70,6 +70,10 @@ TimeMinus={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Localisation/Localisation.en.translation", "res://Localisation/Localisation.fr.translation")
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.201, 0.67, 0.263533, 1)
