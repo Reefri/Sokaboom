@@ -85,6 +85,8 @@ namespace Com.IsartDigital.Sokoban {
             }
 
             GameManager.GetInstance().UpdateCurrentPosition();
+
+            GameManager.GetInstance().CheckAndDoWin();
         }
 
         public override void _Process(double pDelta)

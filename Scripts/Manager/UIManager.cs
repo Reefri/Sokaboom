@@ -48,6 +48,7 @@ namespace Com.IsartDigital.Sokoban
 			base._Ready();
 
 			AddChild(uiScreenSplash);
+        	
         }
 
 		public void UpdateHud()
@@ -81,7 +82,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public void GoToLevel(int pIndex)
 		{
-			if (pIndex > uiLevelSelect.numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
+			if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
 
             RemoveChild(GetChild(0));
 

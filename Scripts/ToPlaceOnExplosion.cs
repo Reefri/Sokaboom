@@ -41,7 +41,7 @@ namespace Com.IsartDigital.Sokoban {
 				lBombCollec.bomb.Explode((Vector2I)lBombCollec.Position / States.DISTANCE_RANGE	, Vector2I.Up);
 				lBombCollec.QueueFree();
 
-				GameManager.GetInstance().RemoveBomb(lBombCollec.bomb);
+				GameManager.GetInstance().RemoveBombAtIndex(lBombCollec.bomb.indexInLevel);
                 GameManager.GetInstance().UpdateCurrentPosition();
             }
         }

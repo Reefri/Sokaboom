@@ -30,6 +30,7 @@ namespace Com.IsartDigital.Sokoban
             Node2D lNode = new Node2D();
 
 
+
             new BombPattern(lNode,false,explosionMatrix);
             lNode.GlobalPosition = GlobalPosition;
 
