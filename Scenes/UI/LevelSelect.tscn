@@ -23,21 +23,25 @@ color = Color(0.345986, 0.521224, 1, 1)
 
 [node name="back" type="Button" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 12.0
-offset_right = 207.0
-offset_bottom = 89.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 226.0
+offset_bottom = 92.0
 theme_override_font_sizes/font_size = 50
 text = "ID_BACK"
 
 [node name="unlock" type="Button" parent="."]
-layout_mode = 0
-offset_left = 889.0
-offset_top = 12.0
-offset_right = 1136.0
-offset_bottom = 90.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -302.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 93.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
-text = "UNLOCK"
+text = "ID_UNLOCK"
 
 [node name="allButtons" type="Control" parent="."]
 layout_mode = 3
@@ -56,7 +60,7 @@ offset_right = 609.0
 offset_bottom = 134.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
-text = "Tutorial"
+text = "ID_TUTORIAL"
 
 [node name="level1" type="Button" parent="allButtons"]
 layout_mode = 0
@@ -66,7 +70,7 @@ offset_right = 243.0
 offset_bottom = 281.0
 theme_override_font_sizes/font_size = 25
 disabled = true
-text = "Level 1"
+text = "ID_LEVEL"
 
 [node name="level2" type="Button" parent="allButtons"]
 layout_mode = 0

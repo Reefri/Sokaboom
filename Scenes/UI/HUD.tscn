@@ -39,7 +39,7 @@ offset_left = -200.0
 offset_top = -100.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "ID_RETRY"
+text = "ID_RESTART"
 
 [node name="Redo" type="Button" parent="."]
 layout_mode = 1

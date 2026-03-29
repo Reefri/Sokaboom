@@ -55,7 +55,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void UpdateHud()
         {
-            if (GameManager.GetInstance().CurrentPar != 0) instanceHud.steps.Text = "Steps : " + GameManager.GetInstance().CurrentPar;
+            if (instanceHud != null) instanceHud.steps.Text = Tr("ID_STEPS") + GameManager.GetInstance().CurrentPar;
         }
 
         public void GoToLogin()
@@ -93,7 +93,7 @@ namespace Com.IsartDigital.Sokoban
 
             AddChild(uiHUD.Instantiate());
 
-            instanceHud.number.Text = "level ";
+            instanceHud.number.Text = Tr("ID_LEVEL");
             if (pIndex == 0) instanceHud.number.Text += "tuto";
 			else instanceHud.number.Text += pIndex;
 

@@ -23,8 +23,8 @@ namespace Com.IsartDigital.Sokoban
             buttonRedo.Pressed += () => GameManager.GetInstance().MoveForwardInTime();
 
             par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
-            name.Text = GameManager.GetInstance().currentLevel.Title + " by : " + GameManager.GetInstance().currentLevel.Author;
-            
+            name.Text = GameManager.GetInstance().currentLevel.Title + Tr("ID_BY") + GameManager.GetInstance().currentLevel.Author;
+            steps.Text = Tr("ID_STEPS") + 0;
         }
 
         private void QuitPressed()
@@ -40,5 +40,10 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().ChargeMapFromCurrentLevel();
             GameManager.GetInstance().CurrentPar = 0;
         }
-	}
+
+        protected override void Dispose(bool pDisposing)
+        {
+            UIManager.GetInstance().instanceHud = null;
+        }
+    }
 }
