@@ -60,7 +60,7 @@ namespace Com.IsartDigital.Sokoban
 			groundCells = GetUsedCells((int)LevelLayer.Ground);
 
 			aStarGrid = new AStarGrid2D();
-			aStarGrid.Region = new Rect2I(-1,-1,50,50);
+			aStarGrid.Region = new Rect2I(-1,-1,20,20);
 			aStarGrid.CellSize = new Vector2I(States.DISTANCE_RANGE, States.DISTANCE_RANGE);
 			aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
 			aStarGrid.Update();
@@ -84,7 +84,7 @@ namespace Com.IsartDigital.Sokoban
                 UpdateAndClearPath();
 				boxOrContainerClickedOn = Vector2I.Zero;
 
-                Vector2 lCellClicked =  new Vector2I((int)(GetGlobalMousePosition().X/States.DISTANCE_RANGE), (int)(GetGlobalMousePosition().Y/States.DISTANCE_RANGE));
+				Vector2 lCellClicked = new Vector2I((int)((GetGlobalMousePosition().X +32) / States.DISTANCE_RANGE), (int)((GetGlobalMousePosition().Y + 32) / States.DISTANCE_RANGE)) ;
 				OnClick.Create(lCellClicked, GameManager.GetInstance());
 				foreach(Vector2I lCell in groundCells)
 				{
@@ -103,7 +103,6 @@ namespace Com.IsartDigital.Sokoban
 						{
 							boxOrContainerClickedOn = lCell;
 
-							
                             ContainerOrBoxChosen(WALL, lCell);
 							return;
 						}

@@ -18,7 +18,7 @@ namespace Com.IsartDigital.Sokoban
         {
             base._Ready();
 
-            basePosition = Position + Vector2.Up*amplitude;
+            basePosition = Position + Vector2.Up * amplitude;
 
             GetPosition();
         }

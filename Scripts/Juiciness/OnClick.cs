@@ -15,7 +15,7 @@ namespace Com.IsartDigital.Sokoban
         public static OnClick Create(Vector2 pCrossPosition, Node pParent)
         {
             OnClick lClick = (OnClick)packedClick.Instantiate();
-            lClick.GlobalPosition = (pCrossPosition +Vector2.One/2) * States.DISTANCE_RANGE;
+            lClick.GlobalPosition = (pCrossPosition) * States.DISTANCE_RANGE;
 
             pParent.AddChild(lClick);
             return lClick;
@@ -23,12 +23,14 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
         {
+            ZIndex = 0;
             particles.Emitting = true;
         }
 
         public override void _Process(double pDelta)
         {
-            if (!particles.Emitting) { QueueFree(); }
+            if (!particles.Emitting || GlobalPosition == Player.GetInstance().GlobalPosition) { QueueFree(); }
+
         }
 
     }
