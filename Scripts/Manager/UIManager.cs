@@ -60,25 +60,25 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToLogin()
         {
-            RemoveChild(GetChild(0));
+            GetChild(0).QueueFree();
             AddChild(uiLogin.Instantiate());
         }
 
         public void GoToTitle()
         {
-			RemoveChild(GetChild(0));
+            GetChild(0).QueueFree();
             AddChild(uiTitle.Instantiate());
         }
 
         public void GoToHelp()
         {
-            RemoveChild(GetChild(0));
+            GetChild(0).QueueFree();
             AddChild(uiHelp.Instantiate());
         }
 
         public void GoToLevelSelect()
         {
-            RemoveChild(GetChild(0));
+            GetChild(0).QueueFree();
             AddChild(uiLevelSelect.Instantiate());
         }
 
@@ -86,9 +86,9 @@ namespace Com.IsartDigital.Sokoban
 		{
 			if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
 
-            RemoveChild(GetChild(0));
+            GetChild(0).QueueFree();
 
-			levelIndex = pIndex;
+            levelIndex = pIndex;
 			Main.GetInstance().AddChild(GameManager.GetInstance());
 
             AddChild(uiHUD.Instantiate());
@@ -102,8 +102,8 @@ namespace Com.IsartDigital.Sokoban
 
 		public void GoToWin()
 		{
-            RemoveChild(GetChild(0));
-			GameManager.GetInstance().QueueFree();
+            GetChild(0).QueueFree();
+            GameManager.GetInstance().QueueFree();
 
             Win lWin = (Win)uiWin.Instantiate();
             AddChild(lWin);
