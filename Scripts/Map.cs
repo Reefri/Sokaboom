@@ -85,6 +85,7 @@ namespace Com.IsartDigital.Sokoban
 				boxOrContainerClickedOn = Vector2I.Zero;
 
                 Vector2 lCellClicked =  new Vector2I((int)(GetGlobalMousePosition().X/States.DISTANCE_RANGE), (int)(GetGlobalMousePosition().Y/States.DISTANCE_RANGE));
+				OnClick.Create(lCellClicked, GameManager.GetInstance());
 				foreach(Vector2I lCell in groundCells)
 				{
                     if (lCellClicked.DistanceTo(lCell ) < 1)

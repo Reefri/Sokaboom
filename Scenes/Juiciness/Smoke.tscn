@@ -4,7 +4,7 @@
 offsets = PackedFloat32Array(0, 0.608025, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.466181, 0.466181, 0.466181, 1, 0.43134, 0.43134, 0.43134, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xcl7l"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_soi1r"]
 gradient = SubResource("Gradient_eve5a")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q10vy"]
@@ -15,7 +15,7 @@ radial_velocity_max = 32.0
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 100.0
 linear_accel_max = 100.0
-color_ramp = SubResource("GradientTexture1D_xcl7l")
+color_ramp = SubResource("GradientTexture1D_soi1r")
 
 [node name="Smoke" type="Node2D"]
 
