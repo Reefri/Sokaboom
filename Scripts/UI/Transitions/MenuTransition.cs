@@ -8,7 +8,7 @@ namespace Com.IsartDigital.Sokoban
 	public partial class MenuTransition : Control
 	{
 		[Export] private Node2D TransitionZone;
-		[Export] private float tweenDuration = 1;
+		[Export] public float tweenDuration = 1;
 
 		private float time = 0;
 

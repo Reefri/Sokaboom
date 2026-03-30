@@ -29,10 +29,11 @@ namespace Com.IsartDigital.Sokoban
         public int levelIndex;
         private int currentIndex = -1;
         public bool comeToMenu = true;
+        private bool menuChanging = false;
 
 		public int finalScore;
 
-        private Timer selectLevelDelay = new Timer();
+        private Timer delay = new Timer();
 
         private UIManager():base() 
 		{
@@ -57,15 +58,25 @@ namespace Com.IsartDigital.Sokoban
 
 			AddChild(uiScreenSplash.Instantiate());
 
-            GetParent().CallDeferred("add_child", selectLevelDelay);
-            selectLevelDelay.OneShot = true;
-            selectLevelDelay.Timeout += Continue;
+            GetParent().CallDeferred("add_child", delay);
+            delay.OneShot = true;
+            delay.Timeout += Continue;
         }
 
         private void Continue()
         {
-            GoToLevel(currentIndex);
-            currentIndex = -1;
+            if (currentIndex != -1)
+            {
+                GoToLevel(currentIndex);
+                currentIndex = -1;
+            }
+
+            if (!menuChanging)
+            {
+                
+                menuChanging = true;
+                GoToLevelSelect();
+            }
         }
 
         public void UpdateHud()
@@ -93,8 +104,21 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToLevelSelect()
         {
-            GetChild(0).QueueFree();
-            AddChild(uiLevelSelect.Instantiate());
+            if (!menuChanging)
+            {
+                MenuTransition lTransition = (MenuTransition)uiMenuChangeTransition.Instantiate();
+                GetParent().AddChild(lTransition);
+                delay.WaitTime = lTransition.tweenDuration/1.7f;
+                delay.Start();
+            }
+
+            if (delay.IsStopped())
+            {
+                GetChild(0).QueueFree();
+                AddChild(uiLevelSelect.Instantiate());
+                menuChanging = false;
+            }
+            
         }
 
         public void GoToLevel(int pIndex)
@@ -107,11 +131,11 @@ namespace Com.IsartDigital.Sokoban
                 currentIndex = pIndex;
                 SlideTransition lLevelOpenTransition = (SlideTransition)LevelOpenTransition.Instantiate();
                 AddChild(lLevelOpenTransition);
-                selectLevelDelay.WaitTime = lLevelOpenTransition.canChangeLevel;
-                selectLevelDelay.Start();
+                delay.WaitTime = lLevelOpenTransition.canChangeLevel;
+                delay.Start();
             }
 
-            if(selectLevelDelay.IsStopped())
+            if(delay.IsStopped())
             {
                 GetChild(0).QueueFree();
 
@@ -145,6 +169,5 @@ namespace Com.IsartDigital.Sokoban
 			instance = null;
 			base.Dispose(pDisposing);
 		}
-
 	}
 }
