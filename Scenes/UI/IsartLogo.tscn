@@ -11,6 +11,7 @@ script = ExtResource("1_mj8ah")
 fadeIn = ExtResource("2_v5ypg")
 canvas = NodePath("CanvasLayer")
 fade = NodePath("isartLogo2/fade")
+tweenDuration = 1.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

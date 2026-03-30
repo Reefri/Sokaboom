@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cka3r74niudit"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Transitions/MenuTransition.cs" id="1_geije"]
+[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_epxvl"]
+
+[node name="MenuTransition" type="Control" node_paths=PackedStringArray("TransitionZone")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_geije")
+TransitionZone = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+rotation = -0.785398
+scale = Vector2(12, 12)
+texture = ExtResource("2_epxvl")

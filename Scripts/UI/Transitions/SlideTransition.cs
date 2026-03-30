@@ -18,9 +18,16 @@ namespace Com.IsartDigital.Sokoban
 
 		private float startingPosFactor;
 		private float time = 0;
-		public override void _Ready()
+
+		private float animationDuration;
+		public float canChangeLevel;
+
+        public override void _Ready()
 		{
-			animationTimer.WaitTime = tweenDuration + doorClosedDuration;
+            canChangeLevel = tweenDuration + doorClosedDuration;
+            animationDuration = canChangeLevel + tweenDuration;
+
+            animationTimer.WaitTime = tweenDuration + doorClosedDuration;
 			animationTimer.Start();
             animationTimer.Timeout += ReverseAnimation;
 
@@ -63,7 +70,7 @@ namespace Com.IsartDigital.Sokoban
 
 			time += lDelta;
 
-			if (time > (tweenDuration + doorClosedDuration) + tweenDuration) QueueFree();
+			if (time > animationDuration) QueueFree();
 		}
 
 		protected override void Dispose(bool pDisposing)
