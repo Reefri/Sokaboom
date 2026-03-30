@@ -29,11 +29,13 @@ namespace Com.IsartDigital.Sokoban
         public int levelIndex;
         private int currentIndex = -1;
         public bool comeToMenu = true;
-        private bool menuChanging = false;
+        private bool canChangeMenu = false;
+
 
 		public int finalScore;
 
-        private Timer delay = new Timer();
+        private Timer SelectLevelDelay = new Timer();
+        private Timer changeMenuDelay = new Timer();
 
         private UIManager():base() 
 		{
@@ -58,12 +60,25 @@ namespace Com.IsartDigital.Sokoban
 
 			AddChild(uiScreenSplash.Instantiate());
 
-            GetParent().CallDeferred("add_child", delay);
-            delay.OneShot = true;
-            delay.Timeout += Continue;
+            GetParent().CallDeferred("add_child", SelectLevelDelay);
+            GetParent().CallDeferred("add_child", changeMenuDelay);
+            SelectLevelDelay.OneShot = true;
+            changeMenuDelay.OneShot = true;
+            SelectLevelDelay.Timeout += ContinueToLevel;
+            changeMenuDelay.Timeout += ContinueToMenu;
         }
 
-        private void Continue()
+        private void ContinueToMenu()
+        {
+            if (!canChangeMenu)
+            {
+
+                canChangeMenu = true;
+                GoToLevelSelect();
+            }
+        }
+
+        private void ContinueToLevel()
         {
             if (currentIndex != -1)
             {
@@ -71,12 +86,7 @@ namespace Com.IsartDigital.Sokoban
                 currentIndex = -1;
             }
 
-            if (!menuChanging)
-            {
-                
-                menuChanging = true;
-                GoToLevelSelect();
-            }
+            
         }
 
         public void UpdateHud()
@@ -104,21 +114,21 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToLevelSelect()
         {
-            if (!menuChanging)
+            MenuTransition lTransition = (MenuTransition)uiMenuChangeTransition.Instantiate();
+            if (!canChangeMenu)
             {
-                MenuTransition lTransition = (MenuTransition)uiMenuChangeTransition.Instantiate();
                 GetParent().AddChild(lTransition);
-                delay.WaitTime = lTransition.tweenDuration/1.7f;
-                delay.Start();
+                changeMenuDelay.WaitTime = lTransition.tweenDuration/1.7f;
+                changeMenuDelay.Start();
             }
 
-            if (delay.IsStopped())
+            else if (changeMenuDelay.IsStopped())
             {
                 GetChild(0).QueueFree();
                 AddChild(uiLevelSelect.Instantiate());
-                menuChanging = false;
+                canChangeMenu = false;
             }
-            
+
         }
 
         public void GoToLevel(int pIndex)
@@ -131,11 +141,11 @@ namespace Com.IsartDigital.Sokoban
                 currentIndex = pIndex;
                 SlideTransition lLevelOpenTransition = (SlideTransition)LevelOpenTransition.Instantiate();
                 AddChild(lLevelOpenTransition);
-                delay.WaitTime = lLevelOpenTransition.canChangeLevel;
-                delay.Start();
+                SelectLevelDelay.WaitTime = lLevelOpenTransition.canChangeLevel;
+                SelectLevelDelay.Start();
             }
 
-            if(delay.IsStopped())
+            if(SelectLevelDelay.IsStopped())
             {
                 GetChild(0).QueueFree();
 

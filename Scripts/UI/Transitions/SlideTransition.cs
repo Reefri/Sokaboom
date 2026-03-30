@@ -72,7 +72,6 @@ namespace Com.IsartDigital.Sokoban
 
 			if (time > animationDuration) QueueFree();
 		}
-
 		protected override void Dispose(bool pDisposing)
 		{
 
