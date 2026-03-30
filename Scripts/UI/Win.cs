@@ -60,6 +60,7 @@ namespace Com.IsartDigital.Sokoban
 
 			//Pour Ethan Masse : t'as dans lAccounts toutes les informations que tu veux
 
+			GD.Print(AccountManager.GetInstance().currentAccount.FinalScore());
         }
 
 		protected override void Dispose(bool pDisposing)
