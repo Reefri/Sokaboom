@@ -78,37 +78,39 @@ namespace Com.IsartDigital.Sokoban
         {
             whenToPlayAnim.Start();
 
-            Tween lLeftDoorTween = leftDoor.CreateTween()
+            Tween lDoorsTween = leftDoor.CreateTween()
                     .SetTrans(Tween.TransitionType.Bounce)
                     .SetEase(Tween.EaseType.Out);
-            lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
+
+            lDoorsTween.TweenProperty(leftDoor, TweenProp.POSITION,
                 new Vector2(screenSize.X / 4, screenSize.Y / 2), tweenDuration);
-            lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
-                new Vector2(screenSize.X / 4, screenSize.Y / 2), tweenDuration/2);
 
-            Tween lRightDoorTween = rightDoor.CreateTween()
-                .SetTrans(Tween.TransitionType.Bounce)
-                .SetEase(Tween.EaseType.Out);
-            lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
+            lDoorsTween.Parallel().TweenProperty(rightDoor, TweenProp.POSITION,
                 new Vector2(screenSize.X - screenSize.X / 4, screenSize.Y / 2), tweenDuration);
-            lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
-                new Vector2(screenSize.X - screenSize.X / 4, screenSize.Y / 2), tweenDuration/2);
-            doorsClosed = true;
 
-            lLeftDoorTween
+            //lDoorsTween.TweenCallback
+            //    (
+            //    Callable.From(() =>
+            //        GD.Print("les portes sont fermés"))
+            //    );
+
+            lDoorsTween
                     .SetTrans(Tween.TransitionType.Quad)
                     .SetEase(Tween.EaseType.OutIn);
 
-            lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
-                screenSize / 2 + Vector2.Left * sideFactor, tweenDuration);
+            lDoorsTween.TweenProperty(leftDoor, TweenProp.POSITION,
+                screenSize / 2 + Vector2.Left * sideFactor, tweenDuration).SetDelay(doorsStillTimer.WaitTime);
 
-            lRightDoorTween
-                .SetTrans(Tween.TransitionType.Quad)
-                .SetEase(Tween.EaseType.OutIn);
-            lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
-                screenSize / 2 + Vector2.Right * sideFactor, tweenDuration);
 
-            doorsClosed = false;
+
+            lDoorsTween.Parallel().TweenProperty(rightDoor, TweenProp.POSITION,
+                screenSize / 2 + Vector2.Right * sideFactor, tweenDuration).SetDelay(doorsStillTimer.WaitTime);
+
+            lDoorsTween.TweenCallback
+                (
+                Callable.From(() =>
+                    doorsClosed = false)
+                );
         }
 
         public void ActivateDoors()

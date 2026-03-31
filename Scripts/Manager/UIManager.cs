@@ -96,6 +96,10 @@ namespace Com.IsartDigital.Sokoban
             GetChild(0).QueueFree();
             AddChild(uiTitle.Instantiate());
         }
+        public void ContinueToTitle()
+        {
+            
+        }
 
         public void GoToHelp()
         {

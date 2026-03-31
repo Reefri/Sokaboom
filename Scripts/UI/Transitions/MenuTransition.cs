@@ -15,8 +15,13 @@ namespace Com.IsartDigital.Sokoban
 		private float time = 0;
 
 		private Vector2 screenSize;
+
+		[Export] private Timer whenToPlayAnim;
 		public override void _Ready()
 		{
+			whenToPlayAnim.WaitTime = tweenDuration / 1.7f;
+			whenToPlayAnim.Start();
+			whenToPlayAnim.Timeout += UIManager.GetInstance().GoToTitle;
 			screenSize = GetRect().Size;
 			TransitionZone.Position = Vector2.Right * screenSize.X * 2 + Vector2.Up * screenSize.Y * 2;
 			Vector2 lFinalPos = Vector2.Down * screenSize.Y * 2 + Vector2.Left * screenSize.Y;
@@ -41,7 +46,7 @@ namespace Com.IsartDigital.Sokoban
 		public static void Create()
 		{
 			MenuTransition lTransition = (MenuTransition)factory.Instantiate();
-			UIManager.GetInstance().AddChild(lTransition);
+			UIManager.GetInstance().AddSibling(lTransition);
 		}
 	}
 }

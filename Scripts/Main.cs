@@ -18,6 +18,8 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] public bool noLogin = true;
 
+        public Vector2 screenSize;
+
         private Main():base() 
 		{
 			if (instance != null)
@@ -37,16 +39,14 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Ready()
 		{
-			//GridManager.GetInstance().ChangeLevel(0);
-			//GD.Print(GridManager.GetInstance().CurrentLevel);
 			base._Ready();
-
-			//Bomb bomb = GridManager.GetInstance().CurrentLevel.bombs[0];
-			//bomb.Explode(new Vector2I(3, 3));
 
 			if (testOnlyGameFeature) UIManager.GetInstance().GoToLevel(levelAtTest);
         }
 
+        public override void _Process(double delta)
+        {
+        }
 		protected override void Dispose(bool pDisposing)
 		{
 			instance = null;
