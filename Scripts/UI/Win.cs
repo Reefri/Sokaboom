@@ -55,11 +55,6 @@ namespace Com.IsartDigital.Sokoban
 			scoreText.Text = "Score : " + score;
 
 			AccountManager.GetInstance().NewWin(score, GameManager.GetInstance().CurrentPar);
-
-
-			List<Account> lAccounts = AccountManager.GetInstance().GetTopPlayers(10);
-
-			//Pour Ethan Masse : t'as dans lAccounts toutes les informations que tu veux
         }
 
 		protected override void Dispose(bool pDisposing)

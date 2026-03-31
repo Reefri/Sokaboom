@@ -23,7 +23,7 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene uiHUD = GD.Load<PackedScene>("res://Scenes/UI/HUD.tscn");
         private PackedScene uiWin = GD.Load<PackedScene>("res://Scenes/UI/Win.tscn");
         private PackedScene uiWinFinal = GD.Load<PackedScene>("res://Scenes/UI/WinFinal.tscn");
-        private PackedScene uiHightScore;//= GD.Load<PackedScene>("res://Scenes/UI/WinFinal.tscn");
+        private PackedScene uiHightScore = GD.Load<PackedScene>("res://Scenes/UI/HightScore.tscn");
 
         private PackedScene LevelOpenTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/SlideTransition.tscn");
         private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
@@ -141,7 +141,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToHightScore()
         {
-
+            GetChild(0).QueueFree();
+            AddChild(uiHightScore.Instantiate());
         }
 
         protected override void Dispose(bool pDisposing)
