@@ -15,6 +15,11 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] public Shaker shaker;
 
+        [Export] public Node2D gameOverExplosionContainer;
+
+        [Export] public Node2D bombExplosionContainer;
+        [Export] public Node2D fireworkContainer;
+
         static private GameManager instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/GameManager.tscn");
 
@@ -41,7 +46,7 @@ namespace Com.IsartDigital.Sokoban
         }
             
 
-        private List<Vector2I> neighborsCoor = new List<Vector2I>
+        public List<Vector2I> neighborsCoor = new List<Vector2I>
         {
             Vector2I.Right,
             Vector2I.Left,
@@ -123,6 +128,8 @@ namespace Com.IsartDigital.Sokoban
             instance = null;
             base.Dispose(pDisposing);
         }
+
+
 
            
         
@@ -312,7 +319,20 @@ namespace Com.IsartDigital.Sokoban
 
         public void MoveBackInTime()
         {
+
+            JuicinessManager.GetInstance().StopExplosion();
+
+            foreach (Node lBorderExplosion in fireworkContainer.GetChildren())
+            {
+                lBorderExplosion.QueueFree();
+            }
+            foreach (Node lBorderExplosion in bombExplosionContainer.GetChildren())
+            {
+                lBorderExplosion.QueueFree();
+            }
+
             Player.GetInstance().canInput = true;
+            Player.GetInstance().Visible = true;
 
             if (currentPosition.previousValue == null)
             {
@@ -346,12 +366,14 @@ namespace Com.IsartDigital.Sokoban
         private bool CheckWin()
         {
 
+            int lNumberOfTarget = 0;
+
             for (int i = 0; i < currentLevel.Size.Y; i++)
             {
                 for (int j = 0; j < currentLevel.Size.X; j++)
                 { 
-                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground,new Vector2I(j,i))!=null && 
-                  (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
+                    if      (tileMap.GetCellTileData((int)Map.LevelLayer.Playground,new Vector2I(j,i))!=null && 
+                       (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
                     {
                         if (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) == null || 
                      !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
@@ -360,11 +382,12 @@ namespace Com.IsartDigital.Sokoban
                         }
                     }
 
-                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) != null &&
-                  (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
+                    if      (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) != null &&
+                       (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
                     {
-                        if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null ||
-                     !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
+                        lNumberOfTarget++;
+                        if      (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null ||
+                          !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
                         {
                             return false;
                         }
@@ -374,7 +397,8 @@ namespace Com.IsartDigital.Sokoban
                 }
             }
 
-            return true;
+
+            return lNumberOfTarget == currentLevel.targetsPos.Count;
         }
 
 

@@ -146,13 +146,7 @@ namespace Com.IsartDigital.Sokoban
 
             List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
 
-
-			
-
 			return lAccountList.OrderByDescending(lAccount => lAccount.FinalScore()).Take(pNumberOfPlayer).ToList();
-
-
-
         }
 
 

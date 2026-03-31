@@ -20,19 +20,19 @@ namespace Com.IsartDigital.Sokoban
 
             basePosition = Position + Vector2.Up * amplitude;
 
-            GetPosition();
+            SetPosition();
         }
 
         public override void _Process(double pDelta)
         {
 
 
-            GetPosition();
+            SetPosition();
         }
 
-        private void GetPosition()
+        private void SetPosition()
         {
-            Position = basePosition + Vector2.Up * amplitude * Mathf.Sin(JuicinessManager.GetInstance().GlobalTime * Mathf.Tau * speed);
+            Position = basePosition + Vector2.Up * amplitude * Mathf.Sin( GlobalPosition.X/States.DISTANCE_RANGE * Mathf.Tau/3+JuicinessManager.GetInstance().GlobalTime * Mathf.Tau * speed);
 
         }
 

@@ -1,5 +1,7 @@
+using Com.IsartDigital.Utils.Effects;
 using Godot;
 using System;
+using System.Collections.Generic;
 
 // Author : Ethan Frenard
 
@@ -10,7 +12,6 @@ namespace Com.IsartDigital.Sokoban
 		static private JuicinessManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/JuicinessManager.tscn");
 
-		private PackedScene borderExplosion = GD.Load<PackedScene>("res://Scenes/Juiciness/BorderExplosion.tscn");
 		private Material bombShadow = (GD.Load<Material>("res://Ressources/Shaders/Materials/BombShadowShader.tres"));
 		private const string bombShadowSpeedParameter = "speed";
 
@@ -19,6 +20,23 @@ namespace Com.IsartDigital.Sokoban
         private float hoverSpeed = 0.1f;
 
         public float GlobalTime { private set; get; } = 0;
+
+
+		[Export] Shaker gameOverShaker;
+		[Export] Shaker simpleBombShaker;
+		[Export] Shaker fireworkShaker;
+
+
+
+
+		private Timer waitBeforeNextEplosion = new Timer();
+		private float timeBeforeNextExplosion = 1f;
+		private float explodingAcceleration = 1.07f;
+
+
+		List<Vector2I> alreadyExploded = new List<Vector2I>();
+		List<Vector2I> lastExplosionPos = new List<Vector2I>();
+
 
 		private JuicinessManager():base() 
 		{
@@ -46,6 +64,15 @@ namespace Com.IsartDigital.Sokoban
 
 			((ShaderMaterial)bombShadow).SetShaderParameter(bombShadowSpeedParameter, hoverSpeed);
 
+
+
+			waitBeforeNextEplosion.WaitTime = timeBeforeNextExplosion;
+			waitBeforeNextEplosion.OneShot = true;
+			waitBeforeNextEplosion.Timeout += ExplodeAllTileInList;
+
+			AddChild(waitBeforeNextEplosion);
+
+
 		}
 
 		public override void _Process(double pDelta)
@@ -56,13 +83,90 @@ namespace Com.IsartDigital.Sokoban
 			GlobalTime += lDelta;
 		}
 
-		public void ExplodeAllBorders(Vector2 pBorderOriginPos)
+		public void ExplodeAllBorders(Vector2I pBorderOriginPos)
 		{
-			GpuParticles2D lExplosion = (GpuParticles2D)borderExplosion.Instantiate();
-			lExplosion.Position = pBorderOriginPos;
-			lExplosion.Emitting = true;
-			lExplosion.Finished += QueueFree;
-			GameManager.GetInstance().AddChild(lExplosion);
+
+			waitBeforeNextEplosion.WaitTime = timeBeforeNextExplosion;
+
+			Player.GetInstance().Visible = false;
+			Player.GetInstance().canInput = false;
+
+			foreach (Node2D lChild in GameManager.GetInstance().bombCollectibleContainer.GetChildren())
+			{
+				lChild.GetParent().RemoveChild(lChild);
+			}
+
+
+            lastExplosionPos.Clear();
+			alreadyExploded.Clear();
+
+            lastExplosionPos.Add(pBorderOriginPos);
+
+
+            ExplodeAllTileInList();
+
+
+		}
+
+		private void ExplodeAllTileInList()
+		{
+
+
+            for (int i = lastExplosionPos.Count-1; i >=0 ; i--) 
+			{
+				ExplodeNextBorder(lastExplosionPos[i]);
+			} 
+		}
+
+
+
+		private void ExplodeNextBorder(Vector2I pBorderOriginPos)
+		{
+
+
+            BorderExplosion lBorderExplosion = BorderExplosion.Create(pBorderOriginPos);
+
+			GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Ground, pBorderOriginPos);
+			GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Target, pBorderOriginPos);
+			GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pBorderOriginPos);
+
+
+            lastExplosionPos.Remove(pBorderOriginPos);
+			alreadyExploded.Add(pBorderOriginPos);
+
+
+            foreach (Vector2I lNeighborPos in GameManager.GetInstance().neighborsCoor)
+			{
+
+				
+				if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Ground, pBorderOriginPos + lNeighborPos) != null &&
+					   !alreadyExploded.Contains(pBorderOriginPos + lNeighborPos) && !lastExplosionPos.Contains(pBorderOriginPos + lNeighborPos)
+                       )
+				{
+					lastExplosionPos.Add(pBorderOriginPos+lNeighborPos);
+				}
+
+			}
+
+			if (lastExplosionPos.Count != 0) { waitBeforeNextEplosion.WaitTime /= explodingAcceleration ; waitBeforeNextEplosion.Start(); }
+			else lBorderExplosion.Finished += StopExplosion;
+
+		}
+
+		public void StopExplosion()
+		{
+			GameManager.GetInstance().shaker.Stop();
+
+			waitBeforeNextEplosion.Stop();
+
+			lastExplosionPos.Clear();
+			alreadyExploded.Clear();
+
+			foreach(Node lBorderExplosion in GameManager.GetInstance().gameOverExplosionContainer.GetChildren())
+			{
+				lBorderExplosion.QueueFree();
+			}
+
 		}
 
 		protected override void Dispose(bool pDisposing)
