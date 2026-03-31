@@ -22,12 +22,14 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene uiLevelSelect = GD.Load<PackedScene>("res://Scenes/UI/LevelSelect.tscn");
         private PackedScene uiHUD = GD.Load<PackedScene>("res://Scenes/UI/HUD.tscn");
         private PackedScene uiWin = GD.Load<PackedScene>("res://Scenes/UI/Win.tscn");
+        private PackedScene uiWinFinal = GD.Load<PackedScene>("res://Scenes/UI/WinFinal.tscn");
+        private PackedScene uiHightScore;//= GD.Load<PackedScene>("res://Scenes/UI/WinFinal.tscn");
+
         private PackedScene LevelOpenTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/SlideTransition.tscn");
         private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
 
         public HUD instanceHud;
 
-        [Export] private bool noLogin = true;
         public int levelIndex;
         private int currentIndex = -1;
         public bool comeToMenu = true;
@@ -59,27 +61,6 @@ namespace Com.IsartDigital.Sokoban
 			AddChild(uiScreenSplash.Instantiate());
         }
 
-
-        public void ContinueToLevel()
-        {
-
-            GD.Print(currentIndex);
-            
-                GetChild(0).QueueFree();
-
-                levelIndex = currentIndex;
-                Main.GetInstance().AddChild(GameManager.GetInstance());
-
-                AddChild(uiHUD.Instantiate());
-
-                instanceHud.number.Text = Tr("ID_LEVEL");
-                if (currentIndex == 0) instanceHud.number.Text += "tuto";
-                else instanceHud.number.Text += currentIndex;
-
-                CameraManager.GetInstance().CenterCameraOnCurrentLevel();
-
-        }
-
         public void UpdateHud()
         {
             if (instanceHud != null) instanceHud.steps.Text = Tr("ID_STEPS") + GameManager.GetInstance().CurrentPar;
@@ -106,16 +87,17 @@ namespace Com.IsartDigital.Sokoban
             GetChild(0).QueueFree();
             AddChild(uiHelp.Instantiate());
         }
+        
+        public void GoToLevelSelect()
+        {
+            TitleDoors.GetInstance().Transition();
+
+        }
 
         public void ContinueToLevelSelect()
         {
             GetChild(0).QueueFree();
             AddChild(uiLevelSelect.Instantiate());
-        }
-        public void GoToLevelSelect()
-        {
-            TitleDoors.GetInstance().Transition();
-
         }
 
         public void GoToLevel(int pIndex)
@@ -125,10 +107,26 @@ namespace Com.IsartDigital.Sokoban
 
                 currentIndex = pIndex;
                 SlideTransition.Create();
+        }
+
+        public void ContinueToLevel()
+        {
+            GetChild(0).QueueFree();
+
+            levelIndex = currentIndex;
+            Main.GetInstance().AddChild(GameManager.GetInstance());
+
+            AddChild(uiHUD.Instantiate());
+
+            instanceHud.number.Text = Tr("ID_LEVEL");
+            if (currentIndex == 0) instanceHud.number.Text += "tuto";
+            else instanceHud.number.Text += currentIndex;
+
+            CameraManager.GetInstance().CenterCameraOnCurrentLevel();
 
         }
 
-		public void GoToWin()
+        public void GoToWin()
 		{
             GetChild(0).QueueFree();
             GameManager.GetInstance().QueueFree();
@@ -137,6 +135,17 @@ namespace Com.IsartDigital.Sokoban
             AddChild(lWin);
             foreach (AnimatedSprite2D lStars in lWin.stars.GetChildren()) lStars.Frame = 0;
             lWin.CalculScoreLevel();
+        }
+
+        public void GoToWinFinal()
+        {
+            GetChild(0).QueueFree();
+            AddChild(uiWinFinal.Instantiate());
+        }
+
+        public void GoToHightScore()
+        {
+
         }
 
         protected override void Dispose(bool pDisposing)

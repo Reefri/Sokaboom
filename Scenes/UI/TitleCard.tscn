@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_5ibq2"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_e1lnu"]
 
-[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark")]
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +23,7 @@ letterO = NodePath("Title/BOUM !/BOUM/O")
 letterU = NodePath("Title/BOUM !/BOUM/U")
 letterM = NodePath("Title/BOUM !/BOUM/M")
 exclamationMark = NodePath("Title/BOUM !/!")
+hightScore = NodePath("HightScore")
 
 [node name="Font" type="ColorRect" parent="."]
 layout_mode = 1
