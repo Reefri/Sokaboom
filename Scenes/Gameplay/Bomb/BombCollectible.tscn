@@ -28,6 +28,7 @@ z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_73o2a")
 hoverRenderer = NodePath("Renderer/Hover")
+hoverScript = ExtResource("3_4pr4v")
 head = NodePath("Renderer/Hover/Head")
 body = NodePath("Renderer/Hover/Body")
 

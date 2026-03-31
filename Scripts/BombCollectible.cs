@@ -8,6 +8,7 @@ namespace Com.IsartDigital.Sokoban
 	public partial class BombCollectible : Area2D
 	{
         [Export] Node2D hoverRenderer;
+        [Export] Script hoverScript;
 
 		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
@@ -58,6 +59,8 @@ namespace Com.IsartDigital.Sokoban
 
 
             hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
+
+            hoverRenderer.SetScript(hoverScript);
 
             hoverRenderer.AddChild(showPatern);
 

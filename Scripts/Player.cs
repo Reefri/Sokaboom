@@ -310,6 +310,8 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
+            //GameManager.GetInstance().canMoveBackInTime = false;
+
             bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
 
             GameManager.GetInstance().UpdateAfterAction();

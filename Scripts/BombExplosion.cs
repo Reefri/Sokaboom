@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Net;
 using System.Runtime.CompilerServices;
 
 // Author : Ethan Frenard
@@ -32,7 +33,6 @@ namespace Com.IsartDigital.Sokoban {
         public override void _Ready()
 		{
 
-
             originPos = (new BombPattern(this, true, explosionMatrix)).originePos;
 
 
@@ -55,8 +55,7 @@ namespace Com.IsartDigital.Sokoban {
                             {
                                 GD.Print("GameOver");
 
-                                Vector2 lPosition = GlobalPosition + (new Vector2(j, i) - originPos) * States.DISTANCE_RANGE;
-                                JuicinessManager.GetInstance().ExplodeAllBorders(lPosition + GlobalPosition);
+                                JuicinessManager.GetInstance().ExplodeAllBorders(posInGrid + new Vector2I(j, i) - originPos);
                                 Player.GetInstance().canInput = false;
                                 CameraManager.GetInstance().ShakeScreen(borderScreenShakePower, borderScreenShakeTime);
 
@@ -78,11 +77,14 @@ namespace Com.IsartDigital.Sokoban {
                         if (lTileMap.GetCellTileData((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos) != null)
                         {
                             lTileMap.SetCell((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos, -1);
+
+
                             GD.Print("tu viens de détruire une cible !");
                         }
                     }
                 }
             }
+
 
             GameManager.GetInstance().UpdateCurrentPosition();
 
@@ -106,12 +108,12 @@ namespace Com.IsartDigital.Sokoban {
 
             lBombPattern.explosionMatrix = Main.GetInstance().RotateMatrix(pExplosionMatrix,pRotationVector);
 
-            //lBombPattern.RotateMatrix(lBombPattern, Main.GetInstance().DuplicateListOfList(pExplosionMatrix), pRotationVector);
 
             lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2; // pourquoi distance/2 ??
             lBombPattern.posInGrid = pPosition;
 
-			GameManager.GetInstance().CallDeferred("add_child", lBombPattern);
+
+			GameManager.GetInstance().gameOverExplosionContainer.CallDeferred("add_child", lBombPattern);
 
 		}
 	}
