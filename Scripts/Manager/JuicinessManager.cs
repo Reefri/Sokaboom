@@ -1,3 +1,4 @@
+using Com.IsartDigital.Utils.Effects;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,16 @@ namespace Com.IsartDigital.Sokoban
         public float GlobalTime { private set; get; } = 0;
 
 
+		[Export] Shaker gameOverShaker;
+		[Export] Shaker simpleBombShaker;
+		[Export] Shaker fireworkShaker;
+
+
+
+
 		private Timer waitBeforeNextEplosion = new Timer();
-		private float timeBeforeNextExplosion = 0.4f;
+		private float timeBeforeNextExplosion = 1f;
+		private float explodingAcceleration = 1.07f;
 
 
 		List<Vector2I> alreadyExploded = new List<Vector2I>();
@@ -76,6 +85,8 @@ namespace Com.IsartDigital.Sokoban
 
 		public void ExplodeAllBorders(Vector2I pBorderOriginPos)
 		{
+
+			waitBeforeNextEplosion.WaitTime = timeBeforeNextExplosion;
 
 			Player.GetInstance().Visible = false;
 			Player.GetInstance().canInput = false;
@@ -137,7 +148,7 @@ namespace Com.IsartDigital.Sokoban
 
 			}
 
-			if (lastExplosionPos.Count != 0) waitBeforeNextEplosion.Start();
+			if (lastExplosionPos.Count != 0) { waitBeforeNextEplosion.WaitTime /= explodingAcceleration ; waitBeforeNextEplosion.Start(); }
 			else lBorderExplosion.Finished += StopExplosion;
 
 		}

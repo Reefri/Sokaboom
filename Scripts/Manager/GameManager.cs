@@ -33,8 +33,6 @@ namespace Com.IsartDigital.Sokoban
         private List<LevelScreenShot> gameScreenshot = new List<LevelScreenShot>();
         public HistoricHeap currentPosition;
 
-        public bool canMoveBackInTime;
-
 
         private int currentPar = 0;
         public int CurrentPar
@@ -336,7 +334,7 @@ namespace Com.IsartDigital.Sokoban
             Player.GetInstance().canInput = true;
             Player.GetInstance().Visible = true;
 
-            if (currentPosition.previousValue == null && !canMoveBackInTime)
+            if (currentPosition.previousValue == null)
             {
                 GD.Print("Can't go back in time.");
                 return;

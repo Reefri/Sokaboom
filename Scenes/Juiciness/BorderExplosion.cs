@@ -59,9 +59,9 @@ namespace Com.IsartDigital.Sokoban
 
 
             BorderExplosion lExplosion = (BorderExplosion)borderExplosion.Instantiate();
-            lExplosion.GlobalPosition = (pPosition + Vector2.One / 2) * States.DISTANCE_RANGE;
+            lExplosion.GlobalPosition = (pPosition) * States.DISTANCE_RANGE;
             //GameManager.GetInstance().gameOverExplosionContainer.AddChild(lExplosion);
-            GameManager.GetInstance().AddChild(lExplosion);
+            GameManager.GetInstance().gameOverExplosionContainer.AddChild(lExplosion);
 
 
 			return lExplosion;
