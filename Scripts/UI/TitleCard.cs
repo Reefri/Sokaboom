@@ -20,6 +20,8 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Label letterM;
         [Export] private Label exclamationMark;
 
+        [Export] Button hightScore;
+
         private Timer timer = new Timer();
 
         private Vector2 finalPositionOfSo;
@@ -50,6 +52,8 @@ namespace Com.IsartDigital.Sokoban.UI
             boum.Visible = false;
             exclamationMark.Visible = false;
             explosion.Visible = false;
+
+            hightScore.Pressed += () => UIManager.GetInstance().GoToHightScore();
         }
 
         public override void _Input(InputEvent pEvent)

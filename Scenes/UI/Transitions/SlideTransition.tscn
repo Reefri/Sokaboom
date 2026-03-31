@@ -3,18 +3,23 @@
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/SlideTransition.cs" id="1_wv20p"]
 [ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_xcvnu"]
 
-[node name="SlideTransition" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "animationTimer")]
+[node name="SlideTransition" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "animationTimer", "whenToPlayAnim")]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = 8.0
+offset_right = -4.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wv20p")
 leftDoor = NodePath("LeftDoor")
 rightDoor = NodePath("RightDoor")
 animationTimer = NodePath("animationTime")
+whenToPlayAnim = NodePath("whenToPlayAnim")
 
 [node name="LeftDoor" type="Node2D" parent="."]
 position = Vector2(0, 324)
@@ -32,3 +37,8 @@ texture = ExtResource("2_xcvnu")
 
 [node name="animationTime" type="Timer" parent="."]
 one_shot = true
+autostart = true
+
+[node name="whenToPlayAnim" type="Timer" parent="."]
+one_shot = true
+autostart = true

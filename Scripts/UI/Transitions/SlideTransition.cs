@@ -1,6 +1,8 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
+using System;
 using System.Net;
+using System.Reflection;
 
 // Author : Ethan Frenard
 
@@ -8,30 +10,34 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class SlideTransition : Control
 	{
+        private static PackedScene factory = GD.Load<PackedScene>("res://Scenes/UI/Transitions/SlideTransition.tscn");
+
 		[Export] private Node2D leftDoor;
 		[Export] private Node2D rightDoor;
 
 		[Export] private float tweenDuration = 1;
 
-		[Export] private Timer animationTimer;
+		[Export] public Timer animationTimer;
+        [Export] public  Timer whenToPlayAnim;
 		[Export] private float doorClosedDuration = 0.5f;
 
 		private float startingPosFactor;
-		private float time = 0;
+		public float time = 0;
 
 		private float animationDuration;
-		public float canChangeLevel;
 
         public override void _Ready()
 		{
-            canChangeLevel = tweenDuration + doorClosedDuration;
-            animationDuration = canChangeLevel + tweenDuration;
+            whenToPlayAnim.WaitTime = tweenDuration + doorClosedDuration;
+
+            animationDuration = (float)whenToPlayAnim.WaitTime + tweenDuration;
 
             animationTimer.WaitTime = tweenDuration + doorClosedDuration;
-			animationTimer.Start();
             animationTimer.Timeout += ReverseAnimation;
 
-			startingPosFactor = GetRect().Size.X / 2;
+            whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevel;
+
+			startingPosFactor = GetWindow().Size.X / 2;
 
 			leftDoor.Position += Vector2.Left * startingPosFactor;
 			rightDoor.Position += Vector2.Right * startingPosFactor;
@@ -40,13 +46,13 @@ namespace Com.IsartDigital.Sokoban
                 .SetTrans(Tween.TransitionType.Bounce)
                 .SetEase(Tween.EaseType.Out);
 			lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
-				GetRect().Size/2 + Vector2.Left * startingPosFactor / 2, tweenDuration);
+				GetRect().Size/2 + Vector2.Left * startingPosFactor / 2 , tweenDuration);
 
             Tween lRightDoorTween = rightDoor.CreateTween()
                 .SetTrans(Tween.TransitionType.Bounce)
                 .SetEase(Tween.EaseType.Out);
             lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
-                GetRect().Size / 2 + Vector2.Right * startingPosFactor/2, tweenDuration);
+                GetRect().Size / 2 + Vector2.Right * startingPosFactor / 2, tweenDuration);
         }
 
         private void ReverseAnimation()
@@ -70,8 +76,14 @@ namespace Com.IsartDigital.Sokoban
 
 			time += lDelta;
 
-			if (time > animationDuration) QueueFree();
+            if (time > animationDuration) QueueFree();
 		}
+
+		public static void Create()
+		{
+            SlideTransition lLevelOpenTransition = (SlideTransition)factory.Instantiate();
+            UIManager.GetInstance().AddChild(lLevelOpenTransition);
+        }
 		protected override void Dispose(bool pDisposing)
 		{
 

@@ -2,6 +2,8 @@ using Com.IsartDigital.Sokoban.UI;
 using Com.IsartDigital.UI;
 using Godot;
 using System;
+using System.Reflection;
+using System.Threading.Tasks;
 
 // Author : Ethan Masse
 
@@ -20,22 +22,20 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene uiLevelSelect = GD.Load<PackedScene>("res://Scenes/UI/LevelSelect.tscn");
         private PackedScene uiHUD = GD.Load<PackedScene>("res://Scenes/UI/HUD.tscn");
         private PackedScene uiWin = GD.Load<PackedScene>("res://Scenes/UI/Win.tscn");
+        private PackedScene uiWinFinal = GD.Load<PackedScene>("res://Scenes/UI/WinFinal.tscn");
+        private PackedScene uiHightScore = GD.Load<PackedScene>("res://Scenes/UI/HightScore.tscn");
+
         private PackedScene LevelOpenTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/SlideTransition.tscn");
         private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
 
         public HUD instanceHud;
 
-        [Export] private bool noLogin = true;
         public int levelIndex;
         private int currentIndex = -1;
         public bool comeToMenu = true;
-        private bool canChangeMenu = false;
-
 
 		public int finalScore;
 
-        private Timer SelectLevelDelay = new Timer();
-        private Timer changeMenuDelay = new Timer();
 
         private UIManager():base() 
 		{
@@ -59,34 +59,6 @@ namespace Com.IsartDigital.Sokoban
 			base._Ready();
 
 			AddChild(uiScreenSplash.Instantiate());
-
-            GetParent().CallDeferred("add_child", SelectLevelDelay);
-            GetParent().CallDeferred("add_child", changeMenuDelay);
-            SelectLevelDelay.OneShot = true;
-            changeMenuDelay.OneShot = true;
-            SelectLevelDelay.Timeout += ContinueToLevel;
-            changeMenuDelay.Timeout += ContinueToMenu;
-        }
-
-        private void ContinueToMenu()
-        {
-            if (!canChangeMenu)
-            {
-
-                canChangeMenu = true;
-                GoToLevelSelect();
-            }
-        }
-
-        private void ContinueToLevel()
-        {
-            if (currentIndex != -1)
-            {
-                GoToLevel(currentIndex);
-                currentIndex = -1;
-            }
-
-            
         }
 
         public void UpdateHud()
@@ -111,24 +83,17 @@ namespace Com.IsartDigital.Sokoban
             GetChild(0).QueueFree();
             AddChild(uiHelp.Instantiate());
         }
-
+        
         public void GoToLevelSelect()
         {
-            MenuTransition lTransition = (MenuTransition)uiMenuChangeTransition.Instantiate();
-            if (!canChangeMenu)
-            {
-                GetParent().AddChild(lTransition);
-                changeMenuDelay.WaitTime = lTransition.tweenDuration/1.7f;
-                changeMenuDelay.Start();
-            }
+            TitleDoors.GetInstance().Transition();
 
-            else if (changeMenuDelay.IsStopped())
-            {
-                GetChild(0).QueueFree();
-                AddChild(uiLevelSelect.Instantiate());
-                canChangeMenu = false;
-            }
+        }
 
+        public void ContinueToLevelSelect()
+        {
+            GetChild(0).QueueFree();
+            AddChild(uiLevelSelect.Instantiate());
         }
 
         public void GoToLevel(int pIndex)
@@ -136,34 +101,28 @@ namespace Com.IsartDigital.Sokoban
 
             if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
 
-            if (currentIndex == -1)
-            {
                 currentIndex = pIndex;
-                SlideTransition lLevelOpenTransition = (SlideTransition)LevelOpenTransition.Instantiate();
-                AddChild(lLevelOpenTransition);
-                SelectLevelDelay.WaitTime = lLevelOpenTransition.canChangeLevel;
-                SelectLevelDelay.Start();
-            }
-
-            if(SelectLevelDelay.IsStopped())
-            {
-                GetChild(0).QueueFree();
-
-                levelIndex = pIndex;
-                Main.GetInstance().AddChild(GameManager.GetInstance());
-
-                AddChild(uiHUD.Instantiate());
-
-                instanceHud.number.Text = Tr("ID_LEVEL");
-                if (pIndex == 0) instanceHud.number.Text += "tuto";
-                else instanceHud.number.Text += pIndex;
-
-                CameraManager.GetInstance().CenterCameraOnCurrentLevel();
-            }
-            
+                SlideTransition.Create();
         }
 
-		public void GoToWin()
+        public void ContinueToLevel()
+        {
+            GetChild(0).QueueFree();
+
+            levelIndex = currentIndex;
+            Main.GetInstance().AddChild(GameManager.GetInstance());
+
+            AddChild(uiHUD.Instantiate());
+
+            instanceHud.number.Text = Tr("ID_LEVEL");
+            if (currentIndex == 0) instanceHud.number.Text += "tuto";
+            else instanceHud.number.Text += currentIndex;
+
+            CameraManager.GetInstance().CenterCameraOnCurrentLevel();
+
+        }
+
+        public void GoToWin()
 		{
             GetChild(0).QueueFree();
             GameManager.GetInstance().QueueFree();
@@ -172,6 +131,18 @@ namespace Com.IsartDigital.Sokoban
             AddChild(lWin);
             foreach (AnimatedSprite2D lStars in lWin.stars.GetChildren()) lStars.Frame = 0;
             lWin.CalculScoreLevel();
+        }
+
+        public void GoToWinFinal()
+        {
+            GetChild(0).QueueFree();
+            AddChild(uiWinFinal.Instantiate());
+        }
+
+        public void GoToHightScore()
+        {
+            GetChild(0).QueueFree();
+            AddChild(uiHightScore.Instantiate());
         }
 
         protected override void Dispose(bool pDisposing)
