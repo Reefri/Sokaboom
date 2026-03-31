@@ -67,7 +67,7 @@ namespace Com.IsartDigital.Sokoban {
 
                                 if ((bool)lCurrentTileData.GetCustomData(Map.CONTAINER))
                                 {
-                                    FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos+Vector2.One/2) *States.DISTANCE_RANGE,GameManager.GetInstance());
+                                    FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos) *States.DISTANCE_RANGE,GameManager.GetInstance());
                                 }
 								GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
                             }
@@ -109,7 +109,7 @@ namespace Com.IsartDigital.Sokoban {
             lBombPattern.explosionMatrix = Main.GetInstance().RotateMatrix(pExplosionMatrix,pRotationVector);
 
 
-            lBombPattern.Position = (Vector2.One/2 + pPosition )* States.DISTANCE_RANGE /2; // pourquoi distance/2 ??
+            lBombPattern.Position = (pPosition )* States.DISTANCE_RANGE /2; // pourquoi distance/2 ??
             lBombPattern.posInGrid = pPosition;
 
 

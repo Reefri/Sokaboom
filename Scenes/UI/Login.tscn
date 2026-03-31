@@ -66,7 +66,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "Login :"
+text = "ID_TITLE_LOGIN"
 horizontal_alignment = 1
 
 [node name="LinePseudo" type="LineEdit" parent="Font/Login_Inscription/Font"]
@@ -93,7 +93,7 @@ offset_top = 85.0
 offset_right = 100.0
 offset_bottom = 116.0
 grow_horizontal = 2
-placeholder_text = "PassWord"
+placeholder_text = "ID_PASSWORD"
 alignment = 1
 caret_blink = true
 secret = true
@@ -120,7 +120,7 @@ offset_top = 124.0
 offset_right = 100.0
 offset_bottom = 155.0
 grow_horizontal = 2
-placeholder_text = "Confirm Password"
+placeholder_text = "ID_CONFIRM_PASSWORD"
 alignment = 1
 secret = true
 secret_character = "*"
@@ -149,7 +149,7 @@ offset_right = 150.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Connecte toi"
+text = "ID_VALIDATION_LOGIN"
 
 [node name="Swtich" type="Button" parent="Font/Login_Inscription/Font"]
 self_modulate = Color(0, 0.85098, 0.972549, 1)

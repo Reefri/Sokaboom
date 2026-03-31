@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 // Author : Ethan Masse
 
@@ -16,18 +17,17 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
+            UIManager.GetInstance().instanceHud = this;
 
             buttonUndo.Pressed += () => GameManager.GetInstance().MoveBackInTime();
             buttonRedo.Pressed += () => GameManager.GetInstance().MoveForwardInTime();
-        }
 
-		public void ResetHUD()
-		{
             par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
-            name.Text = GameManager.GetInstance().currentLevel.Title + " Created by : " + GameManager.GetInstance().currentLevel.Author;
+            name.Text = GameManager.GetInstance().currentLevel.Title + Tr("ID_BY") + GameManager.GetInstance().currentLevel.Author;
+            steps.Text = Tr("ID_STEPS") + 0;
         }
 
-		private void QuitPressed()
+        private void QuitPressed()
 		{
             UIManager.GetInstance().GoToLevelSelect();
             GameManager.GetInstance().QueueFree();
@@ -40,5 +40,10 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().ChargeMapFromCurrentLevel();
             GameManager.GetInstance().CurrentPar = 0;
         }
-	}
+
+        protected override void Dispose(bool pDisposing)
+        {
+            UIManager.GetInstance().instanceHud = null;
+        }
+    }
 }

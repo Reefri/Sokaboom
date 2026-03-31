@@ -42,7 +42,7 @@ offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "Win !"
+text = "ID_WIN"
 
 [node name="Stars" type="Control" parent="ColorRect"]
 layout_mode = 1
@@ -98,7 +98,7 @@ offset_top = -70.0
 offset_right = 120.0
 offset_bottom = -20.0
 grow_vertical = 0
-text = "Restart"
+text = "ID_RESTART"
 
 [node name="Next" type="Button" parent="ColorRect"]
 layout_mode = 1
@@ -113,4 +113,4 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Next"
+text = "ID_NEXT"

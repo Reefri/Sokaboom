@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://drttyt8p2u2js"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Transitions/SlideTransition.cs" id="1_wv20p"]
+[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_xcvnu"]
+
+[node name="SlideTransition" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "animationTimer")]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wv20p")
+leftDoor = NodePath("LeftDoor")
+rightDoor = NodePath("RightDoor")
+animationTimer = NodePath("animationTime")
+
+[node name="LeftDoor" type="Node2D" parent="."]
+position = Vector2(0, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftDoor"]
+scale = Vector2(5, 5.833)
+texture = ExtResource("2_xcvnu")
+
+[node name="RightDoor" type="Node2D" parent="."]
+position = Vector2(1152, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="RightDoor"]
+scale = Vector2(5, 5.833)
+texture = ExtResource("2_xcvnu")
+
+[node name="animationTime" type="Timer" parent="."]
+one_shot = true

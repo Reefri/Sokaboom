@@ -17,21 +17,13 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Button buttonValidation;
         [Export] private Label statut;
 
-        private const string TEXT_SWITCH_INSCRIPTION = "Already Register";
-        private const string TEXT_VALIDATION_INSCRIPTION = "Register You";
         private const string TEXT_TITLE_INSCRIPTION = "Inscription :";
 
         private const string TEXT_SWITCH_LOGIN = "Inscription";
-        private const string TEXT_VALIDATION_LOGIN = "Connect You";
-        private const string TEXT_TITLE_LOGIN = "Login :";
 
         private Color green = new Color(0, 1, 0);
         private Color yellow = new Color(1, 1, 0);
         private Color red = new Color(1, 0, 0);
-
-        private const string PASSWORD_NOT_CONFIRM = "Le mot de passe ne correspond pas à la confirmation.";
-        private const string PASSWORD_CONFIRM = "Enregistrement réussi !";
-        private const string INCORECT_PASSWORD = "Votre mot de passe est incorrecte.";
 
         private bool isLogin = true;
 
@@ -49,8 +41,8 @@ namespace Com.IsartDigital.Sokoban.UI
                 font.Color = new Color(0, 0.85f, 0.97f);
                 buttonSwitch.SelfModulate = new Color(0, 0, 0.39f);
 
-                buttonSwitch.Text = TEXT_SWITCH_INSCRIPTION;
-                buttonValidation.Text = TEXT_VALIDATION_INSCRIPTION;
+                buttonSwitch.Text = Tr("ID_SWITCH_INSCRIPTION");
+                buttonValidation.Text = Tr("ID_VALIDATION_INSCRIPTION");
 
                 title.Text = TEXT_TITLE_INSCRIPTION;
 
@@ -63,9 +55,9 @@ namespace Com.IsartDigital.Sokoban.UI
                 buttonSwitch.SelfModulate = new Color(0, 0.85f, 0.97f);
 
                 buttonSwitch.Text = TEXT_SWITCH_LOGIN;
-                buttonValidation.Text = TEXT_VALIDATION_LOGIN;
+                buttonValidation.Text = Tr("ID_VALIDATION_LOGIN");
 
-                title.Text = TEXT_TITLE_LOGIN;
+                title.Text = Tr("ID_TITLE_LOGIN");
 
                 confirmPassword.Visible = false;
 
@@ -89,18 +81,18 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             if (password.Text != confirmPassword.Text)
             {
-                statut.Text = PASSWORD_NOT_CONFIRM;
+                statut.Text = Tr("ID_PASSWORD_NOT_CONFIRM");
                 statut.SelfModulate = yellow;
                 return;
             }
             if (AccountManager.GetInstance().Register(pseudo.Text, password.Text))
             {
-                statut.Text = PASSWORD_CONFIRM;
+                statut.Text = Tr("ID_PASSWORD_CONFIRM");
                 statut.SelfModulate = green;
             }
             else
             {
-                statut.Text = "Le pseudo : " + pseudo.Text + " existe déjà, changé de pseudo ou connectez-vous !";
+                statut.Text = Tr("ID_PSEUDO_EXIST_A") + pseudo.Text + Tr("ID_PSEUDO_EXIST_B");
                 statut.SelfModulate = yellow;
             }
         }
@@ -110,16 +102,16 @@ namespace Com.IsartDigital.Sokoban.UI
             switch (AccountManager.GetInstance().TestConnexion(pseudo.Text, password.Text))
             {
                 case AccountManager.TestConnexionResult.Incorrect:
-                    statut.Text = INCORECT_PASSWORD;
+                    statut.Text = Tr("ID_INCORECT_PASSWORD");
                     statut.SelfModulate = red;
                     break;
                 case AccountManager.TestConnexionResult.Valid:
-                    statut.Text = "Connexion réussi ! Bienvenue " + pseudo.Text;
+                    statut.Text = Tr("ID_CONNECTION_SUCESS") + pseudo.Text;
                     statut.SelfModulate = green;
                     UIManager.GetInstance().GoToTitle();
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
-                    statut.Text = "Aucun compte n'a été trouvé avec le pseudo : " + pseudo.Text + " Si vous n'avez pas encore de compte, créez s'en un !";
+                    statut.Text = Tr("ID_NO_ACCOUNT_A") + pseudo.Text + Tr("ID_NO_ACCOUNT_B");
                     statut.SelfModulate = red;
                     break;
             }

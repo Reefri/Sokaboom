@@ -74,7 +74,7 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pPosition);
             Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
-            lBox.GlobalPosition = (pPosition + Vector2.One/2) * (States.DISTANCE_RANGE);
+            lBox.GlobalPosition = (pPosition) * (States.DISTANCE_RANGE);
 			GameManager.GetInstance().tileMap.AddChild(lBox);
 			return lBox;
 

@@ -9,22 +9,33 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class UIManager : Control
 	{
+
 		static private UIManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/UIManager.tscn");
 
-        private IsartLogo uiScreenSplash = (IsartLogo)GD.Load<PackedScene>("res://Scenes/UI/IsartLogo.tscn").Instantiate();
-        private LoginUI uiLogin = (LoginUI)GD.Load<PackedScene>("res://Scenes/UI/Login.tscn").Instantiate();
-        private TitleCard uiTitle = (TitleCard)GD.Load<PackedScene>("res://Scenes/UI/TitleCard.tscn").Instantiate();
-        private HelpMenu uiHelp = (HelpMenu)GD.Load<PackedScene>("res://Scenes/UI/HelpMenu.tscn").Instantiate();
-        private LevelSelect uiLevelSelect = (LevelSelect)GD.Load<PackedScene>("res://Scenes/UI/LevelSelect.tscn").Instantiate();
-        public HUD uiHUD = (HUD)GD.Load<PackedScene>("res://Scenes/UI/HUD.tscn").Instantiate();
-        private Win uiWin = (Win)GD.Load<PackedScene>("res://Scenes/UI/Win.tscn").Instantiate();
+        private PackedScene uiScreenSplash = GD.Load<PackedScene>("res://Scenes/UI/IsartLogo.tscn");
+        private PackedScene uiLogin = GD.Load<PackedScene>("res://Scenes/UI/Login.tscn");
+        private PackedScene uiTitle = GD.Load<PackedScene>("res://Scenes/UI/TitleCard.tscn");
+        private PackedScene uiHelp = GD.Load<PackedScene>("res://Scenes/UI/HelpMenu.tscn");
+        private PackedScene uiLevelSelect = GD.Load<PackedScene>("res://Scenes/UI/LevelSelect.tscn");
+        private PackedScene uiHUD = GD.Load<PackedScene>("res://Scenes/UI/HUD.tscn");
+        private PackedScene uiWin = GD.Load<PackedScene>("res://Scenes/UI/Win.tscn");
+        private PackedScene LevelOpenTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/SlideTransition.tscn");
+        private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
+
+        public HUD instanceHud;
 
         [Export] private bool noLogin = true;
         public int levelIndex;
+        private int currentIndex = -1;
         public bool comeToMenu = true;
+        private bool canChangeMenu = false;
+
 
 		public int finalScore;
+
+        private Timer SelectLevelDelay = new Timer();
+        private Timer changeMenuDelay = new Timer();
 
         private UIManager():base() 
 		{
@@ -47,64 +58,120 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-			AddChild(uiScreenSplash);
-        	
+			AddChild(uiScreenSplash.Instantiate());
+
+            GetParent().CallDeferred("add_child", SelectLevelDelay);
+            GetParent().CallDeferred("add_child", changeMenuDelay);
+            SelectLevelDelay.OneShot = true;
+            changeMenuDelay.OneShot = true;
+            SelectLevelDelay.Timeout += ContinueToLevel;
+            changeMenuDelay.Timeout += ContinueToMenu;
         }
 
-		public void UpdateHud()
-		{
-			uiHUD.steps.Text = "Steps : " + GameManager.GetInstance().CurrentPar;
+        private void ContinueToMenu()
+        {
+            if (!canChangeMenu)
+            {
+
+                canChangeMenu = true;
+                GoToLevelSelect();
+            }
+        }
+
+        private void ContinueToLevel()
+        {
+            if (currentIndex != -1)
+            {
+                GoToLevel(currentIndex);
+                currentIndex = -1;
+            }
+
+            
+        }
+
+        public void UpdateHud()
+        {
+            if (instanceHud != null) instanceHud.steps.Text = Tr("ID_STEPS") + GameManager.GetInstance().CurrentPar;
         }
 
         public void GoToLogin()
         {
-            RemoveChild(GetChild(0));
-            AddChild(uiLogin);
+            GetChild(0).QueueFree();
+            AddChild(uiLogin.Instantiate());
         }
 
         public void GoToTitle()
         {
-			RemoveChild(GetChild(0));
-            AddChild(uiTitle);
+            GetChild(0).QueueFree();
+            AddChild(uiTitle.Instantiate());
         }
 
         public void GoToHelp()
         {
-            RemoveChild(GetChild(0));
-            AddChild(uiHelp);
+            GetChild(0).QueueFree();
+            AddChild(uiHelp.Instantiate());
         }
 
         public void GoToLevelSelect()
         {
-            RemoveChild(GetChild(0));
-            AddChild(uiLevelSelect);
+            MenuTransition lTransition = (MenuTransition)uiMenuChangeTransition.Instantiate();
+            if (!canChangeMenu)
+            {
+                GetParent().AddChild(lTransition);
+                changeMenuDelay.WaitTime = lTransition.tweenDuration/1.7f;
+                changeMenuDelay.Start();
+            }
+
+            else if (changeMenuDelay.IsStopped())
+            {
+                GetChild(0).QueueFree();
+                AddChild(uiLevelSelect.Instantiate());
+                canChangeMenu = false;
+            }
+
         }
 
-		public void GoToLevel(int pIndex)
-		{
-			if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
+        public void GoToLevel(int pIndex)
+        {
 
-            RemoveChild(GetChild(0));
+            if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
 
-			levelIndex = pIndex;
-			Main.GetInstance().AddChild(GameManager.GetInstance());
-            AddChild(uiHUD);
+            if (currentIndex == -1)
+            {
+                currentIndex = pIndex;
+                SlideTransition lLevelOpenTransition = (SlideTransition)LevelOpenTransition.Instantiate();
+                AddChild(lLevelOpenTransition);
+                SelectLevelDelay.WaitTime = lLevelOpenTransition.canChangeLevel;
+                SelectLevelDelay.Start();
+            }
 
-			uiHUD.number.Text = "level ";
-            if (pIndex == 0) uiHUD.number.Text += "tuto";
-			else uiHUD.number.Text += pIndex;
+            if(SelectLevelDelay.IsStopped())
+            {
+                GetChild(0).QueueFree();
 
-            CameraManager.GetInstance().CenterCameraOnCurrentLevel();
+                levelIndex = pIndex;
+                Main.GetInstance().AddChild(GameManager.GetInstance());
+
+                AddChild(uiHUD.Instantiate());
+
+                instanceHud.number.Text = Tr("ID_LEVEL");
+                if (pIndex == 0) instanceHud.number.Text += "tuto";
+                else instanceHud.number.Text += pIndex;
+
+                CameraManager.GetInstance().CenterCameraOnCurrentLevel();
+            }
+            
         }
 
 		public void GoToWin()
 		{
-            RemoveChild(GetChild(0));
-			GameManager.GetInstance().QueueFree();
-            
-            AddChild(uiWin);
-            foreach (AnimatedSprite2D lStars in uiWin.stars.GetChildren()) lStars.Frame = 0;
-            uiWin.CalculScoreLevel();
+            GetChild(0).QueueFree();
+            GameManager.GetInstance().QueueFree();
+
+            Win lWin = (Win)uiWin.Instantiate();
+            AddChild(lWin);
+            foreach (AnimatedSprite2D lStars in lWin.stars.GetChildren()) lStars.Frame = 0;
+            lWin.CalculScoreLevel();
         }
 
         protected override void Dispose(bool pDisposing)

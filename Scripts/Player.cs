@@ -276,7 +276,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoTo(Vector2I pPosition)
         {
-            GlobalPosition = (pPosition + Vector2.One / 2) * States.DISTANCE_RANGE;
+            GlobalPosition = (pPosition ) * States.DISTANCE_RANGE;
         }
 
         public void AnimThePlayer(Vector2I pLastDirection)

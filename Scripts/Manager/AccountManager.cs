@@ -121,17 +121,23 @@ namespace Com.IsartDigital.Sokoban
 		public void NewWin(int pScore, int pPar)
 		{
 
+			bool lDidModif= false;
+
 			if (currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] < pScore)
 			{
 				currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] = pScore;
 				currentAccount.BestPar[GridManager.GetInstance().CurrentLevelIndex] = pPar;
+
+				lDidModif = true;
 			}
 
-            currentAccount.LockedLevels[
-				Mathf.Clamp(GridManager.GetInstance().CurrentLevelIndex + 1,0,GridManager.GetInstance().numberOfLevel-1)
-				] = true;
+			int lIndex = Mathf.Clamp(GridManager.GetInstance().CurrentLevelIndex + 1, 0, GridManager.GetInstance().numberOfLevel - 1);
 
+			if (!currentAccount.LockedLevels[lIndex]) { currentAccount.LockedLevels[lIndex] = true; lDidModif = true; }
+
+			if (lDidModif) 
             UpdateAccount();
+
         }
 	
 

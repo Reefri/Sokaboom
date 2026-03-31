@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3ri8gbumdja1"]
 
-[ext_resource type="Script" path="res://Scripts/UI/SceneTransition.cs" id="1_5qa2u"]
+[ext_resource type="Script" path="res://Scripts/UI/Transitions/SceneTransition.cs" id="1_xl4w1"]
 
 [node name="SceneTransition" type="ColorRect" node_paths=PackedStringArray("animationTimer")]
 anchors_preset = 15
@@ -9,7 +9,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-script = ExtResource("1_5qa2u")
+script = ExtResource("1_xl4w1")
 animationTimer = NodePath("animationTimer")
 
 [node name="animationTimer" type="Timer" parent="."]

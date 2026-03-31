@@ -1,0 +1,32 @@
+key,en,fr
+ID_QUIT,Quit,Quitter
+ID_PLAY,Play,Jouer
+ID_NEXT,Next,Suivant
+ID_HELP,Help,Aide
+ID_HIGHTSCORE,Hight Score,Tableau des Scores
+ID_TRANSLATION,English,France
+ID_SOUND,Song,Son
+ID_BACK,Back,Retour
+ID_PASSWORD,Password,Mot de passe
+ID_CONFIRM_PASSWORD,Confirm Password,Confirme Mot de passe
+ID_UNLOCK,Unlock,Debloque
+ID_TUTORIAL,Tutorial,Tutoriel
+ID_LEVEL,Level ,Niveau 
+ID_WIN,Win !,Victoire !
+ID_RESTART,Restart,Recommencer
+ID_UNDO,Undo,Annuler
+ID_REDO,Redo,Refaire
+ID_STEPS,Steps : ,Pas : 
+ID_BY, by , par 
+ID_SWITCH_INSCRIPTION,Already Register,Deja Enregistrer
+ID_VALIDATION_INSCRIPTION,Register You,Enregistre Toi
+ID_VALIDATION_LOGIN,Connect You,Connecte Toi
+ID_TITLE_LOGIN,Login :,Connection :
+ID_PASSWORD_NOT_CONFIRM,The Password is different from confirmation, Le mot de passe ne correspond pas a la confirmation.
+ID_PASSWORD_CONFIRM,Register sucess !,Enregistrement reussit !
+ID_INCORECT_PASSWORD,Incorrect Password,Votre mot de passe est incorrecte.
+ID_PSEUDO_EXIST_A,The Pseudo : ,Le Pseudo :
+ID_PSEUDO_EXIST_B, Already exist so change your pseudo or connect you !, existe deja donc changer de pseudo ou connectez-vous !
+ID_CONNECTION_SUCESS,Connection sucess ! Welcome ,Connexion reussi ! Bienvenue 
+ID_NO_ACCOUNT_A,No Account was found with the peusdo : ,Aucun compte n'a ete trouver avec le pseudo : 
+ID_NO_ACCOUNT_B, If you don't have an account yet so then create one !, Si vous n'avez pas encore de compte alors creez en un !

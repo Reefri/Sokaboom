@@ -39,7 +39,7 @@ offset_left = -200.0
 offset_top = -100.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "ID_RETRY"
+text = "ID_RESTART"
 
 [node name="Redo" type="Button" parent="."]
 layout_mode = 1
@@ -91,7 +91,7 @@ offset_top = 155.0
 offset_bottom = 297.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
-text = "Steps :"
+text = "Steps : 0"
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
