@@ -195,7 +195,6 @@ namespace Com.IsartDigital.Sokoban
 		{
 
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
-			//Cross.Create((pDestination + Vector2I.One/2) * States.DISTANCE_RANGE, GameManager.GetInstance());
 
             if (Player.GetInstance().hasBoxToPush && (boxOrContainerClickedOn - pBeginning).LengthSquared() <= 1)
             {
@@ -217,7 +216,8 @@ namespace Com.IsartDigital.Sokoban
 				if (Player.GetInstance().bombInHand == null || boxOrContainerClickedOn == Vector2I.Zero)
 				{
 					Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
-					return;
+					Player.GetInstance().animatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
+                    return;
 				}
 				else
 				{

@@ -132,18 +132,19 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTime = FIRST_TIME_PATH;
                 pathFindingTimer.WaitTime= pathFindingTime;
 
-                path.Clear();
+                //path.Clear();
 
                 if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
 
                 if ((GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrContainerClickedOn) == null)) return;
+
 
                 else if (hasBoxToPush)
                 {
                     hasBoxToPush = false;
                     Box.hasABoxToCheck = false;
 
-                    
+
                     lastDirection = Map.boxOrContainerClickedOn - GetPositionToVector2I();
 
 
