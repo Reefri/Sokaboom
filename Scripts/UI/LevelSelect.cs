@@ -53,7 +53,8 @@ namespace Com.IsartDigital.UI {
 
         private void BackPressed()
         {
-            UIManager.GetInstance().GoToTitle();
+            //UIManager.GetInstance().GoToTitle();
+            MenuTransition.Create();
         }
 
         private void UnlockPressed()

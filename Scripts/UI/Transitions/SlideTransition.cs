@@ -37,7 +37,7 @@ namespace Com.IsartDigital.Sokoban
 
             whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevel;
 
-			startingPosFactor = GetWindow().Size.X / 2;
+			startingPosFactor = GetRect().Size.X / 2;
 
 			leftDoor.Position += Vector2.Left * startingPosFactor;
 			rightDoor.Position += Vector2.Right * startingPosFactor;
