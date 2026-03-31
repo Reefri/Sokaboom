@@ -3,11 +3,24 @@
 [ext_resource type="Script" path="res://Scripts/Manager/JuicinessManager.cs" id="1_lbr8o"]
 [ext_resource type="PackedScene" uid="uid://didk87ft1qbgu" path="res://Scripts/Utils/Effects/shaker.tscn" id="2_von3f"]
 
-[node name="JuicinessManger" type="Node2D"]
+[node name="JuicinessManger" type="Node2D" node_paths=PackedStringArray("gameOverShaker", "simpleBombShaker", "fireworkShaker")]
 script = ExtResource("1_lbr8o")
+gameOverShaker = NodePath("GameOverShaker")
+simpleBombShaker = NodePath("SimpleBombShaker")
+fireworkShaker = NodePath("FireworkShaker")
 
 [node name="GameOverShaker" parent="." instance=ExtResource("2_von3f")]
+duration_ = 0.0
+_transition = 5
+_ease = 1
 
 [node name="SimpleBombShaker" parent="." instance=ExtResource("2_von3f")]
+duration = 1.0
+amplitude = Vector2(2, 2)
+duration_ = 0.0
 
 [node name="FireworkShaker" parent="." instance=ExtResource("2_von3f")]
+duration = 0.3
+amplitude = Vector2(2, 2)
+duration_ = 0.0
+_duration = 0.0

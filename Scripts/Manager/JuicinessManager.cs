@@ -22,9 +22,9 @@ namespace Com.IsartDigital.Sokoban
         public float GlobalTime { private set; get; } = 0;
 
 
-		[Export] Shaker gameOverShaker;
-		[Export] Shaker simpleBombShaker;
-		[Export] Shaker fireworkShaker;
+		[Export] public Shaker gameOverShaker;
+		[Export] public Shaker simpleBombShaker;
+		[Export] public Shaker fireworkShaker;
 
 
 
@@ -58,6 +58,14 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			base._Ready();
+
+			Node[] lArray = new Node[1];
+			lArray[0] = CameraManager.GetInstance();
+
+			fireworkShaker._targets = lArray;
+			gameOverShaker._targets = lArray;
+			simpleBombShaker._targets = lArray;
+
 
 			HoverEffect.amplitude = hoverAmplitude;
 			HoverEffect.speed = hoverSpeed;
@@ -155,7 +163,10 @@ namespace Com.IsartDigital.Sokoban
 
 		public void StopExplosion()
 		{
-			GameManager.GetInstance().shaker.Stop();
+
+			fireworkShaker.Stop();
+			simpleBombShaker.Stop();
+			gameOverShaker.Stop();
 
 			waitBeforeNextEplosion.Stop();
 

@@ -32,6 +32,8 @@ namespace Com.IsartDigital.Sokoban {
 
         public override void _Ready()
 		{
+            JuicinessManager.GetInstance().simpleBombShaker.Start();
+
 
             originPos = (new BombPattern(this, true, explosionMatrix)).originePos;
 
@@ -57,13 +59,13 @@ namespace Com.IsartDigital.Sokoban {
 
                                 JuicinessManager.GetInstance().ExplodeAllBorders(posInGrid + new Vector2I(j, i) - originPos);
                                 Player.GetInstance().canInput = false;
-                                CameraManager.GetInstance().ShakeScreen(borderScreenShakePower, borderScreenShakeTime);
+
+                                JuicinessManager.GetInstance().gameOverShaker.Start();
 
                                 return;
                             }
                             else
                             {
-                                CameraManager.GetInstance().ShakeScreen(explosionScreenShakePower, explosionScreenShakeTime);
 
                                 if ((bool)lCurrentTileData.GetCustomData(Map.CONTAINER))
                                 {

@@ -88,13 +88,7 @@ namespace Com.IsartDigital.Sokoban
 			CheckHeldInput(MOVE_CAM_INPUT);
 		}
 
-		public void ShakeScreen(float pScreenShakePower = 5, float pScreenShakeTime = 2f)
-		{
-			
-			GameManager.GetInstance().shaker.duration = pScreenShakeTime;
-            GameManager.GetInstance().shaker.amplitude = new Vector2(pScreenShakePower, pScreenShakePower);
-            GameManager.GetInstance().shaker.Start();
-		}
+		
 		private void CheckHeldInput(string pInputName)
 		{
 			if (Input.IsActionJustPressed(pInputName) && GameManager.GetInstance().currentLevel != null && heldInputTime.IsStopped())

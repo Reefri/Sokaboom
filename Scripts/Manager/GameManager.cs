@@ -2,8 +2,6 @@ using Com.IsartDigital.Utils.Effects;
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 
 // Author : Sacha Gramatikoff
 
@@ -13,7 +11,6 @@ namespace Com.IsartDigital.Sokoban
     {
         [Export] public Node2D bombCollectibleContainer;
 
-        [Export] public Shaker shaker;
 
         [Export] public Node2D gameOverExplosionContainer;
 
@@ -29,8 +26,7 @@ namespace Com.IsartDigital.Sokoban
         private List<BombCollectible> levelBombCollectibles = new List<BombCollectible>();
 
         public Level currentLevel;
-
-        private List<LevelScreenShot> gameScreenshot = new List<LevelScreenShot>();
+        
         public HistoricHeap currentPosition;
 
 

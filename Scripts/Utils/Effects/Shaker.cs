@@ -9,7 +9,7 @@ namespace Com.IsartDigital.Utils.Effects
 	{
         [ExportGroup("Targets")]
 
-        [Export] private Node[] _targets;
+        [Export] public Node[] _targets;
         
         [ExportGroup("General")]
         

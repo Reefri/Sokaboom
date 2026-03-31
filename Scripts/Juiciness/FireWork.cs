@@ -83,6 +83,8 @@ namespace Com.IsartDigital.Sokoban
 
 		private void Explode()
 		{
+            JuicinessManager.GetInstance().fireworkShaker.Start();
+
             disableProcess = true;
 
 
@@ -103,8 +105,14 @@ namespace Com.IsartDigital.Sokoban
 
 			
 			lExplosionPart.Emitting = true;
-			lExplosionPart.Finished += QueueFree;
+			lExplosionPart.Finished += Stop;
 
+		}
+
+
+		private void Stop()
+		{
+			QueueFree();
 		}
 
 
