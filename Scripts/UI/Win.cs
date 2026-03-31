@@ -20,7 +20,8 @@ namespace Com.IsartDigital.Sokoban
         public override void _Ready()
 		{
 			restart.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex);
-			next.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex + 1);
+			if (UIManager.GetInstance().levelIndex + 1 < GridManager.GetInstance().numberOfLevel) next.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex + 1);
+			else next.Pressed += () => UIManager.GetInstance().GoToWinFinal();
         }
 
 		public void CalculScoreLevel()
@@ -59,8 +60,6 @@ namespace Com.IsartDigital.Sokoban
 			List<Account> lAccounts = AccountManager.GetInstance().GetTopPlayers(10);
 
 			//Pour Ethan Masse : t'as dans lAccounts toutes les informations que tu veux
-
-			GD.Print(AccountManager.GetInstance().currentAccount.FinalScore());
         }
 
 		protected override void Dispose(bool pDisposing)

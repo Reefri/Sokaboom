@@ -30,3 +30,4 @@ ID_PSEUDO_EXIST_B, Already exist so change your pseudo or connect you !, existe 
 ID_CONNECTION_SUCESS,Connection sucess ! Welcome ,Connexion reussi ! Bienvenue 
 ID_NO_ACCOUNT_A,No Account was found with the peusdo : ,Aucun compte n'a ete trouver avec le pseudo : 
 ID_NO_ACCOUNT_B, If you don't have an account yet so then create one !, Si vous n'avez pas encore de compte alors creez en un !
+ID_WIN_FINAL,Win Final,Victoire Final
