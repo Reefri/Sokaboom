@@ -105,13 +105,12 @@ namespace Com.IsartDigital.Sokoban
 
         public void ContinueToLevelSelect()
         {
-
+            GetChild(0).QueueFree();
+            AddChild(uiLevelSelect.Instantiate());
         }
         public void GoToLevelSelect()
         {
-
-                GetChild(0).QueueFree();
-                AddChild(uiLevelSelect.Instantiate());
+            TitleDoors.GetInstance().Transition();
 
         }
 

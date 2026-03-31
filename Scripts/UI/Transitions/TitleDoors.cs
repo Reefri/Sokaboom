@@ -14,7 +14,6 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] private float tweenDuration = 1;
 
-        [Export] public Timer animationTimer;
         [Export] public Timer whenToPlayAnim;
         [Export] private Timer doorsStillTimer;
 
@@ -46,7 +45,9 @@ namespace Com.IsartDigital.Sokoban
 		{
             screenSize = GetWindow().Size;
             margin = screenSize.X / 2;
-            sideFactor = screenSize.X / 1.5f;
+            sideFactor = screenSize.X / 1.4f;
+            whenToPlayAnim.WaitTime = tweenDuration + doorsStillTimer.WaitTime;
+            whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevelSelect;
 
             SetDoorsClosed();
             OpenDoors();
@@ -59,15 +60,56 @@ namespace Com.IsartDigital.Sokoban
             doorsStillTimer.Timeout += ContinueDoorsMovement;
         }
 
+
+
 		public override void _Process(double pDelta)
 		{
 			float lDelta = (float)pDelta;
 
-            if (Input.IsActionJustPressed("leftClick"))
+            if (GameManager.GetInstance().currentLevel != null)
             {
-                ActivateDoors();
+                
+                leftDoor.Position = screenSize / 2 + Vector2.Left * screenSize.X;
+                rightDoor.Position = screenSize / 2 + Vector2.Right * screenSize.X;
             }
 		}
+
+        public void Transition()
+        {
+            whenToPlayAnim.Start();
+
+            Tween lLeftDoorTween = leftDoor.CreateTween()
+                    .SetTrans(Tween.TransitionType.Bounce)
+                    .SetEase(Tween.EaseType.Out);
+            lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
+                new Vector2(screenSize.X / 4, screenSize.Y / 2), tweenDuration);
+            lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
+                new Vector2(screenSize.X / 4, screenSize.Y / 2), tweenDuration/2);
+
+            Tween lRightDoorTween = rightDoor.CreateTween()
+                .SetTrans(Tween.TransitionType.Bounce)
+                .SetEase(Tween.EaseType.Out);
+            lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
+                new Vector2(screenSize.X - screenSize.X / 4, screenSize.Y / 2), tweenDuration);
+            lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
+                new Vector2(screenSize.X - screenSize.X / 4, screenSize.Y / 2), tweenDuration/2);
+            doorsClosed = true;
+
+            lLeftDoorTween
+                    .SetTrans(Tween.TransitionType.Quad)
+                    .SetEase(Tween.EaseType.OutIn);
+
+            lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
+                screenSize / 2 + Vector2.Left * sideFactor, tweenDuration);
+
+            lRightDoorTween
+                .SetTrans(Tween.TransitionType.Quad)
+                .SetEase(Tween.EaseType.OutIn);
+            lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
+                screenSize / 2 + Vector2.Right * sideFactor, tweenDuration);
+
+            doorsClosed = false;
+        }
 
         public void ActivateDoors()
         {
@@ -87,7 +129,7 @@ namespace Com.IsartDigital.Sokoban
         }
         private void ContinueDoorsMovement()
         {
-            if (doorsClosed)
+            if (doorsClosed) //opens the doors
             {
                 SetDoorsClosed();
 
@@ -106,7 +148,7 @@ namespace Com.IsartDigital.Sokoban
 
                 doorsClosed = false;
             }
-            else if (!doorsClosed)
+            else if (!doorsClosed) //closes the doors
             {
                 SetDoorsOpen();
 
@@ -150,8 +192,8 @@ namespace Com.IsartDigital.Sokoban
         private void SetDoorsOpen()
         {
             doorsClosed = false;
-            leftDoor.Position = screenSize / 2 + Vector2.Left * screenSize.X / 1.5f;
-            rightDoor.Position = screenSize / 2 + Vector2.Right * screenSize.X / 1.5f;
+            leftDoor.Position = screenSize / 2 + Vector2.Left * sideFactor;
+            rightDoor.Position = screenSize / 2 + Vector2.Right * sideFactor;
         }
 		protected override void Dispose(bool pDisposing)
 		{

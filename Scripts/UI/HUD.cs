@@ -14,9 +14,13 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Label name;
         [Export] public Label number;
 
+        [Export] private Timer quitDelay = new Timer();
+
 
         public override void _Ready()
 		{
+            quitDelay.Timeout += DestroyGameManager;
+
             UIManager.GetInstance().instanceHud = this;
 
             buttonUndo.Pressed += () => GameManager.GetInstance().MoveBackInTime();
@@ -27,12 +31,17 @@ namespace Com.IsartDigital.Sokoban
             steps.Text = Tr("ID_STEPS") + 0;
         }
 
-        private void QuitPressed()
-		{
-            UIManager.GetInstance().GoToLevelSelect();
+        private void DestroyGameManager()
+        {
             GameManager.GetInstance().QueueFree();
         }
 
+        private void QuitPressed()
+		{
+            UIManager.GetInstance().GoToLevelSelect();
+            quitDelay.Start();
+            
+        }
         private void RetryPressed()
         {
             Player.GetInstance().canInput = true;
