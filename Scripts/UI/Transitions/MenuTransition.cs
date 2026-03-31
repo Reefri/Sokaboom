@@ -7,6 +7,8 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class MenuTransition : Control
 	{
+		private  static PackedScene factory = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
+
 		[Export] private Node2D TransitionZone;
 		[Export] public float tweenDuration = 1;
 
@@ -34,6 +36,12 @@ namespace Com.IsartDigital.Sokoban
 		protected override void Dispose(bool pDisposing)
 		{
 
+		}
+
+		public static void Create()
+		{
+			MenuTransition lTransition = (MenuTransition)factory.Instantiate();
+			UIManager.GetInstance().AddChild(lTransition);
 		}
 	}
 }

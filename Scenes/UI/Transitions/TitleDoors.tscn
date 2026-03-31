@@ -1,39 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://drttyt8p2u2js"]
+[gd_scene load_steps=3 format=3 uid="uid://bey0ed1h3h2s"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Transitions/SlideTransition.cs" id="1_wv20p"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_xcvnu"]
+[ext_resource type="Script" path="res://Scripts/UI/Transitions/TitleDoors.cs" id="1_ns3k7"]
+[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_nr3ui"]
 
-[node name="SlideTransition" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "animationTimer", "whenToPlayAnim")]
-z_index = 1
+[node name="TitleOpeningTransition" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "animationTimer", "whenToPlayAnim", "doorsStillTimer")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = 8.0
-offset_right = -4.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_wv20p")
+anchors_preset = 0
+script = ExtResource("1_ns3k7")
 leftDoor = NodePath("LeftDoor")
 rightDoor = NodePath("RightDoor")
+tweenDuration = 2.0
 animationTimer = NodePath("animationTime")
 whenToPlayAnim = NodePath("whenToPlayAnim")
+doorsStillTimer = NodePath("doorsStill")
 
 [node name="LeftDoor" type="Node2D" parent="."]
 position = Vector2(0, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftDoor"]
 scale = Vector2(5, 5.833)
-texture = ExtResource("2_xcvnu")
+texture = ExtResource("2_nr3ui")
 
 [node name="RightDoor" type="Node2D" parent="."]
 position = Vector2(1152, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="RightDoor"]
 scale = Vector2(5, 5.833)
-texture = ExtResource("2_xcvnu")
+texture = ExtResource("2_nr3ui")
 
 [node name="animationTime" type="Timer" parent="."]
 one_shot = true
@@ -42,3 +35,7 @@ autostart = true
 [node name="whenToPlayAnim" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="doorsStill" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
