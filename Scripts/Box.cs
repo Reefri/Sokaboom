@@ -53,10 +53,7 @@ namespace Com.IsartDigital.Sokoban
 			}
 
 			
-			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.CONTAINER) ||
-				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.WALL)
-                || (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.BORDER))
-			{
+			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.INTERACTABLE)) { 
 				return false;
 			}
 
@@ -82,7 +79,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public static void BoxAnimation(Vector2I pDirection)
 		{
-			if(pDirection == Vector2I.Up) animToPlay = GO_UP_ANIM;
+			if (pDirection == Vector2I.Up) animToPlay = GO_UP_ANIM;
             else if (pDirection == Vector2I.Down) animToPlay = GO_DOWN_ANIM;
 			else if(pDirection == Vector2I.Right) animToPlay = GO_RIGHT_ANIM;
             else if (pDirection == Vector2I.Left) animToPlay = GO_LEFT_ANIM;

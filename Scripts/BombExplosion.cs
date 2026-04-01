@@ -67,7 +67,7 @@ namespace Com.IsartDigital.Sokoban {
                             else
                             {
 
-                                if ((bool)lCurrentTileData.GetCustomData(Map.CONTAINER))
+                                if ((bool)lCurrentTileData.GetCustomData(Map.BOX))
                                 {
                                     FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos) *States.DISTANCE_RANGE,GameManager.GetInstance());
                                 }

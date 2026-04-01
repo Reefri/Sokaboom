@@ -125,6 +125,7 @@ namespace Com.IsartDigital.Sokoban
         private void MovingOnPath()
         {
             pathFindingTimer.WaitTime = pathFindingTime;
+            if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
             if (path.Count == 0) 
             { 
 
@@ -134,9 +135,9 @@ namespace Com.IsartDigital.Sokoban
 
                 //path.Clear();
 
-                if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
 
-                if ((GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrContainerClickedOn) == null)) return;
+
+                if ((GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn) == null)) return;
 
 
                 else if (hasBoxToPush)
@@ -145,14 +146,14 @@ namespace Com.IsartDigital.Sokoban
                     Box.hasABoxToCheck = false;
 
 
-                    lastDirection = Map.boxOrContainerClickedOn - GetPositionToVector2I();
+                    lastDirection = Map.boxOrWallClickedOn - GetPositionToVector2I();
 
 
-                    if (Box.CanBoxBePushed(lastDirection, Map.boxOrContainerClickedOn))
+                    if (Box.CanBoxBePushed(lastDirection, Map.boxOrWallClickedOn))
                     {
 
                         AnimThePlayer(lastDirection);
-                        Box.Create(Map.boxOrContainerClickedOn, lastDirection);
+                        Box.Create(Map.boxOrWallClickedOn, lastDirection);
                     }
 
                     else
@@ -160,21 +161,20 @@ namespace Com.IsartDigital.Sokoban
                         ExplodeBombInHand();
                     }
 
-
                 }
 
-
-                else if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrContainerClickedOn).GetCustomData(Map.WALL)
+                else if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn).GetCustomData(Map.WALL)
                     && bombInHand != null)
                 {
-                    lastDirection = Map.boxOrContainerClickedOn - GetPositionToVector2I();
+                    lastDirection = Map.boxOrWallClickedOn - GetPositionToVector2I();
                     ExplodeBombInHand();
                 }
                 return;
             }
+
             else
             {
-                animatedSprite.GlobalPosition = GlobalPosition;
+                //animatedSprite.GlobalPosition = GlobalPosition;
 
                 lastDirection = (path[0] - GetPositionToVector2I());
 
@@ -196,7 +196,7 @@ namespace Com.IsartDigital.Sokoban
 
             else if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.INTERACTABLE)))
             {
-                if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.CONTAINER)))
+                if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.BOX)))
                 {
                     return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
                 }
@@ -214,10 +214,10 @@ namespace Com.IsartDigital.Sokoban
 
         public void AdjacentToBox()
         {
-            if (Box.CanBoxBePushed(lastDirection, Map.boxOrContainerClickedOn))
+            if (Box.CanBoxBePushed(lastDirection, Map.boxOrWallClickedOn))
             {
                 AnimThePlayer(lastDirection);
-                Box.Create(Map.boxOrContainerClickedOn, lastDirection);
+                Box.Create(Map.boxOrWallClickedOn, lastDirection);
                 Box.hasABoxToCheck = false;
             }
 
@@ -293,10 +293,6 @@ namespace Com.IsartDigital.Sokoban
             animPlayer.Play(nameOfAnimation[pLastDirection]);
             animatedSprite.Play(nameOfAnimation[pLastDirection] + ANIM_PLAYER);
 
-            if (path.Count != 0 )
-            {
-                GlobalPosition = animatedSprite.GlobalPosition;
-            }
 
         }
 
