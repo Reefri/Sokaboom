@@ -29,10 +29,10 @@ namespace Com.IsartDigital.Sokoban
         private const string PLAYER_ACTION_DOWN = "down";
 
 
-        private const string PLAYER_MOVING_UP = "movingUp";
-        private const string PLAYER_MOVING_DOWN = "movingDown";
-        private const string PLAYER_MOVING_LEFT = "movingLeft";
-        private const string PLAYER_MOVING_RIGHT = "movingRight";
+        private const string MOVING_UP = "movingUp";
+        private const string MOVING_DOWN = "movingDown";
+        private const string MOVING_LEFT = "movingLeft";
+        private const string MOVING_RIGHT = "movingRight";
         private const string ANIM_PLAYER = "Anim";
         public const string ANIM_BLOCKED = "blocked";
 
@@ -45,7 +45,7 @@ namespace Com.IsartDigital.Sokoban
 
         public Timer pathFindingTimer = new Timer();
 
-        private Dictionary<string, Vector2I> nameOfVector = new Dictionary<string, Vector2I>
+        private Dictionary<string, Vector2I> PlayersVector = new Dictionary<string, Vector2I>
         {
             { PLAYER_ACTION_RIGHT , Vector2I.Right },
             { PLAYER_ACTION_LEFT , Vector2I.Left },
@@ -55,10 +55,10 @@ namespace Com.IsartDigital.Sokoban
 
         public Dictionary<Vector2I, string> nameOfAnimation = new Dictionary<Vector2I, string>
         {
-            { Vector2I.Up , PLAYER_MOVING_UP },
-            { Vector2I.Down , PLAYER_MOVING_DOWN },
-            { Vector2I.Right , PLAYER_MOVING_RIGHT },
-            { Vector2I.Left , PLAYER_MOVING_LEFT },
+            { Vector2I.Up , MOVING_UP },
+            { Vector2I.Down , MOVING_DOWN },
+            { Vector2I.Right , MOVING_RIGHT },
+            { Vector2I.Left , MOVING_LEFT },
         };
 
 
@@ -152,7 +152,6 @@ namespace Com.IsartDigital.Sokoban
 
                     if (Box.CanBoxBePushed(lastDirection, Map.boxOrWallClickedOn))
                     {
-
                         AnimThePlayer(lastDirection);
                         Box.Create(Map.boxOrWallClickedOn, lastDirection);
                     }
@@ -238,14 +237,14 @@ namespace Com.IsartDigital.Sokoban
 
             if ( animPlayer.CurrentAnimation != "idle" || Box.animPlaying || path.Count != 0 || hasBoxToPush) { return; }
 
-            foreach (string lActionName in nameOfVector.Keys)
+            foreach (string lActionName in PlayersVector.Keys)
             {
                 if (Input.IsActionJustPressed(lActionName))
                 {
-                    lastDirection = nameOfVector[lActionName];
+                    lastDirection = PlayersVector[lActionName];
                     Box.hasABoxToCheck = false;
 
-                    if (!CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
+                    if (!CheckTheMove(lastDirection)) //if you are against a wall, or 2 consecutive boxes
                     {
 
                         ExplodeBombInHand();

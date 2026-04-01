@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cyeourrjv03a2"]
 
 [ext_resource type="Texture2D" uid="uid://7a1mjepjsyvs" path="res://Assets/ExplosionMark.png" id="1_75csm"]
-[ext_resource type="Script" path="res://Scenes/Juiciness/BorderExplosion.cs" id="1_kf7ai"]
+[ext_resource type="Script" path="res://Scripts/BorderExplosion.cs" id="1_kf7ai"]
 
 [sub_resource type="Curve" id="Curve_u85ti"]
 _data = [Vector2(0, 0), 0.0, 2.75294, 0, 0, Vector2(0.471795, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.88235, 0.0, 0, 0]

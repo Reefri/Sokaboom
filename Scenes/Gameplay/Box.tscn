@@ -62,21 +62,9 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0, 1.0, 0.0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/animComplete:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.11),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
-[sub_resource type="Animation" id="Animation_ncckr"]
-resource_name = "goLeft"
+[sub_resource type="Animation" id="Animation_oee0s"]
+resource_name = "goUp"
 length = 0.11
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -88,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.11),
 "transitions": PackedFloat32Array(3.13834, 0.297302, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-50, 0), Vector2(-64, 0)]
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, -64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -155,8 +143,8 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_oee0s"]
-resource_name = "goUp"
+[sub_resource type="Animation" id="Animation_ncckr"]
+resource_name = "goLeft"
 length = 0.11
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -168,7 +156,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.11),
 "transitions": PackedFloat32Array(3.13834, 0.297302, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, -64)]
+"values": [Vector2(0, 0), Vector2(-50, 0), Vector2(-64, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -197,10 +185,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cnm"]
 _data = {
-"goDown": SubResource("Animation_6ompn"),
-"goLeft": SubResource("Animation_ncckr"),
-"goRight": SubResource("Animation_ctvge"),
-"goUp": SubResource("Animation_oee0s")
+"movingDown": SubResource("Animation_6ompn"),
+"movingLeft": SubResource("Animation_ncckr"),
+"movingRight": SubResource("Animation_ctvge"),
+"movingUp": SubResource("Animation_oee0s")
 }
 
 [node name="Box" type="Node2D" node_paths=PackedStringArray("anim", "moveDust")]
