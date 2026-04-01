@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://butgdmb1blel8"]
+[gd_scene load_steps=9 format=3 uid="uid://butgdmb1blel8"]
 
 [ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Ground/ground_06.png" id="1_5efey"]
 [ext_resource type="Texture2D" uid="uid://xtcqjxfl0xvq" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_12.png" id="1_tprcb"]
 [ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="2_1pvr4"]
+[ext_resource type="Texture2D" uid="uid://bvaqinrr55iq0" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_03.png" id="4_xsayl"]
 
 [sub_resource type="Animation" id="Animation_x5cq2"]
 resource_name = "move"
@@ -11,7 +12,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("player:position")
+tracks/0/path = NodePath("moveBox/player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("box:position")
+tracks/1/path = NodePath("moveBox/box:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -38,35 +39,111 @@ _data = {
 "move": SubResource("Animation_x5cq2")
 }
 
+[sub_resource type="Animation" id="Animation_ocmpl"]
+resource_name = "failToMoveBox"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.1, 2.2, 3),
+"transitions": PackedFloat32Array(0.1, 0.1, 0.282843, 0.196146, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(64, 0), Vector2(128, 0), Vector2(120, 0), Vector2(136, 0), Vector2(128, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("box:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(0.1, 0.164, 0.164, 1),
+"update": 0,
+"values": [Vector2(128, 0), Vector2(128, 0), Vector2(192, 0), Vector2(192, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1al3a"]
+_data = {
+"failToMoveBox": SubResource("Animation_ocmpl")
+}
+
 [node name="HelpMoveBox" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="Ground06" type="Sprite2D" parent="."]
+[node name="moveBox" type="Node2D" parent="."]
+
+[node name="Ground06" type="Sprite2D" parent="moveBox"]
 texture = ExtResource("1_5efey")
 
-[node name="Ground07" type="Sprite2D" parent="."]
+[node name="Ground07" type="Sprite2D" parent="moveBox"]
 position = Vector2(64, 0)
 texture = ExtResource("1_5efey")
 
-[node name="Ground08" type="Sprite2D" parent="."]
+[node name="Ground08" type="Sprite2D" parent="moveBox"]
 position = Vector2(128, 0)
 texture = ExtResource("1_5efey")
 
-[node name="Ground09" type="Sprite2D" parent="."]
+[node name="Ground09" type="Sprite2D" parent="moveBox"]
 position = Vector2(192, 0)
 texture = ExtResource("1_5efey")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moveBox"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_qqsa2")
 }
 autoplay = "move"
 
-[node name="player" type="Sprite2D" parent="."]
-position = Vector2(121.417, 0)
+[node name="player" type="Sprite2D" parent="moveBox"]
 texture = ExtResource("1_tprcb")
 
-[node name="box" type="Sprite2D" parent="."]
-position = Vector2(176.979, 0)
+[node name="box" type="Sprite2D" parent="moveBox"]
+position = Vector2(128, 0)
 texture = ExtResource("2_1pvr4")
+
+[node name="failedToMoveBox" type="Node2D" parent="."]
+position = Vector2(0, 147)
+
+[node name="Ground06" type="Sprite2D" parent="failedToMoveBox"]
+texture = ExtResource("1_5efey")
+
+[node name="Ground07" type="Sprite2D" parent="failedToMoveBox"]
+position = Vector2(64, 0)
+texture = ExtResource("1_5efey")
+
+[node name="Ground08" type="Sprite2D" parent="failedToMoveBox"]
+position = Vector2(128, 0)
+texture = ExtResource("1_5efey")
+
+[node name="Ground09" type="Sprite2D" parent="failedToMoveBox"]
+position = Vector2(192, 0)
+texture = ExtResource("1_5efey")
+
+[node name="Ground10" type="Sprite2D" parent="failedToMoveBox"]
+position = Vector2(256, 0)
+texture = ExtResource("1_5efey")
+
+[node name="player" type="Sprite2D" parent="failedToMoveBox"]
+position = Vector2(129.899, 0)
+texture = ExtResource("1_tprcb")
+
+[node name="box" type="Sprite2D" parent="failedToMoveBox"]
+position = Vector2(192, 0)
+texture = ExtResource("2_1pvr4")
+
+[node name="Crate03" type="Sprite2D" parent="failedToMoveBox"]
+position = Vector2(256, 0)
+texture = ExtResource("4_xsayl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="failedToMoveBox"]
+libraries = {
+"": SubResource("AnimationLibrary_1al3a")
+}
+autoplay = "failToMoveBox"
