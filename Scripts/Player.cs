@@ -23,10 +23,10 @@ namespace Com.IsartDigital.Sokoban
 
         
         
-        private const string PLAYER_ACTION_RIGHT = "right";
-        private const string PLAYER_ACTION_LEFT = "left";
-        private const string PLAYER_ACTION_UP = "up";
-        private const string PLAYER_ACTION_DOWN = "down";
+        private const string ACTION_RIGHT = "right";
+        private const string ACTION_LEFT = "left";
+        private const string ACTION_UP = "up";
+        private const string ACTION_DOWN = "down";
 
 
         private const string MOVING_UP = "movingUp";
@@ -47,10 +47,10 @@ namespace Com.IsartDigital.Sokoban
 
         private Dictionary<string, Vector2I> PlayersVector = new Dictionary<string, Vector2I>
         {
-            { PLAYER_ACTION_RIGHT , Vector2I.Right },
-            { PLAYER_ACTION_LEFT , Vector2I.Left },
-            { PLAYER_ACTION_UP , Vector2I.Up },
-            { PLAYER_ACTION_DOWN , Vector2I.Down },
+            { ACTION_RIGHT , Vector2I.Right },
+            { ACTION_LEFT , Vector2I.Left },
+            { ACTION_UP , Vector2I.Up },
+            { ACTION_DOWN , Vector2I.Down },
         };
 
         public Dictionary<Vector2I, string> nameOfAnimation = new Dictionary<Vector2I, string>
@@ -133,8 +133,6 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTimer.Stop();
                 pathFindingTime = FIRST_TIME_PATH;
                 pathFindingTimer.WaitTime= pathFindingTime;
-
-                //path.Clear();
 
 
 
