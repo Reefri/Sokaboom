@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/HightScore.cs" id="1_lunip"]
 
-[node name="HightScore" type="Control" node_paths=PackedStringArray("next")]
+[node name="HightScore" type="Control" node_paths=PackedStringArray("next", "levelAccount")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lunip")
 next = NodePath("ColorRect/Button")
+levelAccount = NodePath("ColorRect/BoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -19,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.687954, 0.687954, 0, 1)
+color = Color(0.583884, 0.0946724, 9.62615e-08, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 1
@@ -39,7 +40,200 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 50.0
 offset_top = -100.0
-offset_right = 200.0
+offset_right = 250.0
 grow_vertical = 0
 text = "ID_NEXT"
+
+[node name="BoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -255.0
+offset_right = 450.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirstAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "1."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/FirstAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="SecondAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "2."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/SecondAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="ThirdAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "3."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/ThirdAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="FourthAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "4."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/FourthAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="FifthAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "5."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/FifthAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="SixthAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "6."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/SixthAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="SeventhAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "7."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/SeventhAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="EighthAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "8."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/EighthAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="NinthAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "9."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/NinthAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="TenthAccount" type="Label" parent="ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "10."
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/TenthAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="YourAccount" type="Label" parent="ColorRect/BoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 20
+text = "you :"
+
+[node name="Label" type="Label" parent="ColorRect/BoxContainer/YourAccount"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
