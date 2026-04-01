@@ -96,8 +96,8 @@ namespace Com.IsartDigital.Sokoban
             pathFindingTimer.Timeout += MovingOnPath;
             AddChild(pathFindingTimer);
 
-
-            animPlayer.AnimationFinished += ReplaceThePlayer;
+            animPlayer.Play("idle");
+            animPlayer.AnimationFinished += (AnimationMixer) => ReplaceThePlayer("idle") ;
         }
 
         private void ReplaceThePlayer(StringName pAnimName)
@@ -109,6 +109,7 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().UpdateAfterAction(); 
             
             CreatePrevisualisation();
+            animPlayer.Play(pAnimName);
         }
 
         public override void _Process(double pDelta)
@@ -232,9 +233,10 @@ namespace Com.IsartDigital.Sokoban
         public override void _Input(InputEvent pEvent)
         {
             if (!canInput) return;
-            
 
-            if (Box.animPlaying || animPlayer.IsPlaying() || path.Count != 0 || hasBoxToPush) { return; }
+
+
+            if ( animPlayer.CurrentAnimation != "idle" || Box.animPlaying || path.Count != 0 || hasBoxToPush) { return; }
 
             foreach (string lActionName in nameOfVector.Keys)
             {
