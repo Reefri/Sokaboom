@@ -7,12 +7,5 @@ namespace Com.IsartDigital.Sokoban
 	{
         public static int DISTANCE_RANGE = 64;
 		public static int HALF_RANGE = 32;
-        public enum Situations
-		{
-			Blocked,
-			Pushing,
-			Advancing,
-			PuttingBomb
-		}
 	}
 }

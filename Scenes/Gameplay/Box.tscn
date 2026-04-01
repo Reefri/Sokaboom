@@ -37,7 +37,7 @@ color_ramp = SubResource("GradientTexture1D_vgupy")
 
 [sub_resource type="Animation" id="Animation_6ompn"]
 resource_name = "goDown"
-length = 0.11
+length = 0.22
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,7 +45,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.11),
+"times": PackedFloat32Array(0, 0.11, 0.2),
 "transitions": PackedFloat32Array(3.13, 0.298, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 50), Vector2(0, 64)]
@@ -65,19 +65,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/animComplete:emitting")
+tracks/2/path = NodePath("Sprite2D/moveDust:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.11),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/animComplete:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ncckr"]
 resource_name = "goLeft"
-length = 0.11
+length = 0.22
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,7 +97,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.11),
+"times": PackedFloat32Array(0, 0.11, 0.2),
 "transitions": PackedFloat32Array(3.13834, 0.297302, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-50, 0), Vector2(-64, 0)]
@@ -109,15 +121,27 @@ tracks/2/path = NodePath("Sprite2D/animComplete:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.11),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.08),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/moveDust:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ctvge"]
 resource_name = "goRight"
-length = 0.11
+length = 0.22
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,7 +149,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.11),
+"times": PackedFloat32Array(0, 0.11, 0.2),
 "transitions": PackedFloat32Array(3.13834, 0.297302, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(50, 0), Vector2(64, 0)]
@@ -149,15 +173,27 @@ tracks/2/path = NodePath("Sprite2D/animComplete:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.11),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.08),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/moveDust:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_oee0s"]
 resource_name = "goUp"
-length = 0.11
+length = 0.22
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -165,7 +201,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.11),
+"times": PackedFloat32Array(0, 0.11, 0.2),
 "transitions": PackedFloat32Array(3.13834, 0.297302, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, -64)]
@@ -189,18 +225,30 @@ tracks/2/path = NodePath("Sprite2D/animComplete:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.11),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.08),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/moveDust:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cnm"]
 _data = {
-"goDown": SubResource("Animation_6ompn"),
-"goLeft": SubResource("Animation_ncckr"),
-"goRight": SubResource("Animation_ctvge"),
-"goUp": SubResource("Animation_oee0s")
+"movingDown": SubResource("Animation_6ompn"),
+"movingLeft": SubResource("Animation_ncckr"),
+"movingRight": SubResource("Animation_ctvge"),
+"movingUp": SubResource("Animation_oee0s")
 }
 
 [node name="Box" type="Node2D" node_paths=PackedStringArray("anim", "moveDust")]
@@ -219,7 +267,7 @@ emitting = false
 amount = 250
 process_material = SubResource("ParticleProcessMaterial_vsudg")
 one_shot = true
-preprocess = 0.5
+preprocess = 1.0
 
 [node name="animComplete" type="GPUParticles2D" parent="Sprite2D"]
 show_behind_parent = true
