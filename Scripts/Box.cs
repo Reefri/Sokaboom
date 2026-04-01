@@ -32,7 +32,7 @@ namespace Com.IsartDigital.Sokoban
             animPlaying = false;
 
             GetParent().RemoveChild(this);
-
+			GameManager.GetInstance().UpdateAfterAction();
             QueueFree();
         }
 

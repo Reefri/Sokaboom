@@ -34,7 +34,9 @@ namespace Com.IsartDigital.Sokoban
         private const string MOVING_LEFT = "movingLeft";
         private const string MOVING_RIGHT = "movingRight";
         private const string ANIM_PLAYER = "Anim";
+        private const string ANIM_IDLE = "idle";
         public const string ANIM_BLOCKED = "blocked";
+
 
         public List<Vector2I> path = new List<Vector2I>();
 
@@ -96,8 +98,8 @@ namespace Com.IsartDigital.Sokoban
             pathFindingTimer.Timeout += MovingOnPath;
             AddChild(pathFindingTimer);
 
-            animPlayer.Play("idle");
-            animPlayer.AnimationFinished += (AnimationMixer) => ReplaceThePlayer("idle") ;
+            animPlayer.Play(ANIM_IDLE);
+            animPlayer.AnimationFinished += (AnimationMixer) => ReplaceThePlayer(ANIM_IDLE) ;
         }
 
         private void ReplaceThePlayer(StringName pAnimName)
@@ -106,7 +108,7 @@ namespace Com.IsartDigital.Sokoban
             animatedSprite.Visible = false;
 
             GlobalPosition = animatedSprite.GlobalPosition;
-            GameManager.GetInstance().UpdateAfterAction(); 
+            if (!Box.animPlaying) GameManager.GetInstance().UpdateAfterAction(); 
             
             CreatePrevisualisation();
             animPlayer.Play(pAnimName);
