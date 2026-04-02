@@ -102,11 +102,10 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToLevel(int pIndex)
         {
-
             if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
 
-                currentIndex = pIndex;
-                SlideTransition.Create();
+            currentIndex = pIndex;
+            SlideTransition.Create();
         }
 
         public void ContinueToLevel()
@@ -114,6 +113,7 @@ namespace Com.IsartDigital.Sokoban
             GetChild(0).QueueFree();
 
             levelIndex = currentIndex;
+            
             Main.GetInstance().AddChild(GameManager.GetInstance());
 
             AddChild(uiHUD.Instantiate());
@@ -129,10 +129,10 @@ namespace Com.IsartDigital.Sokoban
         public void GoToWin()
 		{
             GetChild(0).QueueFree();
-            GameManager.GetInstance().QueueFree();
 
             Win lWin = (Win)uiWin.Instantiate();
             AddChild(lWin);
+
             foreach (AnimatedSprite2D lStars in lWin.stars.GetChildren()) lStars.Frame = 0;
             lWin.CalculScoreLevel();
         }
