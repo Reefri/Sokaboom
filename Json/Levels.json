@@ -238,13 +238,13 @@
 		{
 	"par": 37,
 	"author" : "CAYOT Daniel",
-	"title" : "Corridor Instable",
+	"title" : "Unstable Corridor",
 	"map": 
 	[
 		"  =====",
-		" =. ===",
+		" =.  ==",
 		" =$0$ =",
-		" = . $=",
+		" =  .$=",
 		"=1 $$ =",
 		"=# #@ =",
 		" ===== "
@@ -252,7 +252,7 @@
 	"bombExplosionTilesPos" :
 		[
 			[[0,0],[1,0],[2,0]],
-			[[0,0],[1,1]]
+			[[0,0],[1,1],[2,2]]
 		]
 	}
 ]
