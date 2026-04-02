@@ -249,7 +249,6 @@ namespace Com.IsartDigital.Sokoban
                     orientation = lActionName;
                     Box.hasABoxToCheck = false;
 
-                    //OrientThePlayer();
 
                     if (!CheckTheMove(lastDirection)) //if you are against a wall, or 2 consecutive boxes
                     {
@@ -292,8 +291,6 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
-            //OrientThePlayer();
-
             actualPlayerSprite.Visible = false;
             animatedSprite.Visible = true;
 
@@ -306,14 +303,11 @@ namespace Com.IsartDigital.Sokoban
 
         private void OrientThePlayer()
         {
-
-
             foreach (string lActionName in PlayersVector.Keys)
             {
                 if (lastDirection == PlayersVector[lActionName])
                 {
                     orientation = lActionName;
-                    GD.Print(orientation);
                 }
             }
         }
