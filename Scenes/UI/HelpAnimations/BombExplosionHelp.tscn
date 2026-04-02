@@ -21,10 +21,10 @@ tracks/0/path = NodePath("player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
-"transitions": PackedFloat32Array(0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1),
+"times": PackedFloat32Array(0, 1, 2, 2.1887, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(64, 0), Vector2(128, 0), Vector2(64, 0), Vector2(64, 0), Vector2(64, -64), Vector2(64, -128)]
+"values": [Vector2(0, 0), Vector2(64, 0), Vector2(128, 0), Vector2(64, 0), Vector2(64, 0), Vector2(64, 0), Vector2(64, -64), Vector2(64, -128)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,7 +108,7 @@ _data = {
 offsets = PackedFloat32Array(0, 0.589506, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.356863, 0, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_vo4e3"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gc31l"]
 gradient = SubResource("Gradient_0onuy")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mwikx"]
@@ -117,7 +117,7 @@ spread = 180.0
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_vo4e3")
+color_ramp = SubResource("GradientTexture1D_gc31l")
 
 [node name="BombExplosionHelp" type="Control"]
 layout_mode = 3
@@ -193,7 +193,6 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="wallsToDestroy" type="Node2D" parent="."]
-visible = false
 
 [node name="Block01" type="Sprite2D" parent="wallsToDestroy"]
 position = Vector2(64, -128)
@@ -213,7 +212,6 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="collectible" type="Node2D" parent="."]
-visible = false
 
 [node name="Body" type="Sprite2D" parent="collectible"]
 position = Vector2(128, 0)
@@ -238,5 +236,5 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_73e8g")
 
 [node name="player" type="Sprite2D" parent="."]
-position = Vector2(64, -78.1544)
-texture = ExtResource("4_qmxn6")
+position = Vector2(64, 0)
+texture = ExtResource("1_nnfjv")

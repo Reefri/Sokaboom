@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ph7dviekoboq"]
+[gd_scene load_steps=14 format=3 uid="uid://ph7dviekoboq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HelpMenu.cs" id="1_ohxmj"]
 [ext_resource type="Texture2D" uid="uid://docrkk0i2wtmh" path="res://Assets/UI/input/keyboard_z_outline.png" id="2_u1evf"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bynqjno0njnyi" path="res://Scenes/UI/HelpAnimations/BombCollectibleHelp.tscn" id="9_wuot1"]
 [ext_resource type="PackedScene" uid="uid://cfm60y4iatyj0" path="res://Scenes/UI/HelpAnimations/HelpPattern.tscn" id="10_xhsv7"]
 [ext_resource type="PackedScene" uid="uid://gfc2c7h0knyk" path="res://Scenes/UI/HelpAnimations/BombExplosionHelp.tscn" id="11_mgyye"]
+[ext_resource type="PackedScene" uid="uid://dfi0xj1teixyt" path="res://Scenes/UI/HelpAnimations/HelpExplodeDirections.tscn" id="12_1tdw1"]
+[ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
 
 [node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage")]
 layout_mode = 3
@@ -238,7 +240,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ThirdPage" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,6 +247,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.160784, 0.356863, 0, 1)
+
+[node name="titleOfPage" type="Label" parent="ThirdPage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_right = 120.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "ID_Details"
+
+[node name="HelpExplodeDirections" parent="ThirdPage" instance=ExtResource("12_1tdw1")]
+offset_left = 200.0
+offset_top = 257.0
+offset_right = 200.0
+offset_bottom = 257.0
+
+[node name="Label" type="Label" parent="ThirdPage/HelpExplodeDirections"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = -75.0
+offset_right = 815.0
+offset_bottom = -2.0
+theme_override_font_sizes/font_size = 25
+text = "- the pattern will rotate depending on which side 
+of the wall you put the bomb against"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ThirdPage/HelpExplodeDirections"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 20
+text = "^ Here 90° rotation
+"
+
+[node name="HelpExplodeBoxes" parent="ThirdPage" instance=ExtResource("13_aqbv3")]
+offset_left = 200.0
+offset_top = 525.0
+offset_right = 200.0
+offset_bottom = 525.0
+
+[node name="Label" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = -131.0
+offset_right = 833.0
+offset_bottom = -20.0
+theme_override_font_sizes/font_size = 25
+text = "- Caution ! you can destroy crates and targets !
+
+- if there are more crates than targets, destroy them"
+vertical_alignment = 1
 
 [node name="nextPage" type="Button" parent="."]
 layout_mode = 0
