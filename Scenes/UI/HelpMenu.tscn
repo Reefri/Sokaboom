@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ph7dviekoboq"]
+[gd_scene load_steps=12 format=3 uid="uid://ph7dviekoboq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HelpMenu.cs" id="1_ohxmj"]
 [ext_resource type="Texture2D" uid="uid://docrkk0i2wtmh" path="res://Assets/UI/input/keyboard_z_outline.png" id="2_u1evf"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dicq7ds22flj1" path="res://Assets/Arrow.png" id="6_2uc1b"]
 [ext_resource type="PackedScene" uid="uid://docuvws0e0ucr" path="res://Scenes/UI/HelpAnimations/HelpMovement.tscn" id="7_1b40g"]
 [ext_resource type="PackedScene" uid="uid://butgdmb1blel8" path="res://Scenes/UI/HelpAnimations/HelpMoveBox.tscn" id="7_66dc1"]
+[ext_resource type="PackedScene" uid="uid://bynqjno0njnyi" path="res://Scenes/UI/HelpAnimations/BombCollectibleHelp.tscn" id="9_wuot1"]
+[ext_resource type="PackedScene" uid="uid://cfm60y4iatyj0" path="res://Scenes/UI/HelpAnimations/HelpPattern.tscn" id="10_xhsv7"]
+[ext_resource type="PackedScene" uid="uid://gfc2c7h0knyk" path="res://Scenes/UI/HelpAnimations/BombExplosionHelp.tscn" id="11_mgyye"]
 
 [node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage")]
 layout_mode = 3
@@ -45,7 +48,7 @@ offset_bottom = 63.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 50
-text = "Basic Controls"
+text = "ID_BasicControls"
 
 [node name="Label" type="Label" parent="FirstPage"]
 layout_mode = 0
@@ -132,9 +135,9 @@ text = "- The player goes toward the chosen direction
 - if the tile is empty, they move onto that tile"
 
 [node name="HelpMoveBox" parent="FirstPage" instance=ExtResource("7_66dc1")]
-offset_left = 213.0
+offset_left = 186.0
 offset_top = 343.0
-offset_right = 213.0
+offset_right = 186.0
 offset_bottom = 343.0
 
 [node name="MoveBoxText" type="Label" parent="FirstPage/HelpMoveBox"]
@@ -183,12 +186,56 @@ text = "ID_SpecialFeature"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="SecondPage"]
+[node name="BombCollectibleHelp" parent="SecondPage" instance=ExtResource("9_wuot1")]
+offset_left = 139.0
+offset_top = 135.0
+offset_right = 139.0
+offset_bottom = 135.0
+
+[node name="bombCollectibleText" type="Label" parent="SecondPage/BombCollectibleHelp"]
 layout_mode = 0
-offset_left = 602.0
-offset_top = 167.0
-offset_right = 642.0
-offset_bottom = 190.0
+offset_left = 187.0
+offset_top = -20.0
+offset_right = 908.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 25
+text = "- There are bombs placed on the levels that you can pick up"
+
+[node name="HelpPattern" parent="SecondPage" instance=ExtResource("10_xhsv7")]
+offset_left = 236.0
+offset_top = 314.0
+offset_right = 236.0
+offset_bottom = 314.0
+
+[node name="Label" type="Label" parent="SecondPage/HelpPattern"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = -63.0
+offset_right = 766.0
+offset_bottom = 9.99999
+theme_override_font_sizes/font_size = 25
+text = "- the pattern shown next to the bomb indicates how it
+ will explode from the red zone (upward by default)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BombExplosionHelp" parent="SecondPage" instance=ExtResource("11_mgyye")]
+offset_left = 222.0
+offset_top = 549.0
+offset_right = 222.0
+offset_bottom = 549.0
+
+[node name="Label" type="Label" parent="SecondPage/BombExplosionHelp"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = -115.0
+offset_right = 827.0
+offset_bottom = -42.0
+theme_override_font_sizes/font_size = 25
+text = "- you can then place the bomb against a wall 
+to detonate it"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ThirdPage" type="ColorRect" parent="."]
 visible = false
