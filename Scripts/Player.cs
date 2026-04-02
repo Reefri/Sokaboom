@@ -235,7 +235,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-            if ( animPlayer.CurrentAnimation != "idle" || Box.animPlaying || path.Count != 0 || hasBoxToPush) { return; }
+            if ( animPlayer.CurrentAnimation != ANIM_IDLE || Box.animPlaying || path.Count != 0 || hasBoxToPush) { return; }
 
             foreach (string lActionName in PlayersVector.Keys)
             {
