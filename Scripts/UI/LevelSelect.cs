@@ -13,7 +13,8 @@ namespace Com.IsartDigital.UI {
 
         private bool buttonlock = true;
 
-        
+        private const string LEVEL = "ID_LEVEL";
+
         public override void _Ready()
 		{
             base._Ready();
@@ -26,7 +27,7 @@ namespace Com.IsartDigital.UI {
 
                 if (GridManager.GetInstance().numberOfLevel > i) lButtons.Disabled = !AccountManager.GetInstance().currentAccount.LockedLevels[i];
 
-                lButtons.Text = Tr("ID_LEVEL") + lLevelID;
+                lButtons.Text = Tr(LEVEL) + lLevelID;
                 lButtons.Pressed += () => GoToLevel(lLevelID);
                 i++;
             }
@@ -53,7 +54,6 @@ namespace Com.IsartDigital.UI {
 
         private void BackPressed()
         {
-            //UIManager.GetInstance().GoToTitle();
             MenuTransition.Create();
         }
 

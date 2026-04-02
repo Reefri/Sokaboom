@@ -72,11 +72,12 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 
-            if (Player.GetInstance().hasBoxToPush || Box.animPlaying )
-			{
-                return;
-            }
-				
+            //         if (Player.GetInstance().hasBoxToPush || Box.animPlaying || )
+            //{
+            //             return;
+            //         }
+            if (Player.GetInstance().hasBoxToPush || Box.animPlaying) return;
+
             else if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
 			{
                 if (Player.GetInstance().path.Count != 0) Player.GetInstance().path.Clear();
@@ -161,6 +162,7 @@ namespace Com.IsartDigital.Sokoban
                 if (Player.GetInstance().bombInHand == null || boxOrWallClickedOn == Vector2I.Zero)
                 {
                     Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
+					Player.GetInstance().animatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
                     return;
                 }
                 return; 

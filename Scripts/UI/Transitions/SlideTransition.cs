@@ -84,9 +84,5 @@ namespace Com.IsartDigital.Sokoban
             SlideTransition lLevelOpenTransition = (SlideTransition)factory.Instantiate();
             UIManager.GetInstance().AddChild(lLevelOpenTransition);
         }
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
 	}
 }

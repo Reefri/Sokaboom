@@ -16,6 +16,9 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] private Timer quitDelay = new Timer();
 
+        private const string PAR = "Par : ";
+        private const string BY = "Par : ";
+        private const string STEPS = "ID_STEPS";
 
         public override void _Ready()
 		{
@@ -26,9 +29,9 @@ namespace Com.IsartDigital.Sokoban
             buttonUndo.Pressed += () => GameManager.GetInstance().MoveBackInTime();
             buttonRedo.Pressed += () => GameManager.GetInstance().MoveForwardInTime();
 
-            par.Text = "Par : " + GameManager.GetInstance().currentLevel.Par;
-            name.Text = GameManager.GetInstance().currentLevel.Title + Tr("ID_BY") + GameManager.GetInstance().currentLevel.Author;
-            steps.Text = Tr("ID_STEPS") + 0;
+            par.Text = PAR + GameManager.GetInstance().currentLevel.Par;
+            name.Text = GameManager.GetInstance().currentLevel.Title + Tr(BY) + GameManager.GetInstance().currentLevel.Author;
+            steps.Text = Tr(STEPS) + 0;
         }
 
         private void DestroyGameManager()

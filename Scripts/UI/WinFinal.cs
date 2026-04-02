@@ -12,9 +12,11 @@ namespace Com.IsartDigital.Sokoban
 		[Export] Button hightScore;
 		[Export] Button menu;
 
+        private const string SCORE = "Score Total : ";
+
         public override void _Ready()
 		{
-			ScoreFinal.Text = "Score Total : " + AccountManager.GetInstance().currentAccount.FinalScore();
+			ScoreFinal.Text = SCORE + AccountManager.GetInstance().currentAccount.FinalScore();
 
 			menu.Pressed += () => UIManager.GetInstance().GoToTitle();
 			hightScore.Pressed += () => UIManager.GetInstance().GoToHightScore();

@@ -384,6 +384,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void MoveBackInTime()
         {
+            if (Player.GetInstance().hasBoxToPush || Box.animPlaying) return;
 
             if (currentPosition.previousValue == null)
             {

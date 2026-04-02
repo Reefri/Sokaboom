@@ -17,11 +17,16 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Button restart;
         [Export] private Button next;
 
+        private const string SCORE = "Score : ";
+
         public override void _Ready()
 		{
 			restart.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex);
-			if (UIManager.GetInstance().levelIndex + 1 < GridManager.GetInstance().numberOfLevel) next.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex + 1);
+			restart.Pressed += () => GameManager.GetInstance().QueueFree();
+
+            if (UIManager.GetInstance().levelIndex + 1 < GridManager.GetInstance().numberOfLevel) next.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex + 1);
 			else next.Pressed += () => UIManager.GetInstance().GoToWinFinal();
+            next.Pressed += () => GameManager.GetInstance().QueueFree();
         }
 
 		public void CalculScoreLevel()
@@ -50,14 +55,9 @@ namespace Com.IsartDigital.Sokoban
 				lStars.Frame = 1;
             }
             
-			scoreText.Text = "Score : " + score;
+			scoreText.Text = SCORE + score;
 
 			AccountManager.GetInstance().NewWin(score, GameManager.GetInstance().CurrentPar);
         }
-
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
 	}
 }

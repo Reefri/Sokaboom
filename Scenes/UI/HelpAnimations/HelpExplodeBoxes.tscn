@@ -1,0 +1,361 @@
+[gd_scene load_steps=16 format=3 uid="uid://b4li5pgekojsa"]
+
+[ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Ground/ground_06.png" id="1_x2cp6"]
+[ext_resource type="Texture2D" uid="uid://bo0rhxioho106" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Blocks/block_01.png" id="2_q4ld7"]
+[ext_resource type="Texture2D" uid="uid://d0by5ckjkkcf6" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_27.png" id="3_3nbey"]
+[ext_resource type="Texture2D" uid="uid://c4wylq3j52dnn" path="res://Assets/FireWork/Body.png" id="3_a6dl1"]
+[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="3_s6j54"]
+[ext_resource type="Texture2D" uid="uid://bt2uu00rpwkjf" path="res://Assets/FireWork/Head.png" id="4_m4vey"]
+[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="5_ahw1s"]
+[ext_resource type="Texture2D" uid="uid://bxsi6pj3ya0q" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_13.png" id="6_a58vr"]
+[ext_resource type="Texture2D" uid="uid://dtw2t57ia8c2p" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_02.png" id="7_5scai"]
+[ext_resource type="Texture2D" uid="uid://b0uegn82jtv0g" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_23.png" id="8_wjd24"]
+
+[sub_resource type="Gradient" id="Gradient_6ry67"]
+offsets = PackedFloat32Array(0, 0.589506, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.356863, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x4gy3"]
+gradient = SubResource("Gradient_6ry67")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3oak4"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_x4gy3")
+
+[sub_resource type="Animation" id="Animation_6f1mm"]
+resource_name = "explodeBox"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 6),
+"transitions": PackedFloat32Array(0.1, 0.1, 0.1, 0.1, 0.1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(64, 0), Vector2(64, 0), Vector2(128, 0), Vector2(128, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.7, 3, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_wjd24"), ExtResource("6_a58vr"), ExtResource("7_5scai"), ExtResource("6_a58vr"), ExtResource("7_5scai")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collectible:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collectible2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("bombPickUp2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("bombPickUp:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("wallsToDestroy:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("secondToDestroy:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("particles/GPUParticles2D:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("particles/GPUParticles2D2:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("particles2/GPUParticles2D:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("particles2/GPUParticles2D2:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_412e7"]
+_data = {
+"explodeBox": SubResource("Animation_6f1mm")
+}
+
+[node name="HelpExplodeBoxes" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Ground06" type="Sprite2D" parent="."]
+texture = ExtResource("1_x2cp6")
+
+[node name="Ground07" type="Sprite2D" parent="."]
+position = Vector2(64, 0)
+texture = ExtResource("1_x2cp6")
+
+[node name="Ground08" type="Sprite2D" parent="."]
+position = Vector2(64, -64)
+texture = ExtResource("1_x2cp6")
+
+[node name="Ground09" type="Sprite2D" parent="."]
+position = Vector2(128, -64)
+texture = ExtResource("1_x2cp6")
+
+[node name="Ground10" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("1_x2cp6")
+
+[node name="Ground12" type="Sprite2D" parent="."]
+position = Vector2(64, -128)
+texture = ExtResource("1_x2cp6")
+
+[node name="Ground13" type="Sprite2D" parent="."]
+position = Vector2(128, -128)
+texture = ExtResource("1_x2cp6")
+
+[node name="Ground14" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+texture = ExtResource("1_x2cp6")
+
+[node name="Ground11" type="Sprite2D" parent="."]
+position = Vector2(128, 0)
+texture = ExtResource("1_x2cp6")
+
+[node name="Block03" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("2_q4ld7")
+
+[node name="particles" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="particles"]
+position = Vector2(64, -64)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_3oak4")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="particles"]
+position = Vector2(64, -128)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_3oak4")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="particles2" type="Node2D" parent="."]
+position = Vector2(64, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="particles2"]
+position = Vector2(64, -64)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_3oak4")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="particles2"]
+position = Vector2(64, -128)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_3oak4")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="secondToDestroy" type="Node2D" parent="."]
+
+[node name="Block04" type="Sprite2D" parent="secondToDestroy"]
+position = Vector2(128, -64)
+texture = ExtResource("2_q4ld7")
+
+[node name="target" type="Sprite2D" parent="secondToDestroy"]
+position = Vector2(128, -128)
+texture = ExtResource("3_3nbey")
+
+[node name="wallsToDestroy" type="Node2D" parent="."]
+
+[node name="Block01" type="Sprite2D" parent="wallsToDestroy"]
+position = Vector2(64, -128)
+texture = ExtResource("3_s6j54")
+
+[node name="Block02" type="Sprite2D" parent="wallsToDestroy"]
+position = Vector2(64, -64)
+texture = ExtResource("2_q4ld7")
+
+[node name="bombPickUp" type="GPUParticles2D" parent="."]
+position = Vector2(128, 0)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_3oak4")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="bombPickUp2" type="GPUParticles2D" parent="."]
+position = Vector2(64, 0)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_3oak4")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="collectible" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="collectible"]
+position = Vector2(128, 0)
+texture = ExtResource("3_a6dl1")
+
+[node name="Head" type="Sprite2D" parent="collectible"]
+position = Vector2(128, -10)
+texture = ExtResource("4_m4vey")
+
+[node name="bombPattern" type="Node2D" parent="collectible"]
+position = Vector2(61, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="collectible/bombPattern"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(104, -21)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_ahw1s")
+
+[node name="Sprite2D2" type="Sprite2D" parent="collectible/bombPattern"]
+position = Vector2(104, -46)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_ahw1s")
+
+[node name="collectible2" type="Node2D" parent="."]
+position = Vector2(-64, 0)
+
+[node name="Body" type="Sprite2D" parent="collectible2"]
+position = Vector2(128, 0)
+texture = ExtResource("3_a6dl1")
+
+[node name="Head" type="Sprite2D" parent="collectible2"]
+position = Vector2(128, -10)
+texture = ExtResource("4_m4vey")
+
+[node name="bombPattern" type="Node2D" parent="collectible2"]
+position = Vector2(61, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="collectible2/bombPattern"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(104, -21)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_ahw1s")
+
+[node name="Sprite2D2" type="Sprite2D" parent="collectible2/bombPattern"]
+position = Vector2(104, -46)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_ahw1s")
+
+[node name="player" type="Sprite2D" parent="."]
+texture = ExtResource("8_wjd24")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_412e7")
+}
+autoplay = "explodeBox"
