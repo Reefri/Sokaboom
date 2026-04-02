@@ -87,8 +87,6 @@ namespace Com.IsartDigital.Sokoban.UI
             }
             if (AccountManager.GetInstance().Register(pseudo.Text, password.Text))
             {
-                statut.Text = Tr("ID_PASSWORD_CONFIRM");
-                statut.SelfModulate = green;
                 Login();
             }
             else
@@ -107,8 +105,6 @@ namespace Com.IsartDigital.Sokoban.UI
                     statut.SelfModulate = red;
                     break;
                 case AccountManager.TestConnexionResult.Valid:
-                    statut.Text = Tr("ID_CONNECTION_SUCESS") + pseudo.Text;
-                    statut.SelfModulate = green;
                     UIManager.GetInstance().GoToTitle();
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
