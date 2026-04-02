@@ -89,6 +89,7 @@ namespace Com.IsartDigital.Sokoban.UI
             {
                 statut.Text = Tr("ID_PASSWORD_CONFIRM");
                 statut.SelfModulate = green;
+                Login();
             }
             else
             {
