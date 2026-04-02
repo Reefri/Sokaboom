@@ -22,6 +22,13 @@ namespace Com.IsartDigital.Sokoban
         private int totalNumberOfPages;
         private int pageShown = 1;
 
+        [Export] private Label explinationSfB;
+        [Export] private Label explinationSfC;
+        [Export] private Label explinationControlA;
+        [Export] private Label explinationControlB;
+        [Export] private Label explinationDetailA;
+        [Export] private Label explinationDetailB;
+
         public override void _Ready()
         {
             base._Ready();
@@ -34,6 +41,13 @@ namespace Com.IsartDigital.Sokoban
 
             nextPageButton.Pressed += NextPage;
             previousPageButton.Pressed += PreviousPage;
+
+            explinationControlA.Text = Tr("ID_CONTROL_AA") + "\n" + Tr("ID_CONTROL_AB");
+            explinationControlB.Text = Tr("ID_CONTROL_BA") + "\n" + Tr("ID_CONTROL_BB") +"\n \n \n" + Tr("ID_CONTROL_BC");
+            explinationSfB.Text = Tr("ID_SF_BA") + "\n" + Tr("ID_SF_BB");
+            explinationSfC.Text = Tr("ID_SF_CA") + "\n" + Tr("ID_SF_CB");
+            explinationDetailA.Text = Tr("ID_DETAILS_AA") + "\n" + Tr("ID_DETAILS_AB");
+            explinationDetailB.Text = Tr("ID_DETAILS_BA") + "\n \n" + Tr("ID_DETAILS_BB");
         }
         private void ReturnPressed()
 		{
@@ -43,15 +57,15 @@ namespace Com.IsartDigital.Sokoban
 
         private void PreviousPage()
         {
-            if (pageShown - 1 <= 0) return;
-            pageShown--;
+            if (pageShown - 1 <= 0) pageShown = 3;
+            else pageShown--;
             ShowCurrentPage();
         }
 
         private void NextPage()
         {
-            if (pageShown + 1 > totalNumberOfPages) return;
-            pageShown++;
+            if (pageShown + 1 > totalNumberOfPages) pageShown = 1;
+            else pageShown++;
             ShowCurrentPage();
         }
 

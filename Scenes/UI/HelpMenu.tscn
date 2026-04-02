@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfi0xj1teixyt" path="res://Scenes/UI/HelpAnimations/HelpExplodeDirections.tscn" id="12_1tdw1"]
 [ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
 
-[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage")]
+[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explinationSfB", "explinationSfC", "explinationControlA", "explinationControlB", "explinationDetailA", "explinationDetailB")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +28,12 @@ currentPage = NodePath("currentPage")
 firstPage = NodePath("FirstPage")
 secondPage = NodePath("SecondPage")
 thirdPage = NodePath("ThirdPage")
+explinationSfB = NodePath("SecondPage/HelpPattern/Label")
+explinationSfC = NodePath("SecondPage/BombExplosionHelp/Label")
+explinationControlA = NodePath("FirstPage/HelpMovement/MovementText")
+explinationControlB = NodePath("FirstPage/HelpMoveBox/MoveBoxText")
+explinationDetailA = NodePath("ThirdPage/HelpExplodeDirections/Label")
+explinationDetailB = NodePath("ThirdPage/HelpExplodeBoxes/Label")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
 
@@ -50,7 +56,7 @@ offset_bottom = 63.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 50
-text = "ID_BasicControls"
+text = "ID_BASICS_CONTROL"
 
 [node name="Label" type="Label" parent="FirstPage"]
 layout_mode = 0
@@ -59,7 +65,7 @@ offset_top = 12.0
 offset_right = 256.0
 offset_bottom = 47.0
 theme_override_font_sizes/font_size = 25
-text = "ID_Keyboard :"
+text = "ID_KEYBOARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -184,7 +190,7 @@ grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 50
-text = "ID_SpecialFeature"
+text = "ID_SPECIAL_FEATURE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -201,7 +207,7 @@ offset_top = -20.0
 offset_right = 908.0
 offset_bottom = 15.0
 theme_override_font_sizes/font_size = 25
-text = "- There are bombs placed on the levels that you can pick up"
+text = "ID_SF_A"
 
 [node name="HelpPattern" parent="SecondPage" instance=ExtResource("10_xhsv7")]
 offset_left = 236.0
@@ -260,7 +266,7 @@ grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 50
-text = "ID_Details"
+text = "ID_DETAILS"
 
 [node name="HelpExplodeDirections" parent="ThirdPage" instance=ExtResource("12_1tdw1")]
 offset_left = 200.0
@@ -287,8 +293,7 @@ offset_top = 40.0
 offset_right = 160.0
 offset_bottom = 68.0
 theme_override_font_sizes/font_size = 20
-text = "^ Here 90° rotation
-"
+text = "ID_DETAILS_C"
 
 [node name="HelpExplodeBoxes" parent="ThirdPage" instance=ExtResource("13_aqbv3")]
 offset_left = 200.0
@@ -362,6 +367,6 @@ offset_top = -100.0
 offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "ID_NEXT"
+text = "ID_MENU"
 
 [connection signal="pressed" from="Button" to="." method="ReturnPressed"]
