@@ -131,9 +131,9 @@ namespace Com.IsartDigital.Sokoban
 				lDidModif = true;
 			}
 
-			int lIndex = Mathf.Clamp(GridManager.GetInstance().CurrentLevelIndex + 1, 0, GridManager.GetInstance().numberOfLevel - 1);
+			int lIndex = Mathf.Clamp(GridManager.GetInstance().CurrentLevelIndex + 1, 1, GridManager.GetInstance().numberOfLevel - 1);
 
-			if (!currentAccount.LockedLevels[lIndex]) { currentAccount.LockedLevels[lIndex] = true; lDidModif = true; }
+			if (!currentAccount.LockedLevels[lIndex]) { currentAccount.LockedLevels[lIndex] = currentAccount.LockedLevels[lIndex-1]; lDidModif = true; }
 
 			if (lDidModif) 
             UpdateAccount();

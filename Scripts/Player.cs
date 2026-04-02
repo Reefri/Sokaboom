@@ -13,7 +13,7 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] public AnimationPlayer animPlayer;
         [Export] public AnimatedSprite2D animatedSprite;
-        [Export] private Sprite2D sprite;
+        [Export] private AnimatedSprite2D actualPlayerSprite;
         
         [Export] private Node2D bombPrevisualisationContainer;
 
@@ -21,20 +21,22 @@ namespace Com.IsartDigital.Sokoban
         private const float FIRST_TIME_PATH = 0.01f;
         private const float CASUAL_TIME_PATH = 0.2f;
 
+        private string orientation;
         
-        
-        private const string PLAYER_ACTION_RIGHT = "right";
-        private const string PLAYER_ACTION_LEFT = "left";
-        private const string PLAYER_ACTION_UP = "up";
-        private const string PLAYER_ACTION_DOWN = "down";
+        private const string ACTION_RIGHT = "right";
+        private const string ACTION_LEFT = "left";
+        private const string ACTION_UP = "up";
+        private const string ACTION_DOWN = "down";
 
 
-        private const string PLAYER_MOVING_UP = "movingUp";
-        private const string PLAYER_MOVING_DOWN = "movingDown";
-        private const string PLAYER_MOVING_LEFT = "movingLeft";
-        private const string PLAYER_MOVING_RIGHT = "movingRight";
+        private const string MOVING_UP = "movingUp";
+        private const string MOVING_DOWN = "movingDown";
+        private const string MOVING_LEFT = "movingLeft";
+        private const string MOVING_RIGHT = "movingRight";
         private const string ANIM_PLAYER = "Anim";
+        private const string ANIM_IDLE = "idle";
         public const string ANIM_BLOCKED = "blocked";
+
 
         public List<Vector2I> path = new List<Vector2I>();
 
@@ -45,20 +47,20 @@ namespace Com.IsartDigital.Sokoban
 
         public Timer pathFindingTimer = new Timer();
 
-        private Dictionary<string, Vector2I> nameOfVector = new Dictionary<string, Vector2I>
+        private Dictionary<string, Vector2I> PlayersVector = new Dictionary<string, Vector2I>
         {
-            { PLAYER_ACTION_RIGHT , Vector2I.Right },
-            { PLAYER_ACTION_LEFT , Vector2I.Left },
-            { PLAYER_ACTION_UP , Vector2I.Up },
-            { PLAYER_ACTION_DOWN , Vector2I.Down },
+            { ACTION_RIGHT , Vector2I.Right },
+            { ACTION_LEFT , Vector2I.Left },
+            { ACTION_UP , Vector2I.Up },
+            { ACTION_DOWN , Vector2I.Down },
         };
 
         public Dictionary<Vector2I, string> nameOfAnimation = new Dictionary<Vector2I, string>
         {
-            { Vector2I.Up , PLAYER_MOVING_UP },
-            { Vector2I.Down , PLAYER_MOVING_DOWN },
-            { Vector2I.Right , PLAYER_MOVING_RIGHT },
-            { Vector2I.Left , PLAYER_MOVING_LEFT },
+            { Vector2I.Up , MOVING_UP },
+            { Vector2I.Down , MOVING_DOWN },
+            { Vector2I.Right , MOVING_RIGHT },
+            { Vector2I.Left , MOVING_LEFT },
         };
 
 
@@ -96,19 +98,23 @@ namespace Com.IsartDigital.Sokoban
             pathFindingTimer.Timeout += MovingOnPath;
             AddChild(pathFindingTimer);
 
-
-            animPlayer.AnimationFinished += ReplaceThePlayer;
+            animPlayer.Play(ANIM_IDLE);
+            animPlayer.AnimationFinished += (AnimationMixer) => ReplaceThePlayer(ANIM_IDLE) ;
         }
 
         private void ReplaceThePlayer(StringName pAnimName)
         {
-            sprite.Visible = true;
+            OrientThePlayer();
+            actualPlayerSprite.Play(orientation);
+
+            actualPlayerSprite.Visible = true;
             animatedSprite.Visible = false;
 
             GlobalPosition = animatedSprite.GlobalPosition;
-            GameManager.GetInstance().UpdateAfterAction(); 
+            if (!Box.animPlaying) GameManager.GetInstance().UpdateAfterAction(); 
             
             CreatePrevisualisation();
+            animPlayer.Play(ANIM_IDLE);
         }
 
         public override void _Process(double pDelta)
@@ -125,6 +131,7 @@ namespace Com.IsartDigital.Sokoban
         private void MovingOnPath()
         {
             pathFindingTimer.WaitTime = pathFindingTime;
+            if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
             if (path.Count == 0) 
             { 
 
@@ -132,11 +139,9 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTime = FIRST_TIME_PATH;
                 pathFindingTimer.WaitTime= pathFindingTime;
 
-                //path.Clear();
 
-                if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
 
-                if ((GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrContainerClickedOn) == null)) return;
+                if ((GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn) == null)) return;
 
 
                 else if (hasBoxToPush)
@@ -145,14 +150,13 @@ namespace Com.IsartDigital.Sokoban
                     Box.hasABoxToCheck = false;
 
 
-                    lastDirection = Map.boxOrContainerClickedOn - GetPositionToVector2I();
+                    lastDirection = Map.boxOrWallClickedOn - GetPositionToVector2I();
 
 
-                    if (Box.CanBoxBePushed(lastDirection, Map.boxOrContainerClickedOn))
+                    if (Box.CanBoxBePushed(lastDirection, Map.boxOrWallClickedOn))
                     {
-
                         AnimThePlayer(lastDirection);
-                        Box.Create(Map.boxOrContainerClickedOn, lastDirection);
+                        Box.Create(Map.boxOrWallClickedOn, lastDirection);
                     }
 
                     else
@@ -160,21 +164,20 @@ namespace Com.IsartDigital.Sokoban
                         ExplodeBombInHand();
                     }
 
-
                 }
 
-
-                else if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrContainerClickedOn).GetCustomData(Map.WALL)
+                else if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn).GetCustomData(Map.WALL)
                     && bombInHand != null)
                 {
-                    lastDirection = Map.boxOrContainerClickedOn - GetPositionToVector2I();
+                    lastDirection = Map.boxOrWallClickedOn - GetPositionToVector2I();
                     ExplodeBombInHand();
                 }
                 return;
             }
+
             else
             {
-                animatedSprite.GlobalPosition = GlobalPosition;
+                //animatedSprite.GlobalPosition = GlobalPosition;
 
                 lastDirection = (path[0] - GetPositionToVector2I());
 
@@ -196,7 +199,7 @@ namespace Com.IsartDigital.Sokoban
 
             else if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.INTERACTABLE)))
             {
-                if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.CONTAINER)))
+                if ((bool)(GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.BOX)))
                 {
                     return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
                 }
@@ -214,10 +217,10 @@ namespace Com.IsartDigital.Sokoban
 
         public void AdjacentToBox()
         {
-            if (Box.CanBoxBePushed(lastDirection, Map.boxOrContainerClickedOn))
+            if (Box.CanBoxBePushed(lastDirection, Map.boxOrWallClickedOn))
             {
                 AnimThePlayer(lastDirection);
-                Box.Create(Map.boxOrContainerClickedOn, lastDirection);
+                Box.Create(Map.boxOrWallClickedOn, lastDirection);
                 Box.hasABoxToCheck = false;
             }
 
@@ -232,22 +235,24 @@ namespace Com.IsartDigital.Sokoban
         public override void _Input(InputEvent pEvent)
         {
             if (!canInput) return;
-            
 
-            if (Box.animPlaying || animPlayer.IsPlaying() || path.Count != 0 || hasBoxToPush) { return; }
+            if ( animPlayer.CurrentAnimation != ANIM_IDLE || Box.animPlaying || path.Count != 0 || hasBoxToPush) { return; }
 
-            foreach (string lActionName in nameOfVector.Keys)
+            foreach (string lActionName in PlayersVector.Keys)
             {
                 if (Input.IsActionJustPressed(lActionName))
                 {
-                    lastDirection = nameOfVector[lActionName];
+
+                    GameManager.GetInstance().EmptyBoxSignalContainer();
+
+                    lastDirection = PlayersVector[lActionName];
+                    orientation = lActionName;
                     Box.hasABoxToCheck = false;
 
-                    if (!CheckTheMove(nameOfVector[lActionName])) //if you are against a wall, or 2 consecutive boxes
+
+                    if (!CheckTheMove(lastDirection)) //if you are against a wall, or 2 consecutive boxes
                     {
-
                         ExplodeBombInHand();
-
                     }
 
 
@@ -270,9 +275,8 @@ namespace Com.IsartDigital.Sokoban
                     }
                 }
             }
-            
-
         }
+
 
 
         public void GoTo(Vector2I pPosition)
@@ -282,37 +286,46 @@ namespace Com.IsartDigital.Sokoban
 
         public void AnimThePlayer(Vector2I pLastDirection)
         {
-            if (lastDirection == Vector2I.Zero )
+            if (pLastDirection == Vector2I.Zero )
             {
                 return;
             }
 
-            sprite.Visible = false;
+            actualPlayerSprite.Visible = false;
             animatedSprite.Visible = true;
 
             animPlayer.Play(nameOfAnimation[pLastDirection]);
             animatedSprite.Play(nameOfAnimation[pLastDirection] + ANIM_PLAYER);
 
-            if (path.Count != 0 )
-            {
-                GlobalPosition = animatedSprite.GlobalPosition;
-            }
 
+        }
+
+
+        private void OrientThePlayer()
+        {
+            foreach (string lActionName in PlayersVector.Keys)
+            {
+                if (lastDirection == PlayersVector[lActionName])
+                {
+                    orientation = lActionName;
+                }
+            }
         }
 
 
         private void ExplodeBombInHand()
         {
-
+            OrientThePlayer();
+            actualPlayerSprite.Play(orientation);
             if (bombInHand == null)
             {
                 animPlayer.Play(ANIM_BLOCKED);
+
                 animatedSprite.GlobalPosition = GlobalPosition;
                 return;
             }
 
             //GameManager.GetInstance().canMoveBackInTime = false;
-
             bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
 
             GameManager.GetInstance().UpdateAfterAction();

@@ -124,7 +124,7 @@ namespace Com.IsartDigital.Sokoban
             lNewLevel.map = map;
             lNewLevel.bombs = bombs;
             lNewLevel.bombsPos = bombsPos;
-            lNewLevel.targetsPos = targetsPos;
+            lNewLevel.targetsPos = Main.GetInstance().DuplicateList(targetsPos);
             lNewLevel.currentBomb = currentBomb;
             lNewLevel.indexOfAvalaibleBombs = Main.GetInstance().DuplicateList(indexOfAvalaibleBombs);
 

@@ -6,12 +6,6 @@ namespace Com.IsartDigital.Sokoban
 	public partial class States : Node
 	{
         public static int DISTANCE_RANGE = 64;
-        public enum Situations
-		{
-			Blocked,
-			Pushing,
-			Advancing,
-			PuttingBomb
-		}
+		public static int HALF_RANGE = 32;
 	}
 }
