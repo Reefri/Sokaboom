@@ -42,7 +42,7 @@ namespace Com.IsartDigital.Sokoban
 				numberStars = 1;
             }
 
-            score = Mathf.Clamp(score, 0, score);
+            score = (score>0)?score:0;
 
             for (int i = 0; i <= numberStars - 1; i++)
 			{

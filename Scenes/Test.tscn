@@ -1,13 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpqn43i56og0b"]
 
-[ext_resource type="Shader" uid="uid://dix8f8gh3s331" path="res://Ressources/Shaders/ChromaMovement.tres" id="1_pap57"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_13vp5"]
+[ext_resource type="Shader" uid="uid://dudbr1l63w7xx" path="res://Ressources/Shaders/BoxSignal.tres" id="1_srfsi"]
+[ext_resource type="Texture2D" uid="uid://bkdbv2qh73smo" path="res://Assets/crate_42.png" id="2_oq8ya"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dsdk"]
-shader = ExtResource("1_pap57")
+shader = ExtResource("1_srfsi")
+shader_parameter/progressionGrow = 0.0
+shader_parameter/maxGrowth = 0.5
 
 [node name="Test" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.6138, 0.62, 0.62, 1)
 material = SubResource("ShaderMaterial_0dsdk")
-texture = ExtResource("2_13vp5")
+texture = ExtResource("2_oq8ya")

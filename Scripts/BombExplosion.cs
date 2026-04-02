@@ -79,7 +79,7 @@ namespace Com.IsartDigital.Sokoban {
                         if (lTileMap.GetCellTileData((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos) != null)
                         {
                             lTileMap.SetCell((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos, -1);
-
+                            GameManager.GetInstance().currentPosition.value.targetsPos.Remove(posInGrid + new Vector2I(j, i) - originPos);
 
                             GD.Print("tu viens de détruire une cible !");
                         }

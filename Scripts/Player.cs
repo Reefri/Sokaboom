@@ -242,6 +242,9 @@ namespace Com.IsartDigital.Sokoban
             {
                 if (Input.IsActionJustPressed(lActionName))
                 {
+
+                    GameManager.GetInstance().EmptyBoxSignalContainer();
+
                     lastDirection = PlayersVector[lActionName];
                     orientation = lActionName;
                     Box.hasABoxToCheck = false;
