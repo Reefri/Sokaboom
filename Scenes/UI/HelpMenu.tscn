@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfi0xj1teixyt" path="res://Scenes/UI/HelpAnimations/HelpExplodeDirections.tscn" id="12_1tdw1"]
 [ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
 
-[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage")]
+[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationSfB", "explanationSfC", "explanationControlA", "explanationControlB", "explanationDetailA", "explanationDetailB")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +28,12 @@ currentPage = NodePath("currentPage")
 firstPage = NodePath("FirstPage")
 secondPage = NodePath("SecondPage")
 thirdPage = NodePath("ThirdPage")
+explanationSfB = NodePath("SecondPage/HelpPattern/explanationSfB")
+explanationSfC = NodePath("SecondPage/BombExplosionHelp/explanationSfC")
+explanationControlA = NodePath("FirstPage/HelpMovement/ExplanationControlA")
+explanationControlB = NodePath("FirstPage/HelpMoveBox/explanationControlB")
+explanationDetailA = NodePath("ThirdPage/HelpExplodeDirections/ExplanationDetailA")
+explanationDetailB = NodePath("ThirdPage/HelpExplodeBoxes/explanationDetailB")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
 
@@ -119,7 +125,7 @@ offset_top = 130.0
 offset_right = 363.0
 offset_bottom = 130.0
 
-[node name="MovementText" type="Label" parent="FirstPage/HelpMovement"]
+[node name="ExplanationControlA" type="Label" parent="FirstPage/HelpMovement"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,7 +148,7 @@ offset_top = 343.0
 offset_right = 186.0
 offset_bottom = 343.0
 
-[node name="MoveBoxText" type="Label" parent="FirstPage/HelpMoveBox"]
+[node name="explanationControlB" type="Label" parent="FirstPage/HelpMoveBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -209,7 +215,7 @@ offset_top = 314.0
 offset_right = 236.0
 offset_bottom = 314.0
 
-[node name="Label" type="Label" parent="SecondPage/HelpPattern"]
+[node name="explanationSfB" type="Label" parent="SecondPage/HelpPattern"]
 layout_mode = 0
 offset_left = 62.0
 offset_top = -63.0
@@ -227,7 +233,7 @@ offset_top = 549.0
 offset_right = 222.0
 offset_bottom = 549.0
 
-[node name="Label" type="Label" parent="SecondPage/BombExplosionHelp"]
+[node name="explanationSfC" type="Label" parent="SecondPage/BombExplosionHelp"]
 layout_mode = 0
 offset_left = 112.0
 offset_top = -115.0
@@ -268,7 +274,7 @@ offset_top = 257.0
 offset_right = 200.0
 offset_bottom = 257.0
 
-[node name="Label" type="Label" parent="ThirdPage/HelpExplodeDirections"]
+[node name="ExplanationDetailA" type="Label" parent="ThirdPage/HelpExplodeDirections"]
 layout_mode = 0
 offset_left = 151.0
 offset_top = -75.0
@@ -295,7 +301,7 @@ offset_top = 525.0
 offset_right = 200.0
 offset_bottom = 525.0
 
-[node name="Label" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
+[node name="explanationDetailB" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
 layout_mode = 0
 offset_left = 198.0
 offset_top = -131.0

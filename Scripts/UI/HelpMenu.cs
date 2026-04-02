@@ -22,12 +22,26 @@ namespace Com.IsartDigital.Sokoban
         private int totalNumberOfPages;
         private int pageShown = 1;
 
-        [Export] private Label explinationSfB;
-        [Export] private Label explinationSfC;
-        [Export] private Label explinationControlA;
-        [Export] private Label explinationControlB;
-        [Export] private Label explinationDetailA;
-        [Export] private Label explinationDetailB;
+        [Export] private Label explanationSfB;
+        [Export] private Label explanationSfC;
+        [Export] private Label explanationControlA;
+        [Export] private Label explanationControlB;
+        [Export] private Label explanationDetailA;
+        [Export] private Label explanationDetailB;
+
+        private const string CONTROL_AA = "ID_CONTROL_AA";
+        private const string CONTROL_AB = "ID_CONTROL_AB";
+        private const string CONTROL_BA = "ID_CONTROL_BA";
+        private const string CONTROL_BB = "ID_CONTROL_BB";
+        private const string CONTROL_BC = "ID_CONTROL_BC";
+        private const string SF_BA = "ID_SF_BA";
+        private const string SF_BB = "ID_SF_BB";
+        private const string SF_CA = "ID_SF_CA";
+        private const string SF_CB = "ID_SF_CB";
+        private const string DETAILS_AA = "ID_DETAILS_AA";
+        private const string DETAILS_AB = "ID_DETAILS_AB";
+        private const string DETAILS_BA = "ID_DETAILS_BA";
+        private const string DETAILS_BB = "ID_DETAILS_BB";
 
         public override void _Ready()
         {
@@ -42,12 +56,12 @@ namespace Com.IsartDigital.Sokoban
             nextPageButton.Pressed += NextPage;
             previousPageButton.Pressed += PreviousPage;
 
-            //explinationControlA.Text = Tr("ID_CONTROL_AA") + "\n" + Tr("ID_CONTROL_AB");
-            //explinationControlB.Text = Tr("ID_CONTROL_BA") + "\n" + Tr("ID_CONTROL_BB") +"\n \n \n" + Tr("ID_CONTROL_BC");
-            //explinationSfB.Text = Tr("ID_SF_BA") + "\n" + Tr("ID_SF_BB");
-            //explinationSfC.Text = Tr("ID_SF_CA") + "\n" + Tr("ID_SF_CB");
-            //explinationDetailA.Text = Tr("ID_DETAILS_AA") + "\n" + Tr("ID_DETAILS_AB");
-            //explinationDetailB.Text = Tr("ID_DETAILS_BA") + "\n \n" + Tr("ID_DETAILS_BB");
+            explanationControlA.Text = Tr(CONTROL_AA) + "\n" + Tr(CONTROL_AB);
+            explanationControlB.Text = Tr(CONTROL_BA) + "\n" + Tr(CONTROL_BB) +"\n \n \n" + Tr(CONTROL_BC);
+            explanationSfB.Text = Tr(SF_BA) + "\n" + Tr(SF_BB);
+            explanationSfC.Text = Tr(SF_CA) + "\n" + Tr(SF_CB);
+            explanationDetailA.Text = Tr(DETAILS_AA) + "\n" + Tr(DETAILS_AB);
+            explanationDetailB.Text = Tr(DETAILS_BA) + "\n \n" + Tr(DETAILS_BB);
         }
         private void ReturnPressed()
 		{

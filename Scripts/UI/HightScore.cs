@@ -14,7 +14,9 @@ namespace Com.IsartDigital.Sokoban
 		int i;
 		bool currentAccountInTopTen;
 
-		List<Account> accounts;
+        private const string SCORE = "Score : ";
+
+        List<Account> accounts;
         public override void _Ready()
 		{
             next.Pressed += () => UIManager.GetInstance().GoToTitle();
@@ -29,7 +31,7 @@ namespace Com.IsartDigital.Sokoban
                 i++;
 
 				lAccountPosition.Text = i + ". " + lAccount.Id + " ";
-				lAccountScore.Text = "Score : " + lAccount.FinalScore();
+				lAccountScore.Text = SCORE + lAccount.FinalScore();
 
                 if (lAccount.Id == AccountManager.GetInstance().currentAccount.Id) 
 				{
