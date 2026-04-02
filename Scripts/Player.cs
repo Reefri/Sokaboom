@@ -13,7 +13,7 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] public AnimationPlayer animPlayer;
         [Export] public AnimatedSprite2D animatedSprite;
-        [Export] private Sprite2D sprite;
+        [Export] private AnimatedSprite2D actualPlayerSprite;
         
         [Export] private Node2D bombPrevisualisationContainer;
 
@@ -21,7 +21,7 @@ namespace Com.IsartDigital.Sokoban
         private const float FIRST_TIME_PATH = 0.01f;
         private const float CASUAL_TIME_PATH = 0.2f;
 
-        
+        private string orientation;
         
         private const string ACTION_RIGHT = "right";
         private const string ACTION_LEFT = "left";
@@ -104,14 +104,17 @@ namespace Com.IsartDigital.Sokoban
 
         private void ReplaceThePlayer(StringName pAnimName)
         {
-            sprite.Visible = true;
+            OrientThePlayer();
+            actualPlayerSprite.Play(orientation);
+
+            actualPlayerSprite.Visible = true;
             animatedSprite.Visible = false;
 
             GlobalPosition = animatedSprite.GlobalPosition;
             if (!Box.animPlaying) GameManager.GetInstance().UpdateAfterAction(); 
             
             CreatePrevisualisation();
-            animPlayer.Play(pAnimName);
+            animPlayer.Play(ANIM_IDLE);
         }
 
         public override void _Process(double pDelta)
@@ -233,8 +236,6 @@ namespace Com.IsartDigital.Sokoban
         {
             if (!canInput) return;
 
-
-
             if ( animPlayer.CurrentAnimation != ANIM_IDLE || Box.animPlaying || path.Count != 0 || hasBoxToPush) { return; }
 
             foreach (string lActionName in PlayersVector.Keys)
@@ -242,13 +243,14 @@ namespace Com.IsartDigital.Sokoban
                 if (Input.IsActionJustPressed(lActionName))
                 {
                     lastDirection = PlayersVector[lActionName];
+                    orientation = lActionName;
                     Box.hasABoxToCheck = false;
+
+                    //OrientThePlayer();
 
                     if (!CheckTheMove(lastDirection)) //if you are against a wall, or 2 consecutive boxes
                     {
-
                         ExplodeBombInHand();
-
                     }
 
 
@@ -271,9 +273,8 @@ namespace Com.IsartDigital.Sokoban
                     }
                 }
             }
-            
-
         }
+
 
 
         public void GoTo(Vector2I pPosition)
@@ -283,12 +284,14 @@ namespace Com.IsartDigital.Sokoban
 
         public void AnimThePlayer(Vector2I pLastDirection)
         {
-            if (lastDirection == Vector2I.Zero )
+            if (pLastDirection == Vector2I.Zero )
             {
                 return;
             }
 
-            sprite.Visible = false;
+            //OrientThePlayer();
+
+            actualPlayerSprite.Visible = false;
             animatedSprite.Visible = true;
 
             animPlayer.Play(nameOfAnimation[pLastDirection]);
@@ -298,18 +301,34 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
-        private void ExplodeBombInHand()
+        private void OrientThePlayer()
         {
 
+
+            foreach (string lActionName in PlayersVector.Keys)
+            {
+                if (lastDirection == PlayersVector[lActionName])
+                {
+                    orientation = lActionName;
+                    GD.Print(orientation);
+                }
+            }
+        }
+
+
+        private void ExplodeBombInHand()
+        {
+            OrientThePlayer();
+            actualPlayerSprite.Play(orientation);
             if (bombInHand == null)
             {
                 animPlayer.Play(ANIM_BLOCKED);
+
                 animatedSprite.GlobalPosition = GlobalPosition;
                 return;
             }
 
             //GameManager.GetInstance().canMoveBackInTime = false;
-
             bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
 
             GameManager.GetInstance().UpdateAfterAction();

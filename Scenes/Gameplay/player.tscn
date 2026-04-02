@@ -1,7 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://damd4cgjs6b0k"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_26mxs"]
-[ext_resource type="Texture2D" uid="uid://cxs8qynk7bxqu" path="res://Assets/Player.png" id="2_mv7ro"]
 [ext_resource type="Texture2D" uid="uid://b0uegn82jtv0g" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_23.png" id="3_w8jsy"]
 [ext_resource type="Texture2D" uid="uid://cy8lvyfccncue" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_24.png" id="4_s5jm5"]
 [ext_resource type="Texture2D" uid="uid://diqumy40xca05" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_01.png" id="5_jobuk"]
@@ -17,14 +16,6 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yhy0t"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_mv7ro")
-}],
-"loop": false,
-"name": &"Idle",
-"speed": 1.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_w8jsy")
@@ -56,10 +47,10 @@ animations = [{
 "texture": ExtResource("8_1mnal")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_3t7p5")
+"texture": ExtResource("7_nd7o5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_w8jsy")
+"texture": ExtResource("6_3t7p5")
 }],
 "loop": false,
 "name": &"movingLeftAnim",
@@ -76,10 +67,10 @@ animations = [{
 "texture": ExtResource("11_s37ed")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_6o1ev")
+"texture": ExtResource("10_uj8hd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_w8jsy")
+"texture": ExtResource("9_6o1ev")
 }],
 "loop": false,
 "name": &"movingRightAnim",
@@ -96,10 +87,10 @@ animations = [{
 "texture": ExtResource("14_qeuu3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_tmdkj")
+"texture": ExtResource("13_cf5x2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_w8jsy")
+"texture": ExtResource("12_tmdkj")
 }],
 "loop": false,
 "name": &"movingUpAnim",
@@ -115,7 +106,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ActualPlayer:position")
+tracks/0/path = NodePath("ActualAnimatedPlayer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,7 +123,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ActualPlayer:scale")
+tracks/0/path = NodePath("ActualAnimatedPlayer:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -216,18 +207,53 @@ _data = {
 "movingUp": SubResource("Animation_gi0gj")
 }
 
-[node name="Player2" type="Area2D" node_paths=PackedStringArray("animPlayer", "animatedSprite", "sprite", "bombPrevisualisationContainer")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_re48t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_w8jsy")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3t7p5")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6o1ev")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tmdkj")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Player2" type="Area2D" node_paths=PackedStringArray("animPlayer", "animatedSprite", "actualPlayerSprite", "bombPrevisualisationContainer")]
 script = ExtResource("1_26mxs")
 animPlayer = NodePath("AnimationPlayer")
 animatedSprite = NodePath("VisualPlayer")
-sprite = NodePath("ActualPlayer")
+actualPlayerSprite = NodePath("ActualAnimatedPlayer")
 bombPrevisualisationContainer = NodePath("BombPreviContainer")
 
 [node name="VisualPlayer" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(0, 18)
 sprite_frames = SubResource("SpriteFrames_yhy0t")
-animation = &"movingLeftAnim"
+animation = &"movingDownAnim"
 offset = Vector2(1, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -240,11 +266,11 @@ libraries = {
 "": SubResource("AnimationLibrary_3a3a4")
 }
 
-[node name="ActualPlayer" type="Sprite2D" parent="."]
-position = Vector2(0, 18)
-scale = Vector2(1, 0.963169)
-skew = 0.0174533
-texture = ExtResource("3_w8jsy")
-offset = Vector2(0.633443, -20.1482)
-
 [node name="BombPreviContainer" type="Node2D" parent="."]
+
+[node name="ActualAnimatedPlayer" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 18)
+scale = Vector2(1, 0.963)
+sprite_frames = SubResource("SpriteFrames_re48t")
+animation = &"down"
+offset = Vector2(0, -19)
