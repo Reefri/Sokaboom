@@ -27,6 +27,17 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private bool isLogin = true;
 
+        private const string SWITCH_INSCRIPTION = "ID_SWITCH_INSCRIPTION";
+        private const string VALIDATION_INSCRIPTION = "ID_VALIDATION_INSCRIPTION";
+        private const string VALIDATION_LOGIN = "ID_VALIDATION_LOGIN";
+        private const string TITLE_LOGIN = "ID_TITLE_LOGIN";
+        private const string PASSWORD_NOT_CONFIRM = "ID_PASSWORD_NOT_CONFIRM";
+        private const string PSEUDO_EXIST_A = "ID_PSEUDO_EXIST_A";
+        private const string PSEUDO_EXIST_B = "ID_PSEUDO_EXIST_B";
+        private const string INCORECT_PASSWORD = "ID_INCORECT_PASSWORD";
+        private const string NO_ACCOUNT_A = "ID_NO_ACCOUNT_A";
+        private const string NO_ACCOUNT_B = "ID_NO_ACCOUNT_B";
+
         public override void _Ready()
         {
             confirmPassword.Visible = false;
@@ -41,8 +52,8 @@ namespace Com.IsartDigital.Sokoban.UI
                 font.Color = new Color(0, 0.85f, 0.97f);
                 buttonSwitch.SelfModulate = new Color(0, 0, 0.39f);
 
-                buttonSwitch.Text = Tr("ID_SWITCH_INSCRIPTION");
-                buttonValidation.Text = Tr("ID_VALIDATION_INSCRIPTION");
+                buttonSwitch.Text = Tr(SWITCH_INSCRIPTION);
+                buttonValidation.Text = Tr(VALIDATION_INSCRIPTION);
 
                 title.Text = TEXT_TITLE_INSCRIPTION;
 
@@ -55,9 +66,9 @@ namespace Com.IsartDigital.Sokoban.UI
                 buttonSwitch.SelfModulate = new Color(0, 0.85f, 0.97f);
 
                 buttonSwitch.Text = TEXT_SWITCH_LOGIN;
-                buttonValidation.Text = Tr("ID_VALIDATION_LOGIN");
+                buttonValidation.Text = Tr(VALIDATION_LOGIN);
 
-                title.Text = Tr("ID_TITLE_LOGIN");
+                title.Text = Tr(TITLE_LOGIN);
 
                 confirmPassword.Visible = false;
 
@@ -81,7 +92,7 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             if (password.Text != confirmPassword.Text)
             {
-                statut.Text = Tr("ID_PASSWORD_NOT_CONFIRM");
+                statut.Text = Tr(PASSWORD_NOT_CONFIRM);
                 statut.SelfModulate = yellow;
                 return;
             }
@@ -91,7 +102,7 @@ namespace Com.IsartDigital.Sokoban.UI
             }
             else
             {
-                statut.Text = Tr("ID_PSEUDO_EXIST_A") + pseudo.Text + Tr("ID_PSEUDO_EXIST_B");
+                statut.Text = Tr(PSEUDO_EXIST_A) + pseudo.Text + Tr(PSEUDO_EXIST_B);
                 statut.SelfModulate = yellow;
             }
         }
@@ -101,14 +112,14 @@ namespace Com.IsartDigital.Sokoban.UI
             switch (AccountManager.GetInstance().TestConnexion(pseudo.Text, password.Text))
             {
                 case AccountManager.TestConnexionResult.Incorrect:
-                    statut.Text = Tr("ID_INCORECT_PASSWORD");
+                    statut.Text = Tr(INCORECT_PASSWORD);
                     statut.SelfModulate = red;
                     break;
                 case AccountManager.TestConnexionResult.Valid:
                     UIManager.GetInstance().GoToTitle();
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
-                    statut.Text = Tr("ID_NO_ACCOUNT_A") + pseudo.Text + Tr("ID_NO_ACCOUNT_B");
+                    statut.Text = Tr(NO_ACCOUNT_A) + pseudo.Text + Tr(NO_ACCOUNT_B);
                     statut.SelfModulate = red;
                     break;
             }
