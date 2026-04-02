@@ -79,7 +79,9 @@ namespace Com.IsartDigital.Sokoban
 				
             else if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
 			{
-                if (Player.GetInstance().path.Count != 0) Player.GetInstance().path.Clear();
+                GameManager.GetInstance().EmptyBoxSignalContainer();
+		
+				Player.GetInstance().path.Clear();
 
                 UpdateAndClearPath();
 				boxOrWallClickedOn = Vector2I.Zero;
@@ -121,7 +123,6 @@ namespace Com.IsartDigital.Sokoban
 		{
             groundCells = GetUsedCells(0);
             cells = GetUsedCells(2);
-            Player.GetInstance().path.Clear();
             aStarGrid.Update();
 
             foreach (Vector2I cell in cells)
@@ -195,11 +196,11 @@ namespace Com.IsartDigital.Sokoban
             if (Player.GetInstance().hasBoxToPush && (boxOrWallClickedOn - pBeginning).LengthSquared() <= 1)
             {
 
-				Player.GetInstance().lastDirection = boxOrWallClickedOn - pBeginning;
+				//Player.GetInstance().lastDirection = boxOrWallClickedOn - pBeginning;
 
 
 
-				Player.GetInstance().AdjacentToBox();
+				Player.GetInstance().AdjacentToBox(boxOrWallClickedOn - pBeginning);
 
                 Player.GetInstance().hasBoxToPush = false;
                 return;

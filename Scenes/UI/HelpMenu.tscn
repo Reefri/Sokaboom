@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfi0xj1teixyt" path="res://Scenes/UI/HelpAnimations/HelpExplodeDirections.tscn" id="12_1tdw1"]
 [ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
 
-[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explinationSfB", "explinationSfC", "explinationControlA", "explinationControlB", "explinationDetailA", "explinationDetailB")]
+[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,12 +28,6 @@ currentPage = NodePath("currentPage")
 firstPage = NodePath("FirstPage")
 secondPage = NodePath("SecondPage")
 thirdPage = NodePath("ThirdPage")
-explinationSfB = NodePath("SecondPage/HelpPattern/Label")
-explinationSfC = NodePath("SecondPage/BombExplosionHelp/Label")
-explinationControlA = NodePath("FirstPage/HelpMovement/MovementText")
-explinationControlB = NodePath("FirstPage/HelpMoveBox/MoveBoxText")
-explinationDetailA = NodePath("ThirdPage/HelpExplodeDirections/Label")
-explinationDetailB = NodePath("ThirdPage/HelpExplodeBoxes/Label")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
 

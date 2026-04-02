@@ -42,12 +42,12 @@ namespace Com.IsartDigital.Sokoban
             nextPageButton.Pressed += NextPage;
             previousPageButton.Pressed += PreviousPage;
 
-            explinationControlA.Text = Tr("ID_CONTROL_AA") + "\n" + Tr("ID_CONTROL_AB");
-            explinationControlB.Text = Tr("ID_CONTROL_BA") + "\n" + Tr("ID_CONTROL_BB") +"\n \n \n" + Tr("ID_CONTROL_BC");
-            explinationSfB.Text = Tr("ID_SF_BA") + "\n" + Tr("ID_SF_BB");
-            explinationSfC.Text = Tr("ID_SF_CA") + "\n" + Tr("ID_SF_CB");
-            explinationDetailA.Text = Tr("ID_DETAILS_AA") + "\n" + Tr("ID_DETAILS_AB");
-            explinationDetailB.Text = Tr("ID_DETAILS_BA") + "\n \n" + Tr("ID_DETAILS_BB");
+            //explinationControlA.Text = Tr("ID_CONTROL_AA") + "\n" + Tr("ID_CONTROL_AB");
+            //explinationControlB.Text = Tr("ID_CONTROL_BA") + "\n" + Tr("ID_CONTROL_BB") +"\n \n \n" + Tr("ID_CONTROL_BC");
+            //explinationSfB.Text = Tr("ID_SF_BA") + "\n" + Tr("ID_SF_BB");
+            //explinationSfC.Text = Tr("ID_SF_CA") + "\n" + Tr("ID_SF_CB");
+            //explinationDetailA.Text = Tr("ID_DETAILS_AA") + "\n" + Tr("ID_DETAILS_AB");
+            //explinationDetailB.Text = Tr("ID_DETAILS_BA") + "\n \n" + Tr("ID_DETAILS_BB");
         }
         private void ReturnPressed()
 		{
