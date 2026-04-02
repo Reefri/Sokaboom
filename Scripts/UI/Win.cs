@@ -42,16 +42,14 @@ namespace Com.IsartDigital.Sokoban
 				numberStars = 1;
             }
 
+            score = Mathf.Clamp(score, 0, score);
 
-			
             for (int i = 0; i <= numberStars - 1; i++)
 			{
 				AnimatedSprite2D lStars = (AnimatedSprite2D)stars.GetChild(i);
 				lStars.Frame = 1;
             }
-			
-            if (score < 0) score = 0;
-
+            
 			scoreText.Text = "Score : " + score;
 
 			AccountManager.GetInstance().NewWin(score, GameManager.GetInstance().CurrentPar);

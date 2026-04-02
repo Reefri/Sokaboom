@@ -18,7 +18,7 @@ namespace Com.IsartDigital.Sokoban
 		private Array<Vector2I> groundCells ;
 
 		public const string PLAY_OBJECT = "PlayObject";
-		public const string CONTAINER = "Container";
+		public const string BOX = "Container";
 		public const string WALL = "Wall";
 		public const string INTERACTABLE = "Interactable";
 		public const string TARGET = "Target";
@@ -26,7 +26,7 @@ namespace Com.IsartDigital.Sokoban
 		public const string GROUND = "Ground";
 
 
-		public static Vector2I boxOrContainerClickedOn;
+		public static Vector2I boxOrWallClickedOn;
 		public static Vector2I lastDirectionBeforePushing;
 		public enum LevelLayer
 		{
@@ -38,7 +38,7 @@ namespace Com.IsartDigital.Sokoban
 
         public static SysDict.Dictionary<string, ObjectChar> interactableToObjectChar = new SysDict.Dictionary<string, ObjectChar>
 		{
-			{ CONTAINER,ObjectChar.BOX},
+			{ BOX,ObjectChar.BOX},
 			{ WALL,ObjectChar.WALL},
 			{ TARGET,ObjectChar.TARGET},
 			{ BORDER,ObjectChar.BORDER},
@@ -82,9 +82,9 @@ namespace Com.IsartDigital.Sokoban
                 if (Player.GetInstance().path.Count != 0) Player.GetInstance().path.Clear();
 
                 UpdateAndClearPath();
-				boxOrContainerClickedOn = Vector2I.Zero;
+				boxOrWallClickedOn = Vector2I.Zero;
 
-				Vector2 lCellClicked = new Vector2I((int)((GetGlobalMousePosition().X +32) / States.DISTANCE_RANGE), (int)((GetGlobalMousePosition().Y + 32) / States.DISTANCE_RANGE)) ;
+				Vector2 lCellClicked = new Vector2I((int)((GetGlobalMousePosition().X + States.HALF_RANGE) / States.DISTANCE_RANGE), (int)((GetGlobalMousePosition().Y + States.HALF_RANGE) / States.DISTANCE_RANGE)) ;
 				OnClick.Create(lCellClicked, GameManager.GetInstance());
 				foreach(Vector2I lCell in groundCells)
 				{
@@ -96,22 +96,19 @@ namespace Com.IsartDigital.Sokoban
 							!(bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(INTERACTABLE))))
 						{
                             CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lCell);
-							return;
                         }
                     
 						else if ((bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(WALL)))
 						{
-							boxOrContainerClickedOn = lCell;
+							boxOrWallClickedOn = lCell;
 
-                            ContainerOrBoxChosen(WALL, lCell);
-							return;
+                            WallOrBoxChosen(WALL, lCell);
 						}
 
-                        else if ((bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(CONTAINER)))
+                        else if ((bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(BOX)))
 						{
-                            boxOrContainerClickedOn = lCell;
-							ContainerOrBoxChosen(CONTAINER, lCell);
-							return;
+                            boxOrWallClickedOn = lCell;
+							WallOrBoxChosen(BOX, lCell);
 						}
                     }
 
@@ -129,14 +126,13 @@ namespace Com.IsartDigital.Sokoban
 
             foreach (Vector2I cell in cells)
 			{
-				if ((bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(WALL)) || 
-					(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(CONTAINER))||
-					(bool)(GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(BORDER))) aStarGrid.SetPointSolid(cell);
-			}
+
+                if ((bool)GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(INTERACTABLE))aStarGrid.SetPointSolid(cell);
+            }
 		}
 
 
-		private void ContainerOrBoxChosen(string pWallOrContainer, Vector2I pCell)
+		private void WallOrBoxChosen(string pWallOrBox, Vector2I pCell)
 		{
 			List<Vector2I> lAlternativeCells = new List<Vector2I>();
 			List<float> lDistanceBetweenCells = new List<float>();
@@ -162,7 +158,7 @@ namespace Com.IsartDigital.Sokoban
 
             if (lAlternativeCells.Count == 0)
             {
-                if (Player.GetInstance().bombInHand == null || boxOrContainerClickedOn == Vector2I.Zero)
+                if (Player.GetInstance().bombInHand == null || boxOrWallClickedOn == Vector2I.Zero)
                 {
                     Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
                     return;
@@ -184,7 +180,7 @@ namespace Com.IsartDigital.Sokoban
 
 			}
 
-				Player.GetInstance().hasBoxToPush = (pWallOrContainer == CONTAINER);
+				Player.GetInstance().hasBoxToPush = (pWallOrBox == BOX);
 				
             CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lAlternativeCells[indexOfClosestCell]);
 		}
@@ -195,12 +191,11 @@ namespace Com.IsartDigital.Sokoban
 		{
 
             Array<Vector2I> lPath = aStarGrid.GetIdPath(pBeginning, pDestination);
-			//Cross.Create((pDestination + Vector2I.One/2) * States.DISTANCE_RANGE, GameManager.GetInstance());
 
-            if (Player.GetInstance().hasBoxToPush && (boxOrContainerClickedOn - pBeginning).LengthSquared() <= 1)
+            if (Player.GetInstance().hasBoxToPush && (boxOrWallClickedOn - pBeginning).LengthSquared() <= 1)
             {
 
-				Player.GetInstance().lastDirection = boxOrContainerClickedOn - pBeginning;
+				Player.GetInstance().lastDirection = boxOrWallClickedOn - pBeginning;
 
 
 
@@ -212,22 +207,16 @@ namespace Com.IsartDigital.Sokoban
 
             }
 
-			if (lPath.Count == 0) 
-			{
-				if (Player.GetInstance().bombInHand == null || boxOrContainerClickedOn == Vector2I.Zero)
-				{
-					Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
-					return;
-				}
-				else
-				{
-					return;
-				}
-			}
+                if (lPath.Count == 0 && (Player.GetInstance().bombInHand == null || boxOrWallClickedOn == Vector2I.Zero))
+                {
+                    Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
+                    Player.GetInstance().animatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
+                    return;
+                }
 
-			
-			
-			foreach (Vector2I cellOnPath in lPath)
+
+
+                foreach (Vector2I cellOnPath in lPath)
 			{
 				Player.GetInstance().path.Add(cellOnPath);
 			}

@@ -440,7 +440,7 @@ namespace Com.IsartDigital.Sokoban
                     (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET)) &&
 
                          (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null ||
-                   !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
+                   !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.BOX))
                           )
                     {
                             lListOfPos.Add(new Vector2I(j, i));   
@@ -463,7 +463,7 @@ namespace Com.IsartDigital.Sokoban
                 {
                     if (
                             tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) != null &&
-                      (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER) &&
+                      (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.BOX) &&
 
                            (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) == null ||
                      !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET)))

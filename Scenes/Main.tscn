@@ -10,6 +10,7 @@
 script = ExtResource("1_4l0qp")
 testOnlyGameFeature = false
 levelAtTest = 4
+noLogin = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

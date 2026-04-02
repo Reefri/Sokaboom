@@ -14,12 +14,6 @@ namespace Com.IsartDigital.Sokoban
 
 		private static PackedScene packedBox = (PackedScene)ResourceLoader.Load("res://Scenes/Gameplay/Box.tscn");
 
-		private const string GO_UP_ANIM = "goUp";
-		private const string GO_DOWN_ANIM = "goDown";
-		private const string GO_RIGHT_ANIM = "goRight";
-		private const string GO_LEFT_ANIM = "goLeft";
-
-
 		public static bool animPlaying = false;
 		private static string animToPlay;
 		public static bool hasABoxToCheck = false;
@@ -38,7 +32,7 @@ namespace Com.IsartDigital.Sokoban
             animPlaying = false;
 
             GetParent().RemoveChild(this);
-
+			GameManager.GetInstance().UpdateAfterAction();
             QueueFree();
         }
 
@@ -53,10 +47,7 @@ namespace Com.IsartDigital.Sokoban
 			}
 
 			
-			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.CONTAINER) ||
-				(bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.WALL)
-                || (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.BORDER))
-			{
+			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.INTERACTABLE)) { 
 				return false;
 			}
 
@@ -82,15 +73,16 @@ namespace Com.IsartDigital.Sokoban
 
 		public static void BoxAnimation(Vector2I pDirection)
 		{
-			if(pDirection == Vector2I.Up) animToPlay = GO_UP_ANIM;
-            else if (pDirection == Vector2I.Down) animToPlay = GO_DOWN_ANIM;
-			else if(pDirection == Vector2I.Right) animToPlay = GO_RIGHT_ANIM;
-            else if (pDirection == Vector2I.Left) animToPlay = GO_LEFT_ANIM;
+			foreach (Vector2I lVector in Player.GetInstance().nameOfAnimation.Keys)
+			{
+				if (pDirection == lVector) animToPlay = Player.GetInstance().nameOfAnimation[lVector];
+
+            }
         }
 
 		public override void _Process(double delta)
 		{
-			if(anim.IsPlaying()) animPlaying = true;
+			if (anim.IsPlaying()) animPlaying = true;
 			else { animPlaying = false; }
 
 		}
