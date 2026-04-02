@@ -44,6 +44,9 @@ namespace Com.IsartDigital.Sokoban
         }
         private void RetryPressed()
         {
+
+            GameManager.GetInstance().QuickResetInit();
+
             Player.GetInstance().canInput = true;
             GameManager.GetInstance().currentPosition = new HistoricHeap(GameManager.GetInstance().currentLevel);
             GameManager.GetInstance().ChargeMapFromCurrentLevel();

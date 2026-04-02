@@ -239,6 +239,9 @@ namespace Com.IsartDigital.Sokoban
             {
                 if (Input.IsActionJustPressed(lActionName))
                 {
+
+                    GameManager.GetInstance().EmptyBoxSignalContainer();
+
                     lastDirection = nameOfVector[lActionName];
                     Box.hasABoxToCheck = false;
 
