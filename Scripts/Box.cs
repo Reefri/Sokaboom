@@ -41,24 +41,16 @@ namespace Com.IsartDigital.Sokoban
 			hasABoxToCheck = false;
 			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null)
 			{
-				//Not the origin of the ghost box problem
 				hasABoxToCheck = true;
                 return true;
 			}
 
-			
-			else if ( (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection).GetCustomData(Map.INTERACTABLE)) { 
-				return false;
-			}
+            else 
+            {
+                return false;
+            }
 
-			else
-			{
-                GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pCellPosition);
-				//A box will be instantiated in this situation
-				hasABoxToCheck = true;
-                return true;
-			}
-		}
+        }
 
 		public static Box Create(Vector2I pPosition, Vector2I pDirection)
 		{

@@ -25,8 +25,9 @@ namespace Com.IsartDigital.Sokoban
 		public const string BORDER = "Border";
 		public const string GROUND = "Ground";
 
+        private const string PATH_FINDING_INPUT = "leftClick";
 
-		public static Vector2I boxOrWallClickedOn;
+        public static Vector2I boxOrWallClickedOn;
 		public static Vector2I lastDirectionBeforePushing;
 		public enum LevelLayer
 		{
@@ -43,8 +44,6 @@ namespace Com.IsartDigital.Sokoban
 			{ TARGET,ObjectChar.TARGET},
 			{ BORDER,ObjectChar.BORDER},
 		};
-
-        private const string PATH_FINDING_INPUT = "leftClick";
 
 
 
@@ -72,11 +71,9 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 
-            if (Player.GetInstance().hasBoxToPush || Box.animPlaying )
-			{
-                return;
-            }
-				
+
+            if (Player.GetInstance().hasBoxToPush || Box.animPlaying) return;
+
             else if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
 			{
                 GameManager.GetInstance().EmptyBoxSignalContainer();
@@ -88,14 +85,14 @@ namespace Com.IsartDigital.Sokoban
 
 				Vector2 lCellClicked = new Vector2I((int)((GetGlobalMousePosition().X + States.HALF_RANGE) / States.DISTANCE_RANGE), (int)((GetGlobalMousePosition().Y + States.HALF_RANGE) / States.DISTANCE_RANGE)) ;
 				OnClick.Create(lCellClicked, GameManager.GetInstance());
+
 				foreach(Vector2I lCell in groundCells)
 				{
                     if (lCellClicked.DistanceTo(lCell ) < 1)
 					{
 						if (lCell == Player.GetInstance().GetPositionToVector2I()) { return; }
 
-						if ((GetCellTileData((int)LevelLayer.Playground, lCell) == null || 
-							!(bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(INTERACTABLE))))
+						if (GetCellTileData((int)LevelLayer.Playground, lCell) == null )
 						{
                             CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lCell);
                         }
@@ -162,6 +159,7 @@ namespace Com.IsartDigital.Sokoban
                 if (Player.GetInstance().bombInHand == null || boxOrWallClickedOn == Vector2I.Zero)
                 {
                     Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
+					Player.GetInstance().animatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
                     return;
                 }
                 return; 
@@ -200,7 +198,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-				Player.GetInstance().AdjacentToBox(boxOrWallClickedOn - pBeginning);
+				Player.GetInstance().AdjacentToInteractable(boxOrWallClickedOn - pBeginning);
 
                 Player.GetInstance().hasBoxToPush = false;
                 return;
