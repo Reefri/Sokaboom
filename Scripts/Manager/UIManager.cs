@@ -90,6 +90,7 @@ namespace Com.IsartDigital.Sokoban
         
         public void GoToLevelSelect()
         {
+            TitleDoors.GetInstance().goingToLevel = false;
             TitleDoors.GetInstance().Transition();
 
         }
@@ -105,7 +106,9 @@ namespace Com.IsartDigital.Sokoban
             if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
 
             currentIndex = pIndex;
-            SlideTransition.Create();
+
+            TitleDoors.GetInstance().goingToLevel = true;
+            TitleDoors.GetInstance().Transition();
         }
 
         public void ContinueToLevel()
