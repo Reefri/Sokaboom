@@ -25,7 +25,6 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene uiWinFinal = GD.Load<PackedScene>("res://Scenes/UI/WinFinal.tscn");
         private PackedScene uiHightScore = GD.Load<PackedScene>("res://Scenes/UI/HightScore.tscn");
 
-        private PackedScene LevelOpenTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/SlideTransition.tscn");
         private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
 
         public HUD instanceHud;

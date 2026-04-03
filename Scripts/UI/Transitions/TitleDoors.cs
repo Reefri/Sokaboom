@@ -182,12 +182,6 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-
-        private void CloseThenOpenDoors()
-        {
-
-        }
-
         private void SetDoorsClosed()
         {
             doorsClosed = true;
