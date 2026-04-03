@@ -43,7 +43,7 @@ namespace Com.IsartDigital.Sokoban
         }
         public override void _Ready()
 		{
-            screenSize = GetWindow().Size;
+            screenSize = GetViewportRect().Size;
             margin = screenSize.X / 2;
             sideFactor = screenSize.X / 1.4f;
             whenToPlayAnim.WaitTime = tweenDuration + doorsStillTimer.WaitTime;
@@ -51,9 +51,6 @@ namespace Com.IsartDigital.Sokoban
 
             SetDoorsClosed();
             OpenDoors();
-
-            //SetDoorsOpen();
-            //CloseDoors();
 
             //whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevelSelect;
 
@@ -87,12 +84,6 @@ namespace Com.IsartDigital.Sokoban
 
             lDoorsTween.Parallel().TweenProperty(rightDoor, TweenProp.POSITION,
                 new Vector2(screenSize.X - screenSize.X / 4, screenSize.Y / 2), tweenDuration);
-
-            //lDoorsTween.TweenCallback
-            //    (
-            //    Callable.From(() =>
-            //        GD.Print("les portes sont fermés"))
-            //    );
 
             lDoorsTween
                     .SetTrans(Tween.TransitionType.Quad)
