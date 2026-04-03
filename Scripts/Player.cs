@@ -178,9 +178,9 @@ namespace Com.IsartDigital.Sokoban
             {
                 //animatedSprite.GlobalPosition = GlobalPosition;
 
-                lastDirection = (path[0] - GetPositionToVector2I());
+                //lastDirection = ();
 
-                AnimThePlayer(lastDirection);
+                AnimThePlayer(path[0] - GetPositionToVector2I());
 
                 path.RemoveAt(0);
                 pathFindingTimer.Start();
@@ -310,6 +310,9 @@ namespace Com.IsartDigital.Sokoban
                     orientation = lActionName;
                 }
             }
+
+            actualPlayerSprite.Play(orientation);
+
         }
 
 
@@ -318,7 +321,13 @@ namespace Com.IsartDigital.Sokoban
 
             if (pTryDirection != lastDirection) 
             {
-                lastDirection = pTryDirection; 
+                //ReplaceThePlayer(ANIM_IDLE);
+
+                lastDirection = pTryDirection;
+                OrientThePlayer();
+
+
+
                 return; 
             }
 

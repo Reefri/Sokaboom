@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfi0xj1teixyt" path="res://Scenes/UI/HelpAnimations/HelpExplodeDirections.tscn" id="12_1tdw1"]
 [ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
 
-[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationSfB", "explanationSfC", "explanationControlA", "explanationControlB", "explanationDetailA", "explanationDetailB")]
+[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,12 +28,6 @@ currentPage = NodePath("currentPage")
 firstPage = NodePath("FirstPage")
 secondPage = NodePath("SecondPage")
 thirdPage = NodePath("ThirdPage")
-explanationSfB = NodePath("SecondPage/HelpPattern/explanationSfB")
-explanationSfC = NodePath("SecondPage/BombExplosionHelp/explanationSfC")
-explanationControlA = NodePath("FirstPage/HelpMovement/ExplanationControlA")
-explanationControlB = NodePath("FirstPage/HelpMoveBox/explanationControlB")
-explanationDetailA = NodePath("ThirdPage/HelpExplodeDirections/ExplanationDetailA")
-explanationDetailB = NodePath("ThirdPage/HelpExplodeBoxes/explanationDetailB")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
 
@@ -303,9 +297,9 @@ offset_bottom = 525.0
 
 [node name="explanationDetailB" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
 layout_mode = 0
-offset_left = 198.0
+offset_left = 161.0
 offset_top = -131.0
-offset_right = 833.0
+offset_right = 796.0
 offset_bottom = -20.0
 theme_override_font_sizes/font_size = 25
 text = "- Caution ! you can destroy crates and targets !
