@@ -147,9 +147,8 @@ namespace Com.IsartDigital.Sokoban
                     hasBoxToPush = false;
                     Box.hasABoxToCheck = false;
                     
-                    Vector2I lTryDirection = Map.boxOrWallClickedOn - GetPositionToVector2I();
 
-                    AdjacentToInteractable();
+                    AdjacentToInteractable(Map.boxOrWallClickedOn - GetPositionToVector2I());
 
                 }
 
@@ -202,25 +201,25 @@ namespace Com.IsartDigital.Sokoban
             return new Vector2I((int)(Position.X / States.DISTANCE_RANGE), (int)(Position.Y / States.DISTANCE_RANGE));
         }
 
-        public void AdjacentToInteractable()
+        public void AdjacentToInteractable(Vector2I pDirection)
         {
 
-            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, GetPositionToVector2I() + lastDirection) == null)
+            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, GetPositionToVector2I() + pDirection) == null)
             {
-                AnimThePlayer(lastDirection);
+                AnimThePlayer(pDirection);
             }
 
-            else if (((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, GetPositionToVector2I()+ lastDirection).GetCustomData(Map.BOX))
-                && Box.CanBoxBePushed(lastDirection, GetPositionToVector2I() + lastDirection))
+            else if (((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, GetPositionToVector2I()+ pDirection).GetCustomData(Map.BOX))
+                && Box.CanBoxBePushed(pDirection, GetPositionToVector2I() + pDirection))
             {
-                AnimThePlayer(lastDirection);
-                Box.Create( GetPositionToVector2I() + lastDirection, lastDirection);
+                AnimThePlayer(pDirection);
+                Box.Create( GetPositionToVector2I() + pDirection, pDirection);
                 Box.hasABoxToCheck = false;
             }
 
             else 
             {
-                ExplodeBombInHand(pTryDirection);
+                ExplodeBombInHand(pDirection);
             }
 
         }
@@ -245,7 +244,7 @@ namespace Com.IsartDigital.Sokoban
                     Box.hasABoxToCheck = false;
 
 
-                    AdjacentToInteractable();
+                    AdjacentToInteractable(lTryDirection);
 
                 }
             }
@@ -332,6 +331,7 @@ namespace Com.IsartDigital.Sokoban
             instance = null;
             base.Dispose(pDisposing);
         }
+
 
 
         public void CreatePrevisualisation()
