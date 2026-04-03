@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://u22od2u73pmn"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Transitions/Banderole.cs" id="1_sed1o"]
+[ext_resource type="Texture2D" uid="uid://bcnt0s4v3eis" path="res://Assets/JuicyAssets/Final_Banderole.png" id="1_t1ea6"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("banderoles", "downMarkers", "upMarkers")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sed1o")
+banderoles = [NodePath("Banderoles/FirstBanderole"), NodePath("Banderoles/SecondBanderole"), NodePath("Banderoles/ThirdBanderole"), NodePath("Banderoles/FourthBanderole"), NodePath("Banderoles/FifthBanderole")]
+downMarkers = [NodePath("InitialPos/InitialFirst"), NodePath("InitialPos/InitialSecond"), NodePath("InitialPos/InitialThird"), NodePath("InitialPos/InitialFourth"), NodePath("InitialPos/InitialFifth")]
+upMarkers = [NodePath("FinalPos/FinalFirst"), NodePath("FinalPos/FinalSecond"), NodePath("FinalPos/FinalThird"), NodePath("FinalPos/FinalFourth"), NodePath("FinalPos/FinalFifth")]
+
+[node name="InitialPos" type="Node2D" parent="."]
+
+[node name="InitialFirst" type="Marker2D" parent="InitialPos"]
+position = Vector2(-100, -5)
+
+[node name="InitialSecond" type="Marker2D" parent="InitialPos"]
+position = Vector2(182, -5)
+
+[node name="InitialThird" type="Marker2D" parent="InitialPos"]
+position = Vector2(464, -5)
+
+[node name="InitialFourth" type="Marker2D" parent="InitialPos"]
+position = Vector2(746, -5)
+
+[node name="InitialFifth" type="Marker2D" parent="InitialPos"]
+position = Vector2(1028, -5)
+
+[node name="FinalPos" type="Node2D" parent="."]
+
+[node name="FinalFirst" type="Marker2D" parent="FinalPos"]
+position = Vector2(-100, -1000)
+
+[node name="FinalSecond" type="Marker2D" parent="FinalPos"]
+position = Vector2(182, 1000)
+
+[node name="FinalThird" type="Marker2D" parent="FinalPos"]
+position = Vector2(464, -1000)
+
+[node name="FinalFourth" type="Marker2D" parent="FinalPos"]
+position = Vector2(746, 1000)
+
+[node name="FinalFifth" type="Marker2D" parent="FinalPos"]
+position = Vector2(1028, -1000)
+
+[node name="Banderoles" type="Node2D" parent="."]
+
+[node name="FirstBanderole" type="Sprite2D" parent="Banderoles"]
+position = Vector2(-100, -1000)
+rotation = 1.5708
+scale = Vector2(0.516453, 0.516453)
+texture = ExtResource("1_t1ea6")
+offset = Vector2(815.567, -269.936)
+
+[node name="SecondBanderole" type="Sprite2D" parent="Banderoles"]
+position = Vector2(182, 1000)
+rotation = 1.5708
+scale = Vector2(0.516453, 0.516453)
+texture = ExtResource("1_t1ea6")
+offset = Vector2(815.567, -269.936)
+
+[node name="ThirdBanderole" type="Sprite2D" parent="Banderoles"]
+position = Vector2(464, -1000)
+rotation = 1.5708
+scale = Vector2(0.516453, 0.516453)
+texture = ExtResource("1_t1ea6")
+offset = Vector2(815.567, -269.936)
+
+[node name="FourthBanderole" type="Sprite2D" parent="Banderoles"]
+position = Vector2(746, 1000)
+rotation = 1.5708
+scale = Vector2(0.516453, 0.516453)
+texture = ExtResource("1_t1ea6")
+offset = Vector2(815.567, -269.936)
+
+[node name="FifthBanderole" type="Sprite2D" parent="Banderoles"]
+position = Vector2(1028, -1000)
+rotation = 1.5708
+scale = Vector2(0.516453, 0.516453)
+texture = ExtResource("1_t1ea6")
+offset = Vector2(815.567, -269.936)
