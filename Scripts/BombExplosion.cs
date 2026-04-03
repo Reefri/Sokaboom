@@ -35,7 +35,13 @@ namespace Com.IsartDigital.Sokoban {
             JuicinessManager.GetInstance().simpleBombShaker.Start();
 
 
-            originPos = (new BombPattern(this, true, explosionMatrix)).originePos;
+            originPos = (new BombPattern(
+                this, 
+                true, 
+                explosionMatrix, 
+                BombPattern.EnumOfExplosionPattern.Bomb
+                )
+                ).originePos;
 
 
 

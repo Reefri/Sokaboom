@@ -150,7 +150,16 @@ namespace Com.IsartDigital.Sokoban
 
             lBombCollectible.showPatern = new Node2D();
 
-            lBombCollectible.previsualisationOriginPos = (new BombPattern(lBombCollectible.showPatern, false, lBombCollectible.bomb.explosionMatrix, default, default, true)).originePos;
+            lBombCollectible.previsualisationOriginPos = (new BombPattern(
+                lBombCollectible.showPatern, 
+                false, 
+                lBombCollectible.bomb.explosionMatrix, 
+                BombPattern.EnumOfExplosionPattern.Collectible,
+                default, 
+                default, 
+                true
+                )
+                ).originePos;
 
 
             return lBombCollectible;
