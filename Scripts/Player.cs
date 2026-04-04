@@ -124,8 +124,6 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTime = CASUAL_TIME_PATH;
                 pathFindingTimer.Start();
             }
-
-
         }
 
         private void MovingOnPath()
@@ -299,6 +297,7 @@ namespace Com.IsartDigital.Sokoban
 
                 lastDirection = pTryDirection;
                 OrientThePlayer();
+                CreatePrevisualisation();
 
 
 
@@ -336,6 +335,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void CreatePrevisualisation()
         {
+
+
             foreach (Node2D lChild in bombPrevisualisationContainer.GetChildren())
             {
                 lChild.QueueFree();
@@ -352,12 +353,15 @@ namespace Com.IsartDigital.Sokoban
                 if (!CheckTheMove(lDirection))
                 {
 
-                    new BombPattern(bombPrevisualisationContainer,
-                        false, 
+                    new BombPattern(
+                        bombPrevisualisationContainer,
                         Main.GetInstance().RotateMatrix(bombInHand.explosionMatrix, lDirection), 
                         BombPattern.EnumOfExplosionPattern.Player ,
                         false,
-                        lDirection*States.DISTANCE_RANGE);
+                        lDirection*States.DISTANCE_RANGE,
+                        (lDirection == lastDirection?1:0.2f)
+                        
+                        );
 
                 }
             }

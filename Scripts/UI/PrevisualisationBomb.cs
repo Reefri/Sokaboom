@@ -33,7 +33,6 @@ namespace Com.IsartDigital.Sokoban
 
             new BombPattern(
                 lNode,
-                false,
                 explosionMatrix,
                 BombPattern.EnumOfExplosionPattern.Mouse
                 );

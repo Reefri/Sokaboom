@@ -8,12 +8,35 @@ namespace Com.IsartDigital.Sokoban
 	{
         protected static PackedScene factory = GD.Load<PackedScene>("res://Scenes/Juiciness/BombPatterne/ToPlaceOnPlayer.tscn");
 
+        [Export] Area2D Collider;
 
         public static ToPlaceOnPlayer Create(Vector2 pPosition, Color pColor, float pScale = 1)
         {
-            GD.Print("created player");
-
             return (ToPlaceOnPlayer)Create(factory,pPosition, pColor, pScale);
+        }
+
+
+        public override void _Ready()
+        {
+            Collider.AreaEntered += OnAreaEntered;
+            Collider.AreaExited += OnAreaExited;
+        }
+
+        private void OnAreaEntered(Area2D pArea)
+        {
+            if (pArea is BombCollectible)
+            {
+                ((BombCollectible)pArea).ShowChainReaction(Scale.X);
+            }
+        }
+
+        private void OnAreaExited(Area2D pArea)
+        {
+            if (pArea is BombCollectible)
+            {
+                ((BombCollectible)pArea).HideChainReaction();
+
+            }
         }
 
     }
