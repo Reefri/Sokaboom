@@ -319,7 +319,7 @@ namespace Com.IsartDigital.Sokoban
         {
             if (CheckWin())
             {
-                UIManager.GetInstance().GoToWin();
+               JuicinessManager.GetInstance().timeBeforeBanderoles.Start();
             }
         }
 

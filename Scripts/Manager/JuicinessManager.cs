@@ -28,7 +28,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-
+		public Timer timeBeforeBanderoles = new Timer();
 		private Timer waitBeforeNextEplosion = new Timer();
 		private float timeBeforeNextExplosion = 1f;
 		private float explodingAcceleration = 1.07f;
@@ -37,6 +37,7 @@ namespace Com.IsartDigital.Sokoban
 		List<Vector2I> alreadyExploded = new List<Vector2I>();
 		List<Vector2I> lastExplosionPos = new List<Vector2I>();
 
+		private const float TIME_BANDEROLE = 1f;
 
 		private JuicinessManager():base() 
 		{
@@ -72,6 +73,10 @@ namespace Com.IsartDigital.Sokoban
 
 			((ShaderMaterial)bombShadow).SetShaderParameter(bombShadowSpeedParameter, hoverSpeed);
 
+
+			timeBeforeBanderoles.OneShot = true;
+			timeBeforeBanderoles.Timeout += Banderole.GetInstance().StartTransitionToWin;
+			AddChild(timeBeforeBanderoles);
 
 
 			waitBeforeNextEplosion.WaitTime = timeBeforeNextExplosion;
@@ -178,6 +183,13 @@ namespace Com.IsartDigital.Sokoban
 				lBorderExplosion.QueueFree();
 			}
 
+		}
+
+
+
+		public void DoTheJuicyWin()
+		{
+			Banderole.GetInstance().StartTransitionToWin();
 		}
 
 		protected override void Dispose(bool pDisposing)

@@ -25,7 +25,7 @@ namespace Com.IsartDigital.Sokoban
 		private Timer timer = new Timer();
 
 		private Timer timerBetweenTransitions = new Timer();
-		private const float TIME_BETWEEN_TRANSITIONS = 0.5f;
+		private const float TIME_BETWEEN_TRANSITIONS = 0.2f;
 
 		private List<TextureRect> banderoles ;
 
@@ -37,7 +37,7 @@ namespace Com.IsartDigital.Sokoban
 				GD.Print(nameof(Banderole) + " Instance already exist, destroying the last added.");
 				return;
 			}
-			instance = this;	
+			instance = this;
 		}
 
 		static public Banderole GetInstance()
@@ -49,10 +49,11 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			banderoles = banderoleNode.GetChildren().OfType<TextureRect>().ToList();
+			//StartTransitionToWin();
 		}
 
 		
-		private void StartTransitionToWin()
+		public void StartTransitionToWin()
 		{
 			Tween lTween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.In);
 
@@ -76,6 +77,7 @@ namespace Com.IsartDigital.Sokoban
                 lTween.TweenProperty(banderoles[i], TweenProp.POSITION, upMarkers[i].GlobalPosition, 0.5f);
 
             }
+			lTween.Finished += UIManager.GetInstance().GoToWin;
         }
 
 		protected override void Dispose(bool pDisposing)

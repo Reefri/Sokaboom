@@ -28,6 +28,17 @@ namespace Com.IsartDigital.Sokoban
             Mouse
         };
 
+
+        private Dictionary<EnumOfExplosionPattern, Color> enumToColor = new Dictionary<EnumOfExplosionPattern, Color>
+        {
+            {EnumOfExplosionPattern.Collectible, new Color (1,0,0) },
+            {EnumOfExplosionPattern.Bomb,        new Color (1,1,1) },
+            {EnumOfExplosionPattern.HUD,         new Color (1,0,0) },
+            {EnumOfExplosionPattern.Player,      new Color (1,0,0) },
+            {EnumOfExplosionPattern.Mouse,       new Color (1,0,0) }
+        };
+            
+
  
         private static Dictionary<EnumOfExplosionPattern, SimpleDelegate> enumToCreateMethod = new Dictionary<EnumOfExplosionPattern, SimpleDelegate>
         {
@@ -57,7 +68,11 @@ namespace Com.IsartDigital.Sokoban
                     {
                         originePos = new Vector2I(j, i);
 
-                        pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1,0,0),pScale));
+                        pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke(
+                            (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero),
+                            enumToColor[pExplosionPattern],
+                            pScale
+                            ));
 
                     
                     }
