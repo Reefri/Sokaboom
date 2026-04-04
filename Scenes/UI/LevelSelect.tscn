@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvruhy2dpei86"]
+[gd_scene load_steps=9 format=3 uid="uid://cvruhy2dpei86"]
 
 [ext_resource type="Script" path="res://Scripts/UI/LevelSelect.cs" id="1_l0ych"]
+[ext_resource type="PackedScene" uid="uid://dqq2hggkdkm6n" path="res://Scenes/Juiciness/Spiral.tscn" id="2_fuoqm"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="2_mtd47"]
+[ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_oadqc"]
+[ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_2u2uy"]
+[ext_resource type="Texture2D" uid="uid://bvp8qofn2wfr1" path="res://Assets/button.png" id="4_w4d12"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ib5a"]
+texture = ExtResource("3_oadqc")
+expand_margin_left = 25.0
+expand_margin_top = 25.0
+expand_margin_right = 25.0
+expand_margin_bottom = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4tj3"]
+texture = ExtResource("4_w4d12")
+modulate_color = Color(0.412152, 0.412152, 0.412152, 1)
 
 [node name="LevelSelect" type="Control" node_paths=PackedStringArray("allButtons")]
 layout_mode = 3
@@ -12,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l0ych")
 allButtons = NodePath("allButtons")
+spiral = ExtResource("2_fuoqm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -20,7 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.345986, 0.521224, 1, 1)
+color = Color(0.814831, 0.408128, 0.264675, 1)
 
 [node name="back" type="Button" parent="."]
 layout_mode = 0
@@ -36,12 +52,22 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -370.0
+offset_left = -364.0
 offset_top = 15.0
-offset_right = -83.0
+offset_right = -77.0
 offset_bottom = 93.0
 grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_7ib5a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7ib5a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7ib5a")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_7ib5a")
+theme_override_styles/focus = SubResource("StyleBoxTexture_7ib5a")
 text = "ID_UNLOCK"
 
 [node name="allButtons" type="Control" parent="."]
@@ -56,131 +82,249 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 506.0
+offset_left = 455.0
 offset_top = 34.0
-offset_right = 609.0
+offset_right = 660.0
 offset_bottom = 134.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = ExtResource("4_2u2uy")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 text = "ID_TUTORIAL"
 
 [node name="level1" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 175.0
-offset_right = 243.0
-offset_bottom = 281.0
+offset_left = 108.0
+offset_top = 171.0
+offset_right = 258.0
+offset_bottom = 277.0
+pivot_offset = Vector2(10, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "ID_LEVEL"
 
 [node name="level2" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 370.0
-offset_top = 175.0
-offset_right = 493.0
-offset_bottom = 281.0
+offset_left = 358.0
+offset_top = 171.0
+offset_right = 508.0
+offset_bottom = 277.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 2"
 
 [node name="level3" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 620.0
-offset_top = 175.0
-offset_right = 743.0
-offset_bottom = 281.0
+offset_left = 608.0
+offset_top = 171.0
+offset_right = 758.0
+offset_bottom = 277.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 3"
 
 [node name="level4" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 870.0
-offset_top = 175.0
-offset_right = 993.0
-offset_bottom = 281.0
+offset_left = 858.0
+offset_top = 171.0
+offset_right = 1008.0
+offset_bottom = 277.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 4"
 
 [node name="level5" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 325.0
-offset_right = 243.0
-offset_bottom = 431.0
+offset_left = 108.0
+offset_top = 321.0
+offset_right = 258.0
+offset_bottom = 427.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 5"
 
 [node name="level6" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 370.0
-offset_top = 325.0
-offset_right = 493.0
-offset_bottom = 431.0
+offset_left = 358.0
+offset_top = 321.0
+offset_right = 508.0
+offset_bottom = 427.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 6"
 
 [node name="level7" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 620.0
-offset_top = 325.0
-offset_right = 743.0
-offset_bottom = 431.0
+offset_left = 608.0
+offset_top = 321.0
+offset_right = 758.0
+offset_bottom = 427.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 7"
 
 [node name="level8" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 870.0
-offset_top = 325.0
-offset_right = 993.0
-offset_bottom = 431.0
+offset_left = 858.0
+offset_top = 321.0
+offset_right = 1008.0
+offset_bottom = 427.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 8"
 
 [node name="level9" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 475.0
-offset_right = 243.0
-offset_bottom = 581.0
+offset_left = 108.0
+offset_top = 471.0
+offset_right = 258.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 9"
 
 [node name="level10" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 370.0
-offset_top = 475.0
-offset_right = 493.0
-offset_bottom = 581.0
+offset_left = 358.0
+offset_top = 471.0
+offset_right = 508.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 10"
 
 [node name="level11" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 620.0
-offset_top = 475.0
-offset_right = 743.0
-offset_bottom = 581.0
+offset_left = 608.0
+offset_top = 471.0
+offset_right = 758.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 11"
 
 [node name="level12" type="Button" parent="allButtons"]
 layout_mode = 0
-offset_left = 870.0
-offset_top = 475.0
-offset_right = 993.0
-offset_bottom = 581.0
+offset_left = 858.0
+offset_top = 471.0
+offset_right = 1008.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("4_2u2uy")
+theme_override_styles/hover = ExtResource("4_2u2uy")
+theme_override_styles/pressed = ExtResource("4_2u2uy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
+theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 12"
 
