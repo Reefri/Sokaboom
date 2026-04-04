@@ -124,8 +124,6 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTime = CASUAL_TIME_PATH;
                 pathFindingTimer.Start();
             }
-
-
         }
 
         private void MovingOnPath()
@@ -146,15 +144,16 @@ namespace Com.IsartDigital.Sokoban
                 {
                     hasBoxToPush = false;
                     Box.hasABoxToCheck = false;
+                    
 
-                    AdjacentToInteractable();
+                    AdjacentToInteractable(Map.boxOrWallClickedOn - GetPositionToVector2I());
 
                 }
 
                 else if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn).GetCustomData(Map.WALL)
                     && (Map.boxOrWallClickedOn - GetPositionToVector2I()).LengthSquared() <= 1)
                 {
-                    ExplodeBombInHand();
+                    ExplodeBombInHand(Map.boxOrWallClickedOn - GetPositionToVector2I());
                 }
 
                 return;
@@ -164,9 +163,9 @@ namespace Com.IsartDigital.Sokoban
             {
                 //animatedSprite.GlobalPosition = GlobalPosition;
 
-                lastDirection = (path[0] - GetPositionToVector2I());
+                //lastDirection = ();
 
-                AnimThePlayer(lastDirection);
+                AnimThePlayer(path[0] - GetPositionToVector2I());
 
                 path.RemoveAt(0);
                 pathFindingTimer.Start();
@@ -200,25 +199,25 @@ namespace Com.IsartDigital.Sokoban
             return new Vector2I((int)(Position.X / States.DISTANCE_RANGE), (int)(Position.Y / States.DISTANCE_RANGE));
         }
 
-        public void AdjacentToInteractable()
+        public void AdjacentToInteractable(Vector2I pDirection)
         {
 
-            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, GetPositionToVector2I() + lastDirection) == null)
+            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, GetPositionToVector2I() + pDirection) == null)
             {
-                AnimThePlayer(lastDirection);
+                AnimThePlayer(pDirection);
             }
 
-            else if (((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, GetPositionToVector2I()+ lastDirection).GetCustomData(Map.BOX))
-                && Box.CanBoxBePushed(lastDirection, GetPositionToVector2I() + lastDirection))
+            else if (((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, GetPositionToVector2I()+ pDirection).GetCustomData(Map.BOX))
+                && Box.CanBoxBePushed(pDirection, GetPositionToVector2I() + pDirection))
             {
-                AnimThePlayer(lastDirection);
-                Box.Create( GetPositionToVector2I() + lastDirection, lastDirection);
+                AnimThePlayer(pDirection);
+                Box.Create( GetPositionToVector2I() + pDirection, pDirection);
                 Box.hasABoxToCheck = false;
             }
 
             else 
             {
-                ExplodeBombInHand();
+                ExplodeBombInHand(pDirection);
             }
 
         }
@@ -235,15 +234,15 @@ namespace Com.IsartDigital.Sokoban
             {
                 if (Input.IsActionJustPressed(lActionName))
                 {
-
                     GameManager.GetInstance().EmptyBoxSignalContainer();
 
-                    lastDirection = PlayersVector[lActionName];
+                    Vector2I lTryDirection = PlayersVector[lActionName];
+
                     orientation = lActionName;
                     Box.hasABoxToCheck = false;
 
 
-                    AdjacentToInteractable();
+                    AdjacentToInteractable(lTryDirection);
 
                 }
             }
@@ -269,6 +268,7 @@ namespace Com.IsartDigital.Sokoban
             animPlayer.Play(nameOfAnimation[pLastDirection]);
             animatedSprite.Play(nameOfAnimation[pLastDirection] + ANIM_PLAYER);
 
+            lastDirection = pLastDirection;
 
         }
 
@@ -282,11 +282,28 @@ namespace Com.IsartDigital.Sokoban
                     orientation = lActionName;
                 }
             }
+
+            actualPlayerSprite.Play(orientation);
+
         }
 
 
-        private void ExplodeBombInHand()
+        private void ExplodeBombInHand(Vector2I pTryDirection)
         {
+
+            if (pTryDirection != lastDirection) 
+            {
+                //ReplaceThePlayer(ANIM_IDLE);
+
+                lastDirection = pTryDirection;
+                OrientThePlayer();
+                CreatePrevisualisation();
+
+
+
+                return; 
+            }
+
             OrientThePlayer();
             actualPlayerSprite.Play(orientation);
             if (bombInHand == null)
@@ -315,8 +332,11 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
+
         public void CreatePrevisualisation()
         {
+
+
             foreach (Node2D lChild in bombPrevisualisationContainer.GetChildren())
             {
                 lChild.QueueFree();
@@ -333,7 +353,15 @@ namespace Com.IsartDigital.Sokoban
                 if (!CheckTheMove(lDirection))
                 {
 
-                    new BombPattern(bombPrevisualisationContainer,false, Main.GetInstance().RotateMatrix(bombInHand.explosionMatrix, lDirection), false,lDirection*States.DISTANCE_RANGE);
+                    new BombPattern(
+                        bombPrevisualisationContainer,
+                        Main.GetInstance().RotateMatrix(bombInHand.explosionMatrix, lDirection), 
+                        BombPattern.EnumOfExplosionPattern.Player ,
+                        false,
+                        lDirection*States.DISTANCE_RANGE,
+                        (lDirection == lastDirection?1:0.2f)
+                        
+                        );
 
                 }
             }

@@ -67,7 +67,6 @@ namespace Com.IsartDigital.Sokoban {
 
 		public static void Create(Vector2I pPosition)
 		{
-			GD.Print("a");
 			BoxSignal lNewSignal = (BoxSignal)factory.Instantiate();
 
 			lNewSignal.GlobalPosition = pPosition*States.DISTANCE_RANGE;

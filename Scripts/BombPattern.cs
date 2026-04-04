@@ -11,9 +11,41 @@ namespace Com.IsartDigital.Sokoban
 
         public Vector2I originePos;
 
+        public delegate Node SimpleDelegate(Vector2 pPosition, Color pColor, float pScale=1);
 
-        public BombPattern(Node2D pParent, bool pDoesExplose, List<List<int>> pExplosionMatrix, bool pUseParentPosition = true, Vector2? pOffSet = null, bool pIsCollectiblePattern = false) 
+        private static SimpleDelegate ToPlaceOnExplosionCreate = ToPlaceOnExplosion.Create;
+        private static SimpleDelegate ToPlaceBombCreate = ToPlaceOnCollectible.Create;
+        private static SimpleDelegate ToPlaceOnHUDCreate = ToPlaceOnHUD.Create;
+        private static SimpleDelegate ToPlaceOnPlayerCreate = ToPlaceOnPlayer.Create;
+        private static SimpleDelegate ToPlaceOnMouseCreate = ToPlaceOnMousePrevisu.Create;
+
+        public enum EnumOfExplosionPattern
+        {
+            Collectible,
+            Bomb,
+            HUD,
+            Player,
+            Mouse
+        };
+
+ 
+        private static Dictionary<EnumOfExplosionPattern, SimpleDelegate> enumToCreateMethod = new Dictionary<EnumOfExplosionPattern, SimpleDelegate>
+        {
+            {EnumOfExplosionPattern.Collectible, ToPlaceBombCreate },
+            {EnumOfExplosionPattern.Bomb,        ToPlaceOnExplosionCreate },
+            {EnumOfExplosionPattern.HUD,         ToPlaceOnHUDCreate },
+            {EnumOfExplosionPattern.Player,      ToPlaceOnPlayerCreate },
+            {EnumOfExplosionPattern.Mouse,       ToPlaceOnMouseCreate }
+        };
+
+        
+
+
+        public BombPattern(Node2D pParent, List<List<int>> pExplosionMatrix, EnumOfExplosionPattern pExplosionPattern , bool pUseParentPosition = true, Vector2? pOffSet = null, float pScale = 1) 
 		{
+
+
+
 
             originePos = Vector2I.Zero;
 
@@ -23,17 +55,11 @@ namespace Com.IsartDigital.Sokoban
                 {
                     if (pExplosionMatrix[i][j] == 2)
                     {
-                        if (!pIsCollectiblePattern)
-                        {
-                            originePos = new Vector2I(j, i);
-                            pParent.CallDeferred("add_child", ToPlaceOnExplosion.Create((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1, 0, 0), pDoesExplose));
-                        }
-                        else
-                        {
-                            originePos = new Vector2I(j, i);
-                            pParent.CallDeferred("add_child", BombCollectiblePattern.Create((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1, 0, 0), pDoesExplose));
+                        originePos = new Vector2I(j, i);
 
-                        }
+                        pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1,0,0),pScale));
+
+                    
                     }
                 }
             }
@@ -45,18 +71,13 @@ namespace Com.IsartDigital.Sokoban
 
                     if (pExplosionMatrix[i][j] == 1)
                     {
-                        if (!pIsCollectiblePattern)
-                        {
+                        pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke(
+                            (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE, 
+                            new Color(1, 1, 1),
+                            pScale
+                            ));
 
-                            Vector2 lPosition = (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE;
-                            pParent.CallDeferred("add_child", ToPlaceOnExplosion.Create(lPosition, new Color(1, 1, 1), pDoesExplose));
-                        }
-                        else
-                        {
-                            Vector2 lPosition = (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE;
-                            pParent.CallDeferred("add_child", BombCollectiblePattern.Create(lPosition, new Color(1, 1, 1), pDoesExplose));
-                        
-                        }
+                      
                     }
                 }
             }

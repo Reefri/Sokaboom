@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ph7dviekoboq"]
+[gd_scene load_steps=15 format=3 uid="uid://ph7dviekoboq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HelpMenu.cs" id="1_ohxmj"]
 [ext_resource type="Texture2D" uid="uid://docrkk0i2wtmh" path="res://Assets/UI/input/keyboard_z_outline.png" id="2_u1evf"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://gfc2c7h0knyk" path="res://Scenes/UI/HelpAnimations/BombExplosionHelp.tscn" id="11_mgyye"]
 [ext_resource type="PackedScene" uid="uid://dfi0xj1teixyt" path="res://Scenes/UI/HelpAnimations/HelpExplodeDirections.tscn" id="12_1tdw1"]
 [ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="14_3wq5k"]
 
 [node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationSfB", "explanationSfC", "explanationControlA", "explanationControlB", "explanationDetailA", "explanationDetailB")]
 layout_mode = 3
@@ -57,6 +58,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 50
 text = "ID_BASICS_CONTROL"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="FirstPage"]
 layout_mode = 0
@@ -259,14 +262,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -120.0
-offset_right = 120.0
+offset_left = -55.0
+offset_right = 213.0
 offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 50
 text = "ID_DETAILS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HelpExplodeDirections" parent="ThirdPage" instance=ExtResource("12_1tdw1")]
 offset_left = 200.0
@@ -303,9 +308,9 @@ offset_bottom = 525.0
 
 [node name="explanationDetailB" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
 layout_mode = 0
-offset_left = 198.0
+offset_left = 161.0
 offset_top = -131.0
-offset_right = 833.0
+offset_right = 796.0
 offset_bottom = -20.0
 theme_override_font_sizes/font_size = 25
 text = "- Caution ! you can destroy crates and targets !
@@ -355,7 +360,17 @@ text = "1/2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("14_3wq5k")
+
+[node name="Button" type="Button" parent="Buttons"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -369,4 +384,4 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "ID_MENU"
 
-[connection signal="pressed" from="Button" to="." method="ReturnPressed"]
+[connection signal="pressed" from="Buttons/Button" to="." method="ReturnPressed"]

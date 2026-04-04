@@ -28,6 +28,9 @@ namespace Com.IsartDigital.Sokoban
         private bool OriginOnTop;
 
 
+        private Node2D chainReactionPatterne;
+
+
         [Export] Sprite2D head;
         [Export] Sprite2D body;
 
@@ -54,6 +57,8 @@ namespace Com.IsartDigital.Sokoban
         private const string BODYTEXTURE_FILE_PATH = "res://Assets/Bomb/Collectible/fireworkBody/";
         private const string BODYTEXTURE_FILE_EXTENSION = ".png";
 
+
+
         public override void _Ready()
 		{
 
@@ -69,7 +74,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-            AreaEntered += (Area2D lArea) => BombCollectibleAreaEntered(lArea);
+            AreaEntered += BombCollectibleAreaEntered;
 
 
             MouseEntered += InBomb;
@@ -90,7 +95,27 @@ namespace Com.IsartDigital.Sokoban
 				Player.GetInstance().GiveBombToPlayer(bomb);
 
                 QueueFree();
+                return;
 			}
+
+            
+        }
+
+        public void ShowChainReaction(float pScale)
+        {
+            if (chainReactionPatterne!=null && chainReactionPatterne.IsInsideTree()) return;
+
+            chainReactionPatterne = new Node2D();
+
+            new BombPattern(chainReactionPatterne, bomb.explosionMatrix, BombPattern.EnumOfExplosionPattern.Player, false, null, pScale);
+            
+            AddChild(chainReactionPatterne);
+        }
+
+        public void HideChainReaction()
+        {
+            chainReactionPatterne?.QueueFree();
+            chainReactionPatterne=null;
         }
 
         public override void _Process(double pDelta)
@@ -150,7 +175,15 @@ namespace Com.IsartDigital.Sokoban
 
             lBombCollectible.showPatern = new Node2D();
 
-            lBombCollectible.previsualisationOriginPos = (new BombPattern(lBombCollectible.showPatern, false, lBombCollectible.bomb.explosionMatrix, default, default, true)).originePos;
+            lBombCollectible.previsualisationOriginPos = (new BombPattern(
+                lBombCollectible.showPatern, 
+                lBombCollectible.bomb.explosionMatrix, 
+                BombPattern.EnumOfExplosionPattern.Collectible,
+                default, 
+                default
+                
+                )
+                ).originePos;
 
 
             return lBombCollectible;

@@ -9,12 +9,14 @@ namespace Com.IsartDigital.Sokoban
 	{
         static private TitleDoors instance;
         private static PackedScene factory = GD.Load<PackedScene>("res://Scenes/UI/Transitions/TitleDoors.tscn");
-		[Export] private Node2D leftDoor;
+		
+        [Export] private Node2D leftDoor;
 		[Export] private Node2D rightDoor;
 
         [Export] private float tweenDuration = 1;
 
         [Export] public Timer whenToPlayAnim;
+        [Export] private Timer goToLevel;
         [Export] private Timer doorsStillTimer;
 
 		private float margin;
@@ -22,8 +24,9 @@ namespace Com.IsartDigital.Sokoban
 
 		private Vector2 screenSize;
 
-        //private bool doorsOpen = false;
         private bool doorsClosed = false;
+
+        public bool goingToLevel = false;
 
         private TitleDoors() : base()
         {
@@ -43,17 +46,16 @@ namespace Com.IsartDigital.Sokoban
         }
         public override void _Ready()
 		{
-            screenSize = GetWindow().Size;
+            screenSize = GetViewportRect().Size;
             margin = screenSize.X / 2;
             sideFactor = screenSize.X / 1.4f;
             whenToPlayAnim.WaitTime = tweenDuration + doorsStillTimer.WaitTime;
             whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevelSelect;
+            goToLevel.WaitTime = whenToPlayAnim.WaitTime;
+            goToLevel.Timeout += UIManager.GetInstance().ContinueToLevel;
 
             SetDoorsClosed();
             OpenDoors();
-
-            //SetDoorsOpen();
-            //CloseDoors();
 
             //whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevelSelect;
 
@@ -66,6 +68,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 			float lDelta = (float)pDelta;
 
+            screenSize = GetViewportRect().Size;
             if (GameManager.GetInstance().currentLevel != null)
             {
                 
@@ -76,23 +79,23 @@ namespace Com.IsartDigital.Sokoban
 
         public void Transition()
         {
-            whenToPlayAnim.Start();
-
-            Tween lDoorsTween = leftDoor.CreateTween()
-                    .SetTrans(Tween.TransitionType.Bounce)
-                    .SetEase(Tween.EaseType.Out);
+            if (!goingToLevel)
+            {
+                whenToPlayAnim.Start();
+            }
+            else
+            {
+                goToLevel.Start();
+            }
+           Tween lDoorsTween = leftDoor.CreateTween()
+                   .SetTrans(Tween.TransitionType.Bounce)
+                   .SetEase(Tween.EaseType.Out);
 
             lDoorsTween.TweenProperty(leftDoor, TweenProp.POSITION,
                 new Vector2(screenSize.X / 4, screenSize.Y / 2), tweenDuration);
 
             lDoorsTween.Parallel().TweenProperty(rightDoor, TweenProp.POSITION,
                 new Vector2(screenSize.X - screenSize.X / 4, screenSize.Y / 2), tweenDuration);
-
-            //lDoorsTween.TweenCallback
-            //    (
-            //    Callable.From(() =>
-            //        GD.Print("les portes sont fermés"))
-            //    );
 
             lDoorsTween
                     .SetTrans(Tween.TransitionType.Quad)
@@ -177,12 +180,6 @@ namespace Com.IsartDigital.Sokoban
                 doorsStillTimer.Start();
                 doorsClosed = false;
             }
-        }
-
-
-        private void CloseThenOpenDoors()
-        {
-
         }
 
         private void SetDoorsClosed()

@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://byltcbvc0hr7c"]
+
+[ext_resource type="Script" path="res://Scripts/Juiciness/BombPatterne/ToPlaceOnPlayer.cs" id="1_6h3ov"]
+[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_i5r7r"]
+[ext_resource type="Texture2D" uid="uid://6e025o0qybaw" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_01.png" id="3_4xamc"]
+
+[sub_resource type="Curve" id="Curve_nhanv"]
+_data = [Vector2(0, 0), 0.0, 3.04783, 0, 0, Vector2(1, 0), -2.85815, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_prrfa"]
+curve = SubResource("Curve_nhanv")
+
+[sub_resource type="Curve" id="Curve_hijln"]
+_data = [Vector2(0, 0.42795), 0.0, 5.79055, 0, 0, Vector2(1, 0), -3.4536, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4jps8"]
+curve = SubResource("Curve_hijln")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a4jkf"]
+lifetime_randomness = 0.64
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 100, 1)
+direction = Vector3(0, -1, 0)
+spread = 61.101
+initial_velocity_max = 32.1
+gravity = Vector3(0, 0, 0)
+scale_max = 10.17
+scale_curve = SubResource("CurveTexture_4jps8")
+alpha_curve = SubResource("CurveTexture_prrfa")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvo2e"]
+size = Vector2(44, 45)
+
+[node name="ToPlaceOnPlayer" type="Node2D" node_paths=PackedStringArray("Collider")]
+script = ExtResource("1_6h3ov")
+Collider = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+rotation = 1.12287
+scale = Vector2(0.206142, 0.510714)
+texture = ExtResource("2_i5r7r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_4xamc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+scale = Vector2(0.323006, 0.323022)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_a4jkf")
+lifetime = 2.0
+explosiveness = 0.66
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_cvo2e")

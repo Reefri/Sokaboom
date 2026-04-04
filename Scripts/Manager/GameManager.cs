@@ -375,10 +375,11 @@ namespace Com.IsartDigital.Sokoban
 
         public void EmptyBoxSignalContainer()
         {
+
             waitBeforeBoxSignal.Stop();
-            foreach (Node lBoxSignal in boxSignalContainer.GetChildren())
+            foreach (BoxSignal lBoxSignal in boxSignalContainer.GetChildren())
             {
-                lBoxSignal.QueueFree();
+                lBoxSignal.Destroy();
             }
         }
 

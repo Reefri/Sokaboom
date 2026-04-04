@@ -1,34 +1,38 @@
 [gd_scene load_steps=3 format=3 uid="uid://bey0ed1h3h2s"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/TitleDoors.cs" id="1_ns3k7"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_nr3ui"]
+[ext_resource type="Texture2D" uid="uid://dbo0y1oro3kue" path="res://Assets/door.png" id="2_cyxvi"]
 
-[node name="TitleOpeningTransition" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "whenToPlayAnim", "doorsStillTimer")]
+[node name="TitleDoors" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "whenToPlayAnim", "goToLevel", "doorsStillTimer")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ns3k7")
 leftDoor = NodePath("LeftDoor")
 rightDoor = NodePath("RightDoor")
 whenToPlayAnim = NodePath("whenToPlayAnim")
+goToLevel = NodePath("goToLevel")
 doorsStillTimer = NodePath("doorsStill")
 
 [node name="LeftDoor" type="Node2D" parent="."]
 position = Vector2(0, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftDoor"]
-scale = Vector2(5, 5.833)
-texture = ExtResource("2_nr3ui")
+scale = Vector2(-0.45, 0.65)
+texture = ExtResource("2_cyxvi")
 
 [node name="RightDoor" type="Node2D" parent="."]
 position = Vector2(1152, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="RightDoor"]
-scale = Vector2(5, 5.833)
-texture = ExtResource("2_nr3ui")
+scale = Vector2(0.45, 0.65)
+texture = ExtResource("2_cyxvi")
 
 [node name="whenToPlayAnim" type="Timer" parent="."]
 one_shot = true
 
 [node name="doorsStill" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="goToLevel" type="Timer" parent="."]
 one_shot = true

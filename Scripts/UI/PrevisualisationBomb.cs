@@ -31,7 +31,11 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-            new BombPattern(lNode,false,explosionMatrix);
+            new BombPattern(
+                lNode,
+                explosionMatrix,
+                BombPattern.EnumOfExplosionPattern.Mouse
+                );
             lNode.GlobalPosition = GlobalPosition;
 
 
