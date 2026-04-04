@@ -37,7 +37,6 @@ namespace Com.IsartDigital.Sokoban {
 
             originPos = (new BombPattern(
                 this, 
-                true, 
                 explosionMatrix, 
                 BombPattern.EnumOfExplosionPattern.Bomb
                 )

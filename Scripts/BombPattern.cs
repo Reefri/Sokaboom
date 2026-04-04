@@ -41,7 +41,7 @@ namespace Com.IsartDigital.Sokoban
         
 
 
-        public BombPattern(Node2D pParent, bool pDoesExplose, List<List<int>> pExplosionMatrix, EnumOfExplosionPattern pExplosionPattern , bool pUseParentPosition = true, Vector2? pOffSet = null, bool pIsExplosion = true) 
+        public BombPattern(Node2D pParent, List<List<int>> pExplosionMatrix, EnumOfExplosionPattern pExplosionPattern , bool pUseParentPosition = true, Vector2? pOffSet = null, float pScale = 1) 
 		{
 
 
@@ -57,7 +57,7 @@ namespace Com.IsartDigital.Sokoban
                     {
                         originePos = new Vector2I(j, i);
 
-                        pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1,0,0),1));
+                        pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke((pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero), new Color(1,0,0),pScale));
 
                     
                     }
@@ -74,7 +74,8 @@ namespace Com.IsartDigital.Sokoban
                         pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke(
                             (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE, 
                             new Color(1, 1, 1),
-                            1));
+                            pScale
+                            ));
 
                       
                     }

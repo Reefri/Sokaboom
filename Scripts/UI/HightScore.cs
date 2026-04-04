@@ -1,3 +1,4 @@
+using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
 using System.Security.Principal;
@@ -29,7 +30,7 @@ namespace Com.IsartDigital.Sokoban
 				lAccountPosition = (Label)levelAccount.GetChild(i);
                 Label lAccountScore = (Label)lAccountPosition.GetChild(0);
                 i++;
-
+                
 				lAccountPosition.Text = i + ". " + lAccount.Id + " ";
 				lAccountScore.Text = SCORE + lAccount.FinalScore();
 
@@ -43,10 +44,30 @@ namespace Com.IsartDigital.Sokoban
 			if (!currentAccountInTopTen)
 			{
 				lAccountPosition = (Label)levelAccount.GetChild(10);
-				lAccountPosition.Text = "11. " + AccountManager.GetInstance().currentAccount.Id + " " + AccountManager.GetInstance().currentAccount.FinalScore();
-				lAccountPosition.Modulate = new Color(1, 1, 0);
+                Label lAccountScore = (Label)lAccountPosition.GetChild(0);
+
+                lAccountPosition.Text = "You : " + AccountManager.GetInstance().currentAccount.Id + " ";
+                lAccountScore.Text = SCORE + AccountManager.GetInstance().currentAccount.FinalScore();
+                
+                lAccountPosition.Modulate = new Color(1, 1, 0);
 				lAccountPosition.Visible = true;
 			}
+
+            AnimationTopTen();
         }
-	}
+
+        private void AnimationTopTen()
+        {
+            int j = 0;
+            foreach (Label lAccount in levelAccount.GetChildren())
+			{
+                if (j >= 10) break;
+                Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Circ).SetEase(Tween.EaseType.In).SetParallel();
+                lTween.TweenProperty(lAccount, TweenProp.MODULATE_ALPHA, 0f, 0);
+                lTween.TweenProperty(lAccount, TweenProp.MODULATE_ALPHA, 1f, 0).SetDelay(j * 0.5);
+                lTween.TweenProperty(lAccount, TweenProp.GLOBAL_POSITION_Y, lAccount.GlobalPosition.Y + (currentAccountInTopTen ? 48 : 39) * j, 1).From(-50).SetDelay(j * 0.5);
+                j++;
+            }
+        }
+    }
 }
