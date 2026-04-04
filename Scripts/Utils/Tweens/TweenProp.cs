@@ -3,6 +3,8 @@
     public static class TweenProp
     {
         public const string GLOBAL_POSITION = "global_position";
+        public const string GLOBAL_POSITION_Y = "global_position:y";
+        public const string GLOBAL_POSITION_X = "global_position:x";
         public const string POSITION = "position";
         public const string POSITION_Y = "position:y";
         public const string POSITION_X = "position:x";
