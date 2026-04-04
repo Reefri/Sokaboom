@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b078nli7whk52"]
+[gd_scene load_steps=4 format=3 uid="uid://b078nli7whk52"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
 [ext_resource type="SpriteFrames" uid="uid://d2kb1erim2tp8" path="res://Assets/Stars/Star.tres" id="2_0i242"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="3_ydfsl"]
 
 [node name="Win" type="Control" node_paths=PackedStringArray("stars", "scoreText", "restart", "next")]
 layout_mode = 3
@@ -13,8 +14,8 @@ grow_vertical = 2
 script = ExtResource("1_lpuuc")
 stars = NodePath("ColorRect/Stars")
 scoreText = NodePath("ColorRect/Score")
-restart = NodePath("ColorRect/Restart")
-next = NodePath("ColorRect/Next")
+restart = NodePath("ColorRect/Control/Restart")
+next = NodePath("ColorRect/Control/Next")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -88,7 +89,17 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Score : "
 
-[node name="Restart" type="Button" parent="ColorRect"]
+[node name="Control" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_ydfsl")
+
+[node name="Restart" type="Button" parent="ColorRect/Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -100,7 +111,7 @@ offset_bottom = -20.0
 grow_vertical = 0
 text = "ID_RESTART"
 
-[node name="Next" type="Button" parent="ColorRect"]
+[node name="Next" type="Button" parent="ColorRect/Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
