@@ -19,5 +19,6 @@
 
         public const string SKEW = "skew";
 
+        public const string FRAME = "frame";
     }
 }

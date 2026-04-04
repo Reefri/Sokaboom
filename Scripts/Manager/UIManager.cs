@@ -131,12 +131,7 @@ namespace Com.IsartDigital.Sokoban
         public void GoToWin()
 		{
             GetChild(0).QueueFree();
-
-            Win lWin = (Win)uiWin.Instantiate();
-            AddChild(lWin);
-
-            foreach (AnimatedSprite2D lStars in lWin.stars.GetChildren()) lStars.Frame = 0;
-            lWin.CalculScoreLevel();
+            AddChild(uiWin.Instantiate());
         }
 
         public void GoToWinFinal()
