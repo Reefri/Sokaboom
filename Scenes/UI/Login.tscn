@@ -136,6 +136,19 @@ icon = ExtResource("4_xtyfr")
 flat = true
 script = ExtResource("3_jl43w")
 
+[node name="Swtich" type="Button" parent="Font/Login_Inscription/Font"]
+self_modulate = Color(0, 0.85098, 0.972549, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -22.0
+offset_right = 60.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Inscription"
+flat = true
+
 [node name="connexion_inscription" type="Button" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
 anchors_preset = 7
@@ -150,19 +163,6 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "ID_VALIDATION_LOGIN"
-
-[node name="Swtich" type="Button" parent="Font/Login_Inscription/Font"]
-self_modulate = Color(0, 0.85098, 0.972549, 1)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -22.0
-offset_right = 60.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 10
-text = "Inscription"
-flat = true
 
 [node name="Statut" type="Label" parent="Font"]
 layout_mode = 1

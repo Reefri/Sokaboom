@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvruhy2dpei86"]
+[gd_scene load_steps=3 format=3 uid="uid://cvruhy2dpei86"]
 
 [ext_resource type="Script" path="res://Scripts/UI/LevelSelect.cs" id="1_l0ych"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="2_mtd47"]
 
 [node name="LevelSelect" type="Control" node_paths=PackedStringArray("allButtons")]
 layout_mode = 3
@@ -48,6 +49,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 20.0
 offset_right = 20.0
+script = ExtResource("2_mtd47")
 
 [node name="tutorial" type="Button" parent="allButtons"]
 layout_mode = 1
