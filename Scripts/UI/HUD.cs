@@ -17,7 +17,7 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Timer quitDelay = new Timer();
 
         private const string PAR = "Par : ";
-        private const string BY = "Par : ";
+        private const string BY = "ID_BY";
         private const string STEPS = "ID_STEPS";
 
         public override void _Ready()
