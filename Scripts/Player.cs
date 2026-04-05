@@ -152,7 +152,7 @@ namespace Com.IsartDigital.Sokoban
 
                 }
 
-                else if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn).GetCustomData(Map.WALL)
+                else if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn) != null && (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn).GetCustomData(Map.WALL)
                     && (Map.boxOrWallClickedOn - GetPositionToVector2I()).LengthSquared() <= 1)
                 {
                     ExplodeBombInHand(Map.boxOrWallClickedOn - GetPositionToVector2I());
