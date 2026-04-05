@@ -28,7 +28,9 @@ namespace Com.IsartDigital.Sokoban {
 			myMaterial = (ShaderMaterial)Material;
 			myMaterial.SetShaderParameter(MAXGROWPROGRESSION_SHADER_PARAMETER, maxGrowth);
 
-			progressionTween = CreateTween()
+			SoundManager.GetInstance().PlayBoxError();
+
+            progressionTween = CreateTween()
 				.SetTrans(Tween.TransitionType.Sine)
 				.SetEase(Tween.EaseType.InOut)
 				.SetLoops(3);

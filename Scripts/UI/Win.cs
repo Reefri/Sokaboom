@@ -67,10 +67,14 @@ namespace Com.IsartDigital.Sokoban
 
         private void AnimationStars(AnimatedSprite2D pStars, float pDelay)
         {
-            Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Circ).SetEase(Tween.EaseType.In).SetParallel();
+            Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.Out).SetParallel();
             lTween.TweenProperty(pStars, TweenProp.FRAME, 1, 0).SetDelay(pDelay);
-            lTween.TweenProperty(pStars, TweenProp.SCALE, new Vector2(0.4f, 0.4f), 1f).SetDelay(pDelay);
-            lTween.TweenProperty(pStars, TweenProp.ROTATION, Mathf.DegToRad(360) + pStars.Rotation, 1f).SetDelay(pDelay);
+            lTween.TweenProperty(pStars, TweenProp.SCALE, Vector2.One*(0.4f+0.1f), 1f).SetDelay(pDelay);
+            lTween.TweenProperty(pStars, TweenProp.ROTATION, Mathf.Tau, 1f).AsRelative().SetDelay(pDelay);
+
+            //lTween.SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.In);
+            //lTween.TweenProperty(pStars, TweenProp.SCALE, Vector2.One * 0.4f, 0.2f);
+
             lTween.Finished += () => ParticulesStars(pStars);
         }
 

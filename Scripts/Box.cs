@@ -20,6 +20,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Ready()
 		{
+			SoundManager.GetInstance().PlayBoxMove();
 			animPlaying = true;
             anim.Play(animToPlay);
             moveDust.Emitting = true;
@@ -28,7 +29,15 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndOfAnimation(StringName pAnimName)
         {
-			GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, (Vector2I)(Position / States.DISTANCE_RANGE) + Player.GetInstance().lastDirection, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
+			Vector2I lFinalPos = (Vector2I)(Position / States.DISTANCE_RANGE) + Player.GetInstance().lastDirection;
+
+
+            GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, lFinalPos, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
+
+			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Target, lFinalPos) != null)
+				SoundManager.GetInstance().PlayBoxValid();
+
+
             animPlaying = false;
 
             GetParent().RemoveChild(this);
@@ -36,23 +45,31 @@ namespace Com.IsartDigital.Sokoban
             QueueFree();
         }
 
-        public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
-		{
-			hasABoxToCheck = false;
-			if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null)
-			{
-				hasABoxToCheck = true;
-                return true;
-			}
+  //      public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
+		//{
+		//	hasABoxToCheck = false;
+		//	if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null)
+		//	{
+		//		hasABoxToCheck = true;
+  //              return true;
+		//	}
 
-            else 
-            {
-                return false;
-            }
+  //          else 
+  //          {
+  //              return false;
+  //          }
+
+  //      }
+
+        public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
+        {
+            hasABoxToCheck = (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null);
+          
+			return hasABoxToCheck;
 
         }
 
-		public static Box Create(Vector2I pPosition, Vector2I pDirection)
+        public static Box Create(Vector2I pPosition, Vector2I pDirection)
 		{
             GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pPosition);
             Box lBox = (Box)packedBox.Instantiate();
@@ -65,11 +82,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public static void BoxAnimation(Vector2I pDirection)
 		{
-			foreach (Vector2I lVector in Player.GetInstance().nameOfAnimation.Keys)
-			{
-				if (pDirection == lVector) animToPlay = Player.GetInstance().nameOfAnimation[lVector];
-
-            }
+			animToPlay = Player.GetInstance().nameOfAnimation[pDirection];
         }
 
 		public override void _Process(double delta)

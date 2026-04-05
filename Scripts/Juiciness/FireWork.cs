@@ -44,6 +44,8 @@ namespace Com.IsartDigital.Sokoban
 			AddChild(timer);
 
 			acceleration += (float)GD.RandRange(-rangeAcceleration, rangeAcceleration);
+
+			SoundManager.GetInstance().PlayFireworkWhistle();
 		}
 
 		public override void _Process(double pDelta)
@@ -83,6 +85,8 @@ namespace Com.IsartDigital.Sokoban
 
 		private void Explode()
 		{
+			SoundManager.GetInstance().PlayFireworkExplosion();
+
             JuicinessManager.GetInstance().fireworkShaker.Start();
 
             disableProcess = true;

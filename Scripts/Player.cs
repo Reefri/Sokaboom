@@ -104,6 +104,8 @@ namespace Com.IsartDigital.Sokoban
 
         private void ReplaceThePlayer(StringName pAnimName)
         {
+
+
             OrientThePlayer();
             actualPlayerSprite.Play(orientation);
 
@@ -261,6 +263,8 @@ namespace Com.IsartDigital.Sokoban
             {
                 return;
             }
+
+            SoundManager.GetInstance().PlayFootStep();
 
             actualPlayerSprite.Visible = false;
             animatedSprite.Visible = true;

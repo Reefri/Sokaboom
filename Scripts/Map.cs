@@ -77,6 +77,8 @@ namespace Com.IsartDigital.Sokoban
             else if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
 			{
                 GameManager.GetInstance().EmptyBoxSignalContainer();
+
+				SoundManager.GetInstance().PlayStartPathFindind();
 		
 				Player.GetInstance().path.Clear();
 

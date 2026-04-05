@@ -93,6 +93,7 @@ namespace Com.IsartDigital.Sokoban
 				GameManager.GetInstance().RemoveBombAtIndex(bomb.indexInLevel);
 
 				Player.GetInstance().GiveBombToPlayer(bomb);
+                SoundManager.GetInstance().PlayBombPickUp();
 
                 QueueFree();
                 return;
@@ -125,6 +126,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void InBomb()
         {
+            hoverRenderer.Scale *= 1.5f;
             previsualisationBomb.explosionMatrix = bomb.explosionMatrix;
 
 
@@ -132,6 +134,8 @@ namespace Com.IsartDigital.Sokoban
         }
         private void OutBomb()
         {
+            hoverRenderer.Scale /= 1.5f;
+
             UIManager.GetInstance().RemoveChild(previsualisationBomb);
         }
 

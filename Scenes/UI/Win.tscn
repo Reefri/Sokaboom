@@ -75,6 +75,7 @@ position = Vector2(90, 90)
 rotation = -0.15708
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_0i242")
+offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarOne"]
 modulate = Color(1, 0.603922, 0, 1)
@@ -89,6 +90,7 @@ one_shot = true
 position = Vector2(190, 68)
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_0i242")
+offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarTwo"]
 modulate = Color(1, 0.603922, 0, 1)
@@ -104,6 +106,7 @@ position = Vector2(290, 90)
 rotation = 0.15708
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_0i242")
+offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarThree"]
 modulate = Color(1, 0.603922, 0, 1)
