@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://u22od2u73pmn"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/Banderole.cs" id="1_sed1o"]
-[ext_resource type="Texture2D" uid="uid://bcnt0s4v3eis" path="res://Assets/JuicyAssets/Final_Banderole.png" id="1_t1ea6"]
+[ext_resource type="Texture2D" uid="uid://cbowuhmoa03ni" path="res://Assets/JuicyAssets/LastBanderoleToExport.png" id="2_pttqo"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("banderoleNode", "downMarkers", "upMarkers")]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_sed1o")
-banderoleNode = NodePath("FinalBanderoles")
+banderoleNode = NodePath("NewBanderoles")
 downMarkers = [NodePath("InitialPos/InitialFirst"), NodePath("InitialPos/InitialSecond"), NodePath("InitialPos/InitialThird"), NodePath("InitialPos/InitialFourth"), NodePath("InitialPos/InitialFifth")]
 upMarkers = [NodePath("FinalPos/FinalFirst"), NodePath("FinalPos/FinalSecond"), NodePath("FinalPos/FinalThird"), NodePath("FinalPos/FinalFourth"), NodePath("FinalPos/FinalFifth")]
 
@@ -47,92 +47,54 @@ position = Vector2(746, 715)
 [node name="FinalFifth" type="Marker2D" parent="FinalPos"]
 position = Vector2(1028, -1285)
 
-[node name="Banderoles" type="Node2D" parent="."]
-visible = false
+[node name="NewBanderoles" type="Node2D" parent="."]
 
-[node name="FirstBanderole" type="Sprite2D" parent="Banderoles"]
-position = Vector2(-100, -1000)
-rotation = 1.5708
-scale = Vector2(0.516453, 0.516453)
-texture = ExtResource("1_t1ea6")
-offset = Vector2(815.567, -269.936)
-
-[node name="SecondBanderole" type="Sprite2D" parent="Banderoles"]
-position = Vector2(182, 1000)
-rotation = 1.5708
-scale = Vector2(0.516453, 0.516453)
-texture = ExtResource("1_t1ea6")
-offset = Vector2(815.567, -269.936)
-
-[node name="ThirdBanderole" type="Sprite2D" parent="Banderoles"]
-position = Vector2(464, -1000)
-rotation = 1.5708
-scale = Vector2(0.516453, 0.516453)
-texture = ExtResource("1_t1ea6")
-offset = Vector2(815.567, -269.936)
-
-[node name="FourthBanderole" type="Sprite2D" parent="Banderoles"]
-position = Vector2(746, 1000)
-rotation = 1.5708
-scale = Vector2(0.516453, 0.516453)
-texture = ExtResource("1_t1ea6")
-offset = Vector2(815.567, -269.936)
-
-[node name="FifthBanderole" type="Sprite2D" parent="Banderoles"]
-position = Vector2(1028, -1000)
-rotation = 1.5708
-scale = Vector2(0.516453, 0.516453)
-texture = ExtResource("1_t1ea6")
-offset = Vector2(815.567, -269.936)
-
-[node name="FinalBanderoles" type="Node2D" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="FinalBanderoles"]
+[node name="Banderole1" type="TextureRect" parent="NewBanderoles"]
 offset_left = -100.0
 offset_top = -1285.0
 offset_right = 736.0
 offset_bottom = -1001.0
 rotation = 1.5708
 pivot_offset = Vector2(0, 285)
-texture = ExtResource("1_t1ea6")
+texture = ExtResource("2_pttqo")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="FinalBanderoles"]
+[node name="Banderole2" type="TextureRect" parent="NewBanderoles"]
 offset_left = 182.0
 offset_top = 1000.0
 offset_right = 1018.0
 offset_bottom = 1284.0
 rotation = 1.5708
 pivot_offset = Vector2(0, 285)
-texture = ExtResource("1_t1ea6")
+texture = ExtResource("2_pttqo")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="FinalBanderoles"]
+[node name="Banderole3" type="TextureRect" parent="NewBanderoles"]
 offset_left = 464.0
 offset_top = -1285.0
 offset_right = 1300.0
 offset_bottom = -1001.0
 rotation = 1.5708
 pivot_offset = Vector2(0, 285)
-texture = ExtResource("1_t1ea6")
+texture = ExtResource("2_pttqo")
 expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="FinalBanderoles"]
+[node name="Banderole4" type="TextureRect" parent="NewBanderoles"]
 offset_left = 746.0
 offset_top = 1000.0
 offset_right = 1582.0
 offset_bottom = 1284.0
 rotation = 1.5708
-pivot_offset = Vector2(0, 282.94)
-texture = ExtResource("1_t1ea6")
+pivot_offset = Vector2(0, 285)
+texture = ExtResource("2_pttqo")
 expand_mode = 1
 
-[node name="TextureRect5" type="TextureRect" parent="FinalBanderoles"]
+[node name="Banderole5" type="TextureRect" parent="NewBanderoles"]
 offset_left = 1028.0
 offset_top = -1285.0
 offset_right = 1864.0
 offset_bottom = -1001.0
 rotation = 1.5708
-pivot_offset = Vector2(-1.72626, 282.94)
-texture = ExtResource("1_t1ea6")
+pivot_offset = Vector2(0, 285)
+texture = ExtResource("2_pttqo")
 expand_mode = 1

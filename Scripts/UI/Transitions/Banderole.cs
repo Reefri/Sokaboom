@@ -49,12 +49,13 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			banderoles = banderoleNode.GetChildren().OfType<TextureRect>().ToList();
-			//StartTransitionToWin();
+			Visible = false;
 		}
 
 		
 		public void StartTransitionToWin()
 		{
+			Visible = true;
 			Tween lTween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.In);
 
 			for (int i = downMarkers.Count - 1; i >= 0; i--)
@@ -70,6 +71,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndTransitionToWin()
 		{
+			UIManager.GetInstance().GoToWin();
             Tween lTween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.In);
             for (int i = upMarkers.Count - 1; i >= 0; i--)
             {
@@ -77,8 +79,13 @@ namespace Com.IsartDigital.Sokoban
                 lTween.TweenProperty(banderoles[i], TweenProp.POSITION, upMarkers[i].GlobalPosition, 0.5f);
 
             }
-			lTween.Finished += UIManager.GetInstance().GoToWin;
+			lTween.Finished += HideBanderoles;
         }
+
+		private void HideBanderoles()
+		{
+			Visible = false;
+		}
 
 		protected override void Dispose(bool pDisposing)
 		{

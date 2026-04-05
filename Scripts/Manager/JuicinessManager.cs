@@ -26,7 +26,7 @@ namespace Com.IsartDigital.Sokoban
 		[Export] public Shaker simpleBombShaker;
 		[Export] public Shaker fireworkShaker;
 
-
+		private const float TIME_FOR_BANDEROLES = 0.2f;
 
 		public Timer timeBeforeBanderoles = new Timer();
 		private Timer waitBeforeNextEplosion = new Timer();
@@ -37,7 +37,6 @@ namespace Com.IsartDigital.Sokoban
 		List<Vector2I> alreadyExploded = new List<Vector2I>();
 		List<Vector2I> lastExplosionPos = new List<Vector2I>();
 
-		private const float TIME_BANDEROLE = 1f;
 
 		private JuicinessManager():base() 
 		{
@@ -75,6 +74,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 			timeBeforeBanderoles.OneShot = true;
+			timeBeforeBanderoles.WaitTime = TIME_FOR_BANDEROLES;
 			timeBeforeBanderoles.Timeout += Banderole.GetInstance().StartTransitionToWin;
 			AddChild(timeBeforeBanderoles);
 

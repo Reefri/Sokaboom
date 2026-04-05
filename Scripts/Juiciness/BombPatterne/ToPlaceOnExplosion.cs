@@ -18,8 +18,6 @@ namespace Com.IsartDigital.Sokoban {
 
         [Export] private Area2D collider;
 
-        [Export] private GpuParticles2D particles;
-
         [Export] private Node2D redParticleContainer;
 
         [Export] private GpuParticles2D yellowParticle;
@@ -27,11 +25,9 @@ namespace Com.IsartDigital.Sokoban {
         public override void _Ready()
 		{
             collider.AreaEntered += CheckForChainReaction;
-
-			particles.Emitting = true;
             yellowParticle.Emitting = true;
             yellowParticle.Finished += QueueFree;
-			particles.Finished += QueueFree;
+			//particles.Finished += QueueFree;
 
             foreach(Node2D lContainer in redParticleContainer.GetChildren())
             {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvidfs2apodns"
-path="res://.godot/imported/Capture d'écran 2023-05-29 193210.png-62ef6b70f4b511173d405e5d8562dcbe.ctex"
+uid="uid://cuib6e0frgpx"
+path="res://.godot/imported/SmallOrangeParticle.png-17d924998d2c21676057418022c8b56e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/particules/Capture d'écran 2023-05-29 193210.png"
-dest_files=["res://.godot/imported/Capture d'écran 2023-05-29 193210.png-62ef6b70f4b511173d405e5d8562dcbe.ctex"]
+source_file="res://Assets/particules/SmallOrangeParticle.png"
+dest_files=["res://.godot/imported/SmallOrangeParticle.png-17d924998d2c21676057418022c8b56e.ctex"]
 
 [params]
 

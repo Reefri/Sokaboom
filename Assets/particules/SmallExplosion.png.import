@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcnt0s4v3eis"
-path="res://.godot/imported/Final_Banderole.png-b0b510fa31d46ea5fea359a09e3ee1cf.ctex"
+uid="uid://da46flajp888j"
+path="res://.godot/imported/SmallExplosion.png-5634a21c93923815bc61ed6762392a48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/JuicyAssets/Final_Banderole.png"
-dest_files=["res://.godot/imported/Final_Banderole.png-b0b510fa31d46ea5fea359a09e3ee1cf.ctex"]
+source_file="res://Assets/particules/SmallExplosion.png"
+dest_files=["res://.godot/imported/SmallExplosion.png-5634a21c93923815bc61ed6762392a48.ctex"]
 
 [params]
 
