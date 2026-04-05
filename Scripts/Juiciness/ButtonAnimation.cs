@@ -41,6 +41,8 @@ namespace Com.IsartDigital.Sokoban
         }
         private void AnimationMousePressed(Button pButton)
         {
+            SoundManager.GetInstance().PlayClick();
+
             Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.InOut).SetParallel();
             lTween.TweenProperty(pButton, TweenProp.ROTATION, 100, 1f);
             lTween.TweenProperty(pButton, TweenProp.POSITION_Y, GetWindow().Size.Y, 1f);

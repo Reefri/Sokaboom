@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://0wcw7t2hdbak"]
+
+[ext_resource type="Script" path="res://Scripts/Manager/SoundManager.cs" id="1_0homo"]
+
+[node name="SoundManager" type="Node2D" node_paths=PackedStringArray("fireworkExplosion", "fireworkWhistle", "bombPickUp", "explosion", "wallExplosion", "boxError", "boxValid", "boxExplosion", "boxMove", "startPathFind", "footStep", "click")]
+script = ExtResource("1_0homo")
+fireworkExplosion = NodePath("Sounds/GamePlay/Bomb/FireworkExplosion")
+fireworkWhistle = NodePath("Sounds/GamePlay/Bomb/FireworkWhistle")
+bombPickUp = NodePath("Sounds/GamePlay/Bomb/BombPickup")
+explosion = NodePath("Sounds/GamePlay/Bomb/BombExplosion")
+wallExplosion = NodePath("Sounds/GamePlay/Bomb/WallDestruction")
+boxError = NodePath("Sounds/GamePlay/Box/BoxError")
+boxValid = NodePath("Sounds/GamePlay/Box/BoxValid")
+boxExplosion = NodePath("Sounds/GamePlay/Box/BoxExplosion")
+boxMove = NodePath("Sounds/GamePlay/Box/BoxMove")
+startPathFind = NodePath("Sounds/GamePlay/Move/Click")
+footStep = NodePath("Sounds/GamePlay/Move/FootStep")
+click = NodePath("Sounds/UI/BoutonClick")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="GamePlay" type="Node" parent="Sounds"]
+
+[node name="Bomb" type="Node" parent="Sounds/GamePlay"]
+
+[node name="FireworkExplosion" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+
+[node name="FireworkWhistle" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+
+[node name="BombPickup" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+
+[node name="BombExplosion" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+
+[node name="WallDestruction" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+
+[node name="Box" type="Node" parent="Sounds/GamePlay"]
+
+[node name="BoxError" type="AudioStreamPlayer" parent="Sounds/GamePlay/Box"]
+
+[node name="BoxValid" type="AudioStreamPlayer" parent="Sounds/GamePlay/Box"]
+
+[node name="BoxExplosion" type="AudioStreamPlayer" parent="Sounds/GamePlay/Box"]
+
+[node name="BoxMove" type="AudioStreamPlayer" parent="Sounds/GamePlay/Box"]
+
+[node name="Move" type="Node" parent="Sounds/GamePlay"]
+
+[node name="Click" type="AudioStreamPlayer" parent="Sounds/GamePlay/Move"]
+
+[node name="FootStep" type="AudioStreamPlayer" parent="Sounds/GamePlay/Move"]
+
+[node name="UI" type="Node" parent="Sounds"]
+
+[node name="BoutonClick" type="AudioStreamPlayer" parent="Sounds/UI"]
+
+[node name="Music" type="Node" parent="."]

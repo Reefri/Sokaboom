@@ -33,6 +33,7 @@ namespace Com.IsartDigital.Sokoban {
         public override void _Ready()
 		{
             JuicinessManager.GetInstance().simpleBombShaker.Start();
+            SoundManager.GetInstance().PlayExplosion();
 
 
             originPos = (new BombPattern(
@@ -74,9 +75,15 @@ namespace Com.IsartDigital.Sokoban {
 
                                 if ((bool)lCurrentTileData.GetCustomData(Map.BOX))
                                 {
+                                    SoundManager.GetInstance().PlayBoxExplosion();
+
                                     FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos) *States.DISTANCE_RANGE,GameManager.GetInstance());
                                 }
-								GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
+                                if ((bool)lCurrentTileData.GetCustomData(Map.WALL))
+                                {
+                                    SoundManager.GetInstance().PlayWallExplosion();
+                                }
+                                GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
                             }
                                 
                         }

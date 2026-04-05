@@ -1,3 +1,4 @@
+using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
 using static System.Formats.Asn1.AsnWriter;
@@ -21,7 +22,10 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
-			restart.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex);
+            foreach (AnimatedSprite2D lStars in stars.GetChildren()) lStars.Frame = 0;
+            CalculScoreLevel();
+
+            restart.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex);
 			restart.Pressed += () => GameManager.GetInstance().QueueFree();
 
             if (UIManager.GetInstance().levelIndex + 1 < GridManager.GetInstance().numberOfLevel) next.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex + 1);
@@ -29,7 +33,7 @@ namespace Com.IsartDigital.Sokoban
             next.Pressed += () => GameManager.GetInstance().QueueFree();
         }
 
-		public void CalculScoreLevel()
+		private void CalculScoreLevel()
 		{
             if (GameManager.GetInstance().currentLevel.Par >= GameManager.GetInstance().CurrentPar) 
 			{
@@ -52,12 +56,32 @@ namespace Com.IsartDigital.Sokoban
             for (int i = 0; i <= numberStars - 1; i++)
 			{
 				AnimatedSprite2D lStars = (AnimatedSprite2D)stars.GetChild(i);
-				lStars.Frame = 1;
+                lStars.Scale = Vector2.Zero;
+                AnimationStars(lStars, i * 0.5f);
             }
             
 			scoreText.Text = SCORE + score;
 
 			AccountManager.GetInstance().NewWin(score, GameManager.GetInstance().CurrentPar);
         }
-	}
+
+        private void AnimationStars(AnimatedSprite2D pStars, float pDelay)
+        {
+            Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.Out).SetParallel();
+            lTween.TweenProperty(pStars, TweenProp.FRAME, 1, 0).SetDelay(pDelay);
+            lTween.TweenProperty(pStars, TweenProp.SCALE, Vector2.One*(0.4f+0.1f), 1f).SetDelay(pDelay);
+            lTween.TweenProperty(pStars, TweenProp.ROTATION, Mathf.Tau, 1f).AsRelative().SetDelay(pDelay);
+
+            //lTween.SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.In);
+            //lTween.TweenProperty(pStars, TweenProp.SCALE, Vector2.One * 0.4f, 0.2f);
+
+            lTween.Finished += () => ParticulesStars(pStars);
+        }
+
+        private void ParticulesStars(AnimatedSprite2D pStars)
+        {
+            GpuParticles2D lParticules = (GpuParticles2D)pStars.GetChild(0);
+            lParticules.Emitting = true;
+        }
+    }
 }
