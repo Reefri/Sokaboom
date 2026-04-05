@@ -114,10 +114,9 @@ scale_min = 0.1
 scale_max = 0.2
 color_ramp = SubResource("GradientTexture1D_vavwa")
 
-[node name="ToPlaceOnExplosions" type="Node2D" node_paths=PackedStringArray("collider", "particles", "redParticleContainer", "yellowParticle")]
+[node name="ToPlaceOnExplosions" type="Node2D" node_paths=PackedStringArray("collider", "redParticleContainer", "yellowParticle")]
 script = ExtResource("1_lxq44")
 collider = NodePath("Collider")
-particles = NodePath("")
 redParticleContainer = NodePath("MidExplosions")
 yellowParticle = NodePath("BigExplosion")
 
