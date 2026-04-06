@@ -1,6 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl27n3huysagp"]
+[gd_scene load_steps=11 format=3 uid="uid://bl27n3huysagp"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/GameManager.cs" id="1_1plec"]
+[ext_resource type="Texture2D" uid="uid://ctvtmdnynit6f" path="res://Assets/particules/firefly.png" id="2_uljw3"]
+[ext_resource type="Texture2D" uid="uid://3hw42eaeiv5m" path="res://Assets/particules/grass.png" id="3_3qvqp"]
+[ext_resource type="Texture2D" uid="uid://cdymxff3k8tfq" path="res://Assets/particules/grass2.png" id="4_ybxym"]
+
+[sub_resource type="Curve" id="Curve_20xhf"]
+_data = [Vector2(0, 0.663586), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_kcqrn"]
+curve = SubResource("Curve_20xhf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vxtep"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(100, 100, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_kcqrn")
+
+[sub_resource type="Curve" id="Curve_t4x7t"]
+_data = [Vector2(0, 0), 0.0, 3.11557, 0, 0, Vector2(1e-05, 0.00878), 4.24026, 4.24026, 0, 0, Vector2(1, 0), -3.76995, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dyc1b"]
+curve = SubResource("Curve_t4x7t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_88ojn"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(100, 100, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 180.0
+angle_max = 180.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 5.6
+initial_velocity_max = 18.25
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_curve = SubResource("CurveTexture_dyc1b")
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 10.0
 
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("bombCollectibleContainer", "gameOverExplosionContainer", "bombExplosionContainer", "fireworkContainer", "boxSignalContainer")]
 script = ExtResource("1_1plec")
@@ -9,6 +54,43 @@ gameOverExplosionContainer = NodePath("GameOverExplosionContainer")
 bombExplosionContainer = NodePath("BombExplosionContainer")
 fireworkContainer = NodePath("FireworkContainer")
 boxSignalContainer = NodePath("BoxSignalContainer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="CanvasLayer/Control"]
+position = Vector2(578, 328)
+scale = Vector2(7.12042, 4.71167)
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_vxtep")
+texture = ExtResource("3_3qvqp")
+lifetime = 6000.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="CanvasLayer/Control"]
+position = Vector2(578, 328)
+scale = Vector2(7.12042, 4.71167)
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_vxtep")
+texture = ExtResource("4_ybxym")
+lifetime = 6000.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(578, 328)
+scale = Vector2(7.12042, 4.71167)
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_88ojn")
+texture = ExtResource("2_uljw3")
+lifetime = 10.0
 
 [node name="BoxSignalContainer" type="Node2D" parent="."]
 z_index = 1
