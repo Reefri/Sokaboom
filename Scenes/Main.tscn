@@ -25,4 +25,6 @@ levelAtTest = 4
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="Control" parent="CanvasLayer2" instance=ExtResource("6_vgvtg")]
+[node name="Control" parent="CanvasLayer2" node_paths=PackedStringArray("downMarkers", "upMarkers") instance=ExtResource("6_vgvtg")]
+downMarkers = []
+upMarkers = []
