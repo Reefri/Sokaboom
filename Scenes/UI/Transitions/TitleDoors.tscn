@@ -20,57 +20,50 @@ doorsStillTimer = NodePath("doorsStill")
 
 [node name="LeftDoor" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -492.0
-offset_top = -324.0
-offset_right = -492.0
-offset_bottom = -324.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="Sprite2D" type="TextureRect" parent="LeftDoor"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -0.583
+anchor_bottom = 1.037
+offset_left = 671.616
 offset_right = 1280.0
-offset_bottom = 1280.0
+offset_bottom = 608.024
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-0.525, 0.525)
 texture = ExtResource("2_cyxvi")
+expand_mode = 1
 
 [node name="RightDoor" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 498.0
-offset_top = -324.0
-offset_right = 498.0
-offset_bottom = -324.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1074.0
+offset_right = 1074.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="Sprite2D" type="TextureRect" parent="RightDoor"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1280.0
-offset_bottom = 1280.0
+anchors_preset = -1
+anchor_right = 0.583
+anchor_bottom = 1.037
+offset_right = 608.384
+offset_bottom = 608.024
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.525, 0.525)
 texture = ExtResource("2_cyxvi")
+expand_mode = 1
 
 [node name="whenToPlayAnim" type="Timer" parent="."]
 one_shot = true

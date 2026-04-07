@@ -77,9 +77,9 @@ namespace Com.IsartDigital.Sokoban
                 leftDoor.Position = new Vector2(-screenSize.X / 2, 0);
                 rightDoor.Position = new Vector2(screenSize.X * 1.5f, 0);
             }
-            if (animationFinished)
+            else if (animationFinished)
             {
-                GD.Print("ojrgjegjerogj");
+                SetDoorsOpen();
             }
 		}
 
@@ -102,6 +102,7 @@ namespace Com.IsartDigital.Sokoban
                 Callable.From(() =>
                     doorsClosed = true)
                 );
+            animationFinished = false;
 
             lDoorsTween.TweenProperty(leftDoor, TweenProp.POSITION,
                 new Vector2(screenSize.X / 2, 0), tweenDuration);
@@ -132,6 +133,12 @@ namespace Com.IsartDigital.Sokoban
                 lDoorsTween.TweenProperty(rightDoor, TweenProp.POSITION, new Vector2(screenSize.X, 0), tweenDuration);
                 lDoorsTween.Parallel().TweenProperty(leftDoor, TweenProp.POSITION, new Vector2(0, 0), tweenDuration);
             }
+
+            lDoorsTween.TweenCallback
+                (
+                Callable.From(() =>
+                    animationFinished = true)
+                );
         }
 
         public void ActivateDoors()
@@ -209,8 +216,8 @@ namespace Com.IsartDigital.Sokoban
         private void SetDoorsOpen()
         {
             doorsClosed = false;
-            leftDoor.Position = new Vector2(screenSize.X/ 2 + sideFactor, 0);
-            rightDoor.Position = new Vector2(screenSize.X / 2 - sideFactor, 0);
+            leftDoor.Position = new Vector2(sideFactor, 0);
+            rightDoor.Position = new Vector2(screenSize.X - sideFactor, 0);
         }
 		protected override void Dispose(bool pDisposing)
 		{
