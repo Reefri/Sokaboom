@@ -26,8 +26,6 @@ layer = 5
 [node name="Control" parent="CanvasLayer2" instance=ExtResource("6_vgvtg")]
 offset_right = 0.0
 offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 layer = 3
