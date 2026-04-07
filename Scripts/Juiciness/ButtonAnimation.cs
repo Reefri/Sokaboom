@@ -43,6 +43,11 @@ namespace Com.IsartDigital.Sokoban
         {
             SoundManager.GetInstance().PlayClick();
 
+            for(int i = 3; i <= 0; i--)
+            {
+                ClickUI.Create(GetGlobalMousePosition() + new Vector2(-50 + i * 100, -50 + i * 100), UIManager.GetInstance());
+            }
+
             Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.InOut).SetParallel();
             lTween.TweenProperty(pButton, TweenProp.ROTATION, 100, 1f);
             lTween.TweenProperty(pButton, TweenProp.POSITION_Y, GetWindow().Size.Y, 1f);

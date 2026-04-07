@@ -124,7 +124,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 			FireWork lNewFireWork = (FireWork)factory.Instantiate();
 			lNewFireWork.GlobalPosition = pPosition;
-
+			lNewFireWork.ZIndex = 1;
             return lNewFireWork;
 		}
 
@@ -138,7 +138,7 @@ namespace Com.IsartDigital.Sokoban
 				lCurrentFirework = Create(pPosition);
 
 				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3*(lRandNumberOfFirework / 2-i)/ lRandNumberOfFirework);
-
+				
                 pParent.AddChild(lCurrentFirework);
 			}
         }

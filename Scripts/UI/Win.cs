@@ -11,6 +11,7 @@ namespace Com.IsartDigital.Sokoban
 	{
 		[Export] public Control stars;
 
+        [Export] private GpuParticles2D confettis;
         [Export] private Label scoreText;
 		private int score;
 		private int numberStars;
@@ -19,6 +20,8 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Button next;
 
         private const string SCORE = "Score : ";
+
+        RandomNumberGenerator rand = new RandomNumberGenerator();
 
         public override void _Ready()
 		{
@@ -69,7 +72,7 @@ namespace Com.IsartDigital.Sokoban
         {
             Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.Out).SetParallel();
             lTween.TweenProperty(pStars, TweenProp.FRAME, 1, 0).SetDelay(pDelay);
-            lTween.TweenProperty(pStars, TweenProp.SCALE, Vector2.One*(0.4f+0.1f), 1f).SetDelay(pDelay);
+            lTween.TweenProperty(pStars, TweenProp.SCALE, Vector2.One*(0.8f + 0.1f), 1f).SetDelay(pDelay);
             lTween.TweenProperty(pStars, TweenProp.ROTATION, Mathf.Tau, 1f).AsRelative().SetDelay(pDelay);
 
             //lTween.SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.In);
@@ -82,6 +85,12 @@ namespace Com.IsartDigital.Sokoban
         {
             GpuParticles2D lParticules = (GpuParticles2D)pStars.GetChild(0);
             lParticules.Emitting = true;
+
+            for (int i = numberStars - 1; i < 3; i++)
+            {
+                FireWork.CreateMult(stars.GlobalPosition + new Vector2(rand.RandiRange(-500, 100), rand.RandiRange(-100, 100)), pStars);
+            }
+            confettis.Emitting = true;
         }
     }
 }

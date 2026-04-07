@@ -23,7 +23,7 @@ namespace Com.IsartDigital.Sokoban
         List<Vector2I> positionForBoxSignal = new List<Vector2I>();
         [Export] public Node2D boxSignalContainer;
 
-        static private GameManager instance;
+        static public GameManager instance = null;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/GameManager.tscn");
 
         private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
@@ -84,6 +84,12 @@ namespace Com.IsartDigital.Sokoban
             return instance;
         }
 
+
+        public static bool IsManagerValid()
+        {
+            return instance!= null && instance.IsInsideTree();
+        }
+
         public override void _Ready()
         {
 
@@ -120,16 +126,7 @@ namespace Com.IsartDigital.Sokoban
         {
             base._Process(pDelta);
             float lDelta = (float)pDelta;
-
-            if (Input.IsActionJustPressed("TimeMinus"))
-            {
-                MoveBackInTime();
-            }
-            if (Input.IsActionJustPressed("TimePlus"))
-            {
-                MoveForwardInTime();
-
-            }
+            
         }
 
         protected override void Dispose(bool pDisposing)
