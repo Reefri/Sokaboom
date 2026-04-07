@@ -28,6 +28,8 @@ namespace Com.IsartDigital.Sokoban
 
         public bool goingToLevel = false;
 
+        private bool animationFinished = false;
+
         private TitleDoors() : base()
         {
             if (instance != null)
@@ -75,6 +77,10 @@ namespace Com.IsartDigital.Sokoban
                 leftDoor.Position = new Vector2(-screenSize.X / 2, 0);
                 rightDoor.Position = new Vector2(screenSize.X * 1.5f, 0);
             }
+            if (animationFinished)
+            {
+                GD.Print("ojrgjegjerogj");
+            }
 		}
 
         public void Transition()
@@ -90,6 +96,12 @@ namespace Com.IsartDigital.Sokoban
            Tween lDoorsTween = leftDoor.CreateTween()
                    .SetTrans(Tween.TransitionType.Bounce)
                    .SetEase(Tween.EaseType.Out);
+
+            lDoorsTween.TweenCallback
+                (
+                Callable.From(() =>
+                    doorsClosed = true)
+                );
 
             lDoorsTween.TweenProperty(leftDoor, TweenProp.POSITION,
                 new Vector2(screenSize.X / 2, 0), tweenDuration);
