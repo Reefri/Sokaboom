@@ -4,7 +4,7 @@ ID_PLAY,Play,Jouer
 ID_NEXT,Next,Suivant
 ID_HELP,Help,Aide
 ID_HIGHTSCORE,Hight Score,Tableau des Scores
-ID_TRANSLATION,English,France
+ID_TRANSLATION,English,Français
 ID_SOUND,Sound,Son
 ID_BACK,Back,Retour
 ID_PASSWORD,Password,Mot de passe
@@ -49,3 +49,13 @@ ID_DETAILS_AB,of the wall you put the bomb against,du mur contre lequel vous met
 ID_DETAILS_BA,- Caution ! you can destroy crates and targets !,- Attention ! Les caisses et cibles sont destructibles !
 ID_DETAILS_BB,- if there are more crates than targets -> destroy them,- s’il y a plus de caisses que de cibles -> détruisez-les
 ID_DETAILS_C,^ Here 90° rotation,^ Ici elle tourne à 90°
+ID_TUTORIEL,Tutorial,Turotirel
+ID_ETHANM_A,Mirror +,Miroire +
+ID_ETHANF_A,Arrow,Flèche
+ID_SACHA_IA,Corridor in B,Couloir en U
+ID_SACHA_A,Without any walls,Sans murs
+ID_SACHA_B,Let's go!,En avant !
+ID_ETHANF_B,Chain,Chaine
+ID_DANIEL_B,Unstable Corridor,Couloir instable
+ID_ETHANF_IA,Sarcophagus,Sarcophage
+ID_DANIEL_IA,Risky Sacrifice,Un sacrifice risqué

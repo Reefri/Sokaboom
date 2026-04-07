@@ -30,7 +30,7 @@ namespace Com.IsartDigital.Sokoban
             buttonRedo.Pressed += () => GameManager.GetInstance().MoveForwardInTime();
 
             par.Text = PAR + GameManager.GetInstance().currentLevel.Par;
-            name.Text = GameManager.GetInstance().currentLevel.Title + Tr(BY) + GameManager.GetInstance().currentLevel.Author;
+            name.Text = Tr(GameManager.GetInstance().currentLevel.Title) + Tr(BY) + GameManager.GetInstance().currentLevel.Author;
             steps.Text = Tr(STEPS) + 0;
         }
 
