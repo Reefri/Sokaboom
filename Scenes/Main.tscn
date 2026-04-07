@@ -16,8 +16,6 @@ levelAtTest = 4
 
 [node name="UiManager" parent="CanvasLayer" instance=ExtResource("3_70v4f")]
 
-[node name="TitleOpeningTransition" parent="CanvasLayer" instance=ExtResource("3_5kfyl")]
-
 [node name="CameraManager" parent="." instance=ExtResource("3_wl630")]
 
 [node name="JuicinessManger" parent="." instance=ExtResource("4_ajjv2")]
@@ -25,6 +23,9 @@ levelAtTest = 4
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="Control" parent="CanvasLayer2" node_paths=PackedStringArray("downMarkers", "upMarkers") instance=ExtResource("6_vgvtg")]
-downMarkers = []
-upMarkers = []
+[node name="Control" parent="CanvasLayer2" instance=ExtResource("6_vgvtg")]
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="TitleOpeningTransition" parent="CanvasLayer3" instance=ExtResource("3_5kfyl")]
