@@ -25,6 +25,7 @@ anchor_bottom = 1.0
 offset_left = 84.0
 offset_right = -492.0
 offset_bottom = -648.0
+mouse_filter = 2
 
 [node name="Sprite2D" type="TextureRect" parent="LeftDoor"]
 layout_mode = 1
@@ -48,6 +49,7 @@ offset_right = -78.0
 offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Sprite2D" type="TextureRect" parent="RightDoor"]
 layout_mode = 1

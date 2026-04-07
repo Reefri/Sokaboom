@@ -1,8 +1,94 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtrkird1h23n6"]
+[gd_scene load_steps=5 format=3 uid="uid://dtrkird1h23n6"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PrevisualisationBomb.cs" id="1_g536b"]
 
-[node name="PrevisualisationBomb" type="Control"]
+[sub_resource type="Animation" id="Animation_2xs37"]
+resource_name = "Arrow animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(196.5, 516), Vector2(202, 545)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 5.09825),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(0.552962, 9.50582e-07, 5.77569e-07, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a07bn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(202, 512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.69246, 1.841e-06, 7.70092e-07, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gesnu"]
+_data = {
+"Arrow animation": SubResource("Animation_2xs37"),
+"RESET": SubResource("Animation_a07bn")
+}
+
+[node name="PrevisualisationBomb" type="Control" node_paths=PackedStringArray("arrow")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,20 +98,27 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("1_g536b")
+arrow = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -27.5
-offset_top = -154.0
-offset_right = 27.5
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.79
+anchor_right = 0.223
+anchor_bottom = 1.002
+offset_left = 202.0
+offset_top = 512.0
+offset_right = 478.184
+offset_bottom = 1198.5
+grow_vertical = 0
+scale = Vector2(1.2, 1.2)
 theme_override_colors/font_color = Color(0.69246, 1.841e-06, 7.70092e-07, 1)
 theme_override_font_sizes/font_size = 100
 text = "⬆️"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gesnu")
+}
+autoplay = "Arrow animation"

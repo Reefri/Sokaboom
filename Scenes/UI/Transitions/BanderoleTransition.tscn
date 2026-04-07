@@ -8,6 +8,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 script = ExtResource("1_sed1o")
 banderoleNode = NodePath("NewBanderoles")
 downMarkers = [NodePath("InitialPos/InitialFirst"), NodePath("InitialPos/InitialSecond"), NodePath("InitialPos/InitialThird"), NodePath("InitialPos/InitialFourth"), NodePath("InitialPos/InitialFifth")]
