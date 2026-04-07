@@ -24,6 +24,7 @@ levelAtTest = 4
 layer = 5
 
 [node name="Control" parent="CanvasLayer2" instance=ExtResource("6_vgvtg")]
+anchors_preset = 15
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 layer = 3

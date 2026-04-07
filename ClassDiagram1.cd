@@ -99,7 +99,10 @@
       <FileName>Scripts\Juiciness\ButtonAnimation.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Com.IsartDigital.Sokoban.ClickUI" Collapsed="true">
+  <Class Name="Com.IsartDigital.Sokoban.
+		 
+
+" Collapsed="true">
     <Position X="14.75" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAIAA=</HashCode>
