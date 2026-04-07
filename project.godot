@@ -80,4 +80,4 @@ locale/translations=PackedStringArray("res://Localisation/Localisation.en.transl
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.201, 0.67, 0.263533, 1)
+environment/defaults/default_clear_color=Color(0.15878, 0.0748, 0.34, 1)

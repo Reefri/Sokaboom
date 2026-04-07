@@ -14,7 +14,8 @@ namespace Com.IsartDigital.Sokoban
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
-        private PrevisualisationBomb previsualisationBomb = (PrevisualisationBomb)GD.Load<PackedScene>("res://Scenes/UI/PrevisualisationBomb.tscn").Instantiate();
+        private PackedScene previsualisationBomb = GD.Load<PackedScene>("res://Scenes/UI/PrevisualisationBomb.tscn");
+        private PrevisualisationBomb previsualisationCreate;
 
         private Node2D showPatern;
 
@@ -127,16 +128,18 @@ namespace Com.IsartDigital.Sokoban
         private void InBomb()
         {
             hoverRenderer.Scale *= 1.5f;
-            previsualisationBomb.explosionMatrix = bomb.explosionMatrix;
+            previsualisationCreate = (PrevisualisationBomb)previsualisationBomb.Instantiate();
+            previsualisationCreate.explosionMatrix = bomb.explosionMatrix;
 
 
-            UIManager.GetInstance().AddChild(previsualisationBomb);
+            UIManager.GetInstance().AddChild(previsualisationCreate);
         }
         private void OutBomb()
         {
             hoverRenderer.Scale /= 1.5f;
 
-            UIManager.GetInstance().RemoveChild(previsualisationBomb);
+            if (previsualisationCreate != null) previsualisationCreate.QueueFree();
+            previsualisationCreate = null;
         }
 
         public static BombCollectible Create(Bomb pBomb, Vector2I pPosition)
@@ -195,7 +198,7 @@ namespace Com.IsartDigital.Sokoban
 
         protected override void Dispose(bool pDisposing)
         {
-            previsualisationBomb.QueueFree();
+            if (previsualisationCreate != null) previsualisationCreate.QueueFree();
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Com.IsartDigital.Sokoban
             lPrevisualisationBomb.explosionMatrix = pExplosionMatrix;
             UIManager.GetInstance().AddChild(lPrevisualisationBomb);
         }
+
+        [Export] Label arrow;
         
         private Vector2I originPos;
         public List<List<int>> explosionMatrix;
@@ -25,22 +27,17 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-            GlobalPosition = new Vector2(1152, 324) / 2; //à redesigner plus tard
-
             Node2D lNode = new Node2D();
-
-
 
             new BombPattern(
                 lNode,
                 explosionMatrix,
                 BombPattern.EnumOfExplosionPattern.Mouse
                 );
-            lNode.GlobalPosition = GlobalPosition;
+            lNode.GlobalPosition = arrow.GlobalPosition * 2 - new Vector2(30, 60);
 
 
             AddChild(lNode);
-
         }
 	}
 }
