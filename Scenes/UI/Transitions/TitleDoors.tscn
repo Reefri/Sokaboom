@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/TitleDoors.cs" id="1_ns3k7"]
 [ext_resource type="Texture2D" uid="uid://dbo0y1oro3kue" path="res://Assets/door.png" id="2_cyxvi"]
 
-[node name="TitleDoors" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "whenToPlayAnim", "goToLevel", "doorsStillTimer")]
+[node name="TitleDoors" type="Control" node_paths=PackedStringArray("leftDoor", "rightDoor", "blockingMouse", "whenToPlayAnim", "goToLevel", "doorsStillTimer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ mouse_filter = 2
 script = ExtResource("1_ns3k7")
 leftDoor = NodePath("leftDoor")
 rightDoor = NodePath("rightDoor")
+blockingMouse = NodePath("BlockingMouse")
 whenToPlayAnim = NodePath("whenToPlayAnim")
 goToLevel = NodePath("goToLevel")
 doorsStillTimer = NodePath("doorsStill")
@@ -31,6 +32,15 @@ scale = Vector2(0.6, 1)
 texture = ExtResource("2_cyxvi")
 expand_mode = 1
 
+[node name="ColorRect" type="ColorRect" parent="rightDoor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="leftDoor" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -42,6 +52,15 @@ scale = Vector2(-0.6, 1)
 texture = ExtResource("2_cyxvi")
 expand_mode = 1
 
+[node name="ColorRect" type="ColorRect" parent="leftDoor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="whenToPlayAnim" type="Timer" parent="."]
 one_shot = true
 
@@ -51,3 +70,13 @@ one_shot = true
 
 [node name="goToLevel" type="Timer" parent="."]
 one_shot = true
+
+[node name="BlockingMouse" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
