@@ -165,8 +165,8 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void HelpPressed()
         {
-            UIManager.GetInstance().GoToHelp();
             UIManager.GetInstance().comeToMenu = true;
+            UIManager.GetInstance().GoToHelp();
         }
 
         public void Langage()

@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="14_3wq5k"]
 
-[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationSfB", "explanationSfC", "explanationControlA", "explanationControlB", "explanationDetailA", "explanationDetailB")]
+[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationSfB", "explanationSfC", "explanationControlA", "explanationControlB", "explanationDetailA", "explanationDetailB", "returnButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,6 +35,7 @@ explanationControlA = NodePath("FirstPage/HelpMovement/ExplanationControlA")
 explanationControlB = NodePath("FirstPage/HelpMoveBox/explanationControlB")
 explanationDetailA = NodePath("ThirdPage/HelpExplodeDirections/ExplanationDetailA")
 explanationDetailB = NodePath("ThirdPage/HelpExplodeBoxes/explanationDetailB")
+returnButton = NodePath("Buttons/Button")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
 
@@ -476,5 +477,3 @@ offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "ID_MENU"
-
-[connection signal="pressed" from="Buttons/Button" to="." method="ReturnPressed"]
