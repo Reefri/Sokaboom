@@ -60,79 +60,86 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Banderole1" type="TextureRect" parent="NewBanderoles"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -1285.0
-offset_right = -421.0
-offset_bottom = -1641.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
-texture = ExtResource("2_pttqo")
-expand_mode = 1
-
-[node name="Banderole2" type="TextureRect" parent="NewBanderoles"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 182.0
-offset_top = 1000.0
-offset_right = -139.0
-offset_bottom = 644.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
-texture = ExtResource("2_pttqo")
-expand_mode = 1
-
-[node name="Banderole3" type="TextureRect" parent="NewBanderoles"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 464.0
-offset_top = -1285.0
-offset_right = 143.0
-offset_bottom = -1641.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
-texture = ExtResource("2_pttqo")
-expand_mode = 1
-
-[node name="Banderole4" type="TextureRect" parent="NewBanderoles"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 746.0
-offset_top = 1000.0
-offset_right = 425.0
-offset_bottom = 644.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
-texture = ExtResource("2_pttqo")
-expand_mode = 1
-
 [node name="Banderole5" type="TextureRect" parent="NewBanderoles"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.012
+anchor_top = -1.465
+anchor_right = 0.071
+anchor_bottom = -0.913
+offset_left = -100.0
+offset_top = -631.4
+offset_right = 653.853
+offset_bottom = -700.68
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(0, 285)
+texture = ExtResource("2_pttqo")
+expand_mode = 1
+
+[node name="Banderole6" type="TextureRect" parent="NewBanderoles"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.211
+anchor_top = 1.226
+anchor_right = 0.347
+anchor_bottom = 2.144
+offset_left = -62.127
+offset_top = -362.64
+offset_right = 616.521
+offset_bottom = -666.16
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(0, 285)
+texture = ExtResource("2_pttqo")
+expand_mode = 1
+
+[node name="Banderole7" type="TextureRect" parent="NewBanderoles"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451
+anchor_top = -1.829
+anchor_right = 0.615
+anchor_bottom = -0.893
+offset_left = -50.8071
+offset_top = -385.44
+offset_right = 595.445
+offset_bottom = -700.48
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(0, 285)
+texture = ExtResource("2_pttqo")
+expand_mode = 1
+
+[node name="Banderole8" type="TextureRect" parent="NewBanderoles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1028.0
-offset_top = -1285.0
-offset_right = 693.116
-offset_bottom = -1641.0
+offset_left = 757.0
+offset_top = 437.0
+offset_right = 436.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(0, 285)
+texture = ExtResource("2_pttqo")
+expand_mode = 1
+
+[node name="Banderole9" type="TextureRect" parent="NewBanderoles"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.696
+anchor_top = 1.221
+anchor_right = 0.885
+anchor_bottom = 2.351
+offset_left = 217.728
+offset_top = -2343.44
+offset_right = 835.055
+offset_bottom = -2782.64
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5708

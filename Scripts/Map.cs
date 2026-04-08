@@ -103,7 +103,6 @@ namespace Com.IsartDigital.Sokoban
 						else if ((bool)(GetCellTileData((int)LevelLayer.Playground, lCell).GetCustomData(WALL)))
 						{
 							boxOrWallClickedOn = lCell;
-
                             WallOrBoxChosen(WALL, lCell);
 						}
 
@@ -127,7 +126,6 @@ namespace Com.IsartDigital.Sokoban
 
             foreach (Vector2I cell in cells)
 			{
-
                 if ((bool)GetCellTileData((int)LevelLayer.Playground, cell).GetCustomData(INTERACTABLE))aStarGrid.SetPointSolid(cell);
             }
 		}
@@ -196,10 +194,6 @@ namespace Com.IsartDigital.Sokoban
 
             if (Player.GetInstance().hasBoxToPush && (boxOrWallClickedOn - pBeginning).LengthSquared() <= 1)
             {
-
-				//Player.GetInstance().lastDirection = boxOrWallClickedOn - pBeginning;
-
-
 
 				Player.GetInstance().AdjacentToInteractable(boxOrWallClickedOn - pBeginning);
 

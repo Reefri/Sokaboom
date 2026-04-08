@@ -34,6 +34,14 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private Tween tween;
 
+        private const string ENGLISH = "en";
+        private const string FRENCH = "fr";
+        private const string TWEEN_FOR_O = "o";
+
+        private const float WAIT_TIME_START = 0.05f;
+        private const float LONG_DELAY = 1.5f;
+        private const float SHORT_DELAY = 0.2f;
+        private const int INITIAL_Y_POSITION = 265;
         public override void _Ready()
 		{
             finalPositionOfSo = so.Position;
@@ -42,7 +50,7 @@ namespace Com.IsartDigital.Sokoban.UI
             posInitK = letterK.Position;
             posInitA = letterA.Position;
 
-            timer.WaitTime = 0.05f;
+            timer.WaitTime = WAIT_TIME_START;
             timer.Timeout += MoreO;
             AddChild(timer);
             StartTimer();
@@ -76,7 +84,7 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             while (so.Size.X < title.Size.X - 200)
             {
-                so.Text += "o";
+                so.Text += TWEEN_FOR_O;
                 return;
             }
             timer.Timeout -= MoreO;
@@ -102,19 +110,19 @@ namespace Com.IsartDigital.Sokoban.UI
 
             tween = CreateTween().SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.Out).SetParallel();
             
-            tween.TweenProperty(letterK, TweenProp.POSITION, letterK.Position, 2f).From(new Vector2(letterK.Position.X, -265));
+            tween.TweenProperty(letterK, TweenProp.POSITION, letterK.Position, 2f).From(new Vector2(letterK.Position.X, INITIAL_Y_POSITION));
 
-            tween.TweenProperty(letterA, TweenProp.VISIBLE, true, 0f).SetDelay(0.2f);
-            tween.TweenProperty(letterA, TweenProp.POSITION, letterA.Position, 2f).From(new Vector2(letterA.Position.X, -265)).SetDelay(0.2f);
+            tween.TweenProperty(letterA, TweenProp.VISIBLE, true, 0f).SetDelay(SHORT_DELAY);
+            tween.TweenProperty(letterA, TweenProp.POSITION, letterA.Position, 2f).From(new Vector2(letterA.Position.X, INITIAL_Y_POSITION)).SetDelay(0.2f);
 
             tween.TweenProperty(explosion, TweenProp.VISIBLE, true, 0f).SetDelay(1f);
             tween.TweenProperty(explosion, TweenProp.SCALE, explosion.Scale, 1f).From(Vector2.Zero).SetDelay(1f);
             tween.TweenProperty(explosion, TweenProp.ROTATION, explosion.Rotation, 1f).From(-explosion.Rotation).SetDelay(1f);
             tween.TweenProperty(explosion, TweenProp.SKEW, explosion.Skew, 1f).From(-explosion.Skew).SetDelay(1f);
 
-            tween.TweenProperty(boum, TweenProp.VISIBLE, true, 0f).SetDelay(1.5f);
-            tween.TweenProperty(boum, TweenProp.SCALE, boum.Scale, 1f).From(Vector2.Zero).SetDelay(1.5f);
-            tween.TweenProperty(boum, TweenProp.ROTATION, boum.Rotation, 1f).From(-boum.Rotation).SetDelay(1.5f);
+            tween.TweenProperty(boum, TweenProp.VISIBLE, true, 0f).SetDelay(LONG_DELAY);
+            tween.TweenProperty(boum, TweenProp.SCALE, boum.Scale, 1f).From(Vector2.Zero).SetDelay(LONG_DELAY);
+            tween.TweenProperty(boum, TweenProp.ROTATION, boum.Rotation, 1f).From(-boum.Rotation).SetDelay(LONG_DELAY);
 
             tween.Finished += AnimationIsFinish;
         }
@@ -124,8 +132,8 @@ namespace Com.IsartDigital.Sokoban.UI
             animationIsRunning = false;
 
             Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.Out).SetParallel();
-            lTween.TweenProperty(exclamationMark, TweenProp.VISIBLE, true, 0f).SetDelay(0.2f);
-            lTween.TweenProperty(exclamationMark, TweenProp.POSITION, exclamationMark.Position, 2f).From(new Vector2(exclamationMark.Position.X, -265)).SetDelay(0.2f);
+            lTween.TweenProperty(exclamationMark, TweenProp.VISIBLE, true, 0f).SetDelay(SHORT_DELAY);
+            lTween.TweenProperty(exclamationMark, TweenProp.POSITION, exclamationMark.Position, 2f).From(new Vector2(exclamationMark.Position.X, INITIAL_Y_POSITION)).SetDelay(SHORT_DELAY);
         }
 
         private void FinishAnimation()
@@ -171,7 +179,7 @@ namespace Com.IsartDigital.Sokoban.UI
 
         public void Langage()
         {
-            TranslationServer.SetLocale(TranslationServer.GetLocale() == "en" ? "fr" : "en");
+            TranslationServer.SetLocale(TranslationServer.GetLocale() == ENGLISH ? FRENCH : ENGLISH);
         }
     }
 }
