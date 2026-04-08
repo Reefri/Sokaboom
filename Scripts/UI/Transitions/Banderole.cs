@@ -51,7 +51,7 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			banderoles = banderoleNode.GetChildren().OfType<TextureRect>().ToList();
-			Visible = false;
+            Visible = false;
 		}
 
 		

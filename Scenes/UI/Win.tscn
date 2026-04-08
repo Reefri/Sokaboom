@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b078nli7whk52"]
+[gd_scene load_steps=16 format=3 uid="uid://b078nli7whk52"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
-[ext_resource type="SpriteFrames" uid="uid://d2kb1erim2tp8" path="res://Assets/Stars/Star.tres" id="2_0i242"]
-[ext_resource type="Texture2D" uid="uid://cmayr4j2w68ws" path="res://Assets/Stars/Star.png" id="3_umpmi"]
+[ext_resource type="Texture2D" uid="uid://vu3lr2iiu77m" path="res://Assets/Stars/NewEmptyStar.png" id="3_sy2b5"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="3_ydfsl"]
+[ext_resource type="Texture2D" uid="uid://btwc780h5emv5" path="res://Assets/Stars/NewStars.png" id="4_tj2pn"]
 [ext_resource type="Texture2D" uid="uid://d26exvbfsbgeg" path="res://Assets/Stars/FinalVictoryBanderole.png" id="5_337bn"]
 
 [sub_resource type="Gradient" id="Gradient_b7b7e"]
@@ -19,6 +19,20 @@ fill_to = Vector2(0.482906, 0)
 font_size = 64
 font_color = Color(0.192157, 0.784314, 0.207843, 0.745098)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_41ao0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sy2b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tj2pn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w18mc"]
 particle_flag_disable_z = true
 angle_max = 360.0
@@ -31,6 +45,34 @@ gravity = Vector3(0, 90, 0)
 linear_accel_min = -8.4
 scale_min = 0.02
 scale_max = 0.05
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nu370"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sy2b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tj2pn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5pelx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sy2b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tj2pn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_33yxt"]
 offsets = PackedFloat32Array(0.156682, 0.37788, 0.737327, 1)
@@ -119,7 +161,7 @@ grow_horizontal = 2
 position = Vector2(39.5, 297)
 rotation = -0.15708
 scale = Vector2(0.4, 0.4)
-sprite_frames = ExtResource("2_0i242")
+sprite_frames = SubResource("SpriteFrames_41ao0")
 offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarOne"]
@@ -129,13 +171,13 @@ emitting = false
 amount = 10
 amount_ratio = 0.5
 process_material = SubResource("ParticleProcessMaterial_w18mc")
-texture = ExtResource("3_umpmi")
+texture = ExtResource("4_tj2pn")
 one_shot = true
 
 [node name="StarTwo" type="AnimatedSprite2D" parent="ColorRect/Stars"]
 position = Vector2(181.5, 205)
 scale = Vector2(0.4, 0.4)
-sprite_frames = ExtResource("2_0i242")
+sprite_frames = SubResource("SpriteFrames_nu370")
 offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarTwo"]
@@ -145,14 +187,14 @@ emitting = false
 amount = 25
 amount_ratio = 0.75
 process_material = SubResource("ParticleProcessMaterial_w18mc")
-texture = ExtResource("3_umpmi")
+texture = ExtResource("4_tj2pn")
 one_shot = true
 
 [node name="StarThree" type="AnimatedSprite2D" parent="ColorRect/Stars"]
 position = Vector2(331.5, 297)
 rotation = 0.15708
 scale = Vector2(0.4, 0.4)
-sprite_frames = ExtResource("2_0i242")
+sprite_frames = SubResource("SpriteFrames_5pelx")
 offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarThree"]
@@ -161,7 +203,7 @@ modulate = Color(1, 0.603922, 0, 1)
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_w18mc")
-texture = ExtResource("3_umpmi")
+texture = ExtResource("4_tj2pn")
 one_shot = true
 
 [node name="Score" type="Label" parent="ColorRect"]
