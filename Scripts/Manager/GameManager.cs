@@ -300,6 +300,11 @@ namespace Com.IsartDigital.Sokoban
 
         public void QuickResetInit()
         {
+
+
+            Player.GetInstance().canInput = true;
+            Player.GetInstance().Visible = true;
+
             JuicinessManager.GetInstance().StopExplosion();
 
 
@@ -353,9 +358,6 @@ namespace Com.IsartDigital.Sokoban
 
             QuickResetInit();
 
-            Player.GetInstance().canInput = true;
-            Player.GetInstance().Visible = true;
-
 
             CurrentPar--;
 
@@ -373,8 +375,6 @@ namespace Com.IsartDigital.Sokoban
 
             QuickResetInit();
 
-            Player.GetInstance().canInput = true;
-            Player.GetInstance().Visible = true;
 
             CurrentPar++;
 

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Manager/SoundManager.cs" id="1_0homo"]
 
-[node name="SoundManager" type="Node2D" node_paths=PackedStringArray("fireworkExplosion", "fireworkWhistle", "bombPickUp", "explosion", "wallExplosion", "boxError", "boxValid", "boxExplosion", "boxMove", "startPathFind", "footStep", "click")]
+[node name="SoundManager" type="Node2D" node_paths=PackedStringArray("fireworkWhistle", "bombPickUp", "fireworkExplosion", "explosion", "wallExplosion", "boxError", "boxValid", "boxExplosion", "boxMove", "startPathFind", "footStep", "click")]
 script = ExtResource("1_0homo")
-fireworkExplosion = NodePath("Sounds/GamePlay/Bomb/FireworkExplosion")
 fireworkWhistle = NodePath("Sounds/GamePlay/Bomb/FireworkWhistle")
 bombPickUp = NodePath("Sounds/GamePlay/Bomb/BombPickup")
+fireworkExplosion = NodePath("Sounds/GamePlay/Bomb/FireworkExplosion")
 explosion = NodePath("Sounds/GamePlay/Bomb/BombExplosion")
 wallExplosion = NodePath("Sounds/GamePlay/Bomb/WallDestruction")
 boxError = NodePath("Sounds/GamePlay/Box/BoxError")
