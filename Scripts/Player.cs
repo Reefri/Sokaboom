@@ -195,7 +195,7 @@ namespace Com.IsartDigital.Sokoban
 
         public Vector2I GetPositionToVector2I()
         {
-            return new Vector2I((int)(Position.X / States.DISTANCE_RANGE), (int)(Position.Y / States.DISTANCE_RANGE));
+            return new Vector2I((int)(Position.X / Map.DISTANCE_RANGE), (int)(Position.Y / Map.DISTANCE_RANGE));
         }
 
         public void AdjacentToInteractable(Vector2I pDirection)
@@ -251,7 +251,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoTo(Vector2I pPosition)
         {
-            GlobalPosition = (pPosition ) * States.DISTANCE_RANGE;
+            GlobalPosition = (pPosition ) * Map.DISTANCE_RANGE;
         }
 
         public void AnimThePlayer(Vector2I pLastDirection)
@@ -314,7 +314,7 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
-            bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
+            bombInHand.Explode((Vector2I)Position / Map.DISTANCE_RANGE + lastDirection, lastDirection);
 
             GameManager.GetInstance().UpdateAfterAction();
 
@@ -358,7 +358,7 @@ namespace Com.IsartDigital.Sokoban
                         Main.GetInstance().RotateMatrix(bombInHand.explosionMatrix, lDirection), 
                         BombPattern.EnumOfExplosionPattern.Player ,
                         false,
-                        lDirection*States.DISTANCE_RANGE,
+                        lDirection * Map.DISTANCE_RANGE,
                         (lDirection == lastDirection?1:0.2f)
                         
                         );

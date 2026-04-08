@@ -145,7 +145,7 @@ namespace Com.IsartDigital.Sokoban
         public static BombCollectible Create(Bomb pBomb, Vector2I pPosition)
 		{
 			BombCollectible lBombCollectible = (BombCollectible)bombCollectible.Instantiate();
-			lBombCollectible.Position = (pPosition) * States.DISTANCE_RANGE;
+			lBombCollectible.Position = (pPosition) * Map.DISTANCE_RANGE;
 			lBombCollectible.ZIndex = 1;
 
 			lBombCollectible.bomb = pBomb;

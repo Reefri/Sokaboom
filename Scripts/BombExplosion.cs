@@ -19,11 +19,8 @@ namespace Com.IsartDigital.Sokoban {
         private float explosionScreenShakePower = 15;
         private float explosionScreenShakeTime = 0.25f;
 
-		private const string TO_PLACE_ON_EXPLOSION_PATH = "res://Scenes/ToPlaceOnExplosions.tscn";
-        private static PackedScene toPlaceOnExplosion = GD.Load<PackedScene>(TO_PLACE_ON_EXPLOSION_PATH);
+        public const string ADD_CHILD_DEFERED = "add_child";
 
-        private const string BOMB_PATTERN_PATH = "res://Scenes/BombPattern.tscn";
-        private static PackedScene pattern = GD.Load<PackedScene>(BOMB_PATTERN_PATH);
 
 		private Vector2I originPos;
         protected Vector2I posInGrid;
@@ -61,7 +58,6 @@ namespace Com.IsartDigital.Sokoban {
 
                             if ((bool)lCurrentTileData.GetCustomData(Map.BORDER))
                             {
-                                GD.Print("GameOver");
 
                                 JuicinessManager.GetInstance().ExplodeAllBorders(posInGrid + new Vector2I(j, i) - originPos);
                                 Player.GetInstance().canInput = false;
@@ -77,7 +73,7 @@ namespace Com.IsartDigital.Sokoban {
                                 {
                                     SoundManager.GetInstance().PlayBoxExplosion();
 
-                                    FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos) *States.DISTANCE_RANGE,GameManager.GetInstance());
+                                    FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos) * Map.DISTANCE_RANGE,GameManager.GetInstance());
                                 }
                                 if ((bool)lCurrentTileData.GetCustomData(Map.WALL))
                                 {
@@ -92,8 +88,6 @@ namespace Com.IsartDigital.Sokoban {
                         {
                             lTileMap.SetCell((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos, -1);
                             GameManager.GetInstance().currentPosition.value.targetsPos.Remove(posInGrid + new Vector2I(j, i) - originPos);
-
-                            GD.Print("tu viens de détruire une cible !");
                         }
                     }
                 }
@@ -123,11 +117,11 @@ namespace Com.IsartDigital.Sokoban {
             lBombPattern.explosionMatrix = Main.GetInstance().RotateMatrix(pExplosionMatrix,pRotationVector);
 
 
-            lBombPattern.Position = (pPosition )* States.DISTANCE_RANGE /2; // pourquoi distance/2 ??
+            lBombPattern.Position = (pPosition )* Map.DISTANCE_RANGE /2; 
             lBombPattern.posInGrid = pPosition;
 
 
-			GameManager.GetInstance().gameOverExplosionContainer.CallDeferred("add_child", lBombPattern);
+			GameManager.GetInstance().gameOverExplosionContainer.CallDeferred(ADD_CHILD_DEFERED, lBombPattern);
 
 		}
 	}
