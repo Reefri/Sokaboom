@@ -94,7 +94,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 			if (pList.Count == 0)
 			{
-				GD.Print("Liste de type " + typeof(T) + " est vide.");
+				GD.Print("List of type " + typeof(T) + " is empty.");
 				return;
 			}
 
@@ -179,7 +179,7 @@ namespace Com.IsartDigital.Sokoban
 
             }
 
-            GD.Print("Selectec direction doesn't match : "+pDirection);
+            GD.Print("Selected direction doesn't match : "+pDirection);
 
             return lDuplicatedMatrix;
 

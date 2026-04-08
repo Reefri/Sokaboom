@@ -8,7 +8,7 @@ namespace Com.IsartDigital.Sokoban
 	public partial class Level 
 	{
         /*
-         * Seuls les champs :
+         * Only this fields :
          *  -Size;
          *  -playerPosition;
          *  -targetsPos;
@@ -17,9 +17,9 @@ namespace Com.IsartDigital.Sokoban
          *  -bombsPos;
          *  -Par
          *  
-         *  sont destinés à être lue en dehors de la classe.
+         *  are supposed to be read outside the class.
          *  
-         *  Les autres champs public le sont pour des raisons de parse avec le JSON.
+         *  Any other fields other public fields are public for JSON parse purposed.
          */
 
 
@@ -62,7 +62,7 @@ namespace Com.IsartDigital.Sokoban
 
                 if (!isJSONParse)
                 {
-                    GD.Print("Ce champs et à présent en privé !");
+                    GD.Print("This field is now private !");
                     return;
                 }
 
@@ -87,11 +87,11 @@ namespace Com.IsartDigital.Sokoban
 
                 if (bombsPos.Count != bombs.Count)
                 {
-                    GD.Print("WARNING : Vous avez " + bombs.Count + " bombes définies pour "+bombsPos.Count+" positions définies !");
+                    GD.Print("WARNING : You have " + bombs.Count + " bombs defined but "+bombsPos.Count+" positions defined !");
 
-                    GD.Print("Liste des bombes : ");
+                    GD.Print("List of bombs : ");
                     Main.PrintList(bombs);
-                    GD.Print("Liste des positions de bombes : ");
+                    GD.Print("List of positions of bombs : ");
                     Main.PrintList(bombsPos);
                     return;
                 }

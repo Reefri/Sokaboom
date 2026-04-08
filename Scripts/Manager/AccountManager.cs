@@ -104,7 +104,7 @@ namespace Com.IsartDigital.Sokoban
 
             if (lIndex < 0)
             {
-				GD.Print("Connexion au compte Guest : " + (TestConnexion("Guest","") == TestConnexionResult.Valid));
+				GD.Print("Connexion to Guest account : " + (TestConnexion("Guest","") == TestConnexionResult.Valid));
                 return ;
             }
 
