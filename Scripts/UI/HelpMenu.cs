@@ -43,6 +43,11 @@ namespace Com.IsartDigital.Sokoban
         private const string DETAILS_BA = "ID_DETAILS_BA";
         private const string DETAILS_BB = "ID_DETAILS_BB";
 
+        [Export] private Button returnButton;
+
+        private const string GO_MENU = "ID_MENU";
+        private const string GO_LEVEL = "ID_START";
+
         public override void _Ready()
         {
             base._Ready();
@@ -62,12 +67,18 @@ namespace Com.IsartDigital.Sokoban
             explanationSfC.Text = Tr(SF_CA) + "\n" + Tr(SF_CB);
             explanationDetailA.Text = Tr(DETAILS_AA) + "\n" + Tr(DETAILS_AB);
             explanationDetailB.Text = Tr(DETAILS_BA) + "\n \n" + Tr(DETAILS_BB);
+
+            if (UIManager.GetInstance().comeToMenu) 
+            {
+                returnButton.Pressed += UIManager.GetInstance().GoToTitle;
+                returnButton.Text = Tr(GO_MENU);
+            }
+            else
+            {
+                returnButton.Pressed += () => UIManager.GetInstance().GoToLevel(0);
+                returnButton.Text = Tr(GO_LEVEL);
+            }
         }
-        private void ReturnPressed()
-		{
-			if (UIManager.GetInstance().comeToMenu) UIManager.GetInstance().GoToTitle();
-			else UIManager.GetInstance().GoToLevel(0);
-		}
 
         private void PreviousPage()
         {
