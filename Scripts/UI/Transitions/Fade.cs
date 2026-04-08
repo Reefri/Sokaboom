@@ -1,12 +1,12 @@
 using Godot;
-using System.Reflection;
 
 // Author : Ethan Frenard
 
 namespace Com.IsartDigital.Sokoban 
 {
-	public partial class SceneTransition : ColorRect
+	public partial class Fade : Control
 	{
+        [Export] private ColorRect blackScreen;
         [Export] public Timer animationTimer;
         [Export] public bool queufreeWhenOver = false;
         [Export] public bool fadeIn = true;
@@ -28,8 +28,8 @@ namespace Com.IsartDigital.Sokoban
         {
             float lDelta = (float)pDelta;
             if (fadeIn)
-                Modulate = new Color(0, 0, 0, (float)animationTimer.TimeLeft / (float)animationTimer.WaitTime);
-            else Modulate = new Color(0, 0, 0, 1 - (float)animationTimer.TimeLeft / (float)animationTimer.WaitTime);
+                blackScreen.Modulate = new Color(0, 0, 0, (float)animationTimer.TimeLeft / (float)animationTimer.WaitTime);
+            else blackScreen.Modulate = new Color(0, 0, 0, 1 - (float)animationTimer.TimeLeft / (float)animationTimer.WaitTime);
         }
 
         protected override void Dispose(bool pDisposing)

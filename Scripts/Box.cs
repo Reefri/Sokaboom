@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using static Godot.TextServer;
 
 
 // author : Cayot Daniel

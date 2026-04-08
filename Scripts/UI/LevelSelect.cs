@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 using Com.IsartDigital.Sokoban;
 
 // Author : Ethan FRENARD / Ethan MASSE

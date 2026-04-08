@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ri8gbumdja1"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Transitions/Fade.cs" id="1_6pwst"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("blackScreen", "animationTimer")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6pwst")
+blackScreen = NodePath("CanvasLayer/SceneTransition")
+animationTimer = NodePath("CanvasLayer/SceneTransition/animationTimer")
+queufreeWhenOver = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="SceneTransition" type="ColorRect" parent="CanvasLayer"]
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="animationTimer" type="Timer" parent="CanvasLayer/SceneTransition"]
+wait_time = 3.0
+one_shot = true
