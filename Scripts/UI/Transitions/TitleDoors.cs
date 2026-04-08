@@ -109,6 +109,12 @@ namespace Com.IsartDigital.Sokoban
 
         }
 
+        public void ActivateDoors()
+        {
+            if(doorsClosed) OpenDoors();
+            else CloseDoors();
+        }
+
         private void OpenDoors()
         {
             if (doorsStillTimer.IsStopped() && doorsClosed)
