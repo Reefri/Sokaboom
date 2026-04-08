@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Com.IsartDigital.Sokoban.States" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Const\States.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Account" Collapsed="true">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQCAAAAAAAAAAgMAAAAAAAAAgAAAEACAIiAAAAAAAA=</HashCode>
+      <FileName>Scripts\DataClasses\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Level" Collapsed="true">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAACBAAg0AEgAAAQAAAIQAQIQAAEAQAAAAAgAg=</HashCode>
+      <FileName>Scripts\DataClasses\Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.LevelScreenShot" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAIAAAAAgAA=</HashCode>
+      <FileName>Scripts\DataClasses\LevelScreenShot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.ToPlaceOnCollectible" Collapsed="true">
+    <Position X="14" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\BombPatterne\ToPlaceOnCollectible.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.ToPlaceOnExplosion" Collapsed="true">
+    <Position X="15.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAggAAAAAAAAAAQAAAAAAEAAAAAQEAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\BombPatterne\ToPlaceOnExplosion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.ToPlaceOnHUD" Collapsed="true">
+    <Position X="11.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\BombPatterne\ToPlaceOnHUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.ToPlaceOnMousePrevisu" Collapsed="true">
+    <Position X="9" Y="9.5" Width="1.5" />
+    <InheritanceLine Type="Com.IsartDigital.Sokoban.ToPlaceOnPatterneControl" FixedFromPoint="true">
+      <Path>
+        <Point X="10.75" Y="8.941" />
+        <Point X="10.75" Y="9.2" />
+        <Point X="9.75" Y="9.2" />
+        <Point X="9.75" Y="9.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\BombPatterne\ToPlaceOnMousePrevisu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.ToPlaceOnPatterneControl" Collapsed="true">
+    <Position X="10" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\BombPatterne\ToPlaceOnPatterneControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.ToPlaceOnPatterneNodeTwoD" Collapsed="true">
+    <Position X="15.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\BombPatterne\ToPlaceOnPatterneNodeTwoD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.ToPlaceOnPlayer" Collapsed="true">
+    <Position X="17.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAEAAAgAAAAAAAAAQAAAAAAAEAQAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\BombPatterne\ToPlaceOnPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.BoxSignal" Collapsed="true">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEEAAAAACQgAAAABAAAAAAABABAAEAEAgEAABAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\BoxSignal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.ButtonAnimation" Collapsed="true">
+    <Position X="9.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAQAAAAACAAAAAAAAAAABEABAAA=</HashCode>
+      <FileName>Scripts\Juiciness\ButtonAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.
+		 
+
+" Collapsed="true">
+    <Position X="14.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAIAA=</HashCode>
+      <FileName>Scripts\Juiciness\ClickUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.FireWork" Collapsed="true">
+    <Position X="6.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAQAaAgMAAAAgAAQAgAAAAAAUSAIgAAAIAIAAA=</HashCode>
+      <FileName>Scripts\Juiciness\FireWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.HoverEffect" Collapsed="true">
+    <Position X="6.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAABEAAAAAwAAAgAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\HoverEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.OnClick" Collapsed="true">
+    <Position X="16.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAgAAEAAAAAA=</HashCode>
+      <FileName>Scripts\Juiciness\OnClick.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.AccountManager" Collapsed="true">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAABAIAAAAAQAAABABBAAAAAAEAAIAAAAA=</HashCode>
+      <FileName>Scripts\Manager\AccountManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.GameManager" Collapsed="true">
+    <Position X="10.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wCAQApAAQSAgCBgMiAkAgBIKBABAIApQBoIRAAAggAU=</HashCode>
+      <FileName>Scripts\Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.GridManager" Collapsed="true">
+    <Position X="3.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAEAAAAAAAAIAAAAABBQBEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Manager\GridManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.JuicinessManager" Collapsed="true">
+    <Position X="16.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAACIBAQKAgAAAAkAAAIQAgBAFJAEAIBgAAIAAIAAA=</HashCode>
+      <FileName>Scripts\Manager\JuicinessManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.SoundManager" Collapsed="true">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QYAEAAUIBaAoAAIQAgCAIJagBIBABAEAAggCgQAgABA=</HashCode>
+      <FileName>Scripts\Manager\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.UIManager" Collapsed="true">
+    <Position X="15.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIQgAJCAgAgqAAKACAgAABAHADABIQBAQAAAAACg=</HashCode>
+      <FileName>Scripts\Manager\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Banderole" Collapsed="true">
+    <Position X="14.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QARAAAEgACAiAAAAAIAAAQkABABAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Transitions\Banderole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.MenuTransition" Collapsed="true">
+    <Position X="15" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIBAAAAACAgAABCAAAAAAAAAAAAAEAAAgAAAAAAAAg=</HashCode>
+      <FileName>Scripts\UI\Transitions\MenuTransition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.SceneTransition" Collapsed="true">
+    <Position X="20" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAACAAAAAAgAQCAAAAAAIAAAAAAoAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\Transitions\SceneTransition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.TitleDoors" Collapsed="true">
+    <Position X="19.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QDIAABgCACAgASBCAAAABAAEBQBAAAgAAgEAAAEAAAA=</HashCode>
+      <FileName>Scripts\UI\Transitions\TitleDoors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.HelpMenu" Collapsed="true">
+    <Position X="14" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIAQAMgACEGAQCWCyAAAAAAAgAAEAACEAAAggACAKA=</HashCode>
+      <FileName>Scripts\UI\HelpMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.HightScore" Collapsed="true">
+    <Position X="14" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAgAAAAAAAAAAAAAAAAAAAhAIAAAAAAIAAAgAIAAAA=</HashCode>
+      <FileName>Scripts\UI\HightScore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.HUD" Collapsed="true">
+    <Position X="15.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACBAAACASAAQAAAAAAgAAIAAQAEIAAAAAAEAAAgAAA=</HashCode>
+      <FileName>Scripts\UI\HUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.IsartLogo" Collapsed="true">
+    <Position X="20" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAABAAAAAAAAAABAgAAAAAACAAQAAAAAAgAAIAAAAAA=</HashCode>
+      <FileName>Scripts\UI\IsartLogo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.PrevisualisationBomb" Collapsed="true">
+    <Position X="14" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABAAAAAAgAAAACAAEAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Scripts\UI\PrevisualisationBomb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.SecretButton" Collapsed="true">
+    <Position X="11" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\SecretButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Win" Collapsed="true">
+    <Position X="16.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAJBAAAAAASAAAEAIAAAgAAAAAAAABAAEBAIAAAA=</HashCode>
+      <FileName>Scripts\UI\Win.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.WinFinal" Collapsed="true">
+    <Position X="16.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAggAEAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Scripts\UI\WinFinal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Bomb" Collapsed="true">
+    <Position X="15.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADAAEAAAAAAAAAIECAAAAAgAAAAAIEAAAgQIBDAAAAA=</HashCode>
+      <FileName>Scripts\Bomb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.BombCollectible" Collapsed="true">
+    <Position X="11" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QiIIBIAAgiAAAZGAAISAgCQAAQgiIGRAAkAAAAAAQQM=</HashCode>
+      <FileName>Scripts\BombCollectible.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.BombExplosion" Collapsed="true">
+    <Position X="16.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAABAAAAAgAggAAACACEAAAAAgAAEECAAgAAEQAAAAI=</HashCode>
+      <FileName>Scripts\BombExplosion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.BombPattern" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAACAAAAAAAAAAAIQAAAAQIACAAAAAAAA=</HashCode>
+      <FileName>Scripts\BombPattern.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.BorderExplosion" Collapsed="true">
+    <Position X="18.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAACAAQAAAAAAAAAAAAAgAAECAIgDAAAAAQAA=</HashCode>
+      <FileName>Scripts\BorderExplosion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Box" Collapsed="true">
+    <Position X="20" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAQAAAAgEACAAAAAQAIAAAAAAACAEAAAwAAACAAAAA=</HashCode>
+      <FileName>Scripts\Box.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.CameraManager" Collapsed="true">
+    <Position X="18.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAABiAgABAAAAAQRAAABiBAABAAggABIAEAAAI=</HashCode>
+      <FileName>Scripts\CameraManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.HistoricHeap" Collapsed="true">
+    <Position X="4.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAQAAAAAA=</HashCode>
+      <FileName>Scripts\HistoricHeap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.JsonReaderWriter" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAACAAAIAAAAAAA=</HashCode>
+      <FileName>Scripts\JsonReaderWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Main" Collapsed="true">
+    <Position X="14.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAMAAAAkACIgACAAAAAAAAAEBABAAAAABgCAAAAAAAA=</HashCode>
+      <FileName>Scripts\Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Map" Collapsed="true">
+    <Position X="7.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAIgAEgAgIAAQQBCAAAgAFQAiggQAAIAAAA=</HashCode>
+      <FileName>Scripts\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.Player" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAADUIAQCCAoABAAACASEASghABwAAEwYgQQQAYIYIA=</HashCode>
+      <FileName>Scripts\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.UI.LevelSelect" Collapsed="true">
+    <Position X="15.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAAACABAAAAQAAgAAgAAAAAAAAgBAAAAgEAAAEAAAg=</HashCode>
+      <FileName>Scripts\UI\LevelSelect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.UI.LoginUI" Collapsed="true">
+    <Position X="15.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>VAYgAAAARgIFAKAAAAKABAAAAMABBAAAoBAQAgEAAAA=</HashCode>
+      <FileName>Scripts\UI\LoginUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Sokoban.UI.TitleCard" Collapsed="true">
+    <Position X="9.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQRAoIAAQAQAAAQgAABAEAObIAEABAAAQAQIAjAAAAA=</HashCode>
+      <FileName>Scripts\UI\TitleCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Utils.Effects.Shaker" Collapsed="true">
+    <Position X="3.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAoIACAAGAIABBAAQAAEgIAgCAAEIARgCBIAAAA=</HashCode>
+      <FileName>Scripts\Utils\Effects\Shaker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Utils.Tweens.TweenProp" Collapsed="true">
+    <Position X="3.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IMEAAQAAAABoAgABAACAAAAAAABoAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Utils\Tweens\TweenProp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Com.IsartDigital.Sokoban.ObjectChar" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMAAAAAAAAAAABCAAAgAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\Const\ObjectChar.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

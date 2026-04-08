@@ -25,7 +25,7 @@ namespace Com.IsartDigital.Sokoban
 		public const string BORDER = "Border";
 		public const string GROUND = "Ground";
 
-        private const string PATH_FINDING_INPUT = "leftClick";
+        public const string CLICK_INPUT = "leftClick";
 
         public static Vector2I boxOrWallClickedOn;
 		public static Vector2I lastDirectionBeforePushing;
@@ -74,7 +74,7 @@ namespace Com.IsartDigital.Sokoban
 
             if (Player.GetInstance().hasBoxToPush || Box.animPlaying) return;
 
-            else if (Input.IsActionJustPressed(PATH_FINDING_INPUT))
+            else if (Input.IsActionJustPressed(CLICK_INPUT))
 			{
                 GameManager.GetInstance().EmptyBoxSignalContainer();
 
@@ -86,6 +86,7 @@ namespace Com.IsartDigital.Sokoban
 				boxOrWallClickedOn = Vector2I.Zero;
 
 				Vector2 lCellClicked = new Vector2I((int)((GetGlobalMousePosition().X + States.HALF_RANGE) / States.DISTANCE_RANGE), (int)((GetGlobalMousePosition().Y + States.HALF_RANGE) / States.DISTANCE_RANGE)) ;
+				if (GetCellTileData((int)LevelLayer.Ground, (Vector2I)lCellClicked) == null) return;
 				OnClick.Create(lCellClicked, GameManager.GetInstance());
 
 				foreach(Vector2I lCell in groundCells)
