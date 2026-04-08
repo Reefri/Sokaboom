@@ -13,7 +13,7 @@ namespace Com.IsartDigital.Sokoban
 {
 	public abstract class JsonReaderWriter
 	{
-        private const string JSONFOLDER_PATH = "JSON/";
+        private const string JSONFOLDER_PATH = "res://JSON/";
 
 
         public static List<T> ReadJsonToList<T>(string pPath)
