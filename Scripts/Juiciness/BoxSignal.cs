@@ -6,7 +6,6 @@ namespace Com.IsartDigital.Sokoban {
 	
 	public partial class BoxSignal : Sprite2D
 	{
-
         private static PackedScene factory = (PackedScene)GD.Load("res://Scenes/Juiciness/BoxSignal.tscn");
 
 		private ShaderMaterial myMaterial;
@@ -39,8 +38,6 @@ namespace Com.IsartDigital.Sokoban {
 			progressionTween.TweenProperty(this, PROGRESSION_NAME, 0, 0.3f);
 
 			progressionTween.Finished += QueueFree;
-
-
 		}
 
 		public override void _Process(double pDelta)
@@ -50,9 +47,6 @@ namespace Com.IsartDigital.Sokoban {
 			myMaterial.SetShaderParameter(GROWPROGRESSION_SHADER_PARAMETER,progression);
 
 			Modulate = White * (1 - progression) + targetcolor * progression;
-
-
-
 		}
 
 		public void Destroy()
@@ -60,7 +54,6 @@ namespace Com.IsartDigital.Sokoban {
 			progressionTween.Kill();
 			QueueFree();
 		}
-
 	
 
 		public static void Create(Vector2I pPosition)
@@ -70,8 +63,6 @@ namespace Com.IsartDigital.Sokoban {
 			lNewSignal.GlobalPosition = pPosition * Map.DISTANCE_RANGE;
 
 			GameManager.GetInstance().boxSignalContainer.AddChild(lNewSignal);
-
 		}
-
 	}
 }

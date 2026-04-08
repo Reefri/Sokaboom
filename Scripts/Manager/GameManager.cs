@@ -118,7 +118,6 @@ namespace Com.IsartDigital.Sokoban
 
 
             ChargeMapFromCurrentLevel();
-        
         }
 
         protected override void Dispose(bool pDisposing)
@@ -153,7 +152,6 @@ namespace Com.IsartDigital.Sokoban
                     tileMap.SetCell((int)Map.LevelLayer.Playground, new Vector2I(j, i), 0,
                             objectPositionOnTileSet[(ObjectChar)currentPosition.value.Map[i][j]]
                             );
-
                 }
             }
 
@@ -180,7 +178,6 @@ namespace Com.IsartDigital.Sokoban
             {
                 bombCollectibleContainer.AddChild(levelBombCollectibles[i].Duplicate());
             }
-
 
 
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
@@ -264,12 +261,10 @@ namespace Com.IsartDigital.Sokoban
 
         public void UpdateAfterAction()
         {
-
             CurrentPar++;
             SaveScreenshotGame();
 
             CheckAndDoWin();
-
         }
 
 
@@ -315,7 +310,6 @@ namespace Com.IsartDigital.Sokoban
 
         public void EmptyFireworkContainer()
         {
-
             List<Node> lListFireworks = fireworkContainer.GetChildren().ToList();
 
 
@@ -367,12 +361,10 @@ namespace Com.IsartDigital.Sokoban
 
             currentPosition = currentPosition.previousValue;
             ChargeMapFromCurrentLevel();
-
         }
 
         public void MoveForwardInTime()
         {
-
             if (currentPosition.nextValue == null)
             {
                 GD.Print("Can't go forward in time !");
@@ -388,7 +380,6 @@ namespace Com.IsartDigital.Sokoban
 
             currentPosition = currentPosition.nextValue;
             ChargeMapFromCurrentLevel();
-
         }
 
 
@@ -422,7 +413,6 @@ namespace Com.IsartDigital.Sokoban
 
         private List<Vector2I> GetBoxWithoutTargetPosition()
         {
-
             List<Vector2I> lListOfPos = new List<Vector2I>();
 
             int lYCurrentLevelSize = currentLevel.Size.Y;
@@ -447,13 +437,10 @@ namespace Com.IsartDigital.Sokoban
             }
 
             return lListOfPos;
-
         }
 
         private bool CheckWin()
         {
-
-
             List<Vector2I> lListOfTargetWihtoutContainer = GetTargetWithoutBoxPosition();
             positionForBoxSignal = GetBoxWithoutTargetPosition();
 
@@ -483,7 +470,5 @@ namespace Com.IsartDigital.Sokoban
                 BoxSignal.Create(lBoxPosition);
             }
         }
-
-
     }
 }

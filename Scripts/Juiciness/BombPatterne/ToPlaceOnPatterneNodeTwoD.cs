@@ -14,7 +14,5 @@ namespace Com.IsartDigital.Sokoban
             lPattern.Scale = new Vector2(pScale, pScale);
             return lPattern;
         }
-
-
 	}
 }

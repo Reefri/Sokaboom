@@ -48,7 +48,6 @@ namespace Com.IsartDigital.Sokoban
 		};
 
 
-
         public static Map Create()
 		{
 			return (Map)factory.Instantiate();
@@ -64,12 +63,10 @@ namespace Com.IsartDigital.Sokoban
 			aStarGrid.CellSize = new Vector2I(DISTANCE_RANGE, DISTANCE_RANGE);
 			aStarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never;
 			aStarGrid.Update();
-
         }
 
 		public override void _Process(double pDelta)
 		{
-
             if (!Player.GetInstance().canInput || Player.GetInstance().hasBoxToPush || Box.animPlaying) return;
 
             else if (Input.IsActionJustPressed(CLICK_INPUT))
@@ -110,7 +107,6 @@ namespace Com.IsartDigital.Sokoban
 							WallOrBoxChosen(BOX, lCell);
 						}
                     }
-
 				}
 			}
 		}
@@ -165,7 +161,6 @@ namespace Com.IsartDigital.Sokoban
 			}
 
 
-
             float lTheClosestCell = lDistanceBetweenCells[0];
 			indexOfClosestCell = 0;
 
@@ -178,7 +173,6 @@ namespace Com.IsartDigital.Sokoban
 					lTheClosestCell = lDistanceBetweenCells[i];
 					indexOfClosestCell = i;
 				}
-
 			}
 
 			
@@ -186,7 +180,6 @@ namespace Com.IsartDigital.Sokoban
 				
             CreatePathFinding(Player.GetInstance().GetPositionToVector2I(), lAlternativeCells[indexOfClosestCell]);
 		}
-
 
 
 		private void CreatePathFinding(Vector2I pBeginning, Vector2I pDestination)
@@ -201,8 +194,6 @@ namespace Com.IsartDigital.Sokoban
 
                 Player.GetInstance().hasBoxToPush = false;
                 return;
-                
-
             }
 
             if (lPath.Count == 0 && (Player.GetInstance().bombInHand == null || boxOrWallClickedOn == Vector2I.Zero))
@@ -213,13 +204,10 @@ namespace Com.IsartDigital.Sokoban
             }
 
 
-
             foreach (Vector2I cellOnPath in lPath)
 			{
 				Player.GetInstance().path.Add(cellOnPath);
 			}
-
 		}
-	
 	}
 }

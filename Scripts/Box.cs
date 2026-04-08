@@ -47,7 +47,6 @@ namespace Com.IsartDigital.Sokoban
             hasABoxToCheck = (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null);
           
 			return hasABoxToCheck;
-
         }
 
         public static Box Create(Vector2I pPosition, Vector2I pDirection)
@@ -58,7 +57,6 @@ namespace Com.IsartDigital.Sokoban
             lBox.GlobalPosition = pPosition * (Map.DISTANCE_RANGE);
 			GameManager.GetInstance().tileMap.AddChild(lBox);
 			return lBox;
-
 		}
 
 		public static void BoxAnimation(Vector2I pDirection)
@@ -70,7 +68,6 @@ namespace Com.IsartDigital.Sokoban
 		{
 			if (anim.IsPlaying()) animPlaying = true;
 			else { animPlaying = false; }
-
 		}
 	}
 }

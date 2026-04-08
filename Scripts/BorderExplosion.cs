@@ -50,7 +50,6 @@ namespace Com.IsartDigital.Sokoban
 			{
 				Stop();
 			}
-
 		}
 
 
@@ -60,9 +59,7 @@ namespace Com.IsartDigital.Sokoban
             lExplosion.GlobalPosition = (pPosition) * Map.DISTANCE_RANGE;
             GameManager.GetInstance().gameOverExplosionContainer.AddChild(lExplosion);
 
-
 			return lExplosion;
-
         }
 
         public void Stop()
@@ -70,8 +67,6 @@ namespace Com.IsartDigital.Sokoban
             EmitSignal(SignalName.Finished);
 
             QueueFree();
-
 		}
-
 	}
 }

@@ -7,8 +7,6 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class BombPattern
 	{
-
-
         public Vector2I originePos;
 
         public delegate Node SimpleDelegate(Vector2 pPosition, Color pColor, float pScale=1);
@@ -49,15 +47,9 @@ namespace Com.IsartDigital.Sokoban
             {EnumOfExplosionPattern.Mouse,       ToPlaceOnMouseCreate }
         };
 
-        
-
 
         public BombPattern(Node2D pParent, List<List<int>> pExplosionMatrix, EnumOfExplosionPattern pExplosionPattern , bool pUseParentPosition = true, Vector2? pOffSet = null, float pScale = 1) 
 		{
-
-
-
-
             originePos = Vector2I.Zero;
 
             int lYSize = pExplosionMatrix.Count;
@@ -77,8 +69,6 @@ namespace Com.IsartDigital.Sokoban
                             enumToColor[pExplosionPattern],
                             pScale
                             ));
-
-                    
                     }
                 }
             }
@@ -95,16 +85,9 @@ namespace Com.IsartDigital.Sokoban
                             new Color(1, 1, 1),
                             pScale
                             ));
-
-                      
                     }
                 }
             }
         }
-
-        
-
-
-
 	}
 }

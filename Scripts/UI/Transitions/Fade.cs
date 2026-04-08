@@ -11,6 +11,7 @@ namespace Com.IsartDigital.Sokoban
         [Export] public bool queufreeWhenOver = false;
         [Export] public bool fadeIn = true;
         public bool animationFinished = false;
+
         public override void _Ready()
         {
             Visible = true;
@@ -30,11 +31,6 @@ namespace Com.IsartDigital.Sokoban
             if (fadeIn)
                 blackScreen.Modulate = new Color(0, 0, 0, (float)animationTimer.TimeLeft / (float)animationTimer.WaitTime);
             else blackScreen.Modulate = new Color(0, 0, 0, 1 - (float)animationTimer.TimeLeft / (float)animationTimer.WaitTime);
-        }
-
-        protected override void Dispose(bool pDisposing)
-        {
-
         }
     }
 }

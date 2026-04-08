@@ -26,7 +26,6 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().QueueFree();
 
 
-
             foreach (AnimatedSprite2D lStars in stars.GetChildren()) lStars.Frame = 0;
             CalculScoreLevel();
 

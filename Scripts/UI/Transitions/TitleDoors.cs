@@ -64,7 +64,6 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
-
 		public override void _Process(double pDelta)
 		{
 			float lDelta = (float)pDelta;
@@ -82,7 +81,6 @@ namespace Com.IsartDigital.Sokoban
                 blockingMouse.MouseFilter = MouseFilterEnum.Ignore;
             }
             else blockingMouse.MouseFilter = MouseFilterEnum.Stop;
-
 		}
 
         public void Transition()
@@ -106,7 +104,6 @@ namespace Com.IsartDigital.Sokoban
                         .SetEase(Tween.EaseType.OutIn);
 
             OpeningDoorsTween(lDoorsTween);
-
         }
 
         public void ActivateDoors()
@@ -121,23 +118,15 @@ namespace Com.IsartDigital.Sokoban
             {
                 doorsStillTimer.Start();
             }
-                
         }
         private void ContinueDoorsMovement()
         {
-            if (doorsClosed) 
-            {
-                OpeningDoorsTween();
-            }
-            else 
-            {
-                ClosingDoorsTweens();
-            }
+            if (doorsClosed) OpeningDoorsTween();
+            else ClosingDoorsTweens();
         }
 
         private void ClosingDoorsTweens(Tween pTween = null)
         {
-
             if (pTween == null)
             {
                 pTween = CreateTween()
@@ -161,7 +150,6 @@ namespace Com.IsartDigital.Sokoban
 
         private void OpeningDoorsTween(Tween pTween = null)
         {
-
             if (pTween == null)
             {
                 pTween = CreateTween()
@@ -215,6 +203,5 @@ namespace Com.IsartDigital.Sokoban
             leftDoor.Position = new Vector2(sideFactor, 0);
             rightDoor.Position = new Vector2(screenSize.X - sideFactor, 0);
         }
-
 	}
 }

@@ -29,8 +29,6 @@ namespace Com.IsartDigital.Sokoban
         public override void _Process(double pDelta)
         {
             if (!particles.Emitting || GlobalPosition == Player.GetInstance().GlobalPosition) { QueueFree(); }
-
         }
-
     }
 }

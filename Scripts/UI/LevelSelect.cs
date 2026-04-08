@@ -36,7 +36,6 @@ namespace Com.IsartDigital.UI {
         }
 
 
-
         private void UpdateLevelSelect()
         {
             foreach (Button lButton in allButtons.GetChildren())

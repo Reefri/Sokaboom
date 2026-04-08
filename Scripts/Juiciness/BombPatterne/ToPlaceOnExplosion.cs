@@ -36,16 +36,13 @@ namespace Com.IsartDigital.Sokoban {
                     lRedParticles.Finished += QueueFree;
                 }
             }
-
 		}
 
 
         private void CheckForChainReaction(Area2D pArea)
         {
-
             if (pArea is BombCollectible)
 			{
-                
 				BombCollectible lBombCollec = (BombCollectible)pArea;
 				lBombCollec.bomb.Explode((Vector2I)lBombCollec.Position / Map.DISTANCE_RANGE, Vector2I.Up);
 				lBombCollec.QueueFree();
@@ -54,6 +51,5 @@ namespace Com.IsartDigital.Sokoban {
                 GameManager.GetInstance().UpdateCurrentPosition();
             }
         }
-
 	}
 }

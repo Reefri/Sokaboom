@@ -84,8 +84,6 @@ namespace Com.IsartDigital.Sokoban
 			waitBeforeNextEplosion.Timeout += ExplodeAllTileInList;
 
 			AddChild(waitBeforeNextEplosion);
-
-
 		}
 
 		public override void _Process(double pDelta)
@@ -120,13 +118,10 @@ namespace Com.IsartDigital.Sokoban
 
 
             ExplodeAllTileInList();
-
-
 		}
 
 		private void ExplodeAllTileInList()
 		{
-
 			int lLastIndexOfLastExplosionPos = lastExplosionPos.Count-1;
 
             for (int i = lLastIndexOfLastExplosionPos; i >=0 ; i--) 
@@ -139,8 +134,6 @@ namespace Com.IsartDigital.Sokoban
 
 		private void ExplodeNextBorder(Vector2I pBorderOriginPos)
 		{
-
-
             BorderExplosion lBorderExplosion = BorderExplosion.Create(pBorderOriginPos);
 
 			GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Ground, pBorderOriginPos);
@@ -168,12 +161,10 @@ namespace Com.IsartDigital.Sokoban
 
 			if (lastExplosionPos.Count != 0) { waitBeforeNextEplosion.WaitTime /= explodingAcceleration ; waitBeforeNextEplosion.Start(); }
 			else lBorderExplosion.Finished += StopExplosion;
-
 		}
 
 		public void StopExplosion()
 		{
-
 			fireworkShaker.Stop();
 			simpleBombShaker.Stop();
 			gameOverShaker.Stop();
@@ -190,7 +181,6 @@ namespace Com.IsartDigital.Sokoban
 			{
 				lBorderExplosion.QueueFree();
 			}
-
 		}
 
 

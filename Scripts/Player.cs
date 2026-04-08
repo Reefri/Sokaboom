@@ -146,7 +146,6 @@ namespace Com.IsartDigital.Sokoban
                     
 
                     AdjacentToInteractable(Map.boxOrWallClickedOn - GetPositionToVector2I());
-
                 }
 
                 else if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn) != null && (bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, Map.boxOrWallClickedOn).GetCustomData(Map.WALL)
@@ -157,24 +156,19 @@ namespace Com.IsartDigital.Sokoban
 
                 return;
             }
-
             else
             {
-
                 AnimThePlayer(path[0] - GetPositionToVector2I());
 
                 path.RemoveAt(0);
                 pathFindingTimer.Start();
             }
-
-
         }
 
 
         public bool CheckTheMove(Vector2I pDirectionVector )
         {
             Vector2I lUnitaryPos = GetPositionToVector2I();
-
      
 
             bool lIsNextCellEmpty = (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector) == null);
@@ -182,9 +176,7 @@ namespace Com.IsartDigital.Sokoban
             bool lCanBoxBePushed = lIsNextCellBox && Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
 
             return lIsNextCellEmpty || lCanBoxBePushed;
-
         }
-
 
 
         public Vector2I GetPositionToVector2I()
@@ -212,9 +204,7 @@ namespace Com.IsartDigital.Sokoban
             {
                 ExplodeBombInHand(pDirection);
             }
-
         }
-
 
 
         public override void _Input(InputEvent pEvent)
@@ -236,12 +226,9 @@ namespace Com.IsartDigital.Sokoban
 
 
                     AdjacentToInteractable(lTryDirection);
-
                 }
             }
         }
-
-
 
 
         public void AnimThePlayer(Vector2I pLastDirection)
@@ -260,7 +247,6 @@ namespace Com.IsartDigital.Sokoban
             animatedSprite.Play(nameOfAnimation[pLastDirection] + ANIM_PLAYER);
 
             lastDirection = pLastDirection;
-
         }
 
 
@@ -270,7 +256,6 @@ namespace Com.IsartDigital.Sokoban
 
 
             actualPlayerSprite.Play(orientation);
-
         }
 
 
@@ -301,11 +286,6 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().UpdateAfterAction();
 
             GiveBombToPlayer(null);
-
-
-
-            //pour faire exploser les tiles, les remplacer par une tile de sol (AtlasCoords : 11, 6)
-            //Map.GetInstance().SetCell(0, gridCoords, atlasCoord)
         }
         protected override void Dispose(bool pDisposing)
         {
@@ -314,11 +294,8 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
-
         public void CreatePrevisualisation()
         {
-
-
             foreach (Node2D lChild in bombPrevisualisationContainer.GetChildren())
             {
                 lChild.QueueFree();
@@ -329,12 +306,10 @@ namespace Com.IsartDigital.Sokoban
             if (bombInHand == null) return;
 
 
-
             foreach (Vector2I lDirection in nameOfAnimation.Keys)
             {
                 if (!CheckTheMove(lDirection))
                 {
-
                     new BombPattern(
                         bombPrevisualisationContainer,
                         Main.RotateMatrix(bombInHand.explosionMatrix, lDirection), 
@@ -344,12 +319,8 @@ namespace Com.IsartDigital.Sokoban
                         (lDirection == lastDirection?1:0.2f)
                         
                         );
-
                 }
             }
         }
-
-
-
     }
 }

@@ -19,7 +19,7 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Label letterM;
         [Export] private Label exclamationMark;
 
-        [Export] Button hightScore;
+        [Export] private Button hightScore;
 
         private Timer timer = new Timer();
 
@@ -50,6 +50,7 @@ namespace Com.IsartDigital.Sokoban.UI
         private const int TOTAL_SPACE_BETWEEN_O = 200;
         private Vector2 soSize = new Vector2(116, 137);
         private const int ROTATION_FOR_TWEEN = 6;
+
         public override void _Ready()
 		{
             finalPositionOfSo = so.Position;

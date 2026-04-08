@@ -7,7 +7,6 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class Account
 	{
-
 		public string Id 
 		{ get; set; }
 		public int Password { get; set; }
@@ -77,7 +76,6 @@ namespace Com.IsartDigital.Sokoban
 
 		public void Update()
 		{
-
             if (LockedLevels.Count != GridManager.GetInstance().numberOfLevel)
 			{
                 Score = new List<int>(new int[GridManager.GetInstance().numberOfLevel]);
@@ -85,15 +83,12 @@ namespace Com.IsartDigital.Sokoban
                 LockedLevels = new List<bool>(new bool[GridManager.GetInstance().numberOfLevel]);
                 LockedLevels[0] = true;
                 AccountManager.GetInstance().UpdateAccount();
-
             }
-
         }
 
         public float FinalScore()
 		{
 			return Score.Sum();
 		}
-
     }
 }

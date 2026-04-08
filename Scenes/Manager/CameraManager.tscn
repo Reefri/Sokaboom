@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ch5qxtjmo6hf1"]
 
-[ext_resource type="Script" path="res://Scripts/CameraManager.cs" id="1_rua5u"]
+[ext_resource type="Script" path="res://Scripts/Manager/CameraManager.cs" id="1_rua5u"]
 
 [node name="CameraManager" type="Node2D" node_paths=PackedStringArray("camera", "moveCameraTimer", "moveBackToStartTimer", "waitTimer", "heldInputTime")]
 script = ExtResource("1_rua5u")

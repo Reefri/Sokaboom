@@ -42,11 +42,6 @@ namespace Com.IsartDigital.Sokoban
 			if (time > tweenDuration) QueueFree();
 		}
 
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
-
 		public static void Create()
 		{
 			MenuTransition lTransition = (MenuTransition)factory.Instantiate();

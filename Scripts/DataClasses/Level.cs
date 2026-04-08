@@ -30,7 +30,6 @@ namespace Com.IsartDigital.Sokoban
 
 		public int Par { get; set; }
 
-
         public string Author { get; set; }
         public string Title { get; set; }
 
@@ -116,7 +115,6 @@ namespace Com.IsartDigital.Sokoban
         public Bomb currentBomb;
 
 
-
         public Level Duplicate()
         {
             Level lNewLevel = new Level();
@@ -158,12 +156,10 @@ namespace Com.IsartDigital.Sokoban
             }
 
             return lString;
-
         }
 
         private void FillTargetPlayerAndBombPos()
         {
-
             bombsPos = new List<Vector2I>();
             targetsPos = new List<Vector2I>();
 
@@ -198,7 +194,6 @@ namespace Com.IsartDigital.Sokoban
                     }
                 }
             }
-
         }
     }
 }

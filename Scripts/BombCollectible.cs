@@ -59,11 +59,8 @@ namespace Com.IsartDigital.Sokoban
         private const string BODYTEXTURE_FILE_EXTENSION = ".png";
 
 
-
         public override void _Ready()
 		{
-
-
             hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
 
             hoverRenderer.SetScript(hoverScript);
@@ -80,9 +77,6 @@ namespace Com.IsartDigital.Sokoban
 
             MouseEntered += InBomb;
             MouseExited += OutBomb;
-
-
-
         }
 
 
@@ -99,8 +93,6 @@ namespace Com.IsartDigital.Sokoban
                 QueueFree();
                 return;
 			}
-
-            
         }
 
         public void ShowChainReaction(float pScale)
@@ -149,7 +141,6 @@ namespace Com.IsartDigital.Sokoban
 
             lBombCollectible.mainColor = Color.FromHsv(GD.Randf(), mainColorSaturation, mainColorValue);
             lBombCollectible.secondaryColor = Color.FromHsv(GD.Randf(), secondaryColorSaturation, secondaryColorValue);
-
             
 
             lBombCollectible.bodyTexture = (Texture2D)GD.Load(
@@ -164,7 +155,6 @@ namespace Com.IsartDigital.Sokoban
 
             ((ShaderMaterial)lBombCollectible.body.Material).SetShaderParameter("MainColor", lBombCollectible.mainColor);
             ((ShaderMaterial)lBombCollectible.body.Material).SetShaderParameter("SecondaryColor", lBombCollectible.secondaryColor);
-
 
 
             return lBombCollectible;

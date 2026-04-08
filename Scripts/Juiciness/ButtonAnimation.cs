@@ -15,7 +15,6 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
-
             List<Node> lChildren = GetChildren().ToList();
 
             foreach (Button lButtons in lChildren)

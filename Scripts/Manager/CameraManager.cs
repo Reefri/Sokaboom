@@ -68,13 +68,6 @@ namespace Com.IsartDigital.Sokoban
                 .SetEase(Tween.EaseType.InOut);
             lTween.TweenProperty(camera, TweenProp.GLOBAL_POSITION, startPosition, (double)moveBackToStartTimer.WaitTime);
         }
-
-        public override void _Process(double pDelta)
-		{
-			base._Process(pDelta);
-			float lDelta = (float)pDelta;
-
-		}
 		
 
         public void CenterCameraOnCurrentLevel()
@@ -83,7 +76,6 @@ namespace Com.IsartDigital.Sokoban
             {
                 camera.GlobalPosition = GameManager.GetInstance().currentLevel.Size * Map.DISTANCE_RANGE / 2;
             }
-
         }
         protected override void Dispose(bool pDisposing)
 		{

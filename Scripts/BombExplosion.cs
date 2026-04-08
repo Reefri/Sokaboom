@@ -91,10 +91,7 @@ namespace Com.IsartDigital.Sokoban {
                     }
                 }
             }
-
-
             GameManager.GetInstance().UpdateCurrentPosition();
-
             GameManager.GetInstance().CheckAndDoWin();
         }
 
@@ -121,7 +118,6 @@ namespace Com.IsartDigital.Sokoban {
 
 
 			GameManager.GetInstance().gameOverExplosionContainer.CallDeferred(ADD_CHILD_DEFERED, lBombPattern);
-
 		}
 	}
 }

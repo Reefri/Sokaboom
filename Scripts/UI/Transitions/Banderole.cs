@@ -53,7 +53,6 @@ namespace Com.IsartDigital.Sokoban
 			banderoles = banderoleNode.GetChildren().OfType<TextureRect>().ToList();
             Visible = false;
 		}
-
 		
 		public void StartTransitionToWin()
 		{
@@ -68,7 +67,6 @@ namespace Com.IsartDigital.Sokoban
             }
 
             lTween.Finished += EndTransitionToWin;
-
         }
 
 
@@ -80,9 +78,7 @@ namespace Com.IsartDigital.Sokoban
 			int lMaxIndexOfMarkers = upMarkers.Count - 1;
             for (int i = lMaxIndexOfMarkers; i >= 0; i--)
             {
-
                 lTween.TweenProperty(banderoles[i], TweenProp.POSITION, upMarkers[i].GlobalPosition, LAST_DURATION);
-
             }
 			lTween.Finished += HideBanderoles;
         }

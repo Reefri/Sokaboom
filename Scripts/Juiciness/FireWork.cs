@@ -66,7 +66,6 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Process(double pDelta)
 		{
-
             if (disableProcess) return;
 
 			Scale = Vector2.One * Mathf.Lerp(maxScale,baseScale,speed/baseSpeed);
@@ -78,7 +77,6 @@ namespace Com.IsartDigital.Sokoban
             Move(lDelta);
 
 			if (speed < 0) { Explode(); }
-
         }
 
 
@@ -91,10 +89,7 @@ namespace Com.IsartDigital.Sokoban
 
             GlobalPosition += pullTowardCenter * lVector.Normalized() * Mathf.Pow(lVector.Length(),0.5f) *pDelta;
 
-
-
 			speed += acceleration*pDelta;
-
 		}
 
 		private void Explode()
@@ -120,11 +115,9 @@ namespace Com.IsartDigital.Sokoban
 
 			((ParticleProcessMaterial)lExplosionPart.ProcessMaterial).Color = Color.FromHsv(lRandFloat,1,1);
 
-
 			
 			lExplosionPart.Emitting = true;
 			lExplosionPart.Finished += Stop;
-
 		}
 
 
@@ -156,6 +149,5 @@ namespace Com.IsartDigital.Sokoban
                 pParent.AddChild(lCurrentFirework);
 			}
         }
-
     }
 }

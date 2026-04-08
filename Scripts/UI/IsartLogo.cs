@@ -50,8 +50,6 @@ namespace Com.IsartDigital.Sokoban
 
                     TitleDoors.GetInstance().ActivateDoors();
                 }
-
-              
             }
         }
     }

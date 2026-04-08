@@ -40,8 +40,6 @@ namespace Com.IsartDigital.Sokoban
 		}
 
 
-
-
         public TestConnexionResult TestConnexion(string pId,string pPassWord)
 		{
             List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
@@ -61,7 +59,6 @@ namespace Com.IsartDigital.Sokoban
 					return TestConnexionResult.Incorrect;
 				}
 			}
-				
 
 			return TestConnexionResult.NotFound;
 		}
@@ -90,12 +87,9 @@ namespace Com.IsartDigital.Sokoban
 
 		public void UpdateAccount()
 		{
-
             List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
 
             int lIndex = lAccountList.FindIndex(lPredicate => lPredicate.Id == currentAccount.Id);
-
-
             if (lIndex < 0)
             {
 				GD.Print("Connexion to Guest account : " + (TestConnexion("Guest","") == TestConnexionResult.Valid));
@@ -112,7 +106,6 @@ namespace Com.IsartDigital.Sokoban
 
 		public void NewWin(int pScore, int pPar)
 		{
-
 			bool lDidModif= false;
 
 			if (currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] < pScore)
@@ -129,18 +122,14 @@ namespace Com.IsartDigital.Sokoban
 
 			if (lDidModif) 
             UpdateAccount();
-
         }
 	
 
 		public List<Account> GetTopPlayers(int pNumberOfPlayer)
 		{
-
             List<Account> lAccountList = JsonReaderWriter.ReadJsonToList<Account>(JSONFILE_PATH);
 
 			return lAccountList.OrderByDescending(lAccount => lAccount.FinalScore()).Take(pNumberOfPlayer).ToList();
         }
-
-
     }
 }

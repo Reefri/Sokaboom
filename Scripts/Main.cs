@@ -41,9 +41,6 @@ namespace Com.IsartDigital.Sokoban
 			if (testOnlyGameFeature) UIManager.GetInstance().GoToLevel(levelAtTest);
         }
 
-        public override void _Process(double delta)
-        {
-        }
 		protected override void Dispose(bool pDisposing)
 		{
 			instance = null;
@@ -145,23 +142,19 @@ namespace Com.IsartDigital.Sokoban
 
                     }
                     lResMatrix.Add(lCollumn);
-
                 }
 
                 return lResMatrix;
-
             }
 
             else if (pDirection == Vector2I.Left)
             {
-
                 foreach (List<int> pRow in lDuplicatedMatrix)
                 {
                     pRow.Reverse();
                 }
 
                 List<List<int>> lResMatrix = new List<List<int>>();
-
 
 
                 int lYSizeOfMatrix = lDuplicatedMatrix[0].Count;
@@ -180,15 +173,11 @@ namespace Com.IsartDigital.Sokoban
                 }
 
                 return lResMatrix;
-
             }
 
             GD.Print("Selected direction doesn't match : "+pDirection);
 
             return lDuplicatedMatrix;
-
         }
-
-
     }
 }

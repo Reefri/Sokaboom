@@ -109,6 +109,5 @@ namespace Com.IsartDigital.Sokoban
         {
             currentPage.Text = pageShown.ToString() + "/" + totalNumberOfPages.ToString();
         }
-
 	}
 }

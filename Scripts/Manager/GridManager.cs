@@ -25,7 +25,6 @@ namespace Com.IsartDigital.Sokoban
 		}
 
 		public const string JSON_PATH = "Levels.json";
-
 		
 		
         private GridManager():base() 
@@ -59,6 +58,5 @@ namespace Com.IsartDigital.Sokoban
 
 			return lLevel;
 		}
-
 	}
 }

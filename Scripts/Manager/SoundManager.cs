@@ -44,24 +44,24 @@ namespace Com.IsartDigital.Sokoban
         [ExportGroup("GamePlay")]
 
         [ExportSubgroup("bomb")]
-        [Export] AudioStreamPlayer fireworkExplosion;
-        [Export] AudioStreamPlayer fireworkWhistle;
-        [Export] AudioStreamPlayer bombPickUp;
-        [Export] AudioStreamPlayer explosion;
-        [Export] AudioStreamPlayer wallExplosion;
+        [Export] private AudioStreamPlayer fireworkWhistle;
+        [Export] private AudioStreamPlayer bombPickUp;
+        [Export] private AudioStreamPlayer fireworkExplosion;
+        [Export] private AudioStreamPlayer explosion;
+        [Export] private AudioStreamPlayer wallExplosion;
 
         [ExportSubgroup("box")]
-        [Export] AudioStreamPlayer boxError;
-        [Export] AudioStreamPlayer boxValid;
-        [Export] AudioStreamPlayer boxExplosion;
-        [Export] AudioStreamPlayer boxMove;
+        [Export] private AudioStreamPlayer boxError;
+        [Export] private AudioStreamPlayer boxValid;
+        [Export] private AudioStreamPlayer boxExplosion;
+        [Export] private AudioStreamPlayer boxMove;
 
         [ExportSubgroup("move")]
-        [Export] AudioStreamPlayer startPathFind;
-        [Export] AudioStreamPlayer footStep;
+        [Export] private AudioStreamPlayer startPathFind;
+        [Export] private AudioStreamPlayer footStep;
 
         [ExportGroup("UI")]
-        [Export] AudioStreamPlayer click;
+        [Export] private AudioStreamPlayer click;
 
 
         private SoundManager()
@@ -79,7 +79,6 @@ namespace Com.IsartDigital.Sokoban
         {
             if (instance == null) instance = (SoundManager)factory.Instantiate();
             return instance;
-
         }
 
         public override void _Ready()
@@ -89,13 +88,6 @@ namespace Com.IsartDigital.Sokoban
 
             UpdateDB(soundsContainer,soundDB);
             UpdateDB(musicsContainer,musicDB);
-
-        }
-
-        public override void _Process(double pDelta)
-        {
-            float lDelta = (float)pDelta;
-
         }
 
         protected override void Dispose(bool pDisposing)
@@ -115,7 +107,6 @@ namespace Com.IsartDigital.Sokoban
             {
                 UpdateDB(lChild, pNewValue);
             }
-
         }
 
 
@@ -192,7 +183,5 @@ namespace Com.IsartDigital.Sokoban
 
             click.Play();
         }
-
-
     }
 }

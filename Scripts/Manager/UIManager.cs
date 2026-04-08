@@ -59,7 +59,6 @@ namespace Com.IsartDigital.Sokoban
             spiralOnMouse = (Node2D)uiSpiral.Instantiate();
             spiralOnMouse.ZIndex = 0;
             CallDeferred("add_sibling", spiralOnMouse);
-            //AddSibling(spiralOnMouse);
         }
         public override void _Process(double delta)
         {
@@ -95,10 +94,6 @@ namespace Com.IsartDigital.Sokoban
         {
             GetChild(0).QueueFree();
             AddChild(uiTitle.Instantiate());
-        }
-        public void ContinueToTitle()
-        {
-            
         }
 
         public void GoToHelp()
@@ -145,7 +140,6 @@ namespace Com.IsartDigital.Sokoban
             else instanceHud.number.Text += currentIndex;
 
             CameraManager.GetInstance().CenterCameraOnCurrentLevel();
-
         }
 
         public void GoToWin()

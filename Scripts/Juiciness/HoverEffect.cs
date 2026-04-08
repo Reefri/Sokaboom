@@ -31,9 +31,6 @@ namespace Com.IsartDigital.Sokoban
         private void SetPosition()
         {
             Position = basePosition + Vector2.Up * amplitude * Mathf.Sin( GlobalPosition.X/Map.DISTANCE_RANGE * Mathf.Tau/3 + JuicinessManager.GetInstance().GlobalTime * Mathf.Tau * speed);
-
         }
-
-
     }
 }

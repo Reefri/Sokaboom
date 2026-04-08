@@ -1,6 +1,4 @@
 using Godot;
-
-
 using System.Text.Json;
 using System.Collections.Generic;
 
@@ -40,7 +38,6 @@ namespace Com.IsartDigital.Sokoban
 
         public static void WriteListToJson<T>(string pPath, List<T> pObjectList)
         {
-
             using Godot.FileAccess lFile = Godot.FileAccess.Open(JSONFOLDER_PATH + pPath, Godot.FileAccess.ModeFlags.Write);
 
             if (lFile == null)
@@ -57,13 +54,9 @@ namespace Com.IsartDigital.Sokoban
             string lSerializedAccountList = JsonSerializer.Serialize(pObjectList);
 
 
-
             lFile.StoreString(lSerializedAccountList);
 
             lFile.Close();
         }
-
-
     }
-    
 }
