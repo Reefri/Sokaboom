@@ -35,8 +35,8 @@ ID_SPECIAL_FEATURE,The Bombs,Les Bombes
 ID_BASICS_CONTROL,Basics Control, Contrôle Basique
 ID_SF_A,- There are bombs placed on the levels that you can pick up,- Il y a des bombes sur le niveau que vous pouvez prendre
 ID_CONTROL_AA,- The player goes toward the chosen direction,- Le joueur va dans la direction choisie
-ID_CONTROL_AB,- if the tile is empty -> he move onto that tile,- si la case est vide -> il y va
-ID_CONTROL_BA,          - if he move toward a crate -> he push it,          - s’il se déplace vers une caisse -> il la pousse
+ID_CONTROL_AB,- if the tile is empty@ he move onto that tile,- si la case est vide@ il y va
+ID_CONTROL_BA,          - if he move toward a crate@ he push it,          - s’il se déplace vers une caisse@ il la pousse
 ID_CONTROL_BB,                                in his direction,                                dans sa direction
 ID_CONTROL_BC,                   - But only if the tile behind the crate is empty,                   - Mais seulement si il n'y a rien derrière
 ID_KEYBOARD,Control : ,Contrôle :
@@ -47,7 +47,7 @@ ID_SF_CB,to detonate it,contre un mur pour la faire exploser
 ID_DETAILS_AA,- the pattern will turn depending on the side,- le motif tournera en fonction du côté
 ID_DETAILS_AB,of the wall you put the bomb against,du mur contre lequel vous mettez la bombe
 ID_DETAILS_BA,- Caution ! you can destroy crates and targets !,- Attention ! Les caisses et cibles sont destructibles !
-ID_DETAILS_BB,- if there are more crates than targets -> destroy them,- s’il y a plus de caisses que de cibles -> détruisez-les
+ID_DETAILS_BB,- if there are more crates than targets@ destroy them,- s’il y a plus de caisses que de cibles@ détruisez-les
 ID_DETAILS_C,^ Here 90° rotation,^ Ici elle tourne à 90°
 ID_TUTORIEL,Tutorial,Turoriel
 ID_ETHANM_A,Mirror +,Miroire +

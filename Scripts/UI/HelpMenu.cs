@@ -61,12 +61,12 @@ namespace Com.IsartDigital.Sokoban
             nextPageButton.Pressed += NextPage;
             previousPageButton.Pressed += PreviousPage;
 
-            explanationControlA.Text = Tr(CONTROL_AA) + "\n" + Tr(CONTROL_AB);
-            explanationControlB.Text = Tr(CONTROL_BA) + "\n" + Tr(CONTROL_BB) +"\n \n \n" + Tr(CONTROL_BC);
+            explanationControlA.Text = Tr(CONTROL_AA) + "\n" + Tr(CONTROL_AB).Replace("@", ",");
+            explanationControlB.Text = Tr(CONTROL_BA).Replace("@", ",") + "\n" + Tr(CONTROL_BB) +"\n \n \n" + Tr(CONTROL_BC);
             explanationSfB.Text = Tr(SF_BA) + "\n" + Tr(SF_BB);
             explanationSfC.Text = Tr(SF_CA) + "\n" + Tr(SF_CB);
             explanationDetailA.Text = Tr(DETAILS_AA) + "\n" + Tr(DETAILS_AB);
-            explanationDetailB.Text = Tr(DETAILS_BA) + "\n \n" + Tr(DETAILS_BB);
+            explanationDetailB.Text = Tr(DETAILS_BA) + "\n \n" + Tr(DETAILS_BB).Replace("@", ",");
 
             if (UIManager.GetInstance().comeToMenu) 
             {
