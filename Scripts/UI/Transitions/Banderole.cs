@@ -1,7 +1,6 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using Godot.Collections;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -52,7 +51,7 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			banderoles = banderoleNode.GetChildren().OfType<TextureRect>().ToList();
-			Visible = false;
+            Visible = false;
 		}
 
 		

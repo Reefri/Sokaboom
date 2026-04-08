@@ -1,7 +1,5 @@
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 // Author : Ethan Masse / Ethan Frenard
 

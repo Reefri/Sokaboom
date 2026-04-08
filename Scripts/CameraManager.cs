@@ -1,7 +1,5 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
-using System;
-using static Godot.CameraFeed;
 
 // Author : Ethan Frenard
 

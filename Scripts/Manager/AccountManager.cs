@@ -1,11 +1,5 @@
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text.Json;
-using static System.Formats.Asn1.AsnWriter;
-using GodotDict = Godot.Collections.Dictionary;
 using System.Linq;
 
 
@@ -104,7 +98,7 @@ namespace Com.IsartDigital.Sokoban
 
             if (lIndex < 0)
             {
-				GD.Print("Connexion au compte Guest : " + (TestConnexion("Guest","") == TestConnexionResult.Valid));
+				GD.Print("Connexion to Guest account : " + (TestConnexion("Guest","") == TestConnexionResult.Valid));
                 return ;
             }
 
