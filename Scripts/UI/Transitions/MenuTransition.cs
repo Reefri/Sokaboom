@@ -13,6 +13,8 @@ namespace Com.IsartDigital.Sokoban
 		[Export] public float tweenDuration = 1;
 
 		private float time = 0;
+		private float doubleWidth;
+		private float doubleHeight;
 
 		private Vector2 screenSize;
 
@@ -23,8 +25,10 @@ namespace Com.IsartDigital.Sokoban
 			whenToPlayAnim.Start();
 			whenToPlayAnim.Timeout += UIManager.GetInstance().GoToTitle;
 			screenSize = GetRect().Size;
-			TransitionZone.Position = Vector2.Right * screenSize.X * 2 + Vector2.Up * screenSize.Y * 2;
-			Vector2 lFinalPos = Vector2.Down * screenSize.Y * 2 + Vector2.Left * screenSize.Y;
+			doubleHeight = screenSize.Y * 2;
+			doubleWidth = screenSize.X * 2;
+			TransitionZone.Position = new Vector2(doubleWidth, -doubleHeight);
+			Vector2 lFinalPos = new Vector2(-screenSize.Y, doubleHeight);
 
 			Tween lTween = TransitionZone.CreateTween();
 			lTween.TweenProperty(TransitionZone, TweenProp.POSITION,lFinalPos, tweenDuration);

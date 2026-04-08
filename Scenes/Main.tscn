@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8t1by23fiuf1"]
+[gd_scene load_steps=8 format=3 uid="uid://b8t1by23fiuf1"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_4l0qp"]
 [ext_resource type="PackedScene" uid="uid://bey0ed1h3h2s" path="res://Scenes/UI/Transitions/TitleDoors.tscn" id="3_5kfyl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ch5qxtjmo6hf1" path="res://Scenes/Manager/CameraManager.tscn" id="3_wl630"]
 [ext_resource type="PackedScene" uid="uid://ckb0d6582p3ei" path="res://Scenes/Manager/JuicinessManager.tscn" id="4_ajjv2"]
 [ext_resource type="PackedScene" uid="uid://u22od2u73pmn" path="res://Scenes/UI/Transitions/BanderoleTransition.tscn" id="6_vgvtg"]
+[ext_resource type="PackedScene" uid="uid://cm3gad8a6tckd" path="res://Scenes/UI/IsartLogo.tscn" id="7_nkax3"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4l0qp")
@@ -15,6 +16,9 @@ levelAtTest = 4
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UiManager" parent="CanvasLayer" instance=ExtResource("3_70v4f")]
+
+[node name="IsartLogo" parent="CanvasLayer/UiManager" instance=ExtResource("7_nkax3")]
+layout_mode = 1
 
 [node name="CameraManager" parent="." instance=ExtResource("3_wl630")]
 

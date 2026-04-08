@@ -60,13 +60,13 @@ namespace Com.IsartDigital.Utils.Effects
             for (int i = 0; i < lLength; i++)
             {
                 if (_targets[i] is Node2D || _targets[i] is Control) targets.Add(_targets[i]);
-                else GD.Print(Name + ": " + _targets[i].Name + " n'est pas un Node2D ou un Control et sera ignoré.");
+                else GD.Print(Name + ": " + _targets[i].Name + " is not a Node2D not a Control and will be ignored.");
             }
 
             int lCount=targets.Count;
 
             if (lCount==0) {
-                GD.Print("Aucune cible du Shake, Start ignoré.");
+                GD.Print("Shaker has not target. Start ignored.");
                 return;
             }
 

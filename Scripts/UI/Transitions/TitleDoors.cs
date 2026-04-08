@@ -59,7 +59,6 @@ namespace Com.IsartDigital.Sokoban
             goToLevel.Timeout += UIManager.GetInstance().ContinueToLevel;
 
             SetDoorsClosed();
-            OpenDoors();
 
             doorsStillTimer.Timeout += ContinueDoorsMovement;
         }
@@ -108,6 +107,12 @@ namespace Com.IsartDigital.Sokoban
 
             OpeningDoorsTween(lDoorsTween);
 
+        }
+
+        public void ActivateDoors()
+        {
+            if(doorsClosed) OpenDoors();
+            else CloseDoors();
         }
 
         private void OpenDoors()
