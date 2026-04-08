@@ -27,7 +27,9 @@ namespace Com.IsartDigital.Sokoban
 			lRes += "Mdp : " + Password + "\n";
 
 			string lTempRes = "";
-			for (int i = 0; i < Score.Count; i++)
+
+			int lNumberOfScore = Score.Count;
+			for (int i = 0; i < lNumberOfScore; i++)
 			{
 				lTempRes += Score[i] + ", ";
 			}
@@ -35,7 +37,8 @@ namespace Com.IsartDigital.Sokoban
 			lRes += "Scores : " + lTempRes + "\n";
 
 			lTempRes = "";
-			for (int i = 0; i < BestPar.Count; i++)
+			int lNumberOfBestPar = BestPar.Count;
+			for (int i = 0; i < lNumberOfScore; i++)
 			{
 				lTempRes += BestPar[i] + ", ";
 			}
@@ -44,7 +47,11 @@ namespace Com.IsartDigital.Sokoban
 
 
 			lTempRes = "";
-			for (int i = 0; i < LockedLevels.Count; i++)
+
+			int lNumberOfLockedLevels = LockedLevels.Count;
+
+
+            for (int i = 0; i < lNumberOfLockedLevels; i++)
 			{
 				lTempRes += LockedLevels[i] + ", ";
 			}

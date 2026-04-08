@@ -37,10 +37,13 @@ namespace Com.IsartDigital.Sokoban {
                 ).originePos;
 
 
+            int lYExplosionMatrixSize = explosionMatrix.Count;
+            int lXExplosionMatrixSize = explosionMatrix[0].Count;
 
-            for (int i = 0; i < explosionMatrix.Count; i++)
+
+            for (int i = 0; i < lYExplosionMatrixSize; i++)
             {
-                for (int j = 0; j < explosionMatrix[i].Count; j++)
+                for (int j = 0; j < lXExplosionMatrixSize; j++)
                 {
                     if (explosionMatrix[i][j] != 0)
                     {

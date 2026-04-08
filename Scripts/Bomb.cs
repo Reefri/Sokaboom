@@ -34,11 +34,14 @@ namespace Com.IsartDigital.Sokoban
 
         private void CreateExplosionMatrice()
         {
-            for (int i = 0; i < gridSize.Y; i++)
+            int lYSize = gridSize.Y;
+            int lXSize = gridSize.X;
+
+            for (int i = 0; i < lYSize; i++)
             {
                 List<int> lRow = new List<int>();
 
-                for (int j = 0; j < gridSize.X; j++)
+                for (int j = 0; j < lXSize; j++)
                 {
                     lRow.Add(0);
                 }
@@ -50,6 +53,7 @@ namespace Com.IsartDigital.Sokoban
         private void PutExplosionInMatrix(List<Vector2I> pExplosionTilePos)
         {
             Vector2I lOriginPos = new Vector2I(Mathf.Abs(minX), Mathf.Abs(minY));
+
 
             foreach (Vector2I lPos in pExplosionTilePos)
             {

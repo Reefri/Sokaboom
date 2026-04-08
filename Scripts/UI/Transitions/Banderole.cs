@@ -60,7 +60,9 @@ namespace Com.IsartDigital.Sokoban
 			Visible = true;
 			Tween lTween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.In);
 
-			for (int i = downMarkers.Count - 1; i >= 0; i--)
+
+			int lMaxIndexOfDownMarkers = downMarkers.Count - 1;
+            for (int i = lMaxIndexOfDownMarkers; i >= 0; i--)
             {
 				lTween.TweenProperty(banderoleNode.GetChild(i), TweenProp.POSITION, downMarkers[i].GlobalPosition, FIRST_DURATION).SetDelay(i * TIME_BETWEEN_TRANSITIONS);
             }
@@ -74,7 +76,9 @@ namespace Com.IsartDigital.Sokoban
 		{
 			UIManager.GetInstance().GoToWin();
             Tween lTween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.In);
-            for (int i = upMarkers.Count - 1; i >= 0; i--)
+
+			int lMaxIndexOfMarkers = upMarkers.Count - 1;
+            for (int i = lMaxIndexOfMarkers; i >= 0; i--)
             {
 
                 lTween.TweenProperty(banderoles[i], TweenProp.POSITION, upMarkers[i].GlobalPosition, LAST_DURATION);
