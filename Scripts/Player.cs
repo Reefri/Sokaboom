@@ -163,9 +163,6 @@ namespace Com.IsartDigital.Sokoban
 
             else
             {
-                //animatedSprite.GlobalPosition = GlobalPosition;
-
-                //lastDirection = ();
 
                 AnimThePlayer(path[0] - GetPositionToVector2I());
 
@@ -297,7 +294,6 @@ namespace Com.IsartDigital.Sokoban
 
             if (pTryDirection != lastDirection) 
             {
-                //ReplaceThePlayer(ANIM_IDLE);
 
                 lastDirection = pTryDirection;
                 OrientThePlayer();

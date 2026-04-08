@@ -60,7 +60,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>QAQAAAAAAAAgAAAAAAAQAAAAAAAABEAAAAAADAAAAAA=</HashCode>
       <FileName>Scripts\Juiciness\BombPatterne\ToPlaceOnMousePrevisu.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -97,16 +97,6 @@
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAAAAAAAAQAAAAACAAAAAAAAAAABEABAAA=</HashCode>
       <FileName>Scripts\Juiciness\ButtonAnimation.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Com.IsartDigital.Sokoban.
-		 
-
-" Collapsed="true">
-    <Position X="14.75" Y="14.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAIAA=</HashCode>
-      <FileName>Scripts\Juiciness\ClickUI.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Com.IsartDigital.Sokoban.FireWork" Collapsed="true">
@@ -154,7 +144,7 @@
   <Class Name="Com.IsartDigital.Sokoban.JuicinessManager" Collapsed="true">
     <Position X="16.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QQAACIBAQKAgAAAAkAAAIQAgBAFJAEAIBgAAIAAIAAA=</HashCode>
+      <HashCode>QQAACABAQKAgAAAAkAAAIQAgBAFJAEAIBgAAIAAIAAA=</HashCode>
       <FileName>Scripts\Manager\JuicinessManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -196,14 +186,14 @@
   <Class Name="Com.IsartDigital.Sokoban.TitleDoors" Collapsed="true">
     <Position X="19.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QDIAABgCACAgASBCAAAABAAEBQBAAAgAAgEAAAEAAAA=</HashCode>
+      <HashCode>QDIAABgCACAgASBCAAACBAAEBQBAAAgAAgEAAAEAAAA=</HashCode>
       <FileName>Scripts\UI\Transitions\TitleDoors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Com.IsartDigital.Sokoban.HelpMenu" Collapsed="true">
     <Position X="14" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAIAQAMgACEGAQCWCyAAAAAAAgAAEAACEAAAggACAKA=</HashCode>
+      <HashCode>QAIASAMgACEGAQCGSyAAAAAAAgAQEAACEAAAggACAKA=</HashCode>
       <FileName>Scripts\UI\HelpMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -231,7 +221,7 @@
   <Class Name="Com.IsartDigital.Sokoban.PrevisualisationBomb" Collapsed="true">
     <Position X="14" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAABAAAAAAgAAAACAAEAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>QAAABAAAAAAgAAAACAAEAAAAAAAAAAAAAAAAEAAIAAA=</HashCode>
       <FileName>Scripts\UI\PrevisualisationBomb.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -266,7 +256,7 @@
   <Class Name="Com.IsartDigital.Sokoban.BombCollectible" Collapsed="true">
     <Position X="11" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QiIIBIAAgiAAAZGAAISAgCQAAQgiIGRAAkAAAAAAQQM=</HashCode>
+      <HashCode>QiIIBIAAgiAAAZGAAISAgSQAAQgiIGRAAkAAAAAAQQM=</HashCode>
       <FileName>Scripts\BombCollectible.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -357,7 +347,7 @@
   <Class Name="Com.IsartDigital.Sokoban.UI.TitleCard" Collapsed="true">
     <Position X="9.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QQRAoIAAQAQAAAQgAABAEAObIAEABAAAQAQIAjAAAAA=</HashCode>
+      <HashCode>UQRAoIBAQAQAAAQgAABAEAObIAEABAAAQAQIAjAAAgA=</HashCode>
       <FileName>Scripts\UI\TitleCard.cs</FileName>
     </TypeIdentifier>
   </Class>
