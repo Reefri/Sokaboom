@@ -1,5 +1,7 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
+using System.Collections.Generic;
+using System.Linq;
 
 // Author : Ethan Masse
 
@@ -25,9 +27,9 @@ namespace Com.IsartDigital.Sokoban
 		{
             GameManager.GetInstance().QueueFree();
 
+            List<Node> lStars = stars.GetChildren().ToList();
 
-
-            foreach (AnimatedSprite2D lStars in stars.GetChildren()) lStars.Frame = 0;
+            foreach (AnimatedSprite2D lStar in lStars) lStar.Frame = 0;
             CalculScoreLevel();
 
             restart.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex);
