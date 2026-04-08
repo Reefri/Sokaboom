@@ -1,5 +1,7 @@
 using Godot;
 using Com.IsartDigital.Sokoban;
+using System.Collections.Generic;
+using System.Linq;
 
 // Author : Ethan FRENARD / Ethan MASSE
 
@@ -20,7 +22,9 @@ namespace Com.IsartDigital.UI {
 
             int i = 0;
 
-            foreach (Button lButtons in allButtons.GetChildren())
+            List<Node> lListButtons = allButtons.GetChildren().ToList();
+
+            foreach (Button lButtons in lListButtons)
 			{
                 int lLevelID = i;
 
@@ -38,7 +42,9 @@ namespace Com.IsartDigital.UI {
 
         private void UpdateLevelSelect()
         {
-            foreach (Button lButton in allButtons.GetChildren())
+            List<Node> lListButtons = allButtons.GetChildren().ToList();
+
+            foreach (Button lButton in lListButtons)
             {
                 if (lButton.GetIndex() >= GridManager.GetInstance().numberOfLevel) lButton.Disabled = true; //faire en sorte que personne n'essaye d'aller dans les niveau pas créé)
                 else if (lButton.GetIndex() != 0) lButton.Disabled = buttonlock && !AccountManager.GetInstance().currentAccount.LockedLevels[lButton.GetIndex()];

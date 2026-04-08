@@ -1,4 +1,6 @@
 using Godot;
+using System.Collections.Generic;
+using System.Linq;
 
 // Author : Sacha Gratikoff
 
@@ -103,7 +105,9 @@ namespace Com.IsartDigital.Sokoban
                 ((AudioStreamPlayer)pNode).VolumeDb = pNewValue;
             }
 
-            foreach (Node lChild in pNode.GetChildren())
+            List<Node> lChildren = pNode.GetChildren().ToList();
+
+            foreach (Node lChild in lChildren)
             {
                 UpdateDB(lChild, pNewValue);
             }

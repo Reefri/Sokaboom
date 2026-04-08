@@ -296,7 +296,10 @@ namespace Com.IsartDigital.Sokoban
 
         public void CreatePrevisualisation()
         {
-            foreach (Node2D lChild in bombPrevisualisationContainer.GetChildren())
+
+            List<Node> lListBombPrevisu = bombPrevisualisationContainer.GetChildren().ToList();
+
+            foreach (Node2D lChild in lListBombPrevisu)
             {
                 lChild.QueueFree();
             }

@@ -1,4 +1,6 @@
 using Godot;
+using System.Collections.Generic;
+using System.Linq;
 
 // Author : Ethan Frenard
 
@@ -27,9 +29,13 @@ namespace Com.IsartDigital.Sokoban {
             yellowParticle.Emitting = true;
             yellowParticle.Finished += QueueFree;
 
-            foreach(Node2D lContainer in redParticleContainer.GetChildren())
+            List<Node> lListContainer = redParticleContainer.GetChildren().ToList();
+            List<Node> lRedParticle;
+
+            foreach(Node2D lContainer in lListContainer)
             {
-                foreach(GpuParticles2D lRedParticles in lContainer.GetChildren())
+                lRedParticle = lContainer.GetChildren().ToList();
+                foreach(GpuParticles2D lRedParticles in lRedParticle)
                 {
                     lRedParticles.Emitting = true;
                     ((ParticleProcessMaterial)lRedParticles.ProcessMaterial).Direction = new Vector3(GlobalPosition.X - lRedParticles.GlobalPosition.X, GlobalPosition.Y - lRedParticles.GlobalPosition.Y, 0);
