@@ -35,9 +35,12 @@ namespace Com.IsartDigital.Sokoban
 
         private void AnimationMouseExited(Button pButton)
         {
-            Tween lTween = CreateTween().SetParallel();
-            lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1f, 1f), DURATION_WHEN_CROSSED);
-            lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(0), DURATION_WHEN_CROSSED);
+            if (TitleDoors.GetInstance().animationFinished)
+            {
+                Tween lTween = CreateTween().SetParallel();
+                lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1f, 1f), DURATION_WHEN_CROSSED);
+                lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(0), DURATION_WHEN_CROSSED);
+            }
         }
         private void AnimationMousePressed(Button pButton)
         {
