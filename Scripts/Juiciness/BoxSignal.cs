@@ -1,7 +1,7 @@
 using Godot;
-using System;
 
 // Author : Gramatikoff Sacha
+
 namespace Com.IsartDigital.Sokoban {
 	
 	public partial class BoxSignal : Sprite2D

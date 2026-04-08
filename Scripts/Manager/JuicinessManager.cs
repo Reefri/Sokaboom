@@ -1,6 +1,5 @@
 using Com.IsartDigital.Utils.Effects;
 using Godot;
-using System;
 using System.Collections.Generic;
 
 // Author : Ethan Frenard
