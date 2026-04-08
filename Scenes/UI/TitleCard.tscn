@@ -27,6 +27,7 @@ exclamationMark = NodePath("Title/BOUM !/!")
 hightScore = NodePath("ButtonsA/HightScore")
 
 [node name="Font" type="ColorRect" parent="."]
+z_index = -2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +37,7 @@ grow_vertical = 2
 color = Color(0, 0.476484, 0, 1)
 
 [node name="Title" type="Control" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -193,6 +195,7 @@ text = "A
 "
 
 [node name="ButtonsA" type="Control" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -233,6 +236,7 @@ size_flags_stretch_ratio = 0.7
 text = "ID_HIGHTSCORE"
 
 [node name="ButtonsB" type="Control" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

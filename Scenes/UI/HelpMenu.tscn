@@ -50,6 +50,7 @@ color = Color(0.32045, 3.06834e-07, 1.20327e-07, 1)
 metadata/_edit_lock_ = true
 
 [node name="titleOfPage" type="Label" parent="FirstPage"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -70,6 +71,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="FirstPage"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -138,6 +140,7 @@ scale = Vector2(0.026227, 0.0784234)
 texture = ExtResource("6_2uc1b")
 
 [node name="HelpMovement" parent="FirstPage" instance=ExtResource("7_1b40g")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,6 +155,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ExplanationControlA" type="Label" parent="FirstPage/HelpMovement"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -169,6 +173,7 @@ text = "- The player goes toward the chosen direction
 - if the tile is empty, they move onto that tile"
 
 [node name="HelpMoveBox" parent="FirstPage" instance=ExtResource("7_66dc1")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -183,6 +188,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="explanationControlB" type="Label" parent="FirstPage/HelpMoveBox"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -213,6 +219,7 @@ grow_vertical = 2
 color = Color(0, 0, 0.819608, 1)
 
 [node name="titleOfPage" type="Label" parent="SecondPage"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -233,6 +240,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BombCollectibleHelp" parent="SecondPage" instance=ExtResource("9_wuot1")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -247,6 +255,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="bombCollectibleText" type="Label" parent="SecondPage/BombCollectibleHelp"]
+z_index = 1
 layout_mode = 0
 offset_left = 187.0
 offset_top = -20.0
@@ -256,6 +265,7 @@ theme_override_font_sizes/font_size = 25
 text = "ID_SF_A"
 
 [node name="HelpPattern" parent="SecondPage" instance=ExtResource("10_xhsv7")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -268,6 +278,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="explanationSfB" type="Label" parent="SecondPage/HelpPattern"]
+z_index = 1
 layout_mode = 0
 offset_left = 62.0
 offset_top = -63.0
@@ -280,6 +291,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BombExplosionHelp" parent="SecondPage" instance=ExtResource("11_mgyye")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -294,6 +306,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="explanationSfC" type="Label" parent="SecondPage/BombExplosionHelp"]
+z_index = 1
 layout_mode = 0
 offset_left = 112.0
 offset_top = -115.0
@@ -315,6 +328,7 @@ grow_vertical = 2
 color = Color(0.160784, 0.356863, 0, 1)
 
 [node name="titleOfPage" type="Label" parent="ThirdPage"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -335,6 +349,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HelpExplodeDirections" parent="ThirdPage" instance=ExtResource("12_1tdw1")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -349,6 +364,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ExplanationDetailA" type="Label" parent="ThirdPage/HelpExplodeDirections"]
+z_index = 1
 layout_mode = 0
 offset_left = 151.0
 offset_top = -75.0
@@ -361,6 +377,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="ThirdPage/HelpExplodeDirections"]
+z_index = 1
 layout_mode = 0
 offset_left = -24.0
 offset_top = 40.0
@@ -370,6 +387,7 @@ theme_override_font_sizes/font_size = 20
 text = "ID_DETAILS_C"
 
 [node name="HelpExplodeBoxes" parent="ThirdPage" instance=ExtResource("13_aqbv3")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -384,6 +402,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="explanationDetailB" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
+z_index = 1
 layout_mode = 0
 offset_left = 210.0
 offset_top = -125.0
@@ -396,6 +415,7 @@ text = "- Caution ! you can destroy crates and targets !
 vertical_alignment = 1
 
 [node name="nextPage" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -415,6 +435,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="previousPage" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -434,6 +455,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="currentPage" type="Label" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -452,6 +474,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="Control" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -464,6 +487,7 @@ mouse_filter = 2
 script = ExtResource("14_3wq5k")
 
 [node name="Button" type="Button" parent="Buttons"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

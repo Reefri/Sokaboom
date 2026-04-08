@@ -11,22 +11,14 @@ namespace Com.IsartDigital.UI {
     {
 		[Export] private Control allButtons;
 
-        [Export] private PackedScene spiral;
-
         private bool buttonlock = true;
 
         private const string LEVEL = "ID_LEVEL";
-
-        private Node2D particles;
         private Button selectedButton;
 
         public override void _Ready()
 		{
             base._Ready();
-
-            particles = (Node2D)spiral.Instantiate();
-            particles.Visible = false;
-            AddChild(particles);
 
             int i = 0;
 
@@ -45,26 +37,6 @@ namespace Com.IsartDigital.UI {
             TreeEntered += UpdateLevelSelect;
         }
 
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-            foreach (Button lButton in allButtons.GetChildren())
-            {
-
-                if (lButton.IsHovered() && !lButton.Disabled)
-                {
-                    selectedButton = lButton;
-
-                    particles.Reparent(lButton);
-                    particles.Visible = true;
-                    particles.ShowBehindParent = true;
-                    particles.Rotation = lButton.Rotation;
-                    particles.Scale = lButton.Scale;
-                }
-                if(selectedButton != null)
-                particles.GlobalPosition = selectedButton.GlobalPosition + selectedButton.Size/2;
-            }
-        }
 
 
         private void UpdateLevelSelect()

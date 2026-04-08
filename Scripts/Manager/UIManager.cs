@@ -27,6 +27,10 @@ namespace Com.IsartDigital.Sokoban
 
         private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
 
+        private PackedScene uiSpiral = GD.Load<PackedScene>("res://Scenes/Juiciness/Spiral.tscn");
+
+        private Node2D spiralOnMouse;
+
         public HUD instanceHud;
 
         public int levelIndex;
@@ -58,7 +62,22 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-			//AddChild(uiScreenSplash.Instantiate());
+            spiralOnMouse = (Node2D)uiSpiral.Instantiate();
+            spiralOnMouse.ZIndex = 0;
+            CallDeferred("add_sibling", spiralOnMouse);
+            //AddSibling(spiralOnMouse);
+        }
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+
+            if (GameManager.GetInstance().currentLevel == null)
+            {
+                spiralOnMouse.GlobalPosition = GetGlobalMousePosition();
+                spiralOnMouse.Visible = true;
+            }
+                
+            else spiralOnMouse.Visible = false;
         }
 
         public void UpdateHud()

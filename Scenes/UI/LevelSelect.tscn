@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvruhy2dpei86"]
+[gd_scene load_steps=9 format=3 uid="uid://cvruhy2dpei86"]
 
 [ext_resource type="Script" path="res://Scripts/UI/LevelSelect.cs" id="1_l0ych"]
-[ext_resource type="PackedScene" uid="uid://dqq2hggkdkm6n" path="res://Scenes/Juiciness/Spiral.tscn" id="2_fuoqm"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="2_mtd47"]
 [ext_resource type="Texture2D" uid="uid://j6nf77g4qnts" path="res://Assets/LevelSelectBackground.png" id="3_0uw2m"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_oadqc"]
@@ -28,7 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l0ych")
 allButtons = NodePath("allButtons")
-spiral = ExtResource("2_fuoqm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -41,6 +39,7 @@ texture = ExtResource("3_0uw2m")
 expand_mode = 1
 
 [node name="allButtons" type="Control" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -388,6 +387,7 @@ disabled = true
 text = "Level 12"
 
 [node name="back" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -404,6 +404,7 @@ theme_override_font_sizes/font_size = 50
 text = "ID_BACK"
 
 [node name="unlock" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
