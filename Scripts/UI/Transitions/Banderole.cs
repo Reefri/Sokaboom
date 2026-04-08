@@ -15,7 +15,7 @@ namespace Com.IsartDigital.Sokoban
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/UI/Transitions/BanderoleTransition.tscn");
 
 
-		[Export] private Node2D banderoleNode;
+		[Export] private Control banderoleNode;
 
 		[Export] private Array<Marker2D> downMarkers;
 		[Export] private Array<Marker2D> upMarkers;

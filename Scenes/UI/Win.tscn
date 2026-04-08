@@ -1,9 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://b078nli7whk52"]
+[gd_scene load_steps=13 format=3 uid="uid://b078nli7whk52"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
 [ext_resource type="SpriteFrames" uid="uid://d2kb1erim2tp8" path="res://Assets/Stars/Star.tres" id="2_0i242"]
 [ext_resource type="Texture2D" uid="uid://cmayr4j2w68ws" path="res://Assets/Stars/Star.png" id="3_umpmi"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="3_ydfsl"]
+[ext_resource type="Texture2D" uid="uid://d26exvbfsbgeg" path="res://Assets/Stars/FinalVictoryBanderole.png" id="5_337bn"]
+
+[sub_resource type="Gradient" id="Gradient_b7b7e"]
+offsets = PackedFloat32Array(0, 0.686747, 1)
+colors = PackedColorArray(0.215686, 0.0117647, 0.4, 1, 0.367233, 0.104498, 0.57534, 1, 0.480674, 0.000211583, 0.497898, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wotmg"]
+gradient = SubResource("Gradient_b7b7e")
+fill_from = Vector2(0.529915, 0.769231)
+fill_to = Vector2(0.482906, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6gkg"]
+font_size = 64
+font_color = Color(0.192157, 0.784314, 0.207843, 0.745098)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w18mc"]
 particle_flag_disable_z = true
@@ -18,7 +32,29 @@ linear_accel_min = -8.4
 scale_min = 0.02
 scale_max = 0.05
 
-[node name="Win" type="Control" node_paths=PackedStringArray("stars", "scoreText", "restart", "next")]
+[sub_resource type="Gradient" id="Gradient_33yxt"]
+offsets = PackedFloat32Array(0.156682, 0.37788, 0.737327, 1)
+colors = PackedColorArray(0, 1, 1, 1, 1, 0.054902, 0.243137, 1, 0.0182744, 0.55827, 0.608048, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ou6cb"]
+gradient = SubResource("Gradient_33yxt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwb00"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(800, 1, 1)
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -47.06
+linear_accel_max = 45.59
+radial_accel_min = -44.47
+radial_accel_max = 88.24
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_ou6cb")
+hue_variation_min = -0.39
+hue_variation_max = 0.66
+turbulence_noise_scale = 2.099
+
+[node name="Win" type="Control" node_paths=PackedStringArray("stars", "confettis", "scoreText", "restart", "next")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,37 +63,46 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lpuuc")
 stars = NodePath("ColorRect/Stars")
+confettis = NodePath("GPUParticles2D")
 scoreText = NodePath("ColorRect/Score")
 restart = NodePath("ColorRect/Control/Restart")
 next = NodePath("ColorRect/Control/Next")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1043.0
-offset_top = -324.0
-offset_right = 955.0
-offset_bottom = 555.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.393742, 0.00198587, 0.76583, 1)
+texture = SubResource("GradientTexture2D_wotmg")
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -306.5
+offset_top = 15.0
+offset_right = 306.5
+offset_bottom = 224.0
+grow_horizontal = 2
+texture = ExtResource("5_337bn")
 
 [node name="Win" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -87.0
-offset_right = 87.0
-offset_bottom = 69.0
+offset_left = -112.5
+offset_top = 50.0
+offset_right = 112.5
+offset_bottom = 138.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "ID_WIN"
+label_settings = SubResource("LabelSettings_s6gkg")
 
 [node name="Stars" type="Control" parent="ColorRect"]
 layout_mode = 1
@@ -71,13 +116,14 @@ offset_bottom = 207.0
 grow_horizontal = 2
 
 [node name="StarOne" type="AnimatedSprite2D" parent="ColorRect/Stars"]
-position = Vector2(39.5, 197)
+position = Vector2(39.5, 297)
 rotation = -0.15708
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_0i242")
 offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarOne"]
+visible = false
 modulate = Color(1, 0.603922, 0, 1)
 emitting = false
 amount = 10
@@ -87,12 +133,13 @@ texture = ExtResource("3_umpmi")
 one_shot = true
 
 [node name="StarTwo" type="AnimatedSprite2D" parent="ColorRect/Stars"]
-position = Vector2(181.5, 105)
+position = Vector2(181.5, 205)
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_0i242")
 offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarTwo"]
+visible = false
 modulate = Color(1, 0.603922, 0, 1)
 emitting = false
 amount = 25
@@ -102,13 +149,14 @@ texture = ExtResource("3_umpmi")
 one_shot = true
 
 [node name="StarThree" type="AnimatedSprite2D" parent="ColorRect/Stars"]
-position = Vector2(331.5, 197)
+position = Vector2(331.5, 297)
 rotation = 0.15708
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_0i242")
 offset = Vector2(0, -18.36)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Stars/StarThree"]
+visible = false
 modulate = Color(1, 0.603922, 0, 1)
 emitting = false
 amount = 50
@@ -118,15 +166,15 @@ one_shot = true
 
 [node name="Score" type="Label" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = -17.5
-offset_right = 43.5
-offset_bottom = 17.5
+anchors_preset = -1
+anchor_left = 0.462
+anchor_top = 0.694
+anchor_right = 0.538
+anchor_bottom = 0.748
+offset_left = 0.276001
+offset_top = 0.287994
+offset_right = -0.276062
+offset_bottom = 0.29599
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
@@ -134,15 +182,13 @@ text = "Score : "
 
 [node name="Control" type="Control" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 511.0
-offset_top = 70.0
-offset_right = -428.0
-offset_bottom = -301.0
+offset_top = -95.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("3_ydfsl")
 
@@ -151,10 +197,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -70.0
-offset_right = 120.0
-offset_bottom = -20.0
+offset_left = 50.0
+offset_top = -145.0
+offset_right = 250.0
+offset_bottom = -45.0
 grow_vertical = 0
 text = "ID_RESTART"
 
@@ -165,10 +211,17 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -218.0
-offset_top = -70.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_left = -350.0
+offset_top = -145.0
+offset_right = -50.0
+offset_bottom = -45.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "ID_NEXT"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(518, -19)
+amount = 800
+process_material = SubResource("ParticleProcessMaterial_hwb00")
+lifetime = 4.0
+randomness = 0.5

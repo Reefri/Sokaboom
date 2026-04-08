@@ -1,7 +1,7 @@
 [
 	{
 		"par": 10,
-		"author" : "ID_OVERLAPPING",
+		"author" : "Overlapping",
 		"title" : "ID_TUTORIEL",
 		"map": 
 		[
@@ -23,7 +23,7 @@
 	{
 		"par": 28,
 		"author" : "MASSE Ethan",
-		"title" : "Miroir +",
+		"title" : "ID_ETHANM_A",
 		"map": 
 		[
 			"=======",
@@ -73,7 +73,7 @@
 	{
 		"par": 41,
 		"author" : "FRENARD Ethan",
-		"title" : "Arrow",
+		"title" : "ID_ETHANF_A",
 		"map": 
 		[
 			"=========",
@@ -97,7 +97,7 @@
 	{
 	"par": 33,
 	"author" : "Claude AI - Sacha Gramatikoff",
-	"title" : "Couloir en U",
+	"title" : "ID_SACHA_IA",
 	"map": 
 	[
 	"===========",
@@ -122,7 +122,7 @@
 	{
 	"par": 22,
 	"author" : "GRAMATIKOFF Sacha",
-	"title" : "Sans murs",
+	"title" : "ID_SACHA_A",
 	"map": 
 	[
 		"======",
@@ -167,7 +167,7 @@
 	{
 	"par": 44,
 	"author" : "GRAMATIKOFF Sacha",
-	"title" : "En avant !",
+	"title" : "ID_SACHA_B",
 	"map": 
 	[
 		"=======",
@@ -187,7 +187,7 @@
 	 {
 	"par": 44,
 	"author" : "FRENARD Ethan",
-	"title" : "Chain",
+	"title" : "ID_ETHANF_B",
 	"map": 
 	[
 		"==========",
@@ -238,7 +238,7 @@
 		{
 	"par": 37,
 	"author" : "CAYOT Daniel",
-	"title" : "Unstable Corridor",
+	"title" : "ID_DANIEL_B",
 	"map": 
 	[
 		"  =====",
@@ -259,7 +259,7 @@
 	{
 	"par": 23,
 	"author" : "Euria AI - FRENARD Ethan",
-	"title" : "Sarcophage",
+	"title" : "ID_ETHANF_IA",
 	"map": 
 	[
 		"===========",
@@ -279,23 +279,23 @@
 		]
 	},
 	{
-	"par": 23,
+	"par": 33,
 	"author" : "ChatGpt AI - CAYOT Daniel",
-	"title" : "Risky Sacrifice",
+	"title" : "ID_DANIEL_IA",
 	"map": 
 	[
 		"=========",
-		"=  . .  =",
-		"= $$$#  =",
+		"=  # .  =",
+		"= $$$# .=",
 		"= 0 ##  =",
-		"= @1 $$ =",
-		"=       =",
+		"=##@ 1$ =",
+		"=   $$  =",
 		"========="
 	],
 	"bombExplosionTilesPos" :
 		[
-			[[0,0],[1,0]],
-			[[0,0],[-1,0]]
+			[[0,0],[1,0],[2,0]],
+			[[0,0],[0,-1],[0,-2]]
 		]
 	}
 ]

@@ -13,14 +13,14 @@ max_value = 1.5
 _data = [Vector2(0.00446428, 1.2), 0.0, 0.0, 0, 0, Vector2(0.96875, 0.112), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_hur5u"]
+[sub_resource type="CurveTexture" id="CurveTexture_hqedw"]
 curve = SubResource("Curve_4jcle")
 
 [sub_resource type="Gradient" id="Gradient_jmapf"]
 offsets = PackedFloat32Array(0.443396, 0.778302, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.266667, 0.266667, 0.266667, 0.333333, 0.572549, 0.572549, 0.572549, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5crrr"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_112li"]
 gradient = SubResource("Gradient_jmapf")
 
 [sub_resource type="Curve" id="Curve_txsft"]
@@ -29,7 +29,7 @@ max_value = 0.0
 _data = [Vector2(0.0223214, -30), 0.0, -126.0, 0, 0, Vector2(0.875, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ahbbt"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mtmbn"]
 curve_y = SubResource("Curve_txsft")
 
 [sub_resource type="Curve" id="Curve_yhgjl"]
@@ -37,7 +37,7 @@ min_value = -1.0
 _data = [Vector2(0, 0.0666667), 0.0, 0.0, 0, 0, Vector2(1, 1), 13.3689, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_n3dxq"]
+[sub_resource type="CurveTexture" id="CurveTexture_7fkwq"]
 curve = SubResource("Curve_yhgjl")
 
 [sub_resource type="Curve" id="Curve_mpmwt"]
@@ -45,7 +45,7 @@ max_value = 2.0
 _data = [Vector2(0.0848214, 1.68), 0.0, 0.0, 0, 0, Vector2(1, 0.133333), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_t01op"]
+[sub_resource type="CurveTexture" id="CurveTexture_fuw4l"]
 curve = SubResource("Curve_mpmwt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_weuhv"]
@@ -59,19 +59,19 @@ initial_velocity_min = 3.25
 initial_velocity_max = 3.25
 angular_velocity_min = -440.6
 angular_velocity_max = 257.91
-angular_velocity_curve = SubResource("CurveTexture_hur5u")
+angular_velocity_curve = SubResource("CurveTexture_hqedw")
 directional_velocity_min = 0.0
 directional_velocity_max = 1.0
-directional_velocity_curve = SubResource("CurveXYZTexture_ahbbt")
+directional_velocity_curve = SubResource("CurveXYZTexture_mtmbn")
 radial_velocity_max = 40.0
-radial_velocity_curve = SubResource("CurveTexture_t01op")
+radial_velocity_curve = SubResource("CurveTexture_fuw4l")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.05
 scale_max = 0.15
-color_ramp = SubResource("GradientTexture1D_5crrr")
+color_ramp = SubResource("GradientTexture1D_112li")
 hue_variation_min = -0.01
 hue_variation_max = 0.01
-hue_variation_curve = SubResource("CurveTexture_n3dxq")
+hue_variation_curve = SubResource("CurveTexture_7fkwq")
 
 [sub_resource type="Curve" id="Curve_vyrxk"]
 min_value = -360.0
@@ -79,7 +79,7 @@ max_value = 360.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_qpuki"]
+[sub_resource type="CurveTexture" id="CurveTexture_n2xml"]
 curve = SubResource("Curve_vyrxk")
 
 [sub_resource type="Curve" id="Curve_3qh1d"]
@@ -88,31 +88,31 @@ max_value = 360.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_w1lf5"]
+[sub_resource type="CurveTexture" id="CurveTexture_xnacb"]
 curve = SubResource("Curve_3qh1d")
 
 [sub_resource type="Gradient" id="Gradient_v73j8"]
 offsets = PackedFloat32Array(0.0566038, 0.363208, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.654232, 0.654232, 0.654232, 0.746373, 0.603922, 0.603922, 0.603922, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_vavwa"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dvylo"]
 gradient = SubResource("Gradient_v73j8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hxeja"]
 particle_flag_disable_z = true
 angle_min = -111.0
 angle_max = 182.7
-angle_curve = SubResource("CurveTexture_qpuki")
+angle_curve = SubResource("CurveTexture_n2xml")
 spread = 0.0
 initial_velocity_min = 44.78
 initial_velocity_max = 89.55
 angular_velocity_min = -343.88
 angular_velocity_max = 182.69
-angular_velocity_curve = SubResource("CurveTexture_w1lf5")
+angular_velocity_curve = SubResource("CurveTexture_xnacb")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.2
-color_ramp = SubResource("GradientTexture1D_vavwa")
+color_ramp = SubResource("GradientTexture1D_dvylo")
 
 [node name="ToPlaceOnExplosions" type="Node2D" node_paths=PackedStringArray("collider", "redParticleContainer", "yellowParticle")]
 script = ExtResource("1_lxq44")

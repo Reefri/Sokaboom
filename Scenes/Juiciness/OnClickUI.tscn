@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2hceqci3tomi"]
+
+[ext_resource type="Script" path="res://Scripts/Juiciness/ClickUI.cs" id="1_wtgwi"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3i3a4"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="OnClickInUi" type="Node2D" node_paths=PackedStringArray("particles")]
+z_index = 5
+script = ExtResource("1_wtgwi")
+particles = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_3i3a4")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://blwdbgedafhxe"]
+[gd_scene load_steps=4 format=3 uid="uid://blwdbgedafhxe"]
 
 [ext_resource type="Script" path="res://Scripts/Juiciness/BombPatterne/ToPlaceOnMousePrevisu.cs" id="1_44dgg"]
+[ext_resource type="Texture2D" uid="uid://7a1mjepjsyvs" path="res://Assets/ExplosionMark.png" id="2_oa2t6"]
+[ext_resource type="PackedScene" uid="uid://didk87ft1qbgu" path="res://Scripts/Utils/Effects/shaker.tscn" id="3_8800d"]
 
-[node name="ToPlaceOnMousePrevisu" type="Control"]
+[node name="ToPlaceOnMousePrevisu" type="Control" node_paths=PackedStringArray("shaker", "explosion")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +12,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_44dgg")
+shaker = NodePath("Shaker")
+explosion = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("2_oa2t6")
+
+[node name="Shaker" parent="." node_paths=PackedStringArray("_targets") instance=ExtResource("3_8800d")]
+_targets = [NodePath("../TextureRect")]
+duration = 0.0
+transition_ = 6
+ease_ = 1
+duration_ = 0.5
+_transition = 10
+_ease = 3
+_duration = 0.5
