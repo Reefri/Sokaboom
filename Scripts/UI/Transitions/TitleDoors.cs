@@ -61,8 +61,6 @@ namespace Com.IsartDigital.Sokoban
             SetDoorsClosed();
             OpenDoors();
 
-            //whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevelSelect;
-
             doorsStillTimer.Timeout += ContinueDoorsMovement;
         }
 
