@@ -57,7 +57,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 			base._Ready();
 
-			AddChild(uiScreenSplash.Instantiate());
+			//AddChild(uiScreenSplash.Instantiate());
         }
 
         public void UpdateHud()

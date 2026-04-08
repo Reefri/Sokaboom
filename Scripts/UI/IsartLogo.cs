@@ -35,19 +35,21 @@ namespace Com.IsartDigital.Sokoban
 
             if (time >= tweenDuration * 2 && active)
             {
-                SceneTransition lTransition = (SceneTransition)fadeIn.Instantiate();
+                Fade lTransition = (Fade)fadeIn.Instantiate();
                 lTransition.queufreeWhenOver = true;
                 lTransition.animationTimer.WaitTime = tweenDuration;
                 UIManager.GetInstance().GetParent().AddChild(lTransition);
                 active = false;
             }
-            if (time >= tweenDuration * 2 + 0.25f || Input.IsActionJustReleased("leftClick"))
+            if (time >= tweenDuration * 2 + 0.25f)
             {
                 if (!Main.GetInstance().noLogin) UIManager.GetInstance().GoToLogin();
                 else
                 {
                     AccountManager.GetInstance().TestConnexion("Guest", "");
                     UIManager.GetInstance().GoToTitle();
+
+                    TitleDoors.GetInstance().ActivateDoors();
                 }
 
               

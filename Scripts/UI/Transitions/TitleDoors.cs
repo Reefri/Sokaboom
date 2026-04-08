@@ -59,7 +59,6 @@ namespace Com.IsartDigital.Sokoban
             goToLevel.Timeout += UIManager.GetInstance().ContinueToLevel;
 
             SetDoorsClosed();
-            OpenDoors();
 
             //whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevelSelect;
 
