@@ -9,7 +9,7 @@ namespace Com.IsartDigital.Sokoban
 	{
         RandomNumberGenerator lRand = new RandomNumberGenerator();
         int lIndex;
-
+        private const float DURATION_WHEN_CROSSED = 0.5f;
 
         public override void _Ready()
 		{
@@ -29,15 +29,15 @@ namespace Com.IsartDigital.Sokoban
             lIndex = lRand.RandiRange(0, 1);
 
 			Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.OutIn).SetParallel();
-			lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1.1f, 1.1f), 0.5f);
-            lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(lIndex == 0 ? -5 : 5), 0.5f);
+			lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1.1f, 1.1f), DURATION_WHEN_CROSSED);
+            lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(lIndex == 0 ? -5 : 5), DURATION_WHEN_CROSSED);
         }
 
         private void AnimationMouseExited(Button pButton)
         {
             Tween lTween = CreateTween().SetParallel();
-            lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1f, 1f), 0.5f);
-            lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(0), 0.5f);
+            lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1f, 1f), DURATION_WHEN_CROSSED);
+            lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(0), DURATION_WHEN_CROSSED);
         }
         private void AnimationMousePressed(Button pButton)
         {

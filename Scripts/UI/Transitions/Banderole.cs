@@ -27,6 +27,9 @@ namespace Com.IsartDigital.Sokoban
 		private Timer timerBetweenTransitions = new Timer();
 		private const float TIME_BETWEEN_TRANSITIONS = 0.2f;
 
+		private const float FIRST_DURATION = 0.509f;
+		private const float LAST_DURATION = 0.5f;
+
 		private List<TextureRect> banderoles ;
 
         private Banderole():base() 
@@ -60,10 +63,9 @@ namespace Com.IsartDigital.Sokoban
 
 			for (int i = downMarkers.Count - 1; i >= 0; i--)
             {
-
-				lTween.TweenProperty(banderoleNode.GetChild(i), TweenProp.POSITION, downMarkers[i].GlobalPosition, 0.509f).SetDelay(i * TIME_BETWEEN_TRANSITIONS);
-				
+				lTween.TweenProperty(banderoleNode.GetChild(i), TweenProp.POSITION, downMarkers[i].GlobalPosition, FIRST_DURATION).SetDelay(i * TIME_BETWEEN_TRANSITIONS);
             }
+
             lTween.Finished += EndTransitionToWin;
 
         }
@@ -76,7 +78,7 @@ namespace Com.IsartDigital.Sokoban
             for (int i = upMarkers.Count - 1; i >= 0; i--)
             {
 
-                lTween.TweenProperty(banderoles[i], TweenProp.POSITION, upMarkers[i].GlobalPosition, 0.5f);
+                lTween.TweenProperty(banderoles[i], TweenProp.POSITION, upMarkers[i].GlobalPosition, LAST_DURATION);
 
             }
 			lTween.Finished += HideBanderoles;

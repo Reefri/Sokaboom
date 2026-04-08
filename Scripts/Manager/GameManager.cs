@@ -122,16 +122,11 @@ namespace Com.IsartDigital.Sokoban
         
         }
 
-
-
-
         protected override void Dispose(bool pDisposing)
         {
             instance = null;
             base.Dispose(pDisposing);
         }
-
-
 
         public void ChargeMapFromCurrentLevel()
         {
@@ -167,29 +162,6 @@ namespace Com.IsartDigital.Sokoban
             }
 
 
-            //Node2D lNewNode = new Node2D();
-
-
-
-
-
-            //foreach (int i in currentPosition.value.indexOfAvalaibleBombs)
-            //{
-
-
-            //    lNewNode.AddChild(levelBombCollectibles[i].Duplicate());
-
-            //}
-
-
-
-            //AddChild(lNewNode);
-
-            //bombCollectibleContainer.QueueFree();
-
-
-            //bombCollectibleContainer = lNewNode;
-
             foreach (Node2D lBombCollectible in bombCollectibleContainer.GetChildren())
             {
                 lBombCollectible.QueueFree();
@@ -224,7 +196,6 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-        
 
         public void RemoveBombAtIndex(int lIndex)
         {
@@ -279,8 +250,6 @@ namespace Com.IsartDigital.Sokoban
 
             return lNewLevel;
         }
-
-    
 
         public void UpdateAfterAction()
         {
@@ -463,7 +432,7 @@ namespace Com.IsartDigital.Sokoban
             List<Vector2I> lListOfTargetWihtoutContainer = GetTargetWithoutBoxPosition();
             positionForBoxSignal = GetBoxWithoutTargetPosition();
 
-            if      (0 < lListOfTargetWihtoutContainer.Count) { return false; }
+            if (0 < lListOfTargetWihtoutContainer.Count) { return false; }
 
 
 
@@ -476,40 +445,6 @@ namespace Com.IsartDigital.Sokoban
             }
 
             waitBeforeBoxSignal.Stop();
-
-
-
-            //int lNumberOfTarget = 0;
-
-
-            //for (int i = 0; i < currentLevel.Size.Y; i++)
-            //{
-            //    for (int j = 0; j < currentLevel.Size.X; j++)
-            //    { 
-            //        if      (tileMap.GetCellTileData((int)Map.LevelLayer.Playground,new Vector2I(j,i))!=null && 
-            //           (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
-            //        {
-            //            if (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) == null || 
-            //         !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
-            //            {
-            //                return false;
-            //            }
-            //        }
-
-            //        if      (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) != null &&
-            //           (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)).GetCustomData(Map.TARGET))
-            //        {
-            //            lNumberOfTarget++;
-            //            if      (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null ||
-            //              !(bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.CONTAINER))
-            //            {
-            //                return false;
-            //            }
-            //        }
-
-
-            //    }
-            //}
 
 
             return currentPosition.value.targetsPos.Count == currentLevel.targetsPos.Count;

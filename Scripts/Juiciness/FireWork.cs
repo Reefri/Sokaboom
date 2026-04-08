@@ -145,7 +145,7 @@ namespace Com.IsartDigital.Sokoban
 			{
 				lCurrentFirework = Create(pPosition);
 
-				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3*(lRandNumberOfFirework / 2-i)/ lRandNumberOfFirework);
+				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3 * (lRandNumberOfFirework / 2-i)/ lRandNumberOfFirework);
 				
                 pParent.AddChild(lCurrentFirework);
 			}

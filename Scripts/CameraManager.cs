@@ -48,17 +48,8 @@ namespace Com.IsartDigital.Sokoban
             moveCameraTimer.Timeout += WaitAtEndPos;
             moveBackToStartTimer.Timeout += StopMoving;
             waitTimer.Timeout += moveBackCameraToStart;
-            heldInputTime.Timeout += IsInputHeld;
 		}
 
-        private void IsInputHeld()
-        {
-            if (Input.IsActionPressed(MOVE_CAM_INPUT) && GameManager.GetInstance().currentLevel != null)
-			{
-                MoveCameraFromAToB(camera.GlobalPosition, GetGlobalMousePosition());
-            }
-                
-        }
 
         private void WaitAtEndPos()
         {
@@ -85,47 +76,14 @@ namespace Com.IsartDigital.Sokoban
 			base._Process(pDelta);
 			float lDelta = (float)pDelta;
 
-			CheckHeldInput(MOVE_CAM_INPUT);
 		}
-
 		
-		private void CheckHeldInput(string pInputName)
-		{
-			if (Input.IsActionJustPressed(pInputName) && GameManager.GetInstance().currentLevel != null && heldInputTime.IsStopped())
-			{
-                heldInputTime.Start();
-            }
-			else if (Input.IsActionJustReleased(pInputName))
-			{
-				heldInputTime.Stop();
-			}
-        }
-		
-
-		public void MoveCameraFromAToB(Vector2 pStartPosition, Vector2 pEndPosition, float pTime = 1)
-		{
-
-			if (!isMoving && GameManager.GetInstance().currentLevel != null)
-			{
-				isMoving = true;
-
-                startPosition = pStartPosition;
-
-                moveCameraTimer.WaitTime = pTime;
-				moveCameraTimer.Start();
-
-				Tween lTween = CreateTween()
-				.SetTrans(Tween.TransitionType.Sine)
-				.SetEase(Tween.EaseType.InOut);
-				lTween.TweenProperty(camera, TweenProp.GLOBAL_POSITION, pEndPosition, (double)pTime);
-			}
-		}
 
         public void CenterCameraOnCurrentLevel()
         {
             if (GameManager.GetInstance().currentLevel != null)
             {
-                camera.GlobalPosition = GameManager.GetInstance().currentLevel.Size * States.DISTANCE_RANGE / 2;
+                camera.GlobalPosition = GameManager.GetInstance().currentLevel.Size * Map.DISTANCE_RANGE / 2;
             }
 
         }

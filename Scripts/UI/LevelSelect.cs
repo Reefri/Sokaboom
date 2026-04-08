@@ -97,8 +97,8 @@ namespace Com.IsartDigital.UI {
 
         private void GoToHelp()
         {
-            UIManager.GetInstance().GoToHelp();
             UIManager.GetInstance().comeToMenu = false;
+            UIManager.GetInstance().GoToHelp();
         }
 	}
 }
