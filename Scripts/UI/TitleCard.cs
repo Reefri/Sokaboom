@@ -38,15 +38,24 @@ namespace Com.IsartDigital.Sokoban.UI
         private const string FRENCH = "fr";
         private const string TWEEN_FOR_O = "o";
 
+
         private const float WAIT_TIME_START = 0.05f;
         private const float LONG_DELAY = 1.5f;
         private const float SHORT_DELAY = 0.2f;
+        private const float EXPLOSION_SCALE = 0.85f;
+        private const float EXPLOSION_SKEW = 23.2f;
+
         private const int INITIAL_Y_POSITION = 265;
+        private const int NUMBER_OF_O = 18;
+        private const int MARGIN_BETWEEN_O = 25;
+        private const int TOTAL_SPACE_BETWEEN_O = 200;
+        private Vector2 soSize = new Vector2(116, 137);
+        private const int ROTATION_FOR_TWEEN = 6;
         public override void _Ready()
 		{
             finalPositionOfSo = so.Position;
 
-            so.Position = new Vector2(title.Size.X / 2, 18);
+            so.Position = new Vector2(title.Size.X / 2, NUMBER_OF_O);
             posInitK = letterK.Position;
             posInitA = letterA.Position;
 
@@ -82,7 +91,7 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private void MoreO()
         {
-            while (so.Size.X < title.Size.X - 200)
+            while (so.Size.X < title.Size.X - TOTAL_SPACE_BETWEEN_O)
             {
                 so.Text += TWEEN_FOR_O;
                 return;
@@ -96,10 +105,10 @@ namespace Com.IsartDigital.Sokoban.UI
             while (so.Text.Length > 2)
             {
                 so.Text = so.Text.Left(so.Text.Length - 1);
-                if (so.Position.X > finalPositionOfSo.X - 25) so.Position = finalPositionOfSo;
+                if (so.Position.X > finalPositionOfSo.X - MARGIN_BETWEEN_O) so.Position = finalPositionOfSo;
                 return;
             }
-            so.Size = new Vector2(116, 137);
+            so.Size = soSize;
             timer.QueueFree();
             Kaboum();
         }
@@ -113,7 +122,7 @@ namespace Com.IsartDigital.Sokoban.UI
             tween.TweenProperty(letterK, TweenProp.POSITION, letterK.Position, 2f).From(new Vector2(letterK.Position.X, INITIAL_Y_POSITION));
 
             tween.TweenProperty(letterA, TweenProp.VISIBLE, true, 0f).SetDelay(SHORT_DELAY);
-            tween.TweenProperty(letterA, TweenProp.POSITION, letterA.Position, 2f).From(new Vector2(letterA.Position.X, INITIAL_Y_POSITION)).SetDelay(0.2f);
+            tween.TweenProperty(letterA, TweenProp.POSITION, letterA.Position, 2f).From(new Vector2(letterA.Position.X, INITIAL_Y_POSITION)).SetDelay(SHORT_DELAY);
 
             tween.TweenProperty(explosion, TweenProp.VISIBLE, true, 0f).SetDelay(1f);
             tween.TweenProperty(explosion, TweenProp.SCALE, explosion.Scale, 1f).From(Vector2.Zero).SetDelay(1f);
@@ -142,7 +151,7 @@ namespace Com.IsartDigital.Sokoban.UI
             {
                 timer.QueueFree();
                 so.Position = finalPositionOfSo;
-                so.Size = new Vector2(116, 137);
+                so.Size = soSize;
                 so.Text = so.Text.Left(2);
             }
             
@@ -154,13 +163,13 @@ namespace Com.IsartDigital.Sokoban.UI
             letterK.Position = posInitK;
             letterA.Position = posInitA;
 
-            explosion.Scale = new Vector2(0.85f, 0.85f);
-            boum.Scale = new Vector2(1, 1);
+            explosion.Scale = new Vector2(EXPLOSION_SCALE, EXPLOSION_SCALE);
+            boum.Scale = Vector2.One;
 
-            explosion.Rotation = Mathf.DegToRad(6);
-            explosion.Skew = Mathf.DegToRad(23.2f);
+            explosion.Rotation = Mathf.DegToRad(ROTATION_FOR_TWEEN);
+            explosion.Skew = Mathf.DegToRad(EXPLOSION_SKEW);
 
-            boum.Rotation = Mathf.DegToRad(6);
+            boum.Rotation = Mathf.DegToRad(ROTATION_FOR_TWEEN);
 
             animationWantToStop = false;
             AnimationIsFinish();
