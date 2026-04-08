@@ -6,7 +6,6 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class UIManager : Control
 	{
-
 		static private UIManager instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/UIManager.tscn");
 
@@ -73,6 +72,12 @@ namespace Com.IsartDigital.Sokoban
             }
                 
             else spiralOnMouse.Visible = false;
+        }
+
+        public void ChangeLayer()
+        {
+            CanvasLayer lParent = (CanvasLayer)GetParent();
+            lParent.Layer = 1;
         }
 
         public void UpdateHud()
