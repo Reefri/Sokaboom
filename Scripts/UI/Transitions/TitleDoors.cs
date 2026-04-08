@@ -13,6 +13,8 @@ namespace Com.IsartDigital.Sokoban
         [Export] private TextureRect leftDoor;
 		[Export] private TextureRect rightDoor;
 
+        [Export] private ColorRect blockingMouse;
+
         [Export] private float tweenDuration = 1;
 
         [Export] public Timer whenToPlayAnim;
@@ -77,10 +79,13 @@ namespace Com.IsartDigital.Sokoban
                 leftDoor.Position = new Vector2(-screenSize.X / 2, 0);
                 rightDoor.Position = new Vector2(screenSize.X * 1.5f, 0);
             }
-            else if (animationFinished)
+            else if(animationFinished) SetDoorsOpen();
+            if (animationFinished)
             {
-                SetDoorsOpen();
+                blockingMouse.MouseFilter = MouseFilterEnum.Ignore;
             }
+            else blockingMouse.MouseFilter = MouseFilterEnum.Stop;
+
 		}
 
         public void Transition()
@@ -93,52 +98,18 @@ namespace Com.IsartDigital.Sokoban
             {
                 goToLevel.Start();
             }
-           Tween lDoorsTween = leftDoor.CreateTween()
-                   .SetTrans(Tween.TransitionType.Bounce)
-                   .SetEase(Tween.EaseType.Out);
 
-            lDoorsTween.TweenCallback
-                (
-                Callable.From(() =>
-                    doorsClosed = true)
-                );
-            animationFinished = false;
+            Tween lDoorsTween = CreateTween()
+                .SetTrans(Tween.TransitionType.Bounce)
+                       .SetEase(Tween.EaseType.Out);
 
-            lDoorsTween.TweenProperty(leftDoor, TweenProp.POSITION,
-                new Vector2(screenSize.X / 2, 0), tweenDuration);
+            ClosingDoorsTweens(lDoorsTween);
 
-            lDoorsTween.Parallel().TweenProperty(rightDoor, TweenProp.POSITION,
-                new Vector2(screenSize.X / 2, 0), tweenDuration);
+            lDoorsTween.SetTrans(Tween.TransitionType.Quad)
+                        .SetEase(Tween.EaseType.OutIn);
 
-            lDoorsTween
-                    .SetTrans(Tween.TransitionType.Quad)
-                    .SetEase(Tween.EaseType.OutIn);
+            OpeningDoorsTween(lDoorsTween);
 
-            lDoorsTween.TweenProperty(leftDoor, TweenProp.POSITION,
-                new Vector2(sideFactor, 0), tweenDuration).SetDelay(doorsStillTimer.WaitTime);
-
-
-
-            lDoorsTween.Parallel().TweenProperty(rightDoor, TweenProp.POSITION,
-               new Vector2(screenSize.X - sideFactor, 0), tweenDuration).SetDelay(doorsStillTimer.WaitTime);
-
-            lDoorsTween.TweenCallback
-                (
-                Callable.From(() =>
-                    doorsClosed = false)
-                );
-
-            if(goingToLevel)
-            {
-                lDoorsTween.TweenProperty(rightDoor, TweenProp.POSITION, new Vector2(screenSize.X, 0), tweenDuration);
-                lDoorsTween.Parallel().TweenProperty(leftDoor, TweenProp.POSITION, new Vector2(0, 0), tweenDuration);
-            }
-
-            lDoorsTween.TweenCallback
-                (
-                Callable.From(() =>
-                    animationFinished = true)
-                );
         }
 
         public void ActivateDoors()
@@ -159,43 +130,73 @@ namespace Com.IsartDigital.Sokoban
         }
         private void ContinueDoorsMovement()
         {
-            if (doorsClosed) //opens the doors
+            if (doorsClosed) 
             {
-                SetDoorsClosed();
-
-                Tween lLeftDoorTween = leftDoor.CreateTween()
-                    .SetTrans(Tween.TransitionType.Quad)
-                    .SetEase(Tween.EaseType.OutIn);
-
-                lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
-                    Vector2.Zero, tweenDuration);
-
-                Tween lRightDoorTween = rightDoor.CreateTween()
-                    .SetTrans(Tween.TransitionType.Quad)
-                    .SetEase(Tween.EaseType.OutIn);
-                lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
-                    new Vector2(screenSize.X, 0), tweenDuration);
-
-                doorsClosed = false;
+                OpeningDoorsTween();
             }
-            else if (!doorsClosed) //closes the doors
+            else 
             {
-                SetDoorsOpen();
-
-                Tween lLeftDoorTween = leftDoor.CreateTween()
-                    .SetTrans(Tween.TransitionType.Bounce)
-                    .SetEase(Tween.EaseType.Out);
-                lLeftDoorTween.TweenProperty(leftDoor, TweenProp.POSITION,
-                    new Vector2(screenSize.X / 2, 0), tweenDuration);
-
-                Tween lRightDoorTween = rightDoor.CreateTween()
-                    .SetTrans(Tween.TransitionType.Bounce)
-                    .SetEase(Tween.EaseType.Out);
-                lRightDoorTween.TweenProperty(rightDoor, TweenProp.POSITION,
-                    new Vector2(screenSize.X / 2, 0), tweenDuration);
-
-                doorsClosed = true;
+                ClosingDoorsTweens();
             }
+        }
+
+        private void ClosingDoorsTweens(Tween pTween = null)
+        {
+
+            if (pTween == null)
+            {
+                pTween = CreateTween()
+                       .SetTrans(Tween.TransitionType.Bounce)
+                       .SetEase(Tween.EaseType.Out);
+            }
+                
+                pTween.TweenCallback
+                    (
+                    Callable.From(() =>
+                        doorsClosed = true)
+                    );
+            animationFinished = false;
+
+            pTween.TweenProperty(leftDoor, TweenProp.POSITION,
+                new Vector2(screenSize.X / 2, 0), tweenDuration);
+
+            pTween.Parallel().TweenProperty(rightDoor, TweenProp.POSITION,
+                new Vector2(screenSize.X / 2, 0), tweenDuration);
+        }
+
+        private void OpeningDoorsTween(Tween pTween = null)
+        {
+
+            if (pTween == null)
+            {
+                pTween = CreateTween()
+                        .SetTrans(Tween.TransitionType.Quad)
+                        .SetEase(Tween.EaseType.OutIn);
+            }
+
+            pTween.TweenProperty(leftDoor, TweenProp.POSITION,
+                new Vector2(sideFactor, 0), tweenDuration).SetDelay(doorsStillTimer.WaitTime);
+
+            pTween.Parallel().TweenProperty(rightDoor, TweenProp.POSITION,
+               new Vector2(screenSize.X - sideFactor, 0), tweenDuration).SetDelay(doorsStillTimer.WaitTime);
+
+            pTween.TweenCallback
+                (
+                Callable.From(() =>
+                    doorsClosed = false)
+                );
+
+            if (goingToLevel)
+            {
+                pTween.TweenProperty(rightDoor, TweenProp.POSITION, new Vector2(screenSize.X, 0), tweenDuration);
+                pTween.Parallel().TweenProperty(leftDoor, TweenProp.POSITION, new Vector2(0, 0), tweenDuration);
+            }
+
+            pTween.TweenCallback
+                (
+                Callable.From(() =>
+                    animationFinished = true)
+                );
         }
 
         private void CloseDoors()
@@ -219,10 +220,6 @@ namespace Com.IsartDigital.Sokoban
             leftDoor.Position = new Vector2(sideFactor, 0);
             rightDoor.Position = new Vector2(screenSize.X - sideFactor, 0);
         }
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
 
 	}
 }
