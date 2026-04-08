@@ -10,8 +10,8 @@ namespace Com.IsartDigital.Sokoban
         static private TitleDoors instance;
         private static PackedScene factory = GD.Load<PackedScene>("res://Scenes/UI/Transitions/TitleDoors.tscn");
 		
-        [Export] private Control leftDoor;
-		[Export] private Control rightDoor;
+        [Export] private TextureRect leftDoor;
+		[Export] private TextureRect rightDoor;
 
         [Export] private float tweenDuration = 1;
 

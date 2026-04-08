@@ -63,63 +63,68 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lpuuc")
 stars = NodePath("ColorRect/Stars")
-confettis = NodePath("GPUParticles2D")
+confettis = NodePath("Control/GPUParticles2D")
 scoreText = NodePath("ColorRect/Score")
 restart = NodePath("ColorRect/Control/Restart")
 next = NodePath("ColorRect/Control/Next")
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1043.0
-offset_top = -324.0
-offset_right = 955.0
-offset_bottom = 555.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_wotmg")
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -306.5
-offset_top = 15.0
-offset_right = 306.5
-offset_bottom = 224.0
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -310.0
+offset_right = 307.0
+offset_bottom = -101.0
 grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_337bn")
 
 [node name="Win" type="Label" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -112.5
-offset_top = 50.0
-offset_right = 112.5
-offset_bottom = 138.0
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -267.0
+offset_right = 113.0
+offset_bottom = -179.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "ID_WIN"
 label_settings = SubResource("LabelSettings_s6gkg")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stars" type="Control" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -190.0
-offset_top = 70.0
-offset_right = 190.0
-offset_bottom = 207.0
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -250.0
+offset_right = 194.0
+offset_bottom = -113.0
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="StarOne" type="AnimatedSprite2D" parent="ColorRect/Stars"]
 position = Vector2(39.5, 297)
@@ -177,10 +182,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = -17.5
-offset_right = 43.5
-offset_bottom = 17.5
+offset_left = -43.0
+offset_top = 117.0
+offset_right = 44.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
@@ -188,13 +193,15 @@ text = "Score : "
 
 [node name="Control" type="Control" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 809.0
-offset_top = 70.0
-offset_right = -788.0
-offset_bottom = -301.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = 377.0
+offset_right = 28.0
+offset_bottom = 377.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -202,33 +209,50 @@ script = ExtResource("3_ydfsl")
 
 [node name="Restart" type="Button" parent="ColorRect/Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -70.0
-offset_right = 120.0
-offset_bottom = -20.0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -138.0
+offset_right = -80.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "ID_RESTART"
 
 [node name="Next" type="Button" parent="ColorRect/Control"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -218.0
-offset_top = -70.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -138.0
+offset_right = 185.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "ID_NEXT"
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(517, 0)
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -324.0
+offset_right = 20.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
+position = Vector2(2, -8)
 amount = 800
 process_material = SubResource("ParticleProcessMaterial_hwb00")
 lifetime = 4.0

@@ -12,36 +12,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ns3k7")
-leftDoor = NodePath("LeftDoor")
-rightDoor = NodePath("RightDoor")
+leftDoor = NodePath("leftDoor")
+rightDoor = NodePath("rightDoor")
 whenToPlayAnim = NodePath("whenToPlayAnim")
 goToLevel = NodePath("goToLevel")
 doorsStillTimer = NodePath("doorsStill")
 
-[node name="LeftDoor" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Sprite2D" type="TextureRect" parent="LeftDoor"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.583
-anchor_bottom = 1.037
-offset_left = 671.616
-offset_right = 1280.0
-offset_bottom = 608.024
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(-0.525, 0.525)
-texture = ExtResource("2_cyxvi")
-expand_mode = 1
-
-[node name="RightDoor" type="Control" parent="."]
+[node name="rightDoor" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,18 +27,18 @@ offset_left = 1074.0
 offset_right = 1074.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+scale = Vector2(0.6, 1)
+texture = ExtResource("2_cyxvi")
+expand_mode = 1
 
-[node name="Sprite2D" type="TextureRect" parent="RightDoor"]
+[node name="leftDoor" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.583
-anchor_bottom = 1.037
-offset_right = 608.384
-offset_bottom = 608.024
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.525, 0.525)
+scale = Vector2(-0.6, 1)
 texture = ExtResource("2_cyxvi")
 expand_mode = 1
 
