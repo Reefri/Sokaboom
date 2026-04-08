@@ -97,8 +97,8 @@ namespace Com.IsartDigital.Sokoban
                 }
 
                 
-
-                for (int i = 0; i < bombs.Count; i++)
+                int lNumberOfBombs = bombs.Count;
+                for (int i = 0; i < lNumberOfBombs; i++)
                 {
                     bombs[i].indexInLevel = i;
                     indexOfAvalaibleBombs.Add(i);
@@ -167,9 +167,12 @@ namespace Com.IsartDigital.Sokoban
             bombsPos = new List<Vector2I>();
             targetsPos = new List<Vector2I>();
 
-            for (int i = 0; i < Map.Count; i++)
+            int lYSizeOfMap = map.Count;
+            int lXSizeOfMap = map[0].Length;
+
+            for (int i = 0; i < lYSizeOfMap; i++)
             {
-                for (int j = 0; j < Map[i].Length; j++)
+                for (int j = 0; j < lXSizeOfMap; j++)
                 {
                     if (Map[i][j] == (int)ObjectChar.PLAYER)
                     {

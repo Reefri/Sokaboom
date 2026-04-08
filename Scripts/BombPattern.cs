@@ -60,9 +60,13 @@ namespace Com.IsartDigital.Sokoban
 
             originePos = Vector2I.Zero;
 
-            for (int i = 0; i < pExplosionMatrix.Count; i++)
+            int lYSize = pExplosionMatrix.Count;
+            int lXSize = pExplosionMatrix[0].Count;
+
+
+            for (int i = 0; i < lYSize; i++)
             {
-                for (int j = 0; j < pExplosionMatrix[i].Count; j++)
+                for (int j = 0; j < lXSize; j++)
                 {
                     if (pExplosionMatrix[i][j] == 2)
                     {
@@ -79,9 +83,9 @@ namespace Com.IsartDigital.Sokoban
                 }
             }
 
-            for (int i = 0; i < pExplosionMatrix.Count; i++)
+            for (int i = 0; i < lYSize; i++)
             {
-                for (int j = 0; j < pExplosionMatrix[i].Count; j++)
+                for (int j = 0; j < lXSize; j++)
                 {
 
                     if (pExplosionMatrix[i][j] == 1)

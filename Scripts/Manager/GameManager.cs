@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 // Author : Sacha Gramatikoff
 
@@ -108,7 +109,9 @@ namespace Com.IsartDigital.Sokoban
             AddChild(tileMap);
             AddChild(Player.GetInstance());
 
-            for (int i = 0; i < currentLevel.bombs.Count; i++)
+            int lNumberOfBombs = currentLevel.bombs.Count;
+
+            for (int i = 0; i < lNumberOfBombs; i++)
             {
                 levelBombCollectibles.Add(BombCollectible.Create(currentLevel.bombs[i], currentLevel.bombsPos[i]));
             }
@@ -128,9 +131,12 @@ namespace Com.IsartDigital.Sokoban
         {
             tileMap.Clear();
 
-            for (int i = 0; i < currentPosition.value.Size.Y; i++)
+            int lYCurrentPositionSize = currentPosition.value.Size.Y;
+            int lXCurrentPositionSize = currentPosition.value.Size.X;
+
+            for (int i = 0; i < lYCurrentPositionSize; i++)
             {
-                for (int j = 0; j < currentPosition.value.Size.X; j++)
+                for (int j = 0; j < lXCurrentPositionSize; j++)
                 {
 
                     switch (currentPosition.value.Map[i][j])
@@ -152,19 +158,25 @@ namespace Com.IsartDigital.Sokoban
             }
 
 
-            foreach (Vector2I lTargetPos in currentPosition.value.targetsPos)
+            List<Vector2I> lTargetPosList = currentPosition.value.targetsPos;
+
+            foreach (Vector2I lTargetPos in lTargetPosList)
             {
                 tileMap.SetCell((int)Map.LevelLayer.Target, lTargetPos, 0, objectPositionOnTileSet[ObjectChar.TARGET]);
             }
 
 
-            foreach (Node2D lBombCollectible in bombCollectibleContainer.GetChildren())
+            List<Node> lBombsCollectible = bombCollectibleContainer.GetChildren().ToList();
+
+            foreach (Node2D lBombCollectible in lBombsCollectible)
             {
                 lBombCollectible.QueueFree();
             }
 
 
-            foreach (int i in currentPosition.value.indexOfAvalaibleBombs)
+            List<int> lIndexOfAvalaibleBobms = currentPosition.value.indexOfAvalaibleBombs;
+
+            foreach (int i in lIndexOfAvalaibleBobms)
             {
                 bombCollectibleContainer.AddChild(levelBombCollectibles[i].Duplicate());
             }
@@ -203,10 +215,13 @@ namespace Com.IsartDigital.Sokoban
             List<string> lRes = new List<string>();
             string lRow;
 
-            for (int i = 0; i < currentPosition.value.Size.Y; i++)
+            int lYCurrentPositionSize = currentPosition.value.Size.Y;
+            int lXCurrentPositionSize = currentPosition.value.Size.X;
+
+            for (int i = 0; i < lYCurrentPositionSize; i++)
             {
                 lRow = "";
-                for (int j = 0; j < currentPosition.value.Size.X; j++)
+                for (int j = 0; j < lXCurrentPositionSize; j++)
                 {
 
                     if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) == null)
@@ -300,15 +315,21 @@ namespace Com.IsartDigital.Sokoban
 
         public void EmptyFireworkContainer()
         {
-            foreach (Node lBorderExplosion in fireworkContainer.GetChildren())
+
+            List<Node> lListFireworks = fireworkContainer.GetChildren().ToList();
+
+
+            foreach (Node lFirework in lListFireworks)
             {
-                lBorderExplosion.QueueFree();
+                lFirework.QueueFree();
             }
         }
 
         public void EmptyBombExplosionContainer()
         {
-            foreach (Node lBombExplosion in bombExplosionContainer.GetChildren())
+            List<Node> lListBombExplosions = bombExplosionContainer.GetChildren().ToList();
+
+            foreach (Node lBombExplosion in lListBombExplosions)
             {
                 lBombExplosion.QueueFree();
             }
@@ -317,7 +338,10 @@ namespace Com.IsartDigital.Sokoban
         public void EmptyBoxSignalContainer()
         {
             waitBeforeBoxSignal.Stop();
-            foreach (BoxSignal lBoxSignal in boxSignalContainer.GetChildren())
+
+            List<Node> lListBoxSignal = boxSignalContainer.GetChildren().ToList();
+
+            foreach (BoxSignal lBoxSignal in lListBoxSignal)
             {
                 lBoxSignal.Destroy();
             }
@@ -373,9 +397,12 @@ namespace Com.IsartDigital.Sokoban
             List<Vector2I> lListOfPos = new List<Vector2I>();
 
 
-            for (int i = 0; i < currentLevel.Size.Y; i++)
+            int lYCurrentLevelSize = currentLevel.Size.Y;
+            int lXCurrentLevelSize = currentLevel.Size.X;
+
+            for (int i = 0; i < lYCurrentLevelSize; i++)
             {
-                for (int j = 0; j < currentLevel.Size.X; j++)
+                for (int j = 0; j < lXCurrentLevelSize; j++)
                 {
                     if (
                          (tileMap.GetCellTileData((int)Map.LevelLayer.Target, new Vector2I(j, i)) != null &&
@@ -398,10 +425,12 @@ namespace Com.IsartDigital.Sokoban
 
             List<Vector2I> lListOfPos = new List<Vector2I>();
 
+            int lYCurrentLevelSize = currentLevel.Size.Y;
+            int lXCurrentLevelSize = currentLevel.Size.X;
 
-            for (int i = 0; i < currentLevel.Size.Y; i++)
+            for (int i = 0; i < lYCurrentLevelSize; i++)
             {
-                for (int j = 0; j < currentLevel.Size.X; j++)
+                for (int j = 0; j < lXCurrentLevelSize; j++)
                 {
                     if (
                             tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) != null &&

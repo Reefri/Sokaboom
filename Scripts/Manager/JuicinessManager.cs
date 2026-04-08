@@ -1,6 +1,7 @@
 using Com.IsartDigital.Utils.Effects;
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 // Author : Ethan Frenard
 
@@ -103,7 +104,10 @@ namespace Com.IsartDigital.Sokoban
 			Player.GetInstance().Visible = false;
 			Player.GetInstance().canInput = false;
 
-			foreach (Node2D lChild in GameManager.GetInstance().bombCollectibleContainer.GetChildren())
+
+			List<Node> lListBombCollectible = GameManager.GetInstance().bombCollectibleContainer.GetChildren().ToList();
+
+            foreach (Node2D lChild in lListBombCollectible)
 			{
 				lChild.GetParent().RemoveChild(lChild);
 			}
@@ -123,8 +127,9 @@ namespace Com.IsartDigital.Sokoban
 		private void ExplodeAllTileInList()
 		{
 
+			int lLastIndexOfLastExplosionPos = lastExplosionPos.Count-1;
 
-            for (int i = lastExplosionPos.Count-1; i >=0 ; i--) 
+            for (int i = lLastIndexOfLastExplosionPos; i >=0 ; i--) 
 			{
 				ExplodeNextBorder(lastExplosionPos[i]);
 			} 
@@ -146,8 +151,9 @@ namespace Com.IsartDigital.Sokoban
             lastExplosionPos.Remove(pBorderOriginPos);
 			alreadyExploded.Add(pBorderOriginPos);
 
+			List<Vector2I> lNeighborsCoor = GameManager.GetInstance().neighborsCoor;
 
-            foreach (Vector2I lNeighborPos in GameManager.GetInstance().neighborsCoor)
+            foreach (Vector2I lNeighborPos in lNeighborsCoor)
 			{
 
 				
@@ -177,7 +183,10 @@ namespace Com.IsartDigital.Sokoban
 			lastExplosionPos.Clear();
 			alreadyExploded.Clear();
 
-			foreach(Node lBorderExplosion in GameManager.GetInstance().gameOverExplosionContainer.GetChildren())
+			List<Node> lGameOverExplosionList = GameManager.GetInstance().gameOverExplosionContainer.GetChildren().ToList();
+
+
+            foreach (Node lBorderExplosion in lGameOverExplosionList)
 			{
 				lBorderExplosion.QueueFree();
 			}

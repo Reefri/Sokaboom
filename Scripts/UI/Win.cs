@@ -25,6 +25,8 @@ namespace Com.IsartDigital.Sokoban
 		{
             GameManager.GetInstance().QueueFree();
 
+
+
             foreach (AnimatedSprite2D lStars in stars.GetChildren()) lStars.Frame = 0;
             CalculScoreLevel();
 
@@ -54,7 +56,8 @@ namespace Com.IsartDigital.Sokoban
 
             score = (score>0)?score:0;
 
-            for (int i = 0; i <= numberStars - 1; i++)
+
+            for (int i = 0; i < numberStars; i++)
 			{
 				AnimatedSprite2D lStars = (AnimatedSprite2D)stars.GetChild(i);
                 lStars.Scale = Vector2.Zero;

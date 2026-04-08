@@ -1,6 +1,7 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 // Author : Ethan Masse
 
@@ -58,7 +59,10 @@ namespace Com.IsartDigital.Sokoban
         private void AnimationTopTen()
         {
             int j = 0;
-            foreach (Label lAccount in levelAccount.GetChildren())
+
+            List<Node> lListOfLevelAccount = levelAccount.GetChildren().ToList();
+
+            foreach (Label lAccount in lListOfLevelAccount)
 			{
                 if (j >= 10) break;
                 Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Circ).SetEase(Tween.EaseType.In).SetParallel();

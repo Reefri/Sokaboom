@@ -1,5 +1,7 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
+using System.Collections.Generic;
+using System.Linq;
 
 // Author : Ethan Masse
 
@@ -13,7 +15,10 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
-            foreach (Button lButtons in GetChildren())
+
+            List<Node> lChildren = GetChildren().ToList();
+
+            foreach (Button lButtons in lChildren)
             {
                 lButtons.MouseEntered += () => AnimationMouseEntered(lButtons);
                 lButtons.MouseExited += () => AnimationMouseExited(lButtons);

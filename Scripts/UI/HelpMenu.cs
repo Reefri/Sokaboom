@@ -94,7 +94,8 @@ namespace Com.IsartDigital.Sokoban
 
         private void ShowCurrentPage()
         {
-            for (int i = 0; i < pages.Count; i++)
+            int lNumberOfPages = pages.Count;
+            for (int i = 0; i < lNumberOfPages; i++)
             {
                 pages[i].Visible = false;
 

@@ -169,8 +169,9 @@ namespace Com.IsartDigital.Sokoban
             float lTheClosestCell = lDistanceBetweenCells[0];
 			indexOfClosestCell = 0;
 
+			int lMaxIndexOfDistancesBetweenCells = lDistanceBetweenCells.Count-1;
 
-			for (int i = lDistanceBetweenCells.Count - 1; i > 0; i--)
+			for (int i = lMaxIndexOfDistancesBetweenCells; i > 0; i--)
 			{
 				if (lTheClosestCell > lDistanceBetweenCells[i])
 				{

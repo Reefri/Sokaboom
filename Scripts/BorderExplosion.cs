@@ -1,4 +1,6 @@
 using Godot;
+using System.Collections.Generic;
+using System.Linq;
 
 // Author : Sacha GRAMATIKOFF
 
@@ -25,7 +27,10 @@ namespace Com.IsartDigital.Sokoban
 		{
 			lifeTime += (GD.Randf() - 0.5f) * 2 * randomLifeTime;
 
-			foreach (GpuParticles2D lPart in partContainer.GetChildren())
+			List<Node> lPartContainerChildren = partContainer.GetChildren().ToList();
+
+
+            foreach (GpuParticles2D lPart in lPartContainerChildren)
 			{
 				lPart.OneShot = true;
 				lPart.Emitting = true;

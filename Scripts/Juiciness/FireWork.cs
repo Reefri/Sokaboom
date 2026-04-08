@@ -1,4 +1,6 @@
 using Godot;
+using System.Collections.Generic;
+using System.Linq;
 
 // Author : Sacha Gramatikoff
 
@@ -38,7 +40,11 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			speed = baseSpeed;
-			foreach (GpuParticles2D lGPUPart in GetNode(EXPLOSIONCONTAINER_NODE_PATH).GetChildren())
+
+			List<Node> lExplosionParticules = GetNode(EXPLOSIONCONTAINER_NODE_PATH).GetChildren().ToList();
+
+
+            foreach (GpuParticles2D lGPUPart in lExplosionParticules)
 			{
 				lGPUPart.OneShot = true;
 			}

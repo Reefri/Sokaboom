@@ -133,10 +133,13 @@ namespace Com.IsartDigital.Sokoban
 
                 List<List<int>> lResMatrix = new List<List<int>>();
 
-                for (int i = 0; i < pMatrix[0].Count; i++)
+                int lYSizeOfMatrix = pMatrix[0].Count;
+                int lXSizeOfMatrix = pMatrix.Count;
+
+                for (int i = 0; i < lYSizeOfMatrix; i++)
                 {
                     List<int> lCollumn = new List<int>();
-                    for (int j = 0; j < lDuplicatedMatrix.Count; j++)
+                    for (int j = 0; j < lXSizeOfMatrix; j++)
                     {
                         lCollumn.Add(lDuplicatedMatrix[j][i]);
 
@@ -160,10 +163,14 @@ namespace Com.IsartDigital.Sokoban
                 List<List<int>> lResMatrix = new List<List<int>>();
 
 
-                for (int i = 0; i < lDuplicatedMatrix[0].Count; i++)
+
+                int lYSizeOfMatrix = lDuplicatedMatrix[0].Count;
+                int lXSizeOfMatrix = lDuplicatedMatrix.Count;
+
+                for (int i = 0; i < lYSizeOfMatrix; i++)
                 {
                     List<int> lCollumn = new List<int>();
-                    for (int j = 0; j < lDuplicatedMatrix.Count; j++)
+                    for (int j = 0; j < lXSizeOfMatrix; j++)
                     {
                         lCollumn.Add(lDuplicatedMatrix[j][i]);
 
