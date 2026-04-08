@@ -113,7 +113,7 @@ namespace Com.IsartDigital.Sokoban
             lNewBomb.explosionMatrix = explosionMatrix;
             lNewBomb.explosionOriginPos = explosionOriginPos;
             lNewBomb.maxX = maxX;
-            lNewBomb.maxX = maxX;
+            lNewBomb.minX = minX;
             lNewBomb.minY = minY;
             lNewBomb.maxY = maxY;
 
