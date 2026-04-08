@@ -120,7 +120,7 @@ namespace Com.IsartDigital.Sokoban {
 		{
 			BombExplosion lBombPattern = new BombExplosion();
 
-            lBombPattern.explosionMatrix = Main.GetInstance().RotateMatrix(pExplosionMatrix,pRotationVector);
+            lBombPattern.explosionMatrix = Main.RotateMatrix(pExplosionMatrix,pRotationVector);
 
 
             lBombPattern.Position = (pPosition )* States.DISTANCE_RANGE /2; // pourquoi distance/2 ??

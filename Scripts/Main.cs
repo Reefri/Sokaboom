@@ -53,7 +53,7 @@ namespace Com.IsartDigital.Sokoban
 			base.Dispose(pDisposing);
 		}
 
-		public List<T> DuplicateList<T>(List<T> pList)
+		public static List<T> DuplicateList<T>(List<T> pList)
 		{
 			List<T> lList = new List<T>();
 			foreach (T lElement in pList)
@@ -63,7 +63,7 @@ namespace Com.IsartDigital.Sokoban
 			return lList;
 		}
 
-		public List<List<T>> DuplicateListOfList<T>(List<List<T>> pListOfList)
+		public static List<List<T>> DuplicateListOfList<T>(List<List<T>> pListOfList)
 		{
 			List<List<T>> lList = new List<List<T>>();
 			foreach (List<T> lElement in pListOfList)
@@ -73,7 +73,7 @@ namespace Com.IsartDigital.Sokoban
 			return lList;
 		}
 
-        public void PrintListOfList<T>(List<List<T>> pListOfList, char pSeparator = ';', bool pDoLigneBreak=true)
+        public static void PrintListOfList<T>(List<List<T>> pListOfList, char pSeparator = ';', bool pDoLigneBreak=true)
         {
 			string lRes = "";
 			string lTempRes;
@@ -90,11 +90,11 @@ namespace Com.IsartDigital.Sokoban
 			GD.Print(lRes);
         }
 
-		public void PrintList<T>(List<T> pList, char pSeparator = ';', bool pDoLigneBreak = false)
+		public static void PrintList<T>(List<T> pList, char pSeparator = ';', bool pDoLigneBreak = false)
 		{
 			if (pList.Count == 0)
 			{
-				GD.Print("Liste de type " + typeof(List<T>) + " est vide.");
+				GD.Print("Liste de type " + typeof(T) + " est vide.");
 				return;
 			}
 
@@ -107,7 +107,7 @@ namespace Com.IsartDigital.Sokoban
         }
 
 
-        public List<List<int>> RotateMatrix(List<List<int>> pMatrix, Vector2I pDirection)
+        public static List<List<int>> RotateMatrix(List<List<int>> pMatrix, Vector2I pDirection)
         {
 
             List<List<int>> lDuplicatedMatrix = DuplicateListOfList(pMatrix);
@@ -179,7 +179,7 @@ namespace Com.IsartDigital.Sokoban
 
             }
 
-            GD.Print("ha");
+            GD.Print("Selectec direction doesn't match : "+pDirection);
 
             return lDuplicatedMatrix;
 

@@ -61,11 +61,7 @@ namespace Com.IsartDigital.Sokoban {
 			QueueFree();
 		}
 
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
-
+	
 
 		public static void Create(Vector2I pPosition)
 		{

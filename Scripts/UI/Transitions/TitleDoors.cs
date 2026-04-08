@@ -122,14 +122,6 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-        public void ActivateDoors()
-        {
-            if (!doorsClosed)
-                CloseDoors();
-            else
-                OpenDoors();
-        }
-
         private void OpenDoors()
         {
             if (doorsStillTimer.IsStopped() && doorsClosed)
@@ -200,10 +192,7 @@ namespace Com.IsartDigital.Sokoban
             leftDoor.Position = new Vector2(screenSize.X/ 2 + sideFactor, 0);
             rightDoor.Position = new Vector2(screenSize.X / 2 - sideFactor, 0);
         }
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
+		
 
 	}
 }

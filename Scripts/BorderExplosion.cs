@@ -1,6 +1,6 @@
 using Godot;
 
-// Author : Ethan Masse
+// Author : Sacha GRAMATIKOFF
 
 namespace Com.IsartDigital.Sokoban 
 {

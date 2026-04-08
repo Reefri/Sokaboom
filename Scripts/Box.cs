@@ -40,26 +40,10 @@ namespace Com.IsartDigital.Sokoban
 
             animPlaying = false;
 
-            GetParent().RemoveChild(this);
 			GameManager.GetInstance().UpdateAfterAction();
             QueueFree();
         }
 
-  //      public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
-		//{
-		//	hasABoxToCheck = false;
-		//	if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, pCellPosition + pDirection) == null)
-		//	{
-		//		hasABoxToCheck = true;
-  //              return true;
-		//	}
-
-  //          else 
-  //          {
-  //              return false;
-  //          }
-
-  //      }
 
         public static bool CanBoxBePushed(Vector2I pDirection, Vector2I pCellPosition)
         {

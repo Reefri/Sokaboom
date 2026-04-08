@@ -27,7 +27,6 @@ namespace Com.IsartDigital.Sokoban {
             collider.AreaEntered += CheckForChainReaction;
             yellowParticle.Emitting = true;
             yellowParticle.Finished += QueueFree;
-			//particles.Finished += QueueFree;
 
             foreach(Node2D lContainer in redParticleContainer.GetChildren())
             {

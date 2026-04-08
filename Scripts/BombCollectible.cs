@@ -120,11 +120,7 @@ namespace Com.IsartDigital.Sokoban
             chainReactionPatterne=null;
         }
 
-        public override void _Process(double pDelta)
-		{
-			float lDelta = (float)pDelta;
-        }
-
+     
         private void InBomb()
         {
             hoverRenderer.Scale *= 1.5f;
@@ -153,6 +149,8 @@ namespace Com.IsartDigital.Sokoban
 
             lBombCollectible.mainColor = Color.FromHsv(GD.Randf(), mainColorSaturation, mainColorValue);
             lBombCollectible.secondaryColor = Color.FromHsv(GD.Randf(), secondaryColorSaturation, secondaryColorValue);
+
+            
 
             lBombCollectible.bodyTexture = (Texture2D)GD.Load(
                 BODYTEXTURE_FILE_PATH +

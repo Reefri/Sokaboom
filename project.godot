@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
@@ -29,11 +28,11 @@ project/assembly_name="Sokoban"
 
 folder_colors={
 "res://Assets/": "green",
-"res://Json/": "blue",
 "res://MusicAndSound/": "purple",
 "res://Ressources/": "pink",
 "res://Scenes/": "yellow",
-"res://Scripts/": "red"
+"res://Scripts/": "red",
+"res://data/": "blue"
 }
 
 [input]
