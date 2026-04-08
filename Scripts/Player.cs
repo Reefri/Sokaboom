@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 // Author : Cayot Daniel
 
@@ -104,8 +105,6 @@ namespace Com.IsartDigital.Sokoban
 
         private void ReplaceThePlayer(StringName pAnimName)
         {
-
-
             OrientThePlayer();
             actualPlayerSprite.Play(orientation);
 
@@ -140,7 +139,6 @@ namespace Com.IsartDigital.Sokoban
                 pathFindingTime = FIRST_TIME_PATH;
                 pathFindingTimer.WaitTime= pathFindingTime;
 
-                lastDirection = Map.boxOrWallClickedOn - GetPositionToVector2I();
 
                 if (hasBoxToPush)
                 {
@@ -178,16 +176,13 @@ namespace Com.IsartDigital.Sokoban
         {
             Vector2I lUnitaryPos = GetPositionToVector2I();
 
-            if (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector) == null) return true;
+     
 
-            else 
-            {
-                if ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.BOX))
-                {
-                    return Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
-                }
-                else return false;
-            }
+            bool lIsNextCellEmpty = (GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector) == null);
+            bool lIsNextCellBox = !lIsNextCellEmpty && ((bool)GameManager.GetInstance().tileMap.GetCellTileData((int)Map.LevelLayer.Playground, lUnitaryPos + pDirectionVector).GetCustomData(Map.BOX));
+            bool lCanBoxBePushed = lIsNextCellBox && Box.CanBoxBePushed(pDirectionVector, lUnitaryPos + pDirectionVector);
+
+            return lIsNextCellEmpty || lCanBoxBePushed;
 
         }
 
@@ -195,7 +190,7 @@ namespace Com.IsartDigital.Sokoban
 
         public Vector2I GetPositionToVector2I()
         {
-            return new Vector2I((int)(Position.X / States.DISTANCE_RANGE), (int)(Position.Y / States.DISTANCE_RANGE));
+            return new Vector2I((int)(Position.X / Map.DISTANCE_RANGE), (int)(Position.Y / Map.DISTANCE_RANGE));
         }
 
         public void AdjacentToInteractable(Vector2I pDirection)
@@ -249,10 +244,6 @@ namespace Com.IsartDigital.Sokoban
 
 
 
-        public void GoTo(Vector2I pPosition)
-        {
-            GlobalPosition = (pPosition ) * States.DISTANCE_RANGE;
-        }
 
         public void AnimThePlayer(Vector2I pLastDirection)
         {
@@ -276,13 +267,8 @@ namespace Com.IsartDigital.Sokoban
 
         private void OrientThePlayer()
         {
-            foreach (string lActionName in PlayersVector.Keys)
-            {
-                if (lastDirection == PlayersVector[lActionName])
-                {
-                    orientation = lActionName;
-                }
-            }
+            orientation = PlayersVector.FirstOrDefault(lKeyValuePair => lKeyValuePair.Value == lastDirection).Key;
+
 
             actualPlayerSprite.Play(orientation);
 
@@ -291,15 +277,12 @@ namespace Com.IsartDigital.Sokoban
 
         private void ExplodeBombInHand(Vector2I pTryDirection)
         {
-
             if (pTryDirection != lastDirection) 
             {
 
                 lastDirection = pTryDirection;
                 OrientThePlayer();
                 CreatePrevisualisation();
-
-
 
                 return; 
             }
@@ -314,7 +297,7 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
-            bombInHand.Explode((Vector2I)Position / States.DISTANCE_RANGE + lastDirection, lastDirection);
+            bombInHand.Explode((Vector2I)Position / Map.DISTANCE_RANGE + lastDirection, lastDirection);
 
             GameManager.GetInstance().UpdateAfterAction();
 
@@ -355,10 +338,10 @@ namespace Com.IsartDigital.Sokoban
 
                     new BombPattern(
                         bombPrevisualisationContainer,
-                        Main.GetInstance().RotateMatrix(bombInHand.explosionMatrix, lDirection), 
+                        Main.RotateMatrix(bombInHand.explosionMatrix, lDirection), 
                         BombPattern.EnumOfExplosionPattern.Player ,
                         false,
-                        lDirection*States.DISTANCE_RANGE,
+                        lDirection * Map.DISTANCE_RANGE,
                         (lDirection == lastDirection?1:0.2f)
                         
                         );

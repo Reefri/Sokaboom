@@ -90,9 +90,9 @@ namespace Com.IsartDigital.Sokoban
                     GD.Print("WARNING : Vous avez " + bombs.Count + " bombes définies pour "+bombsPos.Count+" positions définies !");
 
                     GD.Print("Liste des bombes : ");
-                    Main.GetInstance().PrintList(bombs);
+                    Main.PrintList(bombs);
                     GD.Print("Liste des positions de bombes : ");
-                    Main.GetInstance().PrintList(bombsPos);
+                    Main.PrintList(bombsPos);
                     return;
                 }
 
@@ -124,9 +124,9 @@ namespace Com.IsartDigital.Sokoban
             lNewLevel.map = map;
             lNewLevel.bombs = bombs;
             lNewLevel.bombsPos = bombsPos;
-            lNewLevel.targetsPos = Main.GetInstance().DuplicateList(targetsPos);
+            lNewLevel.targetsPos = Main.DuplicateList(targetsPos);
             lNewLevel.currentBomb = currentBomb;
-            lNewLevel.indexOfAvalaibleBombs = Main.GetInstance().DuplicateList(indexOfAvalaibleBombs);
+            lNewLevel.indexOfAvalaibleBombs = Main.DuplicateList(indexOfAvalaibleBombs);
 
             return lNewLevel;
         }
@@ -150,7 +150,7 @@ namespace Com.IsartDigital.Sokoban
                 lString += lRow + "\n";
             }
 
-            lString += "\nCible : \n\n";
+            lString += "\nCibles : \n\n";
 
             foreach (Vector2I lPos in targetsPos)
             {

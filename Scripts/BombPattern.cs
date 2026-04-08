@@ -68,7 +68,7 @@ namespace Com.IsartDigital.Sokoban
                     {
                         originePos = new Vector2I(j, i);
 
-                        pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke(
+                        pParent.CallDeferred(BombExplosion.ADD_CHILD_DEFERED, enumToCreateMethod[pExplosionPattern].Invoke(
                             (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero),
                             enumToColor[pExplosionPattern],
                             pScale
@@ -86,8 +86,8 @@ namespace Com.IsartDigital.Sokoban
 
                     if (pExplosionMatrix[i][j] == 1)
                     {
-                        pParent.CallDeferred("add_child", enumToCreateMethod[pExplosionPattern].Invoke(
-                            (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * States.DISTANCE_RANGE, 
+                        pParent.CallDeferred(BombExplosion.ADD_CHILD_DEFERED, enumToCreateMethod[pExplosionPattern].Invoke(
+                            (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * Map.DISTANCE_RANGE, 
                             new Color(1, 1, 1),
                             pScale
                             ));

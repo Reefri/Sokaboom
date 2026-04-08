@@ -104,8 +104,6 @@ namespace Com.IsartDigital.Sokoban
 
             if (lIndex < 0)
             {
-
-				GD.Print("Joueur courrant non trouvé ? Quelque chose s'est vraiment très mal passé...");
 				GD.Print("Connexion au compte Guest : " + (TestConnexion("Guest","") == TestConnexionResult.Valid));
                 return ;
             }

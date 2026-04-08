@@ -34,8 +34,9 @@ namespace Com.IsartDigital.Sokoban
         public bool comeToMenu = true;
 
 		public int finalScore;
-
-
+        private const string ID_LEVEL = "ID_LEVEL";
+        private const string ID_STEPS = "ID_STEPS";
+        private const string TUTO_TEXT = "tuto";
         private UIManager():base() 
 		{
 			if (instance != null)
@@ -62,7 +63,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void UpdateHud()
         {
-            if (instanceHud != null) instanceHud.steps.Text = Tr("ID_STEPS") + GameManager.GetInstance().CurrentPar;
+            if (instanceHud != null) instanceHud.steps.Text = Tr(ID_STEPS) + GameManager.GetInstance().CurrentPar;
         }
 
         public void GoToLogin()
@@ -120,8 +121,8 @@ namespace Com.IsartDigital.Sokoban
 
             AddChild(uiHUD.Instantiate());
 
-            instanceHud.number.Text = Tr("ID_LEVEL");
-            if (currentIndex == 0) instanceHud.number.Text += "tuto";
+            instanceHud.number.Text = Tr(ID_LEVEL);
+            if (currentIndex == 0) instanceHud.number.Text += TUTO_TEXT;
             else instanceHud.number.Text += currentIndex;
 
             CameraManager.GetInstance().CenterCameraOnCurrentLevel();

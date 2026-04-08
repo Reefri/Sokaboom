@@ -18,7 +18,7 @@ namespace Com.IsartDigital.Sokoban {
 
 
 		private float progression = 0;
-
+		private const string PROGRESSION_NAME = "progression";
 
 		private Tween progressionTween;
 
@@ -35,8 +35,8 @@ namespace Com.IsartDigital.Sokoban {
 				.SetEase(Tween.EaseType.InOut)
 				.SetLoops(3);
 
-			progressionTween.TweenProperty(this, "progression", 1, 0.3f);
-			progressionTween.TweenProperty(this, "progression", 0, 0.3f);
+			progressionTween.TweenProperty(this, PROGRESSION_NAME, 1, 0.3f);
+			progressionTween.TweenProperty(this, PROGRESSION_NAME, 0, 0.3f);
 
 			progressionTween.Finished += QueueFree;
 
@@ -49,7 +49,7 @@ namespace Com.IsartDigital.Sokoban {
 
 			myMaterial.SetShaderParameter(GROWPROGRESSION_SHADER_PARAMETER,progression);
 
-			Modulate = (White * (1 - progression) + targetcolor * progression);
+			Modulate = White * (1 - progression) + targetcolor * progression;
 
 
 
@@ -61,17 +61,13 @@ namespace Com.IsartDigital.Sokoban {
 			QueueFree();
 		}
 
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
-
+	
 
 		public static void Create(Vector2I pPosition)
 		{
 			BoxSignal lNewSignal = (BoxSignal)factory.Instantiate();
 
-			lNewSignal.GlobalPosition = pPosition*States.DISTANCE_RANGE;
+			lNewSignal.GlobalPosition = pPosition * Map.DISTANCE_RANGE;
 
 			GameManager.GetInstance().boxSignalContainer.AddChild(lNewSignal);
 

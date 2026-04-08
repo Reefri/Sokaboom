@@ -1,6 +1,6 @@
 using Godot;
 
-// Author : Ethan Masse
+// Author : Sacha GRAMATIKOFF
 
 namespace Com.IsartDigital.Sokoban 
 {
@@ -48,19 +48,11 @@ namespace Com.IsartDigital.Sokoban
 
 		}
 
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
-
 
 		public static BorderExplosion Create(Vector2I pPosition)
 		{
-
-
             BorderExplosion lExplosion = (BorderExplosion)borderExplosion.Instantiate();
-            lExplosion.GlobalPosition = (pPosition) * States.DISTANCE_RANGE;
-            //GameManager.GetInstance().gameOverExplosionContainer.AddChild(lExplosion);
+            lExplosion.GlobalPosition = (pPosition) * Map.DISTANCE_RANGE;
             GameManager.GetInstance().gameOverExplosionContainer.AddChild(lExplosion);
 
 

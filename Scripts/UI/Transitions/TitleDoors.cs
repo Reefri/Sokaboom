@@ -30,7 +30,7 @@ namespace Com.IsartDigital.Sokoban
 
         public bool goingToLevel = false;
 
-        private bool animationFinished = false;
+        public bool animationFinished = false;
 
         private TitleDoors() : base()
         {
@@ -59,8 +59,6 @@ namespace Com.IsartDigital.Sokoban
             goToLevel.Timeout += UIManager.GetInstance().ContinueToLevel;
 
             SetDoorsClosed();
-
-            //whenToPlayAnim.Timeout += UIManager.GetInstance().ContinueToLevelSelect;
 
             doorsStillTimer.Timeout += ContinueDoorsMovement;
         }
@@ -109,14 +107,6 @@ namespace Com.IsartDigital.Sokoban
 
             OpeningDoorsTween(lDoorsTween);
 
-        }
-
-        public void ActivateDoors()
-        {
-            if (!doorsClosed)
-                CloseDoors();
-            else
-                OpenDoors();
         }
 
         private void OpenDoors()

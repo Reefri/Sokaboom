@@ -27,7 +27,6 @@ namespace Com.IsartDigital.Sokoban {
             collider.AreaEntered += CheckForChainReaction;
             yellowParticle.Emitting = true;
             yellowParticle.Finished += QueueFree;
-			//particles.Finished += QueueFree;
 
             foreach(Node2D lContainer in redParticleContainer.GetChildren())
             {
@@ -49,7 +48,7 @@ namespace Com.IsartDigital.Sokoban {
 			{
                 
 				BombCollectible lBombCollec = (BombCollectible)pArea;
-				lBombCollec.bomb.Explode((Vector2I)lBombCollec.Position / States.DISTANCE_RANGE	, Vector2I.Up);
+				lBombCollec.bomb.Explode((Vector2I)lBombCollec.Position / Map.DISTANCE_RANGE, Vector2I.Up);
 				lBombCollec.QueueFree();
 
 				GameManager.GetInstance().RemoveBombAtIndex(lBombCollec.bomb.indexInLevel);

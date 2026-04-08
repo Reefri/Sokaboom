@@ -120,11 +120,7 @@ namespace Com.IsartDigital.Sokoban
             chainReactionPatterne=null;
         }
 
-        public override void _Process(double pDelta)
-		{
-			float lDelta = (float)pDelta;
-        }
-
+     
         private void InBomb()
         {
             hoverRenderer.Scale *= 1.5f;
@@ -145,7 +141,7 @@ namespace Com.IsartDigital.Sokoban
         public static BombCollectible Create(Bomb pBomb, Vector2I pPosition)
 		{
 			BombCollectible lBombCollectible = (BombCollectible)bombCollectible.Instantiate();
-			lBombCollectible.Position = (pPosition) * States.DISTANCE_RANGE;
+			lBombCollectible.Position = (pPosition) * Map.DISTANCE_RANGE;
 			lBombCollectible.ZIndex = 1;
 
 			lBombCollectible.bomb = pBomb;
@@ -153,6 +149,8 @@ namespace Com.IsartDigital.Sokoban
 
             lBombCollectible.mainColor = Color.FromHsv(GD.Randf(), mainColorSaturation, mainColorValue);
             lBombCollectible.secondaryColor = Color.FromHsv(GD.Randf(), secondaryColorSaturation, secondaryColorValue);
+
+            
 
             lBombCollectible.bodyTexture = (Texture2D)GD.Load(
                 BODYTEXTURE_FILE_PATH +

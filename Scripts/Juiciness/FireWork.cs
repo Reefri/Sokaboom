@@ -18,7 +18,8 @@ namespace Com.IsartDigital.Sokoban
 
 		private bool disableProcess = false;
 
-		private float speed = 400;
+        private float baseSpeed = 400;
+        private float speed ;
 		private float acceleration = -200;
 		private float rangeAcceleration = 30;
 
@@ -30,8 +31,13 @@ namespace Com.IsartDigital.Sokoban
 		private Timer timer = new Timer();
 		private float timerDuration = 0.5f;
 
+		private float baseScale = 0.1f;
+		private float maxScale = 1.1f;
+		private float rangeScale = 0.1f;
+
 		public override void _Ready()
 		{
+			speed = baseSpeed;
 			foreach (GpuParticles2D lGPUPart in GetNode(EXPLOSIONCONTAINER_NODE_PATH).GetChildren())
 			{
 				lGPUPart.OneShot = true;
@@ -44,14 +50,20 @@ namespace Com.IsartDigital.Sokoban
 			AddChild(timer);
 
 			acceleration += (float)GD.RandRange(-rangeAcceleration, rangeAcceleration);
+			maxScale += (float)GD.RandRange(-rangeScale, rangeScale);
 
-			SoundManager.GetInstance().PlayFireworkWhistle();
+			Scale = Vector2.One * baseScale;
+
+
+            SoundManager.GetInstance().PlayFireworkWhistle();
 		}
 
 		public override void _Process(double pDelta)
 		{
 
             if (disableProcess) return;
+
+			Scale = Vector2.One * Mathf.Lerp(maxScale,baseScale,speed/baseSpeed);
 
             float lDelta = (float)pDelta;
 
@@ -63,10 +75,6 @@ namespace Com.IsartDigital.Sokoban
 
         }
 
-		protected override void Dispose(bool pDisposing)
-		{
-
-		}
 
 		private void Move(float pDelta)
 		{
@@ -137,7 +145,7 @@ namespace Com.IsartDigital.Sokoban
 			{
 				lCurrentFirework = Create(pPosition);
 
-				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3*(lRandNumberOfFirework / 2-i)/ lRandNumberOfFirework);
+				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3 * (lRandNumberOfFirework / 2-i)/ lRandNumberOfFirework);
 				
                 pParent.AddChild(lCurrentFirework);
 			}

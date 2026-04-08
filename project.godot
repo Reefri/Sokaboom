@@ -28,11 +28,11 @@ project/assembly_name="Sokoban"
 
 folder_colors={
 "res://Assets/": "green",
-"res://Json/": "blue",
 "res://MusicAndSound/": "purple",
 "res://Ressources/": "pink",
 "res://Scenes/": "yellow",
-"res://Scripts/": "red"
+"res://Scripts/": "red",
+"res://data/": "blue"
 }
 
 [input]

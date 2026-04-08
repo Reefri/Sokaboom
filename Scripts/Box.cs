@@ -29,7 +29,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndOfAnimation(StringName pAnimName)
         {
-			Vector2I lFinalPos = (Vector2I)(Position / States.DISTANCE_RANGE) + Player.GetInstance().lastDirection;
+			Vector2I lFinalPos = (Vector2I)(Position / Map.DISTANCE_RANGE) + Player.GetInstance().lastDirection;
 
 
             GameManager.GetInstance().tileMap.SetCell((int)Map.LevelLayer.Playground, lFinalPos, 0, GameManager.GetInstance().objectPositionOnTileSet[ObjectChar.BOX]);
@@ -40,7 +40,6 @@ namespace Com.IsartDigital.Sokoban
 
             animPlaying = false;
 
-            GetParent().RemoveChild(this);
 			GameManager.GetInstance().UpdateAfterAction();
             QueueFree();
         }
@@ -58,7 +57,7 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pPosition);
             Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
-            lBox.GlobalPosition = pPosition * (States.DISTANCE_RANGE);
+            lBox.GlobalPosition = pPosition * (Map.DISTANCE_RANGE);
 			GameManager.GetInstance().tileMap.AddChild(lBox);
 			return lBox;
 

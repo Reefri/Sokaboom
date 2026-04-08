@@ -15,7 +15,7 @@ namespace Com.IsartDigital.Sokoban
         public static OnClick Create(Vector2 pCrossPosition, Node pParent)
         {
             OnClick lClick = (OnClick)packedClick.Instantiate();
-            lClick.GlobalPosition = (pCrossPosition) * States.DISTANCE_RANGE;
+            lClick.GlobalPosition = (pCrossPosition) * Map.DISTANCE_RANGE;
 
             pParent.AddChild(lClick);
             return lClick;
