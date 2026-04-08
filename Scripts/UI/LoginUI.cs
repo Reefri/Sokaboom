@@ -114,6 +114,8 @@ namespace Com.IsartDigital.Sokoban.UI
                     statut.SelfModulate = red;
                     break;
                 case AccountManager.TestConnexionResult.Valid:
+                    UIManager.GetInstance().ChangeLayer();
+                    TitleDoors.GetInstance().ActivateDoors();
                     UIManager.GetInstance().GoToTitle();
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
