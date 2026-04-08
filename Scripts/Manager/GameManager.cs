@@ -177,7 +177,7 @@ namespace Com.IsartDigital.Sokoban
 
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
 
-            Player.GetInstance().Position = lPlayerPosition * States.DISTANCE_RANGE;
+            Player.GetInstance().Position = lPlayerPosition * Map.DISTANCE_RANGE;
             Player.GetInstance().GiveBombToPlayer(currentPosition.value.currentBomb);
 
             FillGroundTiles(lPlayerPosition);
