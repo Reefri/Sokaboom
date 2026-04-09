@@ -21,7 +21,7 @@ namespace Com.IsartDigital.Chromaberation
 
         private const float EXPLOSION_MAX_RADIUS = 0.7f;
         private const float EXPLOSION_DURATION = 3;
-        private const float EXPLOSION_INTENSITY = 40;
+        private const float EXPLOSION_INTENSITY = 4;
         private const float EXPLOSION_EDGE = 0.03f;
 
 
