@@ -8,7 +8,7 @@ namespace Com.IsartDigital.Sokoban
 	{
 		[Export] Label ScoreFinal;
 
-		[Export] Button hightScore;
+		[Export] Button highScore;
 		[Export] Button menu;
 
         private const string SCORE = "Score Total : ";
@@ -17,8 +17,8 @@ namespace Com.IsartDigital.Sokoban
 		{
 			ScoreFinal.Text = SCORE + AccountManager.GetInstance().currentAccount.FinalScore();
 
-			menu.Pressed += () => UIManager.GetInstance().GoToTitle();
-			hightScore.Pressed += () => UIManager.GetInstance().GoToHightScore();
+			menu.Pressed += UIManager.GetInstance().GoToTitle;
+			highScore.Pressed += UIManager.GetInstance().GoToHightScore;
         }
 	}
 }

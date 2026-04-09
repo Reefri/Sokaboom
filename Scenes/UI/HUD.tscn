@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "par", "steps", "name", "number", "quitDelay")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "reStart", "par", "steps", "name", "number", "quitDelay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ mouse_filter = 2
 script = ExtResource("1_h8l0x")
 buttonUndo = NodePath("Undo")
 buttonRedo = NodePath("Redo")
+reStart = NodePath("Retry")
 par = NodePath("Par")
 steps = NodePath("Steps")
 name = NodePath("Name")
@@ -116,4 +117,3 @@ text = "ID_NUM"
 one_shot = true
 
 [connection signal="pressed" from="Quit" to="." method="QuitPressed"]
-[connection signal="pressed" from="Retry" to="." method="RetryPressed"]

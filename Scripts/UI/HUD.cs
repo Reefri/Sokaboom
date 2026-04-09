@@ -8,6 +8,7 @@ namespace Com.IsartDigital.Sokoban
 	{
 		[Export] private Button buttonUndo;
 		[Export] private Button buttonRedo;
+        [Export] private Button reStart;
         [Export] private Label par;
         [Export] public Label steps;
         [Export] private Label name;
@@ -31,6 +32,13 @@ namespace Com.IsartDigital.Sokoban
             par.Text = PAR + GameManager.GetInstance().currentLevel.Par;
             name.Text = Tr(GameManager.GetInstance().currentLevel.Title) + Tr(BY) + GameManager.GetInstance().currentLevel.Author;
             steps.Text = Tr(STEPS) + 0;
+
+            reStart.Pressed += Retry;
+        }
+
+        private void Retry()
+        {
+            MenuTransition.Create(RetryPressed);
         }
 
         private void DestroyGameManager()

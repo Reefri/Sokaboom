@@ -2,6 +2,7 @@ using Godot;
 using Com.IsartDigital.Sokoban;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 // Author : Ethan FRENARD / Ethan MASSE
 
@@ -10,11 +11,11 @@ namespace Com.IsartDigital.UI {
 	public partial class LevelSelect : Control
     {
 		[Export] private Control allButtons;
+        [Export] private Button backButton;
 
         private bool buttonlock = true;
 
         private const string LEVEL = "ID_LEVEL";
-        private Button selectedButton;
 
         public override void _Ready()
 		{
@@ -37,6 +38,8 @@ namespace Com.IsartDigital.UI {
             }
 
             TreeEntered += UpdateLevelSelect;
+
+            backButton.Pressed += BackPressed;
         }
 
 
@@ -60,7 +63,7 @@ namespace Com.IsartDigital.UI {
 
         private void BackPressed()
         {
-            MenuTransition.Create();
+            MenuTransition.Create(UIManager.GetInstance().GoToTitle);
         }
 
         private void UnlockPressed()
