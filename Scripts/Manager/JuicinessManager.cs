@@ -26,7 +26,7 @@ namespace Com.IsartDigital.Sokoban
 		[Export] public Shaker simpleBombShaker;
 		[Export] public Shaker fireworkShaker;
 
-		[Export] private float winAnimDuration = 2f;
+		[Export] private float winAnimDuration = 3f;
 
 		private const float TIME_FOR_BANDEROLES = 0.2f;
 

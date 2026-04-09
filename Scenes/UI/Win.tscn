@@ -145,6 +145,8 @@ theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "ID_WIN"
 label_settings = SubResource("LabelSettings_s6gkg")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stars" type="Control" parent="ColorRect"]
 layout_mode = 1

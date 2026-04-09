@@ -11,7 +11,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4l0qp")
 testOnlyGameFeature = false
-noLogin = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5

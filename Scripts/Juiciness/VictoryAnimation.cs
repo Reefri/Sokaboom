@@ -11,20 +11,27 @@ namespace Com.IsartDigital.Sokoban
 
 		[Export] private GpuParticles2D particles;
 
+		[Export] private Node2D fireworksParent;
+
 		[Export] private float victoryZoomStrength = 5;
-		[Export] private float victoryZoomDuration = 3;
+		[Export] private float victoryZoomDuration = 5;
 
 		private Vector2 whereIsWin;
+
+		private Vector2 sideFactor = new Vector2(-150, 0);
 		public override void _Ready()
 		{
 			base._Ready();
 
 			whereIsWin = Player.GetInstance().Position;
+            GlobalPosition = whereIsWin;
 
-			particles.Position = whereIsWin;
-			particles.Emitting = true;
+            particles.Emitting = true;
+			fireworksParent.Position += sideFactor;
 
 			CameraManager.GetInstance().Zoom(whereIsWin, victoryZoomStrength, victoryZoomDuration);
+
+			FireWork.CreateMult(whereIsWin, fireworksParent);
 		}
 
 		public override void _Process(double pDelta)
@@ -37,7 +44,7 @@ namespace Com.IsartDigital.Sokoban
 		public static void Create()
 		{
 			VictoryAnimation lAnim = (VictoryAnimation)factory.Instantiate();
-			UIManager.GetInstance().AddSibling(lAnim);
+			Main.GetInstance().AddChild(lAnim);
 		}
 
 	}

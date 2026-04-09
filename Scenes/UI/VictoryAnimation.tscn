@@ -11,22 +11,27 @@ gradient = SubResource("Gradient_xwqvq")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nlphp"]
 particle_flag_disable_z = true
 spread = 180.0
-flatness = 1.0
-orbit_velocity_min = 0.863
-orbit_velocity_max = 0.863
-radial_velocity_min = 178.95
-radial_velocity_max = 178.95
+initial_velocity_max = 150.03
+orbit_velocity_max = 0.126
+radial_velocity_min = 42.11
+radial_velocity_max = 42.11
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_dfssm")
 
-[node name="VictoryAnimation" type="Node2D" node_paths=PackedStringArray("particles")]
+[node name="VictoryAnimation" type="Node2D" node_paths=PackedStringArray("particles", "fireworksParent")]
 script = ExtResource("1_8sbb1")
 particles = NodePath("GPUParticles2D")
+fireworksParent = NodePath("fireworksParent")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 500
+emitting = false
+amount = 1000
 process_material = SubResource("ParticleProcessMaterial_nlphp")
 lifetime = 3.0
-explosiveness = 0.84
+one_shot = true
+explosiveness = 1.0
 trail_enabled = true
-trail_lifetime = 0.81
+trail_sections = 5
+
+[node name="fireworksParent" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)

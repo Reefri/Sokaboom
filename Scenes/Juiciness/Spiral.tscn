@@ -28,8 +28,8 @@ angular_velocity_max = 720.0
 orbit_velocity_min = 0.5
 orbit_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
-radial_accel_min = 100.0
-radial_accel_max = 100.0
+radial_accel_min = 54.73
+radial_accel_max = 54.73
 scale_over_velocity_curve = SubResource("CurveTexture_roo8y")
 color_ramp = SubResource("GradientTexture1D_1fgvt")
 
@@ -42,14 +42,5 @@ lifetime = 4.5
 explosiveness = 1.0
 local_coords = true
 trail_enabled = true
-trail_lifetime = 2.0
-trail_section_subdivisions = 20
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
-amount = 1000
-process_material = SubResource("ParticleProcessMaterial_laomo")
-lifetime = 4.5
-explosiveness = 1.0
-local_coords = true
 trail_lifetime = 2.0
 trail_section_subdivisions = 20

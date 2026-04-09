@@ -56,7 +56,13 @@ namespace Com.IsartDigital.Sokoban
 
 			lTween.TweenProperty(camera, TweenProp.ZOOM, Vector2.One * pZoomStrength, pTweenDuration);
 			lTween.Parallel().TweenProperty(camera, TweenProp.POSITION, pWhereToZoom, pTweenDuration);
-		}
+
+			lTween.TweenProperty(camera, TweenProp.ZOOM, Vector2.One, 0);
+			lTween.TweenCallback(
+					Callable.From(() =>
+						CenterCameraOnCurrentLevel())
+					);
+        }
         private void WaitAtEndPos()
         {
             waitTimer.Start();
