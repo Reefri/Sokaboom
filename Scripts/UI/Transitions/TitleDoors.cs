@@ -30,7 +30,7 @@ namespace Com.IsartDigital.Sokoban
 
         public bool goingToLevel = false;
 
-        public bool animationFinished = false;
+        private bool animationFinished = false;
 
         private TitleDoors() : base()
         {

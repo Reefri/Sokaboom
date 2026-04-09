@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8a4ecwgtperg"]
+[gd_scene load_steps=6 format=3 uid="uid://b8a4ecwgtperg"]
 
 [ext_resource type="Texture2D" uid="uid://baqqdfk122ne0" path="res://Assets/UI/eye/oeil(1).png" id="1_avoev"]
 [ext_resource type="Script" path="res://Scripts/UI/LoginUI.cs" id="1_b5yqg"]
 [ext_resource type="Script" path="res://Scripts/UI/SecretButton.cs" id="3_jl43w"]
 [ext_resource type="Texture2D" uid="uid://b5ifgvo56jcyi" path="res://Assets/UI/eye/oeil.png" id="4_xtyfr"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_dsb4s"]
 
 [node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation", "statut")]
 layout_mode = 3
@@ -144,6 +145,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("5_dsb4s")
 
 [node name="Swtich" type="Button" parent="Font/Login_Inscription/Font/Control"]
 self_modulate = Color(0, 0.85098, 0.972549, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqciltv8p0y15"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WinFinal.cs" id="1_0l42t"]
-[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="2_qfx27"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_qfx27"]
 
 [node name="WinFinal" type="Control" node_paths=PackedStringArray("ScoreFinal", "menu")]
 layout_mode = 3

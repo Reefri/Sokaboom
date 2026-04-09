@@ -92,11 +92,10 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToTitle()
         {
-                MenuTransition.Create(ContinueToTitle);
-            
+            MenuTransition.Create(ContinueToTitle);
         }
 
-        private void ContinueToTitle()
+        public void ContinueToTitle()
         {
             GetChild(0).QueueFree();
             AddChild(uiTitle.Instantiate());
