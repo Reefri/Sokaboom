@@ -264,6 +264,8 @@ namespace Com.IsartDigital.Sokoban
             CurrentPar++;
             SaveScreenshotGame();
 
+            
+
             CheckAndDoWin();
         }
 

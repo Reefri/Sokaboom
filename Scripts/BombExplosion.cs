@@ -37,6 +37,8 @@ namespace Com.IsartDigital.Sokoban {
                 ).originePos;
 
 
+
+
             int lYExplosionMatrixSize = explosionMatrix.Count;
             int lXExplosionMatrixSize = explosionMatrix[0].Count;
 

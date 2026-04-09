@@ -256,6 +256,8 @@ namespace Com.IsartDigital.Sokoban
 
 
             actualPlayerSprite.Play(orientation);
+
+           
         }
 
 

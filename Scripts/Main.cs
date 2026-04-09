@@ -7,6 +7,9 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class Main : Node2D
 	{
+
+        [Export] public Node postProcessingNode;
+
 		static private Main instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Main.tscn");
 

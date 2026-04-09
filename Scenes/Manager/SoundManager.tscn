@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://0wcw7t2hdbak"]
+[gd_scene load_steps=2 format=3 uid="uid://lqb2f3vf18hs"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/SoundManager.cs" id="1_0homo"]
 

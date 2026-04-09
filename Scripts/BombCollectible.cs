@@ -1,3 +1,4 @@
+using Com.IsartDigital.Chromaberation;
 using Godot;
 using System.Collections.Generic;
 
@@ -21,7 +22,7 @@ namespace Com.IsartDigital.Sokoban
 
         public Bomb bomb;
 
-        private Vector2 previsualisationOriginPos;
+        private Vector2I previsualisationOriginPos;
         private Vector2 rightCornerOfCollectible = new Vector2(25, -25);
         private float previsualisationScale = 0.3f;
         private float downFactor = 10;
@@ -61,7 +62,13 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
+
+
+
             hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
+
+
+
 
             hoverRenderer.SetScript(hoverScript);
 
@@ -69,6 +76,9 @@ namespace Com.IsartDigital.Sokoban
 
             showPatern.Scale = Vector2.One * 0.3f;
             showPatern.GlobalPosition = hoverRenderer.GlobalPosition + rightCornerOfCollectible;
+
+
+            
 
 
 
@@ -171,15 +181,14 @@ namespace Com.IsartDigital.Sokoban
             lBombCollectible.showPatern = new Node2D();
 
             lBombCollectible.previsualisationOriginPos = (new BombPattern(
-                lBombCollectible.showPatern, 
-                lBombCollectible.bomb.explosionMatrix, 
+                lBombCollectible.showPatern,
+                lBombCollectible.bomb.explosionMatrix,
                 BombPattern.EnumOfExplosionPattern.Collectible,
-                default, 
+                default,
                 default
-                
+
                 )
                 ).originePos;
-
 
             return lBombCollectible;
         }
@@ -187,6 +196,12 @@ namespace Com.IsartDigital.Sokoban
         protected override void Dispose(bool pDisposing)
         {
             if (previsualisationCreate != null) previsualisationCreate.QueueFree();
+        }
+
+
+        public void RotatePattern(Vector2 pDirection)
+        {
+            showPatern.GlobalRotation =pDirection.Rotated(Mathf.Pi/2).Angle();
         }
     }
 }

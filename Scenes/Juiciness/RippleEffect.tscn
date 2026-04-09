@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://m2de6rhekkwx"]
+
+[ext_resource type="Texture2D" uid="uid://bkdbv2qh73smo" path="res://Assets/crate_42.png" id="1_6dfr8"]
+[ext_resource type="Shader" uid="uid://blktssgndrl0y" path="res://Ressources/RippleEffect.tres" id="1_blf48"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/Shader/RippleEffect.cs" id="2_08qqx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4xaj"]
+shader = ExtResource("1_blf48")
+shader_parameter/CenterPosition = Vector2(0.5, 0.5)
+shader_parameter/radius = 1.0
+shader_parameter/maxRadius = 0.521
+shader_parameter/edge = 0.08
+shader_parameter/intensity = 30.0
+
+[node name="RippleEffect" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_k4xaj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_08qqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(574, 317)
+scale = Vector2(18.9375, 10.9063)
+texture = ExtResource("1_6dfr8")
