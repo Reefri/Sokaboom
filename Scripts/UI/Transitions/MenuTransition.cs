@@ -1,5 +1,6 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
+using System;
 
 // Author : Ethan Frenard
 
@@ -23,7 +24,6 @@ namespace Com.IsartDigital.Sokoban
 		{
 			whenToPlayAnim.WaitTime = tweenDuration / 1.7f;
 			whenToPlayAnim.Start();
-			whenToPlayAnim.Timeout += UIManager.GetInstance().GoToTitle;
 			screenSize = GetRect().Size;
 			doubleHeight = screenSize.Y * 2;
 			doubleWidth = screenSize.X * 2;
@@ -42,10 +42,12 @@ namespace Com.IsartDigital.Sokoban
 			if (time > tweenDuration) QueueFree();
 		}
 
-		public static void Create()
+		public static void Create(Action pSomething)
 		{
 			MenuTransition lTransition = (MenuTransition)factory.Instantiate();
-			UIManager.GetInstance().AddSibling(lTransition);
+            lTransition.whenToPlayAnim.Timeout += pSomething;
+
+            UIManager.GetInstance().AddSibling(lTransition);
 		}
 	}
 }

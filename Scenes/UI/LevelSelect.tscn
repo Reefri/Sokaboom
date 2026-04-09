@@ -18,7 +18,7 @@ expand_margin_top = 15.0
 expand_margin_right = 15.0
 expand_margin_bottom = 15.0
 
-[node name="LevelSelect" type="Control" node_paths=PackedStringArray("allButtons")]
+[node name="LevelSelect" type="Control" node_paths=PackedStringArray("allButtons", "backButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l0ych")
 allButtons = NodePath("allButtons")
+backButton = NodePath("back")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -430,5 +431,4 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_7ib5a")
 theme_override_styles/focus = SubResource("StyleBoxTexture_7ib5a")
 text = "ID_UNLOCK"
 
-[connection signal="pressed" from="back" to="." method="BackPressed"]
 [connection signal="pressed" from="unlock" to="." method="UnlockPressed"]

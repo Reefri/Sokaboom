@@ -92,11 +92,22 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToTitle()
         {
+                MenuTransition.Create(ContinueToTitle);
+            
+        }
+
+        private void ContinueToTitle()
+        {
             GetChild(0).QueueFree();
             AddChild(uiTitle.Instantiate());
         }
 
         public void GoToHelp()
+        {
+            MenuTransition.Create(ContinueToHelp);
+        }
+
+        private void ContinueToHelp()
         {
             GetChild(0).QueueFree();
             AddChild(uiHelp.Instantiate());
