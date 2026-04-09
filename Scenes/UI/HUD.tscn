@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv14slt1ckou2"]
+[gd_scene load_steps=4 format=3 uid="uid://dv14slt1ckou2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
-[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="2_3swun"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_3swun"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="3_lnnes"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "reStart", "par", "steps", "name", "number", "quitDelay")]
 layout_mode = 3
@@ -14,7 +15,7 @@ mouse_filter = 2
 script = ExtResource("1_h8l0x")
 buttonUndo = NodePath("Undo")
 buttonRedo = NodePath("Redo")
-reStart = NodePath("Retry")
+reStart = NodePath("Control2/Retry")
 par = NodePath("Par")
 steps = NodePath("Steps")
 name = NodePath("Name")
@@ -41,7 +42,17 @@ offset_bottom = 100.0
 grow_horizontal = 0
 text = "ID_QUIT"
 
-[node name="Retry" type="Button" parent="."]
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_lnnes")
+
+[node name="Retry" type="Button" parent="Control2"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

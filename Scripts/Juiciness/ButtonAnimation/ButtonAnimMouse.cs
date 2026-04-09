@@ -39,7 +39,7 @@ namespace Com.IsartDigital.Sokoban
             lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(lIndex == 0 ? -5 : 5), DURATION_WHEN_CROSSED);
         }
 
-        private void AnimationMouseExited(Button pButton)
+        protected void AnimationMouseExited(Button pButton)
         {
             if (!pressed)
             {
