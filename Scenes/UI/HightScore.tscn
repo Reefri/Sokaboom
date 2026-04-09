@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://85xuiwhv5qb3"]
+[gd_scene load_steps=5 format=3 uid="uid://85xuiwhv5qb3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HightScore.cs" id="1_lunip"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_0sj0s"]
+[ext_resource type="Material" uid="uid://bwyw866uj0xmn" path="res://Assets/particules/HightScoreLeft.tres" id="2_kobj7"]
+[ext_resource type="Material" uid="uid://l1nbyclqriub" path="res://Assets/particules/HightScoreRight.tres" id="3_tccnp"]
 
 [node name="HightScore" type="Control" node_paths=PackedStringArray("next", "levelAccount")]
 layout_mode = 3
@@ -66,6 +68,24 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FirstAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FirstAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="SecondAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
@@ -81,6 +101,24 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SecondAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SecondAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
 
 [node name="ThirdAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
@@ -98,6 +136,24 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/ThirdAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/ThirdAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="FourthAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
@@ -113,6 +169,24 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FourthAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FourthAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
 
 [node name="FifthAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
@@ -130,6 +204,24 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FifthAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FifthAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="SixthAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
@@ -145,6 +237,24 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SixthAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SixthAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
 
 [node name="SeventhAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
@@ -162,6 +272,24 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SeventhAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SeventhAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="EighthAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
@@ -177,6 +305,24 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/EighthAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/EighthAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
 
 [node name="NinthAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
@@ -194,6 +340,24 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/NinthAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/NinthAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="TenthAccount" type="Label" parent="ColorRect/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
@@ -209,6 +373,24 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/TenthAccount"]
+position = Vector2(0, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("2_kobj7")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/TenthAccount"]
+position = Vector2(900, 35)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
 
 [node name="YourAccount" type="Label" parent="ColorRect/BoxContainer"]
 visible = false
