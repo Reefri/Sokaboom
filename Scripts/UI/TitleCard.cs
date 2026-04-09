@@ -73,8 +73,6 @@ namespace Com.IsartDigital.Sokoban.UI
 
             hightScore.Pressed += UIManager.GetInstance().GoToHightScore;
             play.Pressed += UIManager.GetInstance().GoToLevelSelect;
-
-            if (Main.GetInstance().noLogin) UIManager.GetInstance().ChangeLayer();
         }
 
         public override void _Input(InputEvent pEvent)

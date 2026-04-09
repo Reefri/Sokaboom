@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv14slt1ckou2"]
+[gd_scene load_steps=3 format=3 uid="uid://dv14slt1ckou2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="2_3swun"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "reStart", "par", "steps", "name", "number", "quitDelay")]
 layout_mode = 3
@@ -20,7 +21,17 @@ name = NodePath("Name")
 number = NodePath("Name/Number")
 quitDelay = NodePath("quitDelay")
 
-[node name="Quit" type="Button" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_3swun")
+
+[node name="Quit" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -116,4 +127,4 @@ text = "ID_NUM"
 [node name="quitDelay" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="pressed" from="Quit" to="." method="QuitPressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="QuitPressed"]

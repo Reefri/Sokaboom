@@ -46,9 +46,10 @@ namespace Com.IsartDigital.Sokoban
                 else
                 {
                     AccountManager.GetInstance().TestConnexion("Guest", "");
-                    UIManager.GetInstance().GoToTitle();
 
+                    UIManager.GetInstance().ChangeLayer();
                     TitleDoors.GetInstance().ActivateDoors();
+                    UIManager.GetInstance().ContinueToTitle();
                 }
             }
         }
