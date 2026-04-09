@@ -26,6 +26,8 @@ namespace Com.IsartDigital.Sokoban
 		[Export] public Shaker simpleBombShaker;
 		[Export] public Shaker fireworkShaker;
 
+		[Export] private float winAnimDuration = 2f;
+
 		private const float TIME_FOR_BANDEROLES = 0.2f;
 
 		public Timer timeBeforeBanderoles = new Timer();
@@ -74,7 +76,7 @@ namespace Com.IsartDigital.Sokoban
 
 
 			timeBeforeBanderoles.OneShot = true;
-			timeBeforeBanderoles.WaitTime = TIME_FOR_BANDEROLES;
+			timeBeforeBanderoles.WaitTime = winAnimDuration;
 			timeBeforeBanderoles.Timeout += Banderole.GetInstance().StartTransitionToWin;
 			AddChild(timeBeforeBanderoles);
 
