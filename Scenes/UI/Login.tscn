@@ -18,8 +18,8 @@ title = NodePath("Font/Login_Inscription/Font/Title")
 pseudo = NodePath("Font/Login_Inscription/Font/LinePseudo")
 password = NodePath("Font/Login_Inscription/Font/LinePassWord")
 confirmPassword = NodePath("Font/Login_Inscription/Font/LineConfirm")
-buttonSwitch = NodePath("Font/Login_Inscription/Font/Swtich")
-buttonValidation = NodePath("Font/Login_Inscription/Font/connexion_inscription")
+buttonSwitch = NodePath("Font/Login_Inscription/Font/Control/Swtich")
+buttonValidation = NodePath("Font/Login_Inscription/Font/Control/connexion_inscription")
 statut = NodePath("Font/Statut")
 
 [node name="Font" type="ColorRect" parent="."]
@@ -136,7 +136,16 @@ icon = ExtResource("4_xtyfr")
 flat = true
 script = ExtResource("3_jl43w")
 
-[node name="Swtich" type="Button" parent="Font/Login_Inscription/Font"]
+[node name="Control" type="Control" parent="Font/Login_Inscription/Font"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Swtich" type="Button" parent="Font/Login_Inscription/Font/Control"]
 self_modulate = Color(0, 0.85098, 0.972549, 1)
 layout_mode = 1
 anchors_preset = 2
@@ -149,7 +158,7 @@ theme_override_font_sizes/font_size = 10
 text = "Inscription"
 flat = true
 
-[node name="connexion_inscription" type="Button" parent="Font/Login_Inscription/Font"]
+[node name="connexion_inscription" type="Button" parent="Font/Login_Inscription/Font/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -179,4 +188,4 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Font/Login_Inscription/Font/Swtich" to="." method="SwitchOnPressed"]
+[connection signal="pressed" from="Font/Login_Inscription/Font/Control/Swtich" to="." method="SwitchOnPressed"]

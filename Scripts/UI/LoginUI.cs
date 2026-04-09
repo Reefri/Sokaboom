@@ -85,6 +85,16 @@ namespace Com.IsartDigital.Sokoban.UI
             else Register();
         }
 
+        public override void _Input(InputEvent pEvent)
+        {
+            if (pEvent is InputEventKey lKeyEvent && lKeyEvent.Pressed && lKeyEvent.Keycode == Key.Enter)
+            {
+                if (pseudo.HasFocus()) password.GrabFocus();
+                else if ((password.HasFocus() && isLogin) || confirmPassword.HasFocus()) buttonValidation.GrabFocus();
+                else if (password.HasFocus() && !isLogin) confirmPassword.GrabFocus();
+            }
+        }
+
         private void Register()
         {
             if (password.Text != confirmPassword.Text)
