@@ -34,6 +34,18 @@ namespace Com.IsartDigital.Sokoban
         
         public HistoricHeap currentPosition;
 
+        private bool redoPossible;
+        public bool RedoPossible 
+        { 
+            get { return redoPossible; }
+            set
+            {
+                redoPossible = value;
+                UIManager.GetInstance().instanceHud.DisabledRedo(redoPossible);
+            }
+        }
+       
+
 
         private int currentPar = 0;
         public int CurrentPar
@@ -274,6 +286,7 @@ namespace Com.IsartDigital.Sokoban
         {
             if (CheckWin())
             {
+                VictoryAnimation.Create();
                 Player.GetInstance().canInput = false;
                 JuicinessManager.GetInstance().timeBeforeBanderoles.Start();
             }
@@ -357,9 +370,9 @@ namespace Com.IsartDigital.Sokoban
                 GD.Print("Can't go back in time !");
                 return;
             }
+            RedoPossible = true;
 
             QuickResetInit();
-
 
             CurrentPar--;
 
@@ -372,6 +385,7 @@ namespace Com.IsartDigital.Sokoban
             if (currentPosition.nextValue == null)
             {
                 GD.Print("Can't go forward in time !");
+                RedoPossible = false;
                 return;
             }
 

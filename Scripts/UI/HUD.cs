@@ -26,8 +26,8 @@ namespace Com.IsartDigital.Sokoban
 
             UIManager.GetInstance().instanceHud = this;
 
-            buttonUndo.Pressed += () => GameManager.GetInstance().MoveBackInTime();
-            buttonRedo.Pressed += () => GameManager.GetInstance().MoveForwardInTime();
+            buttonUndo.Pressed += GameManager.GetInstance().MoveBackInTime;
+            buttonRedo.Pressed += GameManager.GetInstance().MoveForwardInTime;
 
             par.Text = PAR + GameManager.GetInstance().currentLevel.Par;
             name.Text = Tr(GameManager.GetInstance().currentLevel.Title) + Tr(BY) + GameManager.GetInstance().currentLevel.Author;
@@ -54,12 +54,16 @@ namespace Com.IsartDigital.Sokoban
         }
         private void RetryPressed()
         {
-
             GameManager.GetInstance().QuickResetInit();
 
             GameManager.GetInstance().currentPosition = new HistoricHeap(GameManager.GetInstance().currentLevel);
             GameManager.GetInstance().ChargeMapFromCurrentLevel();
             GameManager.GetInstance().CurrentPar = 0;
+        }
+
+        public void DisabledRedo(bool pBool)
+        {
+            buttonRedo.Disabled = !pBool;
         }
 
         protected override void Dispose(bool pDisposing)

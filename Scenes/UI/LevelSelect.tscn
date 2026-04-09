@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cvruhy2dpei86"]
 
 [ext_resource type="Script" path="res://Scripts/UI/LevelSelect.cs" id="1_l0ych"]
-[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="2_mtd47"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_mtd47"]
 [ext_resource type="Texture2D" uid="uid://j6nf77g4qnts" path="res://Assets/LevelSelectBackground.png" id="3_0uw2m"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_oadqc"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_2u2uy"]
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l0ych")
 allButtons = NodePath("allButtons")
-backButton = NodePath("back")
+backButton = NodePath("Control/back")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -387,23 +387,6 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 12"
 
-[node name="back" type="Button" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -453.0
-offset_top = -309.0
-offset_right = -242.0
-offset_bottom = -232.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "ID_BACK"
-
 [node name="unlock" type="Button" parent="."]
 z_index = 1
 layout_mode = 1
@@ -430,5 +413,32 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7ib5a")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_7ib5a")
 theme_override_styles/focus = SubResource("StyleBoxTexture_7ib5a")
 text = "ID_UNLOCK"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_mtd47")
+
+[node name="back" type="Button" parent="Control"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -453.0
+offset_top = -309.0
+offset_right = -242.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "ID_BACK"
 
 [connection signal="pressed" from="unlock" to="." method="UnlockPressed"]

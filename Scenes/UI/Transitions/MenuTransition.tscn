@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cka3r74niudit"]
+[gd_scene load_steps=19 format=3 uid="uid://cka3r74niudit"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/MenuTransition.cs" id="1_geije"]
 [ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_epxvl"]
+[ext_resource type="Texture2D" uid="uid://b25n7u71vvpj2" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 9.png" id="3_54olf"]
+[ext_resource type="Texture2D" uid="uid://d1x7wjhi7nh5f" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 8.png" id="4_0pvm5"]
+[ext_resource type="Texture2D" uid="uid://opqoxoxnefc4" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 10.png" id="5_reu2p"]
+[ext_resource type="Texture2D" uid="uid://q6gn5fonfhcc" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 2.png" id="6_8dbqh"]
+[ext_resource type="Texture2D" uid="uid://dr2b70u2faaiu" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 8.png" id="7_ifs2x"]
+[ext_resource type="Texture2D" uid="uid://hojuvfogpu12" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 7.png" id="8_qek0y"]
+[ext_resource type="Texture2D" uid="uid://dt6wje1bkya8r" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 6.png" id="9_84vdj"]
+[ext_resource type="Texture2D" uid="uid://ctvi8ayg1nb57" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie.png" id="10_ob3bp"]
+[ext_resource type="Texture2D" uid="uid://bqn6ohv1lomfe" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 7.png" id="11_eagf0"]
+[ext_resource type="Texture2D" uid="uid://xs67lscfnj2c" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 6.png" id="12_x8nro"]
+[ext_resource type="Texture2D" uid="uid://57j0p3u0p34o" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 3.png" id="13_ircr7"]
+[ext_resource type="Texture2D" uid="uid://q3d2dm8culb3" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 5.png" id="14_8fx76"]
+[ext_resource type="Texture2D" uid="uid://c7yn0kxp8f4n6" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 4.png" id="15_gpn4q"]
+[ext_resource type="Texture2D" uid="uid://crnsfpt5qkypd" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 2.png" id="16_l2lt0"]
+[ext_resource type="Texture2D" uid="uid://boq55fqqg3p52" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 5.png" id="17_reiw6"]
+[ext_resource type="Texture2D" uid="uid://c8x3jph467t7" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 3.png" id="18_cyr2l"]
 
 [node name="MenuTransition" type="Control" node_paths=PackedStringArray("TransitionZone", "whenToPlayAnim")]
 z_index = 3
@@ -12,12 +28,102 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_geije")
-TransitionZone = NodePath("Node2D")
+TransitionZone = NodePath("BigCloud")
 whenToPlayAnim = NodePath("whenToPlayAnim")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="BigCloud" type="Node2D" parent="."]
+position = Vector2(581, 246)
+rotation = -1.0472
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Sprite2D14" type="Sprite2D" parent="BigCloud"]
+position = Vector2(103.727, 634.273)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("3_54olf")
+
+[node name="Sprite2D6" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-466.773, 539.773)
+rotation = 1.01578
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("4_0pvm5")
+
+[node name="Sprite2D15" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-120.273, -349.227)
+rotation = 0.74002
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("5_reu2p")
+
+[node name="Sprite2D7" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-515.773, 235.273)
+rotation = 0.74002
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("6_8dbqh")
+
+[node name="Sprite2D13" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-505.273, -352.727)
+rotation = 1.10828
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("7_ifs2x")
+
+[node name="Sprite2D5" type="Sprite2D" parent="BigCloud"]
+position = Vector2(243.727, -468.227)
+rotation = 0.830777
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("8_qek0y")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BigCloud"]
+position = Vector2(37.227, -160.227)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("9_84vdj")
+
+[node name="Sprite2D16" type="Sprite2D" parent="BigCloud"]
+position = Vector2(222.727, -72.7272)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("10_ob3bp")
+
+[node name="Sprite2D12" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-71.273, 399.773)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("11_eagf0")
+
+[node name="Sprite2D11" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-421.273, -93.7272)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("12_x8nro")
+
+[node name="Sprite2D8" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-151.773, -27.2272)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("13_ircr7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-358.273, 448.773)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("14_8fx76")
+
+[node name="Sprite2D9" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-284.773, 224.773)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("15_gpn4q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BigCloud"]
+position = Vector2(464.227, 245.773)
+rotation = 0.621337
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("16_l2lt0")
+
+[node name="Sprite2D10" type="Sprite2D" parent="BigCloud"]
+position = Vector2(-50.273, 315.773)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("17_reiw6")
+
+[node name="Sprite2D17" type="Sprite2D" parent="BigCloud"]
+position = Vector2(299.727, 354.273)
+rotation = 0.185005
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("18_cyr2l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 rotation = -0.785398
 scale = Vector2(12, 12)
 texture = ExtResource("2_epxvl")

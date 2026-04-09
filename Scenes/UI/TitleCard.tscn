@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw85b1nive3ah"]
+[gd_scene load_steps=6 format=3 uid="uid://dw85b1nive3ah"]
 
 [ext_resource type="Script" path="res://Scripts/UI/TitleCard.cs" id="1_ib5wi"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_5ibq2"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_e1lnu"]
-[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="4_4ftt8"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
 
-[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore")]
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore", "play")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +26,7 @@ letterU = NodePath("Title/BOUM !/BOUM/U")
 letterM = NodePath("Title/BOUM !/BOUM/M")
 exclamationMark = NodePath("Title/BOUM !/!")
 hightScore = NodePath("ButtonsA/HightScore")
+play = NodePath("ButtonsA/Play")
 
 [node name="Font" type="ColorRect" parent="."]
 z_index = -2
@@ -246,6 +248,7 @@ offset_top = -84.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+script = ExtResource("5_mkv2m")
 
 [node name="Son" type="Button" parent="ButtonsB"]
 layout_mode = 1
@@ -275,6 +278,5 @@ offset_bottom = -18.0
 grow_vertical = 0
 text = "ID_TRANSLATION"
 
-[connection signal="pressed" from="ButtonsA/Play" to="." method="PlayPressed"]
 [connection signal="pressed" from="ButtonsA/Help" to="." method="HelpPressed"]
 [connection signal="pressed" from="ButtonsB/Traduction" to="." method="Langage"]

@@ -22,5 +22,7 @@
         public const string SKEW = "skew";
 
         public const string FRAME = "frame";
+
+        public const string ZOOM = "zoom";
     }
 }

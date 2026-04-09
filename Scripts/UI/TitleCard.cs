@@ -20,6 +20,7 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Label exclamationMark;
 
         [Export] private Button hightScore;
+        [Export] private Button play;
 
         private Timer timer = new Timer();
 
@@ -70,7 +71,8 @@ namespace Com.IsartDigital.Sokoban.UI
             exclamationMark.Visible = false;
             explosion.Visible = false;
 
-            hightScore.Pressed += () => UIManager.GetInstance().GoToHightScore();
+            hightScore.Pressed += UIManager.GetInstance().GoToHightScore;
+            play.Pressed += UIManager.GetInstance().GoToLevelSelect;
         }
 
         public override void _Input(InputEvent pEvent)
@@ -173,11 +175,6 @@ namespace Com.IsartDigital.Sokoban.UI
 
             animationWantToStop = false;
             AnimationIsFinish();
-        }
-
-        private void PlayPressed()
-        {
-            UIManager.GetInstance().GoToLevelSelect();
         }
 
         private void HelpPressed()

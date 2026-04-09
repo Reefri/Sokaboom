@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://gfc2c7h0knyk" path="res://Scenes/UI/HelpAnimations/BombExplosionHelp.tscn" id="11_mgyye"]
 [ext_resource type="PackedScene" uid="uid://dfi0xj1teixyt" path="res://Scenes/UI/HelpAnimations/HelpExplodeDirections.tscn" id="12_1tdw1"]
 [ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
-[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation.cs" id="14_3wq5k"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="14_3wq5k"]
 
 [node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationSfB", "explanationSfC", "explanationControlA", "explanationControlB", "explanationDetailA", "explanationDetailB", "returnButton")]
 layout_mode = 3
