@@ -19,10 +19,6 @@ namespace Com.IsartDigital.Sokoban.UI
 
         private const string TEXT_SWITCH_LOGIN = "Inscription";
 
-        private Color green = new Color(0, 1, 0);
-        private Color yellow = new Color(1, 1, 0);
-        private Color red = new Color(1, 0, 0);
-
         private bool isLogin = true;
 
         private const string SWITCH_INSCRIPTION = "ID_SWITCH_INSCRIPTION";
@@ -41,6 +37,8 @@ namespace Com.IsartDigital.Sokoban.UI
             confirmPassword.Visible = false;
 
             buttonValidation.ButtonDown += OnValidationPressed;
+
+            pseudo.GrabFocus();
         }
 
         private void SwitchOnPressed()
@@ -73,6 +71,7 @@ namespace Com.IsartDigital.Sokoban.UI
             }
 
             isLogin = !isLogin;
+            pseudo.GrabFocus();
 
             pseudo.Text = null;
             password.Text = null;
@@ -90,8 +89,8 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             if (password.Text != confirmPassword.Text)
             {
+                confirmPassword.GrabFocus();
                 statut.Text = Tr(PASSWORD_NOT_CONFIRM);
-                statut.SelfModulate = yellow;
                 return;
             }
             if (AccountManager.GetInstance().Register(pseudo.Text, password.Text))
@@ -100,8 +99,8 @@ namespace Com.IsartDigital.Sokoban.UI
             }
             else
             {
+                pseudo.GrabFocus();
                 statut.Text = Tr(PSEUDO_EXIST_A) + pseudo.Text + Tr(PSEUDO_EXIST_B);
-                statut.SelfModulate = yellow;
             }
         }
 
@@ -111,7 +110,7 @@ namespace Com.IsartDigital.Sokoban.UI
             {
                 case AccountManager.TestConnexionResult.Incorrect:
                     statut.Text = Tr(INCORECT_PASSWORD);
-                    statut.SelfModulate = red;
+                    password.GrabFocus();
                     break;
                 case AccountManager.TestConnexionResult.Valid:
                     UIManager.GetInstance().ChangeLayer();
@@ -120,7 +119,7 @@ namespace Com.IsartDigital.Sokoban.UI
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
                     statut.Text = Tr(NO_ACCOUNT_A) + pseudo.Text + Tr(NO_ACCOUNT_B);
-                    statut.SelfModulate = red;
+                    pseudo.GrabFocus();
                     break;
             }
         }
