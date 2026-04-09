@@ -12,7 +12,7 @@ namespace Com.IsartDigital.Sokoban
 		[Export] Button next;
 		[Export] BoxContainer levelAccount;
 
-		int i;
+        int i;
 		bool currentAccountInTopTen;
 
         private const string SCORE = "Score : ";
