@@ -10,8 +10,10 @@ namespace Com.IsartDigital.Sokoban
 	public partial class ButtonAnimation : Control
 	{
         RandomNumberGenerator lRand = new RandomNumberGenerator();
-        int lIndex;
+        private int lIndex;
         private const float DURATION_WHEN_CROSSED = 0.5f;
+
+        private bool pressed;
 
         public override void _Ready()
 		{
@@ -39,7 +41,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void AnimationMouseExited(Button pButton)
         {
-            if (TitleDoors.GetInstance().animationFinished)
+            if (!pressed)
             {
                 Tween lTween = CreateTween().SetParallel();
                 lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1f, 1f), DURATION_WHEN_CROSSED);
@@ -49,6 +51,7 @@ namespace Com.IsartDigital.Sokoban
         private void AnimationMousePressed(Button pButton)
         {
             SoundManager.GetInstance().PlayClick();
+            pressed = true;
 
             Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.InOut).SetParallel();
             lTween.TweenProperty(pButton, TweenProp.ROTATION, 100, 1f);
