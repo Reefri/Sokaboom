@@ -85,7 +85,7 @@ namespace Com.IsartDigital.Sokoban
         public void Explode(Vector2I pPosition, Vector2I pRotationVector)
         {
             BombExplosion.Create(explosionMatrix,pPosition, pRotationVector);
-            RippleEffect.Create(pPosition);
+            RippleEffect.CreateExplosion(pPosition);
 
         }
 
