@@ -242,7 +242,7 @@ _data = {
 "movingUp": SubResource("Animation_gi0gj")
 }
 
-[node name="Player2" type="Area2D" node_paths=PackedStringArray("oldTextureContainer", "newTextureContainer", "animPlayer", "oldAnimatedSprite", "oldActualPlayerSprite", "newAnimatedSprite", "newActualPlayerSprite", "bombPrevisualisationContainer")]
+[node name="Player2" type="Area2D" node_paths=PackedStringArray("oldTextureContainer", "newTextureContainer", "animPlayer", "oldAnimatedSprite", "oldActualPlayerSprite", "newAnimatedSprite", "newActualPlayerSprite", "bombPrevisualisationContainer", "collider")]
 script = ExtResource("1_26mxs")
 oldTextureContainer = NodePath("Old")
 newTextureContainer = NodePath("New")
@@ -252,6 +252,7 @@ oldActualPlayerSprite = NodePath("Old/ActualAnimatedPlayer")
 newAnimatedSprite = NodePath("New/VisualPlayer")
 newActualPlayerSprite = NodePath("New/ActualAnimatedPlayer")
 bombPrevisualisationContainer = NodePath("BombPreviContainer")
+collider = NodePath("CollisionShape2D")
 
 [node name="Old" type="Node2D" parent="."]
 

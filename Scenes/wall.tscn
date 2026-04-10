@@ -5,6 +5,7 @@
 
 [node name="Wall" type="Node2D"]
 z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_k4kly")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
