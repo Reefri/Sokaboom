@@ -13,7 +13,7 @@
 [sub_resource type="Theme" id="Theme_w6t2w"]
 Button/styles/focus = SubResource("StyleBoxEmpty_5u68h")
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "reStart", "par", "steps", "name", "author", "number", "quitDelay")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("quitButton", "undoButton", "redoButton", "restartButton", "par", "steps", "name", "author", "number", "quitDelay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,9 +23,10 @@ grow_vertical = 2
 mouse_filter = 2
 theme = SubResource("Theme_w6t2w")
 script = ExtResource("1_h8l0x")
-buttonUndo = NodePath("UNDO_REDO/UNDO/Undo")
-buttonRedo = NodePath("UNDO_REDO/REDO/Redo")
-reStart = NodePath("RETRY/Retry")
+quitButton = NodePath("QUIT/Quit")
+undoButton = NodePath("UNDO_REDO/UNDO/Undo")
+redoButton = NodePath("UNDO_REDO/REDO/Redo")
+restartButton = NodePath("RETRY/Retry")
 par = NodePath("Control/Par")
 steps = NodePath("Control/Steps")
 name = NodePath("Name")
