@@ -5,14 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://ql7xil2wq2gx" path="res://Scenes/Manager/UIManager.tscn" id="3_70v4f"]
 [ext_resource type="PackedScene" uid="uid://ch5qxtjmo6hf1" path="res://Scenes/Manager/CameraManager.tscn" id="3_wl630"]
 [ext_resource type="PackedScene" uid="uid://ckb0d6582p3ei" path="res://Scenes/Manager/JuicinessManager.tscn" id="4_ajjv2"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/Transitions/BanderoleTransition.tscn" id="6_vgvtg"]
+[ext_resource type="PackedScene" uid="uid://u22od2u73pmn" path="res://Scenes/UI/Transitions/BanderoleTransition.tscn" id="6_vgvtg"]
 [ext_resource type="PackedScene" uid="uid://cm3gad8a6tckd" path="res://Scenes/UI/IsartLogo.tscn" id="7_nkax3"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("postProcessingNode")]
 script = ExtResource("1_4l0qp")
 postProcessingNode = NodePath("PostProccessingNode")
 testOnlyGameFeature = false
-noLogin = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5

@@ -24,7 +24,6 @@ shader_parameter/MainColor = Color(0.316667, 0, 1, 1)
 size = Vector2(64, 64)
 
 [node name="BombCollectible" type="Area2D" node_paths=PackedStringArray("hoverRenderer", "head", "body")]
-z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_73o2a")
 hoverRenderer = NodePath("Renderer/Hover")

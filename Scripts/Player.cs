@@ -1,3 +1,4 @@
+using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Com.IsartDigital.Sokoban
         static private Player instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Gameplay/player.tscn");
 
+     	[Export] float timeOfFall = 1.8f;
+        [Export] int turnToFall = 2;
 
         [Export] public Node2D oldTextureContainer;
         [Export] public Node2D newTextureContainer;
@@ -239,7 +242,7 @@ namespace Com.IsartDigital.Sokoban
         {
             if (!canInput) return;
 
-            if ( animPlayer.CurrentAnimation != ANIM_IDLE || Box.animPlaying || path.Count != 0 ) { return; }
+            if ( animPlayer.CurrentAnimation != ANIM_IDLE || Box.animPlaying || path.Count != 0 || GameManager.GetInstance().startAnimation) { return; }
 
             foreach (string lActionName in PlayersVector.Keys)
             {
@@ -258,6 +261,16 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
+        public void StartAnimation(Tween pTween)
+        {
+            int lPlayerStraight = 360 * turnToFall;
+
+            pTween.TweenProperty(this, TweenProp.POSITION_Y, Position.Y, timeOfFall).From(-Position.Y);
+            pTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(lPlayerStraight + 90), timeOfFall);
+
+            pTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(lPlayerStraight), 0.35f).SetDelay(timeOfFall + 0.6f);
+            pTween.TweenProperty(this, TweenProp.ROTATION, 0, 0).SetDelay(timeOfFall + 1f);
+        }
 
         public void AnimThePlayer(Vector2I pLastDirection)
         {

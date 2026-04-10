@@ -1,4 +1,5 @@
 using Com.IsartDigital.Chromaberation;
+using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace Com.IsartDigital.Sokoban
         [Export] Node2D hoverRenderer;
         [Export] Script hoverScript;
 
-		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
+        private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
@@ -47,6 +48,8 @@ namespace Com.IsartDigital.Sokoban
 
         private Texture2D bodyTexture;
 
+        private RandomNumberGenerator lRand = new RandomNumberGenerator();
+
         private static List<string> bodyTextureChoices = new List<string>()
         {
             "bubble",
@@ -62,7 +65,7 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
-
+            StartAnimation();
 
 
             hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
@@ -170,6 +173,12 @@ namespace Com.IsartDigital.Sokoban
             return lBombCollectible;
 		}
 
+        public void StartAnimation()
+        {
+            Tween lTween = CreateTween().SetParallel();
+            lTween.TweenProperty(this, TweenProp.MODULATE_ALPHA, 0, 0);
+            lTween.TweenProperty(this, TweenProp.MODULATE_ALPHA, 1, lRand.Randf()).SetDelay(lRand.Randf());
+        }
 
         public BombCollectible Duplicate()
         {

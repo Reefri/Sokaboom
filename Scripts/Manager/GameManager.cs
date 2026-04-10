@@ -1,6 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
+using static Godot.TextServer;
 
 // Author : Sacha Gramatikoff
 
@@ -35,6 +36,11 @@ namespace Com.IsartDigital.Sokoban
         public HistoricHeap currentPosition;
 
         private bool redoPossible;
+
+        public bool startAnimation;
+
+        RandomNumberGenerator lRand = new RandomNumberGenerator();
+
         public bool RedoPossible 
         { 
             get { return redoPossible; }
@@ -130,6 +136,7 @@ namespace Com.IsartDigital.Sokoban
 
 
             ChargeMapFromCurrentLevel();
+            StartAnimation();
         }
 
         protected override void Dispose(bool pDisposing)
@@ -485,6 +492,41 @@ namespace Com.IsartDigital.Sokoban
             {
                 BoxSignal.Create(lBoxPosition);
             }
+        }
+
+        private void StartAnimation()
+        {
+            startAnimation = true;
+           
+            Tween lTween = CreateTween().SetParallel();
+            lTween.Finished += EndOfStartAnimation;
+
+            Player.GetInstance().StartAnimation(lTween);
+
+            int lYCurrentLevelSize = currentLevel.Size.Y;
+            int lXCurrentLevelSize = currentLevel.Size.X;
+
+            for (int i = 0; i < lYCurrentLevelSize; i++)
+            {
+                for (int j = 0; j < lXCurrentLevelSize; j++)
+                {
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) != null && 
+                        (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.BOX))
+                    {
+                        Box.CreateAnimation(new Vector2I(j ,i), lTween, lRand.Randf());
+                    }
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) != null &&
+                        (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.WALL))
+                    {
+                        Wall.CreateAnimation(new Vector2I(j, i), lTween, lRand.Randf());
+                    }
+                }
+            }
+        }
+
+        private void EndOfStartAnimation()
+        {
+            startAnimation = false;
         }
     }
 }
