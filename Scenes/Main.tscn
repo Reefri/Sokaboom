@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" path="res://Scenes/UI/Transitions/BanderoleTransition.tscn" id="6_vgvtg"]
 [ext_resource type="PackedScene" uid="uid://cm3gad8a6tckd" path="res://Scenes/UI/IsartLogo.tscn" id="7_nkax3"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("postProcessingNode")]
 script = ExtResource("1_4l0qp")
+postProcessingNode = NodePath("PostProccessingNode")
 testOnlyGameFeature = false
 noLogin = false
 

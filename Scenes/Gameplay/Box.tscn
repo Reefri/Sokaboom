@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cs1jn4ardy0sc"]
 
 [ext_resource type="Script" path="res://Scripts/Box.cs" id="1_j6c5n"]
-[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="2_afcjj"]
+[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_02.png" id="2_afcjj"]
 
 [sub_resource type="Gradient" id="Gradient_skvxv"]
 offsets = PackedFloat32Array(0, 0.491803, 1)
@@ -251,11 +251,12 @@ _data = {
 "movingUp": SubResource("Animation_oee0s")
 }
 
-[node name="Box" type="Node2D" node_paths=PackedStringArray("anim", "moveDust")]
+[node name="Box" type="Node2D" node_paths=PackedStringArray("anim", "moveDust", "renderer")]
 z_index = 3
 script = ExtResource("1_j6c5n")
 anim = NodePath("AnimationPlayer")
 moveDust = NodePath("Sprite2D/moveDust")
+renderer = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_afcjj")

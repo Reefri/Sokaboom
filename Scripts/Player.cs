@@ -11,9 +11,37 @@ namespace Com.IsartDigital.Sokoban
         static private Player instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Gameplay/player.tscn");
 
+
+        [Export] public Node2D oldTextureContainer;
+        [Export] public Node2D newTextureContainer;
+
+        public Node2D currentTextureContainer;
+
+
         [Export] public AnimationPlayer animPlayer;
-        [Export] public AnimatedSprite2D animatedSprite;
-        [Export] private AnimatedSprite2D actualPlayerSprite;
+
+        
+        [Export] public AnimatedSprite2D oldAnimatedSprite;
+        [Export] private AnimatedSprite2D oldActualPlayerSprite;
+        
+        [Export] public AnimatedSprite2D newAnimatedSprite;
+        [Export] private AnimatedSprite2D newActualPlayerSprite;
+
+        public AnimatedSprite2D currentAnimatedSprite;
+        private AnimatedSprite2D currentActualPlayerSprite;
+
+
+        public void UpdateTexture(bool pIsOld)
+        {
+            oldTextureContainer.Visible = pIsOld;
+            newTextureContainer.Visible = !pIsOld;
+
+
+            currentTextureContainer = (pIsOld?oldTextureContainer:newTextureContainer);
+            currentAnimatedSprite = (pIsOld? oldAnimatedSprite : newAnimatedSprite);
+            //currentActualPlayerSprite = (pIsOld? oldActualPlayerSprite : newActualPlayerSprite);
+        }
+
         
         [Export] private Node2D bombPrevisualisationContainer;
 
@@ -105,12 +133,12 @@ namespace Com.IsartDigital.Sokoban
         private void ReplaceThePlayer(StringName pAnimName)
         {
             OrientThePlayer();
-            actualPlayerSprite.Play(orientation);
+            currentActualPlayerSprite.Play(orientation);
 
-            actualPlayerSprite.Visible = true;
-            animatedSprite.Visible = false;
+            currentActualPlayerSprite.Visible = true;
+            currentAnimatedSprite.Visible = false;
 
-            GlobalPosition = animatedSprite.GlobalPosition;
+            GlobalPosition = currentAnimatedSprite.GlobalPosition;
             if (!Box.animPlaying) GameManager.GetInstance().UpdateAfterAction(); 
             
             CreatePrevisualisation();
@@ -129,7 +157,7 @@ namespace Com.IsartDigital.Sokoban
         private void MovingOnPath()
         {
             pathFindingTimer.WaitTime = pathFindingTime;
-            if (GlobalPosition != animatedSprite.GlobalPosition) { animatedSprite.GlobalPosition = GlobalPosition; }
+            if (GlobalPosition != currentAnimatedSprite.GlobalPosition) { currentAnimatedSprite.GlobalPosition = GlobalPosition; }
 
             if (path.Count == 0) 
             { 
@@ -240,11 +268,11 @@ namespace Com.IsartDigital.Sokoban
 
             SoundManager.GetInstance().PlayFootStep();
 
-            actualPlayerSprite.Visible = false;
-            animatedSprite.Visible = true;
+            currentActualPlayerSprite.Visible = false;
+            currentAnimatedSprite.Visible = true;
 
             animPlayer.Play(nameOfAnimation[pLastDirection]);
-            animatedSprite.Play(nameOfAnimation[pLastDirection] + ANIM_PLAYER);
+            currentAnimatedSprite.Play(nameOfAnimation[pLastDirection] + ANIM_PLAYER);
 
             lastDirection = pLastDirection;
         }
@@ -255,7 +283,7 @@ namespace Com.IsartDigital.Sokoban
             orientation = PlayersVector.FirstOrDefault(lKeyValuePair => lKeyValuePair.Value == lastDirection).Key;
 
 
-            actualPlayerSprite.Play(orientation);
+            currentActualPlayerSprite.Play(orientation);
 
            
         }
@@ -274,12 +302,12 @@ namespace Com.IsartDigital.Sokoban
             }
 
             OrientThePlayer();
-            actualPlayerSprite.Play(orientation);
+            currentActualPlayerSprite.Play(orientation);
             if (bombInHand == null)
             {
                 animPlayer.Play(ANIM_BLOCKED);
 
-                animatedSprite.GlobalPosition = GlobalPosition;
+                currentAnimatedSprite.GlobalPosition = GlobalPosition;
                 return;
             }
 

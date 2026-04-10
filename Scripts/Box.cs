@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 
 // author : Cayot Daniel
@@ -9,6 +10,7 @@ namespace Com.IsartDigital.Sokoban
 	{
 		[Export] private AnimationPlayer anim;
 		[Export] private GpuParticles2D moveDust;
+		[Export] private Sprite2D renderer;
 
 		private static PackedScene packedBox = (PackedScene)ResourceLoader.Load("res://Scenes/Gameplay/Box.tscn");
 
@@ -16,8 +18,36 @@ namespace Com.IsartDigital.Sokoban
 		private static string animToPlay;
 		public static bool hasABoxToCheck = false;
 
+
+
+		private static List<Box> instances = new List<Box>();
+
+
+		public static Texture2D texture ;
+
+		public static void UpdateTexture()
+		{
+
+
+			foreach (Box lBox in instances)
+			{
+                GD.Print("ha");
+
+                lBox.renderer.Texture = texture;
+			}
+		}
+
+
+		protected override void Dispose(bool pDisposing)
+		{
+			instances.Remove(this);
+		}
+		
+
 		public override void _Ready()
 		{
+			renderer.Texture = texture;
+
 			SoundManager.GetInstance().PlayBoxMove();
 			animPlaying = true;
             anim.Play(animToPlay);
@@ -55,6 +85,9 @@ namespace Com.IsartDigital.Sokoban
             Box lBox = (Box)packedBox.Instantiate();
             BoxAnimation(pDirection);
             lBox.GlobalPosition = pPosition * (Map.DISTANCE_RANGE);
+
+			instances.Add(lBox);
+
 			GameManager.GetInstance().tileMap.AddChild(lBox);
 			return lBox;
 		}
