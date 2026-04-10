@@ -211,7 +211,7 @@ namespace Com.IsartDigital.Sokoban
         {
             if (!canInput) return;
 
-            if ( animPlayer.CurrentAnimation != ANIM_IDLE || Box.animPlaying || path.Count != 0 ) { return; }
+            if ( animPlayer.CurrentAnimation != ANIM_IDLE || Box.animPlaying || path.Count != 0 || GameManager.GetInstance().startAnimation) { return; }
 
             foreach (string lActionName in PlayersVector.Keys)
             {
