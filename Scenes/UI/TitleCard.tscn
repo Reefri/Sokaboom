@@ -279,6 +279,3 @@ offset_right = 242.0
 offset_bottom = -18.0
 grow_vertical = 0
 text = "ID_TRANSLATION"
-
-[connection signal="pressed" from="ButtonsA/Help" to="." method="HelpPressed"]
-[connection signal="pressed" from="ButtonsB/Traduction" to="." method="Langage"]
