@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv14slt1ckou2"]
+[gd_scene load_steps=8 format=3 uid="uid://dv14slt1ckou2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_3swun"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="3_lnnes"]
+[ext_resource type="Texture2D" uid="uid://djidbftbyrm6f" path="res://Assets/QuitButton.png" id="4_0xlwm"]
+[ext_resource type="Texture2D" uid="uid://bwuddfc8an4t7" path="res://Assets/RetryButton.png" id="5_1jeel"]
+[ext_resource type="Texture2D" uid="uid://b7ate3hm8shim" path="res://Assets/UndoArrow.png" id="6_0gced"]
+[ext_resource type="Texture2D" uid="uid://cs41w61k2tvgq" path="res://Assets/RedoArrow.png" id="7_mk6sy"]
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("buttonUndo", "buttonRedo", "reStart", "par", "steps", "name", "number", "quitDelay")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("quitButton", "undoButton", "redoButton", "restartButton", "par", "steps", "name", "number", "quitDelay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,34 +17,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_h8l0x")
-buttonUndo = NodePath("Undo")
-buttonRedo = NodePath("Redo")
-reStart = NodePath("Control2/Retry")
+quitButton = NodePath("quitButton")
+undoButton = NodePath("undoButton")
+redoButton = NodePath("redoButton")
+restartButton = NodePath("restartButton")
 par = NodePath("Par")
 steps = NodePath("Steps")
 name = NodePath("Name")
 number = NodePath("Name/Number")
 quitDelay = NodePath("quitDelay")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("2_3swun")
-
-[node name="Quit" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -200.0
-offset_bottom = 100.0
-grow_horizontal = 0
-text = "ID_QUIT"
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 1
@@ -52,70 +37,35 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_lnnes")
 
-[node name="Retry" type="Button" parent="Control2"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -100.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "ID_RESTART"
-
-[node name="Redo" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -210.0
-offset_bottom = -110.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "ID_REDO"
-
-[node name="Undo" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -320.0
-offset_bottom = -220.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "ID_UNDO"
-
 [node name="Par" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -200.0
-offset_top = 110.0
-offset_bottom = 145.0
+offset_left = -202.0
+offset_top = 207.0
+offset_right = -2.0
+offset_bottom = 242.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 text = "Par :"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Steps" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -200.0
-offset_top = 155.0
-offset_bottom = 297.0
+offset_left = -202.0
+offset_top = 194.0
+offset_right = -2.0
+offset_bottom = 336.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Steps : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
@@ -138,4 +88,72 @@ text = "ID_NUM"
 [node name="quitDelay" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="pressed" from="Control/Quit" to="." method="QuitPressed"]
+[node name="redoButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -195.0
+offset_top = -323.0
+offset_right = 1733.0
+offset_bottom = 765.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("7_mk6sy")
+flat = true
+icon_alignment = 1
+
+[node name="undoButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -323.0
+offset_right = 1928.0
+offset_bottom = 765.0
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("6_0gced")
+flat = true
+icon_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_3swun")
+
+[node name="quitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -189.0
+offset_right = 899.0
+offset_bottom = 1088.0
+grow_horizontal = 0
+scale = Vector2(0.167258, 0.167258)
+icon = ExtResource("4_0xlwm")
+flat = true
+icon_alignment = 1
+
+[node name="restartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -177.0
+offset_right = 1088.0
+offset_bottom = 911.0
+grow_vertical = 0
+scale = Vector2(0.167, 0.16)
+icon = ExtResource("5_1jeel")
+flat = true
+icon_alignment = 1

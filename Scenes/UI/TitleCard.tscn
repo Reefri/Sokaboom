@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
 
-[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore", "play")]
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore", "play", "helpButton", "languageButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +27,8 @@ letterM = NodePath("Title/BOUM !/BOUM/M")
 exclamationMark = NodePath("Title/BOUM !/!")
 hightScore = NodePath("ButtonsA/HightScore")
 play = NodePath("ButtonsA/Play")
+helpButton = NodePath("ButtonsA/Help")
+languageButton = NodePath("ButtonsB/Traduction")
 
 [node name="Font" type="ColorRect" parent="."]
 z_index = -2
