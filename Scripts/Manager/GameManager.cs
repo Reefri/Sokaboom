@@ -39,6 +39,8 @@ namespace Com.IsartDigital.Sokoban
 
         public bool startAnimation;
 
+        RandomNumberGenerator lRand = new RandomNumberGenerator();
+
         public bool RedoPossible 
         { 
             get { return redoPossible; }
@@ -497,9 +499,11 @@ namespace Com.IsartDigital.Sokoban
             startAnimation = true;
             int lYCurrentLevelSize = currentLevel.Size.Y;
             int lXCurrentLevelSize = currentLevel.Size.X;
-
+           
             Tween lTween = CreateTween().SetParallel();
             lTween.Finished += EndOfStartAnimation;
+
+            Player.GetInstance().StartAnimation(lTween);
 
             for (int i = 0; i < lYCurrentLevelSize; i++)
             {
@@ -508,7 +512,7 @@ namespace Com.IsartDigital.Sokoban
                     if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) != null && 
                         (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.BOX))
                     {
-                        Box.CreateAnimation(new Vector2I(j ,i), lTween);
+                        Box.CreateAnimation(new Vector2I(j ,i), lTween, lRand.Randf());
                     }
                 }
             }

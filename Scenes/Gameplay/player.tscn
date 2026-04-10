@@ -243,6 +243,7 @@ animations = [{
 }]
 
 [node name="Player2" type="Area2D" node_paths=PackedStringArray("animPlayer", "animatedSprite", "actualPlayerSprite", "bombPrevisualisationContainer")]
+z_index = 4
 script = ExtResource("1_26mxs")
 animPlayer = NodePath("AnimationPlayer")
 animatedSprite = NodePath("VisualPlayer")

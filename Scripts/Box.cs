@@ -11,6 +11,8 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private AnimationPlayer anim;
 		[Export] private GpuParticles2D moveDust;
 
+        [Export] float timeOfFall = 0.5f;
+
 		private static PackedScene packedBox = (PackedScene)ResourceLoader.Load("res://Scenes/Gameplay/Box.tscn");
 
 		public static bool animPlaying = false;
@@ -74,28 +76,45 @@ namespace Com.IsartDigital.Sokoban
             return lBox;
 		}
 
-        public static Box CreateAnimation(Vector2I pPosition, Tween pTween)
+        public static Box CreateAnimation(Vector2I pPosition, Tween pTween, float pInterval)
         {
             GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pPosition);
             Box lBox = (Box)packedBox.Instantiate();
             lBox.startAnimation = true;
             lBox.GlobalPosition = pPosition * (Map.DISTANCE_RANGE);
 
-            StartAnimation(lBox, pTween);
+            lBox.StartAnimation(pTween, pInterval);
 
             GameManager.GetInstance().tileMap.AddChild(lBox);
             return lBox;
         }
 
-        public static void StartAnimation(Box pBox, Tween pTween)
+        private void StartAnimation(Tween pTween, float pInterval)
         {
-            pTween.TweenProperty(pBox, TweenProp.ROTATION, Mathf.DegToRad(360), 1f);
-            pTween.Finished += pBox.EndOfStartAnimation;
+            pTween.TweenProperty(this, TweenProp.POSITION_Y, -Position.Y, 0);
+            pTween.TweenProperty(this, TweenProp.POSITION_Y, Position.Y, timeOfFall).SetDelay(pInterval);
+            pTween.TweenProperty(this, TweenProp.SCALE, new Vector2(0.5f, 1.5f), timeOfFall).SetDelay(pInterval);
+
+
+            pTween.TweenCallback(Callable.From(Dust)).SetDelay(pInterval + timeOfFall);
+
+            pTween.TweenProperty(this, TweenProp.SCALE, new Vector2(1.5f, 0.5f), 0.1f).SetDelay(pInterval + timeOfFall);
+            pTween.TweenProperty(this, TweenProp.POSITION_Y, Position.Y + 16, 0.1f).SetDelay(pInterval + timeOfFall);
+
+            pTween.TweenProperty(this, TweenProp.SCALE, new Vector2(1,1), 0.1f).SetDelay(pInterval + timeOfFall + 0.1f);
+            pTween.TweenProperty(this, TweenProp.POSITION_Y, Position.Y, 0.1f).SetDelay(pInterval + timeOfFall + 0.1f);
+
+            pTween.TweenInterval(pInterval + timeOfFall + 1f).Finished += EndOfStartAnimation;
         }
 
         public static void BoxAnimation(Vector2I pDirection)
 		{
 			animToPlay = Player.GetInstance().nameOfAnimation[pDirection];
+        }
+
+        private void Dust()
+        {
+            moveDust.Emitting = true;
         }
 
 		public override void _Process(double delta)

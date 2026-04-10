@@ -1,4 +1,5 @@
 using Com.IsartDigital.Chromaberation;
+using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
 
@@ -8,10 +9,12 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class BombCollectible : Area2D
 	{
+        [Export] float timeOfFall = 1.5f;
+
         [Export] Node2D hoverRenderer;
         [Export] Script hoverScript;
 
-		private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
+        private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
         private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
@@ -169,7 +172,6 @@ namespace Com.IsartDigital.Sokoban
 
             return lBombCollectible;
 		}
-
 
         public BombCollectible Duplicate()
         {
