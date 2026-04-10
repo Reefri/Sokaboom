@@ -252,7 +252,8 @@ _data = {
 }
 
 [node name="Box" type="Node2D" node_paths=PackedStringArray("anim", "moveDust")]
-z_index = 3
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_j6c5n")
 anim = NodePath("AnimationPlayer")
 moveDust = NodePath("Sprite2D/moveDust")
