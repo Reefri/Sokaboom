@@ -21,7 +21,7 @@ namespace Com.IsartDigital.Sokoban
 		private static string animToPlay;
 		public static bool hasABoxToCheck = false;
 
-
+        private bool startAnimation;
 
 		private static List<Box> instances = new List<Box>();
 
@@ -60,11 +60,6 @@ namespace Com.IsartDigital.Sokoban
 				anim.AnimationFinished += EndOfAnimationWalk;
 			}
 
-			SoundManager.GetInstance().PlayBoxMove();
-			animPlaying = true;
-            anim.Play(animToPlay);
-            moveDust.Emitting = true;
-            anim.AnimationFinished += EndOfAnimation;
         }
 
         private void EndOfAnimationWalk(StringName pAnimName)
@@ -82,6 +77,8 @@ namespace Com.IsartDigital.Sokoban
 			GameManager.GetInstance().UpdateAfterAction();
             QueueFree();
         }
+
+     
 
         private void EndOfStartAnimation()
         {

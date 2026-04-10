@@ -1,7 +1,6 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://d1pcf61fmfmtm"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d1pcf61fmfmtm"]
 
 [ext_resource type="Texture2D" uid="uid://bwedkckibg8dy" path="res://Assets/sokoban_tilesheet.png" id="1_m5ord"]
-[ext_resource type="Texture2D" uid="uid://dlnrtapqwlwtx" path="res://Assets/kenney_sokoban-pack/Spritesheet/sokoban_spritesheet.png" id="2_wb66t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gaec"]
 texture = ExtResource("1_m5ord")
@@ -532,10 +531,6 @@ texture_region_size = Vector2i(64, 64)
 10:4/0/custom_data_1 = true
 10:4/0/custom_data_2 = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jtsu3"]
-texture = ExtResource("2_wb66t")
-texture_region_size = Vector2i(64, 64)
-
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
@@ -554,4 +549,3 @@ custom_data_layer_5/type = 1
 custom_data_layer_6/name = "Ground"
 custom_data_layer_6/type = 1
 sources/0 = SubResource("TileSetAtlasSource_0gaec")
-sources/1 = SubResource("TileSetAtlasSource_jtsu3")

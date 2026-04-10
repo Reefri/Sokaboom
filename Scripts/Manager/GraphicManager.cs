@@ -18,14 +18,16 @@ namespace Com.IsartDigital.Sokoban
 			}
 		}
 
-		private static TileSet theHolyTileSet = (TileSet)GD.Load("res://Ressources/TopDown.tres");
-
-		private static Texture2D oldGraphics = (Texture2D)GD.Load("res://Assets/sokoban_tilesheet.png");
-		private static Texture2D newGraphics = (Texture2D)GD.Load("res://Assets/kenney_sokoban-pack/Spritesheet/sokoban_spritesheet.png");
+		private static TileSet theHolyTileSet = (TileSet)GD.Load("res://Ressources/TopDown.tres"); //NE PAS TOUCHER
 
 
-		private static Texture2D oldBox = (Texture2D)GD.Load("res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_02.png");
-		private static Texture2D newBox = (Texture2D)GD.Load("res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_01.png");
+
+		private static Texture2D oldGraphics = (Texture2D)GD.Load("res://Assets/sokoban_tilesheet.png");//NE PAS TOUCHER
+        private static Texture2D newGraphics = (Texture2D)GD.Load("res://Assets/kenney_sokoban-pack/Spritesheet/sokoban_spritesheet.png");
+
+
+		private static Texture2D oldBox = (Texture2D)GD.Load("res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_02.png");//NE PAS TOUCHER
+        private static Texture2D newBox = (Texture2D)GD.Load("res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_01.png");
 
 
 

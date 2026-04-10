@@ -42,7 +42,7 @@ namespace Com.IsartDigital.Sokoban
 
             currentTextureContainer = (pIsOld?oldTextureContainer:newTextureContainer);
             currentAnimatedSprite = (pIsOld? oldAnimatedSprite : newAnimatedSprite);
-            //currentActualPlayerSprite = (pIsOld? oldActualPlayerSprite : newActualPlayerSprite);
+            currentActualPlayerSprite = (pIsOld? oldActualPlayerSprite : newActualPlayerSprite);
         }
 
         
@@ -124,6 +124,9 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
         {
+
+            GraphicManager.Update();
+
             pathFindingTimer.WaitTime = pathFindingTime;
 
             pathFindingTimer.Timeout += MovingOnPath;
