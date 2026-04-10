@@ -9,8 +9,6 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class BombCollectible : Area2D
 	{
-        [Export] float timeOfFall = 1.5f;
-
         [Export] Node2D hoverRenderer;
         [Export] Script hoverScript;
 
@@ -50,6 +48,8 @@ namespace Com.IsartDigital.Sokoban
 
         private Texture2D bodyTexture;
 
+        private RandomNumberGenerator lRand = new RandomNumberGenerator();
+
         private static List<string> bodyTextureChoices = new List<string>()
         {
             "bubble",
@@ -65,7 +65,7 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
-
+            StartAnimation();
 
 
             hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
@@ -172,6 +172,13 @@ namespace Com.IsartDigital.Sokoban
 
             return lBombCollectible;
 		}
+
+        public void StartAnimation()
+        {
+            Tween lTween = CreateTween().SetParallel();
+            lTween.TweenProperty(this, TweenProp.MODULATE_ALPHA, 0, 0);
+            lTween.TweenProperty(this, TweenProp.MODULATE_ALPHA, 1, lRand.Randf()).SetDelay(lRand.Randf());
+        }
 
         public BombCollectible Duplicate()
         {

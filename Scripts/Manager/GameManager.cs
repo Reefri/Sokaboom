@@ -497,13 +497,14 @@ namespace Com.IsartDigital.Sokoban
         private void StartAnimation()
         {
             startAnimation = true;
-            int lYCurrentLevelSize = currentLevel.Size.Y;
-            int lXCurrentLevelSize = currentLevel.Size.X;
            
             Tween lTween = CreateTween().SetParallel();
             lTween.Finished += EndOfStartAnimation;
 
             Player.GetInstance().StartAnimation(lTween);
+
+            int lYCurrentLevelSize = currentLevel.Size.Y;
+            int lXCurrentLevelSize = currentLevel.Size.X;
 
             for (int i = 0; i < lYCurrentLevelSize; i++)
             {
