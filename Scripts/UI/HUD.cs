@@ -10,8 +10,11 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private Button buttonRedo;
         [Export] private Button reStart;
         [Export] private Label par;
+
         [Export] public Label steps;
         [Export] private Label name;
+        [Export] private Label author;
+
         [Export] public Label number;
 
         [Export] private Timer quitDelay = new Timer();
@@ -30,7 +33,8 @@ namespace Com.IsartDigital.Sokoban
             buttonRedo.Pressed += GameManager.GetInstance().MoveForwardInTime;
 
             par.Text = PAR + GameManager.GetInstance().currentLevel.Par;
-            name.Text = Tr(GameManager.GetInstance().currentLevel.Title) + Tr(BY) + GameManager.GetInstance().currentLevel.Author;
+            name.Text = Tr(GameManager.GetInstance().currentLevel.Title);
+            author.Text = Tr(BY) + GameManager.GetInstance().currentLevel.Author;
             steps.Text = Tr(STEPS) + 0;
 
             reStart.Pressed += Retry;

@@ -35,7 +35,7 @@ namespace Com.IsartDigital.Sokoban
             lIndex = lRand.RandiRange(0, 1);
 
             Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.OutIn).SetParallel();
-            lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1.1f, 1.1f), DURATION_WHEN_CROSSED);
+            lTween.TweenProperty(pButton, TweenProp.SCALE, Vector2.One * 1.3f, DURATION_WHEN_CROSSED);
             lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(lIndex == 0 ? -5 : 5), DURATION_WHEN_CROSSED);
         }
 
@@ -44,7 +44,7 @@ namespace Com.IsartDigital.Sokoban
             if (!pressed)
             {
                 Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.OutIn).SetParallel();
-                lTween.TweenProperty(pButton, TweenProp.SCALE, new Vector2(1f, 1f), DURATION_WHEN_CROSSED);
+                lTween.TweenProperty(pButton, TweenProp.SCALE, Vector2.One , DURATION_WHEN_CROSSED);
                 lTween.TweenProperty(pButton, TweenProp.ROTATION, Mathf.DegToRad(0), DURATION_WHEN_CROSSED);
             }
         }
