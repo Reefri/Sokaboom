@@ -515,6 +515,11 @@ namespace Com.IsartDigital.Sokoban
                     {
                         Box.CreateAnimation(new Vector2I(j ,i), lTween, lRand.Randf());
                     }
+                    if (tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)) != null &&
+                        (bool)tileMap.GetCellTileData((int)Map.LevelLayer.Playground, new Vector2I(j, i)).GetCustomData(Map.WALL))
+                    {
+                        Wall.CreateAnimation(new Vector2I(j, i), lTween, lRand.Randf());
+                    }
                 }
             }
         }

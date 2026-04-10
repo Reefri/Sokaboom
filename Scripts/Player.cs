@@ -12,7 +12,7 @@ namespace Com.IsartDigital.Sokoban
         static private Player instance;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Gameplay/player.tscn");
 
-        [Export] float timeOfFall = 1.5f;
+        [Export] float timeOfFall = 1.8f;
         [Export] int turnToFall = 2;
 
         [Export] public AnimationPlayer animPlayer;
@@ -241,7 +241,7 @@ namespace Com.IsartDigital.Sokoban
             pTween.TweenProperty(this, TweenProp.POSITION_Y, Position.Y, timeOfFall).From(-Position.Y);
             pTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(lPlayerStraight + 90), timeOfFall);
 
-            pTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(lPlayerStraight), 0.5f).SetDelay(timeOfFall + 0.5f);
+            pTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(lPlayerStraight), 0.35f).SetDelay(timeOfFall + 0.6f);
             pTween.TweenProperty(this, TweenProp.ROTATION, 0, 0).SetDelay(timeOfFall + 1f);
         }
 

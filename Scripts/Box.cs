@@ -11,7 +11,7 @@ namespace Com.IsartDigital.Sokoban
 		[Export] private AnimationPlayer anim;
 		[Export] private GpuParticles2D moveDust;
 
-        [Export] float timeOfFall = 0.5f;
+        [Export] float timeOfFall = 0.75f;
 
 		private static PackedScene packedBox = (PackedScene)ResourceLoader.Load("res://Scenes/Gameplay/Box.tscn");
 
