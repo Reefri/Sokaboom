@@ -6,9 +6,17 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class HUD : Control
 	{
-		[Export] private Button buttonUndo;
-		[Export] private Button buttonRedo;
-        [Export] private Button reStart;
+        [Export] private Button quitButton;
+
+		[Export] private Button undoButton;
+        [Export] private Vector2 undoLandscapePos;
+        [Export] private Vector2 undoPortraitPos;
+		[Export] private Button redoButton;
+        [Export] private Vector2 redoLandscapePos;
+        [Export] private Vector2 redoPortraitPos;
+        [Export] private Button restartButton;
+        [Export] private Vector2 restartLandscapePos;
+        [Export] private Vector2 restartPortraitPos;
         [Export] private Label par;
 
         [Export] public Label steps;
@@ -29,15 +37,22 @@ namespace Com.IsartDigital.Sokoban
 
             UIManager.GetInstance().instanceHud = this;
 
-            buttonUndo.Pressed += GameManager.GetInstance().MoveBackInTime;
-            buttonRedo.Pressed += GameManager.GetInstance().MoveForwardInTime;
+            undoButton.Pressed += GameManager.GetInstance().MoveBackInTime;
+            redoButton.Pressed += GameManager.GetInstance().MoveForwardInTime;
 
             par.Text = PAR + GameManager.GetInstance().currentLevel.Par;
             name.Text = Tr(GameManager.GetInstance().currentLevel.Title);
             author.Text = Tr(BY) + GameManager.GetInstance().currentLevel.Author;
             steps.Text = Tr(STEPS) + 0;
 
-            reStart.Pressed += Retry;
+            restartButton.Pressed += Retry;
+
+            quitButton.Pressed += QuitPressed;
+        }
+
+        private void PortraitMode()
+        {
+
         }
 
         private void Retry()
@@ -67,7 +82,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void DisabledRedo(bool pBool)
         {
-            buttonRedo.Disabled = !pBool;
+            redoButton.Disabled = !pBool;
         }
 
         protected override void Dispose(bool pDisposing)

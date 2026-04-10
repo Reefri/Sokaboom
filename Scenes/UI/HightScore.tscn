@@ -35,7 +35,7 @@ hue_variation_min = -0.3
 hue_variation_max = 0.3
 turbulence_noise_scale = 2.099
 
-[node name="HightScore" type="Control" node_paths=PackedStringArray("next", "levelAccount", "confettiA", "confettiB")]
+[node name="HightScore" type="Control" node_paths=PackedStringArray("next", "levelAccount")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,8 +45,6 @@ grow_vertical = 2
 script = ExtResource("1_lunip")
 next = NodePath("ColorRect/Control/Button")
 levelAccount = NodePath("ColorRect/BoxContainer")
-confettiA = NodePath("ColorRect/GPUParticles2D4")
-confettiB = NodePath("ColorRect/GPUParticles2D3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

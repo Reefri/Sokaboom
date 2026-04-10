@@ -21,6 +21,8 @@ namespace Com.IsartDigital.Sokoban.UI
 
         [Export] private Button hightScore;
         [Export] private Button play;
+        [Export] private Button helpButton;
+        [Export] private Button languageButton;
 
         private Timer timer = new Timer();
 
@@ -73,6 +75,9 @@ namespace Com.IsartDigital.Sokoban.UI
 
             hightScore.Pressed += UIManager.GetInstance().GoToHightScore;
             play.Pressed += UIManager.GetInstance().GoToLevelSelect;
+
+            helpButton.Pressed += HelpPressed;
+            languageButton.Pressed += Langage;
         }
 
         public override void _Input(InputEvent pEvent)
