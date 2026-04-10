@@ -532,6 +532,7 @@ namespace Com.IsartDigital.Sokoban
         private void EndOfStartAnimation()
         {
             startAnimation = false;
+            Player.GetInstance().collider.Disabled = false;
         }
     }
 }

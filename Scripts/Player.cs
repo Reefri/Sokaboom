@@ -21,6 +21,8 @@ namespace Com.IsartDigital.Sokoban
         
         [Export] private Node2D bombPrevisualisationContainer;
 
+        [Export] public CollisionShape2D collider;
+
         private float pathFindingTime = 0.01f;
         private const float FIRST_TIME_PATH = 0.01f;
         private const float CASUAL_TIME_PATH = 0.2f;
@@ -236,8 +238,9 @@ namespace Com.IsartDigital.Sokoban
 
         public void StartAnimation(Tween pTween)
         {
+            collider.Disabled = true;
             int lPlayerStraight = 360 * turnToFall;
-
+            
             pTween.TweenProperty(this, TweenProp.POSITION_Y, Position.Y, timeOfFall).From(-Position.Y);
             pTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(lPlayerStraight + 90), timeOfFall);
 

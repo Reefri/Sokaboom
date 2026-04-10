@@ -242,13 +242,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player2" type="Area2D" node_paths=PackedStringArray("animPlayer", "animatedSprite", "actualPlayerSprite", "bombPrevisualisationContainer")]
+[node name="Player2" type="Area2D" node_paths=PackedStringArray("animPlayer", "animatedSprite", "actualPlayerSprite", "bombPrevisualisationContainer", "collider")]
 z_index = 4
 script = ExtResource("1_26mxs")
 animPlayer = NodePath("AnimationPlayer")
 animatedSprite = NodePath("VisualPlayer")
 actualPlayerSprite = NodePath("ActualAnimatedPlayer")
 bombPrevisualisationContainer = NodePath("BombPreviContainer")
+collider = NodePath("CollisionShape2D")
 
 [node name="VisualPlayer" type="AnimatedSprite2D" parent="."]
 visible = false
