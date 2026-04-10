@@ -7,8 +7,14 @@ namespace Com.IsartDigital.Sokoban
 	public partial class HUD : Control
 	{
 		[Export] private Button buttonUndo;
+        [Export] private Vector2 undoLandscapePos;
+        [Export] private Vector2 undoPortraitPos;
 		[Export] private Button buttonRedo;
-        [Export] private Button reStart;
+        [Export] private Vector2 redoLandscapePos;
+        [Export] private Vector2 redoPortraitPos;
+        [Export] private Button restart;
+        [Export] private Vector2 restartLandscapePos;
+        [Export] private Vector2 restartPortraitPos;
         [Export] private Label par;
         [Export] public Label steps;
         [Export] private Label name;
@@ -33,7 +39,12 @@ namespace Com.IsartDigital.Sokoban
             name.Text = Tr(GameManager.GetInstance().currentLevel.Title) + Tr(BY) + GameManager.GetInstance().currentLevel.Author;
             steps.Text = Tr(STEPS) + 0;
 
-            reStart.Pressed += Retry;
+            restart.Pressed += Retry;
+        }
+
+        private void PortraitMode()
+        {
+
         }
 
         private void Retry()
