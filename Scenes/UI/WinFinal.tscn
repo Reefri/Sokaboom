@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_jemyn"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_qfx27"]
 
-[node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "congratulationText", "ScoreFinal", "winText", "highScore", "menu", "fireworksPos")]
+[node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "ScoreFinal", "winText", "highScore", "menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,12 +13,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0l42t")
 background = NodePath("TextureRect")
-congratulationText = NodePath("congratulation")
 ScoreFinal = NodePath("Score")
 winText = NodePath("Win")
 highScore = NodePath("Buttons/HightScore")
 menu = NodePath("Buttons/Menu")
-fireworksPos = NodePath("fireWorkPosition")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
