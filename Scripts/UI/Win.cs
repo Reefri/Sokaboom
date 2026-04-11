@@ -35,7 +35,11 @@ namespace Com.IsartDigital.Sokoban
             restart.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex);
 
             if (UIManager.GetInstance().levelIndex + 1 < GridManager.GetInstance().numberOfLevel) next.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex + 1);
-			else next.Pressed += () => UIManager.GetInstance().GoToWinFinal();
+			else
+            {
+                Banderole.GetInstance().winFinal = true;
+                next.Pressed += Banderole.GetInstance().StartTransitionToWin;
+            }
         }
 
 		private void CalculScoreLevel()

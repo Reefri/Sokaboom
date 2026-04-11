@@ -295,6 +295,7 @@ namespace Com.IsartDigital.Sokoban
             {
                 VictoryAnimation.Create();
                 Player.GetInstance().canInput = false;
+                Banderole.GetInstance().winFinal = false;
                 JuicinessManager.GetInstance().timeBeforeBanderoles.Start();
             }
         }
