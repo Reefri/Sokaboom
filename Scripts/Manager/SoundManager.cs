@@ -77,7 +77,11 @@ namespace Com.IsartDigital.Sokoban
         [Export] private AudioStreamPlayer ruban;
         [Export] private AudioStreamPlayer click;
 
-        List<System.Action> playStarSound; 
+        List<System.Action> playStarSound;
+
+
+        [ExportCategory("Sounds")]
+        [Export] private AudioStreamPlayer music;
 
 
         private SoundManager()
@@ -293,6 +297,28 @@ namespace Com.IsartDigital.Sokoban
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             click.Play();
+        }
+
+
+
+
+        //########################################################################################################################
+        //############################################            MUSIC           ################################################
+        //########################################################################################################################
+
+
+        public void PlayMusic()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            music.Play();
+        }
+
+        public void StopMusic()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            music.Stop();
         }
     }
 }

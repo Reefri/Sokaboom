@@ -81,12 +81,19 @@ namespace Com.IsartDigital.Sokoban
         private void AnimationStars(AnimatedSprite2D pStars, float pDelay,int pIndex)
         {
             Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.Out).SetParallel();
+            
+
             lTween.TweenProperty(pStars, TweenProp.FRAME, 1, 0).SetDelay(pDelay);
             lTween.TweenProperty(pStars, TweenProp.SCALE, Vector2.One*(0.8f + 0.1f), 1f).SetDelay(pDelay);
             lTween.TweenProperty(pStars, TweenProp.ROTATION, Mathf.Tau, 1f).AsRelative().SetDelay(pDelay);
+            lTween.TweenCallback(
+                Callable.From(() =>
+                {
+                    SoundManager.GetInstance().PlayStarIndex(pIndex);
+                }
+                )).SetDelay(pDelay);
 
             lTween.Finished += () => ParticulesStars(pStars);
-            lTween.Finished += () => SoundManager.GetInstance().PlayStarIndex(pIndex);
         }
 
         private void ParticulesStars(AnimatedSprite2D pStars)
@@ -95,7 +102,7 @@ namespace Com.IsartDigital.Sokoban
             lParticules.Emitting = true;
 
             
-            FireWork.CreateMult(null , pStars, Vector2.Zero);
+            FireWork.CreateMult(null , pStars, Vector2.Zero,false);
             
         }
     }
