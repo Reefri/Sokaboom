@@ -31,11 +31,7 @@ namespace Com.IsartDigital.Sokoban
 			instance = this;	
 		}
 
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-            screenSize = GetViewportRect().Size;
-        }
+        
 		static public Main GetInstance()
 		{
 			if (instance == null) instance = (Main)factory.Instantiate();
@@ -45,6 +41,9 @@ namespace Com.IsartDigital.Sokoban
         public override void _Process(double delta)
         {
             base._Process(delta);
+
+            screenSize = GetViewportRect().Size;
+
 
             if (Input.IsActionJustPressed("ui_accept"))
             {

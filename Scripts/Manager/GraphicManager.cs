@@ -7,7 +7,7 @@ namespace Com.IsartDigital.Sokoban
 	public partial class GraphicManager
 	{
 
-		private static bool isOld = false;
+		private static bool isOld = true;
 		public static bool IsOld 
 		{
 			get {return isOld;}
