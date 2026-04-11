@@ -166,6 +166,11 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToHightScore()
         {
+            MenuTransition.Create(ContinueToHightScore);
+        }
+
+        public void ContinueToHightScore()
+        {
             GetChild(0).QueueFree();
             AddChild(uiHightScore.Instantiate());
         }

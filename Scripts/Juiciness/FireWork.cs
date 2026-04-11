@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,8 @@ namespace Com.IsartDigital.Sokoban
 	public partial class FireWork : Node2D
 	{
 		private static PackedScene factory = (PackedScene)GD.Load("res://Scenes/Juiciness/Firework.tscn");
+
+		private bool doSound;
 
 		private const string EXPLOSIONCONTAINER_NODE_PATH = "ExplosionContainer";
 
@@ -61,7 +64,7 @@ namespace Com.IsartDigital.Sokoban
 			Scale = Vector2.One * baseScale;
 
 
-            SoundManager.GetInstance().PlayFireworkWhistle();
+            if(doSound) SoundManager.GetInstance().PlayFireworkWhistle();
 		}
 
 		public override void _Process(double pDelta)
@@ -94,7 +97,7 @@ namespace Com.IsartDigital.Sokoban
 
 		private void Explode()
 		{
-			SoundManager.GetInstance().PlayFireworkExplosion();
+			if (doSound) SoundManager.GetInstance().PlayFireworkExplosion();
 
             JuicinessManager.GetInstance().fireworkShaker.Start();
 
@@ -127,22 +130,33 @@ namespace Com.IsartDigital.Sokoban
 		}
 
 
-		public static FireWork Create(Vector2 pPosition)
+		public static FireWork Create(Vector2? pGlobalPosition, Vector2? pPosition, bool pDoSound)
 		{
 			FireWork lNewFireWork = (FireWork)factory.Instantiate();
-			lNewFireWork.GlobalPosition = pPosition;
+
+			lNewFireWork.doSound = pDoSound;
+
+			if (pGlobalPosition != null)
+			{
+				lNewFireWork.GlobalPosition = (Vector2)pGlobalPosition;
+			}
+			else
+			{
+				lNewFireWork.Position = pPosition ?? Vector2.Zero;
+			}
+				
 			lNewFireWork.ZIndex = 1;
             return lNewFireWork;
 		}
 
-        public static void CreateMult(Vector2 pPosition,Node2D pParent)
+        public static void CreateMult(Vector2? pGlobalPosition,Node2D pParent , Vector2? pPosition = null, bool pDoSound = true)
         {
 			FireWork lCurrentFirework;
 			int lRandNumberOfFirework = GD.RandRange(MIN_FIREWORK_NUMBER, MAX_FIREWORK_NUMBER);
 
 			for (int i = 0; i < lRandNumberOfFirework; i++)
 			{
-				lCurrentFirework = Create(pPosition);
+				lCurrentFirework = Create(pGlobalPosition,pPosition,pDoSound);
 
 				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3 * (lRandNumberOfFirework / 2-i)/ lRandNumberOfFirework);
 				

@@ -134,11 +134,12 @@ namespace Com.IsartDigital.Sokoban
                        .SetEase(Tween.EaseType.Out);
             }
                 
-                pTween.TweenCallback
-                    (
-                    Callable.From(() =>
-                        doorsClosed = true)
-                    );
+            pTween.TweenCallback
+                (
+                Callable.From(() =>
+                    doorsClosed = true)
+                );
+
             animationFinished = false;
 
             pTween.TweenProperty(leftDoor, TweenProp.POSITION,
@@ -156,6 +157,8 @@ namespace Com.IsartDigital.Sokoban
                         .SetTrans(Tween.TransitionType.Quad)
                         .SetEase(Tween.EaseType.OutIn);
             }
+
+            SoundManager.GetInstance().PlayDoor();
 
             pTween.TweenProperty(leftDoor, TweenProp.POSITION,
                 new Vector2(sideFactor, 0), tweenDuration).SetDelay(doorsStillTimer.WaitTime);

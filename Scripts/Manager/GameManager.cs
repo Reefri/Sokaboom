@@ -29,7 +29,7 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
 
 
-        private List<BombCollectible> levelBombCollectibles = new List<BombCollectible>();
+        public List<BombCollectible> levelBombCollectibles = new List<BombCollectible>();
 
         public Level currentLevel;
         
@@ -38,6 +38,7 @@ namespace Com.IsartDigital.Sokoban
         private bool redoPossible;
 
         public bool startAnimation;
+        public int bombStartAnimation;
 
         RandomNumberGenerator lRand = new RandomNumberGenerator();
 
@@ -122,7 +123,6 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
         {
-
             waitBeforeBoxSignal.WaitTime = durationBeforeBoxSignal;
             waitBeforeBoxSignal.Autostart = false;
             waitBeforeBoxSignal.OneShot = true;
@@ -310,6 +310,7 @@ namespace Com.IsartDigital.Sokoban
             {
                 VictoryAnimation.Create();
                 Player.GetInstance().canInput = false;
+                Banderole.GetInstance().winFinal = false;
                 JuicinessManager.GetInstance().timeBeforeBanderoles.Start();
             }
         }
@@ -512,7 +513,7 @@ namespace Com.IsartDigital.Sokoban
         private void StartAnimation()
         {
             startAnimation = true;
-           
+
             Tween lTween = CreateTween().SetParallel();
             lTween.Finished += EndOfStartAnimation;
 

@@ -65,7 +65,11 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
-            StartAnimation();
+            if (GameManager.GetInstance().bombStartAnimation < GameManager.GetInstance().levelBombCollectibles.Count)
+            {
+                StartAnimation();
+                GameManager.GetInstance().bombStartAnimation++;
+            }
 
 
             hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");

@@ -1,6 +1,7 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using Godot.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -31,6 +32,8 @@ namespace Com.IsartDigital.Sokoban
 
 		private List<TextureRect> banderoles ;
 
+		public bool winFinal;
+
         private Banderole():base() 
 		{
 			if (instance != null)
@@ -59,6 +62,8 @@ namespace Com.IsartDigital.Sokoban
 			Visible = true;
 			Tween lTween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.In);
 
+			SoundManager.GetInstance().PlayRuban();
+
 
 			int lMaxIndexOfDownMarkers = downMarkers.Count - 1;
             for (int i = lMaxIndexOfDownMarkers; i >= 0; i--)
@@ -72,7 +77,8 @@ namespace Com.IsartDigital.Sokoban
 
         private void EndTransitionToWin()
 		{
-			UIManager.GetInstance().GoToWin();
+            if (!winFinal)UIManager.GetInstance().GoToWin();
+            else UIManager.GetInstance().GoToWinFinal();
             Tween lTween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.In);
 
 			int lMaxIndexOfMarkers = upMarkers.Count - 1;

@@ -34,13 +34,6 @@ namespace Com.IsartDigital.Sokoban
 			FireWork.CreateMult(whereIsWin, fireworksParent);
 		}
 
-		public override void _Process(double pDelta)
-		{
-			base._Process(pDelta);
-			float lDelta = (float)pDelta;
-
-		}
-
 		public static void Create()
 		{
 			VictoryAnimation lAnim = (VictoryAnimation)factory.Instantiate();

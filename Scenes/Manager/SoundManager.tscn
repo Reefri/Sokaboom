@@ -1,9 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://lqb2f3vf18hs"]
+[gd_scene load_steps=24 format=3 uid="uid://lqb2f3vf18hs"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/SoundManager.cs" id="1_0homo"]
+[ext_resource type="AudioStream" uid="uid://74neiyyb8y1l" path="res://MusicAndSound/Sounds/Gameplay/Bomb/SFX_firework_explosion.wav" id="2_4cm7g"]
+[ext_resource type="AudioStream" uid="uid://bu4cscphm0agd" path="res://MusicAndSound/Sounds/Gameplay/Bomb/SFX_bomb_explosion.wav" id="3_bbqs4"]
+[ext_resource type="AudioStream" uid="uid://c1bp26rcktesy" path="res://MusicAndSound/Sounds/Gameplay/Bomb/SFX_firework_whistle_lose.wav" id="3_lsp88"]
+[ext_resource type="AudioStream" uid="uid://bd3byyhuwn404" path="res://MusicAndSound/Sounds/Gameplay/Bomb/SFX_bomb_grab.wav" id="4_fymk7"]
+[ext_resource type="AudioStream" uid="uid://y422kdfbn78p" path="res://MusicAndSound/Sounds/Gameplay/Bomb/SFX_wall_explosion.wav" id="6_2i7e8"]
+[ext_resource type="AudioStream" uid="uid://d253uwys6bo6b" path="res://MusicAndSound/Sounds/Gameplay/Box/SFX_box_error.wav" id="7_8coj2"]
+[ext_resource type="AudioStream" uid="uid://8n4fk14bv8qy" path="res://MusicAndSound/Sounds/Gameplay/Box/SFX_box_valid.wav" id="8_sej3v"]
+[ext_resource type="AudioStream" uid="uid://d30yl8cjuhji4" path="res://MusicAndSound/Sounds/Gameplay/Box/SFX_box_explosion.wav" id="9_a3lrn"]
+[ext_resource type="AudioStream" uid="uid://k1brjkb31wij" path="res://MusicAndSound/Sounds/Gameplay/Box/SFX_box_move.wav" id="10_3klgd"]
+[ext_resource type="AudioStream" uid="uid://dpbbtf3suaus1" path="res://MusicAndSound/Sounds/Gameplay/Move/SFX_player_click.wav" id="11_6xqqr"]
+[ext_resource type="AudioStream" uid="uid://bgtodyvllso8h" path="res://MusicAndSound/Sounds/Gameplay/Move/SFX_player_collision.wav" id="12_s2ltu"]
+[ext_resource type="AudioStream" uid="uid://fbwkr5w5f4xl" path="res://MusicAndSound/Sounds/Gameplay/Move/SFX_player_footsteps.wav" id="13_xldab"]
+[ext_resource type="AudioStream" uid="uid://cc70ee7ki2uh2" path="res://MusicAndSound/Sounds/Gameplay/Move/SFX_player_footsteps_v2.wav" id="14_nsjy0"]
+[ext_resource type="AudioStream" uid="uid://brxdjd038emfa" path="res://MusicAndSound/Sounds/UI/SFX_SPARKLES_WIN.wav" id="15_u2a7n"]
+[ext_resource type="AudioStream" uid="uid://x2g0l3h0rolj" path="res://MusicAndSound/Sounds/UI/SFX_STAR_1.wav" id="16_40ay8"]
+[ext_resource type="AudioStream" uid="uid://2xhp637h0oga" path="res://MusicAndSound/Sounds/UI/SFX_STAR_2.wav" id="17_gnn5m"]
+[ext_resource type="AudioStream" uid="uid://bnnmwuj2pwjsn" path="res://MusicAndSound/Sounds/UI/SFX_STAR_3.wav" id="18_y4hv0"]
+[ext_resource type="AudioStream" uid="uid://df14qe3de2far" path="res://MusicAndSound/Sounds/UI/SFX_TRANSITION_1_PORTE.wav" id="19_23i0n"]
+[ext_resource type="AudioStream" uid="uid://d1joqlqfhhbg3" path="res://MusicAndSound/Sounds/UI/SFX_TRANSITION_2_WHOOSH.wav" id="20_tqi2b"]
+[ext_resource type="AudioStream" uid="uid://bpn3cm62net4n" path="res://MusicAndSound/Sounds/UI/SFX_TRANSITION_3_RUBAN.wav" id="21_ey565"]
+[ext_resource type="AudioStream" uid="uid://v0d3a84u742q" path="res://MusicAndSound/Sounds/UI/SFX_ui_click.wav" id="22_4p842"]
+[ext_resource type="AudioStream" uid="uid://hgybvpe233ft" path="res://MusicAndSound/Musics/MUSIC_SOKOBAN_final.wav" id="23_pjhxx"]
 
-[node name="SoundManager" type="Node2D" node_paths=PackedStringArray("fireworkWhistle", "bombPickUp", "fireworkExplosion", "explosion", "wallExplosion", "boxError", "boxValid", "boxExplosion", "boxMove", "startPathFind", "footStep", "click")]
+[node name="SoundManager" type="Node2D" node_paths=PackedStringArray("fireworkWhistle", "bombPickUp", "fireworkExplosion", "explosion", "wallExplosion", "boxError", "boxValid", "boxExplosion", "boxMove", "startPathFind", "collide", "footStepOne", "footStepTwo", "sparkles", "starOne", "starTwo", "starThree", "door", "cloud", "ruban", "click", "music")]
 script = ExtResource("1_0homo")
+musicDB = -10.0
+soundDB = -10.0
+debug = true
 fireworkWhistle = NodePath("Sounds/GamePlay/Bomb/FireworkWhistle")
 bombPickUp = NodePath("Sounds/GamePlay/Bomb/BombPickup")
 fireworkExplosion = NodePath("Sounds/GamePlay/Bomb/FireworkExplosion")
@@ -14,8 +39,18 @@ boxValid = NodePath("Sounds/GamePlay/Box/BoxValid")
 boxExplosion = NodePath("Sounds/GamePlay/Box/BoxExplosion")
 boxMove = NodePath("Sounds/GamePlay/Box/BoxMove")
 startPathFind = NodePath("Sounds/GamePlay/Move/Click")
-footStep = NodePath("Sounds/GamePlay/Move/FootStep")
-click = NodePath("Sounds/UI/BoutonClick")
+collide = NodePath("Sounds/GamePlay/Move/Collide")
+footStepOne = NodePath("Sounds/GamePlay/Move/FootStepOne")
+footStepTwo = NodePath("Sounds/GamePlay/Move/FootStepTwo")
+sparkles = NodePath("Sounds/UI/Sparkles")
+starOne = NodePath("Sounds/UI/StarOne")
+starTwo = NodePath("Sounds/UI/StarTwo")
+starThree = NodePath("Sounds/UI/StarThree")
+door = NodePath("Sounds/UI/Door")
+cloud = NodePath("Sounds/UI/Cloud")
+ruban = NodePath("Sounds/UI/Ruban")
+click = NodePath("Sounds/UI/Click")
+music = NodePath("Musics/Music")
 
 [node name="Sounds" type="Node" parent="."]
 
@@ -23,34 +58,78 @@ click = NodePath("Sounds/UI/BoutonClick")
 
 [node name="Bomb" type="Node" parent="Sounds/GamePlay"]
 
-[node name="FireworkExplosion" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
-
 [node name="FireworkWhistle" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+stream = ExtResource("3_lsp88")
 
 [node name="BombPickup" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+stream = ExtResource("4_fymk7")
+
+[node name="FireworkExplosion" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+stream = ExtResource("2_4cm7g")
 
 [node name="BombExplosion" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+stream = ExtResource("3_bbqs4")
+volume_db = -13.587
 
 [node name="WallDestruction" type="AudioStreamPlayer" parent="Sounds/GamePlay/Bomb"]
+stream = ExtResource("6_2i7e8")
 
 [node name="Box" type="Node" parent="Sounds/GamePlay"]
 
 [node name="BoxError" type="AudioStreamPlayer" parent="Sounds/GamePlay/Box"]
+stream = ExtResource("7_8coj2")
 
 [node name="BoxValid" type="AudioStreamPlayer" parent="Sounds/GamePlay/Box"]
+stream = ExtResource("8_sej3v")
 
 [node name="BoxExplosion" type="AudioStreamPlayer" parent="Sounds/GamePlay/Box"]
+stream = ExtResource("9_a3lrn")
 
 [node name="BoxMove" type="AudioStreamPlayer" parent="Sounds/GamePlay/Box"]
+stream = ExtResource("10_3klgd")
 
 [node name="Move" type="Node" parent="Sounds/GamePlay"]
 
 [node name="Click" type="AudioStreamPlayer" parent="Sounds/GamePlay/Move"]
+stream = ExtResource("11_6xqqr")
 
-[node name="FootStep" type="AudioStreamPlayer" parent="Sounds/GamePlay/Move"]
+[node name="Collide" type="AudioStreamPlayer" parent="Sounds/GamePlay/Move"]
+stream = ExtResource("12_s2ltu")
+
+[node name="FootStepOne" type="AudioStreamPlayer" parent="Sounds/GamePlay/Move"]
+stream = ExtResource("13_xldab")
+
+[node name="FootStepTwo" type="AudioStreamPlayer" parent="Sounds/GamePlay/Move"]
+stream = ExtResource("14_nsjy0")
 
 [node name="UI" type="Node" parent="Sounds"]
 
-[node name="BoutonClick" type="AudioStreamPlayer" parent="Sounds/UI"]
+[node name="Sparkles" type="AudioStreamPlayer" parent="Sounds/UI"]
+stream = ExtResource("15_u2a7n")
 
-[node name="Music" type="Node" parent="."]
+[node name="StarOne" type="AudioStreamPlayer" parent="Sounds/UI"]
+stream = ExtResource("16_40ay8")
+
+[node name="StarTwo" type="AudioStreamPlayer" parent="Sounds/UI"]
+stream = ExtResource("17_gnn5m")
+
+[node name="StarThree" type="AudioStreamPlayer" parent="Sounds/UI"]
+stream = ExtResource("18_y4hv0")
+
+[node name="Door" type="AudioStreamPlayer" parent="Sounds/UI"]
+stream = ExtResource("19_23i0n")
+
+[node name="Cloud" type="AudioStreamPlayer" parent="Sounds/UI"]
+stream = ExtResource("20_tqi2b")
+
+[node name="Ruban" type="AudioStreamPlayer" parent="Sounds/UI"]
+stream = ExtResource("21_ey565")
+
+[node name="Click" type="AudioStreamPlayer" parent="Sounds/UI"]
+stream = ExtResource("22_4p842")
+
+[node name="Musics" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Musics"]
+stream = ExtResource("23_pjhxx")
+autoplay = true

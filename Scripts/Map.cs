@@ -69,7 +69,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Process(double pDelta)
 		{
-            if (!Player.GetInstance().canInput || Player.GetInstance().hasBoxToPush || Box.animPlaying) return;
+            if (!Player.GetInstance().canInput || Player.GetInstance().hasBoxToPush || Box.animPlaying || GameManager.GetInstance().startAnimation) return;
 
             else if (Input.IsActionJustPressed(CLICK_INPUT))
 			{

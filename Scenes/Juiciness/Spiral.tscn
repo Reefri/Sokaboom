@@ -34,6 +34,7 @@ scale_over_velocity_curve = SubResource("CurveTexture_roo8y")
 color_ramp = SubResource("GradientTexture1D_1fgvt")
 
 [node name="spiral" type="Node2D"]
+scale = Vector2(0.531088, 0.531088)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 1000

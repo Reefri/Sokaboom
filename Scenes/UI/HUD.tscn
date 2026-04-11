@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv14slt1ckou2"]
+[gd_scene load_steps=11 format=3 uid="uid://dv14slt1ckou2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimMouse.cs" id="2_3tpfh"]
 [ext_resource type="Texture2D" uid="uid://bhdtl1wggd7du" path="res://Assets/Boutons/goBack.png" id="3_gjtpu"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="3_lnnes"]
 [ext_resource type="Texture2D" uid="uid://cwb53ldapocqh" path="res://Assets/Boutons/restart.png" id="5_rwybo"]
+[ext_resource type="Script" path="res://Scripts/RestartButton.cs" id="6_7jap7"]
 [ext_resource type="Texture2D" uid="uid://mymntttol5qk" path="res://Assets/Boutons/redo.png" id="6_qcjep"]
 [ext_resource type="Texture2D" uid="uid://cps26r5ia6r8v" path="res://Assets/Boutons/undo.png" id="7_c4u6y"]
 
@@ -86,6 +87,7 @@ icon = ExtResource("5_rwybo")
 flat = true
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("6_7jap7")
 
 [node name="UNDO_REDO" type="Control" parent="."]
 layout_mode = 1
@@ -96,6 +98,7 @@ offset_left = 331.0
 offset_top = 72.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="REDO" type="Control" parent="UNDO_REDO"]
 layout_mode = 1
@@ -109,6 +112,7 @@ offset_right = 17.048
 offset_bottom = 123.376
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_3tpfh")
 
 [node name="Redo" type="Button" parent="UNDO_REDO/REDO"]
@@ -139,6 +143,7 @@ offset_right = -146.952
 offset_bottom = 121.376
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_3tpfh")
 
 [node name="Undo" type="Button" parent="UNDO_REDO/UNDO"]
@@ -167,6 +172,7 @@ offset_left = -0.136047
 offset_top = -0.208008
 offset_right = 0.536011
 offset_bottom = 0.111969
+mouse_filter = 2
 
 [node name="Par" type="Label" parent="Control"]
 layout_mode = 1
