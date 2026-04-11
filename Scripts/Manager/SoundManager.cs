@@ -18,7 +18,7 @@ namespace Com.IsartDigital.Sokoban
         private Node soundsContainer;
         private Node musicsContainer;
 
-        private float musicDB = 40;
+        [Export] private float musicDB = 40;
         public float MusicDB
         {
             get { return musicDB; }
@@ -28,7 +28,8 @@ namespace Com.IsartDigital.Sokoban
                 musicDB = value;
             }
         }
-        private float soundDB = 40;
+
+        [Export] private float soundDB = 40;
         public float SoundDB
         {
             get { return soundDB; }
@@ -60,10 +61,23 @@ namespace Com.IsartDigital.Sokoban
 
         [ExportSubgroup("move")]
         [Export] private AudioStreamPlayer startPathFind;
-        [Export] private AudioStreamPlayer footStep;
+        [Export] private AudioStreamPlayer collide;
+        [Export] private AudioStreamPlayer footStepOne;
+        [Export] private AudioStreamPlayer footStepTwo;
+
+        List<AudioStreamPlayer> footStepSounds;
 
         [ExportGroup("UI")]
+        [Export] private AudioStreamPlayer sparkles;
+        [Export] private AudioStreamPlayer starOne;
+        [Export] private AudioStreamPlayer starTwo;
+        [Export] private AudioStreamPlayer starThree;
+        [Export] private AudioStreamPlayer door;
+        [Export] private AudioStreamPlayer cloud;
+        [Export] private AudioStreamPlayer ruban;
         [Export] private AudioStreamPlayer click;
+
+        List<System.Action> playStarSound; 
 
 
         private SoundManager()
@@ -85,6 +99,19 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
         {
+
+            playStarSound = new List<System.Action> 
+            {
+                PlayStarOne, PlayStarTwo, PlayStarThree,
+            };
+
+
+            footStepSounds = new List<AudioStreamPlayer>
+            {
+                //footStepOne,
+                footStepTwo
+            };
+
             soundsContainer = GetNode(SOUNDS_NODE_PATH);
             musicsContainer = GetNode(MUSICS_NODE_PATH);
 
@@ -113,7 +140,9 @@ namespace Com.IsartDigital.Sokoban
             }
         }
 
-
+        //########################################################################################################################
+        //############################################          EPXLOSION         ################################################
+        //########################################################################################################################
         public void PlayFireworkExplosion()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -145,6 +174,12 @@ namespace Com.IsartDigital.Sokoban
 
             wallExplosion.Play();
         }
+
+
+        //########################################################################################################################
+        //############################################             BOX            ################################################
+        //########################################################################################################################
+
         public void PlayBoxError()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -169,6 +204,13 @@ namespace Com.IsartDigital.Sokoban
 
             boxMove.Play();
         }
+
+
+
+        //########################################################################################################################
+        //############################################            MOVE            ################################################
+        //########################################################################################################################
+
         public void PlayStartPathFindind()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -179,7 +221,72 @@ namespace Com.IsartDigital.Sokoban
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-            footStep.Play();
+            footStepSounds[GD.RandRange(0,footStepSounds.Count-1)].Play();
+        }
+
+        public void PlayCollide()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            collide.Play();
+        }
+
+
+
+        //########################################################################################################################
+        //############################################              UI            ################################################
+        //########################################################################################################################
+
+        public void PlaySparkles() //???
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            sparkles.Play();
+        }
+        public void PlayStarOne()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            starOne.Play();
+        }
+        public void PlayStarTwo()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            starTwo.Play();
+        }
+        public void PlayStarThree()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            starThree.Play();
+        }
+
+
+        public void PlayStarIndex(int pIndex)
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            playStarSound[Mathf.Clamp(pIndex, 0, playStarSound.Count-1)].Invoke();
+
+        }
+        public void PlayDoor()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            door.Play();
+        }
+        public void PlayCloud()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            cloud.Play();
+        }
+        public void PlayRuban()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            ruban.Play();
         }
         public void PlayClick()
         {

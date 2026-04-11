@@ -62,6 +62,8 @@ namespace Com.IsartDigital.Sokoban
 			Visible = true;
 			Tween lTween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.In);
 
+			SoundManager.GetInstance().PlayRuban();
+
 
 			int lMaxIndexOfDownMarkers = downMarkers.Count - 1;
             for (int i = lMaxIndexOfDownMarkers; i >= 0; i--)

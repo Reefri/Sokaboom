@@ -30,6 +30,8 @@ namespace Com.IsartDigital.Sokoban
 			TransitionZone.Position = new Vector2(doubleWidth, -doubleHeight);
 			Vector2 lFinalPos = new Vector2(-screenSize.Y, doubleHeight);
 
+			SoundManager.GetInstance().PlayCloud();
+
 			Tween lTween = TransitionZone.CreateTween();
 			lTween.TweenProperty(TransitionZone, TweenProp.POSITION,lFinalPos, tweenDuration);
 		}

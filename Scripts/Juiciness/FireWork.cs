@@ -127,22 +127,30 @@ namespace Com.IsartDigital.Sokoban
 		}
 
 
-		public static FireWork Create(Vector2 pPosition)
+		public static FireWork Create(Vector2? pGlobalPosition, Vector2? pPosition)
 		{
 			FireWork lNewFireWork = (FireWork)factory.Instantiate();
-			lNewFireWork.GlobalPosition = pPosition;
+			if (pGlobalPosition != null)
+			{
+				lNewFireWork.GlobalPosition = (Vector2)pGlobalPosition;
+			}
+			else
+			{
+				lNewFireWork.Position = pPosition ?? Vector2.Zero;
+			}
+				
 			lNewFireWork.ZIndex = 1;
             return lNewFireWork;
 		}
 
-        public static void CreateMult(Vector2 pPosition,Node2D pParent)
+        public static void CreateMult(Vector2? pGlobalPosition,Node2D pParent , Vector2? pPosition = null)
         {
 			FireWork lCurrentFirework;
 			int lRandNumberOfFirework = GD.RandRange(MIN_FIREWORK_NUMBER, MAX_FIREWORK_NUMBER);
 
 			for (int i = 0; i < lRandNumberOfFirework; i++)
 			{
-				lCurrentFirework = Create(pPosition);
+				lCurrentFirework = Create(pGlobalPosition,pPosition);
 
 				lCurrentFirework.direction = Vector2.Up.Rotated(Mathf.Tau/3 * (lRandNumberOfFirework / 2-i)/ lRandNumberOfFirework);
 				

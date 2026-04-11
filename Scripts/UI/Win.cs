@@ -67,15 +67,18 @@ namespace Com.IsartDigital.Sokoban
 			{
 				AnimatedSprite2D lStars = (AnimatedSprite2D)stars.GetChild(i);
                 lStars.Scale = Vector2.Zero;
-                AnimationStars(lStars, i * 0.5f);
+                AnimationStars(lStars, i * 0.5f,i);
             }
             
 			scoreText.Text = SCORE + score;
 
-			AccountManager.GetInstance().NewWin(score, GameManager.GetInstance().CurrentPar);
+            confettis.Emitting = true;
+
+
+            AccountManager.GetInstance().NewWin(score, GameManager.GetInstance().CurrentPar);
         }
 
-        private void AnimationStars(AnimatedSprite2D pStars, float pDelay)
+        private void AnimationStars(AnimatedSprite2D pStars, float pDelay,int pIndex)
         {
             Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.Out).SetParallel();
             lTween.TweenProperty(pStars, TweenProp.FRAME, 1, 0).SetDelay(pDelay);
@@ -83,6 +86,7 @@ namespace Com.IsartDigital.Sokoban
             lTween.TweenProperty(pStars, TweenProp.ROTATION, Mathf.Tau, 1f).AsRelative().SetDelay(pDelay);
 
             lTween.Finished += () => ParticulesStars(pStars);
+            lTween.Finished += () => SoundManager.GetInstance().PlayStarIndex(pIndex);
         }
 
         private void ParticulesStars(AnimatedSprite2D pStars)
@@ -90,11 +94,9 @@ namespace Com.IsartDigital.Sokoban
             GpuParticles2D lParticules = (GpuParticles2D)pStars.GetChild(0);
             lParticules.Emitting = true;
 
-            for (int i = numberStars - 1; i < 3; i++)
-            {
-                FireWork.CreateMult(stars.GlobalPosition + new Vector2(rand.RandiRange(-500, 100), rand.RandiRange(-100, 100)), pStars);
-            }
-            confettis.Emitting = true;
+            
+            FireWork.CreateMult(null , pStars, Vector2.Zero);
+            
         }
     }
 }

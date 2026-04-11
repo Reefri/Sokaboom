@@ -177,9 +177,12 @@ namespace Com.IsartDigital.Sokoban
 
             pTween.TweenCallback
                 (
-                Callable.From(() =>
-                    animationFinished = true)
-                );
+                Callable.From(() => 
+                    {
+                        animationFinished = true;
+                        SoundManager.GetInstance().PlayDoor();
+                    }
+                ));
         }
 
         private void CloseDoors()
