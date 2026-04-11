@@ -80,7 +80,7 @@ namespace Com.IsartDigital.Sokoban
         List<System.Action> playStarSound;
 
 
-        [ExportCategory("Sounds")]
+        [ExportCategory("Musics")]
         [Export] private AudioStreamPlayer music;
 
 
