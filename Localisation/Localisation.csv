@@ -20,7 +20,7 @@ ID_STEPS,Steps : ,Pas :
 ID_BY, by , par 
 ID_SWITCH_INSCRIPTION,Already Register,Deja Enregistré
 ID_VALIDATION_INSCRIPTION,Register You,Enregistre Toi
-ID_VALIDATION_LOGIN,Connect,Connexion
+ID_VALIDATION_LOGIN,Connect,Connection
 ID_TITLE_LOGIN,Login :,Connection :
 ID_PASSWORD_NOT_CONFIRM,The Password is different from confirmation, Le mot de passe ne correspond pas a la confirmation.
 ID_WIN_FINAL,Win Final,Victoire Final
@@ -38,7 +38,7 @@ ID_CONTROL_AA,- The player goes toward the chosen direction,- Le joueur va dans 
 ID_CONTROL_AB,- if the tile is empty@ he move onto that tile,- si la case est vide@ il y va
 ID_CONTROL_BA,          - if he move toward a crate@ he push it,          - s’il se déplace vers une caisse@ il la pousse
 ID_CONTROL_BB,                                in his direction,                                dans sa direction
-ID_CONTROL_BC,                   - But only if the tile behind the crate is empty,                   - Mais seulement si il n'y a rien derrière
+ID_CONTROL_BC,                   - But only if the tile behind the crate is empty,                   - Mais seulement s'il n'y a rien derrière
 ID_KEYBOARD,Control : ,Contrôle :
 ID_SF_BA,- Next to the bomb there is its explosion's shape,- A côté de la bombe il y a sa forme d'explosion
 ID_SF_BB, The red zone is the point of origin, La zone rouge est le point d’origine
@@ -50,7 +50,7 @@ ID_DETAILS_BA,- Caution ! you can destroy crates and targets !,- Attention ! Les
 ID_DETAILS_BB,- if there are more crates than targets@ destroy them,- s’il y a plus de caisses que de cibles@ détruisez-les
 ID_DETAILS_C,^ Here 90° rotation,^ Ici elle tourne à 90°
 ID_TUTORIEL,Tutorial,Turoriel
-ID_ETHANM_A,Mirror +,Miroire +
+ID_ETHANM_A,Mirror +,Miroir +
 ID_ETHANF_A,Arrow,Flèche
 ID_SACHA_IA,Corridor in B,Couloir en U
 ID_SACHA_A,Without any walls,Sans murs
