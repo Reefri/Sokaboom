@@ -96,6 +96,7 @@ offset_left = 331.0
 offset_top = 72.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="REDO" type="Control" parent="UNDO_REDO"]
 layout_mode = 1
@@ -109,6 +110,7 @@ offset_right = 17.048
 offset_bottom = 123.376
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_3tpfh")
 
 [node name="Redo" type="Button" parent="UNDO_REDO/REDO"]
@@ -139,6 +141,7 @@ offset_right = -146.952
 offset_bottom = 121.376
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_3tpfh")
 
 [node name="Undo" type="Button" parent="UNDO_REDO/UNDO"]
@@ -167,6 +170,7 @@ offset_left = -0.136047
 offset_top = -0.208008
 offset_right = 0.536011
 offset_bottom = 0.111969
+mouse_filter = 2
 
 [node name="Par" type="Label" parent="Control"]
 layout_mode = 1
