@@ -22,6 +22,7 @@ color_ramp = SubResource("GradientTexture1D_dfssm")
 script = ExtResource("1_8sbb1")
 particles = NodePath("GPUParticles2D")
 fireworksParent = NodePath("fireworksParent")
+victoryZoomStrength = 3.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
