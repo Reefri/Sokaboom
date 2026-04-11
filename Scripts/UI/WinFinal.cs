@@ -9,18 +9,21 @@ namespace Com.IsartDigital.Sokoban
 	{
 		[Export] private TextureRect background;
 
+        [Export] private Label congratulationText;
 		[Export] Label ScoreFinal;
 		[Export] Label winText;
 
 		[Export] Button highScore;
 		[Export] Button menu;
 
+        [Export] private Node2D fireworksPos;
+
         private const string SCORE = "Score Total : ";
         private float currentScore = 0;
-        private float scoreToReach = 10;
+        private float scoreToReach = 1;
 
 		private float sideFactor = 200f;
-		private float tweenDuration = 0.75f;
+		[Export] private float tweenDuration = 0.75f;
 		private float time = 0;
 
 		private Vector2 screenSize;
@@ -31,7 +34,6 @@ namespace Com.IsartDigital.Sokoban
 		{
 			screenSize = GetViewportRect().Size;
 
-			//ScoreFinal.Text = SCORE + AccountManager.GetInstance().currentAccount.FinalScore();
             ScoreFinal.Text = SCORE;
             scoreToReach = AccountManager.GetInstance().currentAccount.FinalScore();
 
@@ -52,11 +54,13 @@ namespace Com.IsartDigital.Sokoban
 
 			highScore.Position = new Vector2(screenSize.X + sideFactor, screenSize.Y / 2) - highScore.Size/2;
 
-			//ScoreFinal.Position = new Vector2(screenSize.X + sideFactor, screenSize.Y / 2 - sideFactor) - ScoreFinal.Size/2;
-
 			winText.Position = new Vector2(screenSize.X + sideFactor, screenSize.Y / 2 - sideFactor * 2) - winText.Size/2;
 
             ScoreFinal.Scale = Vector2.Zero;
+
+            
+            congratulationText.PivotOffset = congratulationText.Size / 2;
+            congratulationText.Scale = Vector2.Zero;
         }
 
         private void Animations()
@@ -85,7 +89,7 @@ namespace Com.IsartDigital.Sokoban
 
             lTween.Parallel().TweenProperty(highScore, TweenProp.POSITION, screenSize / 2 - highScore.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
 
-            lTween.Parallel().TweenProperty(ScoreFinal, TweenProp.POSITION, screenSize / 2 + Vector2.Up * sideFactor - ScoreFinal.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
+            lTween.Parallel().TweenProperty(ScoreFinal, TweenProp.POSITION, screenSize / 2 + Vector2.Up * sideFactor/1.25f - ScoreFinal.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
 
             lTween.Parallel().TweenProperty(winText, TweenProp.POSITION, screenSize / 2 + Vector2.Up * sideFactor * 3 - winText.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
 
@@ -112,8 +116,6 @@ namespace Com.IsartDigital.Sokoban
             lTween.TweenProperty(menu, TweenProp.ROTATION, -Mathf.Pi/2 , tweenDuration);
 
             lTween.Parallel().TweenProperty(highScore, TweenProp.ROTATION, -Mathf.Pi / 2, tweenDuration);
-
-            //lTween.Parallel().TweenProperty(ScoreFinal, TweenProp.ROTATION, -Mathf.Pi / 2, tweenDuration);
 
             lTween.Parallel().TweenProperty(winText, TweenProp.ROTATION, -Mathf.Pi / 2, tweenDuration);
 
@@ -153,6 +155,23 @@ namespace Com.IsartDigital.Sokoban
                     );
         }
 
+        private void Congratulations()
+        {
+            
+
+            fireworksPos.Position = screenSize / 2;
+
+            FireWork.CreateMult(Vector2.Zero, fireworksPos);
+            FireWork.CreateMult(Vector2.Zero, fireworksPos);
+            FireWork.CreateMult(Vector2.Zero, fireworksPos);
+
+            Tween lTween = CreateTween()
+                .SetTrans(Tween.TransitionType.Elastic)
+                .SetEase(Tween.EaseType.Out);
+
+            lTween.TweenProperty(congratulationText, TweenProp.SCALE, Vector2.One, tweenDuration).SetDelay(tweenDuration / 2);
+        }
+
         public override void _Process(double delta)
         {
             base._Process(delta);
@@ -164,10 +183,14 @@ namespace Com.IsartDigital.Sokoban
 
                 if (currentScore != scoreToReach)
                 {
-                    currentScore = (int)Tween.InterpolateValue(currentScore, scoreToReach - currentScore, time, tweenDuration * 5, Tween.TransitionType.Quad, Tween.EaseType.In);
+                    currentScore = (int)Tween.InterpolateValue(currentScore, scoreToReach - currentScore, time, tweenDuration * 3, Tween.TransitionType.Quad, Tween.EaseType.In);
 
-                    if (currentScore > scoreToReach)
+                    if (currentScore >= scoreToReach)
+                    {
                         currentScore = scoreToReach;
+                        showScore = false;
+                        Congratulations();
+                    }
 
                     ScoreFinal.Text = SCORE + currentScore;
                 }
