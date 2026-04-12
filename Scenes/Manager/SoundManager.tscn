@@ -28,7 +28,6 @@
 script = ExtResource("1_0homo")
 musicDB = -10.0
 soundDB = -10.0
-debug = true
 fireworkWhistle = NodePath("Sounds/GamePlay/Bomb/FireworkWhistle")
 bombPickUp = NodePath("Sounds/GamePlay/Bomb/BombPickup")
 fireworkExplosion = NodePath("Sounds/GamePlay/Bomb/FireworkExplosion")

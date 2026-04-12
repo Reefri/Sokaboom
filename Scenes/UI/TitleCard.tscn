@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
 
-[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore", "play", "helpButton", "languageButton")]
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore", "play", "helpButton", "languageButton", "soundButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +29,7 @@ hightScore = NodePath("ButtonsA/HightScore")
 play = NodePath("ButtonsA/Play")
 helpButton = NodePath("ButtonsA/Help")
 languageButton = NodePath("ButtonsB/Traduction")
+soundButton = NodePath("ButtonsB/Son")
 
 [node name="Font" type="ColorRect" parent="."]
 z_index = -2
@@ -237,7 +238,7 @@ offset_right = 200.0
 offset_bottom = 284.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
-text = "ID_HIGHTSCORE"
+text = "ID_HIGHSCORE"
 
 [node name="ButtonsB" type="Control" parent="."]
 z_index = 1
@@ -265,7 +266,6 @@ offset_right = -100.0
 offset_bottom = -18.0
 grow_horizontal = 0
 grow_vertical = 0
-disabled = true
 text = "ID_SOUND"
 
 [node name="Traduction" type="Button" parent="ButtonsB"]
@@ -279,3 +279,5 @@ offset_right = 242.0
 offset_bottom = -18.0
 grow_vertical = 0
 text = "ID_TRANSLATION"
+
+[connection signal="pressed" from="ButtonsB/Son" to="." method="SonPressed"]

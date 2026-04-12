@@ -165,7 +165,7 @@
 	},
 	
 	{
-	"par": 44,
+	"par": 36,
 	"author" : "GRAMATIKOFF Sacha",
 	"title" : "ID_SACHA_B",
 	"map": 
@@ -185,7 +185,7 @@
 		]
 	},
 	 {
-	"par": 44,
+	"par": 32,
 	"author" : "FRENARD Ethan",
 	"title" : "ID_ETHANF_B",
 	"map": 
@@ -236,18 +236,18 @@
 		]
 	},
 		{
-	"par": 37,
+	"par": 33,
 	"author" : "CAYOT Daniel",
 	"title" : "ID_DANIEL_B",
 	"map": 
 	[
-		"  =====",
+		" ======",
 		" =.  ==",
 		" =$0$ =",
-		" =  .$=",
+		"==  .$=",
 		"=1 $$ =",
 		"=# #@ =",
-		" ===== "
+		"======="
 	],
 	"bombExplosionTilesPos" :
 		[
