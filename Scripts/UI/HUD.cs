@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 // Author : Ethan Masse
 
@@ -50,6 +51,15 @@ namespace Com.IsartDigital.Sokoban
             quitButton.Pressed += QuitPressed;
         }
 
+        public override void _Process(double pDelta)
+        {
+            if (GameManager.GetInstance().currentPosition.nextValue == null) redoButton.Disabled = true;
+            else redoButton.Disabled = false;
+
+            if (GameManager.GetInstance().currentPosition.previousValue == null) undoButton.Disabled = true;
+            else undoButton.Disabled = false;
+        }
+
         private void PortraitMode()
         {
 
@@ -78,11 +88,6 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().currentPosition = new HistoricHeap(GameManager.GetInstance().currentLevel);
             GameManager.GetInstance().ChargeMapFromCurrentLevel();
             GameManager.GetInstance().CurrentPar = 0;
-        }
-
-        public void DisabledRedo(bool pBool)
-        {
-            redoButton.Disabled = !pBool;
         }
 
         protected override void Dispose(bool pDisposing)
