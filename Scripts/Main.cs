@@ -13,9 +13,6 @@ namespace Com.IsartDigital.Sokoban
 		static private Main instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Main.tscn");
 
-		[Export] public bool testOnlyGameFeature = true;
-		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
-
         [Export] public bool noLogin = true;
 
         public Vector2 screenSize;
@@ -45,8 +42,6 @@ namespace Com.IsartDigital.Sokoban
 		public override void _Ready()
 		{
 			base._Ready();
-
-			if (testOnlyGameFeature) UIManager.GetInstance().GoToLevel(levelAtTest);
         }
 
 		protected override void Dispose(bool pDisposing)

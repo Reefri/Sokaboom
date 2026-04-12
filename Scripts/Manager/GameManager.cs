@@ -280,7 +280,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void UpdateAfterAction()
         {
-            CurrentPar++;
+            if (!Player.GetInstance().blocked) CurrentPar++;
             SaveScreenshotGame();
 
             
