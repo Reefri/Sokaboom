@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ph7dviekoboq"]
+[gd_scene load_steps=16 format=3 uid="uid://ph7dviekoboq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HelpMenu.cs" id="1_ohxmj"]
 [ext_resource type="Texture2D" uid="uid://docrkk0i2wtmh" path="res://Assets/UI/input/keyboard_z_outline.png" id="2_u1evf"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfi0xj1teixyt" path="res://Scenes/UI/HelpAnimations/HelpExplodeDirections.tscn" id="12_1tdw1"]
 [ext_resource type="PackedScene" uid="uid://b4li5pgekojsa" path="res://Scenes/UI/HelpAnimations/HelpExplodeBoxes.tscn" id="13_aqbv3"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="14_3wq5k"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="15_w5fvi"]
 
 [node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationSfB", "explanationSfC", "explanationControlA", "explanationControlB", "explanationDetailA", "explanationDetailB", "returnButton")]
 layout_mode = 3
@@ -500,4 +501,13 @@ offset_right = 150.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("15_w5fvi")
+theme_override_styles/hover = ExtResource("15_w5fvi")
+theme_override_styles/pressed = ExtResource("15_w5fvi")
+theme_override_styles/disabled = ExtResource("15_w5fvi")
+theme_override_styles/focus = ExtResource("15_w5fvi")
 text = "ID_MENU"

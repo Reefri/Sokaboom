@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvruhy2dpei86"]
+[gd_scene load_steps=10 format=3 uid="uid://cvruhy2dpei86"]
 
 [ext_resource type="Script" path="res://Scripts/UI/LevelSelect.cs" id="1_l0ych"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_mtd47"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_oadqc"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_2u2uy"]
 [ext_resource type="Texture2D" uid="uid://bvp8qofn2wfr1" path="res://Assets/button.png" id="4_w4d12"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="8_f6wqv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4tj3"]
 texture = ExtResource("4_w4d12")
@@ -395,10 +396,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 256.0
-offset_top = -302.0
-offset_right = 479.0
-offset_bottom = -247.0
+offset_left = 216.0
+offset_top = -312.0
+offset_right = 519.0
+offset_bottom = -237.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -406,7 +407,7 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxTexture_7ib5a")
 theme_override_styles/hover = SubResource("StyleBoxTexture_7ib5a")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7ib5a")
@@ -434,11 +435,19 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -453.0
 offset_top = -309.0
-offset_right = -242.0
+offset_right = -189.0
 offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("8_f6wqv")
+theme_override_styles/hover = ExtResource("8_f6wqv")
+theme_override_styles/pressed = ExtResource("8_f6wqv")
+theme_override_styles/disabled = ExtResource("8_f6wqv")
+theme_override_styles/focus = ExtResource("8_f6wqv")
 text = "ID_BACK"
 
 [connection signal="pressed" from="unlock" to="." method="UnlockPressed"]
