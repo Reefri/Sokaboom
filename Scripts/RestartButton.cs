@@ -17,12 +17,12 @@ namespace Com.IsartDigital.Sokoban
         public override void _Ready()
 		{
 			timer.WaitTime = timeBetweenAnimation;
-			timer.Timeout += Animation;
-			AddChild(timer);
+			timer.Timeout += () => Animation(false);
+            AddChild(timer);
 
             MouseEntered += AnimationMouseEntered;
             MouseExited += AnimationMouseExited;
-            Pressed += Animation;
+            Pressed += () => Animation(true);
 
             PivotOffset = Size / 2;
         }
@@ -39,30 +39,33 @@ namespace Com.IsartDigital.Sokoban
 
         private void AnimationMouseExited()
         {
-            if (!pressed)
-            {
-                rotationButton = 0;
-                timer.Stop();
+            if (pressed) return;
 
-                Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.OutIn).SetParallel();
-                lTween.TweenProperty(this, TweenProp.SCALE, Vector2.One, 0.5f);
-                lTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(rotationButton), 0.5f);
-            }
+            rotationButton = 0;
+            timer.Stop();
+
+            Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.OutIn).SetParallel();
+            lTween.TweenProperty(this, TweenProp.SCALE, Vector2.One, 0.5f);
+            lTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(rotationButton), 0.5f);
         }
 
-        private void Animation()
+        private void Animation(bool pPressed)
 		{
-            pressed = true;
-            rotationButton += 360;
+            pressed = pPressed;
 
 			Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Quint).SetEase(Tween.EaseType.InOut);
-            lTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(rotationButton), 1f);
-            lTween.TweenProperty(this, TweenProp.ROTATION, rotationButton, 0f).Finished += RotateZero;;
+            lTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(360 + rotationButton), 1f);
+            lTween.TweenProperty(this, TweenProp.ROTATION, Mathf.DegToRad(rotationButton), 0f);
+            lTween.Finished += RotateZero;
         }
 
         private void RotateZero()
         {
-            pressed = false;
+            if (pressed) 
+            {
+                pressed = false;
+                AnimationMouseExited();
+            }
         }
 	}
 }
