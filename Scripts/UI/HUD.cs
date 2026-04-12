@@ -8,13 +8,13 @@ namespace Com.IsartDigital.Sokoban
 	{
         [Export] private Button quitButton;
 
-		[Export] private Button undoButton;
+		[Export] public Button undoButton;
         [Export] private Vector2 undoLandscapePos;
         [Export] private Vector2 undoPortraitPos;
 		[Export] private Button redoButton;
         [Export] private Vector2 redoLandscapePos;
         [Export] private Vector2 redoPortraitPos;
-        [Export] private Button restartButton;
+        [Export] public Button restartButton;
         [Export] private Vector2 restartLandscapePos;
         [Export] private Vector2 restartPortraitPos;
         [Export] private Label par;
