@@ -238,7 +238,7 @@ offset_right = 200.0
 offset_bottom = 284.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
-text = "ID_HIGHTSCORE"
+text = "ID_HIGHSCORE"
 
 [node name="ButtonsB" type="Control" parent="."]
 z_index = 1
