@@ -55,7 +55,7 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Process(double pDelta)
         {
-            if (!transition)
+            if (!transition && !GameManager.GetInstance().CheckWin())
             {
                 if (GameManager.GetInstance().currentPosition.nextValue == null) redoButton.Disabled = true;
                 else redoButton.Disabled = false;

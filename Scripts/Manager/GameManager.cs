@@ -448,7 +448,7 @@ namespace Com.IsartDigital.Sokoban
             return lListOfPos;
         }
 
-        private bool CheckWin()
+        public bool CheckWin()
         {
             List<Vector2I> lListOfTargetWihtoutContainer = GetTargetWithoutBoxPosition();
             positionForBoxSignal = GetBoxWithoutTargetPosition();
