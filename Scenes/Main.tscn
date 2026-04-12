@@ -13,6 +13,7 @@
 script = ExtResource("1_4l0qp")
 postProcessingNode = NodePath("PostProccessingNode")
 testOnlyGameFeature = false
+noLogin = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
