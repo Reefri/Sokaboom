@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqciltv8p0y15"]
+[gd_scene load_steps=5 format=3 uid="uid://dqciltv8p0y15"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WinFinal.cs" id="1_0l42t"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_jemyn"]
+[ext_resource type="Texture2D" uid="uid://daosnol5sspeq" path="res://Assets/FinalWinBackground.png" id="2_mdaxs"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_qfx27"]
+[ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_cp02b"]
 
 [node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "congratulationText", "ScoreFinal", "winText", "highScore", "menu", "fireworksPos")]
 layout_mode = 3
@@ -22,18 +23,16 @@ fireworksPos = NodePath("fireWorkPosition")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -253.0
-offset_top = -308.0
-offset_right = 238.0
-offset_bottom = 304.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 97.0
+offset_top = -33.0
+offset_right = -97.0
+offset_bottom = 74.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_jemyn")
+texture = ExtResource("2_mdaxs")
 expand_mode = 1
 
 [node name="Win" type="Label" parent="."]
@@ -68,7 +67,10 @@ offset_right = 181.0
 offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
 text = "Score Total :"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -96,6 +98,13 @@ offset_right = 150.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("4_cp02b")
+theme_override_styles/hover = ExtResource("4_cp02b")
+theme_override_styles/pressed = ExtResource("4_cp02b")
+theme_override_styles/disabled = ExtResource("4_cp02b")
+theme_override_styles/focus = ExtResource("4_cp02b")
 text = "ID_HIGHTSCORE"
 
 [node name="Menu" type="Button" parent="Buttons"]
@@ -111,6 +120,13 @@ offset_right = 150.0
 offset_bottom = 247.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("4_cp02b")
+theme_override_styles/hover = ExtResource("4_cp02b")
+theme_override_styles/pressed = ExtResource("4_cp02b")
+theme_override_styles/disabled = ExtResource("4_cp02b")
+theme_override_styles/focus = ExtResource("4_cp02b")
 text = "ID_MENU"
 
 [node name="fireWorkPosition" type="Node2D" parent="."]
@@ -129,6 +145,9 @@ offset_right = 583.0
 offset_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.396078, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 75
 text = "CONGRATULATIONS"
 horizontal_alignment = 1
