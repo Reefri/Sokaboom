@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw85b1nive3ah"]
+[gd_scene load_steps=8 format=3 uid="uid://dw85b1nive3ah"]
 
 [ext_resource type="Script" path="res://Scripts/UI/TitleCard.cs" id="1_ib5wi"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_5ibq2"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_e1lnu"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
+[ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
 [node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore", "play", "helpButton", "languageButton", "soundButton")]
 layout_mode = 3
@@ -217,9 +219,20 @@ script = ExtResource("4_4ftt8")
 
 [node name="Play" type="Button" parent="ButtonsA"]
 layout_mode = 2
-offset_right = 200.0
-offset_bottom = 80.0
+offset_left = -17.0
+offset_top = -7.0
+offset_right = 218.0
+offset_bottom = 87.0
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_guipx")
+theme_override_styles/hover = ExtResource("5_guipx")
+theme_override_styles/pressed = ExtResource("5_guipx")
+theme_override_styles/disabled = ExtResource("5_guipx")
+theme_override_styles/focus = ExtResource("5_guipx")
 text = "ID_PLAY"
 
 [node name="Help" type="Button" parent="ButtonsA"]
@@ -229,15 +242,34 @@ offset_right = 200.0
 offset_bottom = 188.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.85
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("5_guipx")
+theme_override_styles/hover = ExtResource("5_guipx")
+theme_override_styles/pressed = ExtResource("5_guipx")
+theme_override_styles/disabled = ExtResource("5_guipx")
+theme_override_styles/focus = ExtResource("5_guipx")
 text = "ID_HELP"
 
 [node name="HightScore" type="Button" parent="ButtonsA"]
 layout_mode = 2
+offset_left = -33.0
 offset_top = 228.0
-offset_right = 200.0
+offset_right = 233.0
 offset_bottom = 284.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("5_guipx")
+theme_override_styles/hover = ExtResource("5_guipx")
+theme_override_styles/pressed = ExtResource("5_guipx")
+theme_override_styles/disabled = ExtResource("5_guipx")
+theme_override_styles/focus = ExtResource("5_guipx")
 text = "ID_HIGHSCORE"
 
 [node name="ButtonsB" type="Control" parent="."]
@@ -260,12 +292,23 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -225.0
+offset_left = -240.0
 offset_top = -78.0
-offset_right = -100.0
+offset_right = -85.0
 offset_bottom = -18.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("7_mprki")
+theme_override_styles/hover = ExtResource("7_mprki")
+theme_override_styles/pressed = ExtResource("7_mprki")
+theme_override_styles/disabled = ExtResource("7_mprki")
+theme_override_styles/focus = ExtResource("7_mprki")
 text = "ID_SOUND"
 
 [node name="Traduction" type="Button" parent="ButtonsB"]
@@ -273,11 +316,22 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 100.0
-offset_top = -78.0
-offset_right = 242.0
-offset_bottom = -18.0
+offset_left = 83.0
+offset_top = -83.0
+offset_right = 259.0
+offset_bottom = -13.0
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("7_mprki")
+theme_override_styles/hover = ExtResource("7_mprki")
+theme_override_styles/pressed = ExtResource("7_mprki")
+theme_override_styles/disabled = ExtResource("7_mprki")
+theme_override_styles/focus = ExtResource("7_mprki")
 text = "ID_TRANSLATION"
 
 [connection signal="pressed" from="ButtonsB/Son" to="." method="SonPressed"]
