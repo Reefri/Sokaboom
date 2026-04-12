@@ -118,6 +118,8 @@ namespace Com.IsartDigital.Sokoban
 
 			int lIndex = Mathf.Clamp(GridManager.GetInstance().CurrentLevelIndex + 1, 1, GridManager.GetInstance().numberOfLevel - 1);
 
+			GD.Print(lIndex," : ", currentAccount.LockedLevels[lIndex]);
+
 			if (!currentAccount.LockedLevels[lIndex]) { currentAccount.LockedLevels[lIndex] = currentAccount.LockedLevels[lIndex-1]; lDidModif = true; }
 
 			if (lDidModif) 
