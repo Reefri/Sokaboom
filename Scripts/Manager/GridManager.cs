@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 // Author : Sacha Gramatikoff
 
@@ -11,6 +12,23 @@ namespace Com.IsartDigital.Sokoban
 
 
         public int numberOfLevel = JsonReaderWriter.ReadJsonToList<Level>(JSON_PATH).Count;
+
+        public List<int> levelOrder = new List<int>
+            {
+                0,
+                4,
+                9,
+                11,
+                12,
+                1,
+                2,
+                7,
+                3,
+                10,
+                5,
+                6,
+                8,
+            };
 
         public Level CurrentLevel
 		{
@@ -47,6 +65,7 @@ namespace Com.IsartDigital.Sokoban
 
 		public void ChangeLevel(int pIndex)
 		{
+			pIndex = levelOrder[pIndex];
 			CurrentLevel = GetLevel(pIndex);
 			CurrentLevelIndex = pIndex;
 			GameManager.GetInstance().CurrentPar = 0;
