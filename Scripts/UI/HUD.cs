@@ -32,6 +32,8 @@ namespace Com.IsartDigital.Sokoban
         private const string BY = "ID_BY";
         private const string STEPS = "ID_STEPS";
 
+        private bool transition;
+
         public override void _Ready()
 		{
             quitDelay.Timeout += DestroyGameManager;
@@ -53,11 +55,14 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Process(double pDelta)
         {
-            if (GameManager.GetInstance().currentPosition.nextValue == null) redoButton.Disabled = true;
-            else redoButton.Disabled = false;
+            if (!transition)
+            {
+                if (GameManager.GetInstance().currentPosition.nextValue == null) redoButton.Disabled = true;
+                else redoButton.Disabled = false;
 
-            if (GameManager.GetInstance().currentPosition.previousValue == null) undoButton.Disabled = true;
-            else undoButton.Disabled = false;
+                if (GameManager.GetInstance().currentPosition.previousValue == null) undoButton.Disabled = true;
+                else undoButton.Disabled = false;
+            }
         }
 
         private void PortraitMode()
@@ -77,6 +82,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void QuitPressed()
 		{
+            transition = true;
             UIManager.GetInstance().GoToLevelSelect();
             quitDelay.Start();
             
