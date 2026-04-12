@@ -40,7 +40,7 @@ namespace Com.IsartDigital.Sokoban
 		public static void Create()
 		{
 			VictoryAnimation lAnim = (VictoryAnimation)factory.Instantiate();
-			Main.GetInstance().AddChild(lAnim);
+			GameManager.GetInstance().AddChild(lAnim);
 		}
 
 	}
