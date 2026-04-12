@@ -41,6 +41,7 @@ namespace Com.IsartDigital.Sokoban
         }
 
         [Export] bool debug;
+        public bool soundPlay = true;
 
         [ExportCategory("Sounds")]
 
@@ -150,31 +151,55 @@ namespace Com.IsartDigital.Sokoban
         public void PlayFireworkExplosion()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
-
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             fireworkExplosion.Play();
         }
         public void PlayFireworkWhistle()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
-
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
+            
             fireworkWhistle.Play();
         }
         public void PlayBombPickUp()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             bombPickUp.Play();
         }
         public void PlayExplosion()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             explosion.Play();
         }
         public void PlayWallExplosion()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             wallExplosion.Play();
         }
@@ -187,24 +212,44 @@ namespace Com.IsartDigital.Sokoban
         public void PlayBoxError()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             boxError.Play();
         }
         public void PlayBoxValid()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             boxValid.Play();
         }
         public void PlayBoxExplosion()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             boxExplosion.Play();
         }
         public void PlayBoxMove()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             boxMove.Play();
         }
@@ -218,12 +263,22 @@ namespace Com.IsartDigital.Sokoban
         public void PlayStartPathFindind()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
-            
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
+
             startPathFind.Play();
         }
         public void PlayFootStep()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             footStepSounds[GD.RandRange(0,footStepSounds.Count-1)].Play();
         }
@@ -231,6 +286,11 @@ namespace Com.IsartDigital.Sokoban
         public void PlayCollide()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             collide.Play();
         }
@@ -244,24 +304,44 @@ namespace Com.IsartDigital.Sokoban
         public void PlaySparkles() //???
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             sparkles.Play();
         }
         public void PlayStarOne()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             starOne.Play();
         }
         public void PlayStarTwo()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             starTwo.Play();
         }
         public void PlayStarThree()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             starThree.Play();
         }
@@ -270,6 +350,11 @@ namespace Com.IsartDigital.Sokoban
         public void PlayStarIndex(int pIndex)
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             playStarSound[Mathf.Clamp(pIndex, 0, playStarSound.Count-1)].Invoke();
 
@@ -277,24 +362,44 @@ namespace Com.IsartDigital.Sokoban
         public void PlayDoor()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             door.Play();
         }
         public void PlayCloud()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             cloud.Play();
         }
         public void PlayRuban()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             ruban.Play();
         }
         public void PlayClick()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
 
             click.Play();
         }

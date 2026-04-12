@@ -23,6 +23,7 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Button play;
         [Export] private Button helpButton;
         [Export] private Button languageButton;
+        [Export] private Button soundButton;
 
         private Timer timer = new Timer();
 
@@ -78,6 +79,8 @@ namespace Com.IsartDigital.Sokoban.UI
 
             helpButton.Pressed += HelpPressed;
             languageButton.Pressed += Langage;
+
+            soundButton.Text = Tr("ID_SOUND") + " On";
         }
 
         public override void _Input(InputEvent pEvent)
@@ -186,6 +189,22 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             UIManager.GetInstance().comeToMenu = true;
             UIManager.GetInstance().GoToHelp();
+        }
+
+        private void SonPressed()
+        {
+            SoundManager.GetInstance().soundPlay = !SoundManager.GetInstance().soundPlay;
+            
+            if(SoundManager.GetInstance().soundPlay)
+            {
+                SoundManager.GetInstance().PlayMusic();
+                soundButton.Text = Tr("ID_SOUND") + " On";
+            }
+            else 
+            {
+                SoundManager.GetInstance().StopMusic();
+                soundButton.Text = Tr("ID_SOUND") + " Off";
+            }
         }
 
         public void Langage()
