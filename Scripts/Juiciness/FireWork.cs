@@ -9,7 +9,7 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class FireWork : Node2D
 	{
-		private static PackedScene factory = (PackedScene)GD.Load("res://Scenes/Juiciness/Firework.tscn");
+		private static PackedScene factory = (PackedScene)GD.Load("res://Scenes/Juiciness/FireWork.tscn");
 
 		private bool doSound;
 
