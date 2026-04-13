@@ -93,7 +93,7 @@ namespace Com.IsartDigital.Sokoban
 
         private Vector2I GetRandomGroundTile()
         {
-            return (GraphicManager.IsOld? objectPositionOnTileSet[ObjectChar.EMPTY] : randomsGroundTile[GD.RandRange(0, 2)]);
+            return randomsGroundTile[GD.RandRange(0, 2)];
         }
 
         public Map tileMap;

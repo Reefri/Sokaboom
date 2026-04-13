@@ -45,7 +45,7 @@ namespace Com.IsartDigital.Sokoban
             screenSize = GetViewportRect().Size;
 
 
-            if (Input.IsActionJustPressed("ui_accept"))
+            if (Input.IsActionJustPressed("SwapGraphics"))
             {
                 GraphicManager.ToggleGraphics();
             }
