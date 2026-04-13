@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8a4ecwgtperg"]
+[gd_scene load_steps=8 format=3 uid="uid://b8a4ecwgtperg"]
 
 [ext_resource type="Texture2D" uid="uid://baqqdfk122ne0" path="res://Assets/UI/eye/oeil(1).png" id="1_avoev"]
 [ext_resource type="Script" path="res://Scripts/UI/LoginUI.cs" id="1_b5yqg"]
 [ext_resource type="Script" path="res://Scripts/UI/SecretButton.cs" id="3_jl43w"]
 [ext_resource type="Texture2D" uid="uid://b5ifgvo56jcyi" path="res://Assets/UI/eye/oeil.png" id="4_xtyfr"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_dsb4s"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="6_h22ql"]
+[ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_4vgus"]
 
 [node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation", "statut")]
 layout_mode = 3
@@ -147,19 +149,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("5_dsb4s")
 
-[node name="Swtich" type="Button" parent="Font/Login_Inscription/Font/Control"]
-self_modulate = Color(0, 0.85098, 0.972549, 1)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -22.0
-offset_right = 60.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 10
-text = "Inscription"
-flat = true
-
 [node name="connexion_inscription" type="Button" parent="Font/Login_Inscription/Font/Control"]
 layout_mode = 1
 anchors_preset = 7
@@ -167,13 +156,43 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -90.0
-offset_right = 150.0
-offset_bottom = -15.0
+offset_left = -110.0
+offset_top = -88.0
+offset_right = 111.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("6_h22ql")
+theme_override_styles/hover = ExtResource("6_h22ql")
+theme_override_styles/pressed = ExtResource("6_h22ql")
+theme_override_styles/disabled = ExtResource("6_h22ql")
 text = "ID_VALIDATION_LOGIN"
+
+[node name="Swtich" type="Button" parent="Font/Login_Inscription/Font/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_right = 113.0
+offset_bottom = -1.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_4vgus")
+theme_override_styles/hover = ExtResource("7_4vgus")
+theme_override_styles/pressed = ExtResource("7_4vgus")
+theme_override_styles/disabled = ExtResource("7_4vgus")
+theme_override_styles/focus = ExtResource("7_4vgus")
+text = "Inscription"
 
 [node name="Statut" type="Label" parent="Font"]
 layout_mode = 1

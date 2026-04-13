@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c4wylq3j52dnn" path="res://Assets/FireWork/Body.png" id="3_grpsp"]
 [ext_resource type="Texture2D" uid="uid://bt2uu00rpwkjf" path="res://Assets/FireWork/Head.png" id="4_i4jgt"]
 [ext_resource type="Texture2D" uid="uid://b4x3jpds81d3x" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_03.png" id="4_qmxn6"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="5_73e8g"]
 [ext_resource type="Texture2D" uid="uid://bo0rhxioho106" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Blocks/block_01.png" id="6_kt5c3"]
+[ext_resource type="Texture2D" uid="uid://6e025o0qybaw" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_01.png" id="9_g8dve"]
 
 [sub_resource type="Animation" id="Animation_5ek7v"]
 resource_name = "explodeBomb"
@@ -227,13 +227,13 @@ position = Vector2(61, 0)
 [node name="Sprite2D" type="Sprite2D" parent="collectible/bombPattern"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(104, -21)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_73e8g")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_g8dve")
 
 [node name="Sprite2D2" type="Sprite2D" parent="collectible/bombPattern"]
 position = Vector2(104, -46)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_73e8g")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_g8dve")
 
 [node name="player" type="Sprite2D" parent="."]
 position = Vector2(64, 0)

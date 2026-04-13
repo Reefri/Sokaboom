@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c4wylq3j52dnn" path="res://Assets/FireWork/Body.png" id="3_a6dl1"]
 [ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="3_s6j54"]
 [ext_resource type="Texture2D" uid="uid://bt2uu00rpwkjf" path="res://Assets/FireWork/Head.png" id="4_m4vey"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="5_ahw1s"]
 [ext_resource type="Texture2D" uid="uid://bxsi6pj3ya0q" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_13.png" id="6_a58vr"]
 [ext_resource type="Texture2D" uid="uid://dtw2t57ia8c2p" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_02.png" id="7_5scai"]
+[ext_resource type="Texture2D" uid="uid://6e025o0qybaw" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_01.png" id="7_r2mwy"]
 [ext_resource type="Texture2D" uid="uid://b0uegn82jtv0g" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_23.png" id="8_wjd24"]
 
 [sub_resource type="Gradient" id="Gradient_6ry67"]
@@ -318,13 +318,13 @@ position = Vector2(61, 0)
 [node name="Sprite2D" type="Sprite2D" parent="collectible/bombPattern"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(104, -21)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_ahw1s")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_r2mwy")
 
 [node name="Sprite2D2" type="Sprite2D" parent="collectible/bombPattern"]
 position = Vector2(104, -46)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_ahw1s")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_r2mwy")
 
 [node name="collectible2" type="Node2D" parent="."]
 position = Vector2(-64, 0)
@@ -343,13 +343,13 @@ position = Vector2(61, 0)
 [node name="Sprite2D" type="Sprite2D" parent="collectible2/bombPattern"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(104, -21)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_ahw1s")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_r2mwy")
 
 [node name="Sprite2D2" type="Sprite2D" parent="collectible2/bombPattern"]
 position = Vector2(104, -46)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_ahw1s")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_r2mwy")
 
 [node name="player" type="Sprite2D" parent="."]
 texture = ExtResource("8_wjd24")

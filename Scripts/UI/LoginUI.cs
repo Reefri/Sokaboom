@@ -46,7 +46,6 @@ namespace Com.IsartDigital.Sokoban.UI
             if (isLogin)
             {
                 font.Color = new Color(0, 0.85f, 0.97f);
-                buttonSwitch.SelfModulate = new Color(0, 0, 0.39f);
 
                 buttonSwitch.Text = Tr(SWITCH_INSCRIPTION);
                 buttonValidation.Text = Tr(VALIDATION_INSCRIPTION);
