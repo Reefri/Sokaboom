@@ -21,7 +21,7 @@
 	},
 	
 	{
-		"par": 28,
+		"par": 32,
 		"author" : "MASSE Ethan",
 		"title" : "ID_ETHANM_A",
 		"map": 
@@ -36,8 +36,8 @@
 		],
 		"bombExplosionTilesPos" :
 			[
-				[],
-				[[0,-1]],
+				[[-1,0]],
+				[[1,0]],
 				[[1,1]]
 			]
 
