@@ -138,17 +138,19 @@ namespace Com.IsartDigital.Sokoban.UI
         private void Animation()
         {
             Tween lTween = CreateTween().SetParallel();
-            lTween.Finished += GoOnLogin;
-
-            lTween.TweenProperty(realfont, TweenProp.GLOBAL_POSITION, new Vector2(0, GetWindow().Size.Y), 1f);
-            lTween.TweenProperty(realfont, TweenProp.ROTATION, Mathf.DegToRad(-360 * 2), 1f);
-
 
             lTween.TweenProperty(cadenas, TweenProp.POSITION, new Vector2(788, 122), 0.2f);
             lTween.TweenProperty(cadenas, TweenProp.ROTATION, Mathf.DegToRad(45), 0.2f);
 
+            lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.InOut).SetParallel();
+
+            lTween.TweenProperty(realfont, TweenProp.GLOBAL_POSITION, new Vector2(0, GetWindow().Size.Y), 1f);
+            lTween.TweenProperty(realfont, TweenProp.ROTATION, Mathf.DegToRad(-360 * 2), 1f);
+
             lTween.TweenProperty(cadenas, TweenProp.POSITION, new Vector2(588 + 350, GetWindow().Size.Y), 0.8f).SetDelay(0.2f);
             lTween.TweenProperty(cadenas, TweenProp.ROTATION, Mathf.DegToRad(360), 0.8f).SetDelay(0.2f);
+
+            lTween.Finished += GoOnLogin;
         }
 
         private void GoOnLogin()
