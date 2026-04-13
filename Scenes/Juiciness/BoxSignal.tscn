@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5jdhgay64t4y"]
 
 [ext_resource type="Shader" uid="uid://dudbr1l63w7xx" path="res://Ressources/Shaders/BoxSignal.tres" id="1_fnas3"]
-[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="2_mv2aq"]
+[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_02.png" id="2_mv2aq"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/BoxSignal.cs" id="3_u317d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcn3e"]

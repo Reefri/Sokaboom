@@ -55,7 +55,9 @@ namespace Com.IsartDigital.Sokoban
 
 		public override void _Ready()
 		{
-			cells = GetUsedCells((int)LevelLayer.Playground);
+
+
+            cells = GetUsedCells((int)LevelLayer.Playground);
 			groundCells = GetUsedCells((int)LevelLayer.Ground);
 
 			aStarGrid = new AStarGrid2D();
@@ -154,7 +156,7 @@ namespace Com.IsartDigital.Sokoban
                 if (Player.GetInstance().bombInHand == null || boxOrWallClickedOn == Vector2I.Zero)
                 {
                     Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
-					Player.GetInstance().animatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
+					Player.GetInstance().currentAnimatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
                     return;
                 }
                 return; 
@@ -199,7 +201,7 @@ namespace Com.IsartDigital.Sokoban
             if (lPath.Count == 0 && (Player.GetInstance().bombInHand == null || boxOrWallClickedOn == Vector2I.Zero))
             {
                 Player.GetInstance().animPlayer.Play(Player.ANIM_BLOCKED);
-                Player.GetInstance().animatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
+                Player.GetInstance().currentAnimatedSprite.GlobalPosition = Player.GetInstance().GlobalPosition;
                 return;
             }
 
