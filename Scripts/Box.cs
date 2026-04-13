@@ -1,5 +1,6 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
+using System.Collections.Generic;
 
 
 // author : Cayot Daniel
@@ -10,6 +11,7 @@ namespace Com.IsartDigital.Sokoban
 	{
 		[Export] private AnimationPlayer anim;
 		[Export] private GpuParticles2D moveDust;
+		[Export] private Sprite2D renderer;
 
         [Export] float timeOfFall = 0.75f;
 
@@ -19,10 +21,36 @@ namespace Com.IsartDigital.Sokoban
 		private static string animToPlay;
 		public static bool hasABoxToCheck = false;
 
-		private bool startAnimation;
+        private bool startAnimation;
+
+		private static List<Box> instances = new List<Box>();
+
+
+		public static Texture2D texture ;
+
+		public static void UpdateTexture()
+		{
+
+
+			foreach (Box lBox in instances)
+			{
+                GD.Print("ha");
+
+                lBox.renderer.Texture = texture;
+			}
+		}
+
+
+		protected override void Dispose(bool pDisposing)
+		{
+			instances.Remove(this);
+		}
+		
 
 		public override void _Ready()
 		{
+			renderer.Texture = texture;
+			
 			if (!startAnimation)
 			{
                 SoundManager.GetInstance().PlayBoxMove();
@@ -31,6 +59,7 @@ namespace Com.IsartDigital.Sokoban
 				moveDust.Emitting = true;
 				anim.AnimationFinished += EndOfAnimationWalk;
 			}
+
         }
 
         private void EndOfAnimationWalk(StringName pAnimName)
@@ -48,6 +77,8 @@ namespace Com.IsartDigital.Sokoban
 			GameManager.GetInstance().UpdateAfterAction();
             QueueFree();
         }
+
+     
 
         private void EndOfStartAnimation()
         {
@@ -71,6 +102,9 @@ namespace Com.IsartDigital.Sokoban
             Box lBox = (Box)packedBox.Instantiate();
 			BoxAnimation(pDirection);
             lBox.GlobalPosition = pPosition * (Map.DISTANCE_RANGE);
+
+			instances.Add(lBox);
+
 			GameManager.GetInstance().tileMap.AddChild(lBox);
 
             return lBox;

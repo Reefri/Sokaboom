@@ -39,9 +39,25 @@ namespace Com.IsartDigital.Sokoban
 			return instance;
 		}
 
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+
+            if (Input.IsActionJustPressed("ui_accept"))
+            {
+                GraphicManager.ToggleGraphics();
+            }
+
+        }
+
+
 		public override void _Ready()
 		{
 			base._Ready();
+
+            GraphicManager.Update();
+
+			if (testOnlyGameFeature) UIManager.GetInstance().GoToLevel(levelAtTest);
         }
 
 		protected override void Dispose(bool pDisposing)

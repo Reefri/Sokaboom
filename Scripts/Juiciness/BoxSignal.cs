@@ -24,6 +24,9 @@ namespace Com.IsartDigital.Sokoban {
 
 		public override void _Ready()
 		{
+
+			this.Texture = Box.texture;
+
 			myMaterial = (ShaderMaterial)Material;
 			myMaterial.SetShaderParameter(MAXGROWPROGRESSION_SHADER_PARAMETER, maxGrowth);
 

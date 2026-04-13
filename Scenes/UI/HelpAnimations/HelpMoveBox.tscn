@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://butgdmb1blel8"]
 
-[ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Ground/ground_06.png" id="1_5efey"]
-[ext_resource type="Texture2D" uid="uid://xtcqjxfl0xvq" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Player/player_12.png" id="1_tprcb"]
-[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_02.png" id="2_1pvr4"]
-[ext_resource type="Texture2D" uid="uid://bvaqinrr55iq0" path="res://Assets/kenney_sokoban-pack/PNG/Default size/Crates/crate_03.png" id="4_xsayl"]
+[ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Ground/ground_06.png" id="1_5efey"]
+[ext_resource type="Texture2D" uid="uid://xtcqjxfl0xvq" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_12.png" id="1_tprcb"]
+[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_02.png" id="2_1pvr4"]
+[ext_resource type="Texture2D" uid="uid://bvaqinrr55iq0" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_03.png" id="4_xsayl"]
 
 [sub_resource type="Animation" id="Animation_x5cq2"]
 resource_name = "move"

@@ -70,6 +70,19 @@ namespace Com.IsartDigital.Sokoban
             { ObjectChar.BORDER, new Vector2I(9,0) },
         };
 
+        private List<Vector2I> randomsGroundTile = new List<Vector2I> 
+        {
+            new Vector2I(10,6) ,
+            new Vector2I(11,6) ,
+            new Vector2I(12,6) ,
+
+        };
+
+        private Vector2I GetRandomGroundTile()
+        {
+            return randomsGroundTile[GD.RandRange(0, 2)];
+        }
+
         public Map tileMap;
 
         private GameManager() : base()
@@ -134,7 +147,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void ChargeMapFromCurrentLevel()
         {
-            tileMap.Clear();
+            tileMap.ClearLayer((int)Map.LevelLayer.Playground);
+            tileMap.ClearLayer((int)Map.LevelLayer.Target);
 
             int lYCurrentPositionSize = currentPosition.value.Size.Y;
             int lXCurrentPositionSize = currentPosition.value.Size.X;
@@ -150,7 +164,8 @@ namespace Com.IsartDigital.Sokoban
                             continue;
 
                         case (char)ObjectChar.BORDER:
-                            tileMap.SetCell((int)Map.LevelLayer.Ground, new Vector2I(j, i), 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
+                            if (tileMap.GetCellTileData((int)Map.LevelLayer.Ground, new Vector2I(j, i)) == null)
+                                tileMap.SetCell((int)Map.LevelLayer.Ground, new Vector2I(j, i), 0, GetRandomGroundTile());
                             break;
                     }
 
@@ -191,12 +206,12 @@ namespace Com.IsartDigital.Sokoban
             Player.GetInstance().Position = lPlayerPosition * Map.DISTANCE_RANGE;
             Player.GetInstance().GiveBombToPlayer(currentPosition.value.currentBomb);
 
-            FillGroundTiles(lPlayerPosition);
+            if (tileMap.GetCellTileData((int)Map.LevelLayer.Ground, lPlayerPosition) == null) FillGroundTiles(lPlayerPosition);
         }
 
         private void FillGroundTiles(Vector2I pStartCoor)
         {
-            tileMap.SetCell((int)Map.LevelLayer.Ground, pStartCoor, 0, objectPositionOnTileSet[ObjectChar.EMPTY]);
+            tileMap.SetCell((int)Map.LevelLayer.Ground, pStartCoor, 0, GetRandomGroundTile());
 
             foreach (Vector2I lNeighbor in neighborsCoor)
             {
