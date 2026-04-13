@@ -35,6 +35,7 @@ namespace Com.IsartDigital.Sokoban
 
 			UIManager.GetInstance().instanceHud.undoButton.Disabled = true;
             UIManager.GetInstance().instanceHud.restartButton.Disabled = true;
+            UIManager.GetInstance().instanceHud.quitButton.Disabled = true;
         }
 
 		public static void Create()
