@@ -18,6 +18,7 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene uiWin = GD.Load<PackedScene>("res://Scenes/UI/Win.tscn");
         private PackedScene uiWinFinal = GD.Load<PackedScene>("res://Scenes/UI/WinFinal.tscn");
         private PackedScene uiHightScore = GD.Load<PackedScene>("res://Scenes/UI/HightScore.tscn");
+        private PackedScene uiSoundsSettings = GD.Load<PackedScene>("res://Scenes/UI/SoundsSettingsMenu.tscn");
 
         private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
 
@@ -84,6 +85,16 @@ namespace Com.IsartDigital.Sokoban
             if (instanceHud != null) instanceHud.steps.Text = Tr(ID_STEPS) + GameManager.GetInstance().CurrentPar;
         }
 
+        public void GoToSoundsSettings()
+        {
+            MenuTransition.Create(ContinuetoSettings);
+        }
+        private void ContinuetoSettings()
+        {
+            GetChild(0).QueueFree();
+            AddChild(uiSoundsSettings.Instantiate());
+
+        }
         public void GoToLogin()
         {
             GetChild(0).QueueFree();

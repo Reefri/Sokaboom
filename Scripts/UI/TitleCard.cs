@@ -87,6 +87,7 @@ namespace Com.IsartDigital.Sokoban.UI
             graphicSwitchButton.Pressed += SwitchGraphics;
 
             soundButton.Text = Tr("ID_SOUND") + " On";
+            soundButton.Pressed += UIManager.GetInstance().GoToSoundsSettings;
 
             
             if (GraphicManager.IsOld) GraphicManager.ToggleGraphics();
@@ -207,21 +208,21 @@ namespace Com.IsartDigital.Sokoban.UI
             UIManager.GetInstance().GoToHelp();
         }
 
-        private void SonPressed()
-        {
-            SoundManager.GetInstance().soundPlay = !SoundManager.GetInstance().soundPlay;
+        //private void SonPressed()
+        //{
+        //    SoundManager.GetInstance().soundPlay = !SoundManager.GetInstance().soundPlay;
             
-            if(SoundManager.GetInstance().soundPlay)
-            {
-                SoundManager.GetInstance().PlayMusic();
-                soundButton.Text = Tr("ID_SOUND") + " On";
-            }
-            else 
-            {
-                SoundManager.GetInstance().StopMusic();
-                soundButton.Text = Tr("ID_SOUND") + " Off";
-            }
-        }
+        //    if(SoundManager.GetInstance().soundPlay)
+        //    {
+        //        SoundManager.GetInstance().PlayMusic();
+        //        soundButton.Text = Tr("ID_SOUND") + " On";
+        //    }
+        //    else 
+        //    {
+        //        SoundManager.GetInstance().StopMusic();
+        //        soundButton.Text = Tr("ID_SOUND") + " Off";
+        //    }
+        //}
 
         public void Langage()
         {
