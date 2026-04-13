@@ -62,3 +62,7 @@ ID_DANIEL_IA,Risky Sacrifice,Un sacrifice risqué
 ID_START,Start,Démarrer
 ID_OLDGRAPHICS,Old Graphics, Ancien Graphisme
 ID_NEWGRAPHICS,New Graphics, Nouveau Graphisme
+ID_VOLUMESETTINGS,Volume Setting,Paramètre du Son
+ID_OVERALLVOLUME,Overall Volume,Volume général
+ID_SOUNDSVOLUME,Sound Effect Volume,Volume des Effects
+ID_MUSICVOLUME,Music Volume,Volume musique
