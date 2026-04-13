@@ -8,7 +8,7 @@ namespace Com.IsartDigital.Sokoban
 	{
 
 		private static bool isOld = false;
-		private static bool IsOld 
+		public static bool IsOld 
 		{
 			get {return isOld;}
 			set 

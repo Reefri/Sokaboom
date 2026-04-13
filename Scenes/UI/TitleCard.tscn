@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
-[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore", "play", "helpButton", "languageButton", "soundButton")]
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("title", "so", "letterK", "letterA", "explosion", "boum", "letterB", "letterO", "letterU", "letterM", "exclamationMark", "hightScore", "play", "helpButton", "languageButton", "soundButton", "graphicSwitchButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +32,7 @@ play = NodePath("ButtonsA/Play")
 helpButton = NodePath("ButtonsA/Help")
 languageButton = NodePath("ButtonsB/Traduction")
 soundButton = NodePath("ButtonsB/Son")
+graphicSwitchButton = NodePath("ButtonsB/graphicSwitch")
 
 [node name="Font" type="ColorRect" parent="."]
 z_index = -2
@@ -322,7 +323,6 @@ offset_right = 259.0
 offset_bottom = -13.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -333,5 +333,31 @@ theme_override_styles/pressed = ExtResource("7_mprki")
 theme_override_styles/disabled = ExtResource("7_mprki")
 theme_override_styles/focus = ExtResource("7_mprki")
 text = "ID_TRANSLATION"
+
+[node name="graphicSwitch" type="Button" parent="ButtonsB"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = -49.0
+offset_right = 107.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("7_mprki")
+theme_override_styles/hover = ExtResource("7_mprki")
+theme_override_styles/pressed = ExtResource("7_mprki")
+theme_override_styles/disabled = ExtResource("7_mprki")
+theme_override_styles/focus = ExtResource("7_mprki")
+toggle_mode = true
+text = "ID_NEWGRAPHICS"
 
 [connection signal="pressed" from="ButtonsB/Son" to="." method="SonPressed"]

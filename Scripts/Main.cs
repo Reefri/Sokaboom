@@ -52,7 +52,6 @@ namespace Com.IsartDigital.Sokoban
 			base._Ready();
 
             GraphicManager.Update();
-
         }
 
 		protected override void Dispose(bool pDisposing)
