@@ -1,4 +1,3 @@
-using Com.IsartDigital.Chromaberation;
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
@@ -61,10 +60,19 @@ namespace Com.IsartDigital.Sokoban
 
         private const string BODYTEXTURE_FILE_PATH = "res://Assets/Bomb/Collectible/fireworkBody/";
         private const string BODYTEXTURE_FILE_EXTENSION = ".png";
+        private string myTextureChoice;
 
+
+        private Timer chainTimer = new Timer();
+        private float chainWait = 0.3f;
+
+
+        private Vector2I positionInGrid;
 
         public override void _Ready()
 		{
+
+            GD.Print("ha");
             if (GameManager.GetInstance().bombStartAnimation < GameManager.GetInstance().levelBombCollectibles.Count)
             {
                 StartAnimation();
@@ -72,8 +80,28 @@ namespace Com.IsartDigital.Sokoban
             }
 
 
-            hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
+            previsualisationOriginPos = (new BombPattern(
+                showPatern,
+                bomb.explosionMatrix,
+                BombPattern.EnumOfExplosionPattern.Collectible,
+                default,
+                default
 
+                )
+                ).originePos;
+
+
+
+
+            chainTimer.WaitTime = chainWait;
+            chainTimer.Autostart = false;
+            chainTimer.OneShot = true;
+            chainTimer.Timeout += Explode;
+            AddChild(chainTimer);
+
+            hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
+            body = (Sprite2D)hoverRenderer.GetNode("Body");
+            head = (Sprite2D)hoverRenderer.GetNode("Head");
 
 
 
@@ -85,8 +113,20 @@ namespace Com.IsartDigital.Sokoban
             showPatern.GlobalPosition = hoverRenderer.GlobalPosition + rightCornerOfCollectible;
 
 
-            
 
+            bodyTexture = (Texture2D)GD.Load(
+              BODYTEXTURE_FILE_PATH +
+              myTextureChoice +
+              BODYTEXTURE_FILE_EXTENSION
+              );
+
+
+            body.Texture = bodyTexture;
+            head.Modulate = mainColor;
+
+
+            ((ShaderMaterial)body.Material).SetShaderParameter("MainColor", mainColor);
+            ((ShaderMaterial)body.Material).SetShaderParameter("SecondaryColor", secondaryColor);
 
 
             AreaEntered += BombCollectibleAreaEntered;
@@ -151,6 +191,7 @@ namespace Com.IsartDigital.Sokoban
 		{
 			BombCollectible lBombCollectible = (BombCollectible)bombCollectible.Instantiate();
 			lBombCollectible.Position = (pPosition) * Map.DISTANCE_RANGE;
+            lBombCollectible.positionInGrid = pPosition;
 			lBombCollectible.ZIndex = 1;
 
 			lBombCollectible.bomb = pBomb;
@@ -158,20 +199,9 @@ namespace Com.IsartDigital.Sokoban
 
             lBombCollectible.mainColor = Color.FromHsv(GD.Randf(), mainColorSaturation, mainColorValue);
             lBombCollectible.secondaryColor = Color.FromHsv(GD.Randf(), secondaryColorSaturation, secondaryColorValue);
-            
+          
 
-            lBombCollectible.bodyTexture = (Texture2D)GD.Load(
-                BODYTEXTURE_FILE_PATH +
-                bodyTextureChoices[GD.RandRange(0, bodyTextureChoices.Count - 1)] +
-                BODYTEXTURE_FILE_EXTENSION
-                );
-
-            lBombCollectible.body.Texture = lBombCollectible.bodyTexture;
-            lBombCollectible.head.Modulate = lBombCollectible.mainColor;
-
-
-            ((ShaderMaterial)lBombCollectible.body.Material).SetShaderParameter("MainColor", lBombCollectible.mainColor);
-            ((ShaderMaterial)lBombCollectible.body.Material).SetShaderParameter("SecondaryColor", lBombCollectible.secondaryColor);
+            lBombCollectible.myTextureChoice = bodyTextureChoices[GD.RandRange(0, bodyTextureChoices.Count - 1)];
 
 
             return lBombCollectible;
@@ -189,19 +219,16 @@ namespace Com.IsartDigital.Sokoban
             BombCollectible lBombCollectible = (BombCollectible)base.Duplicate();
 
             lBombCollectible.bomb = bomb.Duplicate() ;
+            lBombCollectible.positionInGrid = positionInGrid;
 
+            lBombCollectible.mainColor = mainColor;
+            lBombCollectible.secondaryColor = secondaryColor;
 
             lBombCollectible.showPatern = new Node2D();
 
-            lBombCollectible.previsualisationOriginPos = (new BombPattern(
-                lBombCollectible.showPatern,
-                lBombCollectible.bomb.explosionMatrix,
-                BombPattern.EnumOfExplosionPattern.Collectible,
-                default,
-                default
+            lBombCollectible.myTextureChoice = myTextureChoice;
 
-                )
-                ).originePos;
+            
 
             return lBombCollectible;
         }
@@ -215,6 +242,40 @@ namespace Com.IsartDigital.Sokoban
         public void RotatePattern(Vector2 pDirection)
         {
             showPatern.GlobalRotation =pDirection.Rotated(Mathf.Pi/2).Angle();
+        }
+
+        private void Explode()
+        {
+            bomb.Explode(positionInGrid,Vector2I.Up);
+            QueueFree();
+
+
+            GameManager.GetInstance().RemoveBombAtIndex(bomb.indexInLevel);
+            GameManager.GetInstance().UpdateCurrentPosition();
+        }
+
+        public void QueueForChain()
+        {
+
+            Tween lTween = CreateTween().
+                SetTrans(Tween.TransitionType.Expo).
+                SetEase(Tween.EaseType.Out).Parallel();
+
+            lTween.TweenProperty(hoverRenderer,TweenProp.SCALE, Vector2.One * 2,0.3f);
+            lTween.TweenProperty(head,TweenProp.MODULATE, new Color(1,1,1),0.3f);
+            lTween.TweenProperty(this,"mainColor", new Color(1,1,1),0.3f);
+            lTween.TweenProperty(this,"secondaryColor", new Color(1,1,1),0.3f);
+            showPatern.Hide();
+
+            chainTimer.Start();
+        }
+
+        public override void _Process(double pDelta)
+        {
+            //GD.Print(mainColor);
+            //((ShaderMaterial)body.Material).SetShaderParameter("MainColor", mainColor);
+            //((ShaderMaterial)body.Material).SetShaderParameter("SecondaryColor", secondaryColor);
+
         }
     }
 }

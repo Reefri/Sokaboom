@@ -197,6 +197,7 @@ namespace Com.IsartDigital.Sokoban
 
             foreach (int i in lIndexOfAvalaibleBobms)
             {
+                GD.Print("ici : ");
                 bombCollectibleContainer.AddChild(levelBombCollectibles[i].Duplicate());
             }
 

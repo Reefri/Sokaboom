@@ -18,7 +18,6 @@ config/windows_native_icon="res://Assets/Character_Base.ico"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
