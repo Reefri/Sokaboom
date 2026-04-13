@@ -18,7 +18,6 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] private Button restart;
         [Export] private Button next;
-        [Export] private Button quit;
 
         private const string SCORE = "Score : ";
 
@@ -34,7 +33,6 @@ namespace Com.IsartDigital.Sokoban
             CalculScoreLevel();
 
             restart.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex);
-            quit.Pressed += UIManager.GetInstance().GoToLevelSelect;
 
             if (UIManager.GetInstance().levelIndex + 1 < GridManager.GetInstance().numberOfLevel) next.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex + 1);
 			else

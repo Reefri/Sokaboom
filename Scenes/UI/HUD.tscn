@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dv14slt1ckou2"]
+[gd_scene load_steps=12 format=3 uid="uid://dv14slt1ckou2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
+[ext_resource type="Theme" uid="uid://i8isgllrm6hc" path="res://Scenes/UI/Button.tres" id="1_rsf63"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimMouse.cs" id="2_3tpfh"]
 [ext_resource type="Texture2D" uid="uid://bhrrksd3rs55s" path="res://Assets/Character_Base.png" id="2_710ix"]
 [ext_resource type="Texture2D" uid="uid://bhdtl1wggd7du" path="res://Assets/Boutons/goBack.png" id="3_gjtpu"]
@@ -11,11 +12,6 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="8_uigrc"]
 [ext_resource type="Texture2D" uid="uid://diqumy40xca05" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_01.png" id="9_jw2je"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5u68h"]
-
-[sub_resource type="Theme" id="Theme_w6t2w"]
-Button/styles/focus = SubResource("StyleBoxEmpty_5u68h")
-
 [node name="HUD" type="Control" node_paths=PackedStringArray("quitButton", "undoButton", "redoButton", "restartButton", "graphicSwitchButton", "par", "steps", "name", "author", "number", "quitDelay")]
 layout_mode = 3
 anchors_preset = 15
@@ -24,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_w6t2w")
+theme = ExtResource("1_rsf63")
 script = ExtResource("1_h8l0x")
 quitButton = NodePath("QUIT/Quit")
 undoButton = NodePath("UNDO_REDO/UNDO/Undo")

@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://b078nli7whk52"]
 
+[ext_resource type="Theme" uid="uid://i8isgllrm6hc" path="res://Scenes/UI/Button.tres" id="1_6f0nn"]
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
 [ext_resource type="Texture2D" uid="uid://vu3lr2iiu77m" path="res://Assets/Stars/NewEmptyStar.png" id="3_sy2b5"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="3_ydfsl"]
 [ext_resource type="Texture2D" uid="uid://btwc780h5emv5" path="res://Assets/Stars/NewStars.png" id="4_tj2pn"]
 [ext_resource type="Texture2D" uid="uid://d26exvbfsbgeg" path="res://Assets/Stars/FinalVictoryBanderole.png" id="5_337bn"]
-[ext_resource type="Texture2D" uid="uid://djidbftbyrm6f" path="res://Assets/QuitButton.png" id="8_5ysq5"]
 [ext_resource type="Texture2D" uid="uid://cwb53ldapocqh" path="res://Assets/Boutons/restart.png" id="8_68um7"]
 [ext_resource type="Texture2D" uid="uid://bhdtl1wggd7du" path="res://Assets/Boutons/goBack.png" id="9_5dstb"]
 
@@ -99,20 +99,24 @@ hue_variation_min = -0.39
 hue_variation_max = 0.66
 turbulence_noise_scale = 2.099
 
-[node name="Win" type="Control" node_paths=PackedStringArray("stars", "confettis", "scoreText", "restart", "next", "quit")]
+[node name="Win" type="Control" node_paths=PackedStringArray("stars", "confettis", "scoreText", "restart", "next")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6f0nn")
 script = ExtResource("1_lpuuc")
 stars = NodePath("ColorRect/Stars")
 confettis = NodePath("GPUParticles2D")
 scoreText = NodePath("ColorRect/Score")
-restart = NodePath("ColorRect/Control/Restart")
-next = NodePath("ColorRect/Control/Next")
-quit = NodePath("ColorRect/Control/Quit")
+restart = NodePath("Control2/Restart")
+next = NodePath("Control/Next")
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -160,9 +164,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -190.0
-offset_top = 70.0
+offset_top = 91.0
 offset_right = 190.0
-offset_bottom = 207.0
+offset_bottom = 228.0
 grow_horizontal = 2
 
 [node name="StarOne" type="AnimatedSprite2D" parent="ColorRect/Stars"]
@@ -221,10 +225,10 @@ anchor_left = 0.462
 anchor_top = 0.694
 anchor_right = 0.538
 anchor_bottom = 0.748
-offset_left = -43.224
-offset_top = 16.288
-offset_right = 43.224
-offset_bottom = 50.296
+offset_left = -85.224
+offset_top = 29.288
+offset_right = 85.224
+offset_bottom = 97.296
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 75
@@ -232,7 +236,45 @@ text = "Score : "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="ColorRect"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(518, -19)
+amount = 800
+process_material = SubResource("ParticleProcessMaterial_hwb00")
+lifetime = 4.0
+randomness = 0.5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ydfsl")
+defaultRotation = 180
+
+[node name="Next" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 824.0
+offset_top = -359.0
+offset_right = 1170.0
+offset_bottom = -13.0
+grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(173, 185)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("9_5dstb")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control2" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -242,7 +284,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_ydfsl")
 
-[node name="Restart" type="Button" parent="ColorRect/Control"]
+[node name="Restart" type="Button" parent="Control2"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -261,44 +303,3 @@ icon = ExtResource("8_68um7")
 flat = true
 icon_alignment = 1
 expand_icon = true
-
-[node name="Quit" type="Button" parent="ColorRect/Control"]
-layout_mode = 1
-offset_left = 69.0
-offset_top = 6.0
-offset_right = 178.0
-offset_bottom = 115.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-icon = ExtResource("8_5ysq5")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Next" type="Button" parent="ColorRect/Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 810.0
-offset_top = -342.0
-offset_right = 1157.0
-offset_bottom = 5.0
-grow_vertical = 0
-rotation = 3.14159
-pivot_offset = Vector2(173, 173)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 40
-icon = ExtResource("9_5dstb")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(518, -19)
-amount = 800
-process_material = SubResource("ParticleProcessMaterial_hwb00")
-lifetime = 4.0
-randomness = 0.5
