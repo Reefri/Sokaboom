@@ -267,7 +267,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void UpdateAfterAction()
         {
-            if (!Player.GetInstance().blocked) CurrentPar++;
+            if (Player.GetInstance().blocked) return;
+            CurrentPar++;
             SaveScreenshotGame();
 
             
@@ -450,6 +451,8 @@ namespace Com.IsartDigital.Sokoban
 
         public bool CheckWin()
         {
+            if (startAnimation) return false;
+
             List<Vector2I> lListOfTargetWihtoutContainer = GetTargetWithoutBoxPosition();
             positionForBoxSignal = GetBoxWithoutTargetPosition();
 
