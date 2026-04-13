@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b1hw5yq81qgsr"]
+
+[ext_resource type="FontFile" uid="uid://clnwf6bgxwlfi" path="res://Assets/Fonts/ChineseDragon.ttf" id="1_v1xij"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cm5an"]
+
+[resource]
+default_font = ExtResource("1_v1xij")
+default_font_size = 20
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/MainFont = ExtResource("1_v1xij")
+Label/styles/normal = SubResource("StyleBoxEmpty_cm5an")

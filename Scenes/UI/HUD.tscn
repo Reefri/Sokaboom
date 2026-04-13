@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dv14slt1ckou2"]
+[gd_scene load_steps=13 format=3 uid="uid://dv14slt1ckou2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
 [ext_resource type="Theme" uid="uid://i8isgllrm6hc" path="res://Scenes/UI/Button.tres" id="1_rsf63"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cps26r5ia6r8v" path="res://Assets/Boutons/undo.png" id="7_c4u6y"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="8_uigrc"]
 [ext_resource type="Texture2D" uid="uid://diqumy40xca05" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_01.png" id="9_jw2je"]
+[ext_resource type="Theme" uid="uid://b1hw5yq81qgsr" path="res://Assets/Theme/TitleFont.tres" id="11_1t7nb"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("quitButton", "undoButton", "redoButton", "restartButton", "graphicSwitchButton", "par", "steps", "name", "author", "number", "quitDelay")]
 layout_mode = 3
@@ -212,6 +213,7 @@ offset_left = 863.592
 offset_top = -171.072
 offset_right = 863.512
 offset_bottom = -171.096
+theme = ExtResource("11_1t7nb")
 theme_override_font_sizes/font_size = 25
 text = "ID_NAME"
 horizontal_alignment = 2
@@ -221,9 +223,11 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_top = 3.0
 offset_right = 188.0
-offset_bottom = 23.0
+offset_bottom = 44.0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 30
 text = "ID_NUM"
 horizontal_alignment = 2
 
@@ -236,6 +240,7 @@ anchor_bottom = 1.018
 offset_top = 0.0229969
 offset_right = 71.91
 offset_bottom = -0.026001
+theme_override_font_sizes/font_size = 20
 text = "ID_AUTHOR"
 horizontal_alignment = 2
 
