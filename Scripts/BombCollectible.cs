@@ -72,7 +72,6 @@ namespace Com.IsartDigital.Sokoban
         public override void _Ready()
 		{
 
-            GD.Print("ha");
             if (GameManager.GetInstance().bombStartAnimation < GameManager.GetInstance().levelBombCollectibles.Count)
             {
                 StartAnimation();

@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://dw85b1nive3ah"]
+[gd_scene load_steps=27 format=3 uid="uid://dw85b1nive3ah"]
 
 [ext_resource type="Script" path="res://Scripts/UI/TitleCard.cs" id="1_ib5wi"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_5ibq2"]
 [ext_resource type="Texture2D" uid="uid://quc765ylnrxu" path="res://Assets/particules/MidRedParticle.png" id="2_35lkq"]
 [ext_resource type="Texture2D" uid="uid://cbpeyia3cvem" path="res://Assets/particules/BigYellowParticle.png" id="2_68e54"]
+[ext_resource type="PackedScene" uid="uid://2nmheek0be6r" path="res://Scenes/Accessibilite/ColorFilterPanel.tscn" id="2_ox0d8"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_e1lnu"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
 [ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
@@ -498,3 +499,10 @@ theme_override_styles/disabled = ExtResource("7_mprki")
 theme_override_styles/focus = ExtResource("7_mprki")
 toggle_mode = true
 text = "ID_NEWGRAPHICS"
+
+[node name="ColorFilterPanel" parent="." instance=ExtResource("2_ox0d8")]
+layout_mode = 1
+offset_left = 429.08
+offset_top = 109.808
+offset_right = 428.568
+offset_bottom = 110.304

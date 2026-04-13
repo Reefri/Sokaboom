@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8t1by23fiuf1"]
+[gd_scene load_steps=10 format=3 uid="uid://b8t1by23fiuf1"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_4l0qp"]
+[ext_resource type="PackedScene" uid="uid://4aw1rjl8tvug" path="res://Scenes/Accessibilite/ColorBlind.tscn" id="2_8qnaw"]
 [ext_resource type="PackedScene" uid="uid://bey0ed1h3h2s" path="res://Scenes/UI/Transitions/TitleDoors.tscn" id="3_5kfyl"]
 [ext_resource type="PackedScene" uid="uid://ql7xil2wq2gx" path="res://Scenes/Manager/UIManager.tscn" id="3_70v4f"]
 [ext_resource type="PackedScene" uid="uid://ch5qxtjmo6hf1" path="res://Scenes/Manager/CameraManager.tscn" id="3_wl630"]
@@ -42,3 +43,5 @@ layer = 3
 z_index = 4096
 
 [node name="SoundManager" parent="." instance=ExtResource("8_7dji1")]
+
+[node name="CanvasLayer4" parent="." instance=ExtResource("2_8qnaw")]
