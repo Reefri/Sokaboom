@@ -7,7 +7,7 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class HUD : Control
 	{
-        [Export] private Button quitButton;
+        [Export] public Button quitButton;
 
 		[Export] public Button undoButton;
         [Export] private Vector2 undoLandscapePos;
