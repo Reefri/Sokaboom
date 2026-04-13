@@ -147,7 +147,7 @@ namespace Com.IsartDigital.Sokoban
             currentActualPlayerSprite.Visible = true;
             currentAnimatedSprite.Visible = false;
 
-            GlobalPosition = animatedSprite.GlobalPosition;
+            GlobalPosition = currentAnimatedSprite.GlobalPosition;
             if (!Box.animPlaying) GameManager.GetInstance().UpdateAfterAction();
 
             blocked = false;
@@ -329,7 +329,7 @@ namespace Com.IsartDigital.Sokoban
             {
                 animPlayer.Play(ANIM_BLOCKED);
                 blocked = true;
-                animatedSprite.GlobalPosition = GlobalPosition;
+                currentAnimatedSprite.GlobalPosition = GlobalPosition;
                 return;
             }
 

@@ -27,12 +27,6 @@ namespace Com.IsartDigital.Sokoban
 			}
 			instance = this;	
 		}
-
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-            screenSize = GetViewportRect().Size;
-        }
 		static public Main GetInstance()
 		{
 			if (instance == null) instance = (Main)factory.Instantiate();
@@ -56,8 +50,6 @@ namespace Com.IsartDigital.Sokoban
 			base._Ready();
 
             GraphicManager.Update();
-
-			if (testOnlyGameFeature) UIManager.GetInstance().GoToLevel(levelAtTest);
         }
 
 		protected override void Dispose(bool pDisposing)

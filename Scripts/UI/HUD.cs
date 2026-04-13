@@ -18,6 +18,11 @@ namespace Com.IsartDigital.Sokoban
         [Export] public Button restartButton;
         [Export] private Vector2 restartLandscapePos;
         [Export] private Vector2 restartPortraitPos;
+        [Export] public Button graphicSwitchButton;
+        [Export] private Vector2 graphicSwitchLandscapePos;
+        [Export] private Vector2 graphicSwitchPortraitPos;
+        [Export] private Texture2D newPlayer;
+        [Export] private Texture2D oldPlayer;
         [Export] private Label par;
 
         [Export] public Label steps;
@@ -51,6 +56,22 @@ namespace Com.IsartDigital.Sokoban
             restartButton.Pressed += Retry;
 
             quitButton.Pressed += QuitPressed;
+
+            graphicSwitchButton.Pressed += GraphicSwitch;
+
+            if (GraphicManager.IsOld) graphicSwitchButton.Icon = oldPlayer;
+            else graphicSwitchButton.Icon = newPlayer;
+        }
+
+        private void GraphicSwitch()
+        {
+            MenuTransition.Create(ContinueGraphicSwitch);
+        }
+        private void ContinueGraphicSwitch()
+        {
+            GraphicManager.ToggleGraphics();
+            if (GraphicManager.IsOld) graphicSwitchButton.Icon = oldPlayer;
+            else graphicSwitchButton.Icon = newPlayer;
         }
 
         public override void _Process(double pDelta)
