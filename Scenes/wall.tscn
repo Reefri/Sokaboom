@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Wall.cs" id="1_k4kly"]
 [ext_resource type="Texture2D" uid="uid://de8p0he2s3lqp" path="res://Assets/Wall.png" id="1_x13bs"]
 
-[node name="Wall" type="Node2D"]
+[node name="Wall" type="Node2D" node_paths=PackedStringArray("renderer")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_k4kly")
+renderer = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_x13bs")

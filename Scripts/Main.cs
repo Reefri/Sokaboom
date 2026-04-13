@@ -35,6 +35,11 @@ namespace Com.IsartDigital.Sokoban
         {
             base._Process(delta);
             screenSize = GetViewportRect().Size;
+
+            if (Input.IsActionJustPressed("SwapGraphics"))
+            {
+                GraphicManager.ToggleGraphics();
+            }
         }
 		static public Main GetInstance()
 		{
@@ -42,16 +47,7 @@ namespace Com.IsartDigital.Sokoban
 			return instance;
 		}
 
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-
-            if (Input.IsActionJustPressed("ui_accept"))
-            {
-                GraphicManager.ToggleGraphics();
-            }
-
-        }
+        
 
 
 		public override void _Ready()

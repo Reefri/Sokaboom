@@ -1,5 +1,6 @@
 using Com.IsartDigital.Utils.Tweens;
 using Godot;
+using System.Diagnostics;
 
 // Author : Ethan Masse
 
@@ -11,6 +12,18 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] float timeOfFall = 1.5f;
         [Export] int turnToFall = 3;
+
+        [Export] private Sprite2D renderer;
+
+        public static Texture2D texture;
+
+
+
+        public override void _Ready()
+        {
+            base._Ready();
+            renderer.Texture = texture;
+        }
 
         public static Target CreateAnimation(Vector2I pPosition, Tween pTween, float pInterval)
         {
