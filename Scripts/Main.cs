@@ -27,22 +27,24 @@ namespace Com.IsartDigital.Sokoban
 			}
 			instance = this;	
 		}
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+            screenSize = GetViewportRect().Size;
+
+            if (Input.IsActionJustPressed("SwapGraphics"))
+            {
+                GraphicManager.ToggleGraphics();
+            }
+        }
 		static public Main GetInstance()
 		{
 			if (instance == null) instance = (Main)factory.Instantiate();
 			return instance;
 		}
 
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-
-            if (Input.IsActionJustPressed("ui_accept"))
-            {
-                GraphicManager.ToggleGraphics();
-            }
-
-        }
+        
 
 
 		public override void _Ready()

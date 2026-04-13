@@ -11,6 +11,16 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] float timeOfFall = 0.5f;
 
+        [Export] private Sprite2D renderer;
+
+        public static Texture2D texture;
+
+        public override void _Ready()
+        {
+            base._Ready();
+            renderer.Texture = texture;
+        }
+
         public static Wall CreateAnimation(Vector2I pPosition, Tween pTween, float pInterval)
         {
             GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, pPosition);
