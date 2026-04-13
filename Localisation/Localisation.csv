@@ -19,7 +19,7 @@ ID_REDO,Redo,Retour Avant
 ID_STEPS,Steps : ,Pas : 
 ID_BY, by , par 
 ID_SWITCH_INSCRIPTION,Already Register,Deja Enregistré
-ID_VALIDATION_INSCRIPTION,Register You,Enregistre Toi
+ID_VALIDATION_INSCRIPTION,Register,Enregistre Toi
 ID_VALIDATION_LOGIN,Connect,Connection
 ID_TITLE_LOGIN,Login :,Connection :
 ID_PASSWORD_NOT_CONFIRM,The Password is different from confirmation, Le mot de passe ne correspond pas a la confirmation.
