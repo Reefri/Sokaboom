@@ -148,10 +148,8 @@ namespace Com.IsartDigital.Sokoban
             currentAnimatedSprite.Visible = false;
 
             GlobalPosition = currentAnimatedSprite.GlobalPosition;
-            if (!Box.animPlaying) GameManager.GetInstance().UpdateAfterAction();
-
+            if (!Box.animPlaying) GameManager.GetInstance().UpdateAfterAction(); 
             blocked = false;
-
             CreatePrevisualisation();
             animPlayer.Play(ANIM_IDLE);
         }
@@ -328,7 +326,7 @@ namespace Com.IsartDigital.Sokoban
             if (bombInHand == null)
             {
                 animPlayer.Play(ANIM_BLOCKED);
-                blocked = true;
+				blocked = true;
                 currentAnimatedSprite.GlobalPosition = GlobalPosition;
                 return;
             }
