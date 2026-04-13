@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://docuvws0e0ucr"]
 
 [ext_resource type="Texture2D" uid="uid://c058ptdaqt06b" path="res://Assets/NewAssets/Tile_Alone.png" id="1_au0md"]
-[ext_resource type="Texture2D" uid="uid://xtcqjxfl0xvq" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_12.png" id="2_5vx3e"]
-[ext_resource type="Texture2D" uid="uid://cy8lvyfccncue" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_24.png" id="3_wh5vo"]
-[ext_resource type="Texture2D" uid="uid://rpmohn0wxfnm" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_15.png" id="4_h8o82"]
-[ext_resource type="Texture2D" uid="uid://b4x3jpds81d3x" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_03.png" id="5_ppm6j"]
+[ext_resource type="Texture2D" uid="uid://cr3sm7jmebs5u" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_Second_Anim.png" id="2_ler5t"]
+[ext_resource type="Texture2D" uid="uid://b1iyfbyyctnkf" path="res://Assets/NewAssets/NewPlayer/Character_Front/Character_Second_Anim.png" id="3_6gfpd"]
+[ext_resource type="Texture2D" uid="uid://clk17kxqqer5f" path="res://Assets/NewAssets/NewPlayer/Character_Left/Character_First_Anim.png" id="4_x18km"]
+[ext_resource type="Texture2D" uid="uid://chjjjv2l73bi2" path="res://Assets/NewAssets/NewPlayer/Character_Back/Character_First_Anim.png" id="5_ci85p"]
 
 [sub_resource type="Animation" id="Animation_5pdf7"]
 resource_name = "Move"
@@ -32,7 +32,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_5vx3e"), ExtResource("3_wh5vo"), ExtResource("4_h8o82"), ExtResource("5_ppm6j")]
+"values": [ExtResource("2_ler5t"), ExtResource("3_6gfpd"), ExtResource("4_x18km"), ExtResource("5_ci85p")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jg5r3"]
@@ -66,5 +66,5 @@ libraries = {
 autoplay = "Move"
 
 [node name="player" type="Sprite2D" parent="."]
-position = Vector2(1.19145, 64)
-texture = ExtResource("4_h8o82")
+position = Vector2(0, 0.196106)
+texture = ExtResource("5_ci85p")

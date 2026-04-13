@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://butgdmb1blel8"]
+[gd_scene load_steps=10 format=3 uid="uid://butgdmb1blel8"]
 
 [ext_resource type="Texture2D" uid="uid://c058ptdaqt06b" path="res://Assets/NewAssets/Tile_Alone.png" id="1_h8b8l"]
-[ext_resource type="Texture2D" uid="uid://xtcqjxfl0xvq" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_12.png" id="1_tprcb"]
+[ext_resource type="Texture2D" uid="uid://bmqd145fsqmt5" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_First_Anim.png" id="2_42mrm"]
 [ext_resource type="Texture2D" uid="uid://dtefyhdnc3oc6" path="res://Assets/NewAssets/Box_Alone.png" id="3_slgku"]
 [ext_resource type="Texture2D" uid="uid://xrg4wd6cv3jj" path="res://Assets/NewAssets/Wall_Alone.png" id="4_gcivd"]
+[ext_resource type="Texture2D" uid="uid://cr3sm7jmebs5u" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_Second_Anim.png" id="4_vjw5e"]
 
 [sub_resource type="Animation" id="Animation_x5cq2"]
 resource_name = "move"
@@ -102,7 +103,8 @@ libraries = {
 autoplay = "move"
 
 [node name="player" type="Sprite2D" parent="moveBox"]
-texture = ExtResource("1_tprcb")
+position = Vector2(25.4984, 0)
+texture = ExtResource("2_42mrm")
 
 [node name="box" type="Sprite2D" parent="moveBox"]
 position = Vector2(128, 0)
@@ -131,11 +133,11 @@ position = Vector2(256, 0)
 texture = ExtResource("1_h8b8l")
 
 [node name="player" type="Sprite2D" parent="failedToMoveBox"]
-position = Vector2(129.899, 0)
-texture = ExtResource("1_tprcb")
+position = Vector2(128, 0)
+texture = ExtResource("4_vjw5e")
 
 [node name="box" type="Sprite2D" parent="failedToMoveBox"]
-position = Vector2(192, 0)
+position = Vector2(191.99, 0)
 texture = ExtResource("3_slgku")
 
 [node name="Crate03" type="Sprite2D" parent="failedToMoveBox"]
