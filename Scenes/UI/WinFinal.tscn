@@ -105,7 +105,7 @@ theme_override_styles/hover = ExtResource("4_cp02b")
 theme_override_styles/pressed = ExtResource("4_cp02b")
 theme_override_styles/disabled = ExtResource("4_cp02b")
 theme_override_styles/focus = ExtResource("4_cp02b")
-text = "ID_HIGHTSCORE"
+text = "ID_HIGHCORE"
 
 [node name="Menu" type="Button" parent="Buttons"]
 layout_mode = 1
