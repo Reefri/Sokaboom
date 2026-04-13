@@ -23,18 +23,18 @@ namespace Com.IsartDigital.Sokoban
 
 
 		private static Texture2D oldGraphics = (Texture2D)GD.Load("res://Assets/sokoban_tilesheet.png");//NE PAS TOUCHER
-        private static Texture2D newGraphics = (Texture2D)GD.Load("res://Assets/Holy_SpriteSheet.png");
+        private static Texture2D newGraphics = (Texture2D)GD.Load("res://Assets/NewAssets/Holy_SpriteSheet.png");
 
 
 		private static Texture2D oldBox = (Texture2D)GD.Load("res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_02.png");//NE PAS TOUCHER
-        private static Texture2D newBox = (Texture2D)GD.Load("res://Assets/Box_Alone.png");
+        private static Texture2D newBox = (Texture2D)GD.Load("res://Assets/NewAssets/Box_Alone.png");
 
 
 		private static Texture2D oldWall = (Texture2D)GD.Load("res://Assets/Wall.png");
-		private static Texture2D newWall = (Texture2D)GD.Load("res://Assets/Wall_Alone.png");
+		private static Texture2D newWall = (Texture2D)GD.Load("res://Assets/NewAssets/Wall_Alone.png");
 
 		private static Texture2D oldTarget = (Texture2D)GD.Load("res://Assets/Target.png");
-		private static Texture2D newTarget = (Texture2D)GD.Load("res://Assets/Target_Alone.png");
+		private static Texture2D newTarget = (Texture2D)GD.Load("res://Assets/NewAssets/Target_Alone.png");
 
 
 

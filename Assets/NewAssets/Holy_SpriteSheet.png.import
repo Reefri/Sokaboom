@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtefyhdnc3oc6"
-path="res://.godot/imported/Box_Alone.png-81f7aaeb26b1b901928f7634bb5c1a39.ctex"
+uid="uid://cj6mpllocjjmo"
+path="res://.godot/imported/Holy_SpriteSheet.png-f94954977a651d351187634684cf74c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Box_Alone.png"
-dest_files=["res://.godot/imported/Box_Alone.png-81f7aaeb26b1b901928f7634bb5c1a39.ctex"]
+source_file="res://Assets/NewAssets/Holy_SpriteSheet.png"
+dest_files=["res://.godot/imported/Holy_SpriteSheet.png-f94954977a651d351187634684cf74c9.ctex"]
 
 [params]
 
