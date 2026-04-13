@@ -1,12 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://b078nli7whk52"]
+[gd_scene load_steps=19 format=3 uid="uid://b078nli7whk52"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
 [ext_resource type="Texture2D" uid="uid://vu3lr2iiu77m" path="res://Assets/Stars/NewEmptyStar.png" id="3_sy2b5"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="3_ydfsl"]
 [ext_resource type="Texture2D" uid="uid://btwc780h5emv5" path="res://Assets/Stars/NewStars.png" id="4_tj2pn"]
 [ext_resource type="Texture2D" uid="uid://d26exvbfsbgeg" path="res://Assets/Stars/FinalVictoryBanderole.png" id="5_337bn"]
-[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="6_r8va6"]
-[ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_i3iyk"]
+[ext_resource type="Texture2D" uid="uid://djidbftbyrm6f" path="res://Assets/QuitButton.png" id="8_5ysq5"]
 [ext_resource type="Texture2D" uid="uid://cwb53ldapocqh" path="res://Assets/Boutons/restart.png" id="8_68um7"]
 [ext_resource type="Texture2D" uid="uid://bhdtl1wggd7du" path="res://Assets/Boutons/goBack.png" id="9_5dstb"]
 
@@ -223,25 +222,23 @@ anchor_top = 0.694
 anchor_right = 0.538
 anchor_bottom = 0.748
 offset_left = -43.224
-offset_top = -32.712
+offset_top = 16.288
 offset_right = 43.224
-offset_bottom = 1.29599
+offset_bottom = 50.296
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 75
 text = "Score : "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Control" type="Control" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -156.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_ydfsl")
 
@@ -251,66 +248,53 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
-offset_top = -206.0
-offset_right = 307.0
-offset_bottom = -106.0
+offset_top = -296.0
+offset_right = 300.0
+offset_bottom = -46.0
 grow_vertical = 0
+pivot_offset = Vector2(125, 125)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = ExtResource("6_r8va6")
-theme_override_styles/hover = ExtResource("6_r8va6")
-theme_override_styles/pressed = ExtResource("6_r8va6")
-theme_override_styles/disabled = ExtResource("6_r8va6")
-theme_override_styles/focus = ExtResource("6_r8va6")
-text = "ID_RESTART"
+icon = ExtResource("8_68um7")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Quit" type="Button" parent="ColorRect/Control"]
+layout_mode = 1
+offset_left = 69.0
+offset_top = 6.0
+offset_right = 178.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+icon = ExtResource("8_5ysq5")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="Next" type="Button" parent="ColorRect/Control"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -311.0
-offset_top = -218.0
-offset_right = -54.0
-offset_bottom = -88.0
-grow_horizontal = 0
+offset_left = 810.0
+offset_top = -342.0
+offset_right = 1157.0
+offset_bottom = 5.0
 grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(173, 173)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = ExtResource("6_r8va6")
-theme_override_styles/hover = ExtResource("6_r8va6")
-theme_override_styles/pressed = ExtResource("6_r8va6")
-theme_override_styles/disabled = ExtResource("6_r8va6")
-theme_override_styles/focus = ExtResource("6_r8va6")
-text = "ID_NEXT"
-
-[node name="Quit" type="Button" parent="ColorRect/Control"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -121.0
-offset_top = -115.0
-offset_right = 121.0
-offset_bottom = -25.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = ExtResource("7_i3iyk")
-theme_override_styles/hover = ExtResource("7_i3iyk")
-theme_override_styles/pressed = ExtResource("7_i3iyk")
-theme_override_styles/disabled = ExtResource("7_i3iyk")
-theme_override_styles/focus = ExtResource("7_i3iyk")
-text = "ID_QUIT"
+icon = ExtResource("9_5dstb")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(518, -19)
@@ -318,35 +302,3 @@ amount = 800
 process_material = SubResource("ParticleProcessMaterial_hwb00")
 lifetime = 4.0
 randomness = 0.5
-
-[node name="Restart" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 108.0
-offset_top = -348.0
-offset_right = 542.0
-offset_bottom = 86.0
-grow_vertical = 0
-scale = Vector2(0.328, 0.328)
-texture = ExtResource("8_68um7")
-expand_mode = 1
-
-[node name="Next" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -229.0
-offset_top = -348.0
-offset_right = 205.0
-offset_bottom = 86.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.328, 0.328)
-texture = ExtResource("9_5dstb")
-expand_mode = 1
-flip_h = true
