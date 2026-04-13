@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://4aw1rjl8tvug"]
+[gd_scene load_steps=4 format=3 uid="uid://4aw1rjl8tvug"]
 
 [ext_resource type="Script" path="res://Scenes/Accessibilite/ColorBlind.cs" id="1_6u86c"]
 [ext_resource type="Shader" uid="uid://4hql02glu7co" path="res://Ressources/ColorblindShader.tres" id="2_i3lwd"]
-[ext_resource type="Texture2D" uid="uid://dr2b70u2faaiu" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 8.png" id="3_3v517"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7ttq"]
 shader = ExtResource("2_i3lwd")
@@ -20,8 +19,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(180, 194)
-texture = ExtResource("3_3v517")
