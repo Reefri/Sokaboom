@@ -3,7 +3,7 @@ ID_QUIT,Quit,Quitter
 ID_PLAY,Play,Jouer 
 ID_NEXT,Next,Suivant
 ID_HELP,Help,Aide
-ID_HIGHTSCORE,Hight Score,Tableau des Scores
+ID_HIGHSCORE,High Score,Tableau des Scores
 ID_TRANSLATION,English,Français
 ID_SOUND,Sound,Son
 ID_BACK,Back,Retour
@@ -60,3 +60,5 @@ ID_DANIEL_B,Unstable Corridor,Couloir instable
 ID_ETHANF_IA,the big 8,Le grand 8
 ID_DANIEL_IA,Risky Sacrifice,Un sacrifice risqué
 ID_START,Start,Démarrer
+ID_OLDGRAPHICS,Old Graphics, Ancien Graphisme
+ID_NEWGRAPHICS,New Graphics, Nouveau Graphisme

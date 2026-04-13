@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 // Author : Ethan Masse
 
@@ -8,13 +9,13 @@ namespace Com.IsartDigital.Sokoban
 	{
         [Export] private Button quitButton;
 
-		[Export] private Button undoButton;
+		[Export] public Button undoButton;
         [Export] private Vector2 undoLandscapePos;
         [Export] private Vector2 undoPortraitPos;
 		[Export] private Button redoButton;
         [Export] private Vector2 redoLandscapePos;
         [Export] private Vector2 redoPortraitPos;
-        [Export] private Button restartButton;
+        [Export] public Button restartButton;
         [Export] private Vector2 restartLandscapePos;
         [Export] private Vector2 restartPortraitPos;
         [Export] private Label par;
@@ -30,6 +31,8 @@ namespace Com.IsartDigital.Sokoban
         private const string PAR = "Par : ";
         private const string BY = "ID_BY";
         private const string STEPS = "ID_STEPS";
+
+        private bool transition;
 
         public override void _Ready()
 		{
@@ -50,6 +53,18 @@ namespace Com.IsartDigital.Sokoban
             quitButton.Pressed += QuitPressed;
         }
 
+        public override void _Process(double pDelta)
+        {
+            if (!transition && !GameManager.GetInstance().CheckWin())
+            {
+                if (GameManager.GetInstance().currentPosition.nextValue == null) redoButton.Disabled = true;
+                else redoButton.Disabled = false;
+
+                if (GameManager.GetInstance().currentPosition.previousValue == null) undoButton.Disabled = true;
+                else undoButton.Disabled = false;
+            }
+        }
+
         private void PortraitMode()
         {
 
@@ -67,6 +82,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void QuitPressed()
 		{
+            transition = true;
             UIManager.GetInstance().GoToLevelSelect();
             quitDelay.Start();
             
@@ -78,11 +94,6 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().currentPosition = new HistoricHeap(GameManager.GetInstance().currentLevel);
             GameManager.GetInstance().ChargeMapFromCurrentLevel();
             GameManager.GetInstance().CurrentPar = 0;
-        }
-
-        public void DisabledRedo(bool pBool)
-        {
-            redoButton.Disabled = !pBool;
         }
 
         protected override void Dispose(bool pDisposing)

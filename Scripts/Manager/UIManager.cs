@@ -127,7 +127,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToLevel(int pIndex)
         {
-            if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
+            if (pIndex > GridManager.GetInstance().numberOfLevel) { GoToLevelSelect(); return; }
 
             currentIndex = pIndex;
 

@@ -35,23 +35,10 @@ namespace Com.IsartDigital.Sokoban
         
         public HistoricHeap currentPosition;
 
-        private bool redoPossible;
-
         public bool startAnimation;
         public int bombStartAnimation;
 
         RandomNumberGenerator lRand = new RandomNumberGenerator();
-
-        public bool RedoPossible 
-        { 
-            get { return redoPossible; }
-            set
-            {
-                redoPossible = value;
-                UIManager.GetInstance().instanceHud.DisabledRedo(redoPossible);
-            }
-        }
-       
 
 
         private int currentPar = 0;
@@ -295,6 +282,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void UpdateAfterAction()
         {
+            if (Player.GetInstance().blocked) return;
             CurrentPar++;
             SaveScreenshotGame();
 
@@ -393,7 +381,6 @@ namespace Com.IsartDigital.Sokoban
                 GD.Print("Can't go back in time !");
                 return;
             }
-            RedoPossible = true;
 
             QuickResetInit();
 
@@ -408,7 +395,6 @@ namespace Com.IsartDigital.Sokoban
             if (currentPosition.nextValue == null)
             {
                 GD.Print("Can't go forward in time !");
-                RedoPossible = false;
                 return;
             }
 
@@ -478,8 +464,10 @@ namespace Com.IsartDigital.Sokoban
             return lListOfPos;
         }
 
-        private bool CheckWin()
+        public bool CheckWin()
         {
+            if (startAnimation) return false;
+
             List<Vector2I> lListOfTargetWihtoutContainer = GetTargetWithoutBoxPosition();
             positionForBoxSignal = GetBoxWithoutTargetPosition();
 
