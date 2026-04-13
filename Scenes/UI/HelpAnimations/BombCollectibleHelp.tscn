@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bynqjno0njnyi"]
 
-[ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Ground/ground_06.png" id="1_w3sqn"]
+[ext_resource type="Texture2D" uid="uid://c058ptdaqt06b" path="res://Assets/NewAssets/Tile_Alone.png" id="1_wtkmc"]
 [ext_resource type="Texture2D" uid="uid://c4wylq3j52dnn" path="res://Assets/FireWork/Body.png" id="2_lquct"]
 [ext_resource type="Texture2D" uid="uid://bt2uu00rpwkjf" path="res://Assets/FireWork/Head.png" id="3_tsjqr"]
 [ext_resource type="Texture2D" uid="uid://6e025o0qybaw" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_01.png" id="4_hwipn"]
@@ -78,15 +78,15 @@ libraries = {
 autoplay = "collectBomb"
 
 [node name="Ground06" type="Sprite2D" parent="."]
-texture = ExtResource("1_w3sqn")
+texture = ExtResource("1_wtkmc")
 
 [node name="Ground07" type="Sprite2D" parent="."]
 position = Vector2(64, 0)
-texture = ExtResource("1_w3sqn")
+texture = ExtResource("1_wtkmc")
 
 [node name="Ground08" type="Sprite2D" parent="."]
 position = Vector2(128, 0)
-texture = ExtResource("1_w3sqn")
+texture = ExtResource("1_wtkmc")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(128, 0)

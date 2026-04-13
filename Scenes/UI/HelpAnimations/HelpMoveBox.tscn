@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://butgdmb1blel8"]
 
-[ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Ground/ground_06.png" id="1_5efey"]
+[ext_resource type="Texture2D" uid="uid://c058ptdaqt06b" path="res://Assets/NewAssets/Tile_Alone.png" id="1_h8b8l"]
 [ext_resource type="Texture2D" uid="uid://xtcqjxfl0xvq" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_12.png" id="1_tprcb"]
-[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_02.png" id="2_1pvr4"]
-[ext_resource type="Texture2D" uid="uid://bvaqinrr55iq0" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_03.png" id="4_xsayl"]
+[ext_resource type="Texture2D" uid="uid://dtefyhdnc3oc6" path="res://Assets/NewAssets/Box_Alone.png" id="3_slgku"]
+[ext_resource type="Texture2D" uid="uid://xrg4wd6cv3jj" path="res://Assets/NewAssets/Wall_Alone.png" id="4_gcivd"]
 
 [sub_resource type="Animation" id="Animation_x5cq2"]
 resource_name = "move"
@@ -80,19 +80,19 @@ anchors_preset = 0
 [node name="moveBox" type="Node2D" parent="."]
 
 [node name="Ground06" type="Sprite2D" parent="moveBox"]
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="Ground07" type="Sprite2D" parent="moveBox"]
 position = Vector2(64, 0)
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="Ground08" type="Sprite2D" parent="moveBox"]
 position = Vector2(128, 0)
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="Ground09" type="Sprite2D" parent="moveBox"]
 position = Vector2(192, 0)
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="moveBox"]
 root_node = NodePath("../..")
@@ -106,29 +106,29 @@ texture = ExtResource("1_tprcb")
 
 [node name="box" type="Sprite2D" parent="moveBox"]
 position = Vector2(128, 0)
-texture = ExtResource("2_1pvr4")
+texture = ExtResource("3_slgku")
 
 [node name="failedToMoveBox" type="Node2D" parent="."]
 position = Vector2(0, 147)
 
 [node name="Ground06" type="Sprite2D" parent="failedToMoveBox"]
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="Ground07" type="Sprite2D" parent="failedToMoveBox"]
 position = Vector2(64, 0)
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="Ground08" type="Sprite2D" parent="failedToMoveBox"]
 position = Vector2(128, 0)
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="Ground09" type="Sprite2D" parent="failedToMoveBox"]
 position = Vector2(192, 0)
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="Ground10" type="Sprite2D" parent="failedToMoveBox"]
 position = Vector2(256, 0)
-texture = ExtResource("1_5efey")
+texture = ExtResource("1_h8b8l")
 
 [node name="player" type="Sprite2D" parent="failedToMoveBox"]
 position = Vector2(129.899, 0)
@@ -136,11 +136,11 @@ texture = ExtResource("1_tprcb")
 
 [node name="box" type="Sprite2D" parent="failedToMoveBox"]
 position = Vector2(192, 0)
-texture = ExtResource("2_1pvr4")
+texture = ExtResource("3_slgku")
 
 [node name="Crate03" type="Sprite2D" parent="failedToMoveBox"]
 position = Vector2(256, 0)
-texture = ExtResource("4_xsayl")
+texture = ExtResource("4_gcivd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="failedToMoveBox"]
 libraries = {

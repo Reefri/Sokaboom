@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://b4li5pgekojsa"]
 
-[ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Ground/ground_06.png" id="1_x2cp6"]
-[ext_resource type="Texture2D" uid="uid://bo0rhxioho106" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Blocks/block_01.png" id="2_q4ld7"]
-[ext_resource type="Texture2D" uid="uid://d0by5ckjkkcf6" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_27.png" id="3_3nbey"]
+[ext_resource type="Texture2D" uid="uid://c058ptdaqt06b" path="res://Assets/NewAssets/Tile_Alone.png" id="1_42i3e"]
+[ext_resource type="Texture2D" uid="uid://xrg4wd6cv3jj" path="res://Assets/NewAssets/Wall_Alone.png" id="2_6ojog"]
+[ext_resource type="Texture2D" uid="uid://caejnm6olljm5" path="res://Assets/NewAssets/Target_Alone.png" id="3_7d0ov"]
 [ext_resource type="Texture2D" uid="uid://c4wylq3j52dnn" path="res://Assets/FireWork/Body.png" id="3_a6dl1"]
-[ext_resource type="Texture2D" uid="uid://b1bj8wijefyh3" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_02.png" id="3_s6j54"]
+[ext_resource type="Texture2D" uid="uid://dtefyhdnc3oc6" path="res://Assets/NewAssets/Box_Alone.png" id="4_12cey"]
 [ext_resource type="Texture2D" uid="uid://bt2uu00rpwkjf" path="res://Assets/FireWork/Head.png" id="4_m4vey"]
 [ext_resource type="Texture2D" uid="uid://bxsi6pj3ya0q" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_13.png" id="6_a58vr"]
 [ext_resource type="Texture2D" uid="uid://dtw2t57ia8c2p" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_02.png" id="7_5scai"]
@@ -185,43 +185,43 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="Ground06" type="Sprite2D" parent="."]
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Ground07" type="Sprite2D" parent="."]
 position = Vector2(64, 0)
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Ground08" type="Sprite2D" parent="."]
 position = Vector2(64, -64)
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Ground09" type="Sprite2D" parent="."]
 position = Vector2(128, -64)
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Ground10" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Ground12" type="Sprite2D" parent="."]
 position = Vector2(64, -128)
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Ground13" type="Sprite2D" parent="."]
 position = Vector2(128, -128)
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Ground14" type="Sprite2D" parent="."]
 position = Vector2(0, -128)
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Ground11" type="Sprite2D" parent="."]
 position = Vector2(128, 0)
-texture = ExtResource("1_x2cp6")
+texture = ExtResource("1_42i3e")
 
 [node name="Block03" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
-texture = ExtResource("2_q4ld7")
+texture = ExtResource("2_6ojog")
 
 [node name="particles" type="Node2D" parent="."]
 
@@ -268,21 +268,21 @@ explosiveness = 1.0
 
 [node name="Block04" type="Sprite2D" parent="secondToDestroy"]
 position = Vector2(128, -64)
-texture = ExtResource("2_q4ld7")
+texture = ExtResource("2_6ojog")
 
 [node name="target" type="Sprite2D" parent="secondToDestroy"]
 position = Vector2(128, -128)
-texture = ExtResource("3_3nbey")
+texture = ExtResource("3_7d0ov")
 
 [node name="wallsToDestroy" type="Node2D" parent="."]
 
 [node name="Block01" type="Sprite2D" parent="wallsToDestroy"]
 position = Vector2(64, -128)
-texture = ExtResource("3_s6j54")
+texture = ExtResource("4_12cey")
 
 [node name="Block02" type="Sprite2D" parent="wallsToDestroy"]
 position = Vector2(64, -64)
-texture = ExtResource("2_q4ld7")
+texture = ExtResource("2_6ojog")
 
 [node name="bombPickUp" type="GPUParticles2D" parent="."]
 position = Vector2(128, 0)
