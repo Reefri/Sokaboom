@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="14_3wq5k"]
 [ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="15_w5fvi"]
 
-[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationSfB", "explanationSfC", "explanationControlA", "explanationControlB", "explanationDetailA", "explanationDetailB", "returnButton")]
+[node name="HelpMenu" type="Control" node_paths=PackedStringArray("nextPageButton", "previousPageButton", "currentPage", "firstPage", "secondPage", "thirdPage", "explanationControlA", "explanationControlB", "explanationSfA", "explanationDetailC", "returnButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,12 +28,10 @@ currentPage = NodePath("currentPage")
 firstPage = NodePath("FirstPage")
 secondPage = NodePath("SecondPage")
 thirdPage = NodePath("ThirdPage")
-explanationSfB = NodePath("SecondPage/HelpPattern/explanationSfB")
-explanationSfC = NodePath("SecondPage/BombExplosionHelp/explanationSfC")
 explanationControlA = NodePath("FirstPage/HelpMoveBox/ExplanationControlA")
 explanationControlB = NodePath("FirstPage/HelpMoveBox/explanationControlB")
-explanationDetailA = NodePath("ThirdPage/HelpExplodeDirections/ExplanationDetailA")
-explanationDetailB = NodePath("ThirdPage/HelpExplodeBoxes/explanationDetailB")
+explanationSfA = NodePath("SecondPage/HelpPattern/explanationSfA")
+explanationDetailC = NodePath("ThirdPage/HelpExplodeBoxes/explanationDetailC")
 returnButton = NodePath("Buttons/Button")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
@@ -155,28 +153,6 @@ offset_bottom = -35.472
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="explanationControlB" type="Label" parent="FirstPage/HelpMoveBox"]
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = 33.0
-offset_right = 818.0
-offset_bottom = 199.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "- S’il se déplace vers une caisse, le joueur la pousse dans sa direction
-
-- Mais seulement s'il n'y a rien derrière"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="ExplanationControlA" type="Label" parent="FirstPage/HelpMoveBox"]
 z_index = 1
 layout_mode = 1
@@ -195,6 +171,27 @@ theme_override_font_sizes/font_size = 25
 text = "- Le joueur va dans la direction choisie
 
 - Si la case est vide, il s'y dirige"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="explanationControlB" type="Label" parent="FirstPage/HelpMoveBox"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = 33.0
+offset_right = 818.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "- S’il se déplace vers une caisse, le joueur la pousse dans sa direction
+(Mais seulement s'il n'y a rien derrière)"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -245,7 +242,7 @@ offset_bottom = -31.984
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="explanationSfB" type="Label" parent="SecondPage/HelpPattern"]
+[node name="explanationSfA" type="Label" parent="SecondPage/HelpPattern"]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
@@ -277,7 +274,7 @@ offset_bottom = -31.36
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="explanationSfC" type="Label" parent="SecondPage/BombExplosionHelp"]
+[node name="explanationSfB" type="Label" parent="SecondPage/BombExplosionHelp"]
 z_index = 1
 layout_mode = 0
 offset_left = 160.0
@@ -285,13 +282,12 @@ offset_top = -115.0
 offset_right = 844.0
 offset_bottom = -42.0
 theme_override_font_sizes/font_size = 25
-text = "- Vous pouvez ensuite placer la bombe contre un mur pour la faire exploser"
+text = "ID_SF_B"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ThirdPage" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -344,7 +340,7 @@ offset_top = -75.0
 offset_right = 838.0
 offset_bottom = -2.0
 theme_override_font_sizes/font_size = 25
-text = "Le motif tournera en fonction du regard du joueur"
+text = "ID_DETAILS_A"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -357,7 +353,7 @@ offset_top = 40.0
 offset_right = 160.0
 offset_bottom = 68.0
 theme_override_font_sizes/font_size = 20
-text = "ID_DETAILS_C"
+text = "ID_DETAILS_B"
 autowrap_mode = 2
 
 [node name="HelpExplodeBoxes" parent="ThirdPage" instance=ExtResource("13_aqbv3")]
@@ -375,7 +371,7 @@ offset_bottom = -29.04
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="explanationDetailB" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
+[node name="explanationDetailC" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
 z_index = 1
 layout_mode = 0
 offset_left = 193.0

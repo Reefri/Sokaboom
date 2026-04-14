@@ -33,22 +33,23 @@ ID_NO_ACCOUNT_B, If you don't have an account yet so then create one !, Si vous 
 ID_DETAILS,Details,Détails
 ID_SPECIAL_FEATURE,The Bombs,Les Bombes
 ID_BASICS_CONTROL,Basics Control, Contrôle Basique
-ID_SF_A,- There are bombs placed on the levels that you can pick up,- Il y a des bombes sur le niveau que vous pouvez prendre
-ID_CONTROL_AA,- The player goes toward the chosen direction,- Le joueur va dans la direction choisie
-ID_CONTROL_AB,- if the tile is empty@ he move onto that tile,- si la case est vide@ il y va
-ID_CONTROL_BA,          - if he move toward a crate@ he push it,          - s’il se déplace vers une caisse@ il la pousse
-ID_CONTROL_BB,                                in his direction,                                dans sa direction
-ID_CONTROL_BC,                   - But only if the tile behind the crate is empty,                   - Mais seulement s'il n'y a rien derrière
+
+
+ID_CONTROL_AA,,- Le joueur va dans la direction choisie
+ID_CONTROL_AB,,- Si la case est vide@il s'y dirige
+ID_CONTROL_BA,, - S’il se déplace vers une caisse@ le joueur la pousse dans sa direction
+ID_CONTROL_BB,,(Mais seulement s'il n'y a rien derrière)
 ID_KEYBOARD,Control : ,Contrôle :
-ID_SF_BA,- Next to the bomb there is its explosion's shape,- A côté de la bombe il y a sa forme d'explosion
-ID_SF_BB, The red zone is the point of origin, La zone rouge est le point d’origine
-ID_SF_CA,- you can then place the bomb against a wall,- vous pouvez ensuite placer la bombe
-ID_SF_CB,to detonate it,contre un mur pour la faire exploser
-ID_DETAILS_AA,- the pattern will turn depending on the side,- le motif tournera en fonction du côté
-ID_DETAILS_AB,of the wall you put the bomb against,du mur contre lequel vous mettez la bombe
-ID_DETAILS_BA,- Caution ! you can destroy crates and targets !,- Attention ! Les caisses et cibles sont destructibles !
-ID_DETAILS_BB,- if there are more crates than targets@ destroy them,- s’il y a plus de caisses que de cibles@ détruisez-les
-ID_DETAILS_C,^ Here 90° rotation,^ Ici elle tourne à 90°
+ID_SF_AA,, - A côté de la bombe il y a sa forme d'explosion.
+ID_SF_AB,, La case rouge est le point d’origine de l'explosion 
+ID_SF_AC,,(La première case qui explose devant le joueur)
+ID_SF_B,,- Vous pouvez ensuite placer la bombe contre un mur pour la faire exploser
+
+ID_DETAILS_A,,Le motif tournera en fonction du regard du joueur
+ID_DETAILS_B,^ Here 90° rotation,^ Ici elle tourne à 90°
+ID_DETAILS_CA,,- Attention ! Les caisses et cibles sont destructibles !
+ID_DETAILS_CB,,- s’il y a plus de caisses que de cibles@ détruisez-les
+
 
 ID_ETHANM_A,Mirror +,Miroir +
 ID_ETHANF_A,Arrow,Flèche
