@@ -1,5 +1,23 @@
 ﻿key,en,fr
 
+ID_TITLE_LOGIN,Login :,Connection :
+ID_PASSWORD,Password,Mot de passe
+ID_CONFIRM_PASSWORD,Confirm Password,Confirme Mot de passe
+ID_VALIDATION_LOGIN,Connect,Connection
+ID_VALIDATION_INSCRIPTION,Register,Enregistre Toi
+ID_SWITCH_INSCRIPTION,Already Register,Deja Enregistré
+
+ID_PASSWORD_NOT_CONFIRM,The Password is different from confirmation, Le mot de passe ne correspond pas a la confirmation.
+ID_PSEUDO_EXIST_A,The Pseudo : ,Le Pseudo : 
+ID_PSEUDO_EXIST_B, Already exist so change your pseudo or connect you !, éxiste déjà donc changer de pseudo ou connectez-vous !
+ID_INCORECT_PASSWORD,Incorrect Password,Votre mot de passe est incorrect.
+ID_NO_ACCOUNT_A,No Account was found with the peusdo : ,Aucun compte n'a été trouvé avec le pseudo : 
+ID_NO_ACCOUNT_B, If you don't have an account yet so then create one !, Si vous n'avez pas encore de compte alors créez en un !
+
+
+
+
+
 
 ID_PLAY,Play,Jouer 
 ID_NEXT,Next,Suivant
@@ -8,8 +26,8 @@ ID_HIGHSCORE,High Score,Tableau des Scores
 ID_TRANSLATION,English,Français
 ID_SOUND,Sound,Son
 ID_BACK,Back,Retour
-ID_PASSWORD,Password,Mot de passe
-ID_CONFIRM_PASSWORD,Confirm Password,Confirme Mot de passe
+
+
 ID_UNLOCK,Unlock,Debloque
 ID_TUTORIAL,Tutorial,Tutoriel
 ID_LEVEL,Level ,Niveau 
@@ -19,18 +37,18 @@ ID_UNDO,Undo,Retour Arrière
 ID_REDO,Redo,Retour Avant
 ID_STEPS,Steps : ,Pas : 
 ID_BY, by , par 
-ID_SWITCH_INSCRIPTION,Already Register,Deja Enregistré
-ID_VALIDATION_INSCRIPTION,Register,Enregistre Toi
-ID_VALIDATION_LOGIN,Connect,Connection
-ID_TITLE_LOGIN,Login :,Connection :
-ID_PASSWORD_NOT_CONFIRM,The Password is different from confirmation, Le mot de passe ne correspond pas a la confirmation.
+
+
+
+
+
 ID_WIN_FINAL,Win Final,Victoire Final
-ID_INCORECT_PASSWORD,Incorrect Password,Votre mot de passe est incorrect.
-ID_PSEUDO_EXIST_A,The Pseudo : ,Le Pseudo : 
-ID_PSEUDO_EXIST_B, Already exist so change your pseudo or connect you !, éxiste déjà donc changer de pseudo ou connectez-vous !
+
+
+
 ID_MENU,Title Screen,Ecran Titre
-ID_NO_ACCOUNT_A,No Account was found with the peusdo : ,Aucun compte n'a été trouvé avec le pseudo : 
-ID_NO_ACCOUNT_B, If you don't have an account yet so then create one !, Si vous n'avez pas encore de compte alors créez en un !
+
+
 ID_DETAILS,Details,Détails
 ID_SPECIAL_FEATURE,The Bombs,Les Bombes
 ID_BASICS_CONTROL,Basics Control, Contrôle Basique

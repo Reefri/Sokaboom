@@ -29,6 +29,7 @@ namespace Com.IsartDigital.Sokoban.UI
         private const string VALIDATION_INSCRIPTION = "ID_VALIDATION_INSCRIPTION";
         private const string VALIDATION_LOGIN = "ID_VALIDATION_LOGIN";
         private const string TITLE_LOGIN = "ID_TITLE_LOGIN";
+
         private const string PASSWORD_NOT_CONFIRM = "ID_PASSWORD_NOT_CONFIRM";
         private const string PSEUDO_EXIST_A = "ID_PSEUDO_EXIST_A";
         private const string PSEUDO_EXIST_B = "ID_PSEUDO_EXIST_B";
