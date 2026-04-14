@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2nmheek0be6r" path="res://Scenes/Accessibilite/ColorFilterPanel.tscn" id="2_ox0d8"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_e1lnu"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
-[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
+[ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
@@ -502,14 +502,11 @@ theme_override_styles/focus = ExtResource("7_mprki")
 toggle_mode = true
 text = "ID_NEWGRAPHICS"
 
-[node name="ColorFilterPanel" parent="." node_paths=PackedStringArray("buttons") instance=ExtResource("2_ox0d8")]
+[node name="ColorFilterPanel" parent="." instance=ExtResource("2_ox0d8")]
 layout_mode = 1
-anchor_left = 0.832
-anchor_top = 0.748
-anchor_right = 0.888
-anchor_bottom = 0.847
-offset_left = 0.536011
-offset_top = 0.29599
-offset_right = 0.0238647
-offset_bottom = 0.143982
-buttons = []
+anchor_left = 0.824
+anchor_top = 0.704
+anchor_right = 0.879
+anchor_bottom = 0.802
+offset_left = -0.248047
+offset_right = 0.391846

@@ -27,6 +27,7 @@ namespace Com.IsartDigital.Chromaberation {
             mainButton.ButtonDown += ToggleShowPanel;
             panel.Hide();
 
+
             buttons[0].ButtonDown += MakeColorblind;
             buttons[1].ButtonDown += CureColorblind;
             buttons[2].ButtonDown += BackToNormal;
