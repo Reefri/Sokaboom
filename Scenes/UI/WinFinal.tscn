@@ -1,11 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqciltv8p0y15"]
+[gd_scene load_steps=14 format=3 uid="uid://dqciltv8p0y15"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WinFinal.cs" id="1_0l42t"]
 [ext_resource type="Texture2D" uid="uid://daosnol5sspeq" path="res://Assets/FinalWinBackground.png" id="2_mdaxs"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_qfx27"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_cp02b"]
+[ext_resource type="Texture2D" uid="uid://quc765ylnrxu" path="res://Assets/particules/MidRedParticle.png" id="5_ks0tv"]
+[ext_resource type="Texture2D" uid="uid://cbpeyia3cvem" path="res://Assets/particules/BigYellowParticle.png" id="6_3kkpw"]
 
-[node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "congratulationText", "ScoreFinal", "highScore", "menu", "fireworksPos")]
+[sub_resource type="Gradient" id="Gradient_mvcg2"]
+offsets = PackedFloat32Array(0.201856, 0.856148, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.258824, 0.258824, 0.258824, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4n1kj"]
+gradient = SubResource("Gradient_mvcg2")
+
+[sub_resource type="Curve" id="Curve_lit85"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0.0178571, 200), 0.0, 0.0, 0, 0, Vector2(0.0982143, 200), 0.0, 0.0, 0, 0, Vector2(0.202381, 50.1253), 0.0, 0.0, 0, 0, Vector2(0.372024, -50.8772), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_bj5tq"]
+curve = SubResource("Curve_lit85")
+
+[sub_resource type="Curve" id="Curve_itaty"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.136865, 1), -0.552647, -0.552647, 0, 0, Vector2(0.136875, 1), 0.0, 0.0, 0, 0, Vector2(0.136885, 1), 0.0, 0.0, 0, 0, Vector2(0.136895, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), -2.17814, -2.17814, 0, 0, Vector2(1, 0), -2.31032, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_bgibw"]
+curve = SubResource("Curve_itaty")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a2msk"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+flatness = 0.806
+initial_velocity_max = 104.96
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+radial_velocity_max = 431.58
+gravity = Vector3(0, 0, 0)
+linear_accel_curve = SubResource("CurveTexture_bj5tq")
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+scale_min = 0.25
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_bgibw")
+color_ramp = SubResource("GradientTexture1D_4n1kj")
+
+[node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "congratulationText", "ScoreFinal", "rank", "highScore", "menu", "fireworksPos", "explosionParticlesParent")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,9 +59,11 @@ script = ExtResource("1_0l42t")
 background = NodePath("TextureRect")
 congratulationText = NodePath("congratulation")
 ScoreFinal = NodePath("Score")
+rank = NodePath("Rank")
 highScore = NodePath("Buttons/HightScore")
 menu = NodePath("Buttons/Menu")
 fireworksPos = NodePath("fireWorkPosition")
+explosionParticlesParent = NodePath("Rank/explosionParticles")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -74,10 +119,10 @@ anchor_left = 0.37
 anchor_top = 0.384
 anchor_right = 0.63
 anchor_bottom = 0.616
-offset_left = -0.23999
-offset_top = 0.167999
-offset_right = 0.239929
-offset_bottom = -0.16803
+offset_left = 110.43
+offset_top = 29.168
+offset_right = 133.57
+offset_bottom = -17.168
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -96,10 +141,10 @@ anchor_left = 0.37
 anchor_top = 0.65
 anchor_right = 0.63
 anchor_bottom = 0.881
-offset_left = -0.23999
-offset_top = -0.200012
-offset_right = 0.239929
-offset_bottom = 0.112
+offset_left = 110.43
+offset_top = 26.8
+offset_right = 132.57
+offset_bottom = -19.888
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -135,3 +180,42 @@ theme_override_font_sizes/font_size = 75
 text = "ID_CONGRATULATIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Rank" type="Label" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 179.0
+offset_right = 612.0
+offset_bottom = 629.0
+pivot_offset = Vector2(225, 225)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 250
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="explosionParticles" type="Node2D" parent="Rank"]
+position = Vector2(225, 225)
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="Rank/explosionParticles"]
+z_index = 1
+scale = Vector2(6.36441, -0.789933)
+emitting = false
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_a2msk")
+texture = ExtResource("5_ks0tv")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Rank/explosionParticles"]
+z_index = 1
+scale = Vector2(6.36441, -0.789933)
+emitting = false
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_a2msk")
+texture = ExtResource("6_3kkpw")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0

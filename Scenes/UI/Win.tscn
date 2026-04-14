@@ -132,7 +132,7 @@ color_ramp = SubResource("GradientTexture1D_1aimb")
 offsets = PackedFloat32Array(0.201856, 0.856148, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.258824, 0.258824, 0.258824, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4n1kj"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gohtr"]
 gradient = SubResource("Gradient_r1lne")
 
 [sub_resource type="Curve" id="Curve_lb2ly"]
@@ -141,14 +141,14 @@ max_value = 200.0
 _data = [Vector2(0.0178571, 200), 0.0, 0.0, 0, 0, Vector2(0.0982143, 200), 0.0, 0.0, 0, 0, Vector2(0.202381, 50.1253), 0.0, 0.0, 0, 0, Vector2(0.372024, -50.8772), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="CurveTexture" id="CurveTexture_bj5tq"]
+[sub_resource type="CurveTexture" id="CurveTexture_unjv8"]
 curve = SubResource("Curve_lb2ly")
 
 [sub_resource type="Curve" id="Curve_1jq1g"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.136865, 1), -0.552647, -0.552647, 0, 0, Vector2(0.136875, 1), 0.0, 0.0, 0, 0, Vector2(0.136885, 1), 0.0, 0.0, 0, 0, Vector2(0.136895, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), -2.17814, -2.17814, 0, 0, Vector2(1, 0), -2.31032, 0.0, 0, 0]
 point_count = 7
 
-[sub_resource type="CurveTexture" id="CurveTexture_bgibw"]
+[sub_resource type="CurveTexture" id="CurveTexture_nqtlq"]
 curve = SubResource("Curve_1jq1g")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dbb8u"]
@@ -161,13 +161,13 @@ angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 radial_velocity_max = 431.58
 gravity = Vector3(0, 0, 0)
-linear_accel_curve = SubResource("CurveTexture_bj5tq")
+linear_accel_curve = SubResource("CurveTexture_unjv8")
 radial_accel_min = -100.0
 radial_accel_max = 100.0
 scale_min = 0.25
 scale_max = 0.25
-scale_curve = SubResource("CurveTexture_bgibw")
-color_ramp = SubResource("GradientTexture1D_4n1kj")
+scale_curve = SubResource("CurveTexture_nqtlq")
+color_ramp = SubResource("GradientTexture1D_gohtr")
 
 [node name="Win" type="Control" node_paths=PackedStringArray("stars", "confettis", "scoreText", "perfectText", "perfectParticles", "restart", "next", "explosionParticles")]
 layout_mode = 3
