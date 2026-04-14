@@ -14,6 +14,7 @@ namespace Com.IsartDigital.Sokoban
         [Export] private GpuParticles2D confettis;
         [Export] private Label scoreText;
         [Export] private Label perfectText;
+        [Export] private GpuParticles2D perfectParticles;
 		private int score;
 		private int scoreToReach;
 		private int numberStars;
@@ -23,6 +24,8 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] private Button restart;
         [Export] private Button next;
+
+        [Export] private Node2D explosionParticles;
 
         private bool showScore = false;
 
@@ -50,7 +53,7 @@ namespace Com.IsartDigital.Sokoban
 
             perfectText.PivotOffset = perfectText.Size / 2;
             perfectText.Scale = Vector2.Zero;
-            perfectText.Visible = false;
+            perfectParticles.Visible = false;
         }
 
         public override void _Process(double delta)
@@ -71,12 +74,19 @@ namespace Com.IsartDigital.Sokoban
 
                         if (score >= 5000)
                         {
-                            perfectText.Visible = true;
                             Tween lTween = CreateTween()
-                            .SetTrans(Tween.TransitionType.Elastic)
-                            .SetEase(Tween.EaseType.Out);
+                            .SetTrans(Tween.TransitionType.Expo)
+                            .SetEase(Tween.EaseType.In);
 
-                            lTween.TweenProperty(perfectText, TweenProp.SCALE, Vector2.One, winScoreDuration).SetDelay(winScoreDuration);
+                            lTween.TweenProperty(perfectText, TweenProp.SCALE, Vector2.One, winScoreDuration/2);
+                            lTween.Parallel().TweenProperty(perfectParticles, TweenProp.VISIBLE, true, winScoreDuration).SetDelay(winScoreDuration / 2);
+
+                            foreach (GpuParticles2D lParticles in explosionParticles.GetChildren())
+                            {
+                                lParticles.Emitting = true;
+                            }
+
+                            
                         }
                     }
 
