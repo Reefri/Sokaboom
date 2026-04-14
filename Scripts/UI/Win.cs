@@ -13,11 +13,18 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] private GpuParticles2D confettis;
         [Export] private Label scoreText;
+        [Export] private Label perfectText;
 		private int score;
+		private int scoreToReach;
 		private int numberStars;
+
+        private float time = 0;
+        [Export]private float winScoreDuration = 1;
 
         [Export] private Button restart;
         [Export] private Button next;
+
+        private bool showScore = false;
 
         private const string SCORE = "Score : ";
 
@@ -40,23 +47,59 @@ namespace Com.IsartDigital.Sokoban
                 Banderole.GetInstance().winFinal = true;
                 next.Pressed += Banderole.GetInstance().StartTransitionToWin;
             }
+
+            perfectText.PivotOffset = perfectText.Size / 2;
+            perfectText.Scale = Vector2.Zero;
+            perfectText.Visible = false;
+        }
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+
+            if (showScore)
+            {
+                time += (float)delta;
+
+                if (score != scoreToReach)
+                {
+                    score = (int)Tween.InterpolateValue(score, scoreToReach - score, time, winScoreDuration * 3, Tween.TransitionType.Quad, Tween.EaseType.In);
+                    if (score >= scoreToReach)
+                    {
+                        score = scoreToReach;
+                        showScore = false;
+
+                        if (score >= 5000)
+                        {
+                            perfectText.Visible = true;
+                            Tween lTween = CreateTween()
+                            .SetTrans(Tween.TransitionType.Elastic)
+                            .SetEase(Tween.EaseType.Out);
+
+                            lTween.TweenProperty(perfectText, TweenProp.SCALE, Vector2.One, winScoreDuration).SetDelay(winScoreDuration);
+                        }
+                    }
+
+                    scoreText.Text = SCORE + score;
+                }
+            }
         }
 
 		private void CalculScoreLevel()
 		{
             if (GameManager.GetInstance().currentLevel.Par >= GameManager.GetInstance().CurrentPar) 
 			{
-                score = 5000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 100;
+                scoreToReach = 5000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 100;
 				numberStars = 3;
             }
             else if (GameManager.GetInstance().currentLevel.Par * 1.5f >= GameManager.GetInstance().CurrentPar)
 			{
-                score = 2000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
+                scoreToReach = 2000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
 				numberStars = 2;
             }
 			else 
 			{
-                score = 1000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
+                scoreToReach = 1000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
 				numberStars = 1;
             }
 
@@ -69,8 +112,6 @@ namespace Com.IsartDigital.Sokoban
                 lStars.Scale = Vector2.Zero;
                 AnimationStars(lStars, i * 0.5f,i);
             }
-            
-			scoreText.Text = SCORE + score;
 
             confettis.Emitting = true;
 
@@ -103,7 +144,8 @@ namespace Com.IsartDigital.Sokoban
 
             
             FireWork.CreateMult(null , pStars, Vector2.Zero,false);
-            
+
+            showScore = true;
         }
     }
 }
