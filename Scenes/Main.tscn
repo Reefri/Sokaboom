@@ -13,7 +13,6 @@
 [node name="Main" type="Node2D" node_paths=PackedStringArray("postProcessingNode")]
 script = ExtResource("1_4l0qp")
 postProcessingNode = NodePath("PostProccessingNode")
-noLogin = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
