@@ -68,7 +68,7 @@ namespace Com.IsartDigital.Sokoban
                 Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Circ).SetEase(Tween.EaseType.In).SetParallel();
                 lTween.TweenProperty(lAccount, TweenProp.MODULATE_ALPHA, 0f, 0);
                 lTween.TweenProperty(lAccount, TweenProp.MODULATE_ALPHA, 1f, 0).SetDelay(j * 0.3);
-                lTween.TweenProperty(lAccount, TweenProp.GLOBAL_POSITION_Y, lAccount.GlobalPosition.Y + (currentAccountInTopTen ? 48 : 39) * j, 1).From(-50).SetDelay(j * 0.3);
+                lTween.TweenProperty(lAccount, TweenProp.GLOBAL_POSITION_Y, lAccount.GlobalPosition.Y + (currentAccountInTopTen ? 75 : 63) * j, 1).From(-50).SetDelay(j * 0.3);
                 lTween.Finished += () => DustAnimation(lAccount);
                 j++;
             }

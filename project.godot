@@ -18,8 +18,13 @@ config/windows_native_icon="res://Assets/Character_Base.ico"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/viewport_width=1080
+window/size/viewport_height=1080
+window/size/window_width_override=940
+window/size/window_height_override=540
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/handheld/orientation=6
 
 [dotnet]
 
