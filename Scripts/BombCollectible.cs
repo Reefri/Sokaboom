@@ -9,16 +9,15 @@ namespace Com.IsartDigital.Sokoban
 	public partial class BombCollectible : Area2D
 	{
         [Export] private Node2D hoverRenderer;
-        //[Export] private Script hoverScript;
 
         private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
-        private static PackedScene factory = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
+        private static PackedScene factory = (PackedScene)GD.Load("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
 
-        private PackedScene previsualisationBomb = GD.Load<PackedScene>("res://Scenes/UI/PrevisualisationBomb.tscn");
+        private PackedScene previsualisationBomb = (PackedScene)GD.Load("res://Scenes/UI/PrevisualisationBomb.tscn");
         private PrevisualisationBomb previsualisationCreate;
 
-        private Node2D showPatern;
+        private Node2D showPatern = new Node2D();
 
         public Bomb bomb;
 
@@ -85,7 +84,7 @@ namespace Com.IsartDigital.Sokoban
             chainTimer.Timeout += Explode;
             AddChild(chainTimer);
 
-           
+
 
 
 
@@ -102,13 +101,14 @@ namespace Com.IsartDigital.Sokoban
               BODYTEXTURE_FILE_PATH +
               myTextureChoice +
               BODYTEXTURE_FILE_EXTENSION
-              ); 
+              );
 
-            head.Modulate = mainColor;
 
 
             ((ShaderMaterial)body.Material).SetShaderParameter("MainColor", mainColor);
             ((ShaderMaterial)body.Material).SetShaderParameter("SecondaryColor", secondaryColor);
+            head.Modulate = mainColor;
+
 
 
             AreaEntered += BombCollectibleAreaEntered;
@@ -118,43 +118,43 @@ namespace Com.IsartDigital.Sokoban
             MouseExited += OutBomb;
 
 
-          
+
         }
 
 
         private void BombCollectibleAreaEntered(Area2D pArea)
         {
 
-			if(pArea == Player.GetInstance() && Player.GetInstance().bombInHand == null)
-			{
-				GameManager.GetInstance().RemoveBombAtIndex(bomb.indexInLevel);
+            if (pArea == Player.GetInstance() && Player.GetInstance().bombInHand == null)
+            {
+                GameManager.GetInstance().RemoveBombAtIndex(bomb.indexInLevel);
 
-				Player.GetInstance().GiveBombToPlayer(bomb);
+                Player.GetInstance().GiveBombToPlayer(bomb);
                 SoundManager.GetInstance().PlayBombPickUp();
 
                 QueueFree();
                 return;
-			}
+            }
         }
 
         public void ShowChainReaction(float pScale)
         {
-            if (chainReactionPatterne!=null && chainReactionPatterne.IsInsideTree()) return;
+            if (chainReactionPatterne != null && chainReactionPatterne.IsInsideTree()) return;
 
             chainReactionPatterne = new Node2D();
 
             new BombPattern(chainReactionPatterne, bomb.explosionMatrix, BombPattern.EnumOfExplosionPattern.Player, false, null, pScale);
-            
+
             AddChild(chainReactionPatterne);
         }
 
         public void HideChainReaction()
         {
             chainReactionPatterne?.QueueFree();
-            chainReactionPatterne=null;
+            chainReactionPatterne = null;
         }
 
-     
+
         private void InBomb()
         {
             hoverRenderer.Scale *= 1.5f;
@@ -172,27 +172,25 @@ namespace Com.IsartDigital.Sokoban
             previsualisationCreate = null;
         }
 
-      
+
 
         public void StartAnimation()
         {
-            Modulate = new Color(1,1,1,0);
+            Modulate = new Color(1, 1, 1, 0);
             Tween lTween = CreateTween().SetParallel();
             lTween.TweenProperty(this, TweenProp.MODULATE_ALPHA, 1, GD.Randf()).SetDelay(GD.Randf());
         }
 
-        public static BombCollectible Create(BombCollectiblePatron pPatron )
+        public static BombCollectible Create(BombCollectiblePatron pPatron)
         {
             BombCollectible lBombCollectible = (BombCollectible)factory.Instantiate();
 
-            lBombCollectible.bomb = pPatron.bomb ;
+            lBombCollectible.bomb = pPatron.bomb;
             lBombCollectible.positionInGrid = pPatron.positionInGrid;
             lBombCollectible.Position = pPatron.positionInGrid * Map.DISTANCE_RANGE;
 
             lBombCollectible.mainColor = pPatron.mainColor;
             lBombCollectible.secondaryColor = pPatron.secondaryColor;
-
-            lBombCollectible.showPatern = new Node2D();
 
             lBombCollectible.myTextureChoice = pPatron.texturePath;
 
@@ -212,12 +210,12 @@ namespace Com.IsartDigital.Sokoban
 
         public void RotatePattern(Vector2 pDirection)
         {
-            showPatern.GlobalRotation =pDirection.Rotated(Mathf.Pi/2).Angle();
+            showPatern.GlobalRotation = pDirection.Rotated(Mathf.Pi / 2).Angle();
         }
 
         private void Explode()
         {
-            bomb.Explode(positionInGrid,Vector2I.Up);
+            bomb.Explode(positionInGrid, Vector2I.Up);
             QueueFree();
 
 
@@ -232,10 +230,10 @@ namespace Com.IsartDigital.Sokoban
                 SetTrans(Tween.TransitionType.Expo).
                 SetEase(Tween.EaseType.Out).SetParallel();
 
-            lTween.TweenProperty(hoverRenderer,TweenProp.SCALE, Vector2.One * 2,0.3f);
+            lTween.TweenProperty(hoverRenderer, TweenProp.SCALE, Vector2.One * 2, 0.3f);
             lTween.TweenProperty(head,TweenProp.MODULATE, new Color(1,1,1),0.3f);
-            lTween.TweenProperty(this,"mainColor", new Color(1,1,1),0.3f);
-            lTween.TweenProperty(this,"secondaryColor", new Color(1,1,1),0.3f);
+            lTween.TweenProperty(this, "mainColor", new Color(1, 1, 1), 0.3f);
+            lTween.TweenProperty(this, "secondaryColor", new Color(1, 1, 1), 0.3f);
             showPatern.Hide();
 
             chainTimer.Start();

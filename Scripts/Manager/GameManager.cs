@@ -26,8 +26,6 @@ namespace Com.IsartDigital.Sokoban
         static public GameManager instance = null;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/GameManager.tscn");
 
-        private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
-
 
         public List<BombCollectiblePatron> levelBombCollectibles = new List<BombCollectiblePatron>();
 
@@ -195,16 +193,22 @@ namespace Com.IsartDigital.Sokoban
 
             List<int> lIndexOfAvalaibleBobms = currentPosition.value.indexOfAvalaibleBombs;
 
+
             foreach (int i in lIndexOfAvalaibleBobms)
             {
-                bombCollectibleContainer.AddChild( BombCollectible.Create(levelBombCollectibles[i]));
+                bombCollectibleContainer.AddChild(BombCollectible.Create(levelBombCollectibles[i]));
             }
+
+
 
 
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
 
             Player.GetInstance().Position = lPlayerPosition * Map.DISTANCE_RANGE;
             Player.GetInstance().GiveBombToPlayer(currentPosition.value.currentBomb);
+
+
+
 
             if (tileMap.GetCellTileData((int)Map.LevelLayer.Ground, lPlayerPosition) == null) FillGroundTiles(lPlayerPosition);
         }
