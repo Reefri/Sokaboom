@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b078nli7whk52"]
+[gd_scene load_steps=22 format=3 uid="uid://b078nli7whk52"]
 
 [ext_resource type="Theme" uid="uid://i8isgllrm6hc" path="res://Scenes/UI/Button.tres" id="1_6f0nn"]
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
@@ -99,7 +99,32 @@ hue_variation_min = -0.39
 hue_variation_max = 0.66
 turbulence_noise_scale = 2.099
 
-[node name="Win" type="Control" node_paths=PackedStringArray("stars", "confettis", "scoreText", "restart", "next")]
+[sub_resource type="Gradient" id="Gradient_ht6ar"]
+colors = PackedColorArray(1, 0.898039, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1aimb"]
+gradient = SubResource("Gradient_ht6ar")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xpck3"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(200, 35, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+initial_velocity_min = 84.21
+initial_velocity_max = 84.21
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+color_ramp = SubResource("GradientTexture1D_1aimb")
+
+[node name="Win" type="Control" node_paths=PackedStringArray("stars", "confettis", "scoreText", "perfectText", "restart", "next")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,6 +140,7 @@ script = ExtResource("1_lpuuc")
 stars = NodePath("ColorRect/Stars")
 confettis = NodePath("GPUParticles2D")
 scoreText = NodePath("ColorRect/Score")
+perfectText = NodePath("perfect")
 restart = NodePath("Control2/Restart")
 next = NodePath("Control/Next")
 
@@ -165,17 +191,17 @@ vertical_alignment = 1
 [node name="Stars" type="Control" parent="ColorRect"]
 layout_mode = 1
 anchor_left = 0.335
-anchor_top = 0.14
+anchor_top = 0.366
 anchor_right = 0.665
-anchor_bottom = 0.352
+anchor_bottom = 0.676
 offset_left = 0.0799866
-offset_top = 0.279999
+offset_top = -0.168015
 offset_right = -0.0800171
-offset_bottom = -0.0960236
+offset_bottom = -0.0480347
 grow_horizontal = 2
 
 [node name="StarOne" type="AnimatedSprite2D" parent="ColorRect/Stars"]
-position = Vector2(39.5, 297)
+position = Vector2(39.5, 151)
 rotation = -0.15708
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_41ao0")
@@ -192,7 +218,7 @@ texture = ExtResource("4_tj2pn")
 one_shot = true
 
 [node name="StarTwo" type="AnimatedSprite2D" parent="ColorRect/Stars"]
-position = Vector2(181.5, 205)
+position = Vector2(181.5, 59)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_nu370")
 offset = Vector2(0, -18.36)
@@ -208,7 +234,7 @@ texture = ExtResource("4_tj2pn")
 one_shot = true
 
 [node name="StarThree" type="AnimatedSprite2D" parent="ColorRect/Stars"]
-position = Vector2(331.5, 297)
+position = Vector2(331.5, 151)
 rotation = 0.15708
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_5pelx")
@@ -225,17 +251,17 @@ one_shot = true
 
 [node name="Score" type="Label" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.388
-anchor_top = 0.739
-anchor_right = 0.612
-anchor_bottom = 0.898
-offset_left = 0.0239868
-offset_top = 0.127991
-offset_right = -0.0240479
-offset_bottom = 0.0959473
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -205.0
+offset_right = 129.0
+offset_bottom = -102.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Score : "
 horizontal_alignment = 1
@@ -265,10 +291,10 @@ anchor_left = 0.715
 anchor_top = 0.483
 anchor_right = 1.016
 anchor_bottom = 1.017
-offset_left = 0.319946
-offset_top = -23.984
-offset_right = -0.432007
-offset_bottom = -24.0161
+offset_left = -8.67999
+offset_top = -10.984
+offset_right = -9.43201
+offset_bottom = -11.0161
 grow_vertical = 0
 rotation = 3.14159
 pivot_offset = Vector2(173, 185)
@@ -312,3 +338,27 @@ icon = ExtResource("8_68um7")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="perfect" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -115.0
+offset_right = 157.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "ID_PERFECT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="perfect"]
+position = Vector2(212.5, 51)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_xpck3")

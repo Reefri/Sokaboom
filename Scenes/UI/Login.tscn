@@ -30,15 +30,15 @@ cadenas = NodePath("Cadenas")
 
 [node name="Font" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -275.0
-offset_top = -150.0
-offset_right = 275.0
-offset_bottom = 150.0
+anchors_preset = -1
+anchor_left = 0.261
+anchor_top = 0.269
+anchor_right = 0.739
+anchor_bottom = 0.731
+offset_left = 0.328003
+offset_top = -0.312012
+offset_right = -0.328003
+offset_bottom = 0.311981
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(275, 150)
@@ -54,37 +54,36 @@ grow_vertical = 2
 
 [node name="Font" type="ColorRect" parent="Font/Login_Inscription"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -125.0
-offset_right = 250.0
-offset_bottom = 125.0
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 0.083
+anchor_right = 0.955
+anchor_bottom = 0.917
+offset_left = 0.249998
+offset_top = 0.0999985
+offset_right = -0.25
+offset_bottom = -0.100006
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.521569, 0, 0, 1)
 
 [node name="Title" type="Label" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 0.092
 grow_horizontal = 2
 text = "ID_TITLE_LOGIN"
 horizontal_alignment = 1
 
 [node name="LinePseudo" type="LineEdit" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 46.0
-offset_right = 100.0
-offset_bottom = 77.0
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.184
+anchor_right = 0.7
+anchor_bottom = 0.308
+offset_right = -3.05176e-05
 grow_horizontal = 2
 placeholder_text = "Pseudo"
 alignment = 1
@@ -92,13 +91,12 @@ caret_blink = true
 
 [node name="LinePassWord" type="LineEdit" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 85.0
-offset_right = 100.0
-offset_bottom = 116.0
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.34
+anchor_right = 0.7
+anchor_bottom = 0.464
+offset_right = -3.05176e-05
 grow_horizontal = 2
 placeholder_text = "ID_PASSWORD"
 alignment = 1
@@ -108,10 +106,14 @@ secret_character = "*"
 
 [node name="Button Secret" type="Button" parent="Font/Login_Inscription/Font/LinePassWord"]
 layout_mode = 1
-offset_left = 201.0
-offset_top = -4.0
-offset_right = 721.0
-offset_bottom = 516.0
+anchors_preset = -1
+anchor_left = 1.005
+anchor_top = -0.129
+anchor_right = 1.187
+anchor_bottom = 1.0
+offset_top = -0.000999689
+offset_right = 483.6
+offset_bottom = 485.0
 scale = Vector2(0.07, 0.07)
 icon = ExtResource("1_avoev")
 flat = true
@@ -119,13 +121,12 @@ script = ExtResource("3_jl43w")
 
 [node name="LineConfirm" type="LineEdit" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 124.0
-offset_right = 100.0
-offset_bottom = 155.0
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.496
+anchor_right = 0.7
+anchor_bottom = 0.62
+offset_right = -3.05176e-05
 grow_horizontal = 2
 placeholder_text = "ID_CONFIRM_PASSWORD"
 alignment = 1
@@ -134,10 +135,15 @@ secret_character = "*"
 
 [node name="Button Secret" type="Button" parent="Font/Login_Inscription/Font/LineConfirm"]
 layout_mode = 1
-offset_left = 201.0
-offset_top = -4.0
-offset_right = 721.0
-offset_bottom = 516.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.129
+anchor_right = 1.187
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -0.000999689
+offset_right = 483.6
+offset_bottom = 485.0
 scale = Vector2(0.07, 0.07)
 icon = ExtResource("4_xtyfr")
 flat = true
@@ -155,11 +161,11 @@ script = ExtResource("5_dsb4s")
 
 [node name="Swtich" type="Button" parent="Font/Login_Inscription/Font/Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 0.226
 anchor_bottom = 1.0
-offset_top = -25.0
-offset_right = 113.0
+offset_top = -1.52588e-05
 offset_bottom = -1.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -177,15 +183,15 @@ text = "Inscription"
 
 [node name="connexion_inscription" type="Button" parent="Font"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -139.0
-offset_top = -113.0
-offset_right = 141.0
-offset_bottom = -56.0
+anchors_preset = -1
+anchor_left = 0.247
+anchor_top = 0.623
+anchor_right = 0.756
+anchor_bottom = 0.798
+offset_left = 0.149994
+offset_top = 0.0999908
+offset_right = 0.199982
+offset_bottom = 4.59999
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -200,15 +206,11 @@ text = "ID_VALIDATION_LOGIN"
 
 [node name="Statut" type="Label" parent="Font"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = -1
 anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -275.0
-offset_right = 275.0
-offset_bottom = 25.0
-grow_horizontal = 2
+anchor_right = 1.0
+anchor_bottom = 1.083
+offset_bottom = 0.0999756
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
