@@ -8,9 +8,9 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class MenuTransition : Control
 	{
-		private  static PackedScene factory = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
+		private  static PackedScene factory = (PackedScene)GD.Load("res://Scenes/UI/Transitions/MenuTransition.tscn");
 
-		[Export] private Node2D TransitionZone;
+		[Export] private Control TransitionZone;
 		[Export] public float tweenDuration = 1;
 
 		private float time = 0;
@@ -20,6 +20,8 @@ namespace Com.IsartDigital.Sokoban
 		private Vector2 screenSize;
 
 		[Export] private Timer whenToPlayAnim;
+
+
 		public override void _Ready()
 		{
 			whenToPlayAnim.WaitTime = tweenDuration / 1.7f;
@@ -34,6 +36,9 @@ namespace Com.IsartDigital.Sokoban
 
 			Tween lTween = TransitionZone.CreateTween();
 			lTween.TweenProperty(TransitionZone, TweenProp.POSITION,lFinalPos, tweenDuration);
+
+
+
 		}
 
 		public override void _Process(double pDelta)
@@ -49,7 +54,7 @@ namespace Com.IsartDigital.Sokoban
 			MenuTransition lTransition = (MenuTransition)factory.Instantiate();
             lTransition.whenToPlayAnim.Timeout += pSomething;
 
-            UIManager.GetInstance().AddSibling(lTransition);
+			UIManager.GetInstance().AddSibling(lTransition);
 		}
 	}
 }

@@ -65,6 +65,7 @@ namespace Com.IsartDigital.Sokoban {
 			lNewSignal.GlobalPosition = pPosition * Map.DISTANCE_RANGE;
 
 			GameManager.GetInstance().boxSignalContainer.AddChild(lNewSignal);
+
 		}
 	}
 }

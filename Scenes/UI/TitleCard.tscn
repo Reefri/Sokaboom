@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2nmheek0be6r" path="res://Scenes/Accessibilite/ColorFilterPanel.tscn" id="2_ox0d8"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_e1lnu"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
-[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
+[ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
@@ -143,7 +143,7 @@ amount = 70
 process_material = SubResource("ParticleProcessMaterial_tmby8")
 texture = ExtResource("2_35lkq")
 lifetime = 4.0
-preprocess = 237.15
+preprocess = 11.46
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
 z_index = 1
@@ -152,7 +152,7 @@ amount = 70
 process_material = SubResource("ParticleProcessMaterial_rmsmt")
 texture = ExtResource("2_68e54")
 lifetime = 4.0
-preprocess = 237.15
+preprocess = 11.67
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

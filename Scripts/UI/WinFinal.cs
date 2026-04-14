@@ -33,6 +33,9 @@ namespace Com.IsartDigital.Sokoban
 
 		private Vector2 screenSize;
 
+        private Vector2 posOrigninHighScore;
+        private Vector2 posOrigninMenu;
+
         private bool showScore = false;
 
         [Export] private const int S_RANK_THRESHHOLD = 65000;
@@ -141,6 +144,10 @@ namespace Com.IsartDigital.Sokoban
 
 		private void SettingInitialPositions()
 		{
+
+            posOrigninHighScore = highScore.Position;
+            posOrigninMenu = menu.Position;
+
             background.Position = new Vector2(screenSize.X / 2 - background.Size.X/2, -screenSize.Y * 2);
 
 			menu.Position = new Vector2(screenSize.X + sideFactor,	screenSize.Y / 2 + sideFactor) - menu.Size/2;
@@ -176,9 +183,9 @@ namespace Com.IsartDigital.Sokoban
 
             lTween.SetEase(Tween.EaseType.In)
                 .SetTrans(Tween.TransitionType.Back);
-            lTween.TweenProperty(menu, TweenProp.POSITION, screenSize / 2 + Vector2.Down * sideFactor - menu.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
+            lTween.TweenProperty(menu, TweenProp.POSITION, posOrigninMenu, tweenDuration).SetDelay(tweenDuration / 4);
 
-            lTween.Parallel().TweenProperty(highScore, TweenProp.POSITION, screenSize / 2 - highScore.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
+            lTween.Parallel().TweenProperty(highScore, TweenProp.POSITION, posOrigninHighScore, tweenDuration).SetDelay(tweenDuration / 4);
 
             lTween.Parallel().TweenProperty(ScoreFinal, TweenProp.POSITION, screenSize / 2 + Vector2.Up * sideFactor/1.25f - ScoreFinal.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
 
