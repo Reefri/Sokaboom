@@ -29,7 +29,7 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
 
 
-        public List<BombCollectible> levelBombCollectibles = new List<BombCollectible>();
+        public List<BombCollectiblePatron> levelBombCollectibles = new List<BombCollectiblePatron>();
 
         public Level currentLevel;
         
@@ -131,7 +131,7 @@ namespace Com.IsartDigital.Sokoban
 
             for (int i = 0; i < lNumberOfBombs; i++)
             {
-                levelBombCollectibles.Add(BombCollectible.Create(currentLevel.bombs[i], currentLevel.bombsPos[i]));
+                levelBombCollectibles.Add(new BombCollectiblePatron(currentLevel.bombs[i], currentLevel.bombsPos[i]));
             }
 
 
@@ -197,7 +197,7 @@ namespace Com.IsartDigital.Sokoban
 
             foreach (int i in lIndexOfAvalaibleBobms)
             {
-                bombCollectibleContainer.AddChild(levelBombCollectibles[i].Duplicate());
+                bombCollectibleContainer.AddChild( BombCollectible.Create(levelBombCollectibles[i]));
             }
 
 

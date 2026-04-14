@@ -8,12 +8,12 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class BombCollectible : Area2D
 	{
-        [Export] Node2D hoverRenderer;
-        [Export] Script hoverScript;
+        [Export] private Node2D hoverRenderer;
+        //[Export] private Script hoverScript;
 
         private const string BOMB_COLLECTIBLE_PATH = "res://Scenes/Gameplay/Bomb/BombCollectible.tscn";
 
-        private static PackedScene bombCollectible = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
+        private static PackedScene factory = GD.Load<PackedScene>(BOMB_COLLECTIBLE_PATH);
 
         private PackedScene previsualisationBomb = GD.Load<PackedScene>("res://Scenes/UI/PrevisualisationBomb.tscn");
         private PrevisualisationBomb previsualisationCreate;
@@ -33,30 +33,16 @@ namespace Com.IsartDigital.Sokoban
         private Node2D chainReactionPatterne;
 
 
-        [Export] Sprite2D head;
-        [Export] Sprite2D body;
+        [Export] private Sprite2D head;
+        [Export] private Sprite2D body;
 
-        private static float mainColorSaturation = 0.8f;
-        private static float mainColorValue = 0.8f;
-
-        private static float secondaryColorSaturation = 0.4f;
-        private static float secondaryColorValue = 0.4f;
 
         private Color mainColor;
         private Color secondaryColor;
 
-        private Texture2D bodyTexture;
 
-        private RandomNumberGenerator lRand = new RandomNumberGenerator();
 
-        private static List<string> bodyTextureChoices = new List<string>()
-        {
-            "bubble",
-            "diamond",
-            "star",
-            "triangle",
-            "wave"
-        };
+      
 
         private const string BODYTEXTURE_FILE_PATH = "res://Assets/Bomb/Collectible/fireworkBody/";
         private const string BODYTEXTURE_FILE_EXTENSION = ".png";
@@ -70,7 +56,7 @@ namespace Com.IsartDigital.Sokoban
         private Vector2I positionInGrid;
 
         public override void _Ready()
-		{
+        {
 
             if (GameManager.GetInstance().bombStartAnimation < GameManager.GetInstance().levelBombCollectibles.Count)
             {
@@ -90,6 +76,7 @@ namespace Com.IsartDigital.Sokoban
                 ).originePos;
 
 
+            hoverRenderer.AddChild(showPatern);
 
 
             chainTimer.WaitTime = chainWait;
@@ -98,29 +85,25 @@ namespace Com.IsartDigital.Sokoban
             chainTimer.Timeout += Explode;
             AddChild(chainTimer);
 
-            hoverRenderer = (Node2D)GetNode("Renderer").GetNode("Hover");
-            body = (Sprite2D)hoverRenderer.GetNode("Body");
-            head = (Sprite2D)hoverRenderer.GetNode("Head");
+           
 
 
 
-            hoverRenderer.SetScript(hoverScript);
 
-            hoverRenderer.AddChild(showPatern);
 
             showPatern.Scale = Vector2.One * 0.3f;
             showPatern.GlobalPosition = hoverRenderer.GlobalPosition + rightCornerOfCollectible;
 
 
 
-            bodyTexture = (Texture2D)GD.Load(
+
+
+            body.Texture = (Texture2D)GD.Load(
               BODYTEXTURE_FILE_PATH +
               myTextureChoice +
               BODYTEXTURE_FILE_EXTENSION
-              );
+              ); 
 
-
-            body.Texture = bodyTexture;
             head.Modulate = mainColor;
 
 
@@ -133,6 +116,9 @@ namespace Com.IsartDigital.Sokoban
 
             MouseEntered += InBomb;
             MouseExited += OutBomb;
+
+
+          
         }
 
 
@@ -186,48 +172,34 @@ namespace Com.IsartDigital.Sokoban
             previsualisationCreate = null;
         }
 
-        public static BombCollectible Create(Bomb pBomb, Vector2I pPosition)
-		{
-			BombCollectible lBombCollectible = (BombCollectible)bombCollectible.Instantiate();
-			lBombCollectible.Position = (pPosition) * Map.DISTANCE_RANGE;
-            lBombCollectible.positionInGrid = pPosition;
-			lBombCollectible.ZIndex = 1;
-
-			lBombCollectible.bomb = pBomb;
-
-
-            lBombCollectible.mainColor = Color.FromHsv(GD.Randf(), mainColorSaturation, mainColorValue);
-            lBombCollectible.secondaryColor = Color.FromHsv(GD.Randf(), secondaryColorSaturation, secondaryColorValue);
-          
-
-            lBombCollectible.myTextureChoice = bodyTextureChoices[GD.RandRange(0, bodyTextureChoices.Count - 1)];
-
-
-            return lBombCollectible;
-		}
+      
 
         public void StartAnimation()
         {
+            Modulate = new Color(1,1,1,0);
             Tween lTween = CreateTween().SetParallel();
-            lTween.TweenProperty(this, TweenProp.MODULATE_ALPHA, 0, 0);
-            lTween.TweenProperty(this, TweenProp.MODULATE_ALPHA, 1, lRand.Randf()).SetDelay(lRand.Randf());
+            lTween.TweenProperty(this, TweenProp.MODULATE_ALPHA, 1, GD.Randf()).SetDelay(GD.Randf());
         }
 
-        public BombCollectible Duplicate()
+        public static BombCollectible Create(BombCollectiblePatron pPatron )
         {
-            BombCollectible lBombCollectible = (BombCollectible)base.Duplicate();
+            BombCollectible lBombCollectible = (BombCollectible)factory.Instantiate();
 
-            lBombCollectible.bomb = bomb.Duplicate() ;
-            lBombCollectible.positionInGrid = positionInGrid;
+            lBombCollectible.bomb = pPatron.bomb ;
+            lBombCollectible.positionInGrid = pPatron.positionInGrid;
+            lBombCollectible.Position = pPatron.positionInGrid * Map.DISTANCE_RANGE;
 
-            lBombCollectible.mainColor = mainColor;
-            lBombCollectible.secondaryColor = secondaryColor;
+            lBombCollectible.mainColor = pPatron.mainColor;
+            lBombCollectible.secondaryColor = pPatron.secondaryColor;
 
             lBombCollectible.showPatern = new Node2D();
 
-            lBombCollectible.myTextureChoice = myTextureChoice;
+            lBombCollectible.myTextureChoice = pPatron.texturePath;
 
-            
+            lBombCollectible.ZIndex = 1;
+
+
+
 
             return lBombCollectible;
         }
