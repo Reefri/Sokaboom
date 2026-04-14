@@ -63,13 +63,13 @@ namespace Com.IsartDigital.Sokoban
         private const int E_RANK_SIZE = 275;
         private const int F_RANK_SIZE = 250;
 
-        private const float S_RANK_ROTATION = -Mathf.Pi/4;
-        private const float A_RANK_ROTATION = 0;
-        private const float B_RANK_ROTATION = Mathf.Pi / 4;
-        private const float C_RANK_ROTATION = 0;
-        private const float D_RANK_ROTATION = -Mathf.Pi/4;
-        private const float E_RANK_ROTATION = 0;
-        private const float F_RANK_ROTATION = Mathf.Pi/4;
+        private const float S_RANK_ROTATION = 0;
+        private const float A_RANK_ROTATION = -Mathf.Pi / 6;
+        private const float B_RANK_ROTATION = Mathf.Pi / 6;
+        private const float C_RANK_ROTATION = -Mathf.Pi / 7;
+        private const float D_RANK_ROTATION = Mathf.Pi/ 7;
+        private const float E_RANK_ROTATION = -Mathf.Pi / 8;
+        private const float F_RANK_ROTATION = Mathf.Pi/8;
 
         private List<int> rankThresholds;
         private List<string> rankLetters;
@@ -300,6 +300,7 @@ namespace Com.IsartDigital.Sokoban
                     if (i > 0)
                     {
                         lTween.Parallel().TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0).SetDelay(tweenDuration);
+                        lTween.TweenProperty(rank, TweenProp.ROTATION, rankRotation[i], tweenDuration/2);
 
                         lTween.TweenProperty(rank, FONT_SIZE_PATH, rankSizes[i], tweenDuration / 2);
 
