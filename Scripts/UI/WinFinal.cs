@@ -21,12 +21,15 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Node2D explosionParticlesParent;
 
         private const string SCORE = "Score Total : ";
+        private const string FONT_SIZE_PATH = "theme_override_font_sizes/font_size";
         private int currentScore = 0;
         private int scoreToReach = 1;
 
 		private float sideFactor = 200f;
 		[Export] private float tweenDuration = 0.75f;
 		private float time = 0;
+
+        private float baseRankSize;
 
 		private Vector2 screenSize;
 
@@ -49,8 +52,26 @@ namespace Com.IsartDigital.Sokoban
         private const string E_RANK = "E";
         private const string F_RANK = "F";
 
+        private const int S_RANK_SIZE = 500;
+        private const int A_RANK_SIZE = 375;
+        private const int B_RANK_SIZE = 350;
+        private const int C_RANK_SIZE = 325;
+        private const int D_RANK_SIZE = 300;
+        private const int E_RANK_SIZE = 275;
+        private const int F_RANK_SIZE = 250;
+
+        private const float S_RANK_ROTATION = -Mathf.Pi/4;
+        private const float A_RANK_ROTATION = 0;
+        private const float B_RANK_ROTATION = Mathf.Pi / 4;
+        private const float C_RANK_ROTATION = 0;
+        private const float D_RANK_ROTATION = -Mathf.Pi/4;
+        private const float E_RANK_ROTATION = 0;
+        private const float F_RANK_ROTATION = Mathf.Pi/4;
+
         private List<int> rankThresholds;
         private List<string> rankLetters;
+        private List<int> rankSizes;
+        private List<float> rankRotation;
 
         public override void _Ready()
 		{
@@ -92,6 +113,30 @@ namespace Com.IsartDigital.Sokoban
                 A_RANK,
                 S_RANK,
             };
+
+            rankSizes = new List<int>()
+            {
+                F_RANK_SIZE,
+                E_RANK_SIZE,
+                D_RANK_SIZE,
+                C_RANK_SIZE,
+                B_RANK_SIZE,
+                A_RANK_SIZE,
+                S_RANK_SIZE,
+            };
+
+            rankRotation = new List<float>()
+            {
+                F_RANK_ROTATION,
+                E_RANK_ROTATION,
+                D_RANK_ROTATION,
+                C_RANK_ROTATION,
+                B_RANK_ROTATION,
+                A_RANK_ROTATION,
+                S_RANK_ROTATION,
+            };
+
+            baseRankSize = (float)rank.Get(FONT_SIZE_PATH);
         }
 
 		private void SettingInitialPositions()
@@ -245,8 +290,19 @@ namespace Com.IsartDigital.Sokoban
             {
                 if (currentScore >= rankThresholds[i])
                 {
-                    lTween.TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0).SetDelay(tweenDuration);
-                    
+                    if (i > 0)
+                    {
+                        lTween.Parallel().TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0).SetDelay(tweenDuration);
+
+                        lTween.TweenProperty(rank, FONT_SIZE_PATH, rankSizes[i], tweenDuration / 2);
+
+
+                    }
+
+                    else
+                        lTween.TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0);
+
+
                 }
             }
 
