@@ -1,44 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://butgdmb1blel8"]
+[gd_scene load_steps=7 format=3 uid="uid://butgdmb1blel8"]
 
 [ext_resource type="Texture2D" uid="uid://c058ptdaqt06b" path="res://Assets/NewAssets/Tile_Alone.png" id="1_h8b8l"]
-[ext_resource type="Texture2D" uid="uid://bmqd145fsqmt5" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_First_Anim.png" id="2_42mrm"]
 [ext_resource type="Texture2D" uid="uid://dtefyhdnc3oc6" path="res://Assets/NewAssets/Box_Alone.png" id="3_slgku"]
 [ext_resource type="Texture2D" uid="uid://xrg4wd6cv3jj" path="res://Assets/NewAssets/Wall_Alone.png" id="4_gcivd"]
 [ext_resource type="Texture2D" uid="uid://cr3sm7jmebs5u" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_Second_Anim.png" id="4_vjw5e"]
-
-[sub_resource type="Animation" id="Animation_x5cq2"]
-resource_name = "move"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("moveBox/player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(0.217638, 0.105112, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(64, 0), Vector2(128, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("moveBox/box:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 0.164939, 1),
-"update": 0,
-"values": [Vector2(128, 0), Vector2(128, 0), Vector2(192, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qqsa2"]
-_data = {
-"move": SubResource("Animation_x5cq2")
-}
 
 [sub_resource type="Animation" id="Animation_ocmpl"]
 resource_name = "failToMoveBox"
@@ -78,40 +43,7 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 
-[node name="moveBox" type="Node2D" parent="."]
-
-[node name="Ground06" type="Sprite2D" parent="moveBox"]
-texture = ExtResource("1_h8b8l")
-
-[node name="Ground07" type="Sprite2D" parent="moveBox"]
-position = Vector2(64, 0)
-texture = ExtResource("1_h8b8l")
-
-[node name="Ground08" type="Sprite2D" parent="moveBox"]
-position = Vector2(128, 0)
-texture = ExtResource("1_h8b8l")
-
-[node name="Ground09" type="Sprite2D" parent="moveBox"]
-position = Vector2(192, 0)
-texture = ExtResource("1_h8b8l")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="moveBox"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_qqsa2")
-}
-autoplay = "move"
-
-[node name="player" type="Sprite2D" parent="moveBox"]
-position = Vector2(25.4984, 0)
-texture = ExtResource("2_42mrm")
-
-[node name="box" type="Sprite2D" parent="moveBox"]
-position = Vector2(128, 0)
-texture = ExtResource("3_slgku")
-
 [node name="failedToMoveBox" type="Node2D" parent="."]
-position = Vector2(0, 147)
 
 [node name="Ground06" type="Sprite2D" parent="failedToMoveBox"]
 texture = ExtResource("1_h8b8l")
