@@ -258,7 +258,7 @@ namespace Com.IsartDigital.Sokoban
 
             Tween lTween = CreateTween().
                 SetTrans(Tween.TransitionType.Expo).
-                SetEase(Tween.EaseType.Out).Parallel();
+                SetEase(Tween.EaseType.Out).SetParallel();
 
             lTween.TweenProperty(hoverRenderer,TweenProp.SCALE, Vector2.One * 2,0.3f);
             lTween.TweenProperty(head,TweenProp.MODULATE, new Color(1,1,1),0.3f);
@@ -271,9 +271,8 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Process(double pDelta)
         {
-            //GD.Print(mainColor);
-            //((ShaderMaterial)body.Material).SetShaderParameter("MainColor", mainColor);
-            //((ShaderMaterial)body.Material).SetShaderParameter("SecondaryColor", secondaryColor);
+            ((ShaderMaterial)body.Material).SetShaderParameter("MainColor", mainColor);
+            ((ShaderMaterial)body.Material).SetShaderParameter("SecondaryColor", secondaryColor);
 
         }
     }
