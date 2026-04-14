@@ -126,7 +126,6 @@ anchor_left = 0.3
 anchor_top = 0.496
 anchor_right = 0.7
 anchor_bottom = 0.62
-offset_right = -3.05176e-05
 grow_horizontal = 2
 placeholder_text = "ID_CONFIRM_PASSWORD"
 alignment = 1

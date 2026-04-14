@@ -61,15 +61,15 @@ alignment = 1
 
 [node name="BeColorblind" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
-text = "KEY_MAKE_COLORBLIND"
+text = "ID_MAKE_COLORBLIND"
 
 [node name="CorrectColorBlindness" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
-text = "KEY_CORRECT_COLORBLIND"
+text = "ID_CORRECT_COLORBLIND"
 
 [node name="NormalVision" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
-text = "KEY_NORMAL_VISION"
+text = "ID_NORMAL_VISION"
 
 [node name="ColorFiltreButton" type="Button" parent="."]
 z_index = 4
