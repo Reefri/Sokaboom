@@ -11,7 +11,6 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] private Label congratulationText;
 		[Export] Label ScoreFinal;
-		[Export] Label winText;
 
 		[Export] Button highScore;
 		[Export] Button menu;
@@ -54,8 +53,6 @@ namespace Com.IsartDigital.Sokoban
 
 			highScore.Position = new Vector2(screenSize.X + sideFactor, screenSize.Y / 2) - highScore.Size/2;
 
-			winText.Position = new Vector2(screenSize.X + sideFactor, screenSize.Y / 2 - sideFactor * 2) - winText.Size/2;
-
             ScoreFinal.Scale = Vector2.Zero;
 
             
@@ -91,8 +88,6 @@ namespace Com.IsartDigital.Sokoban
 
             lTween.Parallel().TweenProperty(ScoreFinal, TweenProp.POSITION, screenSize / 2 + Vector2.Up * sideFactor/1.25f - ScoreFinal.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
 
-            lTween.Parallel().TweenProperty(winText, TweenProp.POSITION, screenSize / 2 + Vector2.Up * sideFactor * 3 - winText.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
-
 
             lTween.SetEase(Tween.EaseType.Out)
                 .SetTrans(Tween.TransitionType.Expo);
@@ -106,18 +101,10 @@ namespace Com.IsartDigital.Sokoban
             Callable.From(() =>
                          highScore.PivotOffset = new Vector2(0, highScore.Size.Y))
                     );
-          
-            lTween.TweenCallback
-                    (
-            Callable.From(() =>
-                 winText.PivotOffset = new Vector2(0, winText.Size.Y))
-                    );
 
             lTween.TweenProperty(menu, TweenProp.ROTATION, -Mathf.Pi/2 , tweenDuration);
 
             lTween.Parallel().TweenProperty(highScore, TweenProp.ROTATION, -Mathf.Pi / 2, tweenDuration);
-
-            lTween.Parallel().TweenProperty(winText, TweenProp.ROTATION, -Mathf.Pi / 2, tweenDuration);
 
 
             lTween.SetEase(Tween.EaseType.In)
@@ -128,8 +115,6 @@ namespace Com.IsartDigital.Sokoban
             lTween.Parallel().TweenProperty(highScore, TweenProp.ROTATION, 0, tweenDuration/2);
 
             lTween.Parallel().TweenProperty(ScoreFinal, TweenProp.ROTATION, 0, tweenDuration / 2);
-
-            lTween.Parallel().TweenProperty(winText, TweenProp.ROTATION, 0, tweenDuration / 2);
 
 
             lTween.TweenCallback
