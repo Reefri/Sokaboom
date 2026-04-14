@@ -42,10 +42,6 @@ namespace Com.IsartDigital.Sokoban.UI
         private const string TWEEN_FOR_O = "o";
 
 
-        private const string OLD_GRAPHICS = "ID_OLDGRAPHICS";
-        private const string NEW_GRAPHICS = "ID_NEWGRAPHICS";
-
-
         private const float WAIT_TIME_START = 0.05f;
         private const float LONG_DELAY = 1.5f;
         private const float SHORT_DELAY = 0.2f;
