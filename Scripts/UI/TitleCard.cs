@@ -11,7 +11,7 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Label so;
         [Export] private Label letterK;
         [Export] private Label letterA;
-        [Export] private Sprite2D explosion;
+        [Export] private TextureRect explosion;
         [Export] private Control boum;
         [Export] private Label letterB;
         [Export] private Label letterO;
@@ -45,8 +45,7 @@ namespace Com.IsartDigital.Sokoban.UI
         private const float WAIT_TIME_START = 0.05f;
         private const float LONG_DELAY = 1.5f;
         private const float SHORT_DELAY = 0.2f;
-        private const float EXPLOSION_SCALE = 0.85f;
-        private const float EXPLOSION_SKEW = 23.2f;
+        private const float EXPLOSION_SCALE = 1f;
 
         private const int INITIAL_Y_POSITION = 265;
         private const int NUMBER_OF_O = 18;
@@ -59,7 +58,7 @@ namespace Com.IsartDigital.Sokoban.UI
 		{
             finalPositionOfSo = so.Position;
 
-            so.Position = new Vector2(title.Size.X / 2, NUMBER_OF_O);
+            so.Position = new Vector2(title.Size.X / 2, so.Position.Y);
             posInitK = letterK.Position;
             posInitA = letterA.Position;
 
@@ -140,7 +139,6 @@ namespace Com.IsartDigital.Sokoban.UI
             tween.TweenProperty(explosion, TweenProp.VISIBLE, true, 0f).SetDelay(1f);
             tween.TweenProperty(explosion, TweenProp.SCALE, explosion.Scale, 1f).From(Vector2.Zero).SetDelay(1f);
             tween.TweenProperty(explosion, TweenProp.ROTATION, explosion.Rotation, 1f).From(-explosion.Rotation).SetDelay(1f);
-            tween.TweenProperty(explosion, TweenProp.SKEW, explosion.Skew, 1f).From(-explosion.Skew).SetDelay(1f);
             tween.TweenCallback(
                 Callable.From(() =>
                 {
@@ -186,7 +184,6 @@ namespace Com.IsartDigital.Sokoban.UI
             boum.Scale = Vector2.One;
 
             explosion.Rotation = Mathf.DegToRad(ROTATION_FOR_TWEEN);
-            explosion.Skew = Mathf.DegToRad(EXPLOSION_SKEW);
 
             boum.Rotation = Mathf.DegToRad(ROTATION_FOR_TWEEN);
 

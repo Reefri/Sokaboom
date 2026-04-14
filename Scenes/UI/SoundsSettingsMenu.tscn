@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqg1ggvq74h73"]
+[gd_scene load_steps=6 format=3 uid="uid://bqg1ggvq74h73"]
 
 [ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="1_2gbl8"]
 [ext_resource type="Script" path="res://Scripts/UI/SoundsSettingsMenu.cs" id="1_f5j28"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="1_hfjd5"]
-[ext_resource type="Script" path="res://Scripts/UI/SoundSettings.cs" id="1_v3g5r"]
 
 [sub_resource type="Gradient" id="Gradient_l7pab"]
 colors = PackedColorArray(1, 0.341176, 0, 1, 1, 1, 0, 1)
@@ -26,17 +25,25 @@ backToTitleButton = NodePath("button/Back")
 
 [node name="button" type="Control" parent="."]
 layout_mode = 1
-anchor_right = 0.3
-anchor_bottom = 0.162
-offset_right = 0.399994
-offset_bottom = 0.0240021
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_top = -225.0
+offset_right = 275.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("1_hfjd5")
 
 [node name="Back" type="Button" parent="button"]
 layout_mode = 1
-offset_left = 74.0
-offset_right = 277.0
-offset_bottom = 82.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -51,13 +58,14 @@ icon_alignment = 1
 
 [node name="overallLabel" type="Label" parent="."]
 layout_mode = 2
-anchor_top = 0.397
+anchor_left = 0.03
+anchor_top = 0.233
 anchor_right = 0.347
-anchor_bottom = 0.461
-offset_left = 32.0
-offset_top = -0.256012
+anchor_bottom = 0.298
+offset_left = -0.400002
+offset_top = 0.359985
 offset_right = 0.255981
-offset_bottom = 0.271973
+offset_bottom = -0.192017
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -66,35 +74,35 @@ text = "ID_OVERALLVOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="musicLabel" type="Label" parent="."]
+[node name="overallVolume" type="HSlider" parent="overallLabel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.028
-anchor_top = 0.833
-anchor_right = 0.347
-anchor_bottom = 0.898
-offset_left = -0.256001
-offset_top = 0.0559692
-offset_right = 0.255981
-offset_bottom = -0.0640259
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 25
-text = "ID_MUSICVOLUME"
-horizontal_alignment = 1
-vertical_alignment = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.01599
+offset_top = -7.82399
+offset_right = 191.984
+offset_bottom = 8.17601
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(-8, 8)
+min_value = -30.0
+max_value = 10.0
 
 [node name="soundsLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.615
+anchor_left = 0.03
+anchor_top = 0.474
 anchor_right = 0.347
-anchor_bottom = 0.68
-offset_left = 32.0
-offset_top = -0.100006
+anchor_bottom = 0.539
+offset_left = -0.400002
+offset_top = 0.0799561
 offset_right = 0.255981
-offset_bottom = -0.220001
+offset_bottom = -0.0400391
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -103,15 +111,70 @@ text = "ID_SOUNDSVOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="soundsVolume" type="HSlider" parent="soundsLabel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 192.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(-8, 8)
+min_value = -30.0
+max_value = 10.0
+
+[node name="musicLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.707
+anchor_right = 0.347
+anchor_bottom = 0.772
+offset_left = -0.240002
+offset_top = 0.440002
+offset_right = 0.271973
+offset_bottom = 0.320007
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "ID_MUSICVOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="musicVolume" type="HSlider" parent="musicLabel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 192.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(-8, 8)
+min_value = -30.0
+max_value = 10.0
+
 [node name="soundsSettingsLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -383.0
-offset_top = 103.0
-offset_right = 385.0
-offset_bottom = 206.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.191
+offset_left = 4.0
+offset_top = 2.0
+offset_right = -4.0
+offset_bottom = -0.280014
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -120,39 +183,3 @@ theme_override_font_sizes/font_size = 75
 text = "ID_VOLUMESETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("overallVolumeSettings", "SoundsVolumeSettings", "MusicsVolumeSettings")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.339
-anchor_top = 0.188
-anchor_right = 0.763
-anchor_bottom = 1.118
-offset_left = 0.880005
-offset_top = -0.0399933
-offset_right = -206.04
-offset_bottom = -535.44
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.82273, 2.14273)
-theme_override_constants/separation = 100
-alignment = 1
-script = ExtResource("1_v3g5r")
-overallVolumeSettings = NodePath("overallVolume")
-SoundsVolumeSettings = NodePath("soundsVolume")
-MusicsVolumeSettings = NodePath("musicVolume")
-
-[node name="overallVolume" type="HSlider" parent="VBoxContainer"]
-layout_mode = 2
-min_value = -30.0
-max_value = 10.0
-
-[node name="soundsVolume" type="HSlider" parent="VBoxContainer"]
-layout_mode = 2
-min_value = -30.0
-max_value = 10.0
-
-[node name="musicVolume" type="HSlider" parent="VBoxContainer"]
-layout_mode = 2
-min_value = -30.0
-max_value = 10.0
