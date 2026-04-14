@@ -78,11 +78,8 @@ namespace Com.IsartDigital.Sokoban
         {
             if (!transition && !GameManager.GetInstance().CheckWin())
             {
-                if (GameManager.GetInstance().currentPosition.nextValue == null) redoButton.Disabled = true;
-                else redoButton.Disabled = false;
-
-                if (GameManager.GetInstance().currentPosition.previousValue == null) undoButton.Disabled = true;
-                else undoButton.Disabled = false;
+                redoButton.Disabled = (GameManager.GetInstance().currentPosition.nextValue == null);
+                undoButton.Disabled = (GameManager.GetInstance().currentPosition.previousValue == null);
             }
         }
 

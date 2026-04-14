@@ -300,6 +300,24 @@ namespace Com.IsartDigital.Sokoban
                 Player.GetInstance().canInput = false;
                 Banderole.GetInstance().winFinal = false;
                 JuicinessManager.GetInstance().timeBeforeBanderoles.Start();
+
+                
+
+            }
+            else
+            {
+                if (positionForBoxSignal.Count > 0 &&
+               listOfTargetWithoutContainer.Count == 0 &&
+               currentPosition.value.targetsPos.Count == currentLevel.targetsPos.Count)
+                {
+                    waitBeforeBoxSignal.Start();
+
+                }
+                else
+                {
+                    waitBeforeBoxSignal.Stop();
+
+                }
             }
         }
 
@@ -464,36 +482,27 @@ namespace Com.IsartDigital.Sokoban
             return lListOfPos;
         }
 
+
+        private List<Vector2I> listOfTargetWithoutContainer;
+
         public bool CheckWin()
         {
-            if (startAnimation) return false;
+            if (startAnimation || currentPosition.value.targetsPos.Count != currentLevel.targetsPos.Count) return false;
 
-            List<Vector2I> lListOfTargetWihtoutContainer = GetTargetWithoutBoxPosition();
+            listOfTargetWithoutContainer = GetTargetWithoutBoxPosition();
             positionForBoxSignal = GetBoxWithoutTargetPosition();
 
-            if (0 < lListOfTargetWihtoutContainer.Count) { return false; }
-
-
-
-            if (positionForBoxSignal.Count > 0 && 
-                lListOfTargetWihtoutContainer.Count==0 && 
-                currentPosition.value.targetsPos.Count == currentLevel.targetsPos.Count)
-            {
-                waitBeforeBoxSignal.Start();
-                return false;
-            }
-
-            waitBeforeBoxSignal.Stop();
-
-
-            return currentPosition.value.targetsPos.Count == currentLevel.targetsPos.Count;
+            return positionForBoxSignal.Count == 0 && 
+                listOfTargetWithoutContainer.Count == 0;
         }
 
 
         private void CreateBoxSignal()
         {
+
             foreach (Vector2I lBoxPosition in positionForBoxSignal)
             {
+
                 BoxSignal.Create(lBoxPosition);
             }
         }
