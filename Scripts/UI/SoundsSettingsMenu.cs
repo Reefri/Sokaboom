@@ -15,8 +15,6 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
-			base._Ready();
-
             backToTitleButton.Pressed += BackToTitle;
 
             overallVolumeSettings.ValueChanged += UpdateOverallVolume;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfwcov3l4y0so"]
+[gd_scene load_steps=3 format=3 uid="uid://dvgv5f1dyfypp"]
 
 [ext_resource type="Texture2D" uid="uid://dv0b5mv2nelbm" path="res://Assets/Bomb/Collectible/fireworkBody/bubble.png" id="1_4bili"]
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/MiniCloud.cs" id="2_n1a7r"]
