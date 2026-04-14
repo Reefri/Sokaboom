@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://2nmheek0be6r"]
 
 [ext_resource type="Script" path="res://Scenes/Accessibilite/ColorFilterPanel.cs" id="1_ncsk8"]
-[ext_resource type="Theme" path="res://Scenes/UI/Button.tres" id="1_xjfk4"]
+[ext_resource type="Theme" uid="uid://dh04r6qga50r" path="res://Scenes/UI/Button.tres" id="1_xjfk4"]
 [ext_resource type="Texture2D" uid="uid://3xgfs8ca2lx3" path="res://Scenes/Accessibilite/eye.png" id="2_s0tjg"]
 [ext_resource type="Texture2D" uid="uid://ccjyfjll241sc" path="res://Scenes/Accessibilite/eyeBackground.png" id="3_l4nan"]
 [ext_resource type="Shader" uid="uid://ciyyxp50e2e53" path="res://Scenes/Accessibilite/ColorWheel.tres" id="4_2p0cm"]
@@ -61,15 +61,15 @@ alignment = 1
 
 [node name="BeColorblind" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
-text = "KEY_MAKE_COLORBLIND"
+text = "ID_MAKE_COLORBLIND"
 
 [node name="CorrectColorBlindness" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
-text = "KEY_CORRECT_COLORBLIND"
+text = "ID_CORRECT_COLORBLIND"
 
 [node name="NormalVision" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
-text = "KEY_NORMAL_VISION"
+text = "ID_NORMAL_VISION"
 
 [node name="ColorFiltreButton" type="Button" parent="."]
 z_index = 4

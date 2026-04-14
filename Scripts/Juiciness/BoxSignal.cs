@@ -24,7 +24,6 @@ namespace Com.IsartDigital.Sokoban {
 
 		public override void _Ready()
 		{
-
 			this.Texture = Box.texture;
 
 			myMaterial = (ShaderMaterial)Material;
