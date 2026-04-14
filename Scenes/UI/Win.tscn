@@ -129,25 +129,29 @@ texture = SubResource("GradientTexture2D_wotmg")
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -306.5
-offset_top = 15.0
-offset_right = 306.5
-offset_bottom = 224.0
+anchors_preset = -1
+anchor_left = 0.234
+anchor_top = 0.023
+anchor_right = 0.766
+anchor_bottom = 0.362
+offset_left = -0.0680237
+offset_top = 0.0959988
+offset_right = 0.0679932
+offset_bottom = -10.576
 grow_horizontal = 2
 texture = ExtResource("5_337bn")
 
 [node name="Win" type="Label" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -203.0
-offset_top = 34.0
-offset_right = 203.0
-offset_bottom = 154.0
+anchors_preset = -1
+anchor_left = 0.324
+anchor_top = 0.052
+anchor_right = 0.676
+anchor_bottom = 0.238
+offset_left = -0.247986
+offset_top = 0.304001
+offset_right = 0.247925
+offset_bottom = -0.223999
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0.40019, 1, 0.369744, 1)
@@ -160,13 +164,14 @@ vertical_alignment = 1
 
 [node name="Stars" type="Control" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -190.0
-offset_top = 91.0
-offset_right = 190.0
-offset_bottom = 228.0
+anchor_left = 0.335
+anchor_top = 0.14
+anchor_right = 0.665
+anchor_bottom = 0.352
+offset_left = 0.0799866
+offset_top = 0.279999
+offset_right = -0.0800171
+offset_bottom = -0.0960236
 grow_horizontal = 2
 
 [node name="StarOne" type="AnimatedSprite2D" parent="ColorRect/Stars"]
@@ -221,14 +226,14 @@ one_shot = true
 [node name="Score" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.462
-anchor_top = 0.694
-anchor_right = 0.538
-anchor_bottom = 0.748
-offset_left = -85.224
-offset_top = 29.288
-offset_right = 85.224
-offset_bottom = 97.296
+anchor_left = 0.388
+anchor_top = 0.739
+anchor_right = 0.612
+anchor_bottom = 0.898
+offset_left = 0.0239868
+offset_top = 0.127991
+offset_right = -0.0240479
+offset_bottom = 0.0959473
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 75
@@ -255,13 +260,15 @@ defaultRotation = 180
 
 [node name="Next" type="Button" parent="Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 824.0
-offset_top = -359.0
-offset_right = 1170.0
-offset_bottom = -13.0
+anchors_preset = -1
+anchor_left = 0.715
+anchor_top = 0.483
+anchor_right = 1.016
+anchor_bottom = 1.017
+offset_left = 0.319946
+offset_top = -23.984
+offset_right = -0.432007
+offset_bottom = -24.0161
 grow_vertical = 0
 rotation = 3.14159
 pivot_offset = Vector2(173, 185)
@@ -286,13 +293,15 @@ script = ExtResource("3_ydfsl")
 
 [node name="Restart" type="Button" parent="Control2"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -296.0
-offset_right = 300.0
-offset_bottom = -46.0
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.543
+anchor_right = 0.26
+anchor_bottom = 0.929
+offset_left = 0.463997
+offset_top = 0.135986
+offset_right = 0.47998
+offset_bottom = 0.00799561
 grow_vertical = 0
 pivot_offset = Vector2(125, 125)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
