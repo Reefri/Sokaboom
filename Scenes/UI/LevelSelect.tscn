@@ -447,6 +447,6 @@ theme_override_styles/hover = ExtResource("8_f6wqv")
 theme_override_styles/pressed = ExtResource("8_f6wqv")
 theme_override_styles/disabled = ExtResource("8_f6wqv")
 theme_override_styles/focus = ExtResource("8_f6wqv")
-text = "ID_BACK"
+text = "ID_MENU"
 
 [connection signal="pressed" from="unlock" to="." method="UnlockPressed"]
