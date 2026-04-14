@@ -40,7 +40,7 @@ ID_DETAILS_B,^ Here 90° rotation,^ Ici elle tourne à 90°
 ID_DETAILS_CA,,- Attention ! Les caisses et cibles sont destructibles !
 ID_DETAILS_CB,,- s’il y a plus de caisses que de cibles@ détruisez-les
 
-
+ID_MENU,Title Screen,Ecran Titre
 ID_NEXT,Next,Suivant
 
 ID_VOLUMESETTINGS,Volume Setting,Paramètre du Son
@@ -52,52 +52,17 @@ ID_MAKE_COLORBLIND,Color like colorblind,Couleur comme daltonien
 ID_CORRECT_COLORBLIND,Correct Color for colorblind,Couleur corrigé pour daltonien
 ID_NORMAL_VISION,Normal Color,Couleur d'origine
 
-
+ID_UNLOCK,Unlock,Debloque
+ID_TUTORIAL,Tutorial,Tutoriel
+ID_LEVEL,Level ,Niveau 
 
 ID_BY, by , par 
 ID_STEPS,Steps : ,Pas : 
 
-ID_UNLOCK,Unlock,Debloque
-ID_TUTORIAL,Tutorial,Tutoriel
-ID_LEVEL,Level ,Niveau 
 ID_WIN,Win !,Victoire !
-ID_RESTART,Restart,Recommencer
-ID_UNDO,Undo,Retour Arrière
-ID_REDO,Redo,Retour Avant
+ID_PERFECT,PERFECT !,PARFAIT !
 
-
-
-
-
-
-
-ID_WIN_FINAL,Win Final,Victoire Final
-
-
-
-ID_MENU,Title Screen,Ecran Titre
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ID_CONGRATULATIONS,CONGRATULATION !,FÉLICITATION !
 
 ID_ETHANM_A,Mirror +,Miroir +
 ID_ETHANF_A,Arrow,Flèche
