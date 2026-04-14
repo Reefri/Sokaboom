@@ -183,10 +183,10 @@ grow_vertical = 2
 theme = ExtResource("1_6f0nn")
 script = ExtResource("1_lpuuc")
 stars = NodePath("ColorRect/Stars")
-confettis = NodePath("GPUParticles2D")
+confettis = NodePath("SealingParts")
 scoreText = NodePath("ColorRect/Score")
 perfectText = NodePath("perfect")
-perfectParticles = NodePath("perfect/GPUParticles2D")
+perfectParticles = NodePath("perfect/PerfectParts")
 restart = NodePath("Control2/Restart")
 next = NodePath("Control/Next")
 explosionParticles = NodePath("explosionParticles")
@@ -313,7 +313,7 @@ text = "Score : "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="SealingParts" type="GPUParticles2D" parent="."]
 position = Vector2(518, -19)
 amount = 800
 process_material = SubResource("ParticleProcessMaterial_hwb00")
@@ -406,7 +406,7 @@ text = "ID_PERFECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="perfect"]
+[node name="PerfectParts" type="GPUParticles2D" parent="perfect"]
 show_behind_parent = true
 position = Vector2(528, 65)
 amount = 500
