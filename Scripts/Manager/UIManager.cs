@@ -87,7 +87,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToSoundsSettings()
         {
-            MenuTransition.Create(ContinuetoSettings);
+            //MenuTransition.Create(ContinuetoSettings);
+            ContinuetoSettings();
         }
         private void ContinuetoSettings()
         {
@@ -103,7 +104,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToTitle()
         {
-            MenuTransition.Create(ContinueToTitle);
+            //MenuTransition.Create(ContinueToTitle);
+            ContinueToTitle();
         }
 
         public void ContinueToTitle()
@@ -114,7 +116,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToHelp()
         {
-            MenuTransition.Create(ContinueToHelp);
+            //MenuTransition.Create(ContinueToHelp);
+            ContinueToHelp();
         }
 
         private void ContinueToHelp()
@@ -177,7 +180,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToHightScore()
         {
-            MenuTransition.Create(ContinueToHightScore);
+            //MenuTransition.Create(ContinueToHightScore);
+            ContinueToHightScore();
         }
 
         public void ContinueToHightScore()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://b078nli7whk52"]
 
-[ext_resource type="Theme" uid="uid://dh04r6qga50r" path="res://Scenes/UI/Button.tres" id="1_6f0nn"]
+[ext_resource type="Theme" uid="uid://i8isgllrm6hc" path="res://Scenes/UI/Button.tres" id="1_6f0nn"]
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
 [ext_resource type="Texture2D" uid="uid://vu3lr2iiu77m" path="res://Assets/Stars/NewEmptyStar.png" id="3_sy2b5"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="3_ydfsl"]
