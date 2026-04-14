@@ -20,7 +20,6 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene uiHightScore = GD.Load<PackedScene>("res://Scenes/UI/HightScore.tscn");
         private PackedScene uiSoundsSettings = GD.Load<PackedScene>("res://Scenes/UI/SoundsSettingsMenu.tscn");
 
-        private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
 
         private PackedScene uiSpiral = GD.Load<PackedScene>("res://Scenes/Juiciness/Spiral.tscn");
 
