@@ -2,6 +2,7 @@ using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Formats.Asn1.AsnWriter;
 
 // Author : Ethan Masse
 
@@ -15,8 +16,9 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Label scoreText;
         [Export] private Label perfectText;
         [Export] private GpuParticles2D perfectParticles;
-		private int score;
-		private int scoreToReach;
+		private int score ;
+
+        private int scoreToReach;
 		private int numberStars;
 
         private float time = 0;
@@ -70,6 +72,7 @@ namespace Com.IsartDigital.Sokoban
                     if (score >= scoreToReach)
                     {
                         score = scoreToReach;
+                        score = (score >= 0) ? score : 0;
                         showScore = false;
 
                         if (score >= 5000)
@@ -112,9 +115,7 @@ namespace Com.IsartDigital.Sokoban
                 scoreToReach = 1000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
 				numberStars = 1;
             }
-
-            score = (score>0)?score:0;
-
+            score = (score >= 0) ? score : 0;
 
             for (int i = 0; i < numberStars; i++)
 			{
