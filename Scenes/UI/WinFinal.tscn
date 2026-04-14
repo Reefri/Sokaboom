@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_qfx27"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_cp02b"]
 
-[node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "congratulationText", "ScoreFinal", "winText", "highScore", "menu", "fireworksPos")]
+[node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "congratulationText", "ScoreFinal", "highScore", "menu", "fireworksPos")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,6 @@ script = ExtResource("1_0l42t")
 background = NodePath("TextureRect")
 congratulationText = NodePath("congratulation")
 ScoreFinal = NodePath("Score")
-winText = NodePath("Win")
 highScore = NodePath("Buttons/HightScore")
 menu = NodePath("Buttons/Menu")
 fireworksPos = NodePath("fireWorkPosition")
@@ -35,36 +34,17 @@ grow_vertical = 2
 texture = ExtResource("2_mdaxs")
 expand_mode = 1
 
-[node name="Win" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -293.0
-offset_right = 250.0
-offset_bottom = -224.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "ID_WIN_FINAL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Score" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -181.0
-offset_top = -163.0
-offset_right = 181.0
-offset_bottom = -108.0
+anchors_preset = -1
+anchor_left = 0.343
+anchor_top = 0.238
+anchor_right = 0.657
+anchor_bottom = 0.344
+offset_left = -0.136017
+offset_top = 6.776
+offset_right = 0.135986
+offset_bottom = -6.912
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -77,9 +57,10 @@ vertical_alignment = 1
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 97.0
+offset_right = -94.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -87,15 +68,15 @@ script = ExtResource("2_qfx27")
 
 [node name="HightScore" type="Button" parent="Buttons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -75.0
-offset_right = 150.0
-offset_bottom = 75.0
+anchors_preset = -1
+anchor_left = 0.37
+anchor_top = 0.384
+anchor_right = 0.63
+anchor_bottom = 0.616
+offset_left = -0.23999
+offset_top = 0.167999
+offset_right = 0.239929
+offset_bottom = -0.16803
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -109,15 +90,15 @@ text = "ID_HIGHCORE"
 
 [node name="Menu" type="Button" parent="Buttons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 97.0
-offset_right = 150.0
-offset_bottom = 247.0
+anchors_preset = -1
+anchor_left = 0.37
+anchor_top = 0.65
+anchor_right = 0.63
+anchor_bottom = 0.881
+offset_left = -0.23999
+offset_top = -0.200012
+offset_right = 0.239929
+offset_bottom = 0.112
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -130,19 +111,20 @@ theme_override_styles/focus = ExtResource("4_cp02b")
 text = "ID_MENU"
 
 [node name="fireWorkPosition" type="Node2D" parent="."]
+visible = false
 scale = Vector2(1.5, 1.5)
 
 [node name="congratulation" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -357.0
-offset_right = 583.0
-offset_bottom = -149.0
+anchors_preset = -1
+anchor_left = 0.082
+anchor_top = -0.051
+anchor_right = 0.92
+anchor_bottom = 0.27
+offset_left = 0.535995
+offset_top = 0.0480003
+offset_right = -3.83997
+offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.396078, 0, 1)

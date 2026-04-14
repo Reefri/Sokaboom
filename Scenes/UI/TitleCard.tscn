@@ -164,35 +164,26 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_sb341")
 
-[node name="Font" type="ColorRect" parent="."]
-visible = false
-z_index = -2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.476484, 0, 1)
-
 [node name="Title" type="Control" parent="."]
 z_index = 1
 layout_mode = 1
-anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 205.0
+anchor_bottom = 0.316
+offset_bottom = 0.231995
 grow_horizontal = 2
 theme = ExtResource("2_5ibq2")
 
 [node name="So" type="Label" parent="Title"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -366.0
-offset_top = 18.0
-offset_right = -250.0
-offset_bottom = 155.0
+anchors_preset = -1
+anchor_left = 0.182
+anchor_top = 0.088
+anchor_right = 0.283
+anchor_bottom = 0.756
+offset_left = 0.335983
+offset_top = -0.0400009
+offset_right = -0.0160217
+offset_bottom = 0.019989
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
@@ -200,13 +191,14 @@ text = "So"
 
 [node name="BOUM !" type="Control" parent="Title"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -89.0
-offset_top = 10.0
-offset_right = 369.0
-offset_bottom = 215.0
+anchor_left = 0.423
+anchor_top = 0.049
+anchor_right = 0.82
+anchor_bottom = 1.049
+offset_left = -0.296021
+offset_top = -0.0450001
+offset_right = 0.359924
+offset_bottom = -0.0449982
 grow_horizontal = 2
 pivot_offset = Vector2(229, 102)
 
@@ -219,21 +211,24 @@ texture = ExtResource("3_e1lnu")
 
 [node name="BOUM" type="Control" parent="Title/BOUM !"]
 layout_mode = 1
-anchors_preset = 0
-offset_top = -20.0
-offset_right = 458.0
-offset_bottom = 185.0
+anchor_left = -0.054
+anchor_top = -0.092
+anchor_right = 1.005
+anchor_bottom = 1.142
+offset_left = 24.732
+offset_top = -1.14
+offset_right = -2.29001
+offset_bottom = -49.11
 rotation = 0.10472
 
 [node name="B" type="Label" parent="Title/BOUM !/BOUM"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -229.0
-offset_right = -130.0
-offset_bottom = 205.0
+anchors_preset = -1
+anchor_right = 0.216
+anchor_bottom = 1.0
+offset_right = 0.0719986
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
@@ -241,12 +236,12 @@ text = "B"
 
 [node name="O" type="Label" parent="Title/BOUM !/BOUM"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -139.0
-offset_right = -21.0
-offset_bottom = 205.0
+anchors_preset = -1
+anchor_left = 0.197
+anchor_right = 0.454
+anchor_bottom = 1.0
+offset_left = -0.226006
+offset_right = 0.0679932
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
@@ -256,12 +251,12 @@ text = "O
 
 [node name="U" type="Label" parent="Title/BOUM !/BOUM"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -29.0
-offset_right = 82.0
-offset_bottom = 205.0
+anchors_preset = -1
+anchor_left = 0.437
+anchor_right = 0.679
+anchor_bottom = 1.0
+offset_left = -0.145996
+offset_right = 0.0180054
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
@@ -271,12 +266,12 @@ text = "U
 
 [node name="M" type="Label" parent="Title/BOUM !/BOUM"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 71.0
-offset_right = 209.0
-offset_bottom = 205.0
+anchors_preset = -1
+anchor_left = 0.655
+anchor_right = 0.956
+anchor_bottom = 1.0
+offset_left = 0.00997925
+offset_right = 0.151978
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
@@ -286,13 +281,15 @@ text = "M
 
 [node name="!" type="Label" parent="Title/BOUM !"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 201.0
-offset_top = -30.0
-offset_right = 242.0
-offset_bottom = 175.0
+anchors_preset = -1
+anchor_left = 0.939
+anchor_top = -0.146
+anchor_right = 1.073
+anchor_bottom = 1.354
+offset_left = -0.0620422
+offset_top = -0.0699978
+offset_right = -20.434
+offset_bottom = -102.57
 grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
@@ -302,13 +299,14 @@ text = "!"
 
 [node name="K" type="Label" parent="Title"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -251.0
+anchors_preset = -1
+anchor_left = 0.276
+anchor_right = 0.345
+anchor_bottom = 0.875
+offset_left = 7.04797
 offset_top = 5.0
-offset_right = -171.0
-offset_bottom = 176.0
+offset_right = 7.55997
+offset_bottom = -3.37502
 grow_horizontal = 2
 rotation = 0.0436332
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
@@ -318,13 +316,14 @@ text = "K"
 
 [node name="A" type="Label" parent="Title"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -186.0
+anchors_preset = -1
+anchor_left = 0.349
+anchor_right = 0.421
+anchor_bottom = 0.779
+offset_left = -12.048
 offset_top = -5.0
-offset_right = -103.0
-offset_bottom = 166.0
+offset_right = -11.992
+offset_bottom = 6.30499
 grow_horizontal = 2
 rotation = -0.0698132
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
@@ -336,30 +335,27 @@ text = "A
 [node name="ButtonsA" type="Control" parent="."]
 z_index = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -49.0
-offset_right = 100.0
-offset_bottom = 235.0
+anchor_left = 0.364
+anchor_top = 0.373
+anchor_right = 0.631
+anchor_bottom = 0.863
+offset_left = 56.672
+offset_top = 33.296
+offset_right = -50.912
+offset_bottom = -0.223999
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_4ftt8")
 
 [node name="Play" type="Button" parent="ButtonsA"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -177.0
-offset_right = 150.0
-offset_bottom = -57.0
+anchors_preset = -1
+anchor_left = -0.25
+anchor_top = -0.123
+anchor_right = 1.25
+anchor_bottom = 0.299
+offset_top = -0.0680008
+offset_bottom = 0.083992
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(150, 60)
@@ -377,10 +373,13 @@ text = "ID_PLAY"
 
 [node name="Help" type="Button" parent="ButtonsA"]
 layout_mode = 2
-offset_left = -15.0
-offset_top = 124.0
-offset_right = 214.0
-offset_bottom = 202.0
+anchor_left = -0.075
+anchor_top = 0.437
+anchor_right = 1.07
+anchor_bottom = 0.711
+offset_top = -0.108002
+offset_right = -1.52588e-05
+offset_bottom = 0.0759888
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.85
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -396,10 +395,12 @@ text = "ID_HELP"
 
 [node name="HightScore" type="Button" parent="ButtonsA"]
 layout_mode = 2
-offset_left = -33.0
-offset_top = 228.0
-offset_right = 233.0
-offset_bottom = 284.0
+anchor_left = -0.165
+anchor_top = 0.803
+anchor_right = 1.165
+anchor_bottom = 1.0
+offset_top = -0.052002
+offset_right = -1.52588e-05
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -416,11 +417,10 @@ text = "ID_HIGHSCORE"
 [node name="ButtonsB" type="Control" parent="."]
 z_index = 1
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchor_top = 0.87
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -84.0
+offset_top = 0.239929
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -428,15 +428,15 @@ script = ExtResource("5_mkv2m")
 
 [node name="Son" type="Button" parent="ButtonsB"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -240.0
-offset_top = -78.0
-offset_right = -85.0
-offset_bottom = -18.0
+anchors_preset = -1
+anchor_left = 0.792
+anchor_top = 0.071
+anchor_right = 0.926
+anchor_bottom = 0.786
+offset_left = -0.384033
+offset_top = 0.0359998
+offset_right = 0.247925
+offset_bottom = -0.0240021
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -454,13 +454,15 @@ text = "ID_SOUND"
 
 [node name="Traduction" type="Button" parent="ButtonsB"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 83.0
-offset_top = -83.0
-offset_right = 259.0
-offset_bottom = -13.0
+anchors_preset = -1
+anchor_left = 0.072
+anchor_top = 0.012
+anchor_right = 0.225
+anchor_bottom = 0.845
+offset_left = 0.0559921
+offset_top = -0.00800002
+offset_right = -0.200012
+offset_bottom = 0.0199966
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -476,14 +478,14 @@ text = "ID_TRANSLATION"
 
 [node name="graphicSwitch" type="Button" parent="ButtonsB"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.407
+anchor_top = 0.417
+anchor_right = 0.593
 anchor_bottom = 1.0
-offset_left = -107.5
-offset_top = -49.0
-offset_right = 107.5
+offset_left = -0.364014
+offset_top = -0.0280037
+offset_right = 0.363953
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -500,9 +502,14 @@ theme_override_styles/focus = ExtResource("7_mprki")
 toggle_mode = true
 text = "ID_NEWGRAPHICS"
 
-[node name="ColorFilterPanel" parent="." instance=ExtResource("2_ox0d8")]
+[node name="ColorFilterPanel" parent="." node_paths=PackedStringArray("buttons") instance=ExtResource("2_ox0d8")]
 layout_mode = 1
-offset_left = 429.08
-offset_top = 109.808
-offset_right = 428.568
-offset_bottom = 110.304
+anchor_left = 0.832
+anchor_top = 0.748
+anchor_right = 0.888
+anchor_bottom = 0.847
+offset_left = 0.536011
+offset_top = 0.29599
+offset_right = 0.0238647
+offset_bottom = 0.143982
+buttons = []
