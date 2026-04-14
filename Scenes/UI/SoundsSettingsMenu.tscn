@@ -12,7 +12,7 @@ gradient = SubResource("Gradient_l7pab")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[node name="soundsSettings" type="TextureRect" node_paths=PackedStringArray("backToTitleButton")]
+[node name="soundsSettings" type="TextureRect" node_paths=PackedStringArray("backToTitleButton", "overallVolumeSettings", "SoundsVolumeSettings", "MusicsVolumeSettings")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,6 +22,9 @@ mouse_filter = 0
 texture = SubResource("GradientTexture2D_6vcrw")
 script = ExtResource("1_f5j28")
 backToTitleButton = NodePath("button/Back")
+overallVolumeSettings = NodePath("overallLabel/overallVolume")
+SoundsVolumeSettings = NodePath("soundsLabel/soundsVolume")
+MusicsVolumeSettings = NodePath("musicLabel/musicVolume")
 
 [node name="button" type="Control" parent="."]
 layout_mode = 1
