@@ -53,10 +53,6 @@ namespace Com.IsartDigital.Sokoban
 				Mathf.Cos(offSet + rotationSpeed*timeProgression),Mathf.Sin(offSet + rotationSpeed * timeProgression)
 				)) * radius;
 
-			GD.Print((new Vector2(
-                Mathf.Cos(offSet + rotationSpeed * timeProgression), Mathf.Sin(offSet + rotationSpeed * timeProgression)
-                )) * radius);
-
 		}
 
 		
