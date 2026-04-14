@@ -25,9 +25,11 @@ script = ExtResource("1_f5j28")
 backToTitleButton = NodePath("button/Back")
 
 [node name="button" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_right = 0.3
+anchor_bottom = 0.162
+offset_right = 0.399994
+offset_bottom = 0.0240021
 script = ExtResource("1_hfjd5")
 
 [node name="Back" type="Button" parent="button"]
@@ -49,10 +51,13 @@ icon_alignment = 1
 
 [node name="overallLabel" type="Label" parent="."]
 layout_mode = 2
+anchor_top = 0.397
+anchor_right = 0.347
+anchor_bottom = 0.461
 offset_left = 32.0
-offset_top = 257.0
-offset_right = 400.0
-offset_bottom = 299.0
+offset_top = -0.256012
+offset_right = 0.255981
+offset_bottom = 0.271973
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -62,11 +67,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="musicLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 539.84
-offset_right = 400.0
-offset_bottom = 581.84
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.833
+anchor_right = 0.347
+anchor_bottom = 0.898
+offset_left = -0.256001
+offset_top = 0.0559692
+offset_right = 0.255981
+offset_bottom = -0.0640259
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -76,11 +86,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="soundsLabel" type="Label" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.615
+anchor_right = 0.347
+anchor_bottom = 0.68
 offset_left = 32.0
-offset_top = 398.42
-offset_right = 400.0
-offset_bottom = 440.42
+offset_top = -0.100006
+offset_right = 0.255981
+offset_bottom = -0.220001
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -109,15 +123,15 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("overallVolumeSettings", "SoundsVolumeSettings", "MusicsVolumeSettings")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -185.0
-offset_top = -202.0
-offset_right = 183.0
-offset_bottom = 77.0
+anchors_preset = -1
+anchor_left = 0.339
+anchor_top = 0.188
+anchor_right = 0.922
+anchor_bottom = 1.111
+offset_left = 0.471985
+offset_top = 0.175995
+offset_right = -303.144
+offset_bottom = -318.928
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.82273, 2.14273)
