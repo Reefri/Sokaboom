@@ -498,4 +498,4 @@ theme_override_styles/hover = ExtResource("5_2m70j")
 theme_override_styles/pressed = ExtResource("5_2m70j")
 theme_override_styles/disabled = ExtResource("5_2m70j")
 theme_override_styles/focus = ExtResource("5_2m70j")
-text = "ID_NEXT"
+text = "ID_MENU"

@@ -24,7 +24,6 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Button helpButton;
         [Export] private Button languageButton;
         [Export] private Button soundButton;
-        [Export] private Button graphicSwitchButton;
 
         private Timer timer = new Timer();
 
@@ -41,10 +40,6 @@ namespace Com.IsartDigital.Sokoban.UI
         private const string ENGLISH = "en";
         private const string FRENCH = "fr";
         private const string TWEEN_FOR_O = "o";
-
-
-        private const string OLD_GRAPHICS = "ID_OLDGRAPHICS";
-        private const string NEW_GRAPHICS = "ID_NEWGRAPHICS";
 
 
         private const float WAIT_TIME_START = 0.05f;
@@ -84,9 +79,7 @@ namespace Com.IsartDigital.Sokoban.UI
 
             helpButton.Pressed += HelpPressed;
             languageButton.Pressed += Langage;
-            graphicSwitchButton.Pressed += SwitchGraphics;
 
-            soundButton.Text = Tr("ID_SOUND") + " On";
             soundButton.Pressed += UIManager.GetInstance().GoToSoundsSettings;
 
             
@@ -103,13 +96,6 @@ namespace Com.IsartDigital.Sokoban.UI
             }
         }
 
-
-        private void SwitchGraphics()
-        {
-            GraphicManager.ToggleGraphics();
-            if (GraphicManager.IsOld) graphicSwitchButton.Text = OLD_GRAPHICS;
-            else graphicSwitchButton.Text = NEW_GRAPHICS;
-        }
         private void StartTimer()
         {
             timer.Start();
@@ -213,22 +199,6 @@ namespace Com.IsartDigital.Sokoban.UI
             UIManager.GetInstance().comeToMenu = true;
             UIManager.GetInstance().GoToHelp();
         }
-
-        //private void SonPressed()
-        //{
-        //    SoundManager.GetInstance().soundPlay = !SoundManager.GetInstance().soundPlay;
-            
-        //    if(SoundManager.GetInstance().soundPlay)
-        //    {
-        //        SoundManager.GetInstance().PlayMusic();
-        //        soundButton.Text = Tr("ID_SOUND") + " On";
-        //    }
-        //    else 
-        //    {
-        //        SoundManager.GetInstance().StopMusic();
-        //        soundButton.Text = Tr("ID_SOUND") + " Off";
-        //    }
-        //}
 
         public void Langage()
         {

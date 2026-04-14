@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://b078nli7whk52"]
+[gd_scene load_steps=31 format=3 uid="uid://b078nli7whk52"]
 
-[ext_resource type="Theme" uid="uid://dh04r6qga50r" path="res://Scenes/UI/Button.tres" id="1_6f0nn"]
+[ext_resource type="Theme" uid="uid://i8isgllrm6hc" path="res://Scenes/UI/Button.tres" id="1_6f0nn"]
 [ext_resource type="Script" path="res://Scripts/UI/Win.cs" id="1_lpuuc"]
 [ext_resource type="Texture2D" uid="uid://vu3lr2iiu77m" path="res://Assets/Stars/NewEmptyStar.png" id="3_sy2b5"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="3_ydfsl"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d26exvbfsbgeg" path="res://Assets/Stars/FinalVictoryBanderole.png" id="5_337bn"]
 [ext_resource type="Texture2D" uid="uid://cwb53ldapocqh" path="res://Assets/Boutons/restart.png" id="8_68um7"]
 [ext_resource type="Texture2D" uid="uid://bhdtl1wggd7du" path="res://Assets/Boutons/goBack.png" id="9_5dstb"]
+[ext_resource type="Texture2D" uid="uid://quc765ylnrxu" path="res://Assets/particules/MidRedParticle.png" id="9_soxau"]
+[ext_resource type="Texture2D" uid="uid://cbpeyia3cvem" path="res://Assets/particules/BigYellowParticle.png" id="10_fwou7"]
 
 [sub_resource type="Gradient" id="Gradient_b7b7e"]
 offsets = PackedFloat32Array(0, 0.686747, 1)
@@ -122,9 +124,52 @@ linear_accel_min = 100.0
 linear_accel_max = 100.0
 radial_accel_min = 100.0
 radial_accel_max = 100.0
+scale_min = 3.0
+scale_max = 3.0
 color_ramp = SubResource("GradientTexture1D_1aimb")
 
-[node name="Win" type="Control" node_paths=PackedStringArray("stars", "confettis", "scoreText", "perfectText", "restart", "next")]
+[sub_resource type="Gradient" id="Gradient_r1lne"]
+offsets = PackedFloat32Array(0.201856, 0.856148, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.258824, 0.258824, 0.258824, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4n1kj"]
+gradient = SubResource("Gradient_r1lne")
+
+[sub_resource type="Curve" id="Curve_lb2ly"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0.0178571, 200), 0.0, 0.0, 0, 0, Vector2(0.0982143, 200), 0.0, 0.0, 0, 0, Vector2(0.202381, 50.1253), 0.0, 0.0, 0, 0, Vector2(0.372024, -50.8772), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_bj5tq"]
+curve = SubResource("Curve_lb2ly")
+
+[sub_resource type="Curve" id="Curve_1jq1g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.136865, 1), -0.552647, -0.552647, 0, 0, Vector2(0.136875, 1), 0.0, 0.0, 0, 0, Vector2(0.136885, 1), 0.0, 0.0, 0, 0, Vector2(0.136895, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), -2.17814, -2.17814, 0, 0, Vector2(1, 0), -2.31032, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_bgibw"]
+curve = SubResource("Curve_1jq1g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dbb8u"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+flatness = 0.806
+initial_velocity_max = 104.96
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+radial_velocity_max = 431.58
+gravity = Vector3(0, 0, 0)
+linear_accel_curve = SubResource("CurveTexture_bj5tq")
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+scale_min = 0.25
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_bgibw")
+color_ramp = SubResource("GradientTexture1D_4n1kj")
+
+[node name="Win" type="Control" node_paths=PackedStringArray("stars", "confettis", "scoreText", "perfectText", "perfectParticles", "restart", "next", "explosionParticles")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,8 +186,10 @@ stars = NodePath("ColorRect/Stars")
 confettis = NodePath("GPUParticles2D")
 scoreText = NodePath("ColorRect/Score")
 perfectText = NodePath("perfect")
+perfectParticles = NodePath("perfect/GPUParticles2D")
 restart = NodePath("Control2/Restart")
 next = NodePath("Control/Next")
+explosionParticles = NodePath("explosionParticles")
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -346,19 +393,50 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -156.0
-offset_top = -115.0
-offset_right = 157.0
-offset_bottom = -13.0
+offset_left = -224.0
+offset_top = -120.0
+offset_right = 194.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
+pivot_offset = Vector2(209, 51)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 25
 theme_override_font_sizes/font_size = 75
 text = "ID_PERFECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="perfect"]
+show_behind_parent = true
 position = Vector2(212.5, 51)
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_xpck3")
+
+[node name="explosionParticles" type="Node2D" parent="."]
+position = Vector2(352, 528)
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="explosionParticles"]
+z_index = 1
+position = Vector2(216, 51)
+scale = Vector2(6.36441, -0.789933)
+emitting = false
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_dbb8u")
+texture = ExtResource("9_soxau")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="explosionParticles"]
+z_index = 1
+position = Vector2(216, 51)
+scale = Vector2(6.36441, -0.789933)
+emitting = false
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_dbb8u")
+texture = ExtResource("10_fwou7")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0

@@ -46,7 +46,7 @@ theme_override_styles/hover = ExtResource("1_2gbl8")
 theme_override_styles/pressed = ExtResource("1_2gbl8")
 theme_override_styles/disabled = ExtResource("1_2gbl8")
 theme_override_styles/focus = ExtResource("1_2gbl8")
-text = "ID_BACK"
+text = "ID_MENU"
 icon_alignment = 1
 
 [node name="overallLabel" type="Label" parent="."]
