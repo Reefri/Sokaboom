@@ -20,6 +20,8 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Node2D fireworksPos;
         [Export] private Node2D explosionParticlesParent;
 
+        [Export] private GpuParticles2D rankParticles;
+
         private const string SCORE = "Score Total : ";
         private const string FONT_SIZE_PATH = "theme_override_font_sizes/font_size";
         private int currentScore = 0;
@@ -63,26 +65,34 @@ namespace Com.IsartDigital.Sokoban
         private const int E_RANK_SIZE = 275;
         private const int F_RANK_SIZE = 250;
 
-        private const float S_RANK_ROTATION = 0;
-        private const float A_RANK_ROTATION = -Mathf.Pi / 6;
-        private const float B_RANK_ROTATION = Mathf.Pi / 6;
-        private const float C_RANK_ROTATION = -Mathf.Pi / 7;
-        private const float D_RANK_ROTATION = Mathf.Pi/ 7;
-        private const float E_RANK_ROTATION = -Mathf.Pi / 8;
-        private const float F_RANK_ROTATION = Mathf.Pi/8;
+        private const float S_RANK_ROTATION = Mathf.Pi * 16;
+        private const float A_RANK_ROTATION = -Mathf.Pi / 10;
+        private const float B_RANK_ROTATION = Mathf.Pi / 11;
+        private const float C_RANK_ROTATION = -Mathf.Pi / 12;
+        private const float D_RANK_ROTATION = Mathf.Pi/ 13;
+        private const float E_RANK_ROTATION = -Mathf.Pi / 14;
+        private const float F_RANK_ROTATION = Mathf.Pi/15;
+
+        private const int S_RANK_PARTICLES_AMOUNT = 5000;
+        private const int A_RANK_PARTICLES_AMOUNT = 250;
+        private const int B_RANK_PARTICLES_AMOUNT = 150;
+        private const int C_RANK_PARTICLES_AMOUNT = 100;
+        private const int D_RANK_PARTICLES_AMOUNT = 75;
+        private const int E_RANK_PARTICLES_AMOUNT = 50;
+        private const int F_RANK_PARTICLES_AMOUNT = 25;
 
         private List<int> rankThresholds;
         private List<string> rankLetters;
         private List<int> rankSizes;
         private List<float> rankRotation;
+        private List<int> rankParticlesAmount;
 
         public override void _Ready()
 		{
 			screenSize = GetViewportRect().Size;
 
             ScoreFinal.Text = SCORE;
-            //scoreToReach = AccountManager.GetInstance().currentAccount.FinalScore();
-            scoreToReach = 65000;
+            scoreToReach = (int)AccountManager.GetInstance().currentAccount.FinalScore();
 
 			menu.Pressed += UIManager.GetInstance().GoToTitle;
 			highScore.Pressed += UIManager.GetInstance().GoToHightScore;
@@ -137,6 +147,17 @@ namespace Com.IsartDigital.Sokoban
                 B_RANK_ROTATION,
                 A_RANK_ROTATION,
                 S_RANK_ROTATION,
+            };
+
+            rankParticlesAmount = new List<int>()
+            {
+                F_RANK_PARTICLES_AMOUNT,
+                E_RANK_PARTICLES_AMOUNT,
+                D_RANK_PARTICLES_AMOUNT,
+                C_RANK_PARTICLES_AMOUNT,
+                B_RANK_PARTICLES_AMOUNT,
+                A_RANK_PARTICLES_AMOUNT,
+                S_RANK_PARTICLES_AMOUNT,
             };
 
             baseRankSize = (float)rank.Get(FONT_SIZE_PATH);
@@ -300,7 +321,12 @@ namespace Com.IsartDigital.Sokoban
                     if (i > 0)
                     {
                         lTween.Parallel().TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0).SetDelay(tweenDuration);
-                        lTween.TweenProperty(rank, TweenProp.ROTATION, rankRotation[i], tweenDuration/2);
+                        if (i == rankThresholds.Count - 1)
+                        {
+                            lTween.Parallel().TweenProperty(rank, TweenProp.ROTATION, rankRotation[i], tweenDuration).SetDelay(tweenDuration);
+                        }
+
+                        else lTween.Parallel().TweenProperty(rank, TweenProp.ROTATION, rankRotation[i], 0).SetDelay(tweenDuration);
 
                         lTween.TweenProperty(rank, FONT_SIZE_PATH, rankSizes[i], tweenDuration / 2);
 
@@ -310,12 +336,22 @@ namespace Com.IsartDigital.Sokoban
                     else
                         lTween.TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0);
 
+                    Particles(rankParticlesAmount[i], lTween);
 
                 }
             }
 
             
         }
+
+        private void Particles(int pAmount, Tween pTween)
+        {
+            pTween.Parallel().TweenProperty(rankParticles, "amount", pAmount, 0);
+            pTween.Parallel().TweenProperty(rankParticles, "emitting", true, 0);
+
+            rankParticles.GlobalPosition = rank.GlobalPosition + rank.Size/2;
+        }
+
         public override void _Process(double delta)
         {
             base._Process(delta);

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dv14slt1ckou2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_h8l0x"]
-[ext_resource type="Theme" uid="uid://dh04r6qga50r" path="res://Scenes/UI/Button.tres" id="1_rsf63"]
+[ext_resource type="Theme" uid="uid://i8isgllrm6hc" path="res://Scenes/UI/Button.tres" id="1_rsf63"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimMouse.cs" id="2_3tpfh"]
 [ext_resource type="Texture2D" uid="uid://bhrrksd3rs55s" path="res://Assets/Character_Base.png" id="2_710ix"]
 [ext_resource type="Texture2D" uid="uid://bhdtl1wggd7du" path="res://Assets/Boutons/goBack.png" id="3_gjtpu"]
