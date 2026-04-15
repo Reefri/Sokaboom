@@ -81,6 +81,12 @@ namespace Com.IsartDigital.Sokoban
                 blockingMouse.MouseFilter = MouseFilterEnum.Ignore;
             }
             else blockingMouse.MouseFilter = MouseFilterEnum.Stop;
+
+            if (doorsClosed)
+            {
+                leftDoor.Position = new Vector2(screenSize.X / 2, 0);
+                rightDoor.Position = new Vector2(screenSize.X / 2, 0);
+            }
 		}
 
         public void Transition()
