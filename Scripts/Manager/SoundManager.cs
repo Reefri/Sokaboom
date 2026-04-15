@@ -84,6 +84,9 @@ namespace Com.IsartDigital.Sokoban
         [ExportCategory("Musics")]
         [Export] private AudioStreamPlayer music;
 
+        public float overallVolume = 0;
+        public float musicVolume = 0;
+        public float soundsVolume = 0;
 
         private SoundManager()
         {

@@ -7,7 +7,7 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class HUD : Control
 	{
-        [Export] private Button quitButton;
+        [Export] public Button quitButton;
 
 		[Export] public Button undoButton;
         [Export] private Vector2 undoLandscapePos;
@@ -34,6 +34,7 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Timer quitDelay = new Timer();
 
         private const string PAR = "Par : ";
+
         private const string BY = "ID_BY";
         private const string STEPS = "ID_STEPS";
 
@@ -78,11 +79,8 @@ namespace Com.IsartDigital.Sokoban
         {
             if (!transition && !GameManager.GetInstance().CheckWin())
             {
-                if (GameManager.GetInstance().currentPosition.nextValue == null) redoButton.Disabled = true;
-                else redoButton.Disabled = false;
-
-                if (GameManager.GetInstance().currentPosition.previousValue == null) undoButton.Disabled = true;
-                else undoButton.Disabled = false;
+                redoButton.Disabled = (GameManager.GetInstance().currentPosition.nextValue == null);
+                undoButton.Disabled = (GameManager.GetInstance().currentPosition.previousValue == null);
             }
         }
 

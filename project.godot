@@ -13,11 +13,11 @@ config_version=5
 config/name="Sokoban"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Character_Base.png"
+config/windows_native_icon="res://Assets/Character_Base.ico"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

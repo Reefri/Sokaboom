@@ -24,7 +24,6 @@ namespace Com.IsartDigital.Sokoban {
 
 		public override void _Ready()
 		{
-
 			this.Texture = Box.texture;
 
 			myMaterial = (ShaderMaterial)Material;
@@ -66,6 +65,7 @@ namespace Com.IsartDigital.Sokoban {
 			lNewSignal.GlobalPosition = pPosition * Map.DISTANCE_RANGE;
 
 			GameManager.GetInstance().boxSignalContainer.AddChild(lNewSignal);
+
 		}
 	}
 }

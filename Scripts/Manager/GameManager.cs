@@ -26,10 +26,8 @@ namespace Com.IsartDigital.Sokoban
         static public GameManager instance = null;
         static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Manager/GameManager.tscn");
 
-        private PackedScene bombCollectible = GD.Load<PackedScene>("res://Scenes/Gameplay/Bomb/BombCollectible.tscn");
 
-
-        public List<BombCollectible> levelBombCollectibles = new List<BombCollectible>();
+        public List<BombCollectiblePatron> levelBombCollectibles = new List<BombCollectiblePatron>();
 
         public Level currentLevel;
         
@@ -131,7 +129,7 @@ namespace Com.IsartDigital.Sokoban
 
             for (int i = 0; i < lNumberOfBombs; i++)
             {
-                levelBombCollectibles.Add(BombCollectible.Create(currentLevel.bombs[i], currentLevel.bombsPos[i]));
+                levelBombCollectibles.Add(new BombCollectiblePatron(currentLevel.bombs[i], currentLevel.bombsPos[i]));
             }
 
 
@@ -195,16 +193,22 @@ namespace Com.IsartDigital.Sokoban
 
             List<int> lIndexOfAvalaibleBobms = currentPosition.value.indexOfAvalaibleBombs;
 
+
             foreach (int i in lIndexOfAvalaibleBobms)
             {
-                bombCollectibleContainer.AddChild(levelBombCollectibles[i].Duplicate());
+                bombCollectibleContainer.AddChild(BombCollectible.Create(levelBombCollectibles[i]));
             }
+
+
 
 
             Vector2I lPlayerPosition = currentPosition.value.playerPosition;
 
             Player.GetInstance().Position = lPlayerPosition * Map.DISTANCE_RANGE;
             Player.GetInstance().GiveBombToPlayer(currentPosition.value.currentBomb);
+
+
+
 
             if (tileMap.GetCellTileData((int)Map.LevelLayer.Ground, lPlayerPosition) == null) FillGroundTiles(lPlayerPosition);
         }
@@ -300,6 +304,24 @@ namespace Com.IsartDigital.Sokoban
                 Player.GetInstance().canInput = false;
                 Banderole.GetInstance().winFinal = false;
                 JuicinessManager.GetInstance().timeBeforeBanderoles.Start();
+
+                
+
+            }
+            else
+            {
+                if (positionForBoxSignal.Count > 0 &&
+               listOfTargetWithoutContainer.Count == 0 &&
+               currentPosition.value.targetsPos.Count == currentLevel.targetsPos.Count)
+                {
+                    waitBeforeBoxSignal.Start();
+
+                }
+                else
+                {
+                    waitBeforeBoxSignal.Stop();
+
+                }
             }
         }
 
@@ -464,36 +486,27 @@ namespace Com.IsartDigital.Sokoban
             return lListOfPos;
         }
 
+
+        private List<Vector2I> listOfTargetWithoutContainer;
+
         public bool CheckWin()
         {
-            if (startAnimation) return false;
+            if (startAnimation || currentPosition.value.targetsPos.Count != currentLevel.targetsPos.Count) return false;
 
-            List<Vector2I> lListOfTargetWihtoutContainer = GetTargetWithoutBoxPosition();
+            listOfTargetWithoutContainer = GetTargetWithoutBoxPosition();
             positionForBoxSignal = GetBoxWithoutTargetPosition();
 
-            if (0 < lListOfTargetWihtoutContainer.Count) { return false; }
-
-
-
-            if (positionForBoxSignal.Count > 0 && 
-                lListOfTargetWihtoutContainer.Count==0 && 
-                currentPosition.value.targetsPos.Count == currentLevel.targetsPos.Count)
-            {
-                waitBeforeBoxSignal.Start();
-                return false;
-            }
-
-            waitBeforeBoxSignal.Stop();
-
-
-            return currentPosition.value.targetsPos.Count == currentLevel.targetsPos.Count;
+            return positionForBoxSignal.Count == 0 && 
+                listOfTargetWithoutContainer.Count == 0;
         }
 
 
         private void CreateBoxSignal()
         {
+
             foreach (Vector2I lBoxPosition in positionForBoxSignal)
             {
+
                 BoxSignal.Create(lBoxPosition);
             }
         }

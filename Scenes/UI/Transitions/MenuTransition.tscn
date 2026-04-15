@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cka3r74niudit"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/MenuTransition.cs" id="1_geije"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_epxvl"]
+[ext_resource type="Script" path="res://Scripts/UI/Transitions/MiniCloud.cs" id="2_371sn"]
 [ext_resource type="Texture2D" uid="uid://b25n7u71vvpj2" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 9.png" id="3_54olf"]
 [ext_resource type="Texture2D" uid="uid://d1x7wjhi7nh5f" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 8.png" id="4_0pvm5"]
 [ext_resource type="Texture2D" uid="uid://opqoxoxnefc4" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 10.png" id="5_reu2p"]
@@ -31,102 +31,180 @@ script = ExtResource("1_geije")
 TransitionZone = NodePath("BigCloud")
 whenToPlayAnim = NodePath("whenToPlayAnim")
 
-[node name="BigCloud" type="Node2D" parent="."]
-position = Vector2(581, 246)
+[node name="BigCloud" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 581.0
+offset_top = 246.0
+offset_right = 581.0
+offset_bottom = 246.0
 rotation = -1.0472
 
-[node name="Sprite2D14" type="Sprite2D" parent="BigCloud"]
-position = Vector2(103.727, 634.273)
+[node name="Sprite2D14" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = 15.1115
+offset_top = 1110.18
+offset_right = 142.112
+offset_bottom = 1208.18
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("3_54olf")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D6" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-466.773, 539.773)
+[node name="Sprite2D6" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -468.621
+offset_top = 582.326
+offset_right = -361.621
+offset_bottom = 648.326
 rotation = 1.01578
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("4_0pvm5")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D15" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-120.273, -349.227)
+[node name="Sprite2D15" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -120.273
+offset_top = -349.227
+offset_right = -120.273
+offset_bottom = -349.227
 rotation = 0.74002
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("5_reu2p")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D7" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-515.773, 235.273)
+[node name="Sprite2D7" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -515.773
+offset_top = 235.273
+offset_right = -515.773
+offset_bottom = 235.273
 rotation = 0.74002
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("6_8dbqh")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D13" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-505.273, -352.727)
+[node name="Sprite2D13" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -505.273
+offset_top = -352.727
+offset_right = -505.273
+offset_bottom = -352.727
 rotation = 1.10828
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("7_ifs2x")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D5" type="Sprite2D" parent="BigCloud"]
-position = Vector2(243.727, -468.227)
+[node name="Sprite2D5" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = 243.727
+offset_top = -468.227
+offset_right = 243.727
+offset_bottom = -468.227
 rotation = 0.830777
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("8_qek0y")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D4" type="Sprite2D" parent="BigCloud"]
-position = Vector2(37.227, -160.227)
+[node name="Sprite2D4" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = 37.227
+offset_top = -160.227
+offset_right = 37.227
+offset_bottom = -160.227
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("9_84vdj")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D16" type="Sprite2D" parent="BigCloud"]
-position = Vector2(222.727, -72.7272)
+[node name="Sprite2D16" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = 228.952
+offset_top = -171.444
+offset_right = 607.952
+offset_bottom = 117.556
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("10_ob3bp")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D12" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-71.273, 399.773)
+[node name="Sprite2D12" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -71.273
+offset_top = 399.773
+offset_right = -71.273
+offset_bottom = 399.773
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("11_eagf0")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D11" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-421.273, -93.7272)
+[node name="Sprite2D11" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -421.273
+offset_top = -93.7272
+offset_right = -421.273
+offset_bottom = -93.7272
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("12_x8nro")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D8" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-151.773, -27.2272)
+[node name="Sprite2D8" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -151.773
+offset_top = -27.2272
+offset_right = -151.773
+offset_bottom = -27.2272
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("13_ircr7")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D3" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-358.273, 448.773)
+[node name="Sprite2D3" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -358.273
+offset_top = 448.773
+offset_right = -358.273
+offset_bottom = 448.773
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("14_8fx76")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D9" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-284.773, 224.773)
+[node name="Sprite2D9" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -284.773
+offset_top = 224.773
+offset_right = -284.773
+offset_bottom = 224.773
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("15_gpn4q")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D2" type="Sprite2D" parent="BigCloud"]
-position = Vector2(464.227, 245.773)
+[node name="Sprite2D2" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = 464.227
+offset_top = 245.773
+offset_right = 464.227
+offset_bottom = 245.773
 rotation = 0.621337
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("16_l2lt0")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D10" type="Sprite2D" parent="BigCloud"]
-position = Vector2(-50.273, 315.773)
+[node name="Sprite2D10" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = -50.273
+offset_top = 315.773
+offset_right = -50.273
+offset_bottom = 315.773
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("17_reiw6")
+script = ExtResource("2_371sn")
 
-[node name="Sprite2D17" type="Sprite2D" parent="BigCloud"]
-position = Vector2(299.727, 354.273)
+[node name="Sprite2D17" type="TextureRect" parent="BigCloud"]
+layout_mode = 0
+offset_left = 299.727
+offset_top = 354.273
+offset_right = 299.727
+offset_bottom = 354.273
 rotation = 0.185005
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("18_cyr2l")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-rotation = -0.785398
-scale = Vector2(12, 12)
-texture = ExtResource("2_epxvl")
+script = ExtResource("2_371sn")
 
 [node name="whenToPlayAnim" type="Timer" parent="."]
 one_shot = true

@@ -34,8 +34,6 @@ namespace Com.IsartDigital.Sokoban
 
 			foreach (Box lBox in instances)
 			{
-                GD.Print("ha");
-
                 lBox.renderer.Texture = texture;
 			}
 		}
