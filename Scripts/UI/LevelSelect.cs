@@ -41,7 +41,9 @@ namespace Com.IsartDigital.UI {
 
                 if (GridManager.GetInstance().numberOfLevel > i) lButtons.Disabled = !AccountManager.GetInstance().currentAccount.LockedLevels[i];
 
-                lButtons.Text = Tr(LEVEL) + lLevelID;
+                if (lLevelID > 0) lButtons.Text = Tr(LEVEL) + "\n" + lLevelID;
+                else lButtons.Text = Tr(LEVEL) + " Tuto";
+
                 lButtons.Pressed += () => GoToLevel(lLevelID);
                 i++;
             }

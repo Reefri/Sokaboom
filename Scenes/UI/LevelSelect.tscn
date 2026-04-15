@@ -323,25 +323,25 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.431
 anchor_top = 0.116
-anchor_right = 0.569
-anchor_bottom = 0.239
-offset_left = -0.512024
-offset_top = -0.167999
-offset_right = 0.511963
-offset_bottom = 0.127991
+anchor_right = 0.568
+anchor_bottom = 0.231
+offset_left = -85.48
+offset_top = -0.279999
+offset_right = 86.56
+offset_bottom = 0.519989
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = ExtResource("4_2u2uy")
 theme_override_styles/focus = ExtResource("4_2u2uy")
-text = "ID_TUTORIAL"
+text = "Niveau Tuto"
 
 [node name="Control" type="Control" parent="allButtons/tutorial"]
 layout_mode = 1
@@ -355,48 +355,49 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/tutorial/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_umwkv")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/tutorial/Control"]
 position = Vector2(62, 0)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_umwkv")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/tutorial/Control"]
-position = Vector2(125, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_umwkv")
 centered = false
 
 [node name="level1" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.12
-anchor_top = 0.287
-anchor_right = 0.228
-anchor_bottom = 0.41
-offset_left = -0.240005
-offset_top = 0.0240021
-offset_right = 0.343994
-offset_bottom = 0.319977
+anchor_left = 0.098
+anchor_top = 0.313
+anchor_right = 0.19
+anchor_bottom = 0.396
+offset_left = -50.84
+offset_top = -30.04
+offset_right = 50.8
+offset_bottom = 30.32
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(10, 0)
+pivot_offset = Vector2(100, 75)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "ID_LEVEL"
+text = "Niveau 
+1"
 
 [node name="Control" type="Control" parent="allButtons/level1"]
 layout_mode = 1
@@ -410,19 +411,19 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level1/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_f0rgs")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level1/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_f0rgs")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level1/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_f0rgs")
 centered = false
 
@@ -430,27 +431,28 @@ centered = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.337
-anchor_top = 0.287
-anchor_right = 0.445
-anchor_bottom = 0.41
-offset_left = -0.223999
-offset_top = 0.0240021
-offset_right = 0.359985
-offset_bottom = 0.319977
+anchor_top = 0.313
+anchor_right = 0.429
+anchor_bottom = 0.396
+offset_left = -50.96
+offset_top = -30.04
+offset_right = 50.68
+offset_bottom = 30.32
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 2"
+text = "Level 
+2"
 
 [node name="Control" type="Control" parent="allButtons/level2"]
 layout_mode = 1
@@ -464,47 +466,48 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level2/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_kaqdd")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level2/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_kaqdd")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level2/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_kaqdd")
 centered = false
 
 [node name="level3" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.554
-anchor_top = 0.287
-anchor_right = 0.662
-anchor_bottom = 0.41
-offset_left = -0.208008
-offset_top = 0.0240021
-offset_right = 0.375916
-offset_bottom = 0.319977
+anchor_left = 0.575
+anchor_top = 0.313
+anchor_right = 0.668
+anchor_bottom = 0.396
+offset_left = -50.0001
+offset_top = -30.04
+offset_right = 50.5599
+offset_bottom = 30.32
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 3"
+text = "Level 
+3"
 
 [node name="Control" type="Control" parent="allButtons/level3"]
 layout_mode = 1
@@ -518,47 +521,48 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level3/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_s5o38")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level3/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_s5o38")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level3/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_s5o38")
 centered = false
 
 [node name="level4" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.771
-anchor_top = 0.287
-anchor_right = 0.879
-anchor_bottom = 0.41
-offset_left = -0.192017
-offset_top = 0.0240021
-offset_right = 0.391907
-offset_bottom = 0.319977
+anchor_left = 0.813
+anchor_top = 0.313
+anchor_right = 0.906
+anchor_bottom = 0.396
+offset_left = -50.04
+offset_top = -30.04
+offset_right = 50.52
+offset_bottom = 30.32
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 4"
+text = "Level 
+4"
 
 [node name="Control" type="Control" parent="allButtons/level4"]
 layout_mode = 1
@@ -572,47 +576,48 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level4/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_2gla7")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level4/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_2gla7")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level4/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_2gla7")
 centered = false
 
 [node name="level5" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.12
-anchor_top = 0.519
-anchor_right = 0.228
-anchor_bottom = 0.629
-offset_left = -0.240005
-offset_top = -0.312042
-offset_right = 0.343994
-offset_bottom = 8.40799
+anchor_left = 0.098
+anchor_top = 0.564
+anchor_right = 0.19
+anchor_bottom = 0.647
+offset_left = -50.84
+offset_top = -30.12
+offset_right = 50.8
+offset_bottom = 30.24
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 5"
+text = "Level 
+5"
 
 [node name="Control" type="Control" parent="allButtons/level5"]
 layout_mode = 1
@@ -626,19 +631,19 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level5/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_k7rrd")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level5/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_k7rrd")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level5/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_k7rrd")
 centered = false
 
@@ -646,27 +651,28 @@ centered = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.337
-anchor_top = 0.519
-anchor_right = 0.445
-anchor_bottom = 0.642
-offset_left = -0.223999
-offset_top = -0.312042
-offset_right = 0.359985
-offset_bottom = -0.0160217
+anchor_top = 0.564
+anchor_right = 0.429
+anchor_bottom = 0.647
+offset_left = -50.96
+offset_top = -30.12
+offset_right = 50.68
+offset_bottom = 30.24
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 6"
+text = "Level 
+6"
 
 [node name="Control" type="Control" parent="allButtons/level6"]
 layout_mode = 1
@@ -680,47 +686,48 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level6/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_1j6q0")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level6/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_1j6q0")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level6/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_1j6q0")
 centered = false
 
 [node name="level7" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.554
-anchor_top = 0.519
-anchor_right = 0.662
-anchor_bottom = 0.642
-offset_left = -0.208008
-offset_top = -0.312042
-offset_right = 0.375916
-offset_bottom = -0.0160217
+anchor_left = 0.575
+anchor_top = 0.564
+anchor_right = 0.668
+anchor_bottom = 0.647
+offset_left = -50.0001
+offset_top = -30.12
+offset_right = 50.5599
+offset_bottom = 30.24
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 7"
+text = "Level 
+7"
 
 [node name="Control" type="Control" parent="allButtons/level7"]
 layout_mode = 1
@@ -734,47 +741,48 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level7/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_accec")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level7/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_accec")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level7/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_accec")
 centered = false
 
 [node name="level8" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.771
-anchor_top = 0.519
-anchor_right = 0.879
-anchor_bottom = 0.642
-offset_left = -0.192017
-offset_top = -0.312042
-offset_right = 0.391907
-offset_bottom = -0.0160217
+anchor_left = 0.813
+anchor_top = 0.564
+anchor_right = 0.906
+anchor_bottom = 0.647
+offset_left = -50.04
+offset_top = -30.12
+offset_right = 50.52
+offset_bottom = 30.24
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 8"
+text = "Level 
+8"
 
 [node name="Control" type="Control" parent="allButtons/level8"]
 layout_mode = 1
@@ -788,46 +796,48 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level8/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_4cdde")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level8/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_4cdde")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level8/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_4cdde")
 centered = false
 
 [node name="level9" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.12
-anchor_top = 0.75
-anchor_right = 0.228
-anchor_bottom = 0.873
-offset_left = -0.23999
-offset_right = 0.343994
-offset_bottom = -0.704041
+anchor_left = 0.098
+anchor_top = 0.815
+anchor_right = 0.19
+anchor_bottom = 0.898
+offset_left = -50.84
+offset_top = -30.2001
+offset_right = 50.8
+offset_bottom = 30.1599
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 9"
+text = "Niveau
+9"
 
 [node name="Control" type="Control" parent="allButtons/level9"]
 layout_mode = 1
@@ -841,19 +851,19 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level9/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_yengn")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level9/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_yengn")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level9/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_yengn")
 centered = false
 
@@ -861,27 +871,28 @@ centered = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.337
-anchor_top = 0.75
-anchor_right = 0.445
-anchor_bottom = 0.873
-offset_left = -0.223999
-offset_top = -3.05176e-05
-offset_right = 0.359985
-offset_bottom = 0.295959
+anchor_top = 0.815
+anchor_right = 0.429
+anchor_bottom = 0.898
+offset_left = -50.96
+offset_top = -30.2001
+offset_right = 50.68
+offset_bottom = 30.1599
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 10"
+text = "Level 
+10"
 
 [node name="Control" type="Control" parent="allButtons/level10"]
 layout_mode = 1
@@ -895,47 +906,48 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level10/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_kntnh")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level10/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_xs022")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level10/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_wj2ro")
 centered = false
 
 [node name="level11" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.554
-anchor_top = 0.75
-anchor_right = 0.662
-anchor_bottom = 0.873
-offset_left = -0.208008
-offset_top = -3.05176e-05
-offset_right = 0.375916
-offset_bottom = 0.295959
+anchor_left = 0.575
+anchor_top = 0.815
+anchor_right = 0.668
+anchor_bottom = 0.898
+offset_left = -50.0001
+offset_top = -30.2001
+offset_right = 50.5599
+offset_bottom = 30.1599
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 11"
+text = "Level 
+11"
 
 [node name="Control" type="Control" parent="allButtons/level11"]
 layout_mode = 1
@@ -949,47 +961,48 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level11/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_i05k1")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level11/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_u1o0s")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level11/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_p76xw")
 centered = false
 
 [node name="level12" type="Button" parent="allButtons"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.771
-anchor_top = 0.75
-anchor_right = 0.879
-anchor_bottom = 0.873
-offset_left = -0.192017
-offset_top = -3.05176e-05
-offset_right = 0.391907
-offset_bottom = 0.295959
+anchor_left = 0.813
+anchor_top = 0.815
+anchor_right = 0.906
+anchor_bottom = 0.898
+offset_left = -50.04
+offset_top = -30.2001
+offset_right = 50.52
+offset_bottom = 30.1599
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("4_2u2uy")
 theme_override_styles/hover = ExtResource("4_2u2uy")
 theme_override_styles/pressed = ExtResource("4_2u2uy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_j4tj3")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
-text = "Level 12"
+text = "Level 
+12"
 
 [node name="Control" type="Control" parent="allButtons/level12"]
 layout_mode = 1
@@ -1003,19 +1016,19 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level12/Control"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ycpli")
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level12/Control"]
-position = Vector2(45, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(62, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_12q1j")
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level12/Control"]
-position = Vector2(90, 0)
-scale = Vector2(0.2, 0.2)
+position = Vector2(124, 0)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_deoyg")
 centered = false
 
@@ -1071,7 +1084,7 @@ offset_right = -0.0720215
 offset_bottom = -0.0160065
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
