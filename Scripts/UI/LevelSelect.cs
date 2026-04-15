@@ -38,7 +38,6 @@ namespace Com.IsartDigital.UI {
                     AnimatedSprite2D lStar = (AnimatedSprite2D)lStars.GetChild(j);
                     lStar.Frame = 1;
                 }
-                //GridManager.GetInstance().CreateStars(lLevelID);
 
                 if (GridManager.GetInstance().numberOfLevel > i) lButtons.Disabled = !AccountManager.GetInstance().currentAccount.LockedLevels[i];
 

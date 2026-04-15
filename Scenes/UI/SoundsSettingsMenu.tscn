@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqg1ggvq74h73"]
 
-[ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="1_2gbl8"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="1_2gbl8"]
 [ext_resource type="Script" path="res://Scripts/UI/SoundsSettingsMenu.cs" id="1_f5j28"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="1_hfjd5"]
 
