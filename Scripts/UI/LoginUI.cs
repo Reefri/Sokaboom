@@ -17,7 +17,7 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Button buttonValidation;
         [Export] private Label statut;
 
-        [Export] private Sprite2D cadenas;
+        [Export] private TextureRect cadenas;
 
         private const string TEXT_TITLE_INSCRIPTION = "Inscription :";
 
