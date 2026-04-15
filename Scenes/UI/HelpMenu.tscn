@@ -37,7 +37,6 @@ metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
 
 [node name="FirstPage" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -288,6 +287,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ThirdPage" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
