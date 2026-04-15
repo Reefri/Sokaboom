@@ -59,7 +59,7 @@ namespace Com.IsartDigital.Chromaberation
             CanvasLayer lSupport = (CanvasLayer)factory.Instantiate();
             RippleEffect lEffect = (RippleEffect)lSupport.GetChild(0);
 
-            lEffect.SetValues(EXPLOSION_MAX_RADIUS,EXPLOSION_DURATION,EXPLOSION_INTENSITY,EXPLOSION_EDGE);
+            lEffect.SetValues(EXPLOSION_MAX_RADIUS, EXPLOSION_DURATION, EXPLOSION_INTENSITY, EXPLOSION_EDGE);
 
 
             lEffect.centerPosition = (Main.GetInstance().GetViewport().CanvasTransform * (pPosition * Map.DISTANCE_RANGE)) / Main.GetInstance().GetViewport().GetVisibleRect().Size;

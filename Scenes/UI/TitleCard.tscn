@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dw85b1nive3ah"]
+[gd_scene load_steps=27 format=3 uid="uid://dw85b1nive3ah"]
 
 [ext_resource type="Script" path="res://Scripts/UI/TitleCard.cs" id="1_ib5wi"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_5ibq2"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cbpeyia3cvem" path="res://Assets/particules/BigYellowParticle.png" id="2_68e54"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_e1lnu"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
-[ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
+[ext_resource type="Theme" uid="uid://b1hw5yq81qgsr" path="res://Assets/Theme/TitleFont.tres" id="6_6uovy"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
 [sub_resource type="Curve" id="Curve_x5kje"]
@@ -188,13 +189,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -366.0
-offset_top = 18.0
-offset_right = -250.0
-offset_bottom = 155.0
+offset_left = -348.0
+offset_top = 59.0
+offset_right = -233.0
+offset_bottom = 179.0
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 110
 text = "So"
 
 [node name="BOUM !" type="Control" parent="Title"]
@@ -210,6 +214,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(229, 102)
 
 [node name="Sprite2D" type="Sprite2D" parent="Title/BOUM !"]
+z_index = -1
 position = Vector2(207.084, 101.378)
 rotation = 0.10472
 scale = Vector2(0.866446, 0.849806)
@@ -229,13 +234,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -229.0
+offset_left = -211.0
+offset_top = 41.0
 offset_right = -130.0
 offset_bottom = 205.0
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 180
 text = "B"
 
 [node name="O" type="Label" parent="Title/BOUM !/BOUM"]
@@ -243,13 +250,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -139.0
-offset_right = -21.0
-offset_bottom = 205.0
+offset_left = -112.178
+offset_top = 40.0079
+offset_right = -11.1781
+offset_bottom = 220.008
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 180
 text = "O
 "
 
@@ -258,13 +267,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -29.0
-offset_right = 82.0
-offset_bottom = 205.0
+offset_left = -17.5432
+offset_top = 41.122
+offset_right = 99.4568
+offset_bottom = 221.122
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 180
 text = "U
 "
 
@@ -273,13 +284,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 71.0
-offset_right = 209.0
-offset_bottom = 205.0
+offset_left = 79.0807
+offset_top = 42.027
+offset_right = 217.081
+offset_bottom = 222.027
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 180
 text = "M
 "
 
@@ -288,12 +301,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 201.0
-offset_top = -30.0
-offset_right = 242.0
-offset_bottom = 175.0
+offset_left = 187.0
+offset_top = 48.0
+offset_right = 228.0
+offset_bottom = 199.0
 grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
@@ -304,13 +318,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -251.0
-offset_top = 5.0
-offset_right = -171.0
-offset_bottom = 176.0
+offset_left = -231.0
+offset_top = 51.0
+offset_right = -173.0
+offset_bottom = 177.0
 grow_horizontal = 2
 rotation = 0.0436332
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 125
 text = "K"
@@ -320,13 +336,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -186.0
-offset_top = -5.0
-offset_right = -103.0
-offset_bottom = 166.0
+offset_left = -166.0
+offset_top = 53.0
+offset_right = -91.0
+offset_bottom = 179.0
 grow_horizontal = 2
 rotation = -0.0698132
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 125
 text = "A
