@@ -10,7 +10,9 @@ namespace Com.IsartDigital.Sokoban
 	public partial class HightScore : Control
 	{
 		[Export] Button next;
-		[Export] BoxContainer levelAccount;
+		[Export] Control levelAccountTen;
+        [Export] Control levelAccountEleven;
+        Control levelAccount;
 
         int i;
 		bool currentAccountInTopTen;
@@ -24,7 +26,35 @@ namespace Com.IsartDigital.Sokoban
             
 			accounts = AccountManager.GetInstance().GetTopPlayers(10);
 
-			Label lAccountPosition;
+            foreach (Account lAccount in accounts)
+            {
+                if (lAccount.Id == AccountManager.GetInstance().currentAccount.Id)
+                {
+                    levelAccount = levelAccountTen;
+                    levelAccountEleven.Visible = false;
+                    levelAccountTen.Visible = true;
+                    currentAccountInTopTen = true;
+                }
+            }
+
+            Label lAccountPosition;
+
+            if (!currentAccountInTopTen)
+			{
+                levelAccount = levelAccountEleven;
+                levelAccountTen.Visible = false;
+                levelAccountEleven.Visible = true;
+
+                lAccountPosition = (Label)levelAccount.GetChild(10);
+                Label lAccountScore = (Label)lAccountPosition.GetChild(0);
+
+                lAccountPosition.Text = "You : " + AccountManager.GetInstance().currentAccount.Id + " ";
+                lAccountScore.Text = SCORE + AccountManager.GetInstance().currentAccount.FinalScore();
+                
+                lAccountPosition.Modulate = new Color(1, 1, 0);
+			}
+            
+            
             foreach (Account lAccount in accounts)
             {
 				lAccountPosition = (Label)levelAccount.GetChild(i);
@@ -34,24 +64,8 @@ namespace Com.IsartDigital.Sokoban
 				lAccountPosition.Text = i + ". " + lAccount.Id + " ";
 				lAccountScore.Text = SCORE + lAccount.FinalScore();
 
-                if (lAccount.Id == AccountManager.GetInstance().currentAccount.Id) 
-				{
-                    lAccountPosition.Modulate = new Color(1, 1, 0);
-					currentAccountInTopTen = true;
-                }
+                if (lAccount.Id == AccountManager.GetInstance().currentAccount.Id) lAccountPosition.Modulate = new Color(1, 1, 0);
             }
-
-			if (!currentAccountInTopTen)
-			{
-				lAccountPosition = (Label)levelAccount.GetChild(10);
-                Label lAccountScore = (Label)lAccountPosition.GetChild(0);
-
-                lAccountPosition.Text = "You : " + AccountManager.GetInstance().currentAccount.Id + " ";
-                lAccountScore.Text = SCORE + AccountManager.GetInstance().currentAccount.FinalScore();
-                
-                lAccountPosition.Modulate = new Color(1, 1, 0);
-				lAccountPosition.Visible = true;
-			}
 
             AnimationTopTen();
         }
@@ -68,7 +82,7 @@ namespace Com.IsartDigital.Sokoban
                 Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Circ).SetEase(Tween.EaseType.In).SetParallel();
                 lTween.TweenProperty(lAccount, TweenProp.MODULATE_ALPHA, 0f, 0);
                 lTween.TweenProperty(lAccount, TweenProp.MODULATE_ALPHA, 1f, 0).SetDelay(j * 0.3);
-                lTween.TweenProperty(lAccount, TweenProp.GLOBAL_POSITION_Y, lAccount.GlobalPosition.Y + (currentAccountInTopTen ? 75 : 63) * j, 1).From(-50).SetDelay(j * 0.3);
+                lTween.TweenProperty(lAccount, TweenProp.GLOBAL_POSITION_Y, lAccount.GlobalPosition.Y, 1).From(-50).SetDelay(j * 0.3);
                 lTween.Finished += () => DustAnimation(lAccount);
                 j++;
             }

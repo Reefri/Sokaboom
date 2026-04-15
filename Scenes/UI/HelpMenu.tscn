@@ -31,7 +31,7 @@ thirdPage = NodePath("ThirdPage")
 explanationControlA = NodePath("FirstPage/ExplanationControlA")
 explanationControlB = NodePath("FirstPage/explanationControlB")
 explanationSfA = NodePath("SecondPage/explanationSfA")
-explanationDetailC = NodePath("ThirdPage/HelpExplodeBoxes/explanationDetailC")
+explanationDetailC = NodePath("ThirdPage/explanationDetailC")
 returnButton = NodePath("Buttons/Button")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
@@ -229,11 +229,11 @@ vertical_alignment = 1
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.206
+anchor_left = 0.145
 anchor_top = 0.141
 anchor_right = 0.948
 anchor_bottom = 0.432
-offset_left = -0.480011
+offset_left = 65.4
 offset_top = -0.279999
 offset_right = 0.159912
 offset_bottom = 0.440002
@@ -265,11 +265,11 @@ scale = Vector2(2, 2)
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.544
+anchor_left = 0.21
 anchor_top = 0.455
 anchor_right = 0.849
 anchor_bottom = 0.803
-offset_left = 0.47998
+offset_left = 361.2
 offset_top = -0.400024
 offset_right = 0.0799561
 offset_bottom = -0.240051
@@ -309,60 +309,84 @@ color = Color(0.160784, 0.356863, 0, 1)
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.412
 anchor_top = 0.009
-anchor_right = 0.7
+anchor_right = 0.999
 anchor_bottom = 0.137
-offset_left = 0.375977
-offset_top = 0.168
-offset_right = -8.40002
-offset_bottom = 0.223991
+offset_left = 2.0
+offset_top = -7.72
+offset_right = 0.0799561
+offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 100
 text = "ID_DETAILS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HelpExplodeDirections" parent="ThirdPage" instance=ExtResource("12_1tdw1")]
+[node name="ExplanationDetailA" type="Label" parent="ThirdPage"]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.14
-anchor_top = 0.136
-anchor_right = 0.314
-anchor_bottom = 0.44
-offset_left = 35.72
-offset_top = 163.872
-offset_right = -164.728
-offset_bottom = -33.12
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ExplanationDetailA" type="Label" parent="ThirdPage/HelpExplodeDirections"]
-z_index = 1
-layout_mode = 0
-offset_left = 160.0
-offset_top = -75.0
-offset_right = 838.0
-offset_bottom = -2.0
-theme_override_font_sizes/font_size = 25
+anchor_left = 0.274
+anchor_top = 0.161
+anchor_right = 0.958
+anchor_bottom = 0.394
+offset_left = 249.08
+offset_top = 0.11998
+offset_right = 0.359985
+offset_bottom = 0.47998
+theme_override_font_sizes/font_size = 50
 text = "ID_DETAILS_A"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="HelpExplodeDirections" parent="ThirdPage" instance=ExtResource("12_1tdw1")]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.206
+anchor_top = 0.209
+anchor_right = 0.206
+anchor_bottom = 0.455
+offset_left = 0.519989
+offset_top = 265.28
+offset_right = 0.519989
+offset_bottom = -0.400024
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
 [node name="Label2" type="Label" parent="ThirdPage/HelpExplodeDirections"]
 z_index = 1
 layout_mode = 0
-offset_left = -24.0
-offset_top = 40.0
+offset_left = -32.0
+offset_top = 32.0
 offset_right = 160.0
-offset_bottom = 68.0
+offset_bottom = 60.0
 theme_override_font_sizes/font_size = 20
 text = "ID_DETAILS_B"
+horizontal_alignment = 1
+
+[node name="explanationDetailC" type="Label" parent="ThirdPage"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.611
+anchor_right = 0.966
+anchor_bottom = 0.849
+offset_left = 273.88
+offset_top = 0.119995
+offset_right = -0.280029
+offset_bottom = -6.92004
+theme_override_font_sizes/font_size = 35
+text = "- Attention ! Les caisses et cibles sont destructibles !
+
+-  S’il y a plus de caisses que de cibles, détruisez-les"
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="HelpExplodeBoxes" parent="ThirdPage" instance=ExtResource("13_aqbv3")]
@@ -370,29 +394,16 @@ z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.142
-anchor_top = 0.561
-anchor_right = 0.311
-anchor_bottom = 0.855
-offset_left = 34.416
-offset_top = 161.472
-offset_right = -160.272
-offset_bottom = -29.04
+anchor_top = 0.611
+anchor_right = 0.142
+anchor_bottom = 0.803
+offset_left = -64.36
+offset_top = 314.12
+offset_right = -64.36
+offset_bottom = 106.76
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="explanationDetailC" type="Label" parent="ThirdPage/HelpExplodeBoxes"]
-z_index = 1
-layout_mode = 0
-offset_left = 193.0
-offset_top = -157.0
-offset_right = 839.0
-offset_bottom = -1.0
-theme_override_font_sizes/font_size = 25
-text = "- Attention ! Les caisses et cibles sont destructibles !
-
--  S’il y a plus de caisses que de cibles, détruisez-les"
-vertical_alignment = 1
-autowrap_mode = 2
+scale = Vector2(2, 2)
 
 [node name="nextPage" type="Button" parent="."]
 z_index = 1
