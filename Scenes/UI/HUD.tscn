@@ -258,6 +258,7 @@ offset_left = 0.575928
 offset_top = 0.18399
 offset_right = 0.303955
 offset_bottom = -0.22403
+mouse_filter = 2
 script = ExtResource("8_uigrc")
 
 [node name="graphicSwitch" type="Button" parent="Control2"]

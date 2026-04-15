@@ -28,6 +28,7 @@ offset_right = -0.432007
 offset_bottom = 0.303955
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_xjfk4")
 script = ExtResource("1_ncsk8")
 mainButton = NodePath("ColorFiltreButton")
