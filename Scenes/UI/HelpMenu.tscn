@@ -30,13 +30,14 @@ secondPage = NodePath("SecondPage")
 thirdPage = NodePath("ThirdPage")
 explanationControlA = NodePath("FirstPage/ExplanationControlA")
 explanationControlB = NodePath("FirstPage/explanationControlB")
-explanationSfA = NodePath("SecondPage/HelpPattern/explanationSfA")
+explanationSfA = NodePath("SecondPage/explanationSfA")
 explanationDetailC = NodePath("ThirdPage/HelpExplodeBoxes/explanationDetailC")
 returnButton = NodePath("Buttons/Button")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [-118.0]
 
 [node name="FirstPage" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,7 +198,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="SecondPage" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,51 +210,71 @@ color = Color(0, 0, 0.819608, 1)
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.37
-anchor_top = 0.022
-anchor_right = 0.804
-anchor_bottom = 0.128
-offset_left = -0.23999
-offset_top = -0.256001
-offset_right = -0.208008
-offset_bottom = 0.0559998
+anchor_top = 0.003
+anchor_right = 0.998
+anchor_bottom = 0.13
+offset_top = 0.76
+offset_right = 0.159912
+offset_bottom = -1.40001
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 100
 text = "ID_SPECIAL_FEATURE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="explanationSfA" type="Label" parent="SecondPage"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.206
+anchor_top = 0.141
+anchor_right = 0.948
+anchor_bottom = 0.432
+offset_left = -0.480011
+offset_top = -0.279999
+offset_right = 0.159912
+offset_bottom = 0.440002
+theme_override_font_sizes/font_size = 36
+text = "- A côté de la bombe il y a sa forme d'explosion.
+La case rouge est le point d’origine de l'explosion 
+(La première case qui explose devant le joueur)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="HelpPattern" parent="SecondPage" instance=ExtResource("10_xhsv7")]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.147
-anchor_top = 0.161
-anchor_right = 0.202
-anchor_bottom = 0.358
-offset_left = 31.656
-offset_top = 95.672
-offset_right = -29.704
-offset_bottom = -31.984
+anchor_left = 0.145
+anchor_top = 0.317
+anchor_right = 0.145
+anchor_bottom = 0.317
+offset_left = 0.399994
+offset_top = -0.360016
+offset_right = 0.399994
+offset_bottom = -0.360016
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 
-[node name="explanationSfA" type="Label" parent="SecondPage/HelpPattern"]
+[node name="explanationSfB" type="Label" parent="SecondPage"]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 28.5
-anchor_right = 412.724
-offset_top = -77.0
-offset_right = 8.55194
-offset_bottom = 34.0
-theme_override_font_sizes/font_size = 25
-text = "- A côté de la bombe il y a sa forme d'explosion.
-La case rouge est le point d’origine de l'explosion 
-(La première case qui explose devant le joueur)"
+anchor_left = 0.544
+anchor_top = 0.455
+anchor_right = 0.849
+anchor_bottom = 0.803
+offset_left = 0.47998
+offset_top = -0.400024
+offset_right = 0.0799561
+offset_bottom = -0.240051
+theme_override_font_sizes/font_size = 40
+text = "ID_SF_B"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -263,29 +283,17 @@ autowrap_mode = 2
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.138
-anchor_top = 0.521
-anchor_right = 0.304
-anchor_bottom = 0.82
-offset_left = 32.024
-offset_top = 162.392
-offset_right = -159.208
-offset_bottom = -31.36
+anchor_left = 0.217
+anchor_top = 0.612
+anchor_right = 0.217
+anchor_bottom = 0.746
+offset_left = -0.360016
+offset_top = 145.04
+offset_right = -0.360016
+offset_bottom = 0.319946
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="explanationSfB" type="Label" parent="SecondPage/BombExplosionHelp"]
-z_index = 1
-layout_mode = 0
-offset_left = 160.0
-offset_top = -115.0
-offset_right = 844.0
-offset_bottom = -42.0
-theme_override_font_sizes/font_size = 25
-text = "ID_SF_B"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+scale = Vector2(2, 2)
 
 [node name="ThirdPage" type="ColorRect" parent="."]
 visible = false
