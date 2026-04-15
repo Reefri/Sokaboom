@@ -68,13 +68,20 @@ namespace Com.IsartDigital.Sokoban
 			GameManager.GetInstance().CurrentPar = 0;
 		}
 
-		public Level GetLevel(int pIndex)
+        public float CreateStars(int pIndex)
+        {
+            Level lLevel = GetLevel(levelOrder[pIndex]);
+
+            if (AccountManager.GetInstance().currentAccount.Score[levelOrder[pIndex]] >= 5000) lLevel.nbStars = 3;
+            else if (AccountManager.GetInstance().currentAccount.Score[levelOrder[pIndex]] <= 1000) lLevel.nbStars = 1;
+            else lLevel.nbStars = 2;
+
+			return lLevel.nbStars;
+        }
+
+        public Level GetLevel(int pIndex)
 		{
 			Level lLevel =	JsonReaderWriter.ReadJsonToList<Level>(JSON_PATH)[pIndex];
-
-			if (AccountManager.GetInstance().currentAccount.Score[pIndex] >= 5000) lLevel.nbStars = 3;
-			else if (AccountManager.GetInstance().currentAccount.Score[pIndex] <= 1000) lLevel.nbStars = 1;
-			else lLevel.nbStars = 2;
 
             return lLevel;
 		}

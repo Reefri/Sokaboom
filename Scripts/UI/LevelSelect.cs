@@ -32,12 +32,19 @@ namespace Com.IsartDigital.UI {
 			{
                 int lLevelID = i;
 
+                Control lStars = (Control)lButtons.GetChild(0);
+                for (int j = 0; j < GridManager.GetInstance().CreateStars(lLevelID); j++)
+                {
+                    AnimatedSprite2D lStar = (AnimatedSprite2D)lStars.GetChild(j);
+                    lStar.Frame = 1;
+                }
+                //GridManager.GetInstance().CreateStars(lLevelID);
+
                 if (GridManager.GetInstance().numberOfLevel > i) lButtons.Disabled = !AccountManager.GetInstance().currentAccount.LockedLevels[i];
 
                 lButtons.Text = Tr(LEVEL) + lLevelID;
                 lButtons.Pressed += () => GoToLevel(lLevelID);
                 i++;
-
             }
 
             TreeEntered += UpdateLevelSelect;
