@@ -1,0 +1,158 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqg1ggvq74h73"]
+
+[ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="1_2gbl8"]
+[ext_resource type="Script" path="res://Scripts/UI/SoundsSettingsMenu.cs" id="1_f5j28"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="1_hfjd5"]
+[ext_resource type="Script" path="res://Scripts/UI/SoundSettings.cs" id="1_v3g5r"]
+
+[sub_resource type="Gradient" id="Gradient_l7pab"]
+colors = PackedColorArray(1, 0.341176, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6vcrw"]
+gradient = SubResource("Gradient_l7pab")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="soundsSettings" type="TextureRect" node_paths=PackedStringArray("backToTitleButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = SubResource("GradientTexture2D_6vcrw")
+script = ExtResource("1_f5j28")
+backToTitleButton = NodePath("button/Back")
+
+[node name="button" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.3
+anchor_bottom = 0.162
+offset_right = 0.399994
+offset_bottom = 0.0240021
+script = ExtResource("1_hfjd5")
+
+[node name="Back" type="Button" parent="button"]
+layout_mode = 1
+offset_left = 74.0
+offset_right = 277.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("1_2gbl8")
+theme_override_styles/hover = ExtResource("1_2gbl8")
+theme_override_styles/pressed = ExtResource("1_2gbl8")
+theme_override_styles/disabled = ExtResource("1_2gbl8")
+theme_override_styles/focus = ExtResource("1_2gbl8")
+text = "ID_MENU"
+icon_alignment = 1
+
+[node name="overallLabel" type="Label" parent="."]
+layout_mode = 2
+anchor_top = 0.397
+anchor_right = 0.347
+anchor_bottom = 0.461
+offset_left = 32.0
+offset_top = -0.256012
+offset_right = 0.255981
+offset_bottom = 0.271973
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "ID_OVERALLVOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="musicLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.833
+anchor_right = 0.347
+anchor_bottom = 0.898
+offset_left = -0.256001
+offset_top = 0.0559692
+offset_right = 0.255981
+offset_bottom = -0.0640259
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "ID_MUSICVOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="soundsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.615
+anchor_right = 0.347
+anchor_bottom = 0.68
+offset_left = 32.0
+offset_top = -0.100006
+offset_right = 0.255981
+offset_bottom = -0.220001
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "ID_SOUNDSVOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="soundsSettingsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -383.0
+offset_top = 103.0
+offset_right = 385.0
+offset_bottom = 206.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 75
+text = "ID_VOLUMESETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("overallVolumeSettings", "SoundsVolumeSettings", "MusicsVolumeSettings")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.339
+anchor_top = 0.188
+anchor_right = 0.922
+anchor_bottom = 1.111
+offset_left = 0.471985
+offset_top = 0.175995
+offset_right = -303.144
+offset_bottom = -318.928
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.82273, 2.14273)
+theme_override_constants/separation = 50
+alignment = 1
+script = ExtResource("1_v3g5r")
+overallVolumeSettings = NodePath("overallVolume")
+SoundsVolumeSettings = NodePath("soundsVolume")
+MusicsVolumeSettings = NodePath("musicVolume")
+
+[node name="overallVolume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -30.0
+max_value = 10.0
+
+[node name="soundsVolume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -30.0
+max_value = 10.0
+
+[node name="musicVolume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -30.0
+max_value = 10.0

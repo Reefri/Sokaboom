@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bl3lri3lgs0b8"]
 
 [ext_resource type="Script" path="res://Scripts/Juiciness/BombPatterne/ToPlaceOnCollectible.cs" id="1_bg4wr"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="2_nlag2"]
+[ext_resource type="Texture2D" uid="uid://cbpeyia3cvem" path="res://Assets/particules/BigYellowParticle.png" id="2_54awy"]
 
 [sub_resource type="Gradient" id="Gradient_4oduv"]
 offsets = PackedFloat32Array(0, 0.814815, 1)
@@ -22,8 +22,8 @@ color_ramp = SubResource("GradientTexture1D_22866")
 script = ExtResource("1_bg4wr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_nlag2")
+scale = Vector2(0.337449, 0.337449)
+texture = ExtResource("2_54awy")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 250

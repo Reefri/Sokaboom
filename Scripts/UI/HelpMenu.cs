@@ -20,26 +20,24 @@ namespace Com.IsartDigital.Sokoban
         private int totalNumberOfPages;
         private int pageShown = 1;
 
-        [Export] private Label explanationSfB;
-        [Export] private Label explanationSfC;
         [Export] private Label explanationControlA;
         [Export] private Label explanationControlB;
-        [Export] private Label explanationDetailA;
-        [Export] private Label explanationDetailB;
+
+        [Export] private Label explanationSfA;
+
+        [Export] private Label explanationDetailC;
 
         private const string CONTROL_AA = "ID_CONTROL_AA";
         private const string CONTROL_AB = "ID_CONTROL_AB";
         private const string CONTROL_BA = "ID_CONTROL_BA";
         private const string CONTROL_BB = "ID_CONTROL_BB";
-        private const string CONTROL_BC = "ID_CONTROL_BC";
-        private const string SF_BA = "ID_SF_BA";
-        private const string SF_BB = "ID_SF_BB";
-        private const string SF_CA = "ID_SF_CA";
-        private const string SF_CB = "ID_SF_CB";
-        private const string DETAILS_AA = "ID_DETAILS_AA";
-        private const string DETAILS_AB = "ID_DETAILS_AB";
-        private const string DETAILS_BA = "ID_DETAILS_BA";
-        private const string DETAILS_BB = "ID_DETAILS_BB";
+
+        private const string SF_AA = "ID_SF_AA";
+        private const string SF_AB = "ID_SF_AB";
+        private const string SF_AC = "ID_SF_AC";
+
+        private const string DETAILS_CA = "ID_DETAILS_CA";
+        private const string DETAILS_CB = "ID_DETAILS_CB";
 
         [Export] private Button returnButton;
 
@@ -59,12 +57,12 @@ namespace Com.IsartDigital.Sokoban
             nextPageButton.Pressed += NextPage;
             previousPageButton.Pressed += PreviousPage;
 
-            explanationControlA.Text = Tr(CONTROL_AA) + "\n" + Tr(CONTROL_AB).Replace("@", ",");
-            explanationControlB.Text = Tr(CONTROL_BA).Replace("@", ",") + "\n" + Tr(CONTROL_BB) +"\n \n \n" + Tr(CONTROL_BC);
-            explanationSfB.Text = Tr(SF_BA) + "\n" + Tr(SF_BB);
-            explanationSfC.Text = Tr(SF_CA) + "\n" + Tr(SF_CB);
-            explanationDetailA.Text = Tr(DETAILS_AA) + "\n" + Tr(DETAILS_AB);
-            explanationDetailB.Text = Tr(DETAILS_BA) + "\n \n" + Tr(DETAILS_BB).Replace("@", ",");
+            explanationControlA.Text = Tr(CONTROL_AA) + "\n \n" + Tr(CONTROL_AB).Replace("@", ",");
+            explanationControlB.Text = Tr(CONTROL_BA).Replace("@", ",") + "\n" + Tr(CONTROL_BB);
+
+            explanationSfA.Text = Tr(SF_AA) + "\n" + Tr(SF_AB) + "\n" + Tr(SF_AC);
+
+            explanationDetailC.Text = Tr(DETAILS_CA) + "\n \n" + Tr(DETAILS_CB).Replace("@", ",");
 
             if (UIManager.GetInstance().comeToMenu) 
             {

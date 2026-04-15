@@ -46,6 +46,7 @@ namespace Com.IsartDigital.Sokoban
             } 
         }
 
+        public int nbStars;
 
 		public List<Vector2I> targetsPos;
 

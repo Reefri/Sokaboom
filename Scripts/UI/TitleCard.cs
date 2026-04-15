@@ -80,7 +80,10 @@ namespace Com.IsartDigital.Sokoban.UI
             helpButton.Pressed += HelpPressed;
             languageButton.Pressed += Langage;
 
-            soundButton.Text = Tr("ID_SOUND") + " On";
+            soundButton.Pressed += UIManager.GetInstance().GoToSoundsSettings;
+
+            
+            if (GraphicManager.IsOld) GraphicManager.ToggleGraphics();
         }
 
         public override void _Input(InputEvent pEvent)
@@ -138,6 +141,12 @@ namespace Com.IsartDigital.Sokoban.UI
             tween.TweenProperty(explosion, TweenProp.SCALE, explosion.Scale, 1f).From(Vector2.Zero).SetDelay(1f);
             tween.TweenProperty(explosion, TweenProp.ROTATION, explosion.Rotation, 1f).From(-explosion.Rotation).SetDelay(1f);
             tween.TweenProperty(explosion, TweenProp.SKEW, explosion.Skew, 1f).From(-explosion.Skew).SetDelay(1f);
+            tween.TweenCallback(
+                Callable.From(() =>
+                {
+                    SoundManager.GetInstance().PlayFireworkExplosion();
+                }
+                )).SetDelay(1f);
 
             tween.TweenProperty(boum, TweenProp.VISIBLE, true, 0f).SetDelay(LONG_DELAY);
             tween.TweenProperty(boum, TweenProp.SCALE, boum.Scale, 1f).From(Vector2.Zero).SetDelay(LONG_DELAY);
@@ -189,22 +198,6 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             UIManager.GetInstance().comeToMenu = true;
             UIManager.GetInstance().GoToHelp();
-        }
-
-        private void SonPressed()
-        {
-            SoundManager.GetInstance().soundPlay = !SoundManager.GetInstance().soundPlay;
-            
-            if(SoundManager.GetInstance().soundPlay)
-            {
-                SoundManager.GetInstance().PlayMusic();
-                soundButton.Text = Tr("ID_SOUND") + " On";
-            }
-            else 
-            {
-                SoundManager.GetInstance().StopMusic();
-                soundButton.Text = Tr("ID_SOUND") + " Off";
-            }
         }
 
         public void Langage()

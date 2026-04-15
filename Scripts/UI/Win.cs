@@ -2,6 +2,7 @@ using Com.IsartDigital.Utils.Tweens;
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Formats.Asn1.AsnWriter;
 
 // Author : Ethan Masse
 
@@ -13,11 +14,22 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] private GpuParticles2D confettis;
         [Export] private Label scoreText;
-		private int score;
+        [Export] private Label perfectText;
+        [Export] private GpuParticles2D perfectParticles;
+		private int score ;
+
+        private int scoreToReach;
 		private int numberStars;
+
+        private float time = 0;
+        [Export]private float winScoreDuration = 1;
 
         [Export] private Button restart;
         [Export] private Button next;
+
+        [Export] private Node2D explosionParticles;
+
+        private bool showScore = false;
 
         private const string SCORE = "Score : ";
 
@@ -40,28 +52,78 @@ namespace Com.IsartDigital.Sokoban
                 Banderole.GetInstance().winFinal = true;
                 next.Pressed += Banderole.GetInstance().StartTransitionToWin;
             }
+
+            perfectText.PivotOffset = perfectText.Size / 2;
+            perfectText.Scale = Vector2.Zero;
+            perfectParticles.Visible = false;
+        }
+
+      
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+
+            if (Input.IsActionJustPressed("BackToLevelSelect"))
+            {
+                UIManager.GetInstance().GoToLevelSelect();
+
+            }
+
+            if (showScore)
+            {
+                time += (float)delta;
+
+                if (score != scoreToReach)
+                {
+                    score = (int)Tween.InterpolateValue(score, scoreToReach - score, time, winScoreDuration * 3, Tween.TransitionType.Quad, Tween.EaseType.In);
+                    if (score >= scoreToReach)
+                    {
+                        score = scoreToReach;
+                        score = (score >= 0) ? score : 0;
+                        showScore = false;
+
+                        if (score >= 5000)
+                        {
+                            Tween lTween = CreateTween()
+                            .SetTrans(Tween.TransitionType.Expo)
+                            .SetEase(Tween.EaseType.In);
+
+                            lTween.TweenProperty(perfectText, TweenProp.SCALE, Vector2.One, winScoreDuration/2);
+                            lTween.Parallel().TweenProperty(perfectParticles, TweenProp.VISIBLE, true, winScoreDuration).SetDelay(winScoreDuration / 2);
+
+                            foreach (GpuParticles2D lParticles in explosionParticles.GetChildren())
+                            {
+                                lParticles.Emitting = true;
+                            }
+
+                            
+                        }
+                    }
+
+                    scoreText.Text = SCORE + score;
+                }
+            }
         }
 
 		private void CalculScoreLevel()
 		{
             if (GameManager.GetInstance().currentLevel.Par >= GameManager.GetInstance().CurrentPar) 
 			{
-                score = 5000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 100;
+                scoreToReach = 5000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 100;
 				numberStars = 3;
             }
             else if (GameManager.GetInstance().currentLevel.Par * 1.5f >= GameManager.GetInstance().CurrentPar)
 			{
-                score = 2000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
+                scoreToReach = 2000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
 				numberStars = 2;
             }
 			else 
 			{
-                score = 1000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
+                scoreToReach = 1000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
 				numberStars = 1;
             }
-
-            score = (score>0)?score:0;
-
+            score = (score >= 0) ? score : 0;
 
             for (int i = 0; i < numberStars; i++)
 			{
@@ -69,8 +131,6 @@ namespace Com.IsartDigital.Sokoban
                 lStars.Scale = Vector2.Zero;
                 AnimationStars(lStars, i * 0.5f,i);
             }
-            
-			scoreText.Text = SCORE + score;
 
             confettis.Emitting = true;
 
@@ -103,7 +163,8 @@ namespace Com.IsartDigital.Sokoban
 
             
             FireWork.CreateMult(null , pStars, Vector2.Zero,false);
-            
+
+            showScore = true;
         }
     }
 }

@@ -32,12 +32,16 @@ namespace Com.IsartDigital.Sokoban
 			CameraManager.GetInstance().Zoom(whereIsWin, victoryZoomStrength, victoryZoomDuration);
 
 			FireWork.CreateMult(whereIsWin, fireworksParent);
-		}
+
+			UIManager.GetInstance().instanceHud.undoButton.Disabled = true;
+            UIManager.GetInstance().instanceHud.restartButton.Disabled = true;
+            UIManager.GetInstance().instanceHud.quitButton.Disabled = true;
+        }
 
 		public static void Create()
 		{
 			VictoryAnimation lAnim = (VictoryAnimation)factory.Instantiate();
-			Main.GetInstance().AddChild(lAnim);
+			GameManager.GetInstance().AddChild(lAnim);
 		}
 
 	}

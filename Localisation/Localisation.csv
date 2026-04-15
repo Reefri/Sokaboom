@@ -1,55 +1,70 @@
 ﻿key,en,fr
-ID_QUIT,Quit,Quitter
+
+ID_TITLE_LOGIN,Login :,Connection :
+ID_PASSWORD,Password,Mot de passe
+ID_CONFIRM_PASSWORD,Confirm Password,Confirme Mot de passe
+ID_VALIDATION_LOGIN,Login,Connection
+ID_VALIDATION_INSCRIPTION,Register,Inscription
+ID_SWITCH_INSCRIPTION,Already Register,Déjà Inscrit
+
+ID_PASSWORD_NOT_CONFIRM,The Password is different from confirmation, Le mot de passe est différent de la confirmation.
+ID_PSEUDO_EXIST_A,The Pseudo : ,Le Pseudo : 
+ID_PSEUDO_EXIST_B, Already exist so change your pseudo or Log In !, éxiste déjà donc changer de pseudo ou connectez-vous !
+ID_INCORECT_PASSWORD,Incorrect Password,Votre mot de passe est incorrect.
+ID_NO_ACCOUNT_A,No Account was found with the peusdo : ,Aucun compte n'a été trouvé avec le pseudo : 
+ID_NO_ACCOUNT_B, If you don't have an account yet so then create one !, Si vous n'avez pas encore de compte alors créez en un !
+
 ID_PLAY,Play,Jouer 
-ID_NEXT,Next,Suivant
 ID_HELP,Help,Aide
 ID_HIGHSCORE,High Score,Tableau des Scores
 ID_TRANSLATION,English,Français
 ID_SOUND,Sound,Son
-ID_BACK,Back,Retour
-ID_PASSWORD,Password,Mot de passe
-ID_CONFIRM_PASSWORD,Confirm Password,Confirme Mot de passe
+
+
+ID_BASICS_CONTROL,Basics Control, Contrôle Basique
+ID_KEYBOARD,Control : ,Contrôle :
+ID_CONTROL_AA,- The player moves in the chosen direction,- Le joueur va dans la direction choisie
+ID_CONTROL_AB,- If the space is empty@ it moves there,- Si la case est vide@il s'y dirige
+ID_CONTROL_BA,- If the player moves toward a cash register@ they push it toward themselves,- S’il se déplace vers une caisse@ le joueur la pousse dans sa direction
+ID_CONTROL_BB,(But only if there's nothing behind it),(Mais seulement s'il n'y a rien derrière)
+
+ID_SPECIAL_FEATURE,The Bombs,Les Bombes
+ID_SF_AA,- Next to the bomb is its blast pattern., - A côté de la bombe il y a sa forme d'explosion.
+ID_SF_AB,The red square is the point of origin of the explosion , La case rouge est le point d’origine de l'explosion 
+ID_SF_AC,(The first box that explodes in front of the player),(La première case qui explose devant le joueur)
+ID_SF_B,- You can then place the bomb against a wall to set it off,- Vous pouvez ensuite placer la bombe contre un mur pour la faire exploser
+
+ID_DETAILS,Details,Détails
+ID_DETAILS_A,The pattern will change depending on the player's perspective,Le motif tournera en fonction du regard du joueur
+ID_DETAILS_B,^ Here 90° rotation,^ Ici elle tourne à 90°
+ID_DETAILS_CA,- Warning ! The crates and targets can be destroyed !,- Attention ! Les caisses et cibles sont destructibles !
+ID_DETAILS_CB,- If there are more crates than targets@ destroy them,- s’il y a plus de caisses que de cibles@ détruisez-les
+
+
+ID_MENU,Title Screen,Ecran Titre
+ID_NEXT,Next,Suivant
+
+ID_VOLUMESETTINGS,Volume Setting,Paramètre du Son
+ID_OVERALLVOLUME,Overall Volume,Volume général
+ID_SOUNDSVOLUME,Sound Effect Volume,Volume des Effects
+ID_MUSICVOLUME,Music Volume,Volume musique
+
+ID_MAKE_COLORBLIND,Color like colorblind,Couleur comme daltonien
+ID_CORRECT_COLORBLIND,Correct Color for colorblind,Couleur corrigé pour daltonien
+ID_NORMAL_VISION,Normal Color,Couleur d'origine
+
 ID_UNLOCK,Unlock,Debloque
 ID_TUTORIAL,Tutorial,Tutoriel
 ID_LEVEL,Level ,Niveau 
-ID_WIN,Win !,Victoire !
-ID_RESTART,Restart,Recommencer
-ID_UNDO,Undo,Retour Arrière
-ID_REDO,Redo,Retour Avant
-ID_STEPS,Steps : ,Pas : 
+
 ID_BY, by , par 
-ID_SWITCH_INSCRIPTION,Already Register,Deja Enregistré
-ID_VALIDATION_INSCRIPTION,Register You,Enregistre Toi
-ID_VALIDATION_LOGIN,Connect,Connection
-ID_TITLE_LOGIN,Login :,Connection :
-ID_PASSWORD_NOT_CONFIRM,The Password is different from confirmation, Le mot de passe ne correspond pas a la confirmation.
-ID_WIN_FINAL,Win Final,Victoire Final
-ID_INCORECT_PASSWORD,Incorrect Password,Votre mot de passe est incorrect.
-ID_PSEUDO_EXIST_A,The Pseudo : ,Le Pseudo : 
-ID_PSEUDO_EXIST_B, Already exist so change your pseudo or connect you !, éxiste déjà donc changer de pseudo ou connectez-vous !
-ID_MENU,Title Screen,Ecran Titre
-ID_NO_ACCOUNT_A,No Account was found with the peusdo : ,Aucun compte n'a été trouvé avec le pseudo : 
-ID_NO_ACCOUNT_B, If you don't have an account yet so then create one !, Si vous n'avez pas encore de compte alors créez en un !
-ID_DETAILS,Details,Détails
-ID_SPECIAL_FEATURE,The Bombs,Les Bombes
-ID_BASICS_CONTROL,Basics Control, Contrôle Basique
-ID_SF_A,- There are bombs placed on the levels that you can pick up,- Il y a des bombes sur le niveau que vous pouvez prendre
-ID_CONTROL_AA,- The player goes toward the chosen direction,- Le joueur va dans la direction choisie
-ID_CONTROL_AB,- if the tile is empty@ he move onto that tile,- si la case est vide@ il y va
-ID_CONTROL_BA,          - if he move toward a crate@ he push it,          - s’il se déplace vers une caisse@ il la pousse
-ID_CONTROL_BB,                                in his direction,                                dans sa direction
-ID_CONTROL_BC,                   - But only if the tile behind the crate is empty,                   - Mais seulement s'il n'y a rien derrière
-ID_KEYBOARD,Control : ,Contrôle :
-ID_SF_BA,- Next to the bomb there is its explosion's shape,- A côté de la bombe il y a sa forme d'explosion
-ID_SF_BB, The red zone is the point of origin, La zone rouge est le point d’origine
-ID_SF_CA,- you can then place the bomb against a wall,- vous pouvez ensuite placer la bombe
-ID_SF_CB,to detonate it,contre un mur pour la faire exploser
-ID_DETAILS_AA,- the pattern will turn depending on the side,- le motif tournera en fonction du côté
-ID_DETAILS_AB,of the wall you put the bomb against,du mur contre lequel vous mettez la bombe
-ID_DETAILS_BA,- Caution ! you can destroy crates and targets !,- Attention ! Les caisses et cibles sont destructibles !
-ID_DETAILS_BB,- if there are more crates than targets@ destroy them,- s’il y a plus de caisses que de cibles@ détruisez-les
-ID_DETAILS_C,^ Here 90° rotation,^ Ici elle tourne à 90°
-ID_TUTORIEL,Tutorial,Turoriel
+ID_STEPS,Steps : ,Pas : 
+
+ID_WIN,Win !,Victoire !
+ID_PERFECT,PERFECT !,PARFAIT !
+
+ID_CONGRATULATIONS,CONGRATULATION !,FÉLICITATION !
+
 ID_ETHANM_A,Mirror +,Miroir +
 ID_ETHANF_A,Arrow,Flèche
 ID_SACHA_IA,Corridor in B,Couloir en U

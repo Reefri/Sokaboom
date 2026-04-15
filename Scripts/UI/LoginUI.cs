@@ -1,3 +1,4 @@
+using Com.IsartDigital.Utils.Tweens;
 using Godot;
 
 // Author : Ethan Masse
@@ -6,6 +7,7 @@ namespace Com.IsartDigital.Sokoban.UI
 {
     public partial class LoginUI : Control
     {
+        [Export] private ColorRect realfont;
         [Export] private ColorRect font;
         [Export] private Label title;
         [Export] private LineEdit pseudo;
@@ -14,6 +16,8 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Button buttonSwitch;
         [Export] private Button buttonValidation;
         [Export] private Label statut;
+
+        [Export] private Sprite2D cadenas;
 
         private const string TEXT_TITLE_INSCRIPTION = "Inscription :";
 
@@ -25,6 +29,7 @@ namespace Com.IsartDigital.Sokoban.UI
         private const string VALIDATION_INSCRIPTION = "ID_VALIDATION_INSCRIPTION";
         private const string VALIDATION_LOGIN = "ID_VALIDATION_LOGIN";
         private const string TITLE_LOGIN = "ID_TITLE_LOGIN";
+
         private const string PASSWORD_NOT_CONFIRM = "ID_PASSWORD_NOT_CONFIRM";
         private const string PSEUDO_EXIST_A = "ID_PSEUDO_EXIST_A";
         private const string PSEUDO_EXIST_B = "ID_PSEUDO_EXIST_B";
@@ -45,8 +50,7 @@ namespace Com.IsartDigital.Sokoban.UI
         {
             if (isLogin)
             {
-                font.Color = new Color(0, 0.85f, 0.97f);
-                buttonSwitch.SelfModulate = new Color(0, 0, 0.39f);
+                font.Color = new Color(0.62f, 0.62f, 0);
 
                 buttonSwitch.Text = Tr(SWITCH_INSCRIPTION);
                 buttonValidation.Text = Tr(VALIDATION_INSCRIPTION);
@@ -58,8 +62,7 @@ namespace Com.IsartDigital.Sokoban.UI
             }
             else
             {
-                font.Color = new Color(0, 0, 0.39f);
-                buttonSwitch.SelfModulate = new Color(0, 0.85f, 0.97f);
+                font.Color = new Color(0.52f, 0, 0);
 
                 buttonSwitch.Text = TEXT_SWITCH_LOGIN;
                 buttonValidation.Text = Tr(VALIDATION_LOGIN);
@@ -123,15 +126,38 @@ namespace Com.IsartDigital.Sokoban.UI
                     password.GrabFocus();
                     break;
                 case AccountManager.TestConnexionResult.Valid:
-                    UIManager.GetInstance().ChangeLayer();
-                    TitleDoors.GetInstance().ActivateDoors();
-                    UIManager.GetInstance().GoToTitle();
+                    Animation();
                     break;
                 case AccountManager.TestConnexionResult.NotFound:
                     statut.Text = Tr(NO_ACCOUNT_A) + pseudo.Text + Tr(NO_ACCOUNT_B);
                     pseudo.GrabFocus();
                     break;
             }
+        }
+
+        private void Animation()
+        {
+            Tween lTween = CreateTween().SetParallel();
+
+            lTween.TweenProperty(cadenas, TweenProp.POSITION, new Vector2(788, 122), 0.2f);
+            lTween.TweenProperty(cadenas, TweenProp.ROTATION, Mathf.DegToRad(45), 0.2f);
+
+            lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.InOut).SetParallel();
+
+            lTween.TweenProperty(realfont, TweenProp.GLOBAL_POSITION, new Vector2(0, GetWindow().Size.Y), 1f);
+            lTween.TweenProperty(realfont, TweenProp.ROTATION, Mathf.DegToRad(-360 * 2), 1f);
+
+            lTween.TweenProperty(cadenas, TweenProp.POSITION, new Vector2(588 + 350, GetWindow().Size.Y), 0.8f).SetDelay(0.2f);
+            lTween.TweenProperty(cadenas, TweenProp.ROTATION, Mathf.DegToRad(360), 0.8f).SetDelay(0.2f);
+
+            lTween.Finished += GoOnLogin;
+        }
+
+        private void GoOnLogin()
+        {
+            UIManager.GetInstance().ChangeLayer();
+            TitleDoors.GetInstance().ActivateDoors();
+            UIManager.GetInstance().GoToTitle();
         }
 	}
 }

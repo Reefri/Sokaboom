@@ -18,8 +18,8 @@ namespace Com.IsartDigital.Sokoban
         private PackedScene uiWin = GD.Load<PackedScene>("res://Scenes/UI/Win.tscn");
         private PackedScene uiWinFinal = GD.Load<PackedScene>("res://Scenes/UI/WinFinal.tscn");
         private PackedScene uiHightScore = GD.Load<PackedScene>("res://Scenes/UI/HightScore.tscn");
+        private PackedScene uiSoundsSettings = GD.Load<PackedScene>("res://Scenes/UI/SoundsSettingsMenu.tscn");
 
-        private PackedScene uiMenuChangeTransition = GD.Load<PackedScene>("res://Scenes/UI/Transitions/MenuTransition.tscn");
 
         private PackedScene uiSpiral = GD.Load<PackedScene>("res://Scenes/Juiciness/Spiral.tscn");
 
@@ -84,6 +84,17 @@ namespace Com.IsartDigital.Sokoban
             if (instanceHud != null) instanceHud.steps.Text = Tr(ID_STEPS) + GameManager.GetInstance().CurrentPar;
         }
 
+        public void GoToSoundsSettings()
+        {
+            //MenuTransition.Create(ContinuetoSettings);
+            ContinuetoSettings();
+        }
+        private void ContinuetoSettings()
+        {
+            GetChild(0).QueueFree();
+            AddChild(uiSoundsSettings.Instantiate());
+
+        }
         public void GoToLogin()
         {
             GetChild(0).QueueFree();
@@ -92,7 +103,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToTitle()
         {
-            MenuTransition.Create(ContinueToTitle);
+            //MenuTransition.Create(ContinueToTitle);
+            ContinueToTitle();
         }
 
         public void ContinueToTitle()
@@ -103,7 +115,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToHelp()
         {
-            MenuTransition.Create(ContinueToHelp);
+            //MenuTransition.Create(ContinueToHelp);
+            ContinueToHelp();
         }
 
         private void ContinueToHelp()
@@ -127,7 +140,7 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToLevel(int pIndex)
         {
-            if (pIndex > GridManager.GetInstance().numberOfLevel && !(Main.GetInstance().testOnlyGameFeature)) { GoToLevelSelect(); return; }
+            if (pIndex > GridManager.GetInstance().numberOfLevel) { GoToLevelSelect(); return; }
 
             currentIndex = pIndex;
 
@@ -166,7 +179,8 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToHightScore()
         {
-            MenuTransition.Create(ContinueToHightScore);
+            //MenuTransition.Create(ContinueToHightScore);
+            ContinueToHightScore();
         }
 
         public void ContinueToHightScore()

@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8a4ecwgtperg"]
+[gd_scene load_steps=9 format=3 uid="uid://b8a4ecwgtperg"]
 
 [ext_resource type="Texture2D" uid="uid://baqqdfk122ne0" path="res://Assets/UI/eye/oeil(1).png" id="1_avoev"]
 [ext_resource type="Script" path="res://Scripts/UI/LoginUI.cs" id="1_b5yqg"]
 [ext_resource type="Script" path="res://Scripts/UI/SecretButton.cs" id="3_jl43w"]
 [ext_resource type="Texture2D" uid="uid://b5ifgvo56jcyi" path="res://Assets/UI/eye/oeil.png" id="4_xtyfr"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_dsb4s"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="6_h22ql"]
+[ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_4vgus"]
+[ext_resource type="Texture2D" uid="uid://cvnj7gsjpmp22" path="res://Assets/Cadenas.png" id="8_bwkap"]
 
-[node name="Login" type="Control" node_paths=PackedStringArray("font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation", "statut")]
+[node name="Login" type="Control" node_paths=PackedStringArray("realfont", "font", "title", "pseudo", "password", "confirmPassword", "buttonSwitch", "buttonValidation", "statut", "cadenas")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,28 +17,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b5yqg")
+realfont = NodePath("Font")
 font = NodePath("Font/Login_Inscription/Font")
 title = NodePath("Font/Login_Inscription/Font/Title")
 pseudo = NodePath("Font/Login_Inscription/Font/LinePseudo")
 password = NodePath("Font/Login_Inscription/Font/LinePassWord")
 confirmPassword = NodePath("Font/Login_Inscription/Font/LineConfirm")
 buttonSwitch = NodePath("Font/Login_Inscription/Font/Control/Swtich")
-buttonValidation = NodePath("Font/Login_Inscription/Font/Control/connexion_inscription")
+buttonValidation = NodePath("Font/connexion_inscription")
 statut = NodePath("Font/Statut")
+cadenas = NodePath("Cadenas")
 
 [node name="Font" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -275.0
-offset_top = -150.0
-offset_right = 275.0
-offset_bottom = 150.0
+anchors_preset = -1
+anchor_left = 0.261
+anchor_top = 0.269
+anchor_right = 0.739
+anchor_bottom = 0.731
+offset_left = 0.328003
+offset_top = -0.312012
+offset_right = -0.328003
+offset_bottom = 0.311981
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(275, 150)
 color = Color(0.0923971, 0.0923971, 0.0923971, 1)
 
 [node name="Login_Inscription" type="Control" parent="Font"]
@@ -48,37 +54,36 @@ grow_vertical = 2
 
 [node name="Font" type="ColorRect" parent="Font/Login_Inscription"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -125.0
-offset_right = 250.0
-offset_bottom = 125.0
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 0.083
+anchor_right = 0.955
+anchor_bottom = 0.917
+offset_left = 0.249998
+offset_top = 0.0999985
+offset_right = -0.25
+offset_bottom = -0.100006
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0.396078, 1)
+color = Color(0.521569, 0, 0, 1)
 
 [node name="Title" type="Label" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 0.092
 grow_horizontal = 2
 text = "ID_TITLE_LOGIN"
 horizontal_alignment = 1
 
 [node name="LinePseudo" type="LineEdit" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 46.0
-offset_right = 100.0
-offset_bottom = 77.0
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.184
+anchor_right = 0.7
+anchor_bottom = 0.308
+offset_right = -3.05176e-05
 grow_horizontal = 2
 placeholder_text = "Pseudo"
 alignment = 1
@@ -86,13 +91,12 @@ caret_blink = true
 
 [node name="LinePassWord" type="LineEdit" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 85.0
-offset_right = 100.0
-offset_bottom = 116.0
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.34
+anchor_right = 0.7
+anchor_bottom = 0.464
+offset_right = -3.05176e-05
 grow_horizontal = 2
 placeholder_text = "ID_PASSWORD"
 alignment = 1
@@ -102,10 +106,14 @@ secret_character = "*"
 
 [node name="Button Secret" type="Button" parent="Font/Login_Inscription/Font/LinePassWord"]
 layout_mode = 1
-offset_left = 201.0
-offset_top = -4.0
-offset_right = 721.0
-offset_bottom = 516.0
+anchors_preset = -1
+anchor_left = 1.005
+anchor_top = -0.129
+anchor_right = 1.187
+anchor_bottom = 1.0
+offset_top = -0.000999689
+offset_right = 483.6
+offset_bottom = 485.0
 scale = Vector2(0.07, 0.07)
 icon = ExtResource("1_avoev")
 flat = true
@@ -113,13 +121,11 @@ script = ExtResource("3_jl43w")
 
 [node name="LineConfirm" type="LineEdit" parent="Font/Login_Inscription/Font"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 124.0
-offset_right = 100.0
-offset_bottom = 155.0
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.496
+anchor_right = 0.7
+anchor_bottom = 0.62
 grow_horizontal = 2
 placeholder_text = "ID_CONFIRM_PASSWORD"
 alignment = 1
@@ -128,10 +134,15 @@ secret_character = "*"
 
 [node name="Button Secret" type="Button" parent="Font/Login_Inscription/Font/LineConfirm"]
 layout_mode = 1
-offset_left = 201.0
-offset_top = -4.0
-offset_right = 721.0
-offset_bottom = 516.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.129
+anchor_right = 1.187
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -0.000999689
+offset_right = 483.6
+offset_bottom = 485.0
 scale = Vector2(0.07, 0.07)
 icon = ExtResource("4_xtyfr")
 flat = true
@@ -148,46 +159,68 @@ mouse_filter = 2
 script = ExtResource("5_dsb4s")
 
 [node name="Swtich" type="Button" parent="Font/Login_Inscription/Font/Control"]
-self_modulate = Color(0, 0.85098, 0.972549, 1)
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 0.226
 anchor_bottom = 1.0
-offset_top = -22.0
-offset_right = 60.0
+offset_top = -1.52588e-05
+offset_bottom = -1.0
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_4vgus")
+theme_override_styles/hover = ExtResource("7_4vgus")
+theme_override_styles/pressed = ExtResource("7_4vgus")
+theme_override_styles/disabled = ExtResource("7_4vgus")
+theme_override_styles/focus = ExtResource("7_4vgus")
 text = "Inscription"
-flat = true
 
-[node name="connexion_inscription" type="Button" parent="Font/Login_Inscription/Font/Control"]
+[node name="connexion_inscription" type="Button" parent="Font"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -90.0
-offset_right = 150.0
-offset_bottom = -15.0
+anchors_preset = -1
+anchor_left = 0.247
+anchor_top = 0.623
+anchor_right = 0.756
+anchor_bottom = 0.798
+offset_left = 0.149994
+offset_top = 0.0999908
+offset_right = 0.199982
+offset_bottom = 4.59999
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("6_h22ql")
+theme_override_styles/hover = ExtResource("6_h22ql")
+theme_override_styles/pressed = ExtResource("6_h22ql")
+theme_override_styles/disabled = ExtResource("6_h22ql")
 text = "ID_VALIDATION_LOGIN"
 
 [node name="Statut" type="Label" parent="Font"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = -0.545
 anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -275.0
-offset_right = 275.0
-offset_bottom = 25.0
-grow_horizontal = 2
+anchor_right = 1.545
+anchor_bottom = 1.083
+offset_left = -0.25
+offset_right = 0.249939
+offset_bottom = 0.0999756
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
+
+[node name="Cadenas" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(588, 147)
+scale = Vector2(1.37, 1)
+texture = ExtResource("8_bwkap")
 
 [connection signal="pressed" from="Font/Login_Inscription/Font/Control/Swtich" to="." method="SwitchOnPressed"]

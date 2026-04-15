@@ -48,8 +48,9 @@ namespace Com.IsartDigital.Sokoban
             waitTimer.Timeout += moveBackCameraToStart;
 		}
 
-		public void Zoom(Vector2 pWhereToZoom, float pZoomStrength, float pTweenDuration)
+		public void Zoom(Vector2 pWhereToZoom, float pZoomStrength, float pTweenDuration, bool pGoBackToPos = false)
 		{
+
 			Tween lTween = camera.CreateTween()
 				.SetTrans(Tween.TransitionType.Quint)
 				.SetEase(Tween.EaseType.Out);
@@ -62,7 +63,10 @@ namespace Com.IsartDigital.Sokoban
 					Callable.From(() =>
 						CenterCameraOnCurrentLevel())
 					);
+
+
         }
+
         private void WaitAtEndPos()
         {
             waitTimer.Start();

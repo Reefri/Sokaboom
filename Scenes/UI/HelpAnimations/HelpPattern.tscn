@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfm60y4iatyj0"]
 
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="1_xuhks"]
+[ext_resource type="Texture2D" uid="uid://6e025o0qybaw" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_01.png" id="1_hew17"]
 
 [node name="HelpPattern" type="Control"]
 layout_mode = 3
@@ -11,10 +11,10 @@ scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="bombPattern"]
 modulate = Color(1, 0, 0, 1)
-scale = Vector2(2, 2)
-texture = ExtResource("1_xuhks")
+scale = Vector2(4, 4)
+texture = ExtResource("1_hew17")
 
 [node name="Sprite2D2" type="Sprite2D" parent="bombPattern"]
 position = Vector2(0, -253)
-scale = Vector2(2, 2)
-texture = ExtResource("1_xuhks")
+scale = Vector2(4, 4)
+texture = ExtResource("1_hew17")

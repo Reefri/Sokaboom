@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0eui805x13ck"]
+[gd_scene load_steps=13 format=3 uid="uid://c0eui805x13ck"]
 
 [ext_resource type="Script" path="res://Scripts/BombCollectible.cs" id="1_73o2a"]
 [ext_resource type="Shader" uid="uid://wxygcdpv5iwa" path="res://Ressources/Shaders/Hover.tres" id="2_4oihl"]
-[ext_resource type="Script" path="res://Scripts/Juiciness/HoverEffect.cs" id="3_4pr4v"]
-[ext_resource type="Material" uid="uid://ccjud020y5jbl" path="res://Ressources/Shaders/Materials/BombShadowShader.tres" id="3_er312"]
+[ext_resource type="Shader" uid="uid://dogpsix47cvgu" path="res://Ressources/Shaders/BombShadow.tres" id="3_d07sw"]
 [ext_resource type="Texture2D" uid="uid://ch2pts2c7mev4" path="res://Assets/Bomb/Collectible/Shadow.png" id="4_f70lw"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/HoverEffect.cs" id="4_l8icm"]
 [ext_resource type="Shader" uid="uid://do3fq4hi5o4ev" path="res://Ressources/Shaders/BombCollectibleShader.tres" id="9_yesas"]
 [ext_resource type="Texture2D" uid="uid://lqdojj6a4fff" path="res://Assets/Bomb/Collectible/fireworkBody/diamond.png" id="10_v2pbm"]
 [ext_resource type="Texture2D" uid="uid://dgn2y3tjukwns" path="res://Assets/Bomb/Collectible/fireworkHead.png" id="11_46150"]
@@ -13,12 +13,17 @@
 shader = ExtResource("2_4oihl")
 shader_parameter/chromaEffect = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4dn3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pw5mx"]
+resource_local_to_scene = true
+shader = ExtResource("3_d07sw")
+shader_parameter/speed = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_did3f"]
 resource_local_to_scene = true
 shader = ExtResource("9_yesas")
-shader_parameter/RotationSpeed = 0.5
-shader_parameter/SecondaryColor = Color(0.745965, 0.4851, 0.99, 1)
-shader_parameter/MainColor = Color(0.316667, 0, 1, 1)
+shader_parameter/RotationSpeed = 0.2
+shader_parameter/SecondaryColor = Color(0, 0.682353, 0, 1)
+shader_parameter/MainColor = Color(1, 0, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ets"]
 size = Vector2(64, 64)
@@ -27,7 +32,6 @@ size = Vector2(64, 64)
 y_sort_enabled = true
 script = ExtResource("1_73o2a")
 hoverRenderer = NodePath("Renderer/Hover")
-hoverScript = ExtResource("3_4pr4v")
 head = NodePath("Renderer/Hover/Head")
 body = NodePath("Renderer/Hover/Body")
 
@@ -36,14 +40,14 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_melce")
 
 [node name="Shadow" type="Sprite2D" parent="Renderer"]
-material = ExtResource("3_er312")
+material = SubResource("ShaderMaterial_pw5mx")
 texture = ExtResource("4_f70lw")
 
 [node name="Hover" type="Node2D" parent="Renderer"]
-script = ExtResource("3_4pr4v")
+script = ExtResource("4_l8icm")
 
 [node name="Body" type="Sprite2D" parent="Renderer/Hover"]
-material = SubResource("ShaderMaterial_q4dn3")
+material = SubResource("ShaderMaterial_did3f")
 texture = ExtResource("10_v2pbm")
 
 [node name="Head" type="Sprite2D" parent="Renderer/Hover"]
@@ -51,5 +55,4 @@ position = Vector2(0, -11)
 texture = ExtResource("11_46150")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_w1ets")

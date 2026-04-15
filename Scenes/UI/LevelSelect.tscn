@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvruhy2dpei86"]
+[gd_scene load_steps=31 format=3 uid="uid://cvruhy2dpei86"]
 
 [ext_resource type="Script" path="res://Scripts/UI/LevelSelect.cs" id="1_l0ych"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_mtd47"]
@@ -6,10 +6,279 @@
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_oadqc"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_2u2uy"]
 [ext_resource type="Texture2D" uid="uid://bvp8qofn2wfr1" path="res://Assets/button.png" id="4_w4d12"]
+[ext_resource type="Texture2D" uid="uid://vu3lr2iiu77m" path="res://Assets/Stars/NewEmptyStar.png" id="5_w0gcs"]
+[ext_resource type="Texture2D" uid="uid://btwc780h5emv5" path="res://Assets/Stars/NewStars.png" id="6_vmnht"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="8_f6wqv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umwkv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4tj3"]
 texture = ExtResource("4_w4d12")
 modulate_color = Color(0.412152, 0.412152, 0.412152, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0rgs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kaqdd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s5o38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gla7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k7rrd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1j6q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_accec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4cdde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yengn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kntnh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xs022"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wj2ro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i05k1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u1o0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p76xw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycpli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_12q1j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_deoyg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w0gcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmnht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ib5a"]
 texture = ExtResource("3_oadqc")
@@ -51,15 +320,15 @@ script = ExtResource("2_mtd47")
 
 [node name="tutorial" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -249.0
-offset_right = 80.0
-offset_bottom = -169.0
+anchors_preset = -1
+anchor_left = 0.431
+anchor_top = 0.116
+anchor_right = 0.569
+anchor_bottom = 0.239
+offset_left = -0.512024
+offset_top = -0.167999
+offset_right = 0.511963
+offset_bottom = 0.127991
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -74,17 +343,45 @@ theme_override_styles/disabled = ExtResource("4_2u2uy")
 theme_override_styles/focus = ExtResource("4_2u2uy")
 text = "ID_TUTORIAL"
 
+[node name="Control" type="Control" parent="allButtons/tutorial"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/tutorial/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_umwkv")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/tutorial/Control"]
+position = Vector2(62, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_umwkv")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/tutorial/Control"]
+position = Vector2(125, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_umwkv")
+centered = false
+
 [node name="level1" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -438.0
-offset_top = -138.0
-offset_right = -313.0
-offset_bottom = -58.0
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.287
+anchor_right = 0.228
+anchor_bottom = 0.41
+offset_left = -0.240005
+offset_top = 0.0240021
+offset_right = 0.343994
+offset_bottom = 0.319977
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(10, 0)
@@ -101,17 +398,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "ID_LEVEL"
 
+[node name="Control" type="Control" parent="allButtons/level1"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level1/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_f0rgs")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level1/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_f0rgs")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level1/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_f0rgs")
+centered = false
+
 [node name="level2" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = -138.0
-offset_right = -63.0
-offset_bottom = -58.0
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.287
+anchor_right = 0.445
+anchor_bottom = 0.41
+offset_left = -0.223999
+offset_top = 0.0240021
+offset_right = 0.359985
+offset_bottom = 0.319977
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -127,17 +452,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 2"
 
+[node name="Control" type="Control" parent="allButtons/level2"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level2/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kaqdd")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level2/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kaqdd")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level2/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kaqdd")
+centered = false
+
 [node name="level3" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 62.0
-offset_top = -138.0
-offset_right = 187.0
-offset_bottom = -58.0
+anchors_preset = -1
+anchor_left = 0.554
+anchor_top = 0.287
+anchor_right = 0.662
+anchor_bottom = 0.41
+offset_left = -0.208008
+offset_top = 0.0240021
+offset_right = 0.375916
+offset_bottom = 0.319977
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -153,17 +506,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 3"
 
+[node name="Control" type="Control" parent="allButtons/level3"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level3/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_s5o38")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level3/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_s5o38")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level3/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_s5o38")
+centered = false
+
 [node name="level4" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 312.0
-offset_top = -138.0
-offset_right = 437.0
-offset_bottom = -58.0
+anchors_preset = -1
+anchor_left = 0.771
+anchor_top = 0.287
+anchor_right = 0.879
+anchor_bottom = 0.41
+offset_left = -0.192017
+offset_top = 0.0240021
+offset_right = 0.391907
+offset_bottom = 0.319977
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -179,17 +560,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 4"
 
+[node name="Control" type="Control" parent="allButtons/level4"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level4/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_2gla7")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level4/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_2gla7")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level4/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_2gla7")
+centered = false
+
 [node name="level5" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -438.0
-offset_top = 12.0
-offset_right = -313.0
-offset_bottom = 92.0
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.519
+anchor_right = 0.228
+anchor_bottom = 0.629
+offset_left = -0.240005
+offset_top = -0.312042
+offset_right = 0.343994
+offset_bottom = 8.40799
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -205,17 +614,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 5"
 
+[node name="Control" type="Control" parent="allButtons/level5"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level5/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_k7rrd")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level5/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_k7rrd")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level5/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_k7rrd")
+centered = false
+
 [node name="level6" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = 12.0
-offset_right = -63.0
-offset_bottom = 92.0
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.519
+anchor_right = 0.445
+anchor_bottom = 0.642
+offset_left = -0.223999
+offset_top = -0.312042
+offset_right = 0.359985
+offset_bottom = -0.0160217
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -231,17 +668,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 6"
 
+[node name="Control" type="Control" parent="allButtons/level6"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level6/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_1j6q0")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level6/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_1j6q0")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level6/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_1j6q0")
+centered = false
+
 [node name="level7" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 62.0
-offset_top = 12.0
-offset_right = 187.0
-offset_bottom = 92.0
+anchors_preset = -1
+anchor_left = 0.554
+anchor_top = 0.519
+anchor_right = 0.662
+anchor_bottom = 0.642
+offset_left = -0.208008
+offset_top = -0.312042
+offset_right = 0.375916
+offset_bottom = -0.0160217
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -257,17 +722,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 7"
 
+[node name="Control" type="Control" parent="allButtons/level7"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level7/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_accec")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level7/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_accec")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level7/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_accec")
+centered = false
+
 [node name="level8" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 312.0
-offset_top = 12.0
-offset_right = 437.0
-offset_bottom = 92.0
+anchors_preset = -1
+anchor_left = 0.771
+anchor_top = 0.519
+anchor_right = 0.879
+anchor_bottom = 0.642
+offset_left = -0.192017
+offset_top = -0.312042
+offset_right = 0.391907
+offset_bottom = -0.0160217
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -283,17 +776,44 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 8"
 
+[node name="Control" type="Control" parent="allButtons/level8"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level8/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_4cdde")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level8/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_4cdde")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level8/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_4cdde")
+centered = false
+
 [node name="level9" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -438.0
-offset_top = 162.0
-offset_right = -313.0
-offset_bottom = 242.0
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.75
+anchor_right = 0.228
+anchor_bottom = 0.873
+offset_left = -0.23999
+offset_right = 0.343994
+offset_bottom = -0.704041
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -309,17 +829,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 9"
 
+[node name="Control" type="Control" parent="allButtons/level9"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level9/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_yengn")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level9/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_yengn")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level9/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_yengn")
+centered = false
+
 [node name="level10" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = 162.0
-offset_right = -63.0
-offset_bottom = 242.0
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.75
+anchor_right = 0.445
+anchor_bottom = 0.873
+offset_left = -0.223999
+offset_top = -3.05176e-05
+offset_right = 0.359985
+offset_bottom = 0.295959
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -335,17 +883,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 10"
 
+[node name="Control" type="Control" parent="allButtons/level10"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level10/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kntnh")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level10/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_xs022")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level10/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_wj2ro")
+centered = false
+
 [node name="level11" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 62.0
-offset_top = 162.0
-offset_right = 187.0
-offset_bottom = 242.0
+anchors_preset = -1
+anchor_left = 0.554
+anchor_top = 0.75
+anchor_right = 0.662
+anchor_bottom = 0.873
+offset_left = -0.208008
+offset_top = -3.05176e-05
+offset_right = 0.375916
+offset_bottom = 0.295959
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -361,17 +937,45 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 11"
 
+[node name="Control" type="Control" parent="allButtons/level11"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level11/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_i05k1")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level11/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_u1o0s")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level11/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_p76xw")
+centered = false
+
 [node name="level12" type="Button" parent="allButtons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 312.0
-offset_top = 162.0
-offset_right = 437.0
-offset_bottom = 242.0
+anchors_preset = -1
+anchor_left = 0.771
+anchor_top = 0.75
+anchor_right = 0.879
+anchor_bottom = 0.873
+offset_left = -0.192017
+offset_top = -3.05176e-05
+offset_right = 0.391907
+offset_bottom = 0.295959
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -387,18 +991,46 @@ theme_override_styles/focus = ExtResource("4_2u2uy")
 disabled = true
 text = "Level 12"
 
+[node name="Control" type="Control" parent="allButtons/level12"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.388
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="allButtons/level12/Control"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_ycpli")
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="allButtons/level12/Control"]
+position = Vector2(45, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_12q1j")
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="allButtons/level12/Control"]
+position = Vector2(90, 0)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_deoyg")
+centered = false
+
 [node name="unlock" type="Button" parent="."]
 z_index = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 256.0
-offset_top = -302.0
-offset_right = 479.0
-offset_bottom = -247.0
+anchors_preset = -1
+anchor_left = 0.687
+anchor_top = 0.019
+anchor_right = 0.951
+anchor_bottom = 0.134
+offset_left = 0.575928
+offset_top = -0.312001
+offset_right = -0.552002
+offset_bottom = 0.167999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -406,7 +1038,7 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxTexture_7ib5a")
 theme_override_styles/hover = SubResource("StyleBoxTexture_7ib5a")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7ib5a")
@@ -423,22 +1055,31 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_mtd47")
+metadata/_edit_lock_ = true
 
 [node name="back" type="Button" parent="Control"]
 z_index = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -453.0
-offset_top = -309.0
-offset_right = -242.0
-offset_bottom = -232.0
+anchors_preset = -1
+anchor_left = 0.107
+anchor_top = 0.023
+anchor_right = 0.336
+anchor_bottom = 0.142
+offset_left = -0.264008
+offset_top = 0.0959988
+offset_right = -0.0720215
+offset_bottom = -0.0160065
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "ID_BACK"
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("8_f6wqv")
+theme_override_styles/hover = ExtResource("8_f6wqv")
+theme_override_styles/pressed = ExtResource("8_f6wqv")
+theme_override_styles/disabled = ExtResource("8_f6wqv")
+theme_override_styles/focus = ExtResource("8_f6wqv")
+text = "ID_MENU"
 
 [connection signal="pressed" from="unlock" to="." method="UnlockPressed"]

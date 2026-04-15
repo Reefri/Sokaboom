@@ -1,16 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfi0xj1teixyt"]
+[gd_scene load_steps=18 format=3 uid="uid://dfi0xj1teixyt"]
 
-[ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Ground/ground_06.png" id="1_85cug"]
-[ext_resource type="Texture2D" uid="uid://bo0rhxioho106" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Blocks/block_01.png" id="2_glpqi"]
+[ext_resource type="Texture2D" uid="uid://c058ptdaqt06b" path="res://Assets/NewAssets/Tile_Alone.png" id="1_kfpcw"]
+[ext_resource type="Texture2D" uid="uid://xrg4wd6cv3jj" path="res://Assets/NewAssets/Wall_Alone.png" id="2_trmrq"]
 [ext_resource type="Texture2D" uid="uid://c4wylq3j52dnn" path="res://Assets/FireWork/Body.png" id="3_uw4ur"]
 [ext_resource type="Texture2D" uid="uid://bt2uu00rpwkjf" path="res://Assets/FireWork/Head.png" id="4_vuub7"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="5_136ph"]
-[ext_resource type="Texture2D" uid="uid://rpmohn0wxfnm" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_15.png" id="6_88sme"]
-[ext_resource type="Texture2D" uid="uid://bxsi6pj3ya0q" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_13.png" id="6_mve2u"]
-[ext_resource type="Texture2D" uid="uid://snje6d2u08i0" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_14.png" id="7_nlv68"]
-[ext_resource type="Texture2D" uid="uid://b4x3jpds81d3x" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_03.png" id="9_o5eil"]
-[ext_resource type="Texture2D" uid="uid://omgdgesr4pm8" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_11.png" id="10_rctvn"]
-[ext_resource type="Texture2D" uid="uid://xtcqjxfl0xvq" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_12.png" id="11_q5rv6"]
+[ext_resource type="Texture2D" uid="uid://6e025o0qybaw" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_01.png" id="5_cojvl"]
+[ext_resource type="Texture2D" uid="uid://bmqd145fsqmt5" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_First_Anim.png" id="6_1v4g8"]
+[ext_resource type="Texture2D" uid="uid://wendtivlfi5m" path="res://Assets/NewAssets/NewPlayer/Character_Front/Character_Base.png" id="7_kykxj"]
+[ext_resource type="Texture2D" uid="uid://b3hc4ntqk0ad6" path="res://Assets/NewAssets/NewPlayer/Character_Left/Character_Base.png" id="8_b5vo8"]
+[ext_resource type="Texture2D" uid="uid://clk17kxqqer5f" path="res://Assets/NewAssets/NewPlayer/Character_Left/Character_First_Anim.png" id="9_yl4yw"]
+[ext_resource type="Texture2D" uid="uid://chjjjv2l73bi2" path="res://Assets/NewAssets/NewPlayer/Character_Back/Character_First_Anim.png" id="10_o0884"]
+[ext_resource type="Texture2D" uid="uid://dxuge30s1lfyn" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_Base.png" id="11_7e1el"]
+[ext_resource type="Texture2D" uid="uid://cr3sm7jmebs5u" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_Second_Anim.png" id="12_lk4jf"]
 
 [sub_resource type="Gradient" id="Gradient_w0x80"]
 offsets = PackedFloat32Array(0, 0.589506, 1)
@@ -50,10 +51,10 @@ tracks/1/path = NodePath("player:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.9, 2, 3, 3.8, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 1.9, 2, 3, 3.8, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("6_mve2u"), ExtResource("7_nlv68"), ExtResource("6_88sme"), ExtResource("9_o5eil"), ExtResource("10_rctvn"), ExtResource("11_q5rv6")]
+"values": [ExtResource("7_kykxj"), ExtResource("6_1v4g8"), ExtResource("8_b5vo8"), ExtResource("9_yl4yw"), ExtResource("10_o0884"), ExtResource("11_7e1el"), ExtResource("6_1v4g8"), ExtResource("12_lk4jf")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -126,55 +127,55 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="Ground06" type="Sprite2D" parent="."]
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Ground07" type="Sprite2D" parent="."]
 position = Vector2(64, 0)
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Ground08" type="Sprite2D" parent="."]
 position = Vector2(64, -64)
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Ground09" type="Sprite2D" parent="."]
 position = Vector2(128, -64)
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Ground10" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Ground12" type="Sprite2D" parent="."]
 position = Vector2(64, -128)
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Ground13" type="Sprite2D" parent="."]
 position = Vector2(128, -128)
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Ground14" type="Sprite2D" parent="."]
 position = Vector2(0, -128)
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Ground11" type="Sprite2D" parent="."]
 position = Vector2(128, 0)
-texture = ExtResource("1_85cug")
+texture = ExtResource("1_kfpcw")
 
 [node name="Block03" type="Sprite2D" parent="."]
 position = Vector2(64, -128)
-texture = ExtResource("2_glpqi")
+texture = ExtResource("2_trmrq")
 
 [node name="Block04" type="Sprite2D" parent="."]
 position = Vector2(128, -128)
-texture = ExtResource("2_glpqi")
+texture = ExtResource("2_trmrq")
 
 [node name="Block06" type="Sprite2D" parent="."]
 position = Vector2(0, -128)
-texture = ExtResource("2_glpqi")
+texture = ExtResource("2_trmrq")
 
 [node name="Block05" type="Sprite2D" parent="."]
 position = Vector2(128, 0)
-texture = ExtResource("2_glpqi")
+texture = ExtResource("2_trmrq")
 
 [node name="particles" type="Node2D" parent="."]
 
@@ -201,11 +202,11 @@ position = Vector2(0, 64)
 
 [node name="Block01" type="Sprite2D" parent="wallsToDestroy"]
 position = Vector2(64, -128)
-texture = ExtResource("2_glpqi")
+texture = ExtResource("2_trmrq")
 
 [node name="Block02" type="Sprite2D" parent="wallsToDestroy"]
 position = Vector2(128, -128)
-texture = ExtResource("2_glpqi")
+texture = ExtResource("2_trmrq")
 
 [node name="bombPickUp" type="GPUParticles2D" parent="."]
 position = Vector2(64, 0)
@@ -233,17 +234,17 @@ position = Vector2(61, 0)
 [node name="Sprite2D" type="Sprite2D" parent="collectible/bombPattern"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(104, -21)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_136ph")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_cojvl")
 
 [node name="Sprite2D2" type="Sprite2D" parent="collectible/bombPattern"]
 position = Vector2(104, -46)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_136ph")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_cojvl")
 
 [node name="player" type="Sprite2D" parent="."]
-position = Vector2(56.0794, 0)
-texture = ExtResource("6_mve2u")
+position = Vector2(55.6839, 0)
+texture = ExtResource("6_1v4g8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

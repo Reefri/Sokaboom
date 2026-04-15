@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 // Author : Ethan Masse
 
@@ -6,17 +7,22 @@ namespace Com.IsartDigital.Sokoban
 {
 	public partial class HUD : Control
 	{
-        [Export] private Button quitButton;
+        [Export] public Button quitButton;
 
-		[Export] private Button undoButton;
+		[Export] public Button undoButton;
         [Export] private Vector2 undoLandscapePos;
         [Export] private Vector2 undoPortraitPos;
 		[Export] private Button redoButton;
         [Export] private Vector2 redoLandscapePos;
         [Export] private Vector2 redoPortraitPos;
-        [Export] private Button restartButton;
+        [Export] public Button restartButton;
         [Export] private Vector2 restartLandscapePos;
         [Export] private Vector2 restartPortraitPos;
+        [Export] public Button graphicSwitchButton;
+        [Export] private Vector2 graphicSwitchLandscapePos;
+        [Export] private Vector2 graphicSwitchPortraitPos;
+        [Export] private Texture2D newPlayer;
+        [Export] private Texture2D oldPlayer;
         [Export] private Label par;
 
         [Export] public Label steps;
@@ -25,11 +31,14 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] public Label number;
 
-        [Export] private Timer quitDelay = new Timer();
+        [Export] private Timer quitDelay;
 
         private const string PAR = "Par : ";
+
         private const string BY = "ID_BY";
         private const string STEPS = "ID_STEPS";
+
+        private bool transition;
 
         public override void _Ready()
 		{
@@ -48,6 +57,31 @@ namespace Com.IsartDigital.Sokoban
             restartButton.Pressed += Retry;
 
             quitButton.Pressed += QuitPressed;
+
+            graphicSwitchButton.Pressed += GraphicSwitch;
+
+            if (GraphicManager.IsOld) graphicSwitchButton.Icon = oldPlayer;
+            else graphicSwitchButton.Icon = newPlayer;
+        }
+
+        private void GraphicSwitch()
+        {
+            MenuTransition.Create(ContinueGraphicSwitch);
+        }
+        private void ContinueGraphicSwitch()
+        {
+            GraphicManager.ToggleGraphics();
+            if (GraphicManager.IsOld) graphicSwitchButton.Icon = oldPlayer;
+            else graphicSwitchButton.Icon = newPlayer;
+        }
+
+        public override void _Process(double pDelta)
+        {
+            if (!transition && !GameManager.GetInstance().CheckWin())
+            {
+                redoButton.Disabled = (GameManager.GetInstance().currentPosition.nextValue == null);
+                undoButton.Disabled = (GameManager.GetInstance().currentPosition.previousValue == null);
+            }
         }
 
         private void PortraitMode()
@@ -67,6 +101,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void QuitPressed()
 		{
+            transition = true;
             UIManager.GetInstance().GoToLevelSelect();
             quitDelay.Start();
             
@@ -78,11 +113,6 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().currentPosition = new HistoricHeap(GameManager.GetInstance().currentLevel);
             GameManager.GetInstance().ChargeMapFromCurrentLevel();
             GameManager.GetInstance().CurrentPar = 0;
-        }
-
-        public void DisabledRedo(bool pBool)
-        {
-            redoButton.Disabled = !pBool;
         }
 
         protected override void Dispose(bool pDisposing)

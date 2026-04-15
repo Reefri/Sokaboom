@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bynqjno0njnyi"]
+[gd_scene load_steps=12 format=3 uid="uid://bynqjno0njnyi"]
 
-[ext_resource type="Texture2D" uid="uid://b6db11bp4ykk6" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Ground/ground_06.png" id="1_w3sqn"]
+[ext_resource type="Texture2D" uid="uid://cr3sm7jmebs5u" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_Second_Anim.png" id="1_5jyvo"]
+[ext_resource type="Texture2D" uid="uid://c058ptdaqt06b" path="res://Assets/NewAssets/Tile_Alone.png" id="1_wtkmc"]
 [ext_resource type="Texture2D" uid="uid://c4wylq3j52dnn" path="res://Assets/FireWork/Body.png" id="2_lquct"]
-[ext_resource type="Texture2D" uid="uid://cd7oi5xxcsm4" path="res://icon.svg" id="3_6i22g"]
 [ext_resource type="Texture2D" uid="uid://bt2uu00rpwkjf" path="res://Assets/FireWork/Head.png" id="3_tsjqr"]
-[ext_resource type="Texture2D" uid="uid://xtcqjxfl0xvq" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_12.png" id="5_w48qp"]
+[ext_resource type="Texture2D" uid="uid://6e025o0qybaw" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Crates/crate_01.png" id="4_hwipn"]
+[ext_resource type="Texture2D" uid="uid://bmqd145fsqmt5" path="res://Assets/NewAssets/NewPlayer/Character_Right/Character_First_Anim.png" id="5_kfypl"]
 
 [sub_resource type="Animation" id="Animation_bqv3m"]
 resource_name = "collectBomb"
@@ -46,6 +47,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("player:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_5jyvo"), ExtResource("5_kfypl"), ExtResource("1_5jyvo")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d2d5k"]
 _data = {
@@ -78,15 +91,15 @@ libraries = {
 autoplay = "collectBomb"
 
 [node name="Ground06" type="Sprite2D" parent="."]
-texture = ExtResource("1_w3sqn")
+texture = ExtResource("1_wtkmc")
 
 [node name="Ground07" type="Sprite2D" parent="."]
 position = Vector2(64, 0)
-texture = ExtResource("1_w3sqn")
+texture = ExtResource("1_wtkmc")
 
 [node name="Ground08" type="Sprite2D" parent="."]
 position = Vector2(128, 0)
-texture = ExtResource("1_w3sqn")
+texture = ExtResource("1_wtkmc")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(128, 0)
@@ -114,14 +127,14 @@ position = Vector2(61, 0)
 [node name="Sprite2D" type="Sprite2D" parent="collectible/bombPattern"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(104, -21)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_6i22g")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_hwipn")
 
 [node name="Sprite2D2" type="Sprite2D" parent="collectible/bombPattern"]
 position = Vector2(104, -46)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_6i22g")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_hwipn")
 
 [node name="player" type="Sprite2D" parent="."]
-position = Vector2(127.997, 0)
-texture = ExtResource("5_w48qp")
+position = Vector2(128, 0)
+texture = ExtResource("5_kfypl")

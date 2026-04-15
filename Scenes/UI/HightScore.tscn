@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://85xuiwhv5qb3"]
+[gd_scene load_steps=8 format=3 uid="uid://85xuiwhv5qb3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HightScore.cs" id="1_lunip"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_0sj0s"]
 [ext_resource type="Material" uid="uid://bwyw866uj0xmn" path="res://Assets/particules/HightScoreLeft.tres" id="2_kobj7"]
 [ext_resource type="Material" uid="uid://l1nbyclqriub" path="res://Assets/particules/HightScoreRight.tres" id="3_tccnp"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="5_2m70j"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tl8cs"]
 particle_flag_disable_z = true
@@ -70,12 +71,13 @@ randomness = 0.5
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+anchors_preset = -1
+anchor_left = 0.376
+anchor_right = 0.624
+anchor_bottom = 0.085
+offset_left = 122.848
+offset_right = -122.848
+offset_bottom = -32.08
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "ID_HIGHSCORE"
@@ -83,15 +85,15 @@ horizontal_alignment = 1
 
 [node name="BoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -255.0
-offset_right = 450.0
-offset_bottom = 195.0
+anchors_preset = -1
+anchor_left = 0.109
+anchor_top = 0.106
+anchor_right = 0.891
+anchor_bottom = 0.801
+offset_left = 0.431992
+offset_top = 0.311996
+offset_right = -0.432007
+offset_bottom = -0.0480347
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -103,11 +105,12 @@ text = "1."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/FirstAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -137,11 +140,12 @@ text = "2."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/SecondAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -171,11 +175,12 @@ text = "3."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/ThirdAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -205,11 +210,12 @@ text = "4."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/FourthAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -239,11 +245,12 @@ text = "5."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/FifthAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -273,11 +280,12 @@ text = "6."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/SixthAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -307,11 +315,12 @@ text = "7."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/SeventhAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -341,11 +350,12 @@ text = "8."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/EighthAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -375,11 +385,12 @@ text = "9."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/NinthAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -409,11 +420,12 @@ text = "10."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/TenthAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 
@@ -445,11 +457,12 @@ text = "you :"
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/YourAccount"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.956
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -0.400024
+offset_bottom = -5.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 20
 
@@ -466,11 +479,23 @@ metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="ColorRect/Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = -1
+anchor_left = 0.401
+anchor_top = 0.846
+anchor_right = 0.599
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -100.0
-offset_right = 250.0
+offset_left = 0.0479736
+offset_top = -0.208008
+offset_right = -0.0480347
+grow_horizontal = 2
 grow_vertical = 0
-text = "ID_NEXT"
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("5_2m70j")
+theme_override_styles/hover = ExtResource("5_2m70j")
+theme_override_styles/pressed = ExtResource("5_2m70j")
+theme_override_styles/disabled = ExtResource("5_2m70j")
+theme_override_styles/focus = ExtResource("5_2m70j")
+text = "ID_MENU"

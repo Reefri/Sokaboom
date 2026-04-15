@@ -50,11 +50,8 @@ namespace Com.IsartDigital.Sokoban {
             if (pArea is BombCollectible)
 			{
 				BombCollectible lBombCollec = (BombCollectible)pArea;
-				lBombCollec.bomb.Explode((Vector2I)lBombCollec.Position / Map.DISTANCE_RANGE, Vector2I.Up);
-				lBombCollec.QueueFree();
+                lBombCollec.QueueForChain();
 
-				GameManager.GetInstance().RemoveBombAtIndex(lBombCollec.bomb.indexInLevel);
-                GameManager.GetInstance().UpdateCurrentPosition();
             }
         }
 	}

@@ -70,6 +70,7 @@ namespace Com.IsartDigital.Sokoban
         private const string ANIM_IDLE = "idle";
         public const string ANIM_BLOCKED = "blocked";
 
+        public bool blocked = false;
 
         public List<Vector2I> path = new List<Vector2I>();
 
@@ -148,7 +149,7 @@ namespace Com.IsartDigital.Sokoban
 
             GlobalPosition = currentAnimatedSprite.GlobalPosition;
             if (!Box.animPlaying) GameManager.GetInstance().UpdateAfterAction(); 
-            
+            blocked = false;
             CreatePrevisualisation();
             animPlayer.Play(ANIM_IDLE);
         }
@@ -325,7 +326,7 @@ namespace Com.IsartDigital.Sokoban
             if (bombInHand == null)
             {
                 animPlayer.Play(ANIM_BLOCKED);
-
+				blocked = true;
                 currentAnimatedSprite.GlobalPosition = GlobalPosition;
                 return;
             }
@@ -335,6 +336,9 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().UpdateAfterAction();
 
             GiveBombToPlayer(null);
+
+            collider.Disabled = true;
+            collider.Disabled = false;
         }
         protected override void Dispose(bool pDisposing)
         {

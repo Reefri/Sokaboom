@@ -13,9 +13,6 @@ namespace Com.IsartDigital.Sokoban
 		static private Main instance;
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/Main.tscn");
 
-		[Export] public bool testOnlyGameFeature = true;
-		[Export(PropertyHint.Range, "0, 12")] private int levelAtTest;
-
         [Export] public bool noLogin = true;
 
         public Vector2 screenSize;
@@ -31,26 +28,23 @@ namespace Com.IsartDigital.Sokoban
 			instance = this;	
 		}
 
-        
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+            screenSize = GetViewportRect().Size;
+
+            if (Input.IsActionJustPressed("SwapGraphics"))
+            {
+                GraphicManager.ToggleGraphics();
+            }
+        }
 		static public Main GetInstance()
 		{
 			if (instance == null) instance = (Main)factory.Instantiate();
 			return instance;
 		}
 
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-
-            screenSize = GetViewportRect().Size;
-
-
-            if (Input.IsActionJustPressed("SwapGraphics"))
-            {
-                GraphicManager.ToggleGraphics();
-            }
-
-        }
+        
 
 
 		public override void _Ready()
@@ -58,8 +52,6 @@ namespace Com.IsartDigital.Sokoban
 			base._Ready();
 
             GraphicManager.Update();
-
-			if (testOnlyGameFeature) UIManager.GetInstance().GoToLevel(levelAtTest);
         }
 
 		protected override void Dispose(bool pDisposing)
