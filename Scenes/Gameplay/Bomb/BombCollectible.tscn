@@ -21,7 +21,7 @@ shader_parameter/speed = null
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_did3f"]
 resource_local_to_scene = true
 shader = ExtResource("9_yesas")
-shader_parameter/RotationSpeed = null
+shader_parameter/RotationSpeed = 0.2
 shader_parameter/SecondaryColor = Color(0, 0.682353, 0, 1)
 shader_parameter/MainColor = Color(1, 0, 1, 1)
 

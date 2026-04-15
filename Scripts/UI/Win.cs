@@ -58,9 +58,17 @@ namespace Com.IsartDigital.Sokoban
             perfectParticles.Visible = false;
         }
 
+      
+
         public override void _Process(double delta)
         {
             base._Process(delta);
+
+            if (Input.IsActionJustPressed("BackToLevelSelect"))
+            {
+                UIManager.GetInstance().GoToLevelSelect();
+
+            }
 
             if (showScore)
             {
