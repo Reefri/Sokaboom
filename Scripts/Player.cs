@@ -336,6 +336,9 @@ namespace Com.IsartDigital.Sokoban
             GameManager.GetInstance().UpdateAfterAction();
 
             GiveBombToPlayer(null);
+
+            collider.Disabled = true;
+            collider.Disabled = false;
         }
         protected override void Dispose(bool pDisposing)
         {
