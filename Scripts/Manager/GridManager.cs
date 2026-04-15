@@ -9,8 +9,6 @@ namespace Com.IsartDigital.Sokoban
 	{
 		static private GridManager instance;
 
-
-
         public int numberOfLevel = JsonReaderWriter.ReadJsonToList<Level>(JSON_PATH).Count;
 
         public List<int> levelOrder = new List<int>
@@ -70,11 +68,15 @@ namespace Com.IsartDigital.Sokoban
 			GameManager.GetInstance().CurrentPar = 0;
 		}
 
-		private Level GetLevel(int pIndex)
+		public Level GetLevel(int pIndex)
 		{
 			Level lLevel =	JsonReaderWriter.ReadJsonToList<Level>(JSON_PATH)[pIndex];
 
-			return lLevel;
+			if (AccountManager.GetInstance().currentAccount.Score[pIndex] >= 5000) lLevel.nbStars = 3;
+			else if (AccountManager.GetInstance().currentAccount.Score[pIndex] <= 1000) lLevel.nbStars = 1;
+			else lLevel.nbStars = 2;
+
+            return lLevel;
 		}
 	}
 }
