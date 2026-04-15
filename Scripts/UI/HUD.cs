@@ -31,7 +31,7 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] public Label number;
 
-        [Export] private Timer quitDelay = new Timer();
+        [Export] private Timer quitDelay;
 
         private const string PAR = "Par : ";
 
