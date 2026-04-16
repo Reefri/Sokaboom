@@ -307,8 +307,6 @@ namespace Com.IsartDigital.Sokoban
 
         private void TestRank(int pScore)
         {
-            //string[] lArray = rank.Theme.GetFontTypeList();
-            //GD.Print(lArray);
 
             Tween lTween = CreateTween()
                 .SetTrans(Tween.TransitionType.Elastic)

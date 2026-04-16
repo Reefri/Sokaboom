@@ -1,6 +1,8 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Godot.OpenXRInterface;
 
 // Author : Sacha Gratikoff
 
@@ -88,6 +90,10 @@ namespace Com.IsartDigital.Sokoban
         public float musicVolume = 0;
         public float soundsVolume = 0;
 
+        private const float MUTE_DB = -80;
+
+        private Tween musicDBTween;
+
         private SoundManager()
         {
             if (instance != null)
@@ -149,7 +155,7 @@ namespace Com.IsartDigital.Sokoban
         }
 
         //########################################################################################################################
-        //############################################          EPXLOSION         ################################################
+        //############################################          EXPLOSION         ################################################
         //########################################################################################################################
         public void PlayFireworkExplosion()
         {
@@ -272,8 +278,14 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
+            startPathFind.PitchScale = MIN_PITCH + GD.Randf() * (MAX_PITCH - MIN_PITCH);
             startPathFind.Play();
         }
+
+
+        private const float MIN_PITCH = 0.8f;
+        private const float MAX_PITCH = 1.2f;
+
         public void PlayFootStep()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -283,7 +295,10 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
-            footStepSounds[GD.RandRange(0,footStepSounds.Count-1)].Play();
+            int lRand = GD.RandRange(0, footStepSounds.Count - 1);
+
+            footStepSounds[lRand].PitchScale = MIN_PITCH +  GD.Randf()*(MAX_PITCH-MIN_PITCH);
+            footStepSounds[lRand].Play();
         }
 
         public void PlayCollide()
@@ -427,6 +442,22 @@ namespace Com.IsartDigital.Sokoban
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             music.Stop();
+        }
+
+
+        
+
+        public void SetMusicDBTo(float pMult)
+        {
+            float lPrecalculatedVolumeDB = Mathf.Lerp(MUTE_DB, musicDB, pMult) ;
+
+            musicDBTween?.Kill();
+
+            musicDBTween = CreateTween()
+                .SetTrans(Tween.TransitionType.Expo)
+                .SetEase(lPrecalculatedVolumeDB>music.VolumeDb? Tween.EaseType.Out : Tween.EaseType.In);
+
+            musicDBTween.TweenProperty(music,"volume_db", lPrecalculatedVolumeDB,1);
         }
     }
 }

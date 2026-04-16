@@ -32,6 +32,7 @@ TransitionZone = NodePath("BigCloud")
 whenToPlayAnim = NodePath("whenToPlayAnim")
 
 [node name="BigCloud" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 581.0
 offset_top = 246.0
@@ -41,20 +42,20 @@ rotation = -1.0472
 
 [node name="Sprite2D14" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = 15.1115
-offset_top = 1110.18
-offset_right = 142.112
-offset_bottom = 1208.18
+offset_left = -128.471
+offset_top = 703.484
+offset_right = -1.47095
+offset_bottom = 801.484
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("3_54olf")
 script = ExtResource("2_371sn")
 
 [node name="Sprite2D6" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -468.621
-offset_top = 582.326
-offset_right = -361.621
-offset_bottom = 648.326
+offset_left = -202.014
+offset_top = 650.103
+offset_right = -95.0143
+offset_bottom = 716.103
 rotation = 1.01578
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("4_0pvm5")
@@ -62,10 +63,10 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D15" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -120.273
-offset_top = -349.227
-offset_right = -120.273
-offset_bottom = -349.227
+offset_left = -37.0522
+offset_top = -438.178
+offset_right = 199.948
+offset_bottom = -270.178
 rotation = 0.74002
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("5_reu2p")
@@ -73,10 +74,10 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D7" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -515.773
-offset_top = 235.273
-offset_right = -515.773
-offset_bottom = 235.273
+offset_left = -280.114
+offset_top = -9.17245
+offset_right = -44.114
+offset_bottom = 158.828
 rotation = 0.74002
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("6_8dbqh")
@@ -84,10 +85,10 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D13" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -505.273
-offset_top = -352.727
-offset_right = -505.273
-offset_bottom = -352.727
+offset_left = -210.459
+offset_top = -132.526
+offset_right = -94.4586
+offset_bottom = -48.5261
 rotation = 1.10828
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("7_ifs2x")
@@ -95,10 +96,10 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D5" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = 243.727
-offset_top = -468.227
-offset_right = 243.727
-offset_bottom = -468.227
+offset_left = 336.679
+offset_top = -212.856
+offset_right = 442.679
+offset_bottom = -147.856
 rotation = 0.830777
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("8_qek0y")
@@ -106,20 +107,20 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D4" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = 37.227
-offset_top = -160.227
-offset_right = 37.227
-offset_bottom = -160.227
+offset_left = 49.0238
+offset_top = -49.0883
+offset_right = 242.024
+offset_bottom = 90.9117
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("9_84vdj")
 script = ExtResource("2_371sn")
 
 [node name="Sprite2D16" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = 228.952
-offset_top = -171.444
-offset_right = 607.952
-offset_bottom = 117.556
+offset_left = 84.8393
+offset_top = 166.947
+offset_right = 463.839
+offset_bottom = 455.947
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("10_ob3bp")
 script = ExtResource("2_371sn")
@@ -136,20 +137,21 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D11" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -421.273
-offset_top = -93.7272
-offset_right = -421.273
-offset_bottom = -93.7272
+offset_left = 69.3805
+offset_top = -463.831
+offset_right = 263.381
+offset_bottom = -299.831
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("12_x8nro")
 script = ExtResource("2_371sn")
 
 [node name="Sprite2D8" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -151.773
-offset_top = -27.2272
-offset_right = -151.773
-offset_bottom = -27.2272
+offset_left = 750.052
+offset_top = 949.134
+offset_right = 837.052
+offset_bottom = 1062.13
+rotation = -0.479966
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("13_ircr7")
 script = ExtResource("2_371sn")
@@ -166,20 +168,20 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D9" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -284.773
-offset_top = 224.773
-offset_right = -284.773
-offset_bottom = 224.773
+offset_left = -223.737
+offset_top = 646.479
+offset_right = -40.7366
+offset_bottom = 812.479
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("15_gpn4q")
 script = ExtResource("2_371sn")
 
 [node name="Sprite2D2" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = 464.227
-offset_top = 245.773
-offset_right = 464.227
-offset_bottom = 245.773
+offset_left = 480.338
+offset_top = 433.973
+offset_right = 815.338
+offset_bottom = 654.973
 rotation = 0.621337
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("16_l2lt0")
@@ -187,20 +189,20 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D10" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -50.273
-offset_top = 315.773
-offset_right = -50.273
-offset_bottom = 315.773
+offset_left = -131.533
+offset_top = 294.178
+offset_right = -0.533356
+offset_bottom = 387.178
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("17_reiw6")
 script = ExtResource("2_371sn")
 
 [node name="Sprite2D17" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = 299.727
-offset_top = 354.273
-offset_right = 299.727
-offset_bottom = 354.273
+offset_left = 433.289
+offset_top = -327.523
+offset_right = 665.289
+offset_bottom = -143.523
 rotation = 0.185005
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("18_cyr2l")
@@ -208,3 +210,13 @@ script = ExtResource("2_371sn")
 
 [node name="whenToPlayAnim" type="Timer" parent="."]
 one_shot = true
+
+[node name="GiganticCloud" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="GiganticCloud"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -26,6 +26,9 @@ namespace Com.IsartDigital.Sokoban {
         public override void _Ready()
 		{
             JuicinessManager.GetInstance().simpleBombShaker.Start();
+
+            Input.VibrateHandheld(50);
+
             SoundManager.GetInstance().PlayExplosion();
 
 
@@ -42,6 +45,8 @@ namespace Com.IsartDigital.Sokoban {
             int lYExplosionMatrixSize = explosionMatrix.Count;
             int lXExplosionMatrixSize = explosionMatrix[0].Count;
 
+            Vector2I lCurrentPos;
+
 
             for (int i = 0; i < lYExplosionMatrixSize; i++)
             {
@@ -49,9 +54,10 @@ namespace Com.IsartDigital.Sokoban {
                 {
                     if (explosionMatrix[i][j] != 0)
                     {
+                        lCurrentPos = posInGrid + new Vector2I(j, i) - originPos;
 
                         TileMap lTileMap = GameManager.GetInstance().tileMap;
-                        TileData lCurrentTileData = lTileMap.GetCellTileData((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
+                        TileData lCurrentTileData = lTileMap.GetCellTileData((int)Map.LevelLayer.Playground, lCurrentPos);
 
                         if ( lCurrentTileData != null && 
                             (bool)lCurrentTileData.GetCustomData(Map.INTERACTABLE))
@@ -60,35 +66,43 @@ namespace Com.IsartDigital.Sokoban {
                             if ((bool)lCurrentTileData.GetCustomData(Map.BORDER))
                             {
 
-                                JuicinessManager.GetInstance().ExplodeAllBorders(posInGrid + new Vector2I(j, i) - originPos);
+                                JuicinessManager.GetInstance().ExplodeAllBorders(lCurrentPos);
                                 Player.GetInstance().canInput = false;
 
                                 JuicinessManager.GetInstance().gameOverShaker.Start();
+                                //JuicinessManager.GetInstance().gameOverShaker.amplitude = new Vector2(15,15);
+                                Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Circ).SetEase(Tween.EaseType.In);
+                                lTween.TweenProperty(JuicinessManager.GetInstance().gameOverShaker, "amplitude", Vector2.Zero, 3f);
+                                lTween.Finished += JuicinessManager.GetInstance().gameOverShaker.Stop;
 
-                                return;
+                                GameManager.GetInstance().OnLose(lCurrentPos);
+
                             }
-                            else
+
+
+
+                            if ((bool)lCurrentTileData.GetCustomData(Map.BOX))
                             {
+                                SoundManager.GetInstance().PlayBoxExplosion();
 
-                                if ((bool)lCurrentTileData.GetCustomData(Map.BOX))
-                                {
-                                    SoundManager.GetInstance().PlayBoxExplosion();
-
-                                    FireWork.CreateMult((posInGrid + new Vector2I(j, i) - originPos) * Map.DISTANCE_RANGE,GameManager.GetInstance());
-                                }
-                                if ((bool)lCurrentTileData.GetCustomData(Map.WALL))
-                                {
-                                    SoundManager.GetInstance().PlayWallExplosion();
-                                }
-                                GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, posInGrid + new Vector2I(j, i) - originPos);
+                                FireWork.CreateMult(lCurrentPos * Map.DISTANCE_RANGE,GameManager.GetInstance());
                             }
+                            if ((bool)lCurrentTileData.GetCustomData(Map.WALL))
+                            {
+                                SoundManager.GetInstance().PlayWallExplosion();
+                            }
+                            GameManager.GetInstance().tileMap.EraseCell((int)Map.LevelLayer.Playground, lCurrentPos);
+                            
                                 
                         }
 
-                        if (lTileMap.GetCellTileData((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos) != null)
+                        if (lTileMap.GetCellTileData((int)Map.LevelLayer.Target, lCurrentPos) != null)
                         {
-                            lTileMap.SetCell((int)Map.LevelLayer.Target, posInGrid + new Vector2I(j, i) - originPos, -1);
-                            GameManager.GetInstance().currentPosition.value.targetsPos.Remove(posInGrid + new Vector2I(j, i) - originPos);
+                            lTileMap.SetCell((int)Map.LevelLayer.Target, lCurrentPos, -1);
+                            GameManager.GetInstance().currentPosition.value.targetsPos.Remove(lCurrentPos);
+
+                            GameManager.GetInstance().OnLose(lCurrentPos);
+                            
                         }
                     }
                 }

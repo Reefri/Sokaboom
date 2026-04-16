@@ -26,8 +26,8 @@
 
 [node name="SoundManager" type="Node2D" node_paths=PackedStringArray("fireworkWhistle", "bombPickUp", "fireworkExplosion", "explosion", "wallExplosion", "boxError", "boxValid", "boxExplosion", "boxMove", "startPathFind", "collide", "footStepOne", "footStepTwo", "sparkles", "starOne", "starTwo", "starThree", "door", "cloud", "ruban", "click", "music")]
 script = ExtResource("1_0homo")
-musicDB = -10.0
-soundDB = -10.0
+musicDB = -80.0
+soundDB = -80.0
 fireworkWhistle = NodePath("Sounds/GamePlay/Bomb/FireworkWhistle")
 bombPickUp = NodePath("Sounds/GamePlay/Bomb/BombPickup")
 fireworkExplosion = NodePath("Sounds/GamePlay/Bomb/FireworkExplosion")

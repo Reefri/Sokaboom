@@ -11,8 +11,8 @@ namespace Com.IsartDigital.Sokoban
 		private const float MAX_RADIUS = 200;
 
 		private float rotationSpeed;
-		private const float MIN_ROTATION_SPEED = 5.0f;
-		private const float MAX_ROTATION_SPEED = 30.0f;
+		private const float MIN_ROTATION_SPEED = 2.0f;
+		private const float MAX_ROTATION_SPEED = 5.0f;
 
 		private int rotationDirection;
 
@@ -33,9 +33,6 @@ namespace Com.IsartDigital.Sokoban
 
 			basePosition = Position;
 
-			GD.Print(radius);
-			GD.Print(rotationSpeed);
-			GD.Print(offSet);
 
 			Position = basePosition + (new Vector2(
 				Mathf.Cos(offSet),Mathf.Sin(offSet)

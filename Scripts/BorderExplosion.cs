@@ -23,13 +23,15 @@ namespace Com.IsartDigital.Sokoban
 
 		[Export] Sprite2D groundMark;
 
+		[Export]GpuParticles2D particles;
 		public override void _Ready()
 		{
 			lifeTime += (GD.Randf() - 0.5f) * 2 * randomLifeTime;
 
 			List<Node> lPartContainerChildren = partContainer.GetChildren().ToList();
 
-
+			particles.Emitting = true;
+			particles.Finished += QueueFree;
             foreach (GpuParticles2D lPart in lPartContainerChildren)
 			{
 				lPart.OneShot = true;

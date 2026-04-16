@@ -110,7 +110,7 @@ namespace Com.IsartDigital.Sokoban
             foreach (Node2D lChild in lListBombCollectible)
 			{
 				lChild.GetParent().RemoveChild(lChild);
-			}
+            }
 
 
             lastExplosionPos.Clear();
@@ -169,7 +169,6 @@ namespace Com.IsartDigital.Sokoban
 		{
 			fireworkShaker.Stop();
 			simpleBombShaker.Stop();
-			gameOverShaker.Stop();
 
 			waitBeforeNextEplosion.Stop();
 
@@ -178,12 +177,13 @@ namespace Com.IsartDigital.Sokoban
 
 			List<Node> lGameOverExplosionList = GameManager.GetInstance().gameOverExplosionContainer.GetChildren().ToList();
 
-
             foreach (Node lBorderExplosion in lGameOverExplosionList)
 			{
 				lBorderExplosion.QueueFree();
 			}
-		}
+
+
+        }
 
 
 
