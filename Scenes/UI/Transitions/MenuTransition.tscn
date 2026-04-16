@@ -32,6 +32,7 @@ TransitionZone = NodePath("BigCloud")
 whenToPlayAnim = NodePath("whenToPlayAnim")
 
 [node name="BigCloud" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 581.0
 offset_top = 246.0
@@ -209,3 +210,13 @@ script = ExtResource("2_371sn")
 
 [node name="whenToPlayAnim" type="Timer" parent="."]
 one_shot = true
+
+[node name="GiganticCloud" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="GiganticCloud"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
