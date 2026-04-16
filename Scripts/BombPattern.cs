@@ -11,7 +11,7 @@ namespace Com.IsartDigital.Sokoban
 
         public delegate Node SimpleDelegate(Vector2 pPosition, Color pColor, float pScale=1);
 
-        private static SimpleDelegate ToPlaceOnExplosionCreate = ToPlaceOnExplosion.Create;
+        private static SimpleDelegate ToPlaceOnExplosionCreate = ToPlaceOnExplosions.Create;
         private static SimpleDelegate ToPlaceBombCreate = ToPlaceOnCollectible.Create;
         private static SimpleDelegate ToPlaceOnHUDCreate = ToPlaceOnHUD.Create;
         private static SimpleDelegate ToPlaceOnPlayerCreate = ToPlaceOnPlayer.Create;

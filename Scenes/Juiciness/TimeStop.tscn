@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://toxarw1krcfm"]
+
+[ext_resource type="Script" path="res://Scripts/Juiciness/Shader/TimeStop.cs" id="1_oa16m"]
+[ext_resource type="Shader" uid="uid://328vqloxqvha" path="res://Ressources/Shaders/GrayCircle.tres" id="2_o0i7m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxuhq"]
+shader = ExtResource("2_o0i7m")
+shader_parameter/minValue = 0.713
+shader_parameter/CenterPosition = null
+shader_parameter/progression = 0.213
+shader_parameter/edge = 0.592
+
+[node name="TimeStop" type="CanvasLayer" node_paths=PackedStringArray("support")]
+layer = 0
+script = ExtResource("1_oa16m")
+support = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dxuhq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

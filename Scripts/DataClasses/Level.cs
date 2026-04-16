@@ -126,9 +126,19 @@ namespace Com.IsartDigital.Sokoban
             lNewLevel.targetsPos = Main.DuplicateList(targetsPos);
             lNewLevel.currentBomb = currentBomb;
             lNewLevel.indexOfAvalaibleBombs = Main.DuplicateList(indexOfAvalaibleBombs);
+            lNewLevel.musicMult = musicMult;
+            lNewLevel.timeStop = timeStop;
+            lNewLevel.timeStopPosition = timeStopPosition;
 
             return lNewLevel;
         }
+
+
+        public float musicMult = 1;
+
+
+        public bool timeStop = false;
+        public Vector2 timeStopPosition = Vector2.Zero;
 
         public Level UpdateMap(List<string> pMap)
         {

@@ -42,6 +42,8 @@ layer = 3
 z_index = 4096
 
 [node name="SoundManager" parent="." instance=ExtResource("8_7dji1")]
+musicDB = 40.0
+soundDB = 40.0
 
 [node name="CanvasLayer4" parent="." instance=ExtResource("2_8qnaw")]
 layer = 128

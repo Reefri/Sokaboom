@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace Com.IsartDigital.Sokoban {
 	
-	public partial class ToPlaceOnExplosion : ToPlaceOnPatterneNodeTwoD
+	public partial class ToPlaceOnExplosions : ToPlaceOnPatterneNodeTwoD
 	{
         protected static PackedScene factory = GD.Load<PackedScene>("res://Scenes/Juiciness/BombPatterne/ToPlaceOnExplosions.tscn");
 
 
-        public static ToPlaceOnExplosion Create(Vector2 pPosition, Color pColor, float pScale = 1)
+        public static ToPlaceOnExplosions Create(Vector2 pPosition, Color pColor, float pScale = 1)
         {
-            return (ToPlaceOnExplosion)Create(factory,pPosition, pColor, pScale);
+            return (ToPlaceOnExplosions)Create(factory,pPosition, pColor, pScale);
         }
 
 
