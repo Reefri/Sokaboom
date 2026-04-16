@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://bl27n3huysagp"]
+[gd_scene load_steps=25 format=3 uid="uid://bl27n3huysagp"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/GameManager.cs" id="1_1plec"]
 [ext_resource type="Texture2D" uid="uid://ctvtmdnynit6f" path="res://Assets/particules/firefly.png" id="2_uljw3"]
 [ext_resource type="Texture2D" uid="uid://3hw42eaeiv5m" path="res://Assets/particules/grass.png" id="3_3qvqp"]
 [ext_resource type="Texture2D" uid="uid://cdymxff3k8tfq" path="res://Assets/particules/grass2.png" id="4_ybxym"]
+[ext_resource type="PackedScene" uid="uid://eegphykgd130" path="res://Scenes/Juiciness/TimeStop.tscn" id="5_ho8jj"]
 
 [sub_resource type="Gradient" id="Gradient_isqou"]
 
@@ -128,12 +129,13 @@ turbulence_influence_max = 1.0
 turbulence_initial_displacement_min = -100.0
 turbulence_initial_displacement_max = 100.0
 
-[node name="GameManager" type="Node2D" node_paths=PackedStringArray("bombCollectibleContainer", "gameOverExplosionContainer", "bombExplosionContainer", "fireworkContainer", "boxSignalContainer")]
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("bombCollectibleContainer", "gameOverExplosionContainer", "bombExplosionContainer", "fireworkContainer", "timeStopEffect", "boxSignalContainer")]
 script = ExtResource("1_1plec")
 bombCollectibleContainer = NodePath("BombCollectibleContainer")
 gameOverExplosionContainer = NodePath("GameOverExplosionContainer")
 bombExplosionContainer = NodePath("BombExplosionContainer")
 fireworkContainer = NodePath("FireworkContainer")
+timeStopEffect = NodePath("TimeStop")
 boxSignalContainer = NodePath("BoxSignalContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -239,3 +241,5 @@ z_index = 15
 
 [node name="BombExplosionContainer" type="Node2D" parent="."]
 z_index = 15
+
+[node name="TimeStop" parent="." instance=ExtResource("5_ho8jj")]
