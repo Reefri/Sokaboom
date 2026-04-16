@@ -226,7 +226,7 @@ void fragment() {
 
 
 // FloatConstant:38
-	float n_out38p0 = 1.414214;
+	float n_out38p0 = 1.414210;
 
 
 // FloatOp:39
@@ -359,7 +359,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-367.769, -134.38)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2740, 0)
