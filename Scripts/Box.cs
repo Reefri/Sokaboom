@@ -72,6 +72,8 @@ namespace Com.IsartDigital.Sokoban
 
             animPlaying = false;
 
+            Player.GetInstance().CreatePrevisualisation();
+
 			GameManager.GetInstance().UpdateAfterAction();
             QueueFree();
         }
