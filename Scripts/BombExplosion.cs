@@ -70,6 +70,11 @@ namespace Com.IsartDigital.Sokoban {
                                 Player.GetInstance().canInput = false;
 
                                 JuicinessManager.GetInstance().gameOverShaker.Start();
+                                //JuicinessManager.GetInstance().gameOverShaker.amplitude = new Vector2(15,15);
+                                Tween lTween = CreateTween().SetTrans(Tween.TransitionType.Circ).SetEase(Tween.EaseType.In);
+                                lTween.TweenProperty(JuicinessManager.GetInstance().gameOverShaker, "amplitude", Vector2.Zero, 3f);
+                                lTween.Finished += JuicinessManager.GetInstance().gameOverShaker.Stop;
+
 
                             }
 

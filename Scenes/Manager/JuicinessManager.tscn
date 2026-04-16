@@ -10,6 +10,8 @@ simpleBombShaker = NodePath("SimpleBombShaker")
 fireworkShaker = NodePath("FireworkShaker")
 
 [node name="GameOverShaker" parent="." instance=ExtResource("2_von3f")]
+duration = 3.5
+amplitude = Vector2(15, 15)
 duration_ = 0.0
 _transition = 5
 _ease = 1

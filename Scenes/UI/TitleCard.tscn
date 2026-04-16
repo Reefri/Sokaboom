@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
 [ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
+[ext_resource type="Theme" uid="uid://b1hw5yq81qgsr" path="res://Assets/Theme/TitleFont.tres" id="6_6uovy"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
 [sub_resource type="Curve" id="Curve_x5kje"]
@@ -184,8 +185,11 @@ offset_top = -0.0400009
 offset_right = -0.0160217
 offset_bottom = 0.019989
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 110
 text = "So"
 
 [node name="BOUM !" type="Control" parent="Title"]
@@ -202,6 +206,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(229, 102)
 
 [node name="Sprite2D" type="Sprite2D" parent="Title/BOUM !"]
+z_index = -1
 position = Vector2(207.084, 101.378)
 rotation = 0.10472
 scale = Vector2(0.866446, 0.849806)
@@ -230,7 +235,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 180
 text = "B"
 
 [node name="O" type="Label" parent="Title/BOUM !/BOUM"]
@@ -242,9 +247,10 @@ anchor_bottom = 1.0
 offset_left = -0.226006
 offset_right = 0.0679932
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 180
 text = "O
 "
 
@@ -257,9 +263,10 @@ anchor_bottom = 1.0
 offset_left = -0.145996
 offset_right = 0.0180054
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 180
 text = "U
 "
 
@@ -272,9 +279,10 @@ anchor_bottom = 1.0
 offset_left = 0.00997925
 offset_right = 0.151978
 grow_horizontal = 2
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 180
 text = "M
 "
 
@@ -291,6 +299,7 @@ offset_right = -20.434
 offset_bottom = -102.57
 grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
@@ -308,7 +317,9 @@ offset_right = 7.55997
 offset_bottom = -3.37502
 grow_horizontal = 2
 rotation = 0.0436332
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 125
 text = "K"
@@ -325,7 +336,9 @@ offset_right = -11.992
 offset_bottom = 6.30499
 grow_horizontal = 2
 rotation = -0.0698132
+theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 125
 text = "A
