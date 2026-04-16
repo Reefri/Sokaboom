@@ -84,10 +84,10 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D13" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -205.755
-offset_top = -218.38
-offset_right = -89.7552
-offset_bottom = -134.38
+offset_left = -210.459
+offset_top = -132.526
+offset_right = -94.4586
+offset_bottom = -48.5261
 rotation = 1.10828
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("7_ifs2x")
@@ -136,20 +136,21 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D11" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -523.362
-offset_top = 43.5091
-offset_right = -329.362
-offset_bottom = 207.509
+offset_left = 69.3805
+offset_top = -463.831
+offset_right = 263.381
+offset_bottom = -299.831
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("12_x8nro")
 script = ExtResource("2_371sn")
 
 [node name="Sprite2D8" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = -151.773
-offset_top = -27.2272
-offset_right = -151.773
-offset_bottom = -27.2272
+offset_left = 750.052
+offset_top = 949.134
+offset_right = 837.052
+offset_bottom = 1062.13
+rotation = -0.479966
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("13_ircr7")
 script = ExtResource("2_371sn")
@@ -176,10 +177,10 @@ script = ExtResource("2_371sn")
 
 [node name="Sprite2D2" type="TextureRect" parent="BigCloud"]
 layout_mode = 0
-offset_left = 466.984
-offset_top = 554.843
-offset_right = 801.984
-offset_bottom = 775.843
+offset_left = 480.338
+offset_top = 433.973
+offset_right = 815.338
+offset_bottom = 654.973
 rotation = 0.621337
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("16_l2lt0")
