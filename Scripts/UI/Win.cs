@@ -27,7 +27,7 @@ namespace Com.IsartDigital.Sokoban
         [Export] private Button restart;
         [Export] private Button next;
 
-        [Export] private Node2D explosionParticles;
+        [Export] private Control explosionParticles;
 
         private bool showScore = false;
 
@@ -41,7 +41,11 @@ namespace Com.IsartDigital.Sokoban
 
             List<Node> lStars = stars.GetChildren().ToList();
 
-            foreach (AnimatedSprite2D lStar in lStars) lStar.Frame = 0;
+            foreach (Control lStar in lStars) 
+            {
+                AnimatedSprite2D star = (AnimatedSprite2D)lStar.GetChild(0);
+                star.Frame = 0;
+            }
             CalculScoreLevel();
 
             restart.Pressed += () => UIManager.GetInstance().GoToLevel(UIManager.GetInstance().levelIndex);
@@ -127,7 +131,8 @@ namespace Com.IsartDigital.Sokoban
 
             for (int i = 0; i < numberStars; i++)
 			{
-				AnimatedSprite2D lStars = (AnimatedSprite2D)stars.GetChild(i);
+                Control controlStar = (Control)stars.GetChild(i);
+                AnimatedSprite2D lStars = (AnimatedSprite2D)controlStar.GetChild(0);
                 lStars.Scale = Vector2.Zero;
                 AnimationStars(lStars, i * 0.5f,i);
             }
