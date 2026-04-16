@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://damd4cgjs6b0k"]
+[gd_scene load_steps=42 format=3 uid="uid://damd4cgjs6b0k"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_26mxs"]
 [ext_resource type="Texture2D" uid="uid://b0uegn82jtv0g" path="res://Assets/kenney_sokoban-pack/PNG/Default_size/Player/player_23.png" id="3_w8jsy"]
@@ -25,6 +25,10 @@
 [ext_resource type="Texture2D" uid="uid://b4pl11tqf7tdy" path="res://Assets/NewAssets/NewPlayer/Character_Back/Character_Base.png" id="17_62wp8"]
 [ext_resource type="Texture2D" uid="uid://chjjjv2l73bi2" path="res://Assets/NewAssets/NewPlayer/Character_Back/Character_First_Anim.png" id="18_r6uf3"]
 [ext_resource type="Texture2D" uid="uid://d1e5kje1cdehe" path="res://Assets/NewAssets/NewPlayer/Character_Back/Character_Second_Anim.png" id="19_oew47"]
+[ext_resource type="Texture2D" uid="uid://demjialh5sch6" path="res://Assets/NewAssets/VectorielAssets/Character_Front_Vectoriel.svg" id="26_8nwo8"]
+[ext_resource type="Texture2D" uid="uid://b101sc4ix8hsk" path="res://Assets/NewAssets/VectorielAssets/Back_Character.svg" id="26_dda7q"]
+[ext_resource type="Texture2D" uid="uid://wkbny25hnbnj" path="res://Assets/NewAssets/VectorielAssets/Character_Left_Base_Final.svg" id="27_uip11"]
+[ext_resource type="Texture2D" uid="uid://tcfk1mx54c4r" path="res://Assets/NewAssets/VectorielAssets/Character_Right_Base_Final.svg" id="28_06m6t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yhy0t"]
 animations = [{
@@ -231,7 +235,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_casc1")
+"texture": ExtResource("26_8nwo8")
 }],
 "loop": true,
 "name": &"down",
@@ -239,7 +243,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_63h66")
+"texture": ExtResource("27_uip11")
 }],
 "loop": true,
 "name": &"left",
@@ -247,7 +251,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_g3cfs")
+"texture": ExtResource("28_06m6t")
 }],
 "loop": true,
 "name": &"right",
@@ -255,7 +259,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_62wp8")
+"texture": ExtResource("26_dda7q")
 }],
 "loop": true,
 "name": &"up",
@@ -319,7 +323,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1)]
+"values": [Vector2(0.11, 0.11), Vector2(0.11, 0.105), Vector2(0.11, 0.11)]
 }
 
 [sub_resource type="Animation" id="Animation_rrn34"]
@@ -466,6 +470,7 @@ offset = Vector2(1, -2)
 
 [node name="ActualAnimatedPlayer" type="AnimatedSprite2D" parent="Old"]
 position = Vector2(0, 18)
+scale = Vector2(1, 0.974417)
 sprite_frames = SubResource("SpriteFrames_re48t")
 animation = &"up"
 offset = Vector2(0, -19)
@@ -480,9 +485,10 @@ offset = Vector2(1, -2)
 
 [node name="ActualAnimatedPlayer" type="AnimatedSprite2D" parent="New"]
 position = Vector2(0, 18)
+scale = Vector2(0.11, 0.104883)
 sprite_frames = SubResource("SpriteFrames_lwd6e")
-animation = &"up"
-offset = Vector2(0, -19)
+animation = &"down"
+offset = Vector2(0, -200.818)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqciltv8p0y15"]
+[gd_scene load_steps=17 format=3 uid="uid://dqciltv8p0y15"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WinFinal.cs" id="1_0l42t"]
 [ext_resource type="Texture2D" uid="uid://daosnol5sspeq" path="res://Assets/FinalWinBackground.png" id="2_mdaxs"]
@@ -6,6 +6,24 @@
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_cp02b"]
 [ext_resource type="Texture2D" uid="uid://quc765ylnrxu" path="res://Assets/particules/MidRedParticle.png" id="5_ks0tv"]
 [ext_resource type="Texture2D" uid="uid://cbpeyia3cvem" path="res://Assets/particules/BigYellowParticle.png" id="6_3kkpw"]
+
+[sub_resource type="Gradient" id="Gradient_45vod"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nxene"]
+gradient = SubResource("Gradient_45vod")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d1k7d"]
+particle_flag_disable_z = true
+spread = 180.0
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+radial_velocity_min = 696.86
+radial_velocity_max = 696.86
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+color_ramp = SubResource("GradientTexture1D_nxene")
 
 [sub_resource type="Gradient" id="Gradient_mvcg2"]
 offsets = PackedFloat32Array(0.201856, 0.856148, 1)
@@ -48,7 +66,7 @@ scale_max = 0.25
 scale_curve = SubResource("CurveTexture_bgibw")
 color_ramp = SubResource("GradientTexture1D_4n1kj")
 
-[node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "congratulationText", "ScoreFinal", "rank", "highScore", "menu", "fireworksPos", "explosionParticlesParent")]
+[node name="WinFinal" type="Control" node_paths=PackedStringArray("background", "congratulationText", "ScoreFinal", "rank", "highScore", "menu", "fireworksPos", "explosionParticlesParent", "rankParticles")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,6 +82,7 @@ highScore = NodePath("Buttons/HightScore")
 menu = NodePath("Buttons/Menu")
 fireworksPos = NodePath("fireWorkPosition")
 explosionParticlesParent = NodePath("Rank/explosionParticles")
+rankParticles = NodePath("rankParticles")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -156,10 +175,6 @@ theme_override_styles/disabled = ExtResource("4_cp02b")
 theme_override_styles/focus = ExtResource("4_cp02b")
 text = "ID_MENU"
 
-[node name="fireWorkPosition" type="Node2D" parent="."]
-visible = false
-scale = Vector2(1.5, 1.5)
-
 [node name="congratulation" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -180,6 +195,17 @@ theme_override_font_sizes/font_size = 75
 text = "ID_CONGRATULATIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="rankParticles" type="GPUParticles2D" parent="."]
+position = Vector2(371, 276)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_d1k7d")
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.1
 
 [node name="Rank" type="Label" parent="."]
 layout_mode = 1
@@ -226,3 +252,6 @@ texture = ExtResource("6_3kkpw")
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
+
+[node name="fireWorkPosition" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
