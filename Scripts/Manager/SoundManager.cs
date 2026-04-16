@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -87,6 +88,10 @@ namespace Com.IsartDigital.Sokoban
         public float overallVolume = 0;
         public float musicVolume = 0;
         public float soundsVolume = 0;
+
+        private const float MUTE_DB = -80;
+
+        private Tween musicDBTween;
 
         private SoundManager()
         {
@@ -427,6 +432,22 @@ namespace Com.IsartDigital.Sokoban
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             music.Stop();
+        }
+
+
+        
+
+        public void SetMusicDBTo(float pMult)
+        {
+            float lPrecalculatedVolumeDB = Mathf.Lerp(MUTE_DB, musicDB, pMult) ;
+
+            musicDBTween?.Kill();
+
+            musicDBTween = CreateTween()
+                .SetTrans(Tween.TransitionType.Expo)
+                .SetEase(lPrecalculatedVolumeDB>music.VolumeDb? Tween.EaseType.Out : Tween.EaseType.In);
+
+            musicDBTween.TweenProperty(music,"volume_db", lPrecalculatedVolumeDB,1);
         }
     }
 }

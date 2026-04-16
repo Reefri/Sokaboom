@@ -17,6 +17,8 @@ namespace Com.IsartDigital.Sokoban
         [Export] public Node2D bombExplosionContainer;
         [Export] public Node2D fireworkContainer;
 
+        [Export] public TimeStop timeStopEffect;
+
 
         private Timer waitBeforeBoxSignal = new Timer();
         private float durationBeforeBoxSignal = 0.5f;
@@ -207,6 +209,10 @@ namespace Com.IsartDigital.Sokoban
             Player.GetInstance().Position = lPlayerPosition * Map.DISTANCE_RANGE;
             Player.GetInstance().GiveBombToPlayer(currentPosition.value.currentBomb);
 
+            SoundManager.GetInstance().SetMusicDBTo(currentPosition.value.musicMult);
+
+
+            timeStopEffect.TweenProgression(currentPosition.value.timeStop?1:0, 1, currentPosition.value.timeStop ? currentPosition.value.timeStopPosition:null);
 
 
 
@@ -348,8 +354,21 @@ namespace Com.IsartDigital.Sokoban
 
         public void QuickResetInit()
         {
+            Player.GetInstance().canInput = true;
+            Player.GetInstance().Visible = true;
+
+            JuicinessManager.GetInstance().StopExplosion();
+
+            timeStopEffect.TweenProgression(0, 1);
 
 
+            EmptyBombExplosionContainer();
+            EmptyBoxSignalContainer();
+            EmptyFireworkContainer();
+        }
+
+        public void ForwardReset()
+        {
             Player.GetInstance().canInput = true;
             Player.GetInstance().Visible = true;
 
@@ -420,7 +439,7 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
-            QuickResetInit();
+            ForwardReset();
 
 
             CurrentPar++;

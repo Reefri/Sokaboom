@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://0o6ll15fwr2m"]
 
-[ext_resource type="Script" path="res://Scripts/Juiciness/BombPatterne/ToPlaceOnExplosion.cs" id="1_lxq44"]
+[ext_resource type="Script" path="res://Scripts/Juiciness/BombPatterne/ToPlaceOnExplosions.cs" id="1_lxq44"]
 [ext_resource type="Texture2D" uid="uid://cbpeyia3cvem" path="res://Assets/particules/BigYellowParticle.png" id="3_giixp"]
 [ext_resource type="Texture2D" uid="uid://quc765ylnrxu" path="res://Assets/particules/MidRedParticle.png" id="6_n5cr8"]
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvghvmseublh"]
+
+[ext_resource type="Texture2D" uid="uid://bwedkckibg8dy" path="res://Assets/sokoban_tilesheet.png" id="1_c8uw3"]
+[ext_resource type="Shader" uid="uid://328vqloxqvha" path="res://Ressources/Shaders/GrayCircle.tres" id="2_8aq2m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh0fj"]
+shader = ExtResource("2_8aq2m")
+shader_parameter/minValue = 0.509
+shader_parameter/CenterPosition = Vector2(0.5, 0.5)
+shader_parameter/progression = 0.0
+shader_parameter/edge = 0.12
+
+[node name="Node2D" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(509, 549.5)
+scale = Vector2(1.67788, 2.2793)
+texture = ExtResource("1_c8uw3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_hh0fj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

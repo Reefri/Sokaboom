@@ -33,9 +33,6 @@ namespace Com.IsartDigital.Sokoban
 
 			basePosition = Position;
 
-			GD.Print(radius);
-			GD.Print(rotationSpeed);
-			GD.Print(offSet);
 
 			Position = basePosition + (new Vector2(
 				Mathf.Cos(offSet),Mathf.Sin(offSet)
