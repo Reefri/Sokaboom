@@ -75,11 +75,12 @@ namespace Com.IsartDigital.Sokoban {
                                 lTween.TweenProperty(JuicinessManager.GetInstance().gameOverShaker, "amplitude", Vector2.Zero, 3f);
                                 lTween.Finished += JuicinessManager.GetInstance().gameOverShaker.Stop;
 
+                                GameManager.GetInstance().OnLose(lCurrentPos);
 
                             }
 
-                           
-                            
+
+
                             if ((bool)lCurrentTileData.GetCustomData(Map.BOX))
                             {
                                 SoundManager.GetInstance().PlayBoxExplosion();
@@ -99,24 +100,9 @@ namespace Com.IsartDigital.Sokoban {
                         {
                             lTileMap.SetCell((int)Map.LevelLayer.Target, lCurrentPos, -1);
                             GameManager.GetInstance().currentPosition.value.targetsPos.Remove(lCurrentPos);
+
+                            GameManager.GetInstance().OnLose(lCurrentPos);
                             
-                            
-                            SoundManager.GetInstance().SetMusicDBTo(0);
-                            GameManager.GetInstance().currentPosition.value.musicMult = 0;
-
-
-                            if (!GameManager.GetInstance().currentPosition.value.timeStop)
-                            {
-                                GameManager.GetInstance().currentPosition.value.timeStop = true;
-                                Vector2 lPosition = Main.GetInstance().GetViewport().CanvasTransform *
-                                    (lCurrentPos * Map.DISTANCE_RANGE) /
-                                    Main.GetInstance().GetViewport().GetVisibleRect().Size;
-                                GameManager.GetInstance().currentPosition.value.timeStopPosition = lPosition;
-                                    
-
-
-                                GameManager.GetInstance().timeStopEffect.TweenProgression(1, 1,lPosition);
-                            }
                         }
                     }
                 }

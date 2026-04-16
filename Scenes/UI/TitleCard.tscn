@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dw85b1nive3ah"]
+[gd_scene load_steps=28 format=3 uid="uid://dw85b1nive3ah"]
 
 [ext_resource type="Script" path="res://Scripts/UI/TitleCard.cs" id="1_ib5wi"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_5ibq2"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
 [ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
-[ext_resource type="Theme" uid="uid://b1hw5yq81qgsr" path="res://Assets/Theme/TitleFont.tres" id="6_6uovy"]
+[ext_resource type="Theme" path="res://Assets/Theme/TitleFont.tres" id="6_6uovy"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
 [sub_resource type="Curve" id="Curve_x5kje"]

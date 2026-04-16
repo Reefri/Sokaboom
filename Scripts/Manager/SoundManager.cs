@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Godot.OpenXRInterface;
 
 // Author : Sacha Gratikoff
 
@@ -154,7 +155,7 @@ namespace Com.IsartDigital.Sokoban
         }
 
         //########################################################################################################################
-        //############################################          EPXLOSION         ################################################
+        //############################################          EXPLOSION         ################################################
         //########################################################################################################################
         public void PlayFireworkExplosion()
         {
@@ -277,8 +278,14 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
+            startPathFind.PitchScale = MIN_PITCH + GD.Randf() * (MAX_PITCH - MIN_PITCH);
             startPathFind.Play();
         }
+
+
+        private const float MIN_PITCH = 0.8f;
+        private const float MAX_PITCH = 1.2f;
+
         public void PlayFootStep()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -288,7 +295,10 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
-            footStepSounds[GD.RandRange(0,footStepSounds.Count-1)].Play();
+            int lRand = GD.RandRange(0, footStepSounds.Count - 1);
+
+            footStepSounds[lRand].PitchScale = MIN_PITCH +  GD.Randf()*(MAX_PITCH-MIN_PITCH);
+            footStepSounds[lRand].Play();
         }
 
         public void PlayCollide()

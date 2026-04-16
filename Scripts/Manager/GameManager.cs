@@ -570,5 +570,27 @@ namespace Com.IsartDigital.Sokoban
             startAnimation = false;
             Player.GetInstance().collider.Disabled = false;
         }
+
+
+
+        public void OnLose(Vector2I pPosition)
+        {
+            SoundManager.GetInstance().SetMusicDBTo(0);
+            currentPosition.value.musicMult = 0;
+
+
+            if (!currentPosition.value.timeStop)
+            {
+                currentPosition.value.timeStop = true;
+                Vector2 lPosition = Main.GetInstance().GetViewport().CanvasTransform *
+                    (pPosition * Map.DISTANCE_RANGE) /
+                    Main.GetInstance().GetViewport().GetVisibleRect().Size;
+                currentPosition.value.timeStopPosition = lPosition;
+
+
+
+                timeStopEffect.TweenProgression(1, 1, lPosition);
+            }
+        }
     }
 }
