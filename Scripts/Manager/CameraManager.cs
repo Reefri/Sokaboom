@@ -92,6 +92,9 @@ namespace Com.IsartDigital.Sokoban
         {
             if (GameManager.GetInstance().currentLevel != null)
             {
+				Vector2 lIndex = new Vector2I(11, 11) - GameManager.GetInstance().currentLevel.Size;
+
+                camera.Zoom = lIndex * 0.15f + new Vector2(1.4f, 1.4f);
                 camera.GlobalPosition = GameManager.GetInstance().currentLevel.Size * Map.DISTANCE_RANGE / 2;
             }
         }
