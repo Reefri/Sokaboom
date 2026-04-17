@@ -1,11 +1,12 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b1hw5yq81qgsr"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b1hw5yq81qgsr"]
 
 [ext_resource type="FontFile" uid="uid://clnwf6bgxwlfi" path="res://Assets/Fonts/ChineseDragon.ttf" id="1_v1xij"]
+[ext_resource type="FontFile" uid="uid://ce0a2jjur2003" path="res://Assets/Fonts/ChineseShangai-DemoVersion-Regular.ttf" id="2_h8lr2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cm5an"]
 
 [resource]
-default_font = ExtResource("1_v1xij")
+default_font = ExtResource("2_h8lr2")
 default_font_size = 20
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
