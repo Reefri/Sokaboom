@@ -30,13 +30,13 @@ namespace Com.IsartDigital.Sokoban
 			doubleHeight = screenSize.Y * 3.5f;
 			doubleWidth = screenSize.X * 2;
 			TransitionZone.Position = new Vector2(doubleWidth, -doubleHeight);
-			Vector2 lFinalPos = new Vector2(-screenSize.Y , doubleHeight);
+			Vector2 lFinalPos = new Vector2(-screenSize.Y * 2, doubleHeight);
 
 			SoundManager.GetInstance().PlayCloud();
 
 			Tween lTween = TransitionZone.CreateTween();
 			lTween.TweenProperty(TransitionZone, TweenProp.POSITION,lFinalPos, tweenDuration);
-			//lTween.Finished += QueueFree;
+			lTween.Finished += QueueFree;
 
 
 		}
@@ -45,8 +45,8 @@ namespace Com.IsartDigital.Sokoban
 		{
 			float lDelta = (float)pDelta;
 
-			time += lDelta;
-			if (time > tweenDuration) QueueFree();
+			//time += lDelta;
+			//if (time > tweenDuration) QueueFree();
 		}
 
 		public static void Create(Action pSomething)
