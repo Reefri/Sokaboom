@@ -25,10 +25,10 @@ offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="GiganticCloud"]
 layout_mode = 0
-offset_left = -289.0
-offset_top = -1129.0
-offset_right = 259.0
-offset_bottom = -716.0
+offset_left = -842.0
+offset_top = -1488.0
+offset_right = -218.0
+offset_bottom = -986.0
 rotation = -0.706858
 scale = Vector2(5, 5)
 texture = ExtResource("19_c05xl")
