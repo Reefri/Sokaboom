@@ -81,7 +81,7 @@ namespace Com.IsartDigital.Sokoban
                     if (pExplosionMatrix[i][j] == 1)
                     {
                         pParent.CallDeferred(BombExplosion.ADD_CHILD_DEFERED, enumToCreateMethod[pExplosionPattern].Invoke(
-                            (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * Map.DISTANCE_RANGE, 
+                            (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * Map.DISTANCE_RANGE * pScale, 
                             new Color(1, 1, 1),
                             pScale
                             ));
