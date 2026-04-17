@@ -73,13 +73,13 @@ namespace Com.IsartDigital.Sokoban.UI
             exclamationMark.Visible = false;
             explosion.Visible = false;
 
-            hightScore.Pressed += UIManager.GetInstance().GoToHightScore;
+            hightScore.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToHightScore);
             play.Pressed += UIManager.GetInstance().GoToLevelSelect;
 
             helpButton.Pressed += HelpPressed;
             languageButton.Pressed += Langage;
 
-            soundButton.Pressed += UIManager.GetInstance().GoToSoundsSettings;
+            soundButton.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToSoundsSettings);
 
             
             if (GraphicManager.IsOld) GraphicManager.ToggleGraphics();
@@ -194,7 +194,7 @@ namespace Com.IsartDigital.Sokoban.UI
         private void HelpPressed()
         {
             UIManager.GetInstance().comeToMenu = true;
-            UIManager.GetInstance().GoToHelp();
+            MenuTransition.Create(UIManager.GetInstance().GoToHelp);
         }
 
         public void Langage()

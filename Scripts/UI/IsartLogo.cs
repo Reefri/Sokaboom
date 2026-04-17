@@ -49,7 +49,7 @@ namespace Com.IsartDigital.Sokoban
 
                     UIManager.GetInstance().ChangeLayer();
                     TitleDoors.GetInstance().ActivateDoors();
-                    UIManager.GetInstance().ContinueToTitle();
+                    UIManager.GetInstance().GoToTitle();
                 }
             }
         }
