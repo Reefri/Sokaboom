@@ -99,10 +99,10 @@ namespace Com.IsartDigital.Sokoban
             //scoreToReach = (int)AccountManager.GetInstance().currentAccount.FinalScore();
             scoreToReach = 70000;
 
-			menu.Pressed += UIManager.GetInstance().GoToTitle;
-			highScore.Pressed += UIManager.GetInstance().GoToHightScore;
+			menu.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToTitle); ;
+			highScore.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToHightScore);
 
-			SettingInitialPositions();
+            SettingInitialPositions();
 
 			Animations();
 

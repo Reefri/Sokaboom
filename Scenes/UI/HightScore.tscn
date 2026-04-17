@@ -95,7 +95,7 @@ offset_left = 122.848
 offset_right = -122.848
 offset_bottom = -32.08
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 75
 text = "ID_HIGHSCORE"
 horizontal_alignment = 1
 
@@ -120,7 +120,7 @@ anchor_bottom = 0.047
 offset_right = -0.695984
 offset_bottom = -0.26128
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "1."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/FirstAccount"]
@@ -132,7 +132,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FirstAccount"]
 position = Vector2(0, 35)
@@ -161,7 +161,7 @@ offset_top = -0.0240021
 offset_right = -0.695984
 offset_bottom = -0.285278
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "2."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/SecondAccount"]
@@ -173,7 +173,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SecondAccount"]
 position = Vector2(0, 35)
@@ -202,7 +202,7 @@ offset_top = -0.0480042
 offset_right = -0.695984
 offset_bottom = -0.30928
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "3."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/ThirdAccount"]
@@ -214,7 +214,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/ThirdAccount"]
 position = Vector2(0, 35)
@@ -243,7 +243,7 @@ offset_top = 0.177734
 offset_right = -0.695984
 offset_bottom = -0.0835266
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "4."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/FourthAccount"]
@@ -255,7 +255,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FourthAccount"]
 position = Vector2(0, 35)
@@ -284,7 +284,7 @@ offset_top = 0.153748
 offset_right = 0.147644
 offset_bottom = -0.107513
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "5."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/FifthAccount"]
@@ -296,7 +296,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FifthAccount"]
 position = Vector2(0, 35)
@@ -325,7 +325,7 @@ offset_top = 1.88
 offset_right = 0.147644
 offset_bottom = 0.118225
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "6."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/SixthAccount"]
@@ -337,7 +337,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SixthAccount"]
 position = Vector2(0, 35)
@@ -366,7 +366,7 @@ offset_top = 0.355469
 offset_right = -0.695984
 offset_bottom = 0.0942078
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "7."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/SeventhAccount"]
@@ -378,7 +378,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SeventhAccount"]
 position = Vector2(0, 35)
@@ -407,7 +407,7 @@ offset_top = 0.331482
 offset_right = 0.147644
 offset_bottom = 0.0702515
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "8."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/EighthAccount"]
@@ -419,7 +419,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/EighthAccount"]
 position = Vector2(0, 35)
@@ -448,7 +448,7 @@ offset_top = -0.192993
 offset_right = 0.147644
 offset_bottom = 0.296021
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "9."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/NinthAccount"]
@@ -460,7 +460,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/NinthAccount"]
 position = Vector2(0, 35)
@@ -489,7 +489,7 @@ offset_top = -0.21698
 offset_right = 0.147644
 offset_bottom = 0.271973
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "10."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer/TenthAccount"]
@@ -501,7 +501,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/TenthAccount"]
 position = Vector2(0, 35)
@@ -541,7 +541,7 @@ anchor_bottom = 0.047
 offset_right = 0.147644
 offset_bottom = -0.26128
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "1."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/FirstAccount"]
@@ -553,7 +553,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/FirstAccount"]
 position = Vector2(0, 35)
@@ -582,7 +582,7 @@ offset_top = -0.0201645
 offset_right = 0.147644
 offset_bottom = -0.281448
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "2."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/SecondAccount"]
@@ -594,7 +594,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/SecondAccount"]
 position = Vector2(0, 35)
@@ -623,7 +623,7 @@ offset_top = -0.040329
 offset_right = -0.695984
 offset_bottom = -0.301605
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "3."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/ThirdAccount"]
@@ -635,7 +635,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/ThirdAccount"]
 position = Vector2(0, 35)
@@ -664,7 +664,7 @@ offset_top = -0.0604858
 offset_right = 0.147644
 offset_bottom = -0.321777
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "4."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/FourthAccount"]
@@ -676,7 +676,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/FourthAccount"]
 position = Vector2(0, 35)
@@ -705,7 +705,7 @@ offset_top = -0.080658
 offset_right = 0.147644
 offset_bottom = -0.341919
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "5."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/FifthAccount"]
@@ -717,7 +717,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/FifthAccount"]
 position = Vector2(0, 35)
@@ -746,7 +746,7 @@ offset_top = -0.1008
 offset_right = -0.695984
 offset_bottom = -0.362091
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "6."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/SixthAccount"]
@@ -758,7 +758,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/SixthAccount"]
 position = Vector2(0, 35)
@@ -787,7 +787,7 @@ offset_top = 0.128815
 offset_right = -0.695984
 offset_bottom = -0.132507
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "7."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/SeventhAccount"]
@@ -799,7 +799,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/SeventhAccount"]
 position = Vector2(0, 35)
@@ -828,7 +828,7 @@ offset_top = 0.108612
 offset_right = 0.147644
 offset_bottom = -10.656
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "8."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/EighthAccount"]
@@ -840,7 +840,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/EighthAccount"]
 position = Vector2(0, 35)
@@ -869,7 +869,7 @@ offset_top = 0.0884705
 offset_right = -0.695984
 offset_bottom = -0.172791
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "9."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/NinthAccount"]
@@ -881,7 +881,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/NinthAccount"]
 position = Vector2(0, 35)
@@ -910,7 +910,7 @@ offset_top = 0.0682983
 offset_right = 0.147644
 offset_bottom = -0.192993
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "10."
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/TenthAccount"]
@@ -922,7 +922,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -12.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer2/TenthAccount"]
 position = Vector2(0, 35)
@@ -952,7 +952,7 @@ offset_right = -0.695984
 offset_bottom = -0.23999
 size_flags_vertical = 10
 size_flags_stretch_ratio = 2.0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
 text = "you :"
 
 [node name="Label" type="Label" parent="ColorRect/BoxContainer2/YourAccount"]
@@ -964,7 +964,7 @@ anchor_bottom = 1.0
 offset_left = -0.400024
 offset_bottom = -5.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
 
 [node name="Control" type="Control" parent="ColorRect"]
 layout_mode = 1

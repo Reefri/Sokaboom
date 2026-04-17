@@ -64,7 +64,7 @@ namespace Com.IsartDigital.Sokoban
 		public void ChangeLevel(int pIndex)
 		{
 			CurrentLevel = GetLevel(levelOrder[pIndex]);
-			CurrentLevelIndex = pIndex;
+			CurrentLevelIndex = levelOrder[pIndex];
 			GameManager.GetInstance().CurrentPar = 0;
 		}
 
@@ -72,7 +72,8 @@ namespace Com.IsartDigital.Sokoban
         {
             Level lLevel = GetLevel(levelOrder[pIndex]);
 
-            if (AccountManager.GetInstance().currentAccount.Score[levelOrder[pIndex]] >= 5000) lLevel.nbStars = 3;
+			if (AccountManager.GetInstance().currentAccount.Score[levelOrder[pIndex]] == 0) lLevel.nbStars = 0;
+            else if (AccountManager.GetInstance().currentAccount.Score[levelOrder[pIndex]] >= 5000) lLevel.nbStars = 3;
             else if (AccountManager.GetInstance().currentAccount.Score[levelOrder[pIndex]] <= 1000) lLevel.nbStars = 1;
             else lLevel.nbStars = 2;
 
