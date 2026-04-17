@@ -1,23 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cka3r74niudit"]
+[gd_scene load_steps=3 format=3 uid="uid://cka3r74niudit"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/MenuTransition.cs" id="1_geije"]
-[ext_resource type="Script" path="res://Scripts/UI/Transitions/MiniCloud.cs" id="2_371sn"]
-[ext_resource type="Texture2D" uid="uid://b25n7u71vvpj2" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 9.png" id="3_54olf"]
-[ext_resource type="Texture2D" uid="uid://d1x7wjhi7nh5f" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 8.png" id="4_0pvm5"]
-[ext_resource type="Texture2D" uid="uid://opqoxoxnefc4" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 10.png" id="5_reu2p"]
-[ext_resource type="Texture2D" uid="uid://q6gn5fonfhcc" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 2.png" id="6_8dbqh"]
-[ext_resource type="Texture2D" uid="uid://dr2b70u2faaiu" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 8.png" id="7_ifs2x"]
-[ext_resource type="Texture2D" uid="uid://hojuvfogpu12" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 7.png" id="8_qek0y"]
-[ext_resource type="Texture2D" uid="uid://dt6wje1bkya8r" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 6.png" id="9_84vdj"]
-[ext_resource type="Texture2D" uid="uid://ctvi8ayg1nb57" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie.png" id="10_ob3bp"]
-[ext_resource type="Texture2D" uid="uid://bqn6ohv1lomfe" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 7.png" id="11_eagf0"]
-[ext_resource type="Texture2D" uid="uid://xs67lscfnj2c" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 6.png" id="12_x8nro"]
-[ext_resource type="Texture2D" uid="uid://57j0p3u0p34o" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 3.png" id="13_ircr7"]
-[ext_resource type="Texture2D" uid="uid://q3d2dm8culb3" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 5.png" id="14_8fx76"]
-[ext_resource type="Texture2D" uid="uid://c7yn0kxp8f4n6" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 4.png" id="15_gpn4q"]
-[ext_resource type="Texture2D" uid="uid://crnsfpt5qkypd" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 2.png" id="16_l2lt0"]
-[ext_resource type="Texture2D" uid="uid://boq55fqqg3p52" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 2 copie 5.png" id="17_reiw6"]
-[ext_resource type="Texture2D" uid="uid://c8x3jph467t7" path="res://Assets/JuicyAssets/CloudsForTransition/Calque 1 copie 3.png" id="18_cyr2l"]
+[ext_resource type="Texture2D" uid="uid://qvfgf75g7qc8" path="res://Assets/NewAssets/new Cloud/BigCloud.png" id="19_c05xl"]
 
 [node name="MenuTransition" type="Control" node_paths=PackedStringArray("TransitionZone", "whenToPlayAnim")]
 z_index = 3
@@ -28,185 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_geije")
-TransitionZone = NodePath("BigCloud")
+TransitionZone = NodePath("GiganticCloud")
 whenToPlayAnim = NodePath("whenToPlayAnim")
-
-[node name="BigCloud" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 581.0
-offset_top = 246.0
-offset_right = 581.0
-offset_bottom = 246.0
-rotation = -1.0472
-
-[node name="Sprite2D14" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -128.471
-offset_top = 703.484
-offset_right = -1.47095
-offset_bottom = 801.484
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("3_54olf")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D6" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -202.014
-offset_top = 650.103
-offset_right = -95.0143
-offset_bottom = 716.103
-rotation = 1.01578
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("4_0pvm5")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D15" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -37.0522
-offset_top = -438.178
-offset_right = 199.948
-offset_bottom = -270.178
-rotation = 0.74002
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("5_reu2p")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D7" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -280.114
-offset_top = -9.17245
-offset_right = -44.114
-offset_bottom = 158.828
-rotation = 0.74002
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("6_8dbqh")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D13" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -210.459
-offset_top = -132.526
-offset_right = -94.4586
-offset_bottom = -48.5261
-rotation = 1.10828
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("7_ifs2x")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D5" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = 336.679
-offset_top = -212.856
-offset_right = 442.679
-offset_bottom = -147.856
-rotation = 0.830777
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("8_qek0y")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D4" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = 49.0238
-offset_top = -49.0883
-offset_right = 242.024
-offset_bottom = 90.9117
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("9_84vdj")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D16" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = 84.8393
-offset_top = 166.947
-offset_right = 463.839
-offset_bottom = 455.947
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("10_ob3bp")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D12" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -71.273
-offset_top = 399.773
-offset_right = -71.273
-offset_bottom = 399.773
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("11_eagf0")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D11" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = 69.3805
-offset_top = -463.831
-offset_right = 263.381
-offset_bottom = -299.831
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("12_x8nro")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D8" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = 750.052
-offset_top = 949.134
-offset_right = 837.052
-offset_bottom = 1062.13
-rotation = -0.479966
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("13_ircr7")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D3" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -358.273
-offset_top = 448.773
-offset_right = -358.273
-offset_bottom = 448.773
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("14_8fx76")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D9" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -223.737
-offset_top = 646.479
-offset_right = -40.7366
-offset_bottom = 812.479
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("15_gpn4q")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D2" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = 480.338
-offset_top = 433.973
-offset_right = 815.338
-offset_bottom = 654.973
-rotation = 0.621337
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("16_l2lt0")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D10" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = -131.533
-offset_top = 294.178
-offset_right = -0.533356
-offset_bottom = 387.178
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("17_reiw6")
-script = ExtResource("2_371sn")
-
-[node name="Sprite2D17" type="TextureRect" parent="BigCloud"]
-layout_mode = 0
-offset_left = 433.289
-offset_top = -327.523
-offset_right = 665.289
-offset_bottom = -143.523
-rotation = 0.185005
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("18_cyr2l")
-script = ExtResource("2_371sn")
 
 [node name="whenToPlayAnim" type="Timer" parent="."]
 one_shot = true
@@ -218,5 +25,10 @@ offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="GiganticCloud"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -289.0
+offset_top = -1129.0
+offset_right = 259.0
+offset_bottom = -716.0
+rotation = -0.706858
+scale = Vector2(5, 5)
+texture = ExtResource("19_c05xl")
