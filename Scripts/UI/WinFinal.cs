@@ -22,6 +22,9 @@ namespace Com.IsartDigital.Sokoban
 
         [Export] private GpuParticles2D rankParticles;
 
+        [Export] private ProgressBar rankFillBar;
+        [Export] private Node2D progressBars;
+
         private const string SCORE = "Score Total : ";
         private const string FONT_SIZE_PATH = "theme_override_font_sizes/font_size";
         private PackedScene spiral = GD.Load<PackedScene>("res://Scenes/Juiciness/Spiral.tscn");
@@ -58,12 +61,12 @@ namespace Com.IsartDigital.Sokoban
         private const string E_RANK = "E";
         private const string F_RANK = "F";
 
-        private const int S_RANK_SIZE = 500;
-        private const int A_RANK_SIZE = 375;
-        private const int B_RANK_SIZE = 350;
-        private const int C_RANK_SIZE = 325;
-        private const int D_RANK_SIZE = 300;
-        private const int E_RANK_SIZE = 275;
+        private const int S_RANK_SIZE = 700;
+        private const int A_RANK_SIZE = 500;
+        private const int B_RANK_SIZE = 450;
+        private const int C_RANK_SIZE = 400;
+        private const int D_RANK_SIZE = 350;
+        private const int E_RANK_SIZE = 300;
         private const int F_RANK_SIZE = 250;
 
         private const float S_RANK_ROTATION = Mathf.Pi * 16;
@@ -182,6 +185,14 @@ namespace Com.IsartDigital.Sokoban
             
             congratulationText.PivotOffset = congratulationText.Size / 2;
             congratulationText.Scale = Vector2.Zero;
+
+            rank.PivotOffset = rank.Size / 2;
+            rank.GlobalPosition = new Vector2(screenSize.X * 0.1f, screenSize.Y * 0.35f);
+
+            progressBars.Scale = Vector2.Zero;
+            rankFillBar.Value = 0;
+            //rankFillBar.PivotOffset = rankFillBar.Size / 2;
+            //rankFillBar.Position = new Vector2(screenSize.X / 2, screenSize.Y - sideFactor * 3);
         }
 
         private void Animations()
@@ -287,6 +298,7 @@ namespace Com.IsartDigital.Sokoban
 
         private void FinalRanking()
         {
+            
             foreach (GpuParticles2D lParticles in explosionParticlesParent.GetChildren()) lParticles.Emitting = true;
 
             Tween lTween = CreateTween()
@@ -299,6 +311,9 @@ namespace Com.IsartDigital.Sokoban
                 .SetEase(Tween.EaseType.Out);
 
             lTween.Parallel().TweenProperty(rank, TweenProp.ROTATION, Mathf.Pi * 50, tweenDuration * 4);
+
+            lTween.Parallel().TweenProperty(progressBars, TweenProp.POSITION, new Vector2(screenSize.X/2, screenSize.Y * 0.85f), 0);
+            lTween.Parallel().TweenProperty(progressBars, TweenProp.SCALE, new Vector2(1.5f, 1), tweenDuration);
 
             lTween.TweenCallback
                     (
@@ -321,6 +336,7 @@ namespace Com.IsartDigital.Sokoban
                     if (i > 0)
                     {
                         lTween.Parallel().TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0).SetDelay(tweenDuration);
+                        lTween.Parallel().TweenProperty(rankFillBar, "value", rankThresholds[i], tweenDuration/2).SetDelay(tweenDuration);
                         if (i == rankThresholds.Count - 1)
                         {
                             lTween.Parallel().TweenProperty(rank, TweenProp.ROTATION, rankRotation[i], tweenDuration).SetDelay(tweenDuration);
@@ -355,8 +371,6 @@ namespace Com.IsartDigital.Sokoban
             Node2D lSpiral = (Node2D)spiral.Instantiate();
             lSpiral.Scale *= 10;
             lSpiral.ShowBehindParent = true;
-            //GpuParticles2D lParticles = (GpuParticles2D)lSpiral.GetChild(0);
-            //lParticles.
             
             rank.AddChild(lSpiral);
             lSpiral.GlobalPosition = rank.GlobalPosition + rank.Size / 2;
