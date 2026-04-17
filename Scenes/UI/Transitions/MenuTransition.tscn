@@ -30,5 +30,5 @@ offset_top = -1488.0
 offset_right = -218.0
 offset_bottom = -986.0
 rotation = -0.706858
-scale = Vector2(5, 5)
+scale = Vector2(7, 7)
 texture = ExtResource("19_c05xl")
