@@ -215,6 +215,9 @@ namespace Com.IsartDigital.Sokoban
             timeStopEffect.TweenProgression(currentPosition.value.timeStop?1:0, 1, currentPosition.value.timeStop ? currentPosition.value.timeStopPosition:null);
 
 
+            Player.GetInstance().canInput = currentPosition.value.canPlayerMove;
+            Player.GetInstance().Visible = currentPosition.value.canPlayerMove;
+
 
             if (tileMap.GetCellTileData((int)Map.LevelLayer.Ground, lPlayerPosition) == null) FillGroundTiles(lPlayerPosition);
         }

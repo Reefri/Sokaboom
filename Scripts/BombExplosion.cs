@@ -76,6 +76,7 @@ namespace Com.IsartDigital.Sokoban {
                                 lTween.Finished += JuicinessManager.GetInstance().gameOverShaker.Stop;
 
                                 GameManager.GetInstance().OnLose(lCurrentPos);
+                                GameManager.GetInstance().currentPosition.value.canPlayerMove = false ;
 
                             }
 

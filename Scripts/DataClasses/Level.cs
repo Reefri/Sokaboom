@@ -116,6 +116,7 @@ namespace Com.IsartDigital.Sokoban
         public Bomb currentBomb;
 
 
+
         public Level Duplicate()
         {
             Level lNewLevel = new Level();
@@ -129,6 +130,7 @@ namespace Com.IsartDigital.Sokoban
             lNewLevel.musicMult = musicMult;
             lNewLevel.timeStop = timeStop;
             lNewLevel.timeStopPosition = timeStopPosition;
+            lNewLevel.canPlayerMove = canPlayerMove;
 
             return lNewLevel;
         }
@@ -139,6 +141,9 @@ namespace Com.IsartDigital.Sokoban
 
         public bool timeStop = false;
         public Vector2 timeStopPosition = Vector2.Zero;
+
+        public bool canPlayerMove = true;
+
 
         public Level UpdateMap(List<string> pMap)
         {

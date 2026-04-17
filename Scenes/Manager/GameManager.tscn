@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctvtmdnynit6f" path="res://Assets/particules/firefly.png" id="2_uljw3"]
 [ext_resource type="Texture2D" uid="uid://3hw42eaeiv5m" path="res://Assets/particules/grass.png" id="3_3qvqp"]
 [ext_resource type="Texture2D" uid="uid://cdymxff3k8tfq" path="res://Assets/particules/grass2.png" id="4_ybxym"]
-[ext_resource type="PackedScene" uid="uid://eegphykgd130" path="res://Scenes/Juiciness/TimeStop.tscn" id="5_ho8jj"]
+[ext_resource type="PackedScene" uid="uid://toxarw1krcfm" path="res://Scenes/Juiciness/TimeStop.tscn" id="5_ho8jj"]
 
 [sub_resource type="Gradient" id="Gradient_isqou"]
 

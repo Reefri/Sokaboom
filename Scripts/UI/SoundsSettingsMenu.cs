@@ -28,7 +28,7 @@ namespace Com.IsartDigital.Sokoban
             //SoundsVolumeSettings.Value = SoundManager.GetInstance().soundsVolume;
             //MusicsVolumeSettings.Value = SoundManager.GetInstance().musicVolume;
 
-            GD.Print(AudioServer.GetBusVolumeDb(0));
+            //GD.Print(AudioServer.GetBusVolumeDb(0));
         }
 
         private void BackToTitle()
