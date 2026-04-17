@@ -127,7 +127,7 @@ namespace Com.IsartDigital.Sokoban
                 scoreToReach = 1000 + (GameManager.GetInstance().currentLevel.Par - GameManager.GetInstance().CurrentPar) * 50;
 				numberStars = 1;
             }
-            score = (score >= 0) ? score : 0;
+            scoreToReach = (scoreToReach >= 0) ? scoreToReach : 0;
 
             for (int i = 0; i < numberStars; i++)
 			{
@@ -140,7 +140,7 @@ namespace Com.IsartDigital.Sokoban
             confettis.Emitting = true;
 
 
-            AccountManager.GetInstance().NewWin(score, GameManager.GetInstance().CurrentPar);
+            AccountManager.GetInstance().NewWin(scoreToReach, GameManager.GetInstance().CurrentPar);
         }
 
         private void AnimationStars(AnimatedSprite2D pStars, float pDelay,int pIndex)
