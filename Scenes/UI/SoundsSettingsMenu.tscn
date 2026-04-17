@@ -92,8 +92,9 @@ grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(3, 3)
 pivot_offset = Vector2(-8, 8)
-min_value = -30.0
-max_value = 10.0
+min_value = -50.0
+max_value = -15.0
+value = -30.0
 
 [node name="soundsLabel" type="Label" parent="."]
 layout_mode = 1
@@ -129,8 +130,9 @@ grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(3, 3)
 pivot_offset = Vector2(-8, 8)
-min_value = -30.0
-max_value = 10.0
+min_value = -50.0
+max_value = -15.0
+value = -30.0
 
 [node name="musicLabel" type="Label" parent="."]
 layout_mode = 1
@@ -166,8 +168,9 @@ grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(3, 3)
 pivot_offset = Vector2(-8, 8)
-min_value = -30.0
-max_value = 10.0
+min_value = -50.0
+max_value = -15.0
+value = -30.0
 
 [node name="soundsSettingsLabel" type="Label" parent="."]
 layout_mode = 1

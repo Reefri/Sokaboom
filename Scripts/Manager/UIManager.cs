@@ -87,14 +87,10 @@ namespace Com.IsartDigital.Sokoban
         public void GoToSoundsSettings()
         {
             //MenuTransition.Create(ContinuetoSettings);
-            ContinuetoSettings();
-        }
-        private void ContinuetoSettings()
-        {
             GetChild(0).QueueFree();
             AddChild(uiSoundsSettings.Instantiate());
-
         }
+
         public void GoToLogin()
         {
             GetChild(0).QueueFree();
@@ -103,23 +99,11 @@ namespace Com.IsartDigital.Sokoban
 
         public void GoToTitle()
         {
-            //MenuTransition.Create(ContinueToTitle);
-            ContinueToTitle();
-        }
-
-        public void ContinueToTitle()
-        {
             GetChild(0).QueueFree();
             AddChild(uiTitle.Instantiate());
         }
 
         public void GoToHelp()
-        {
-            //MenuTransition.Create(ContinueToHelp);
-            ContinueToHelp();
-        }
-
-        private void ContinueToHelp()
         {
             GetChild(0).QueueFree();
             AddChild(uiHelp.Instantiate());
@@ -178,12 +162,6 @@ namespace Com.IsartDigital.Sokoban
         }
 
         public void GoToHightScore()
-        {
-            //MenuTransition.Create(ContinueToHightScore);
-            ContinueToHightScore();
-        }
-
-        public void ContinueToHightScore()
         {
             GetChild(0).QueueFree();
             AddChild(uiHightScore.Instantiate());

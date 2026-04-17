@@ -9,6 +9,8 @@ namespace Com.IsartDigital.Sokoban
 	{
 		static private PackedScene factory = GD.Load<PackedScene>("res://Scenes/UI/PrevisualisationBomb.tscn");
 
+        [Export] Vector2 ajustement;
+
         public static void CreateInstance(List<List<int>> pExplosionMatrix)
         {
             PrevisualisationBomb lPrevisualisationBomb = (PrevisualisationBomb)factory.Instantiate();
@@ -31,9 +33,12 @@ namespace Com.IsartDigital.Sokoban
             new BombPattern(
                 lNode,
                 explosionMatrix,
-                BombPattern.EnumOfExplosionPattern.Mouse
+                BombPattern.EnumOfExplosionPattern.Mouse,
+                true,
+                null,
+                2
                 );
-            lNode.GlobalPosition = arrow.GlobalPosition * 2 - new Vector2(30, 60);
+            lNode.GlobalPosition = arrow.GlobalPosition * 2 - ajustement;
 
 
             AddChild(lNode);

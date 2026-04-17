@@ -12,7 +12,6 @@ heldInputTime = NodePath("heldInputTime")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(540, 540)
-zoom = Vector2(1.4, 1.4)
 
 [node name="moveCameraTimer" type="Timer" parent="."]
 wait_time = 3.0

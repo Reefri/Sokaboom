@@ -21,9 +21,14 @@ namespace Com.IsartDigital.Sokoban
             SoundsVolumeSettings.ValueChanged += UpdateSoundsVolume;
             MusicsVolumeSettings.ValueChanged += UpdateMusicsVolume;
 
-            overallVolumeSettings.Value = SoundManager.GetInstance().overallVolume;
-            SoundsVolumeSettings.Value = SoundManager.GetInstance().soundsVolume;
-            MusicsVolumeSettings.Value = SoundManager.GetInstance().musicVolume;
+            overallVolumeSettings.Value = AudioServer.GetBusVolumeDb(0);
+            SoundsVolumeSettings.Value = AudioServer.GetBusVolumeDb(2);
+            MusicsVolumeSettings.Value = AudioServer.GetBusVolumeDb(1);
+            //overallVolumeSettings.Value = SoundManager.GetInstance().overallVolume;
+            //SoundsVolumeSettings.Value = SoundManager.GetInstance().soundsVolume;
+            //MusicsVolumeSettings.Value = SoundManager.GetInstance().musicVolume;
+
+            GD.Print(AudioServer.GetBusVolumeDb(0));
         }
 
         private void BackToTitle()
@@ -31,16 +36,18 @@ namespace Com.IsartDigital.Sokoban
             UIManager.GetInstance().GoToTitle();
             SoundManager.GetInstance().PlayClick();
         }
-        private void UpdateOverallVolume(double value)
+        private void UpdateOverallVolume(double pValue)
         {
             if (overallVolumeSettings.Value <= overallVolumeSettings.MinValue) AudioServer.SetBusMute(0, true);
             else
             {
-                AudioServer.SetBusVolumeDb(0, (float)value);
                 AudioServer.SetBusMute(0, false);
+                AudioServer.SetBusVolumeDb(0, (float)pValue);
+                
             }
 
             SoundManager.GetInstance().overallVolume = (float)overallVolumeSettings.Value;
+            
 
         }
         private void UpdateMusicsVolume(double value)

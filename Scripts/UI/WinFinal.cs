@@ -24,6 +24,7 @@ namespace Com.IsartDigital.Sokoban
 
         private const string SCORE = "Score Total : ";
         private const string FONT_SIZE_PATH = "theme_override_font_sizes/font_size";
+        private PackedScene spiral = GD.Load<PackedScene>("res://Scenes/Juiciness/Spiral.tscn");
         private int currentScore = 0;
         private int scoreToReach = 1;
 
@@ -41,11 +42,11 @@ namespace Com.IsartDigital.Sokoban
         private bool showScore = false;
 
         [Export] private const int S_RANK_THRESHHOLD = 65000;
-        [Export] private const int A_RANK_THRESHHOLD = 60000;
-        [Export] private const int B_RANK_THRESHHOLD = 50000;
-        [Export] private const int C_RANK_THRESHHOLD = 40000;
-        [Export] private const int D_RANK_THRESHHOLD = 25000;
-        [Export] private const int E_RANK_THRESHHOLD = 10000;
+        [Export] private const int A_RANK_THRESHHOLD = 50000;
+        [Export] private const int B_RANK_THRESHHOLD = 40000;
+        [Export] private const int C_RANK_THRESHHOLD = 25000;
+        [Export] private const int D_RANK_THRESHHOLD = 15000;
+        [Export] private const int E_RANK_THRESHHOLD = 5000;
 
         [Export] private const int F_RANK_THRESHHOLD = 0;
 
@@ -92,12 +93,13 @@ namespace Com.IsartDigital.Sokoban
 			screenSize = GetViewportRect().Size;
 
             ScoreFinal.Text = SCORE;
-            scoreToReach = (int)AccountManager.GetInstance().currentAccount.FinalScore();
+            //scoreToReach = (int)AccountManager.GetInstance().currentAccount.FinalScore();
+            scoreToReach = 70000;
 
-			menu.Pressed += UIManager.GetInstance().GoToTitle;
-			highScore.Pressed += UIManager.GetInstance().GoToHightScore;
+			menu.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToTitle); ;
+			highScore.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToHightScore);
 
-			SettingInitialPositions();
+            SettingInitialPositions();
 
 			Animations();
 
@@ -337,11 +339,28 @@ namespace Com.IsartDigital.Sokoban
                     Particles(rankParticlesAmount[i], lTween);
 
                 }
-            }
 
-            
+                
+            }
+            lTween.TweenCallback
+                    (
+            Callable.From(() =>
+                         Spiral())
+                    );
+
         }
 
+        private void Spiral()
+        {
+            Node2D lSpiral = (Node2D)spiral.Instantiate();
+            lSpiral.Scale *= 10;
+            lSpiral.ShowBehindParent = true;
+            //GpuParticles2D lParticles = (GpuParticles2D)lSpiral.GetChild(0);
+            //lParticles.
+            
+            rank.AddChild(lSpiral);
+            lSpiral.GlobalPosition = rank.GlobalPosition + rank.Size / 2;
+        }
         private void Particles(int pAmount, Tween pTween)
         {
             pTween.Parallel().TweenProperty(rankParticles, "amount", pAmount, 0);
