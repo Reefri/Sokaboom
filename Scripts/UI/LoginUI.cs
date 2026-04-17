@@ -17,7 +17,7 @@ namespace Com.IsartDigital.Sokoban.UI
         [Export] private Button buttonValidation;
         [Export] private Label statut;
 
-        [Export] private Sprite2D cadenas;
+        [Export] private TextureRect cadenas;
 
         private const string TEXT_TITLE_INSCRIPTION = "Inscription :";
 
@@ -138,16 +138,17 @@ namespace Com.IsartDigital.Sokoban.UI
         private void Animation()
         {
             Tween lTween = CreateTween().SetParallel();
+            Vector2 cadenosPos = cadenas.Position;
 
-            lTween.TweenProperty(cadenas, TweenProp.POSITION, new Vector2(788, 122), 0.2f);
+            lTween.TweenProperty(cadenas, TweenProp.POSITION, cadenosPos + new Vector2(175, -50), 0.2f);
             lTween.TweenProperty(cadenas, TweenProp.ROTATION, Mathf.DegToRad(45), 0.2f);
 
             lTween = CreateTween().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.InOut).SetParallel();
 
-            lTween.TweenProperty(realfont, TweenProp.GLOBAL_POSITION, new Vector2(0, GetWindow().Size.Y), 1f);
+            lTween.TweenProperty(realfont, TweenProp.GLOBAL_POSITION, new Vector2(0, GetWindow().Size.Y * 2), 1f);
             lTween.TweenProperty(realfont, TweenProp.ROTATION, Mathf.DegToRad(-360 * 2), 1f);
 
-            lTween.TweenProperty(cadenas, TweenProp.POSITION, new Vector2(588 + 350, GetWindow().Size.Y), 0.8f).SetDelay(0.2f);
+            lTween.TweenProperty(cadenas, TweenProp.POSITION, new Vector2(cadenosPos.X, GetWindow().Size.Y * 2), 0.8f).SetDelay(0.2f);
             lTween.TweenProperty(cadenas, TweenProp.ROTATION, Mathf.DegToRad(360), 0.8f).SetDelay(0.2f);
 
             lTween.Finished += GoOnLogin;

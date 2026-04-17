@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dw85b1nive3ah"]
+[gd_scene load_steps=27 format=3 uid="uid://dw85b1nive3ah"]
 
 [ext_resource type="Script" path="res://Scripts/UI/TitleCard.cs" id="1_ib5wi"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_5ibq2"]
@@ -7,9 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://2nmheek0be6r" path="res://Scenes/Accessibilite/ColorFilterPanel.tscn" id="2_ox0d8"]
 [ext_resource type="Texture2D" uid="uid://xm2ixwxxxwki" path="res://Assets/UI/splash.png" id="3_e1lnu"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
-[ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
+[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
-[ext_resource type="Theme" path="res://Assets/Theme/TitleFont.tres" id="6_6uovy"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
 [sub_resource type="Curve" id="Curve_x5kje"]
@@ -139,8 +138,8 @@ offset_bottom = -111.92
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="Control"]
 z_index = 1
 position = Vector2(2, -8)
-scale = Vector2(6.36441, -0.789933)
-amount = 70
+scale = Vector2(11.5779, -0.65622)
+amount = 90
 process_material = SubResource("ParticleProcessMaterial_tmby8")
 texture = ExtResource("2_35lkq")
 lifetime = 4.0
@@ -148,8 +147,8 @@ preprocess = 11.46
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
 z_index = 1
-scale = Vector2(6.36441, -0.789933)
-amount = 70
+scale = Vector2(11.5026, -0.934771)
+amount = 90
 process_material = SubResource("ParticleProcessMaterial_rmsmt")
 texture = ExtResource("2_68e54")
 lifetime = 4.0
@@ -167,29 +166,29 @@ texture = SubResource("GradientTexture2D_sb341")
 [node name="Title" type="Control" parent="."]
 z_index = 1
 layout_mode = 1
+anchor_top = 0.09
 anchor_right = 1.0
-anchor_bottom = 0.316
-offset_bottom = 0.231995
+anchor_bottom = 0.277
+offset_top = -97.2
+offset_bottom = 45.84
 grow_horizontal = 2
 theme = ExtResource("2_5ibq2")
 
 [node name="So" type="Label" parent="Title"]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.182
-anchor_top = 0.088
-anchor_right = 0.283
-anchor_bottom = 0.756
-offset_left = 0.335983
-offset_top = -0.0400009
-offset_right = -0.0160217
-offset_bottom = 0.019989
+anchor_left = 0.172
+anchor_top = 0.299
+anchor_right = 0.28
+anchor_bottom = 0.7
+offset_left = 0.23999
+offset_top = -0.155006
+offset_right = -0.399994
+offset_bottom = -0.163986
 grow_horizontal = 2
-theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 110
 text = "So"
 
 [node name="BOUM !" type="Control" parent="Title"]
@@ -203,26 +202,36 @@ offset_top = -0.0450001
 offset_right = 0.359924
 offset_bottom = -0.0449982
 grow_horizontal = 2
-pivot_offset = Vector2(229, 102)
+pivot_offset = Vector2(214.708, 172)
 
-[node name="Sprite2D" type="Sprite2D" parent="Title/BOUM !"]
+[node name="Sprite2D" type="TextureRect" parent="Title/BOUM !"]
 z_index = -1
-position = Vector2(207.084, 101.378)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.374
+anchor_top = 0.162
+anchor_right = 0.649
+anchor_bottom = 0.386
+offset_left = -90.3987
+offset_top = -103.89
+offset_right = 494.309
+offset_bottom = 276.83
+grow_horizontal = 2
+grow_vertical = 2
 rotation = 0.10472
-scale = Vector2(0.866446, 0.849806)
-skew = 0.404916
+pivot_offset = Vector2(512, 229)
 texture = ExtResource("3_e1lnu")
 
 [node name="BOUM" type="Control" parent="Title/BOUM !"]
 layout_mode = 1
-anchor_left = -0.054
-anchor_top = -0.092
-anchor_right = 1.005
-anchor_bottom = 1.142
-offset_left = 24.732
-offset_top = -1.14
-offset_right = -2.29001
-offset_bottom = -49.11
+anchor_left = -0.016
+anchor_top = 0.323
+anchor_right = 1.007
+anchor_bottom = 0.759
+offset_left = 28.3267
+offset_top = -43.295
+offset_right = 17.0341
+offset_bottom = 4.285
 rotation = 0.10472
 
 [node name="B" type="Label" parent="Title/BOUM !/BOUM"]
@@ -235,8 +244,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 180
+theme_override_font_sizes/font_size = 150
 text = "B"
+metadata/_edit_lock_ = true
 
 [node name="O" type="Label" parent="Title/BOUM !/BOUM"]
 layout_mode = 1
@@ -247,12 +257,12 @@ anchor_bottom = 1.0
 offset_left = -0.226006
 offset_right = 0.0679932
 grow_horizontal = 2
-theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 180
+theme_override_font_sizes/font_size = 150
 text = "O
 "
+metadata/_edit_lock_ = true
 
 [node name="U" type="Label" parent="Title/BOUM !/BOUM"]
 layout_mode = 1
@@ -263,12 +273,12 @@ anchor_bottom = 1.0
 offset_left = -0.145996
 offset_right = 0.0180054
 grow_horizontal = 2
-theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 180
+theme_override_font_sizes/font_size = 150
 text = "U
 "
+metadata/_edit_lock_ = true
 
 [node name="M" type="Label" parent="Title/BOUM !/BOUM"]
 layout_mode = 1
@@ -279,27 +289,26 @@ anchor_bottom = 1.0
 offset_left = 0.00997925
 offset_right = 0.151978
 grow_horizontal = 2
-theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 180
+theme_override_font_sizes/font_size = 150
 text = "M
 "
+metadata/_edit_lock_ = true
 
 [node name="!" type="Label" parent="Title/BOUM !"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.939
-anchor_top = -0.146
-anchor_right = 1.073
-anchor_bottom = 1.354
-offset_left = -0.0620422
-offset_top = -0.0699978
-offset_right = -20.434
-offset_bottom = -102.57
+anchor_left = 1.0
+anchor_top = 0.082
+anchor_right = 1.143
+anchor_bottom = 0.973
+offset_left = 0.0401306
+offset_top = -0.149998
+offset_right = -20.3664
+offset_bottom = -102.545
 grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
-theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
@@ -309,17 +318,16 @@ text = "!"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.276
-anchor_right = 0.345
-anchor_bottom = 0.875
-offset_left = 7.04797
-offset_top = 5.0
-offset_right = 7.55997
-offset_bottom = -3.37502
+anchor_top = 0.277
+anchor_right = 0.351
+anchor_bottom = 0.772
+offset_left = 8.92001
+offset_top = -3.565
+offset_right = 7.91998
+offset_bottom = -3.34
 grow_horizontal = 2
 rotation = 0.0436332
-theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 125
 text = "K"
@@ -328,17 +336,16 @@ text = "K"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.349
-anchor_right = 0.421
-anchor_bottom = 0.779
-offset_left = -12.048
-offset_top = -5.0
-offset_right = -11.992
-offset_bottom = 6.30499
+anchor_top = 0.209
+anchor_right = 0.42
+anchor_bottom = 0.672
+offset_left = -5.92001
+offset_top = 5.895
+offset_right = 0.399994
+offset_bottom = 17.16
 grow_horizontal = 2
 rotation = -0.0698132
-theme = ExtResource("6_6uovy")
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 125
 text = "A
@@ -348,13 +355,13 @@ text = "A
 z_index = 1
 layout_mode = 1
 anchor_left = 0.364
-anchor_top = 0.373
-anchor_right = 0.631
-anchor_bottom = 0.863
-offset_left = 56.672
-offset_top = 33.296
-offset_right = -50.912
-offset_bottom = -0.223999
+anchor_top = 0.404
+anchor_right = 0.64
+anchor_bottom = 0.87
+offset_left = 56.88
+offset_top = -0.320007
+offset_right = -60.2001
+offset_bottom = 0.399902
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_4ftt8")
@@ -362,17 +369,16 @@ script = ExtResource("4_4ftt8")
 [node name="Play" type="Button" parent="ButtonsA"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.25
-anchor_top = -0.123
-anchor_right = 1.25
-anchor_bottom = 0.299
-offset_top = -0.0680008
-offset_bottom = 0.083992
+anchor_left = 0.227
+anchor_right = 0.776
+anchor_bottom = 0.298
+offset_left = -100.587
+offset_right = 100.044
+offset_bottom = -0.192001
 grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(150, 60)
+pivot_offset = Vector2(150, 75)
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 50
@@ -384,17 +390,21 @@ theme_override_styles/focus = ExtResource("5_guipx")
 text = "ID_PLAY"
 
 [node name="Help" type="Button" parent="ButtonsA"]
-layout_mode = 2
-anchor_left = -0.075
-anchor_top = 0.437
-anchor_right = 1.07
-anchor_bottom = 0.711
-offset_top = -0.108002
-offset_right = -1.52588e-05
-offset_bottom = 0.0759888
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.221
+anchor_top = 0.401
+anchor_right = 0.773
+anchor_bottom = 0.649
+offset_left = -99.501
+offset_top = -0.104004
+offset_right = 100.587
+offset_bottom = -0.0960999
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.85
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 35
@@ -406,19 +416,23 @@ theme_override_styles/focus = ExtResource("5_guipx")
 text = "ID_HELP"
 
 [node name="HightScore" type="Button" parent="ButtonsA"]
-layout_mode = 2
-anchor_left = -0.165
-anchor_top = 0.803
-anchor_right = 1.165
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.226
+anchor_top = 0.802
+anchor_right = 0.774
 anchor_bottom = 1.0
-offset_top = -0.052002
-offset_right = -1.52588e-05
+offset_left = -100.406
+offset_top = -0.208008
+offset_right = 100.406
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("5_guipx")
 theme_override_styles/hover = ExtResource("5_guipx")
 theme_override_styles/pressed = ExtResource("5_guipx")
@@ -441,14 +455,14 @@ script = ExtResource("5_mkv2m")
 [node name="Son" type="Button" parent="ButtonsB"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.792
-anchor_top = 0.071
-anchor_right = 0.926
-anchor_bottom = 0.786
-offset_left = -0.384033
-offset_top = 0.0359998
-offset_right = 0.247925
-offset_bottom = -0.0240021
+anchor_left = 0.07
+anchor_top = -0.762
+anchor_right = 0.132
+anchor_bottom = -0.113
+offset_left = 0.400002
+offset_top = -0.038002
+offset_right = 184.44
+offset_bottom = -15.0019
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -456,7 +470,7 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = ExtResource("7_mprki")
 theme_override_styles/hover = ExtResource("7_mprki")
 theme_override_styles/pressed = ExtResource("7_mprki")
@@ -467,20 +481,20 @@ text = "ID_SOUND"
 [node name="Traduction" type="Button" parent="ButtonsB"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.072
-anchor_top = 0.012
-anchor_right = 0.225
-anchor_bottom = 0.845
-offset_left = 0.0559921
-offset_top = -0.00800002
-offset_right = -0.200012
-offset_bottom = 0.0199966
+anchor_left = 0.07
+anchor_top = 0.136
+anchor_right = 0.142
+anchor_bottom = 0.678
+offset_left = 0.400002
+offset_top = -0.0617733
+offset_right = 173.64
+offset_bottom = -0.0285568
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("7_mprki")
 theme_override_styles/hover = ExtResource("7_mprki")
 theme_override_styles/pressed = ExtResource("7_mprki")
@@ -490,9 +504,11 @@ text = "ID_TRANSLATION"
 
 [node name="ColorFilterPanel" parent="." instance=ExtResource("2_ox0d8")]
 layout_mode = 1
-anchor_left = 0.824
-anchor_top = 0.704
-anchor_right = 0.879
-anchor_bottom = 0.802
-offset_left = -0.248047
-offset_right = 0.391846
+anchor_left = 0.787
+anchor_top = 0.763
+anchor_right = 0.843
+anchor_bottom = 0.861
+offset_left = 0.039917
+offset_top = -0.0400391
+offset_right = -0.400146
+offset_bottom = 0.455872

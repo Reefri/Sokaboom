@@ -208,7 +208,7 @@ namespace Com.IsartDigital.Sokoban
 
             lTween.Parallel().TweenProperty(highScore, TweenProp.POSITION, posOrigninHighScore, tweenDuration).SetDelay(tweenDuration / 4);
 
-            lTween.Parallel().TweenProperty(ScoreFinal, TweenProp.POSITION, screenSize / 2 + Vector2.Up * sideFactor/1.25f - ScoreFinal.Size / 2, tweenDuration).SetDelay(tweenDuration / 4);
+            lTween.Parallel().TweenProperty(ScoreFinal, TweenProp.POSITION, ScoreFinal.Position, tweenDuration).SetDelay(tweenDuration / 4);
 
 
             lTween.SetEase(Tween.EaseType.Out)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://toxarw1krcfm"]
+[gd_scene load_steps=4 format=3 uid="uid://eegphykgd130"]
 
 [ext_resource type="Script" path="res://Scripts/Juiciness/Shader/TimeStop.cs" id="1_oa16m"]
-[ext_resource type="Shader" uid="uid://328vqloxqvha" path="res://Ressources/Shaders/GrayCircle.tres" id="2_o0i7m"]
+[ext_resource type="Shader" uid="uid://eijpu5tngngq" path="res://Ressources/Shaders/GrayCircle.tres" id="2_o0i7m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxuhq"]
 shader = ExtResource("2_o0i7m")

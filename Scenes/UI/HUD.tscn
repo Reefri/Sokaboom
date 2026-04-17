@@ -23,8 +23,8 @@ mouse_filter = 2
 theme = ExtResource("1_rsf63")
 script = ExtResource("1_h8l0x")
 quitButton = NodePath("QUIT/Quit")
-undoButton = NodePath("UNDO_REDO/UNDO/Undo")
-redoButton = NodePath("UNDO_REDO/REDO/Redo")
+undoButton = NodePath("UNDO_REDO/Undo")
+redoButton = NodePath("UNDO_REDO/Redo")
 restartButton = NodePath("RETRY/Retry")
 graphicSwitchButton = NodePath("Control2/graphicSwitch")
 newPlayer = ExtResource("3_gbnqn")
@@ -32,8 +32,8 @@ oldPlayer = ExtResource("9_jw2je")
 par = NodePath("Control/Par")
 steps = NodePath("Control/Steps")
 name = NodePath("Name")
-author = NodePath("Name/Author")
-number = NodePath("Name/Number")
+author = NodePath("Author")
+number = NodePath("Number")
 quitDelay = NodePath("quitDelay")
 
 [node name="QUIT" type="Control" parent="."]
@@ -50,11 +50,17 @@ script = ExtResource("2_3tpfh")
 
 [node name="Quit" type="Button" parent="QUIT"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = -1.458
+anchor_right = 0.971
 anchor_bottom = 1.0
+offset_left = 200.127
+offset_top = -100.0
+offset_right = 200.08
+offset_bottom = 45.048
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(150, 150)
 icon = ExtResource("3_gjtpu")
 flat = true
 icon_alignment = 1
@@ -76,17 +82,17 @@ mouse_filter = 2
 [node name="Retry" type="Button" parent="RETRY"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -5.771
-anchor_top = 3.006
-anchor_right = -4.771
-anchor_bottom = 4.006
-offset_left = 979.07
-offset_top = -483.972
-offset_right = 979.07
-offset_bottom = -483.972
+anchor_left = -1.043
+anchor_top = -0.132
+anchor_right = 1.024
+anchor_bottom = 1.085
+offset_left = 164.046
+offset_top = 0.107162
+offset_right = 164.979
+offset_bottom = -0.0601807
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(85, 81)
+pivot_offset = Vector2(165, 165)
 icon = ExtResource("5_rwybo")
 flat = true
 icon_alignment = 1
@@ -95,91 +101,62 @@ script = ExtResource("6_7jap7")
 
 [node name="UNDO_REDO" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.287
-anchor_top = 0.111
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.376007
-offset_top = 0.071991
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="REDO" type="Control" parent="UNDO_REDO"]
-layout_mode = 1
-anchor_left = 0.765
-anchor_top = 0.718
-anchor_right = 1.021
-anchor_bottom = 1.214
-offset_left = -0.140991
-offset_top = 0.223969
-offset_right = -0.193054
-offset_bottom = 0.111938
+anchor_left = 1.033
+anchor_top = 0.76
+anchor_right = 1.033
+anchor_bottom = 0.983
+offset_left = -628.64
+offset_top = -49.8
+offset_right = 0.359985
+offset_bottom = -31.64
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_3tpfh")
 
-[node name="Redo" type="Button" parent="UNDO_REDO/REDO"]
+[node name="Redo" type="Button" parent="UNDO_REDO"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.067
-anchor_top = -0.194
-anchor_right = 0.933
-anchor_bottom = 0.806
-offset_left = 0.0303011
-offset_top = 0.0272942
-offset_right = 0.0302887
-offset_bottom = 0.0272675
-grow_horizontal = 2
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -389.0
+offset_top = -194.5
+offset_bottom = 194.5
+grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("6_qcjep")
 flat = true
 icon_alignment = 1
 expand_icon = true
+metadata/_edit_lock_ = true
 
-[node name="UNDO" type="Control" parent="UNDO_REDO"]
+[node name="Undo" type="Button" parent="UNDO_REDO"]
 layout_mode = 1
-anchor_left = 0.565
-anchor_top = 0.715
-anchor_right = 0.821
-anchor_bottom = 1.211
-offset_left = 0.0590515
-offset_top = -0.0480347
-offset_right = 0.00695801
-offset_bottom = -0.160095
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("2_3tpfh")
-
-[node name="Undo" type="Button" parent="UNDO_REDO/UNDO"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.119
-anchor_top = -0.19
-anchor_right = 0.881
-anchor_bottom = 0.81
-offset_left = -0.043251
-offset_top = -0.11504
-offset_right = -0.0432587
-offset_bottom = -0.115067
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -194.5
+offset_right = 389.0
+offset_bottom = 194.5
 grow_vertical = 2
 icon = ExtResource("7_c4u6y")
 flat = true
 icon_alignment = 1
 expand_icon = true
+metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.82
-anchor_top = 0.596
-anchor_right = 1.0
-anchor_bottom = 0.756
-offset_left = 0.359924
-offset_top = -0.208008
-offset_bottom = 0.111969
+anchor_left = 0.771
+anchor_top = 0.082
+anchor_right = 1.001
+anchor_bottom = 0.228
+offset_left = 0.319946
+offset_top = 157.44
+offset_right = -0.0800781
+offset_bottom = 172.76
 mouse_filter = 2
 
 [node name="Par" type="Label" parent="Control"]
@@ -192,7 +169,7 @@ offset_top = -4.0
 offset_right = -4.0
 offset_bottom = 31.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "Par :"
 
 [node name="Steps" type="Label" parent="Control"]
@@ -205,73 +182,74 @@ offset_top = 41.0
 offset_right = -4.0
 offset_bottom = 183.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "Steps : 0"
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.779
-anchor_right = 0.944
-anchor_bottom = 0.088
-offset_left = -0.408081
-offset_right = -0.488037
-offset_bottom = -0.0240059
-theme_override_font_sizes/font_size = 25
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -575.0
+offset_right = -25.0
+offset_bottom = 103.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 75
 text = "ID_NAME"
 horizontal_alignment = 2
 
-[node name="Number" type="Label" parent="Name"]
+[node name="Author" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.404
-offset_right = -2.0
-offset_bottom = -0.0279999
-grow_vertical = 0
-text = "ID_NUM"
-horizontal_alignment = 2
-
-[node name="Author" type="Label" parent="Name"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.561
-anchor_right = 0.989
-anchor_bottom = 1.0
-offset_top = 0.0229969
-offset_right = 0.0899963
-offset_bottom = 1.0
+offset_left = -575.0
+offset_top = 105.0
+offset_right = -25.0
+offset_bottom = 154.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 35
 text = "ID_AUTHOR"
 horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="Number" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -575.0
+offset_top = 200.0
+offset_right = -25.0
+offset_bottom = 242.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "ID_NUM"
+horizontal_alignment = 2
+autowrap_mode = 2
 
 [node name="quitDelay" type="Timer" parent="."]
 one_shot = true
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.812
-anchor_top = 0.242
-anchor_right = 0.998
-anchor_bottom = 0.488
-offset_left = 0.575928
-offset_top = 0.18399
-offset_right = 0.303955
-offset_bottom = -0.22403
+anchor_left = 1.003
+anchor_top = 0.657
+anchor_right = 1.003
+anchor_bottom = 0.78
+offset_left = -200.24
+offset_top = -132.56
+offset_right = 0.368164
+offset_bottom = -0.128052
+mouse_filter = 2
 script = ExtResource("8_uigrc")
 
 [node name="graphicSwitch" type="Button" parent="Control2"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.192
-anchor_top = 0.157
-anchor_right = 0.766
-anchor_bottom = 0.862
-offset_left = -0.0880013
-offset_top = 0.0369987
-offset_right = 0.0759888
-offset_bottom = -0.0580139
-grow_horizontal = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -284,5 +262,6 @@ icon = ExtResource("9_jw2je")
 flat = true
 icon_alignment = 1
 expand_icon = true
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="QUIT/Quit" to="." method="QuitPressed"]

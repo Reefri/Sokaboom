@@ -28,6 +28,7 @@ offset_right = -0.432007
 offset_bottom = 0.303955
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_xjfk4")
 script = ExtResource("1_ncsk8")
 mainButton = NodePath("ColorFiltreButton")
@@ -36,13 +37,15 @@ buttons = [NodePath("ColorFilterPanel/ColorFilterContainer/BeColorblind"), NodeP
 
 [node name="ColorFilterPanel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -134.0
-offset_top = -132.0
-offset_right = 134.0
-offset_bottom = -81.0
+anchors_preset = -1
+anchor_left = -2.235
+anchor_top = -3.263
+anchor_right = 3.235
+anchor_bottom = 0.235
+offset_left = 0.0283203
+offset_top = -0.0258179
+offset_right = 0.00375366
+offset_bottom = 0.0110531
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -61,14 +64,20 @@ alignment = 1
 
 [node name="BeColorblind" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
 text = "ID_MAKE_COLORBLIND"
 
 [node name="CorrectColorBlindness" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "ID_CORRECT_COLORBLIND"
 
 [node name="NormalVision" type="Button" parent="ColorFilterPanel/ColorFilterContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
 text = "ID_NORMAL_VISION"
 
 [node name="ColorFiltreButton" type="Button" parent="."]
