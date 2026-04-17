@@ -86,9 +86,9 @@ namespace Com.IsartDigital.Sokoban
         [ExportCategory("Musics")]
         [Export] private AudioStreamPlayer music;
 
-        public float overallVolume = 0;
-        public float musicVolume = 0;
-        public float soundsVolume = 0;
+        public float overallVolume = -30;
+        public float musicVolume = -30;
+        public float soundsVolume = -30;
 
         private const float MUTE_DB = -80;
 
