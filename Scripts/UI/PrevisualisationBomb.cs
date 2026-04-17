@@ -36,6 +36,7 @@ namespace Com.IsartDigital.Sokoban
                 BombPattern.EnumOfExplosionPattern.Mouse,
                 true,
                 null,
+                2,
                 2
                 );
             lNode.GlobalPosition = arrow.GlobalPosition * 2 - ajustement;

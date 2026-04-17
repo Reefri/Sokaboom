@@ -48,7 +48,7 @@ namespace Com.IsartDigital.Sokoban
         };
 
 
-        public BombPattern(Node2D pParent, List<List<int>> pExplosionMatrix, EnumOfExplosionPattern pExplosionPattern , bool pUseParentPosition = true, Vector2? pOffSet = null, float pScale = 1) 
+        public BombPattern(Node2D pParent, List<List<int>> pExplosionMatrix, EnumOfExplosionPattern pExplosionPattern , bool pUseParentPosition = true, Vector2? pOffSet = null, float pScale = 1, float pBig = 1) 
 		{
             originePos = Vector2I.Zero;
 
@@ -81,7 +81,7 @@ namespace Com.IsartDigital.Sokoban
                     if (pExplosionMatrix[i][j] == 1)
                     {
                         pParent.CallDeferred(BombExplosion.ADD_CHILD_DEFERED, enumToCreateMethod[pExplosionPattern].Invoke(
-                            (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * Map.DISTANCE_RANGE * pScale, 
+                            (pUseParentPosition ? pParent.GlobalPosition : Vector2.Zero) + (pOffSet ?? Vector2.Zero) + (new Vector2(j, i) - originePos) * Map.DISTANCE_RANGE * pBig, 
                             new Color(1, 1, 1),
                             pScale
                             ));
