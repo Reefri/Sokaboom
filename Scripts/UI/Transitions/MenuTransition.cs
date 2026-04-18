@@ -27,7 +27,7 @@ namespace Com.IsartDigital.Sokoban
 			whenToPlayAnim.WaitTime = tweenDuration / 1.2f;
 			whenToPlayAnim.Start();
 			screenSize = GetRect().Size;
-			doubleHeight = screenSize.Y * 3.5f;
+			doubleHeight = screenSize.Y * 3f;
 			doubleWidth = screenSize.X * 2;
 			TransitionZone.Position = new Vector2(doubleWidth, -doubleHeight);
 			Vector2 lFinalPos = new Vector2(-screenSize.Y * 2, doubleHeight);

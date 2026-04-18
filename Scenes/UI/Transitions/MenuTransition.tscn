@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_geije")
 TransitionZone = NodePath("GiganticCloud")
+tweenDuration = 1.5
 whenToPlayAnim = NodePath("whenToPlayAnim")
 
 [node name="whenToPlayAnim" type="Timer" parent="."]
@@ -25,10 +26,10 @@ offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="GiganticCloud"]
 layout_mode = 0
-offset_left = -842.0
-offset_top = -1488.0
-offset_right = -218.0
-offset_bottom = -986.0
+offset_left = -277.0
+offset_top = -990.0
+offset_right = 347.0
+offset_bottom = -488.0
 rotation = -0.706858
 scale = Vector2(7, 7)
 texture = ExtResource("19_c05xl")
