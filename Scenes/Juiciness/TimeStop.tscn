@@ -5,10 +5,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxuhq"]
 shader = ExtResource("2_o0i7m")
-shader_parameter/minValue = 1.0
+shader_parameter/minValue = 0.297
 shader_parameter/CenterPosition = null
 shader_parameter/progression = 0.213
-shader_parameter/edge = 0.592
+shader_parameter/edge = 0.731
 
 [node name="TimeStop" type="CanvasLayer" node_paths=PackedStringArray("support")]
 layer = 0
