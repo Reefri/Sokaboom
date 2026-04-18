@@ -346,6 +346,7 @@ vertical_alignment = 1
 
 [node name="Control3" type="Control" parent="."]
 layout_mode = 1
+anchors_preset = 10
 anchor_right = 1.0
 offset_left = 520.0
 offset_right = -520.0
