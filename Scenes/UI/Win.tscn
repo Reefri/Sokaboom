@@ -92,7 +92,7 @@ gradient = SubResource("Gradient_33yxt")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwb00"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(1000, 1, 1)
+emission_box_extents = Vector3(2000, 1, 1)
 gravity = Vector3(0, 98, 0)
 linear_accel_min = -47.06
 linear_accel_max = 45.59
@@ -186,7 +186,7 @@ grow_vertical = 2
 theme = ExtResource("1_6f0nn")
 script = ExtResource("1_lpuuc")
 stars = NodePath("ColorRect/Stars")
-confettis = NodePath("SealingParts")
+confettis = NodePath("Control3/SealingParts")
 scoreText = NodePath("ColorRect/Score")
 perfectText = NodePath("perfect")
 perfectParticles = NodePath("perfect/Control/PerfectParts")
@@ -343,9 +343,17 @@ text = "Score "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SealingParts" type="GPUParticles2D" parent="."]
-position = Vector2(518, -19)
-amount = 800
+[node name="Control3" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+offset_left = 520.0
+offset_right = -520.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="SealingParts" type="GPUParticles2D" parent="Control3"]
+position = Vector2(-2, -19)
+amount = 1000
 process_material = SubResource("ParticleProcessMaterial_hwb00")
 lifetime = 4.0
 randomness = 0.5
