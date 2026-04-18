@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_0sj0s"]
 [ext_resource type="Material" uid="uid://bwyw866uj0xmn" path="res://Assets/particules/HightScoreLeft.tres" id="2_kobj7"]
 [ext_resource type="Material" uid="uid://l1nbyclqriub" path="res://Assets/particules/HightScoreRight.tres" id="3_tccnp"]
-[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="5_2m70j"]
+[ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_2m70j"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wiyks"]
 particle_flag_disable_z = true

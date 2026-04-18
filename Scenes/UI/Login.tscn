@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/SecretButton.cs" id="3_jl43w"]
 [ext_resource type="Texture2D" uid="uid://b5ifgvo56jcyi" path="res://Assets/UI/eye/oeil.png" id="4_xtyfr"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_dsb4s"]
-[ext_resource type="StyleBox" uid="uid://ceahgi1ac5ftr" path="res://Assets/UI/ButtonVariant.tres" id="6_h22ql"]
+[ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="6_h22ql"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_4vgus"]
 [ext_resource type="Texture2D" uid="uid://cvnj7gsjpmp22" path="res://Assets/Cadenas.png" id="8_bwkap"]
 
