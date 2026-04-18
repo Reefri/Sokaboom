@@ -90,10 +90,12 @@ namespace Com.IsartDigital.Sokoban
 
         private void DustAnimation(Label pAccount)
         {
-            GpuParticles2D lDustA = (GpuParticles2D)pAccount.GetChild(1);
-            GpuParticles2D lDustB = (GpuParticles2D)pAccount.GetChild(2);
-
             Label lAccountScore = (Label)pAccount.GetChild(0);
+
+            GpuParticles2D lDustA = (GpuParticles2D)pAccount.GetChild(1);
+            GpuParticles2D lDustB = (GpuParticles2D)lAccountScore.GetChild(0);
+
+            lDustB.Position = new Vector2(lAccountScore.Size.X, lAccountScore.Size.Y / 2);
 
             lDustA.Emitting = true;
             if (lAccountScore.Text != "") lDustB.Emitting = true;

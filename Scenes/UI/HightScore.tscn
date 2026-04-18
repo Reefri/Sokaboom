@@ -100,7 +100,6 @@ text = "ID_HIGHSCORE"
 horizontal_alignment = 1
 
 [node name="BoxContainer" type="Control" parent="ColorRect"]
-visible = false
 layout_mode = 1
 anchor_left = 0.109
 anchor_top = 0.106
@@ -134,20 +133,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FirstAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FirstAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FirstAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -175,20 +174,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SecondAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SecondAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SecondAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -216,20 +215,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/ThirdAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/ThirdAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/ThirdAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -257,20 +256,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FourthAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FourthAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FourthAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -298,20 +297,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FifthAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/FifthAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/FifthAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -339,20 +338,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SixthAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SixthAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SixthAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -380,20 +379,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SeventhAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/SeventhAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/SeventhAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -421,20 +420,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/EighthAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/EighthAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/EighthAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -462,20 +461,20 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/NinthAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/NinthAccount"]
 position = Vector2(0, 35)
 emitting = false
 amount = 42
 process_material = ExtResource("2_kobj7")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/NinthAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -503,6 +502,15 @@ offset_bottom = -12.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/TenthAccount/Label"]
+position = Vector2(37.492, 34)
+emitting = false
+amount = 42
+process_material = ExtResource("3_tccnp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/BoxContainer/TenthAccount"]
 position = Vector2(0, 35)
 emitting = false
@@ -512,16 +520,8 @@ one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="ColorRect/BoxContainer/TenthAccount"]
-position = Vector2(900, 35)
-emitting = false
-amount = 42
-process_material = ExtResource("3_tccnp")
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-
 [node name="BoxContainer2" type="Control" parent="ColorRect"]
+visible = false
 layout_mode = 1
 anchor_left = 0.109
 anchor_top = 0.106
