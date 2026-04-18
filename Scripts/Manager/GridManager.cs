@@ -76,9 +76,9 @@ namespace Com.IsartDigital.Sokoban
         {
             Level lLevel = GetLevel(levelOrder[pIndex]);
 
-			if (AccountManager.GetInstance().currentAccount.BestPar[levelIndex] == 0) lLevel.nbStars = 0;
-            else if (AccountManager.GetInstance().currentAccount.Score[levelIndex] >= 5000) lLevel.nbStars = 3;
-            else if (AccountManager.GetInstance().currentAccount.Score[levelIndex] <= 1000) lLevel.nbStars = 1;
+			if (AccountManager.GetInstance().currentAccount.BestPar[pIndex] == 0) lLevel.nbStars = 0;
+            else if (AccountManager.GetInstance().currentAccount.Score[pIndex] >= 5000) lLevel.nbStars = 3;
+            else if (AccountManager.GetInstance().currentAccount.Score[pIndex] <= 1000) lLevel.nbStars = 1;
             else lLevel.nbStars = 2;
 
 			return lLevel.nbStars;
