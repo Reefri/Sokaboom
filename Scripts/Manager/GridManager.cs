@@ -28,6 +28,8 @@ namespace Com.IsartDigital.Sokoban
                 6,
             };
 
+		public int levelIndex;
+
         public Level CurrentLevel
 		{
 			get;
@@ -63,7 +65,9 @@ namespace Com.IsartDigital.Sokoban
 
 		public void ChangeLevel(int pIndex)
 		{
-			CurrentLevel = GetLevel(levelOrder[pIndex]);
+            levelIndex = pIndex;
+
+            CurrentLevel = GetLevel(levelOrder[pIndex]);
 			CurrentLevelIndex = levelOrder[pIndex];
 			GameManager.GetInstance().CurrentPar = 0;
 		}

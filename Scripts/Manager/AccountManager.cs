@@ -108,20 +108,28 @@ namespace Com.IsartDigital.Sokoban
 		{
 			bool lDidModif= false;
 
-			if (currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] < pScore)
+			int lLevelIndex = GridManager.GetInstance().levelIndex;
+
+			if (currentAccount.Score[lLevelIndex] <= pScore)
 			{
-				currentAccount.Score[GridManager.GetInstance().CurrentLevelIndex] = pScore;
-				currentAccount.BestPar[GridManager.GetInstance().CurrentLevelIndex] = pPar;
+				currentAccount.Score[lLevelIndex] = pScore;
+				currentAccount.BestPar[lLevelIndex] = pPar;
 
 				lDidModif = true;
 			}
 
-			int lIndex = Mathf.Clamp(GridManager.GetInstance().CurrentLevelIndex + 1, 1, GridManager.GetInstance().numberOfLevel - 1);
+			int lIndex = Mathf.Clamp(lLevelIndex + 1, 1, GridManager.GetInstance().numberOfLevel - 1);
+
+			if (!currentAccount.LockedLevels[lIndex]) 
+			{
+				currentAccount.LockedLevels[lIndex] = currentAccount.LockedLevels[lIndex-1]; 
+				lDidModif = true;
+
+            }
 
 
-			if (!currentAccount.LockedLevels[lIndex]) { currentAccount.LockedLevels[lIndex] = currentAccount.LockedLevels[lIndex-1]; lDidModif = true; }
 
-			if (lDidModif) 
+            if (lDidModif) 
             UpdateAccount();
         }
 	
