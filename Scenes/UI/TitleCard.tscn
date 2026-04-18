@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dw85b1nive3ah"]
+[gd_scene load_steps=28 format=3 uid="uid://dw85b1nive3ah"]
 
 [ext_resource type="Script" path="res://Scripts/UI/TitleCard.cs" id="1_ib5wi"]
 [ext_resource type="Theme" uid="uid://ndkyi34t8736" path="res://Assets/Theme/UI.tres" id="2_5ibq2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="4_4ftt8"]
 [ext_resource type="StyleBox" path="res://Assets/UI/ButtonVariant.tres" id="5_guipx"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimClickB.cs" id="5_mkv2m"]
+[ext_resource type="Theme" uid="uid://b1hw5yq81qgsr" path="res://Assets/Theme/TitleFont.tres" id="6_s1tt1"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="7_mprki"]
 
 [sub_resource type="Curve" id="Curve_x5kje"]
@@ -183,12 +184,14 @@ anchor_top = 0.299
 anchor_right = 0.28
 anchor_bottom = 0.7
 offset_left = 0.23999
-offset_top = -0.155006
+offset_top = 27.845
 offset_right = -0.399994
-offset_bottom = -0.163986
+offset_bottom = -0.5
 grow_horizontal = 2
+theme = ExtResource("6_s1tt1")
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 110
 text = "So"
 
 [node name="BOUM !" type="Control" parent="Title"]
@@ -229,9 +232,9 @@ anchor_top = 0.323
 anchor_right = 1.007
 anchor_bottom = 0.759
 offset_left = 28.3267
-offset_top = -43.295
+offset_top = -36.295
 offset_right = 17.0341
-offset_bottom = 4.285
+offset_bottom = 11.285
 rotation = 0.10472
 
 [node name="B" type="Label" parent="Title/BOUM !/BOUM"]
@@ -242,9 +245,10 @@ anchor_bottom = 1.0
 offset_right = 0.0719986
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_s1tt1")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 175
 text = "B"
 metadata/_edit_lock_ = true
 
@@ -257,9 +261,10 @@ anchor_bottom = 1.0
 offset_left = -0.226006
 offset_right = 0.0679932
 grow_horizontal = 2
+theme = ExtResource("6_s1tt1")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 175
 text = "O
 "
 metadata/_edit_lock_ = true
@@ -273,9 +278,10 @@ anchor_bottom = 1.0
 offset_left = -0.145996
 offset_right = 0.0180054
 grow_horizontal = 2
+theme = ExtResource("6_s1tt1")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 175
 text = "U
 "
 metadata/_edit_lock_ = true
@@ -289,9 +295,10 @@ anchor_bottom = 1.0
 offset_left = 0.00997925
 offset_right = 0.151978
 grow_horizontal = 2
+theme = ExtResource("6_s1tt1")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 175
 text = "M
 "
 metadata/_edit_lock_ = true
@@ -303,12 +310,13 @@ anchor_left = 1.0
 anchor_top = 0.082
 anchor_right = 1.143
 anchor_bottom = 0.973
-offset_left = 0.0401306
-offset_top = -0.149998
-offset_right = -20.3664
-offset_bottom = -102.545
+offset_left = -0.415924
+offset_top = 42.71
+offset_right = -20.8224
+offset_bottom = -88.685
 grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
+theme = ExtResource("6_s1tt1")
 theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
@@ -321,15 +329,16 @@ anchor_left = 0.276
 anchor_top = 0.277
 anchor_right = 0.351
 anchor_bottom = 0.772
-offset_left = 8.92001
-offset_top = -3.565
-offset_right = 7.91998
+offset_left = 7.92001
+offset_top = 29.435
+offset_right = 6.91998
 offset_bottom = -3.34
 grow_horizontal = 2
 rotation = 0.0436332
+theme = ExtResource("6_s1tt1")
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 125
+theme_override_font_sizes/font_size = 150
 text = "K"
 
 [node name="A" type="Label" parent="Title"]
@@ -339,15 +348,16 @@ anchor_left = 0.349
 anchor_top = 0.209
 anchor_right = 0.42
 anchor_bottom = 0.672
-offset_left = -5.92001
-offset_top = 5.895
-offset_right = 0.399994
+offset_left = -2.92001
+offset_top = 51.895
+offset_right = 3.40002
 offset_bottom = 17.16
 grow_horizontal = 2
 rotation = -0.0698132
+theme = ExtResource("6_s1tt1")
 theme_override_colors/font_color = Color(1, 0.635294, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 125
+theme_override_font_sizes/font_size = 150
 text = "A
 "
 

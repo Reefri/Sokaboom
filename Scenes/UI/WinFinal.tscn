@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqciltv8p0y15"]
+[gd_scene load_steps=21 format=3 uid="uid://dqciltv8p0y15"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WinFinal.cs" id="1_0l42t"]
 [ext_resource type="Texture2D" uid="uid://daosnol5sspeq" path="res://Assets/FinalWinBackground.png" id="2_mdaxs"]
 [ext_resource type="Script" path="res://Scripts/Juiciness/ButtonAnimation/ButtonAnimation.cs" id="2_qfx27"]
+[ext_resource type="Theme" uid="uid://b1hw5yq81qgsr" path="res://Assets/Theme/TitleFont.tres" id="3_wf8kt"]
 [ext_resource type="StyleBox" uid="uid://bckhf102a2vjb" path="res://Assets/UI/buttonStyle.tres" id="4_cp02b"]
 [ext_resource type="Texture2D" uid="uid://quc765ylnrxu" path="res://Assets/particules/MidRedParticle.png" id="5_ks0tv"]
 [ext_resource type="Texture2D" uid="uid://cbpeyia3cvem" path="res://Assets/particules/BigYellowParticle.png" id="6_3kkpw"]
@@ -130,11 +131,12 @@ offset_right = 203.44
 offset_bottom = -5.52002
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_wf8kt")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 75
-text = "Score Total :"
+text = "Score Total "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -207,6 +209,7 @@ offset_right = -3.83997
 offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_wf8kt")
 theme_override_colors/font_color = Color(1, 0.396078, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
