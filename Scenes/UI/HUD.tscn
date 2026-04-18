@@ -97,6 +97,7 @@ script = ExtResource("6_7jap7")
 
 [node name="UNDO_REDO" type="Control" parent="."]
 layout_mode = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -124,6 +125,7 @@ offset_bottom = 150.5
 grow_horizontal = 0
 grow_vertical = 2
 icon = ExtResource("6_qcjep")
+flat = true
 icon_alignment = 1
 expand_icon = true
 
@@ -137,6 +139,7 @@ offset_right = 300.0
 offset_bottom = 149.982
 grow_vertical = 2
 icon = ExtResource("7_c4u6y")
+flat = true
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_lock_ = true
