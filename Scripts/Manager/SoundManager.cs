@@ -51,6 +51,7 @@ namespace Com.IsartDigital.Sokoban
 
         [ExportSubgroup("bomb")]
         [Export] private AudioStreamPlayer fireworkWhistle;
+        [Export] private AudioStreamPlayer fireworkWhistleWin;
         [Export] private AudioStreamPlayer bombPickUp;
         [Export] private AudioStreamPlayer fireworkExplosion;
         [Export] private AudioStreamPlayer explosion;
@@ -179,6 +180,18 @@ namespace Com.IsartDigital.Sokoban
             
             fireworkWhistle.Play();
         }
+
+        public void PlayFireworkWhistleWin()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
+
+            fireworkWhistleWin.Play();
+        }
         public void PlayBombPickUp()
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -300,6 +313,17 @@ namespace Com.IsartDigital.Sokoban
             footStepSounds[lRand].PitchScale = MIN_PITCH +  GD.Randf()*(MAX_PITCH-MIN_PITCH);
             footStepSounds[lRand].Play();
         }
+        public void PlayOtherFootStep()
+        {
+            if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if (!soundPlay)
+            {
+                if (debug) GD.Print("Sound Disable");
+                return;
+            }
+
+            footStepOne.Play();
+        }
 
         public void PlayCollide()
         {
@@ -410,7 +434,7 @@ namespace Com.IsartDigital.Sokoban
 
             ruban.Play();
         }
-        public void PlayClick()
+        public void PlayClick(float pPitch = 1)
         {
             if (debug) GD.Print(System.Reflection.MethodBase.GetCurrentMethod().Name);
             if (!soundPlay)
@@ -419,8 +443,10 @@ namespace Com.IsartDigital.Sokoban
                 return;
             }
 
+            click.PitchScale = pPitch;
             click.Play();
         }
+      
 
 
 

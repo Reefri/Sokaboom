@@ -75,6 +75,7 @@ namespace Com.IsartDigital.Sokoban
             int j = 0;
 
             List<Node> lListOfLevelAccount = levelAccount.GetChildren().ToList();
+            lListOfLevelAccount.Reverse();
 
             foreach (Label lAccount in lListOfLevelAccount)
 			{
@@ -83,15 +84,20 @@ namespace Com.IsartDigital.Sokoban
                 lTween.TweenProperty(lAccount, TweenProp.MODULATE_ALPHA, 0f, 0);
                 lTween.TweenProperty(lAccount, TweenProp.MODULATE_ALPHA, 1f, 0).SetDelay(j * 0.3);
                 lTween.TweenProperty(lAccount, TweenProp.GLOBAL_POSITION_Y, lAccount.GlobalPosition.Y, 1).From(-50).SetDelay(j * 0.3);
-                lTween.Finished += () => DustAnimation(lAccount);
+                int lIndex = j;
+                lTween.Finished += () => DustAnimation(lAccount,(lIndex+5f)/7f);
                 j++;
             }
         }
 
-        private void DustAnimation(Label pAccount)
+        private void DustAnimation(Label pAccount,float pPitch)
         {
             GpuParticles2D lDustA = (GpuParticles2D)pAccount.GetChild(1);
+            
             GpuParticles2D lDustB = (GpuParticles2D)pAccount.GetChild(2);
+
+
+            SoundManager.GetInstance().PlayClick(pPitch);
 
             Label lAccountScore = (Label)pAccount.GetChild(0);
 

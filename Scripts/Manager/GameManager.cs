@@ -581,6 +581,8 @@ namespace Com.IsartDigital.Sokoban
             SoundManager.GetInstance().SetMusicDBTo(0);
             currentPosition.value.musicMult = 0;
 
+            //SoundManager.GetInstance().Play
+
 
             if (!currentPosition.value.timeStop)
             {

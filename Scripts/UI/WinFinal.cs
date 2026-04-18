@@ -96,10 +96,10 @@ namespace Com.IsartDigital.Sokoban
 			screenSize = GetViewportRect().Size;
 
             ScoreFinal.Text = SCORE;
-            //scoreToReach = (int)AccountManager.GetInstance().currentAccount.FinalScore();
-            scoreToReach = 70000;
+            scoreToReach = (int)AccountManager.GetInstance().currentAccount.FinalScore();
+            //scoreToReach = 70000;
 
-			menu.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToTitle); ;
+            menu.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToTitle); ;
 			highScore.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToHightScore);
 
             SettingInitialPositions();
@@ -300,6 +300,7 @@ namespace Com.IsartDigital.Sokoban
         {
             
             foreach (GpuParticles2D lParticles in explosionParticlesParent.GetChildren()) lParticles.Emitting = true;
+            SoundManager.GetInstance().PlayExplosion();
 
             Tween lTween = CreateTween()
                 .SetTrans(Tween.TransitionType.Elastic)
@@ -333,8 +334,14 @@ namespace Com.IsartDigital.Sokoban
             {
                 if (currentScore >= rankThresholds[i])
                 {
+
+                
+
                     if (i > 0)
                     {
+
+                       
+
                         lTween.Parallel().TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0).SetDelay(tweenDuration);
                         lTween.Parallel().TweenProperty(rankFillBar, "value", rankThresholds[i], tweenDuration/2).SetDelay(tweenDuration);
                         if (i == rankThresholds.Count - 1)
@@ -346,6 +353,8 @@ namespace Com.IsartDigital.Sokoban
 
                         lTween.TweenProperty(rank, FONT_SIZE_PATH, rankSizes[i], tweenDuration / 2);
 
+                
+
 
                     }
 
@@ -353,6 +362,8 @@ namespace Com.IsartDigital.Sokoban
                         lTween.TweenProperty(rank, TweenProp.TEXT, rankLetters[i], 0);
 
                     Particles(rankParticlesAmount[i], lTween);
+
+
 
                 }
 
@@ -379,6 +390,16 @@ namespace Com.IsartDigital.Sokoban
         {
             pTween.Parallel().TweenProperty(rankParticles, "amount", pAmount, 0);
             pTween.Parallel().TweenProperty(rankParticles, "emitting", true, 0);
+
+            pTween.Parallel().TweenCallback(
+                Callable.From(
+                    () =>
+                    {
+                        SoundManager.GetInstance().PlayCollide();
+                    }
+
+                    )
+                );
 
             rankParticles.GlobalPosition = rank.GlobalPosition + rank.Size/2;
         }

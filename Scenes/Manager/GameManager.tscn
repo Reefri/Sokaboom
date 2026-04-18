@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bl27n3huysagp"]
+[gd_scene load_steps=23 format=3 uid="uid://bl27n3huysagp"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/GameManager.cs" id="1_1plec"]
 [ext_resource type="Texture2D" uid="uid://ctvtmdnynit6f" path="res://Assets/particules/firefly.png" id="2_uljw3"]
@@ -49,8 +49,9 @@ scale_max = 1.2
 scale_curve = SubResource("CurveTexture_kcqrn")
 
 [sub_resource type="Curve" id="Curve_23alm"]
+min_value = -106.99
 max_value = 200.0
-_data = [Vector2(0.245902, 0), 0.0, 334.599, 0, 0, Vector2(0.501171, -4.52078), -1129.27, -1129.27, 0, 0, Vector2(0.749415, 0), 293.795, 0.0, 0, 0]
+_data = [Vector2(0.245902, 0), 0.0, 334.599, 0, 0, Vector2(0.501171, -4.52078), -336.029, -336.029, 0, 0, Vector2(0.749415, 0), 293.795, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_0twji"]
@@ -74,8 +75,8 @@ spread = 180.0
 initial_velocity_min = 0.1
 initial_velocity_max = 0.1
 gravity = Vector3(0, 0, 0)
-linear_accel_min = 5.22
-linear_accel_max = 10.44
+linear_accel_min = 3.05
+linear_accel_max = 8.27
 linear_accel_curve = SubResource("CurveTexture_0twji")
 scale_min = 0.1
 scale_curve = SubResource("CurveTexture_dyc1b")
@@ -87,14 +88,6 @@ turbulence_influence_min = 0.0
 turbulence_influence_max = 1.0
 turbulence_initial_displacement_min = -100.0
 turbulence_initial_displacement_max = 100.0
-
-[sub_resource type="Curve" id="Curve_3ivs7"]
-max_value = 200.0
-_data = [Vector2(0.245902, 0), 0.0, 334.599, 0, 0, Vector2(0.501171, -4.52078), -1129.27, -1129.27, 0, 0, Vector2(0.749415, 0), 293.795, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_mdiqv"]
-curve = SubResource("Curve_3ivs7")
 
 [sub_resource type="Curve" id="Curve_3wmjy"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0351288, 0.200723), 0.0, 0.0, 0, 0, Vector2(0.0655738, 0.0596746), 0.0, 0.0, 0, 0, Vector2(0.105386, 0.212478), 0.0, 0.0, 0, 0, Vector2(0.117096, 0.0596746), 1.77141, 1.77141, 0, 0, Vector2(0.166276, 0.200723), 0.0, 0.0, 0, 0, Vector2(0.222482, 0.100814), 0.0, 0.0, 0, 0, Vector2(0.248244, 0), 0.0, 3.57337, 0, 0, Vector2(0.754098, 0), -4.0211, 0.0, 0, 0, Vector2(0.796253, 0.183092), 0.0, 0.0, 0, 0, Vector2(0.833724, 0.0126584), 0.0, 0.0, 0, 0, Vector2(0.871194, 0.183092), 0.0, 0.0, 0, 0, Vector2(0.913349, 0.0244124), 0.0, 0.0, 0, 0, Vector2(0.955504, 0.171338), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -114,9 +107,9 @@ spread = 180.0
 initial_velocity_min = 0.3
 initial_velocity_max = 0.3
 gravity = Vector3(0, 0, 0)
-linear_accel_min = 5.22
-linear_accel_max = 10.44
-linear_accel_curve = SubResource("CurveTexture_mdiqv")
+linear_accel_min = 11.74
+linear_accel_max = 11.74
+linear_accel_curve = SubResource("CurveTexture_0twji")
 scale_min = 0.2
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_oihk0")
@@ -216,7 +209,7 @@ scale = Vector2(17.1601, 18.1536)
 amount = 45
 process_material = SubResource("ParticleProcessMaterial_88ojn")
 texture = ExtResource("2_uljw3")
-lifetime = 10.0
+lifetime = 15.0
 
 [node name="Fireflies2" type="GPUParticles2D" parent="."]
 modulate = Color(1, 1, 1, 0.635294)
@@ -226,7 +219,7 @@ scale = Vector2(17.1601, 18.1536)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_7o2wu")
 texture = ExtResource("2_uljw3")
-lifetime = 10.0
+lifetime = 15.0
 
 [node name="BoxSignalContainer" type="Node2D" parent="."]
 z_index = 1

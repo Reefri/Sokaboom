@@ -37,7 +37,11 @@ namespace Com.IsartDigital.Sokoban
 
         public override void _Ready()
 		{
+
             GameManager.GetInstance().QueueFree();
+
+            SoundManager.GetInstance().PlayFireworkWhistleWin();
+
 
             List<Node> lStars = stars.GetChildren().ToList();
 
@@ -95,6 +99,9 @@ namespace Com.IsartDigital.Sokoban
 
                             lTween.TweenProperty(perfectText, TweenProp.SCALE, Vector2.One, winScoreDuration/2);
                             lTween.Parallel().TweenProperty(perfectParticles, TweenProp.VISIBLE, true, winScoreDuration).SetDelay(winScoreDuration / 2);
+
+
+                            SoundManager.GetInstance().PlayExplosion();
 
                             foreach (GpuParticles2D lParticles in explosionParticles.GetChildren())
                             {
