@@ -200,6 +200,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_wotmg")
@@ -430,9 +431,10 @@ anchors_preset = -1
 anchor_top = 0.889
 anchor_right = 1.0
 anchor_bottom = 0.996
-offset_left = 5.0
-offset_top = -0.120056
-offset_bottom = 0.319946
+offset_left = 1.0
+offset_top = -0.119995
+offset_right = 1.0
+offset_bottom = 3.32007
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(537, 58)
@@ -460,23 +462,25 @@ grow_vertical = 2
 [node name="PerfectParts" type="GPUParticles2D" parent="perfect/Control"]
 show_behind_parent = true
 z_index = -1
-position = Vector2(562, 62.0001)
+position = Vector2(540.5, 61.199)
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_xpck3")
 
 [node name="explosionParticles" type="Control" parent="perfect/Control"]
 layout_mode = 1
+anchor_left = 0.001
 anchor_top = 0.043
 anchor_right = 1.0
-anchor_bottom = 0.998
-offset_top = 0.0119996
-offset_bottom = -0.768005
+anchor_bottom = 1.0
+offset_left = -0.0810001
+offset_top = -0.0490174
+offset_bottom = 0.580994
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="GPUParticles2D4" type="GPUParticles2D" parent="perfect/Control/explosionParticles"]
 z_index = 1
-position = Vector2(562, 56.0001)
+position = Vector2(539.5, 56.199)
 scale = Vector2(6.36441, -0.789933)
 emitting = false
 amount = 250
@@ -488,7 +492,7 @@ explosiveness = 1.0
 
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="perfect/Control/explosionParticles"]
 z_index = 1
-position = Vector2(561, 56.0001)
+position = Vector2(539.5, 56.199)
 scale = Vector2(6.36441, -0.789933)
 emitting = false
 amount = 250
