@@ -37,7 +37,7 @@ curve = SubResource("Curve_gqg8f")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tmby8"]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(100, 100, 1)
+emission_shape_scale = Vector3(125, 100, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 angle_min = -720.0
@@ -78,7 +78,7 @@ curve = SubResource("Curve_3y5vx")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rmsmt"]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(100, 100, 1)
+emission_shape_scale = Vector3(125, 100, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 angle_min = -720.0
@@ -130,17 +130,17 @@ soundButton = NodePath("ButtonsB/Son")
 layout_mode = 1
 anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.29
-offset_left = 574.0
-offset_top = 76.0
-offset_right = -578.0
-offset_bottom = -111.92
+anchor_bottom = 1.0
+offset_left = 540.0
+offset_right = -540.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="Control"]
 z_index = 1
 position = Vector2(2, -8)
 scale = Vector2(11.5779, -0.65622)
-amount = 90
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_tmby8")
 texture = ExtResource("2_35lkq")
 lifetime = 4.0
@@ -149,7 +149,7 @@ preprocess = 11.46
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
 z_index = 1
 scale = Vector2(11.5026, -0.934771)
-amount = 90
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_rmsmt")
 texture = ExtResource("2_68e54")
 lifetime = 4.0

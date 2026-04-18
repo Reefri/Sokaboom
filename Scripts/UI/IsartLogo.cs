@@ -45,7 +45,7 @@ namespace Com.IsartDigital.Sokoban
                 if (!Main.GetInstance().noLogin) UIManager.GetInstance().GoToLogin();
                 else
                 {
-                    AccountManager.GetInstance().TestConnexion("Guest", "");
+                    AccountManager.GetInstance().TestConnexion("Overlapping", "");
 
                     UIManager.GetInstance().ChangeLayer();
                     TitleDoors.GetInstance().ActivateDoors();
