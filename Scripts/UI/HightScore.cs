@@ -20,9 +20,12 @@ namespace Com.IsartDigital.Sokoban
         private const string SCORE = "Score : ";
 
         List<Account> accounts;
+
+
+        
         public override void _Ready()
 		{
-            next.Pressed += () => UIManager.GetInstance().GoToTitle();
+            next.Pressed += () => MenuTransition.Create(UIManager.GetInstance().GoToTitle);
             
 			accounts = AccountManager.GetInstance().GetTopPlayers(10);
 
