@@ -3,54 +3,16 @@
 [ext_resource type="Script" path="res://Scripts/UI/Transitions/Banderole.cs" id="1_sed1o"]
 [ext_resource type="Texture2D" uid="uid://cbowuhmoa03ni" path="res://Assets/JuicyAssets/LastBanderoleToExport.png" id="2_pttqo"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("banderoleNode", "downMarkers", "upMarkers")]
+[node name="Control" type="Control" node_paths=PackedStringArray("banderoleNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 5.0
-offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_sed1o")
 banderoleNode = NodePath("NewBanderoles")
-downMarkers = [NodePath("InitialPos/InitialFirst"), NodePath("InitialPos/InitialSecond"), NodePath("InitialPos/InitialThird"), NodePath("InitialPos/InitialFourth"), NodePath("InitialPos/InitialFifth")]
-upMarkers = [NodePath("FinalPos/FinalFirst"), NodePath("FinalPos/FinalSecond"), NodePath("FinalPos/FinalThird"), NodePath("FinalPos/FinalFourth"), NodePath("FinalPos/FinalFifth")]
-
-[node name="InitialPos" type="Node2D" parent="."]
-
-[node name="InitialFirst" type="Marker2D" parent="InitialPos"]
-position = Vector2(-100, -285)
-
-[node name="InitialSecond" type="Marker2D" parent="InitialPos"]
-position = Vector2(182, -285)
-
-[node name="InitialThird" type="Marker2D" parent="InitialPos"]
-position = Vector2(464, -285)
-
-[node name="InitialFourth" type="Marker2D" parent="InitialPos"]
-position = Vector2(746, -285)
-
-[node name="InitialFifth" type="Marker2D" parent="InitialPos"]
-position = Vector2(1028, -285)
-
-[node name="FinalPos" type="Node2D" parent="."]
-
-[node name="FinalFirst" type="Marker2D" parent="FinalPos"]
-position = Vector2(-100, -1285)
-
-[node name="FinalSecond" type="Marker2D" parent="FinalPos"]
-position = Vector2(-89, 1156)
-
-[node name="FinalThird" type="Marker2D" parent="FinalPos"]
-position = Vector2(464, -1285)
-
-[node name="FinalFourth" type="Marker2D" parent="FinalPos"]
-position = Vector2(780, 1173)
-
-[node name="FinalFifth" type="Marker2D" parent="FinalPos"]
-position = Vector2(1028, -1285)
 
 [node name="NewBanderoles" type="Control" parent="."]
 layout_mode = 1
@@ -63,89 +25,61 @@ grow_vertical = 2
 [node name="Banderole5" type="TextureRect" parent="NewBanderoles"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.086
-anchor_top = -2.006
-anchor_right = 0.16
-anchor_bottom = -0.7
-offset_left = -9.68999
-offset_top = 577.432
-offset_right = 541.688
-offset_bottom = 25.5921
+anchor_left = 1.0
+anchor_top = 0.8
+anchor_right = 2.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
+pivot_offset = Vector2(1080, 108)
 texture = ExtResource("2_pttqo")
 expand_mode = 1
 
 [node name="Banderole6" type="TextureRect" parent="NewBanderoles"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.158
-anchor_top = 1.105
-anchor_right = 0.404
-anchor_bottom = 2.411
-offset_left = -251.43
-offset_top = -317.56
-offset_right = 299.948
-offset_bottom = -869.4
+anchor_left = -1.0
+anchor_top = 0.6
+anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
+pivot_offset = Vector2(0, 108)
 texture = ExtResource("2_pttqo")
 expand_mode = 1
 
 [node name="Banderole7" type="TextureRect" parent="NewBanderoles"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.408
-anchor_top = -1.986
-anchor_right = 0.653
-anchor_bottom = -0.68
-offset_left = 19.32
-offset_top = 566.992
-offset_right = 571.855
-offset_bottom = 15.1519
+anchor_left = 1.0
+anchor_top = 0.4
+anchor_right = 2.0
+anchor_bottom = 0.6
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
+pivot_offset = Vector2(1080, 108)
 texture = ExtResource("2_pttqo")
 expand_mode = 1
 
 [node name="Banderole8" type="TextureRect" parent="NewBanderoles"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.655
-anchor_top = 1.128
-anchor_right = 0.901
-anchor_bottom = 2.434
-offset_left = 50.325
-offset_top = -352.216
-offset_right = 601.703
-offset_bottom = -904.056
+anchor_left = -1.0
+anchor_top = 0.2
+anchor_bottom = 0.4
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
+pivot_offset = Vector2(0, 108)
 texture = ExtResource("2_pttqo")
 expand_mode = 1
 
 [node name="Banderole9" type="TextureRect" parent="NewBanderoles"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.885
-anchor_top = -1.995
-anchor_right = 1.131
-anchor_bottom = -0.689
-offset_left = 74.775
-offset_top = 576.64
-offset_right = 626.153
-offset_bottom = 24.7999
+anchor_left = 1.0
+anchor_right = 2.0
+anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(0, 285)
+pivot_offset = Vector2(1080, 108)
 texture = ExtResource("2_pttqo")
 expand_mode = 1
